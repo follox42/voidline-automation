@@ -202,3 +202,12 @@ organic growth.
   to v5 minimal (no Shorts batch at all, just long-form)
 - DELETE Reddit Tunguska seed from active TODOs
 
+
+## 2026-06-13 — Strategy re-pivot: full speed, cooldown lifted by user decision
+**Observation**: User judgment call — cooldown lifted, resume Shorts production
+and full operations.
+**Action**:
+- All 4 routines to be activated (Hourly Pulse + Daily Plan + Weekly Review + Monthly Recal)
+- Shorts production resumes immediately (v1 Mary Celeste bonus Shorts + v4 Roanoke pipeline)
+- Pre-ship gate (youtube-virality-expert score ≥75) STILL mandatory — quality bar stays
+- Monitor v3 long-form + Shorts views daily — if still 0v at J+10, re-evaluate
