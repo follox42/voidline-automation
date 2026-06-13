@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcphub": {
+      "type": "http",
+      "url": "https://mcphub.nocode18.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${MCPHUB_TOKEN}"
+      },
+      "description": "Mcphub aggregator — proxies camoufox-stealth, google-flow, plane, obsidian, github, etc. Token stored as env var MCPHUB_TOKEN in the Cloud Routine environment (see ROUTINE_PROMPTS.md)."
+    }
+  }
+}
