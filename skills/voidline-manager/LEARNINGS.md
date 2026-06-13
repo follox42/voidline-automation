@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-13 21:06 — Pulse alert logic is blind under flaky scraper coverage
+**Observation**: Two pulse snapshots 19s apart (21:05:28 and 21:05:47)
+returned DIFFERENT asset coverage from the same anonymous curl monitor.
+21:05:28 captured v1_twist(279), v2_hook(4), v3_twist(26), v3_answer(106);
+21:05:47 captured v1_twist(279), v2_twist(297), v2_answer(32), v3_hook(0),
+v3_twist(26) — but LOST v2_hook and v3_answer. The delta check in
+`run_pulse()` only computes when an asset has a numeric `views` in BOTH the
+prev and cur snapshot (`if not p or not c["views"] or not p["views"]: continue`).
+With coverage flipping run-to-run, most assets are skipped, so a real spike
+on an asset that happens to be blank in either snapshot would never trip
+PULSE_ALERT.
+**Learning**: This is worse than "sparse data" (logged 14:02). The hourly
+pulse's alarm is structurally non-functional under the current scraper —
+it can run green forever while missing a >1000v Short, because the spiking
+asset only needs to be blank in one of the two compared snapshots to be
+silently dropped. The flat numbers themselves are unremarkable (v1_twist
+279 vs 274 plateau, v2_twist 297 vs 298, v3_answer flat at 106 since 06-07,
+all long-forms still 0/blank — no genuine movement), but I can't *trust*
+the absence of an alert.
+**Action**:
+- No PULSE_ALERT this run, and the underlying numbers genuinely show no
+  movement — so no Studio deep-dive (0/5 HTTP actions used, conserving budget).
+- Escalate the already-queued TODO: port `monitor_voidline.py` to fetch via
+  camoufox-stealth (cookie_profile=voidline) so coverage is deterministic.
+  Until then, treat "no notable delta" pulses as LOW-CONFIDENCE, not "all clear."
+- Cheap interim hardening idea for next daily run: have the monitor retry
+  blank assets 2-3x before writing, so a single consent-page hit doesn't
+  drop an asset from the snapshot.
