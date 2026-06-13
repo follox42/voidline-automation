@@ -1,0 +1,154 @@
+{
+  "idea_id": 4,
+  "channel_slug": "voidline",
+  "format": "long-form",
+  "title": "The Lost Colony of Roanoke. The Word They Carved Before They Vanished.",
+  "title_variants_for_ab": [
+    "The Lost Colony of Roanoke. The Word They Carved Before They Vanished.",
+    "115 People Vanished in 1587. They Left One Word: CROATOAN.",
+    "Roanoke 1587: We Finally Know Where the Lost Colony Went."
+  ],
+  "duration_sec": 715,
+  "target_runtime": "11:55",
+  "output_mode": "long-form-chapters",
+  "aspect_ratio": "16:9",
+  "fps": 30,
+  "_creative_bible_ref": "identities/channels/voidline/creative-bible.json",
+  "_voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "_voice_name": "David - Documentary (paid library, ideal Voidline)",
+  "_voice_settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.35,
+    "speed": 0.95,
+    "use_speaker_boost": true,
+    "model_id": "eleven_v3"
+  },
+  "_research_sources": [
+    "John White expedition journal (1587-1590), British Library MS",
+    "Quinn, D.B. (1985) Set Fair for Roanoke: Voyages and Colonies, 1584-1606. UNC Press",
+    "Horn, J. (2010) A Kingdom Strange: The Brief and Tragic History of the Lost Colony of Roanoke. Basic Books",
+    "First Colony Foundation digs at Site X (2012-2021) — Bertie County NC",
+    "Croatoan Archaeological Society excavations at Buxton/Hatteras (2009-2024) — Charles Heath, Mark Horton",
+    "Stahle et al. (1998) Drought reconstructions for Roanoke 1587-1590 (Science, 280:564)"
+  ],
+  "_visual_mix_target": {
+    "wikimedia_archive_count": 22,
+    "ai_generated_count": 6,
+    "veo_clips_count": 5
+  },
+  "_script_status": "WRITTEN",
+  "_total_voice_chars": null,
+  "_voice_v3_polish_notes": "Use [softly] for the CROATOAN reveal at 0:38. Use [serious] tone throughout chapter 4 (the John White return). End on a [reflective] note in chapter 5.",
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "scene_type": "cold-open-hook",
+      "start_sec": 0.0,
+      "end_sec": 45.5,
+      "target_words": 78,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "AI cinematic dawn shot of empty palisade gate ajar (Veo 3.1 Fast, 8s) + ThreeQuestionsOverlay component"
+      ],
+      "ai_shots": 1,
+      "credit_cost": 40,
+      "music_cue": "tense_cinematic_full_bass",
+      "voiceover": "[documentary narrator] August. Fifteen eighty-seven. Roanoke Island, off the coast of what is now North Carolina.\n\n[ominous tone] A hundred and fifteen English settlers. Men. Women. Children.\n\n[serious] Three years later, their governor returns.\n\n[after a long pause] The colony is gone. The houses dismantled, neatly. No bodies. No graves. No sign of struggle.\n\n[whispers] One word. Carved into a tree post.\n\n[suddenly serious] Three questions remain.\n\nWhat happened in those three missing years? Where did one hundred fifteen people go? And what was the colony trying to tell us with that single carved word?"
+    },
+    {
+      "chapter_id": 1,
+      "scene_type": "context-the-expedition",
+      "start_sec": 45.5,
+      "end_sec": 165.0,
+      "target_words": 220,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Wikimedia: Walter Raleigh portrait, Elizabeth I patent map, 1585 Roanoke expedition route engraving",
+        "Wikimedia: John White 1585 watercolors of Algonquian villages, fishing canoes, Pomeiooc"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "exploratory_low_strings",
+      "voiceover": "[serious] To understand what happened, we have to start in London. Fifteen eighty-four.\n\nWalter Raleigh holds a charter from Queen Elizabeth. The right to colonize any land in the New World not already claimed by a Christian prince.\n\nThe first English attempt at Roanoke had failed. Soldiers, no farmers. They starved. They abandoned the island in 1586.\n\nRaleigh tries again. This time, he sends families. A hundred and seventeen colonists. Their governor: a painter named John White, who had been on the first expedition. White had drawn the Algonquian villages, fish weirs, ceremonies — the most detailed European record of indigenous North America at that time.\n\nWhite knew the land. He knew the people. His daughter Eleanor was pregnant. His son-in-law Ananias Dare was a master tiler from London.\n\nThey were supposed to settle further north. At the mouth of the Chesapeake. Better harbor. Friendlier tribes.\n\n[ominous tone] But the ship's captain refused. He dropped them at Roanoke. The same island that had killed the first colony.\n\nAugust 18, 1587. Eleanor Dare gives birth to a girl. Virginia. The first English child born in the Americas.\n\n[serious] Nine days later, John White boards a ship back to England. The colony needs supplies."
+    },
+    {
+      "chapter_id": 2,
+      "scene_type": "setup-the-three-years",
+      "start_sec": 165.0,
+      "end_sec": 325.0,
+      "target_words": 280,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Wikimedia: Spanish Armada 1588 paintings, Howard of Effingham battle scene",
+        "Wikimedia: Roanoke Island map (DeBry 1590 engraving), period dugout canoe",
+        "AI cinematic: lone palisade fort at dusk with smoke from distant fires (Nano Banana 2)"
+      ],
+      "ai_shots": 1,
+      "credit_cost": 0,
+      "music_cue": "anxious_held_tension",
+      "voiceover": "[serious] White's plan was simple. Sail to England. Pick up supplies and reinforcements. Return within the year.\n\nThat year was fifteen eighty-eight.\n\nThe Spanish Armada. One hundred and thirty ships. The largest naval invasion fleet Europe had ever seen, pointed at England.\n\nEvery available English vessel was conscripted into the defense. Including Raleigh's. White could not get a ship.\n\nHe tried. In 1588 he chartered two small pinnaces — too small for an Atlantic crossing with supplies. They were attacked by French privateers, looted, and limped back to England with nothing.\n\nFifteen eighty-nine. War with Spain continues. No ship.\n\nFifteen ninety. White finally finds a captain willing to take him. A privateer named Abraham Cocke. The deal — Cocke would raid Spanish shipping in the Caribbean first. Then drop White at Roanoke.\n\nThe crossing takes most of the summer. Storms. Fights with Spanish ships. Cocke loses men.\n\nAugust 17, fifteen ninety. Three years and one week after he left.\n\nWhite's boats approach Roanoke Island at dusk. He sees smoke rising from the trees. He fires a cannon to announce his arrival. He plays trumpet calls. He sings familiar English songs.\n\n[ominous tone] Nothing answers back.\n\nThe next morning, August 18 — Virginia Dare's third birthday — White and a landing party row to shore.\n\n[serious] They find the village empty. The houses are gone. Dismantled. The palisade is intact, but the entrance is open.\n\n[whispers] On a post by the gate, five letters carved into the wood.\n\nC. R. O. A. T. O. A. N."
+    },
+    {
+      "chapter_id": 3,
+      "scene_type": "discovery-the-clues",
+      "start_sec": 325.0,
+      "end_sec": 470.0,
+      "target_words": 250,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Wikimedia: 19th century engraving of CROATOAN post discovery (most iconic image)",
+        "Wikimedia: Theodor de Bry 1590 engraving of Algonquian council fire",
+        "AI cinematic: close-up carved letters on weathered wooden post at dawn (Nano Banana 2)"
+      ],
+      "ai_shots": 1,
+      "credit_cost": 0,
+      "music_cue": "investigative_strings_pulse",
+      "voiceover": "[serious] The carved word is the entire mystery in five letters.\n\nJohn White had given the colony a code before he left. If they moved while he was away, they should carve the name of their destination on a tree or post. And if they had been forced to move under duress — if they were in trouble — they should carve a Maltese cross above the destination name.\n\nThere is no cross above CROATOAN.\n\nThat means the move was deliberate. No emergency.\n\nCroatoan was a real place. It was an island fifty miles south of Roanoke. Now called Hatteras Island. It was home to a friendly Algonquian people who had hosted the 1585 expedition, who had taught White's people to fish, who had attended Virginia Dare's baptism.\n\nThere is more evidence of an orderly move. The colony's houses are dismantled. Not destroyed. Disassembled, the way you would do if you planned to rebuild them somewhere else.\n\nThe palisade gates are open. No defensive posture.\n\nThe colony's heavy cannon are still on site. The lighter weapons are gone — moved with the people.\n\nWhite's own buried chests of personal possessions — books, maps, his paintings — have been dug up. Some destroyed. Others taken.\n\n[ominous tone] But not by the colonists. The chests were buried in a hiding place only White knew. Whoever opened them had been told where to look.\n\n[serious] Which means at least one colonist had been captured. And had talked."
+    },
+    {
+      "chapter_id": 4,
+      "scene_type": "theories",
+      "start_sec": 470.0,
+      "end_sec": 600.0,
+      "target_words": 230,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Wikimedia: Spanish galleon period art (the Spanish-raid theory)",
+        "Wikimedia: drought tree-ring data chart (Stahle 1998)",
+        "Wikimedia: 17th century Native American assimilation engravings"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "investigative_resolve_low",
+      "voiceover": "[serious] For four hundred years, four theories competed.\n\n[ominous tone] Theory one. Spanish attack. Spain had been hunting the English colony since 1588. They reached Chesapeake Bay in 1591 — they knew Roanoke existed.\n\nProblem. Spanish records of the period are detailed. No mention of finding or destroying a colony. And there are no Spanish artifacts at the site.\n\nTheory two. Disease. Smallpox or epidemic. Possible. But it doesn't explain the dismantled houses, the carved word, or the missing bodies.\n\nTheory three. Native attack. The local Powhatan paramount chief, Wahunsenacawh, told Captain John Smith in 1607 that he had personally massacred the Roanoke colonists. But this was twenty years later, his account was inconsistent, and again — no bodies at Roanoke.\n\n[serious] Theory four. Assimilation. The colonists left voluntarily. They split into smaller groups, joined local tribes, intermarried. The CROATOAN carving was their goodbye note.\n\nFor centuries this last theory was dismissed. Romantic. Unprovable.\n\nThen in 1998, paleoclimate researcher David Stahle reconstructed the regional drought record from tree rings. He published the result in the journal Science.\n\n[ominous tone] Fifteen eighty-seven through fifteen eighty-nine was the worst three-year drought in eight hundred years of North Carolina history. Catastrophic. The Algonquian villages were starving too.\n\n[serious] Suddenly the colony's choice — split up, ask the friendliest neighbors for shelter — looked less romantic. And more rational."
+    },
+    {
+      "chapter_id": 5,
+      "scene_type": "the-2021-answer-and-mystery",
+      "start_sec": 600.0,
+      "end_sec": 715.0,
+      "target_words": 200,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Wikimedia: First Colony Foundation Site X excavation photos (Bertie County)",
+        "Wikimedia: Croatoan archaeological site Buxton dig photos",
+        "AI cinematic: anglo-algonquian artifacts in soil profile, golden hour light (Nano Banana 2)",
+        "End-card: Voidline V logo + white text Voidline"
+      ],
+      "ai_shots": 1,
+      "credit_cost": 0,
+      "music_cue": "resolution_warm_strings",
+      "voiceover": "[reflective] [softly] Starting in 2009, two separate archaeological projects began digging.\n\nOne on Hatteras Island — the historical Croatoan. Led by Mark Horton from Bristol. They found copper rapier hilts. Slate writing tablets. A glass bead pattern that matched White's 1585 inventory. And gunlocks consistent with 1580s English manufacture, dated to roughly 1590 to 1620 — a period when the colonists would have been living among the Croatan.\n\nThe other project. Site X. Bertie County, fifty miles inland from Roanoke, up the Chowan River. Led by the First Colony Foundation. They found English ceramics from the right period. Buttons. A particular kind of tile work — possibly the work of Ananias Dare, the master tiler.\n\n[serious] The current consensus among archaeologists is that the colony did exactly what the CROATOAN carving suggested. Most of them moved south to Hatteras Island, joining the friendly Croatan. A smaller group — including Eleanor and Ananias Dare — went inland to Site X.\n\nNot a mass disappearance. A controlled, deliberate dispersal. By people who could read the drought, see the writing on the wall, and choose survival over symbolic Englishness.\n\n[reflective] Virginia Dare. The first English child born in America. Probably grew up speaking Algonquian. Probably had Algonquian children of her own. Her descendants may still be alive today, in eastern North Carolina.\n\nThe word CROATOAN was not a mystery. It was an address.\n\n[softly] They told us exactly where they went. We just took four hundred years to listen."
+    }
+  ],
+  "_budget_summary": {
+    "voice_credits": "~9500 chars (David Documentary, eleven_v3)",
+    "veo_clips": 5,
+    "nano_banana_2_shots": 3,
+    "wikimedia_assets": 22
+  },
+  "_pending_research": [],
+  "_actual_total_duration": null,
+  "_voice_gen_status": "READY_TO_GENERATE"
+}
