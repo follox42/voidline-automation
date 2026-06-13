@@ -83,6 +83,14 @@
       "status": "PUBLIC",
       "scheduled_at": "2026-06-12T12:00:00Z",
       "actual_published_at": "2026-06-12T12:00:00Z"
+    },
+    {
+      "short_id": "v1_bonus_briggs",
+      "yt_id": "vZ68HlWfT-Q",
+      "title": "Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872",
+      "publish_at": "2026-06-15T12:00:00Z",
+      "status": "SCHEDULED",
+      "scheduled_at": "2026-06-15T12:00:00Z"
     }
   ]
 }
