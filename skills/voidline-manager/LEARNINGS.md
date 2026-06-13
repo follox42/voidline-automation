@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-13 22:05 — Hourly pulse delta was structurally blind to sparse scraper coverage
+**Observation**: Second cloud pulse logged "no notable delta", but the delta
+loop actually compared *zero* assets. The 14:02 snapshot only parsed 2 assets
+(v2_hook=4, v3_answer=106); the 22:05 snapshot parsed 6 *different* ones
+(v1_long=13, v1_hook=62, v1_twist=279, v2_twist=297, v2_answer=32, v3_twist=26).
+Because `run_pulse` strictly diffed `timestamps[-2]` vs `timestamps[-1]` and
+skipped any asset missing views in *either*, the intersection was empty → a
+silent false-negative, not a real "nothing moved".
+**Learning**:
+1. With the flaky anon-curl scraper (still on the camoufox-stealth TODO), two
+   consecutive snapshots rarely cover the same assets, so a prev-vs-cur diff is
+   almost always vacuous. The pulse alerting was effectively non-functional for
+   any asset the scraper didn't happen to catch twice in a row.
+2. The raw numbers this run are all consistent with documented patterns and
+   none cross alert thresholds (Short>1000 / long>100 / Δ>50): v1_twist 279
+   (plateau, was 274@48h), v2_twist 297 (stable, peak was 298), v1_long_MaryCeleste
+   crept 2v→13v (still <100 long threshold). No PULSE_ALERT, so no Studio dig —
+   stayed within the 5-action / 0-Flow budget.
+**Action**:
+- Patched `run_pulse` to compare each current asset against its *most recent
+  earlier snapshot that had data* (`_last_known_views`) instead of the strictly
+  preceding timestamp. Deltas now degrade gracefully across sparse coverage.
+- This run still yields no delta (the 6 assets are all first-time captures), but
+  22:05 is now a real baseline — the next pulse that re-catches any of them will
+  produce a true delta.
+- Still-open TODO (unchanged): port `monitor_voidline.py` to fetch via
+  camoufox-stealth (cookie_profile=voidline) so coverage is complete, not luck.

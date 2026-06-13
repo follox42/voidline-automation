@@ -128,16 +128,29 @@ def run_pulse():
         return
 
     prev_ts, cur_ts = timestamps[-2], timestamps[-1]
-    prev = {r["asset"]: r for r in rows if r["ts"] == prev_ts}
     cur = {r["asset"]: r for r in rows if r["ts"] == cur_ts}
+
+    # The scraper coverage is sparse + inconsistent: two consecutive snapshots
+    # rarely cover the same assets, so a strict prev_ts-vs-cur_ts comparison
+    # almost always yields an empty intersection and a false "no delta". Instead
+    # compare each current asset against the most recent EARLIER snapshot in
+    # which that asset actually had a view count.
+    def _last_known_views(asset):
+        for ts in reversed(timestamps[:-1]):
+            for r in rows:
+                if r["ts"] == ts and r["asset"] == asset and r["views"]:
+                    return r["views"], ts
+        return None, None
 
     alerts = []
     for asset, c in cur.items():
-        p = prev.get(asset)
-        if not p or not c["views"] or not p["views"]:
+        if not c["views"]:
+            continue
+        pv, _ = _last_known_views(asset)
+        if not pv:
             continue
         try:
-            dv = int(c["views"]) - int(p["views"])
+            dv = int(c["views"]) - int(pv)
             cv = int(c["views"])
         except ValueError:
             continue
