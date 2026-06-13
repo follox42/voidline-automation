@@ -100,3 +100,10 @@ runs/<run_id>/
 └── assets/
     └── thumbnails/               # final thumbs (active + alt variants)
 ```
+
+## 2026-06-13 — Recovery cadence (post-suppression)
+- ✅ 7-14 day total upload silence to let cooldown lift
+- ✅ Long-form ship Sunday 17:00 UTC (peak EU/US)
+- ✅ Shorts: HOOK Monday + ANSWER Wednesday (max 2 per release)
+- ✅ Pre-ship gate: youtube-virality-expert score ≥ 75 mandatory
+- ✅ Catalogue depth target: 10+ long-forms before expecting algo whitelist

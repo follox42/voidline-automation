@@ -100,3 +100,14 @@ Validated anti-patterns. NEVER do these.
 
 - ❌ **Bait-and-switch titles**
   → Tanks satisfaction metric → algo blacklists the channel.
+
+## 2026-06-13 — Burst mode for cold-start
+- ❌ 5+ Shorts in 1 week on a sub-1k channel
+- ❌ More than 3 uploads per 7-day window without external trust signal
+- ❌ Camoufox upload pattern repeated daily (fingerprint detection)
+- ❌ Re-using the same browser session for >10 Studio actions per day
+
+## 2026-06-13 — Recovery actions that don't work
+- ❌ Swapping the thumbnail mid-suppression — algo has already de-prioritized
+- ❌ Title/description edits — same as above
+- ❌ Delete + re-upload — the channel-level flag persists

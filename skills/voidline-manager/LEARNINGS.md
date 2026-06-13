@@ -179,3 +179,26 @@ in the container. Separately: v3_answer is flat at 106v, unchanged since
   `monitor_voidline.py` to fetch via camoufox-stealth, and fix the hardcoded
   agent-log path in `upload_shorts.py`.
 - No PULSE_ALERT this run (baseline snapshot only); next pulse will have a delta.
+
+## 2026-06-13 — Strategic pivot: pure organic growth (no Reddit seed)
+**Observation**: After v3 HOOK 0v + algorithmic suppression confirmed via Studio
+analytics (notification not delivered, all traffic sources "insufficient data"),
+user decided NOT to pull the Reddit external seed lever. Path forward = pure
+organic growth.
+**Learning**: 
+1. Pure organic for doc-niche cold-start = 3-6 months to first breakout typically.
+   We're at J+17 — still very early.
+2. The 9-Shorts-in-12-days burst was the trigger for the suppression. Burst mode
+   is now OFFICIALLY in KNOWN_BAD for cold-start channels.
+3. New durable cadence: 1 long/week + 2 Shorts/week (HOOK + ANSWER, skip TWIST).
+   Total 3 uploads/week max during cold-start phase.
+4. v3 long-form 0v is now expected behavior under suppression — no panic, just
+   wait for cooldown.
+**Action**:
+- 7-14 day total upload cooldown (J+3 today, target lift J+10 to J+14)
+- v4 Roanoke 1590 production during cooldown — polish to max, ship ~20 juin
+- Pre-ship gate via youtube-virality-expert score ≥ 75 (hook + thumb + first 5s)
+- If v4 long-form still 0v at J+7 post-publish → suppression persistent, downscale
+  to v5 minimal (no Shorts batch at all, just long-form)
+- DELETE Reddit Tunguska seed from active TODOs
+
