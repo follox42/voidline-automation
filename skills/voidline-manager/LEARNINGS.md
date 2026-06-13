@@ -122,3 +122,31 @@ instead of bare `stealth_navigate`).
   with mcphub-aware mcp_stealth.py + ROUTINE_PROMPTS.md ready for claude.ai/code/routines
 - 4 Cloud Routines ready to instantiate (hourly pulse / daily / weekly / monthly)
 - Verified: stealth_status call via mcphub works (returns the running session info)
+
+## 2026-06-13 14:02 — First cloud pulse: runner had host-path rot + scraper is flaky
+**Observation**: First HOURLY PULSE in the Cloud Routine container crashed —
+`cron_runner.py` hardcoded `ROOT`/`SKILLS` to `/host/home/follox/.openclaw/...`
+and logged to a `remotion/public/agent-log.json` + pushed to a separate repo's
+`main`. None of that exists in the fresh cloud checkout (`/host` absent). After
+fixing, the pulse ran but `monitor_voidline.py`'s curl scraper returned blank
+views for 10/12 assets — only v2_hook (4v) and v3_answer (106v) parsed. The
+blanks are YouTube serving a consent/anti-scrape page to unauthenticated curl
+in the container. Separately: v3_answer is flat at 106v, unchanged since
+2026-06-07 (~6 days no organic growth).
+**Learning**:
+1. Scripts migrated from the local OpenClaw machine carry absolute `/host/...`
+   paths that silently break in the cloud. `monitor_voidline.py` was already
+   `Path(__file__)`-relative and survived; `cron_runner.py` (and
+   `upload_shorts.py`, still has the hardcoded agent-log path) were not.
+2. Anonymous curl to youtube.com is unreliable for stats in the cloud — most
+   responses lack `"viewCount"`. Pulse stat coverage will stay sparse until the
+   monitor pulls via the camoufox-stealth MCP (cookie_profile=voidline) or yt-dlp.
+3. agent-log.json now lives at repo root and is committed by the routine itself,
+   not pushed from inside cron_runner.py.
+**Action**:
+- Made `cron_runner.py` cloud-aware: paths derived from `__file__`, decision
+  journal at repo-root `agent-log.json`, removed the dead separate-repo push.
+- TODO (not this pulse, keeps within Studio HTTP limits): port
+  `monitor_voidline.py` to fetch via camoufox-stealth, and fix the hardcoded
+  agent-log path in `upload_shorts.py`.
+- No PULSE_ALERT this run (baseline snapshot only); next pulse will have a delta.
