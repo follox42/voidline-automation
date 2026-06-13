@@ -102,3 +102,23 @@ of v1 TWIST's plateau (57.3% stayed-to-watch needed to reach 70%+).
 - Re-render v2 HOOK avec question hook (delete + re-upload)
 - Produire 2 Shorts bonus sur v1 Mary Celeste (hooks question) pour percer le plafond 279v
 
+
+## 2026-06-13 — Mcphub aggregator unlock + voidline-automation repo shipped
+**Observation**: User flagged that .mcp.json should use mcphub (not direct camoufox URL).
+Located mcphub at `https://mcphub.nocode18.com/mcp` + auth token in
+`~/.openclaw-mcphub-token` (oc_14b8...). Mcphub exposes **453 tools** including
+camoufox-stealth (53), github (32), google-flow, plane, obsidian, openmemory, etc.
+Tool naming convention via mcphub: `<server>-<tool>` (e.g. `camoufox-stealth_navigate`
+instead of bare `stealth_navigate`).
+**Learning**:
+1. Mcphub is the right MCP entry point for Cloud Routines — single URL, single auth,
+   all servers behind it
+2. Direct MCP URLs (mcp-stealth.nocode18.com) work locally but bypass the aggregator
+3. Cloud Routine `.mcp.json` MUST use mcphub URL + bearer token in env var
+4. Existing scripts using bare tool names (`stealth_navigate`) work UNCHANGED if
+   mcp_stealth.py auto-translates via _translate_tool_name()
+**Action**: 
+- Shipped voidline-automation repo (https://github.com/follox42/voidline-automation)
+  with mcphub-aware mcp_stealth.py + ROUTINE_PROMPTS.md ready for claude.ai/code/routines
+- 4 Cloud Routines ready to instantiate (hourly pulse / daily / weekly / monthly)
+- Verified: stealth_status call via mcphub works (returns the running session info)
