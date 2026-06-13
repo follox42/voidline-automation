@@ -122,3 +122,60 @@ instead of bare `stealth_navigate`).
   with mcphub-aware mcp_stealth.py + ROUTINE_PROMPTS.md ready for claude.ai/code/routines
 - 4 Cloud Routines ready to instantiate (hourly pulse / daily / weekly / monthly)
 - Verified: stealth_status call via mcphub works (returns the running session info)
+
+## 2026-06-13 — Daily-plan drift catch + cron_runner cloud-fix
+**Observation**: First Cloud Routine daily-plan run found two issues.
+1. **State drift**: 5 Shorts (v2_twist, v2_answer, v3_hook, v3_twist, v3_answer,
+   covering 06-05 → 06-12) were still marked `SCHEDULED` in shorts_state.json
+   despite their scheduled times being in the past. Verified all 5 PUBLIC via
+   YouTube oEmbed (HTTP 200) and cross-checked the live `voidline` Studio session
+   (sitting on 5e8ELVo5ARg `period-since_publish` analytics). Reconciled →
+   status=PUBLIC + actual_published_at.
+2. **cron_runner.py was hardcoded** to the openclaw host path
+   (`/host/home/follox/.openclaw/...`), which does not exist in the Cloud Routine
+   container, so step 2 crashed with FileNotFoundError. Patched ROOT/SKILLS to
+   auto-detect: host path if present, else resolve relative to the repo. agent-log
+   now falls back to `<repo>/agent-log.json`; the remotion auto-push is skipped in
+   repo mode (the routine pushes to the feature branch itself).
+**Learning**:
+- Scheduled Shorts auto-publish silently — the state file is NOT updated by
+  YouTube, so daily reconciliation is mandatory (this is the KNOWN_BAD
+  "Trusting that the schedule was applied without verifying" pattern, but on the
+  *publish* side: trusting the state reflects reality without reading back).
+- oEmbed 200/401 is a clean, session-safe public/scheduled probe — cheaper than
+  scraping Studio for routine status checks.
+**Action**:
+- PIPELINE DRY: nothing scheduled past 06-12. Next Short slots (Sun 06-14,
+  Mon 06-15) are empty vs the 5/wk cadence. Need to produce + schedule the next
+  batch (v4 topic) before the rhythm breaks — flagged in agent-log DRIFT_FLAG.
+- Tomorrow (Sun 06-14, 17:00 UTC) is a long-form + Reddit-seed day per cadence;
+  verify whether a long-form is actually queued and draft the r/UnresolvedMysteries
+  seed then.
+
+## 2026-06-13 14:02 — First cloud pulse: runner had host-path rot + scraper is flaky
+**Observation**: First HOURLY PULSE in the Cloud Routine container crashed —
+`cron_runner.py` hardcoded `ROOT`/`SKILLS` to `/host/home/follox/.openclaw/...`
+and logged to a `remotion/public/agent-log.json` + pushed to a separate repo's
+`main`. None of that exists in the fresh cloud checkout (`/host` absent). After
+fixing, the pulse ran but `monitor_voidline.py`'s curl scraper returned blank
+views for 10/12 assets — only v2_hook (4v) and v3_answer (106v) parsed. The
+blanks are YouTube serving a consent/anti-scrape page to unauthenticated curl
+in the container. Separately: v3_answer is flat at 106v, unchanged since
+2026-06-07 (~6 days no organic growth).
+**Learning**:
+1. Scripts migrated from the local OpenClaw machine carry absolute `/host/...`
+   paths that silently break in the cloud. `monitor_voidline.py` was already
+   `Path(__file__)`-relative and survived; `cron_runner.py` (and
+   `upload_shorts.py`, still has the hardcoded agent-log path) were not.
+2. Anonymous curl to youtube.com is unreliable for stats in the cloud — most
+   responses lack `"viewCount"`. Pulse stat coverage will stay sparse until the
+   monitor pulls via the camoufox-stealth MCP (cookie_profile=voidline) or yt-dlp.
+3. agent-log.json now lives at repo root and is committed by the routine itself,
+   not pushed from inside cron_runner.py.
+**Action**:
+- Made `cron_runner.py` cloud-aware: paths derived from `__file__`, decision
+  journal at repo-root `agent-log.json`, removed the dead separate-repo push.
+- TODO (not this pulse, keeps within Studio HTTP limits): port
+  `monitor_voidline.py` to fetch via camoufox-stealth, and fix the hardcoded
+  agent-log path in `upload_shorts.py`.
+- No PULSE_ALERT this run (baseline snapshot only); next pulse will have a delta.
