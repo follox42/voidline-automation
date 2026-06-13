@@ -211,3 +211,23 @@ and full operations.
 - Shorts production resumes immediately (v1 Mary Celeste bonus Shorts + v4 Roanoke pipeline)
 - Pre-ship gate (youtube-virality-expert score ≥75) STILL mandatory — quality bar stays
 - Monitor v3 long-form + Shorts views daily — if still 0v at J+10, re-evaluate
+
+## 2026-06-13 — v4 Roanoke production started, Flow blocker hit
+**Observation**: Wrote v4 Roanoke script.json (6 chapters, 11:55, 1258 words,
+CROATOAN-as-address angle). Tried to generate the AI thumb via Google Flow
+Nano Banana 2 — the submit button stays disabled even with a 668-char prompt
+properly inserted (verified via DOM inspection). No quota message visible.
+**Learning**: Flow UI has changed since 2026-06-04 — model selector pattern
+(crop_16_9 + x2 + arrow_forward Créer) is no longer the same. New UI has
+"add_2 Créer" button and an Agent mode, but the submit pipeline for image
+gen needs re-investigation. Possibly: (1) free tier exhausted for the
+month, (2) anti-abuse soft-block from 2026-06-04 burst, or (3) UI
+redesign requires new selector path.
+**Action**:
+- Script + shorts plan + thumb prompt template all committed to repo at
+  runs/v4-roanoke/ for resumption
+- Next time: open Flow in a fresh session (cookies refresh) and inspect
+  the new submit flow
+- Backup path: use the v3 Tunguska AI base (forest flattened) as a
+  PLACEHOLDER thumb for v4 + iterate after — better to ship with a
+  decent base than wait indefinitely
