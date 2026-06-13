@@ -231,3 +231,23 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-13 18:05 — Pulse delta-alerting is structurally blind with curl scraper
+**Observation**: HOURLY PULSE ran clean (no PULSE_ALERT, 0 Studio HTTP actions).
+But comparing the two snapshots in stats_log.csv (14:02 vs 18:05) shows the curl
+scraper returned a near-**disjoint** set of assets between runs: 14:02 captured
+v2_hook(4) + v3_answer(106) only; 18:05 captured v1_hook(62), v2_hook(4),
+v2_twist(297), v2_answer(32). Only v2_hook had views in BOTH snapshots (4→4).
+**Learning**: This is worse than "scraper is flaky" (logged 14:02). The pulse
+delta logic (cron_runner.py:137) skips any asset where either snapshot is blank,
+so when coverage is disjoint run-to-run, deltas can NEVER be computed and the
+delta≥50 alert can structurally never fire. The pulse is effectively blind to
+growth deltas until the monitor is ported off anonymous curl. The absolute
+thresholds (short≥1000 / long≥100) still work on whatever single snapshot lands.
+Side note (single-snapshot reads, not deltas): v2_twist sits ~297v (flat vs the
+298v logged 06-05, plateau holding), v1_hook newly visible at 62v, v2_answer 32v.
+**Action**:
+- Escalate the monitor_voidline.py → camoufox-stealth port (cookie_profile=voidline)
+  from "TODO nice-to-have" to REQUIRED: without it the hourly pulse cannot do its
+  one job (catch deltas). Until then the pulse is a snapshot logger, not an alerter.
+- No threshold breach this run, so per hard-limits no Studio analytics pull was made.
