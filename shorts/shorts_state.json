@@ -44,40 +44,45 @@
       "yt_id": "vxP6XiJKLkg",
       "title": "Every Dyatlov Pass Theory Failed for 62 Years",
       "publish_at": "2026-06-05T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-05T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-05T12:00:00Z",
+      "actual_published_at": "2026-06-05T12:00:00Z"
     },
     {
       "short_id": "v2_answer",
       "yt_id": "TwJNypz8c4I",
       "title": "The 2021 Paper That Solved Dyatlov Pass",
       "publish_at": "2026-06-06T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-06T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-06T12:00:00Z",
+      "actual_published_at": "2026-06-06T12:00:00Z"
     },
     {
       "short_id": "v3_hook",
       "yt_id": "5e8ELVo5ARg",
       "title": "What Exploded the Sky? \u2014 Tunguska 1908",
       "publish_at": "2026-06-08T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-08T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-08T12:00:00Z",
+      "actual_published_at": "2026-06-08T12:00:00Z"
     },
     {
       "short_id": "v3_twist",
       "yt_id": "0eDPVcgODvY",
       "title": "Antimatter? Black Hole? Tesla Ray? The Tunguska Mystery",
       "publish_at": "2026-06-10T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-10T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-10T12:00:00Z",
+      "actual_published_at": "2026-06-10T12:00:00Z"
     },
     {
       "short_id": "v3_answer",
       "yt_id": "y3xLIfOAPHA",
       "title": "It Never Landed \u2014 The 2020 Tunguska Theory",
       "publish_at": "2026-06-12T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-12T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-12T12:00:00Z",
+      "actual_published_at": "2026-06-12T12:00:00Z"
     }
   ]
 }

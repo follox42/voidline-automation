@@ -24,25 +24,52 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path("/host/home/follox/.openclaw/yt-viral/runs/voidline-20260527-002843")
-SKILLS = Path("/host/home/follox/.openclaw/yt-viral/.openclaw/skills/voidline-manager")
+# The openclaw dev host runs this from an absolute run dir. In the Cloud
+# Routine container the repo is checked out fresh, so fall back to paths
+# resolved relative to this file (<repo>/skills/voidline-manager/cron_runner.py).
+_HOST_ROOT = Path("/host/home/follox/.openclaw/yt-viral/runs/voidline-20260527-002843")
+_HOST_SKILLS = Path("/host/home/follox/.openclaw/yt-viral/.openclaw/skills/voidline-manager")
+
+if _HOST_ROOT.exists():
+    ROOT = _HOST_ROOT
+    SKILLS = _HOST_SKILLS
+    _REPO_MODE = False
+else:
+    ROOT = Path(__file__).resolve().parents[2]
+    SKILLS = Path(__file__).resolve().parent
+    _REPO_MODE = True
+
 LOCKFILE = "/tmp/voidline-manager.lock"
 HALTFILE = ROOT / "HALT"
 
 DRY_RUN = bool(os.environ.get("VOIDLINE_DRY_RUN"))
 
 
+def _agent_log_path():
+    """Host writes into the remotion public dir; repo/cloud mode writes the
+    log at the repo root since there is no remotion checkout."""
+    remotion_log = ROOT / "remotion" / "public" / "agent-log.json"
+    if remotion_log.parent.exists():
+        return remotion_log
+    return ROOT / "agent-log.json"
+
+
 def log_decision(action, detail):
     """Append to agent-log.json + git push."""
-    log_path = ROOT / "remotion" / "public" / "agent-log.json"
-    data = json.loads(log_path.read_text())
+    log_path = _agent_log_path()
+    if log_path.exists():
+        data = json.loads(log_path.read_text())
+    else:
+        data = {"decisions": []}
     data["decisions"].append({
         "t": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "action": action,
         "detail": detail,
     })
     log_path.write_text(json.dumps(data, indent=2))
-    if not DRY_RUN:
+    # The remotion auto-push only makes sense on the openclaw host. In repo/cloud
+    # mode the routine itself commits + pushes to the feature branch.
+    if not DRY_RUN and not _REPO_MODE:
         try:
             subprocess.run(
                 ["git", "-C", str(ROOT / "remotion"),
