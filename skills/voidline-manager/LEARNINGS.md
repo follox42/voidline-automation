@@ -231,3 +231,38 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-14 09:10 — auth_check false-negative trap + curl coverage now 0/13
+**Observation**: Hourly pulse ran clean (no PULSE_ALERT, "no notable delta"),
+but `monitor_voidline.py`'s anonymous curl scraper returned BLANK views for
+all 13 assets this run — a degradation from the 2/12 coverage on 2026-06-13.
+While verifying whether this was a real block, `camoufox-stealth_auth_check`
+on the live `yt_upload` (cookie_profile=voidline) session reported
+`auth_valid:false` / `status:"dead"` / "Re-login required" — BUT with
+`api_status:0` and `consecutive_errors:0`. A confirming `navigate` to the
+Studio dashboard loaded fully logged in as "Voidline" (channel dashboard,
+analytics widgets all present). The cookies are VALID; auth_check lied.
+Dashboard also showed last Short (v3_twist, "Antimatter? Black Hole? Tesla
+Ray?", 06-10) flat at 26v / 35.2% avg-watched over 4d — normal cold-start,
+no spike.
+**Learning**:
+1. `auth_check` returns a FALSE "dead" on idle/parked sessions when the
+   probe gets no HTTP response (`api_status:0`). Do NOT trust auth_check
+   alone to declare cookies expired — `api_status:0` + `consecutive_errors:0`
+   = inconclusive, not a 401. Confirm with a real Studio `navigate` + read
+   the page title/text (logged-in title = "Tableau de bord de la chaîne").
+   A genuine expiry would redirect to accounts.google.com / show a sign-in.
+2. The curl scraper has fully decayed (0/13). Pulse view-deltas are now
+   effectively blind. The threshold logic in cron_runner silently skips
+   blank-view assets, so pulses will keep reporting "no notable delta"
+   regardless of reality — a SILENT-BLINDNESS risk: a real >1000v spike
+   would not alert.
+**Action**:
+- Escalate the long-standing TODO: port `monitor_voidline.py` to fetch via
+  the camoufox-stealth voidline session (the session is alive + authed, so
+  Studio analytics or even logged-in watch-page viewCount is reachable).
+  Until then pulse stat-alerting is non-functional — treat "no notable
+  delta" as "no data", not "no growth".
+- Pulse-side guard idea: if a pulse parses 0 view values, log a
+  STATS_BLIND warning instead of a reassuring "no notable delta".
+- No cookie re-login needed this cycle — voidline auth confirmed healthy.
