@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-14 13:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219213:06: no notable delta"
+    },
+    {
+      "t": "2026-06-14 13:09 UTC",
+      "action": "PULSE_STUDIO_READ",
+      "detail": "Curl monitor 0/12 blind this run; voidline Studio session alive (not a 401). Pulled real Shorts table (2 Studio reads, within 5-action cap). No spike \u2014 hard plateau: v1_twist 279, v2_twist 297, v3_answer 106, v1_answer 84, v1_hook 62, v2_answer 32, v3_twist 26, v2_hook 4, v3_hook 0 (suppression persists), v1_bonus_briggs 0 scheduled 06-15. ~890v channel-wide = +~29v in 7d. Backfilled CSV with real numbers for next-pulse baseline. Found untracked DRAFT '9 Barrels / Mary Celeste Vapor Theory' not in shorts_state.json \u2014 flagged for daily-plan to schedule-or-discard."
     }
   ]
 }

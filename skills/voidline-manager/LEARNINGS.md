@@ -231,3 +231,37 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-14 13:10 — Pulse blind on curl, but Studio confirms hard plateau
+**Observation**: HOURLY PULSE — the anonymous-curl monitor degraded from 2/12
+to **0/12** parseable view counts (even v2_hook + v3_answer that parsed
+yesterday came back blank), so cron_runner logged "no notable delta" purely
+from data-absence, not a real flat line. Checked session health:
+`camoufox-stealth_status` shows the `voidline` yt_upload session **alive** on
+Studio (cookies valid, idle ~4h) — so this is the known cloud-curl anti-scrape
+issue, NOT a cookie/401 block. Pulled the real Shorts content table via the
+live session (2 Studio reads). Ground truth: v1_twist 279, v2_twist 297,
+v3_answer 106, v1_answer 84, v1_hook 62, v2_answer 32, v3_twist 26, v2_hook 4,
+v3_hook **0**, v1_bonus_briggs 0 (scheduled 06-15 ✓). Channel-wide ~890v vs
+~861v at the 06-07 weekly review = **+~29v in 7 days**. Also found a DRAFT
+Short — *"9 Barrels Empty. The Mary Celeste Vapor Theory"* — that is NOT in
+shorts_state.json.
+**Learning**:
+1. NO spike — the real story is total organic stagnation. The two best Shorts
+   (v1_twist 279, v2_twist 297) have not moved in ~9-12 days; the 300v ceiling
+   noted on 06-02 is holding firm with zero new distribution.
+2. v3_hook flat at **0v** = the algorithmic suppression flagged on 06-13 is
+   persistent (J+6 post-publish, still no impressions test pool).
+3. Backfilling the current CSV snapshot with the real Studio numbers gives the
+   NEXT pulse a working baseline to delta against — the cheap fix that keeps
+   the pulse functional until monitor_voidline.py is ported to the stealth MCP.
+**Action**:
+- Backfilled 2026-06-14T13:06 CSV rows with real view counts (10 assets).
+- No deep retention/traffic-source dive: no PULSE_ALERT threshold met, picture
+  is unambiguous (flat), and it stays within the 5-Studio-action cap (used 2).
+- FLAG for daily-plan: the "9 Barrels / Vapor Theory" draft is untracked —
+  decide schedule-or-discard and add to shorts_state.json if shipping. With
+  06-14 empty and 06-15 (briggs) the only near-term content, this draft is the
+  natural next Short to fill the dry pipeline flagged on 06-13.
+- STILL OPEN (carried): port monitor_voidline.py to fetch via camoufox-stealth
+  so the pulse stops going blind in the cloud.
