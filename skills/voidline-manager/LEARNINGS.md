@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-14 — Daily-plan: state verified clean, pipeline still thin, v4 seed pre-staged
+**Observation**: Sun 06-14 daily-plan run. (1) Catalogue verified against reality via
+oEmbed probe — all 9 PUBLIC Shorts still 200, and the only SCHEDULED Short
+(v1_bonus_briggs, vZ68HlWfT-Q, 06-15 12:00) returns 403 = still scheduled. **No drift
+this run** — first daily-plan where the state file already matched reality (yesterday's
+reconcile of 5 stale-SCHEDULED entries held). (2) Today is a *nominal* long-form Sunday
+per cadence, but the next long-form (v4 Roanoke) is targeted **2026-06-22**, not today,
+and is still mid-production (script WRITTEN; voice/assets/render/thumb/shorts/upload all
+pending, plus the unresolved Google Flow Nano-Banana-2 submit blocker from 06-13). So the
+06-14 Sunday long-form slot is intentionally empty during the v4 ramp — not a miss.
+(3) Pipeline depth: only 1 Short staged ahead (06-15). Nothing for 06-16/06-17; the Wed
+06-17 ANSWER slot (recovery cadence = HOOK Mon + ANSWER Wed) is unfilled.
+**Learning**:
+1. The reconcile from 06-13 stuck — daily oEmbed is enough to keep the state file honest
+   without spending Studio actions. Steady-state daily-plan = a 10-asset probe + a diff.
+2. "Sunday = long-form day" is a cadence *aspiration*, not a calendar fact. The operative
+   truth is the per-run ship date in runs/<id>/SHORTS_PLAN.md (v4 = 06-22). Always read
+   the run plan before treating a Sunday as a publish day.
+**Action**:
+- PLANNED: Reddit seed for v4 Roanoke (CROATOAN / Lost Colony) — drafted + staged at
+  seeds/v4_roanoke_reddit_seed.md (~620 words, no YT link in body per KNOWN_BAD, link
+  goes in first comment w/ utm_source=reddit). Post on v4 ship day, Sun 06-22 ~17:00 UTC.
+- DRIFT flagged in agent-log: pipeline dry past 06-15 (06-17 ANSWER slot empty); v4 render
+  pipeline + Flow thumb blocker must be resolved well before the 06-22 ship date.

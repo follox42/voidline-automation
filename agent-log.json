@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-14 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-14 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-14 08:10 UTC",
+      "action": "RECONCILE",
+      "detail": "No drift. oEmbed probe of all 10 assets: 9 PUBLIC Shorts still HTTP 200 (v1_hook, v1_twist, v2_hook, v1_answer, v2_twist, v2_answer, v3_hook, v3_twist, v3_answer); the lone SCHEDULED Short v1_bonus_briggs (vZ68HlWfT-Q, 06-15 12:00Z) returns HTTP 403 = not-yet-public, consistent with SCHEDULED. State file matches reality \u2014 yesterday's reconcile of 5 stale-SCHEDULED entries held. No Shorts publish TODAY (06-14), so nothing to verify in Studio this run."
+    },
+    {
+      "t": "2026-06-14 08:10 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "Not a real publish day: 06-14 is a nominal long-form Sunday per cadence, but the next long-form (v4 Roanoke) is targeted 2026-06-22 per runs/v4-roanoke/SHORTS_PLAN.md and is still mid-production (script WRITTEN; voice/assets/render/thumb/shorts/upload all pending + unresolved Google Flow Nano-Banana-2 submit blocker). Today's Sunday long-form slot is intentionally empty during the v4 ramp. PIPELINE THIN: only 1 Short staged ahead (v1_bonus_briggs 06-15). Next 3 days \u2014 06-15 Mon HOOK slot FILLED (scheduled, verified), 06-16 Tue empty, 06-17 Wed ANSWER slot EMPTY (recovery cadence = HOOK Mon + ANSWER Wed). ACTION: resolve v4 render pipeline + Flow thumb blocker well before 06-22; stage a Short for the 06-17 slot or accept a HOOK-only week."
+    },
+    {
+      "t": "2026-06-14 08:10 UTC",
+      "action": "PLANNED",
+      "detail": "Reddit seed for v4 Roanoke (CROATOAN / Lost Colony) drafted + staged at seeds/v4_roanoke_reddit_seed.md (~620 words, r/UnresolvedMysteries). No YT link in body (KNOWN_BAD anti-spam); link goes in first top-level comment ~5min later with utm_source=reddit. POST on v4 ship day Sun 2026-06-22 ~17:00 UTC, not today. Logged to LEARNINGS.md."
     }
   ]
 }
