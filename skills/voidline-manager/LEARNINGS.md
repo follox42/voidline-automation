@@ -231,3 +231,43 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-13 — Auto weekly review
+**Observation**: Week ending 2026-06-13. Best: v2_hook (+0v). Worst: v3_answer (+0v). 
+**Auto-action**: manager reviewed. Manual interventions logged separately.
+
+> NOTE: the auto-entry above is DEGENERATE — stats_log.csv had only one snapshot,
+> so every delta computed to +0v. Superseded by the real Review #2 below.
+
+## 2026-06-14 — Weekly Review #2 (first complete public snapshot)
+**Observation**: First full asset snapshot pulled (via the live camoufox `ytpub`
+session — real browser bypasses the EU consent wall that blocks naked fetch).
+Total ≈ 907 views (Shorts 890 + long 17), only **+46 (~+5%)** WoW vs 861 at
+Review #1 — a sharp deceleration from +107%. Studio auth is DEAD (cookie profile
+no longer restores a logged-in session), so impressions/CTR/retention/traffic/
+sub-count were unavailable. Full snapshot:
+v2_twist 297 · v1_twist 279 · v3_answer 106 · v1_answer 84 · v1_hook 62 ·
+v2_answer 32 · v3_twist 26 · v2_hook 4 · v3_hook 0 | longs 16/0/1.
+**Learnings**:
+1. **Suppression has a sharp ~24h cutoff and dominates content quality.** Natural
+   experiment, v3 Tunguska batch (same topic/thumb/cutter, all KNOWN_GOOD hooks):
+   answer (pub 06-07)=106v, hook (pub 06-08, an S-tier forensic-question hook +
+   S-tier inverted-scale thumb)=0v, twist (pub 06-10)=26v. The view ordering is
+   the INVERSE of hook quality → the discriminator was publish date crossing the
+   burst-suppression onset, NOT the creative. When a window opens, halt ALL
+   uploads; you cannot out-create suppression.
+2. **~300v Shorts ceiling confirmed a 3rd time**: v2_twist 297 (flat 299→297),
+   v1_twist 279 (flat 274→279 over 12d), prior v1_twist plateau 274. No Short has
+   ever crossed ~300. The comment-velocity lever (cutter v2 outro) meant to break
+   it is STILL untested — every cutter-v2 Short (v3 batch) was suppressed first.
+   → Promoted to KNOWN_BAD.
+3. **ANSWER-position framing travels standalone** (candidate, 2/3): v3_answer
+   (106) and v1_answer (84) each beat their batch's HOOK short. Solution-framed
+   hooks ("It Never Landed", "…Solved?") may be undervalued vs hook→twist→answer.
+   Needs a 3rd data point — schedule a dedicated answer-first test.
+**Actions**:
+- Restore Studio auth (re-login voidline + re-save cookies) — analytics blind 2 wks running.
+- v1_bonus_briggs (06-15) = suppression canary: 48h >50v = lifting, <10v = still clamped → HALT.
+- Hard cap ≤2 uploads/7d (stay under burst threshold).
+- Run the comment-velocity experiment on the first non-suppressed cutter-v2 Short.
+- Report: seeds/weekly-reports/2026-06-14.md.

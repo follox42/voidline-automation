@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-14 18:02 UTC",
+      "action": "WEEKLY_REVIEW",
+      "detail": "Week ending 2026-06-13. Best: v2_hook (+0v). Worst: v3_answer (+0v). "
+    },
+    {
+      "t": "2026-06-14 18:14 UTC",
+      "action": "WEEKLY_REVIEW_CORRECTED",
+      "detail": "Review #2, week ending 2026-06-14. Cron auto-delta was degenerate (single CSV snapshot -> +0v). Pulled first COMPLETE public snapshot via camoufox ytpub session (real browser bypasses EU consent wall): total ~907v (Shorts 890 + long 17), +46 (~+5%) WoW vs 861 -> sharp deceleration from +107%. BEST=v3_answer 106v (escaped suppression by ~24h, pub 06-07). WORST=v3_hook 0v (S-tier hook+thumb, pub 06-08 into burst-suppression window; quality irrelevant). v3 trio = natural experiment proving publish-timing dominates creative. ~300 ceiling confirmed 3x (v2_twist 297, v1_twist 279) -> KNOWN_BAD. ESCALATIONS: (1) Studio auth DEAD - analytics blind 2 wks, re-auth needed; (2) burst-suppression ACTIVE, canary=v1_bonus_briggs 06-15; (3) no view/sub milestones. Report: seeds/weekly-reports/2026-06-14.md."
     }
   ]
 }

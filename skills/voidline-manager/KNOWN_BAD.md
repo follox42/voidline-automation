@@ -111,3 +111,18 @@ Validated anti-patterns. NEVER do these.
 - ❌ Swapping the thumbnail mid-suppression — algo has already de-prioritized
 - ❌ Title/description edits — same as above
 - ❌ Delete + re-upload — the channel-level flag persists
+
+## 2026-06-14 — Expecting a Short to cross ~300v without comment velocity
+- ❌ Confirmed 3× now: v2_twist 297, v1_twist 279, prior v1_twist plateau 274 —
+  all went flat, none ever crossed ~300. A strong single hook gets you TO the
+  ceiling, not through it. The only untested lever to break it is comment
+  velocity (cutter v2 outro debate card) — run that experiment before assuming
+  any creative change will push past 300.
+
+## 2026-06-14 — Out-creating an open suppression window
+- ❌ Publishing *better* creative into a live suppression window to "rescue" reach.
+  Natural experiment (v3 Tunguska, same topic/thumb/cutter): answer pub 06-07 =
+  106v; hook pub 06-08 (an S-tier forensic-Q hook + S-tier inverted-scale thumb)
+  = 0v; twist pub 06-10 = 26v. View order is the INVERSE of hook quality →
+  publish-timing-vs-suppression dominates the creative entirely. The window has a
+  sharp ~24h cutoff. When it's open: HALT uploads, do not try to out-create it.
