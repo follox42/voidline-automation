@@ -231,3 +231,29 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-14 17:05 — Pulse alert path is structurally blind (delta window + sparse scrape)
+**Observation**: Hourly pulse ran clean (no PULSE_ALERT). Two issues surfaced.
+1. The pulse got invoked twice ~22s apart (snapshots 17:05:09 + 17:05:31), so
+   the runner's "last two timestamps" delta collapsed to those two near-identical
+   scrapes — masking the real 27h delta vs yesterday's 14:02 snapshot.
+2. Anonymous-curl scrape coverage is still random per run (~30-50% of assets), so
+   the *same* asset rarely has both consecutive snapshots populated → the +50v
+   delta alert can essentially never fire even when growth is real.
+   Real (absolute) readings this pulse vs 06-13: v1_hook 62v + v1_answer 84v
+   (first non-blank readings for the v1 Mary Celeste batch), v3_twist 26v,
+   v2_answer 32v; v3_answer flat at 106v (7 days stagnant); v3_hook confirmed 0v
+   (suppression); v1_bonus_briggs (scheduled 06-15) correctly blank.
+**Learning**:
+1. `run_pulse` compares last-two-timestamps regardless of spacing — any rapid
+   re-run inside the hour degrades the alert into a no-op. One pulse per cycle.
+2. Until `monitor_voidline.py` is ported to camoufox-stealth (cookie_profile=
+   voidline) for complete/stable coverage (already flagged 06-13), the +50v delta
+   trigger is unreliable. Read ABSOLUTE view values as the signal, not deltas.
+3. Pure-organic thesis holding: the v1 Mary Celeste Shorts are now pulling real
+   views (v1_answer 84v strongest) without any external seed — encouraging at J+18.
+**Action**:
+- No Studio/Flow actions this pulse (no threshold crossed; stayed within rails).
+- TODO (carryover, not this pulse): port monitor to camoufox-stealth so delta
+  alerting actually works; consider de-duping snapshots taken <5 min apart in
+  the CSV so the delta window can't collapse on double-invocation.
