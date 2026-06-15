@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-15 06:09 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219206:09: no notable delta"
+    },
+    {
+      "t": "2026-06-15 06:10 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 06:09\u219206:09: no notable delta"
+    },
+    {
+      "t": "2026-06-15 06:14 UTC",
+      "action": "PULSE_BLOCKER",
+      "detail": "voidline session DEAD (auth_check status=dead, auth_valid=false, re-login required). Curl pulse blind (0/13 assets). Verified via camoufox impersonate_fetch(from_session=ytpub): v1_twist 281v, v2_twist 299v, v3_answer 110v \u2014 all FLAT, no spike, no PULSE_ALERT. Authed pipeline (Studio analytics + Shorts scheduling + Flow gen) blocked until voidline re-login. v1_bonus_briggs auto-publishes today 12:00 UTC (server-side scheduled); queue dry behind it. Exiting cleanly per pulse rules."
     }
   ]
 }

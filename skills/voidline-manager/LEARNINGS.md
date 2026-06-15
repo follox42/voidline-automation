@@ -231,3 +231,41 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 06:14 — voidline session is DEAD + curl pulse is fully blind
+**Observation**: Hourly pulse ran clean (exit 0) but `monitor_voidline.py`
+returned BLANK views for all 13 assets (0/13 parsed, worse than the 2/12 on
+06-13). Root cause confirmed: anonymous curl from the cloud container (FR geo)
+is 302'd to `consent.youtube.com` so no `viewCount` is ever in the body. Adding
+the `SOCS` consent cookie to plain curl did NOT fix it — still blank (container
+IP geo-wall + bot TLS fingerprint). What DID work: camoufox `impersonate_fetch`
+(chrome124) `from_session=ytpub` (a session already past the consent wall) —
+returns the real watch page. Verified live numbers this way:
+- v1_twist 281v (was 274 @ 06-02 peak) → +7 in 13d, FLAT
+- v2_twist 299v (was 298 @ 06-05) → +1, FLAT
+- v3_answer 110v (was 106 @ 06-07) → +4 in 8d, FLAT
+No spike. No PULSE_ALERT condition (no Short >1000v, no long >100v, no Δ>50v).
+SEPARATELY + more important: the `yt_upload` session (cookie_profile=voidline)
+is parked on a Google `accounts.google.com/signin` page and `auth_check`
+returns **status=dead, auth_valid=false, "Re-login required."** The `flow`
+session is also cookie_profile=voidline → Flow gen is blocked for the same
+reason (explains the 06-13 Flow submit-disabled blocker too).
+**Learning**:
+1. The pulse curl scraper cannot work from the cloud container, period. The
+   only working read path is camoufox `impersonate_fetch from_session=ytpub`
+   (keep one anon session warm past the consent wall). `monitor_voidline.py`
+   should be ported to this — plain-curl-with-SOCS is a dead end.
+2. The `voidline` Google/YouTube cookies have EXPIRED. Until re-login, ALL
+   authed actions are blocked: Studio analytics, Shorts scheduling/upload, and
+   Google Flow image gen. This is the pipeline's single point of failure.
+3. `auth_check` on the voidline session is the cheapest definitive health
+   probe — run it FIRST each pulse before assuming the session is usable.
+**Action**:
+- BLOCKER logged, exiting cleanly per pulse rules. Re-login of the `voidline`
+  cookie profile is required (manual) before any daily-plan scheduling or v4
+  Flow thumb work can proceed.
+- v1_bonus_briggs is already SCHEDULED server-side (publishes today 06-15
+  12:00 UTC) so it auto-publishes regardless of session death — but NOTHING is
+  queued behind it (DRIFT_FLAG from 06-13 still open: pipeline dry).
+- TODO (next non-blocked session): port monitor_voidline.py to impersonate_fetch
+  so future pulses aren't blind.
