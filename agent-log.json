@@ -19,6 +19,11 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-15 09:07 UTC",
+      "action": "PULSE",
+      "detail": "Hourly pulse ran clean (exit 0) but monitor_voidline.py curl scraper returned ALL-BLANK views for every asset (12 shorts + 3 long-forms) on the 06-15 snapshot \u2014 worse than 06-13 which still caught v2_hook=4 + v3_answer=106. No usable stats \u2192 no delta computable \u2192 no PULSE_ALERT. Known anonymous-curl anti-scrape issue (see 06-13 14:02 learning), now total. Scheduled v1_bonus_briggs still due 12:00 UTC (not yet published, expected). No Studio investigation triggered (gated on PULSE_ALERT). Camoufox-stealth port of monitor remains the unblock."
     }
   ]
 }
