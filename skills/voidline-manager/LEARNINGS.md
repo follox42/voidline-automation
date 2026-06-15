@@ -231,3 +231,25 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 20:08 — Pulse alerting is structurally blind (scraper subset rotates)
+**Observation**: HOURLY PULSE ran clean (exit 0, no PULSE_ALERT). The stats_log
+shows the anon-curl scraper returns a DIFFERENT sparse subset each run:
+06-13 14:02 parsed only v2_hook(4v) + v3_answer(106v); 06-15 20:06 parsed
+v1_hook(64v) + v1_answer(86v) + v2_hook(6v) but NOT v3_answer (now blank —
+parse miss, not a real drop). The v1 Mary Celeste Shorts at 64v/86v are the
+first time those assets ever parsed. All 3 long-forms still blank (0v /
+suppressed), unchanged.
+**Learning**: cron_runner.run_pulse() only computes a delta when BOTH prev and
+cur snapshots have non-blank views for the SAME asset. Because the scraper's
+parsed subset rotates run-to-run, overlapping non-blank assets are rare, so the
+>50v-delta / >1000v-short / >100v-long thresholds will essentially NEVER trip
+even if views genuinely jump. The alerting is effectively dead until
+monitor_voidline.py pulls authenticated stats via camoufox-stealth
+(cookie_profile=voidline) instead of anonymous curl.
+**Action**: Port monitor_voidline.py to camoufox-stealth (already a TODO from
+06-13) — now confirmed as the #1 blocker for the whole pulse routine, not just
+"sparse coverage." Until then, treat "no notable delta" as "no signal," NOT "no
+growth." No Studio actions spent this run (no alert to investigate). Also note:
+v1_bonus_briggs (vZ68HlWfT-Q) was scheduled to publish today 12:00 UTC and is
+still SCHEDULED in state — leave reconciliation to the daily-plan run.
