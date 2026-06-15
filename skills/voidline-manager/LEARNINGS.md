@@ -231,3 +231,24 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 16:08 — v1 bonus Briggs Short: fastest same-day start on record
+**Observation**: Hourly pulse caught v1_bonus_briggs (vZ68HlWfT-Q, "Why Did the
+Teetotal Captain Run? — Mary Celeste") at **246 views ~4h after its 12:00 UTC
+publish**. State file still had it SCHEDULED (drift) — confirmed PUBLIC via
+oEmbed 200, reconciled to PUBLIC + actual_published_at. Scraper otherwise
+mostly blank (known cloud anti-scrape), v1 long-form Mary Celeste at 18v. No
+PULSE_ALERT (246 < 1000v Short threshold), so the runner logged "no notable delta".
+**Learning**: 246v on publish day is the fastest opener in channel history —
+v1 TWIST took 48h to reach ~274 and plateaued; v2 TWIST hit 298 over days. This
+is the exact experiment the user designed to break the ~279v ceiling
+(question-hook bonus Short on the proven Mary Celeste topic), and the early
+curve suggests it will clear the ceiling. Single data point, no delta yet — the
+next pulse confirms whether it's accelerating toward the 1000v viral band or
+plateauing like its predecessors.
+**Action**:
+- Watch next pulse for the delta; if it crosses ~500v same-day or shows
+  delta >50v/hr, treat as a breakout candidate and pull Studio analytics
+  (retention, traffic sources) within HTTP limits.
+- Question-hook + proven-topic bonus Shorts validated as the ceiling-break lever;
+  keep this format for the v4 batch.
