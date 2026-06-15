@@ -231,3 +231,29 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 08:08 — PULSE alert path is structurally dead while scraper is sparse
+**Observation**: Hourly pulse ran clean (exit 0, logged `PULSE`, no
+`PULSE_ALERT`). Across the two genuine daily snapshots (06-13 14:02 → 06-15):
+v3_answer 106→110v (+4v over ~42h, still flat/suppressed since the 06-07
+plateau), plus first-ever reads on v2_answer (34v) and v3_twist (28v). No
+threshold tripped (no Short ≥1000v, no long ≥100v, no Δ≥50v). The anonymous
+curl scraper still only resolves 1–3 of 13 assets per run, and the assets it
+resolves differ run-to-run.
+**Learning**: The pulse delta logic requires the SAME asset to have a non-blank
+`views` in BOTH compared snapshots (`if not p or not c["views"] or not p["views"]: continue`).
+Because the flaky scraper rarely captures the same asset twice in a row, the
+delta loop almost always skips every asset → pulse can effectively NEVER fire a
+delta-based alert. The alert path is dead by construction until the monitor is
+authenticated. This compounds the known scraper-sparseness issue (06-13 14:02)
+rather than being a separate bug.
+**Action**:
+- The 06-13 TODO stands and is now the gating blocker for ALL pulse alerting:
+  port `monitor_voidline.py` to fetch via camoufox-stealth (cookie_profile=voidline)
+  or yt-dlp so coverage is complete + stable. Until then, pulse is a heartbeat,
+  not a tripwire — trust the daily/weekly Studio reads for real signal.
+- Pipeline no longer dry: v1_bonus_briggs (vZ68HlWfT-Q) is SCHEDULED for today
+  06-15 12:00 UTC, partially clearing the 06-13 DRIFT_FLAG. Next pulse should
+  confirm it flipped to PUBLIC.
+- No Studio HTTP actions spent this pulse (no alert to investigate); cookies
+  untouched.
