@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 15:08 — Pulse blind: voidline Studio cookies DEAD + scraper at 0 coverage
+**Observation**: HOURLY PULSE could not collect any stats this run.
+1. `monitor_voidline.py` (anonymous curl) returned BLANK views for all 13
+   assets — coverage degraded from 2/12 last run (06-13: v2_hook=4, v3_answer=106)
+   to 0/13. YouTube is fully serving the consent/anti-scrape page to unauth curl
+   in the cloud container now.
+2. The camoufox-stealth fallback is ALSO unavailable: `yt_upload` session
+   (cookie_profile=voidline) is parked on `accounts.google.com/v3/signin/identifier`
+   (bounced to login, idle ~21h). `auth_check` → `auth_valid:false, status:dead,
+   "Re-login required"`. The `flow` session (also voidline) is idle ~47h — same
+   account, likely the same dead cookies.
+3. Net result: no Studio analytics path is open. PULSE logged "no notable delta"
+   but that is a FALSE-NEGATIVE — we are blind, not flat.
+**Learning**:
+1. The voidline cookie profile expires roughly every ~2-3 weeks of routine-only
+   activity. Both YouTube and Flow share it, so one re-login restores both — but
+   a dead profile silently kills BOTH the stats fallback AND any upload/schedule
+   ability. This is the single point of failure for the whole automation.
+2. oEmbed (200/401) remains the ONLY session-safe probe that still works with no
+   auth — confirmed v1_bonus_briggs PUBLIC via oEmbed 200 even with cookies dead.
+   Routine status checks must lean on oEmbed; Studio scraping needs live cookies.
+3. The two stat sources failed independently this run (anon curl blocked AND
+   cookies dead) — without the oEmbed cross-check the pulse would have reported
+   nothing actionable while the channel was actually un-monitorable.
+**Action**:
+- BLOCKER raised to user: re-auth the `voidline` cookie profile (manual Google
+  login) before the next upload/schedule or Studio analytics run. Until then all
+  pulses are oEmbed-only (publish/status checks, no view counts).
+- Reconciled drift: v1_bonus_briggs (vZ68HlWfT-Q, the v1 Mary Celeste bonus Short)
+  auto-published on schedule at 2026-06-15 12:00 UTC (oEmbed 200) but was still
+  marked SCHEDULED in state — set status=PUBLIC + actual_published_at. Known silent
+  auto-publish drift (state not updated by YouTube).
+- Exited cleanly within limits (0 Studio HTTP actions spent — auth dead before
+  any analytics call; 0 Flow generations).
+- TODO carried forward: port monitor_voidline.py to fetch via camoufox-stealth
+  (only useful once cookies are live again).

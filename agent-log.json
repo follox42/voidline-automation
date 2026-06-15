@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-15 15:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219215:08: no notable delta"
+    },
+    {
+      "t": "2026-06-15 15:10 UTC",
+      "action": "BLOCKER",
+      "detail": "Pulse blind. (1) monitor_voidline.py anon-curl returned 0/13 view coverage (degraded from 2/12 on 06-13) \u2014 YouTube serving anti-scrape page to unauth curl. (2) camoufox-stealth voidline session DEAD: yt_upload parked on accounts.google.com/v3/signin, auth_check=auth_valid:false/status:dead/'Re-login required'. flow session (same voidline profile) idle ~47h. No Studio analytics path open. PULSE 'no notable delta' is a false-negative (blind, not flat). ACTION: user must re-auth voidline cookie profile (manual Google login) before next upload/schedule/analytics run. Exited cleanly, 0 Studio HTTP actions, 0 Flow gens."
+    },
+    {
+      "t": "2026-06-15 15:10 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) auto-published on schedule 2026-06-15 12:00 UTC \u2014 verified PUBLIC via oEmbed HTTP 200 (session-safe, works without cookies). State still said SCHEDULED \u2192 set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Known silent auto-publish drift."
     }
   ]
 }
