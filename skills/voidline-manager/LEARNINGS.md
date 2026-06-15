@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 21:07 — v1 bonus Briggs Short = best velocity yet (264v/~9h) + Studio session logged out
+**Observation**: Hourly pulse. v1_bonus_briggs ("Why Did the Teetotal
+Captain Run? — Mary Celeste 1872", vZ68HlWfT-Q) was scheduled for today
+12:00 UTC; verified PUBLIC via oEmbed (HTTP 200) and the curl scraper read
+**264 views ~9h post-publish**. State file still said SCHEDULED → reconciled
+to PUBLIC + actual_published_at (the now-routine auto-publish drift). This is
+the channel's strongest early Short velocity to date — prior best v2_twist hit
+~298v but over ~48h; v1_twist ~274v over a similar window. 264v in 9h
+extrapolates well past the prior ~300v ceiling.
+Separately, `stealth_status` shows the voidline `yt_upload` session parked on
+`accounts.google.com/.../signin?...next=studio.youtube.com` (idle ~27h) — the
+Studio session is logged out, so the deeper analytics pull (retention /
+impressions / traffic source) that would confirm whether this is an organic
+browse/feed breakout was BLOCKED this pulse.
+**Learning**:
+1. The question-hook + cutter-v2 formula keeps validating — first
+   post-cooldown ship and it's already the best-velocity Short. The bonus
+   Mary Celeste Short (v1 topic, fresh question hook) was the right call to
+   "percer le plafond 279v" flagged in weekly review #1.
+2. Pulse threshold logic has a blind spot: a brand-new asset can't trigger a
+   delta alert because its prior snapshot views are blank — so a strong cold
+   launch (264v) flies under PULSE_ALERT. Worth a "new-asset absolute" rule
+   (e.g. Short >150v within 24h of publish → alert) in a future cron_runner.
+3. The voidline Studio cookies expire roughly weekly under this idle pattern;
+   logged-out state silently blocks both analytics and the next upload batch.
+**Action**:
+- Reconciled state (drift fix). No Studio HTTP actions spent (session dead).
+- NEXT PULSE: if v1_bonus_briggs is still climbing, re-auth voidline (manual
+  login on yt_upload session) THEN pull Studio traffic-source to confirm
+  organic feed breakout vs. a one-off.
+- User flagged: re-login the voidline Google session — uploads + analytics are
+  blocked until then.
