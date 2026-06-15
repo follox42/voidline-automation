@@ -231,3 +231,25 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 — Daily-plan: v1 bonus Short published ~4h EARLY (schedule drift recurs)
+**Observation**: Daily-plan (08:03Z) found v1_bonus_briggs (vZ68HlWfT-Q,
+"Why Did the Teetotal Captain Run?") marked SCHEDULED@12:00Z in
+shorts_state.json, but oEmbed returned HTTP 200 with full public metadata —
+i.e. it was already PUBLIC ~4h before its 12:00Z slot. Probe validated by
+controls (nonexistent id → 404, scheduled/private → 401, known-public
+y3xLIfOAPHA → 200).
+**Learning**: The YouTube Studio scheduler keeps silently publishing Shorts
+earlier than the set time (this is the 2nd occurrence after v3 ANSWER went
+live 5 days early on 06-07). schedule_shorts.py still has no reliable
+post-set read-back, so the *set* time can't be trusted, and the state file
+is never updated by YouTube on publish — daily oEmbed reconciliation remains
+mandatory.
+**Action**:
+- Reconciled state → status=PUBLIC + actual_published_at=08:03Z + note.
+- Re-flagged in agent-log: pipeline is DRY beyond today (nothing for
+  06-16/17/18, v4 Roanoke blocked on Flow thumb gen, no long-form for
+  06-21). Need to unblock Flow + render/schedule v4 batch.
+- WATCH: voidline Studio stealth session idle ~14h on a Google signin
+  redirect — verify cookie validity on next Studio action before relying on
+  it for the v4 upload.

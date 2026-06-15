@@ -19,6 +19,31 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-15 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-15 \u2014 1 Shorts publishing | \ud83d\udcc5 TODAY v1_bonus_briggs (vZ68HlWfT-Q) at 12:00 UTC \u2014 status: SCHEDULED"
+    },
+    {
+      "t": "2026-06-15 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-15 \u2014 1 Shorts publishing | \ud83d\udcc5 TODAY v1_bonus_briggs (vZ68HlWfT-Q) at 12:00 UTC \u2014 status: SCHEDULED"
+    },
+    {
+      "t": "2026-06-15 08:04 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was SCHEDULED@12:00Z in state but verified PUBLIC via oEmbed (HTTP 200 + full metadata 'Why Did the Teetotal Captain Run?') at 08:03Z \u2014 ~4h EARLY vs its 12:00Z slot. Controls validated probe (nonexistent id->404, known-public y3xLIfOAPHA->200). Set status=PUBLIC + actual_published_at=08:03Z + note. Recurrence of KNOWN_BAD schedule silent early-publish (cf. v3 ANSWER 5 days early)."
+    },
+    {
+      "t": "2026-06-15 08:04 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "Pipeline DRY beyond today: v1_bonus_briggs (06-15) is the LAST queued asset. Nothing scheduled for 06-16/06-17/06-18 vs the 2-3 Shorts/wk recovery cadence. v4 Roanoke still blocked on Google Flow thumb gen (submit button disabled since 06-13). No long-form queued for next Sunday 06-21 (17:00Z). ACTION: unblock Flow + render/schedule v4 batch before rhythm breaks."
+    },
+    {
+      "t": "2026-06-15 08:04 UTC",
+      "action": "WATCH",
+      "detail": "voidline Studio stealth session (yt_upload, cookie_profile=voidline) idle ~14h sitting on accounts.google.com signin redirect \u2014 possible cookie staleness. Not confirmed logged-out (stale idle URL). Verify on next Studio action; if login wall persists -> escalate cookie re-auth (2FA)."
     }
   ]
 }

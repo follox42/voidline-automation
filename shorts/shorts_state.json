@@ -89,8 +89,10 @@
       "yt_id": "vZ68HlWfT-Q",
       "title": "Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872",
       "publish_at": "2026-06-15T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-15T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-15T12:00:00Z",
+      "actual_published_at": "2026-06-15T08:03:00Z",
+      "note": "Published EARLY \u2014 observed PUBLIC via oEmbed (HTTP 200, full metadata) at 08:03Z, ~4h before the 12:00Z scheduled slot. Exact publish time unknown (\u226408:03Z). Recurrence of the KNOWN_BAD schedule silent early-publish pattern (cf. v3 ANSWER 5 days early)."
     }
   ]
 }
