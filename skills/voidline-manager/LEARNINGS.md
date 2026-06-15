@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 23:06 — v1 bonus Briggs Short = best day-1 launch ever (270v in ~11h)
+**Observation**: HOURLY PULSE second snapshot (06-13 14:02 → 06-15 23:06).
+`v1_bonus_briggs` ("Why Did the Teetotal Captain Run? — Mary Celeste 1872",
+vZ68HlWfT-Q) was scheduled for 2026-06-15 12:00 UTC and is now live at **270
+views ~11h after publish** — the strongest opening day in channel history (prior
+best v2_twist plateaued near 299v but took days to get there). State drift again:
+shorts_state.json still had it `SCHEDULED` despite oEmbed returning 200 (PUBLIC);
+reconciled to PUBLIC + actual_published_at=12:00. Other coverage this snapshot:
+v2_twist 299 (lifetime ceiling, flat), v1_hook 64, v3_twist 28, v2_hook 6,
+v3_hook 1; v3_answer/v1_twist/v1_answer/v2_answer + all 3 long-forms blank
+(scraper consent-page misses, the known sparse-coverage issue). Runner logged
+"no notable delta" because its delta logic only diffs assets present (with numeric
+values) in BOTH snapshots — a brand-new asset launching at 270v is invisible to
+it.
+**Learning**:
+1. The v1 Mary Celeste question-hook bonus bet is paying off — this is the
+   first Short to test the >279v plateau from the new-batch side, and a 270v
+   day-1 trajectory suggests it may actually break it. Validates the
+   QUESTION/CONTRADICTION hook + cutter-v2 formula on a fresh upload.
+2. PULSE delta blind spot: assets that go from SCHEDULED→PUBLIC between snapshots
+   never trigger a delta alert because they have no prior numeric baseline. A
+   day-1 launch is exactly when a Short's trajectory matters most. The runner
+   should treat "first non-zero appearance of a freshly-published asset" as an
+   alertable event, not just snapshot-over-snapshot deltas.
+**Action**:
+- Reconciled state (v1_bonus_briggs → PUBLIC). Pipeline now: all v1/v2/v3 batches
+  + briggs bonus published, nothing staged behind it (DRIFT_FLAG from 06-13 still
+  open — slots 06-14/06-15 onward dry, v4 Roanoke still blocked on Flow thumb).
+- DEFERRED to daily run (kept within pulse Studio-HTTP budget; formal 1000v
+  threshold not crossed): pull Studio analytics on vZ68HlWfT-Q — impressions,
+  retention curve, traffic sources — to confirm whether the 270v is Shorts-feed
+  driven and whether it crosses the plateau. If it's still climbing, prioritize
+  producing 1-2 more v1-style question-hook bonus Shorts over waiting on v4.
+- TODO (runner): add "new-asset first-appearance" to PULSE alert logic so
+  day-1 launches surface automatically.
