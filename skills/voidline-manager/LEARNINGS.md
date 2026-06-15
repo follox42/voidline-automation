@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 12:15 — voidline Studio session is DEAD (cookies expired)
+**Observation**: Hourly pulse ran clean (no PULSE_ALERT), but two findings.
+1. **Auth dead**: `camoufox-stealth_status` showed the `yt_upload` session
+   (cookie_profile=voidline) parked on `accounts.google.com/v3/signin` redirecting
+   to this channel's Studio /videos/short page. `auth_check(yt_upload)` returned
+   `auth_valid=false, status="dead", "Re-login required"`. The `flow` session also
+   rides cookie_profile=voidline (idle ~44h) so Flow gen is likely blocked too.
+2. **Scraper fully blind**: `monitor_voidline.py` wrote 13 assets to stats_log.csv
+   with EVERY views column empty (was 2/12 parsed on 06-13, now 0/13). Anonymous
+   curl is now getting zero viewCounts — the pulse cannot detect any spike.
+3. **Drift (benign)**: v1_bonus_briggs (vZ68HlWfT-Q) auto-published on schedule at
+   12:00 UTC (oEmbed 200) but state still said SCHEDULED — reconciled to PUBLIC.
+**Learning**:
+- The #1 hard blocker fired: voidline cookies expired. Until a human re-logs in
+  the voidline profile, ALL Studio actions (analytics, scheduling, uploads) AND
+  the Flow thumb pipeline are blocked. oEmbed status probes still work (public,
+  unauthenticated) — that's why reconciliation still functioned.
+- The pulse's value is structurally zero while the scraper is blind AND the session
+  is dead: it cannot fetch views by either path. The 06-13 TODO (port monitor to
+  camoufox-stealth) can't even be exercised until cookies are refreshed.
+**Action**:
+- Per hard limit ("if cookies expired... log it and exit cleanly"), stopped here —
+  did NOT burn Studio actions against a dead session.
+- HUMAN ACTION REQUIRED: re-login the `voidline` cookie profile (YouTube/Google),
+  then re-run pulse to confirm auth_valid + seed real view baselines.
+- Once auth restored: port monitor_voidline.py to pull viewCounts via
+  camoufox-stealth (cookie_profile=voidline) so the pulse stops depending on the
+  blind anonymous curl scraper.
