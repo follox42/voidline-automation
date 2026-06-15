@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-15 14:08 — Pulse: scraper now 0/13 (fully blind) + briggs publish drift
+**Observation**: HOURLY PULSE ran clean (no crash). But the anonymous-curl
+monitor returned BLANK views for all 13 assets this run — even v2_hook (4v)
+and v3_answer (106v), which still parsed on the 06-13 14:02 baseline. So
+stat coverage dropped 2/12 → 0/13. Runner logged "no notable delta" only
+because there is no data to delta against, not because views are flat.
+Separately: v1_bonus_briggs (vZ68HlWfT-Q) was scheduled for today 12:00 UTC,
+auto-published silently, and was still marked SCHEDULED in shorts_state.json
+at pulse time (14:07). Verified PUBLIC via oEmbed (HTTP 200) and reconciled.
+**Learning**:
+1. Anonymous curl to youtube.com is now effectively dead for stats in the
+   cloud container — YouTube serves consent/anti-scrape pages, so the pulse
+   is flying blind on view counts. A "no notable delta" log from this state
+   is a FALSE NEGATIVE: it cannot detect a spike because it has no numbers.
+   The monitor MUST be ported to fetch via camoufox-stealth (cookie_profile
+   =voidline) or yt-dlp before pulse alerting means anything.
+2. The silent-publish state drift is now confirmed RECURRING (v1_bonus_briggs
+   is the 6th asset caught this way after the 06-13 batch of 5). oEmbed 200
+   remains the clean session-safe reconciliation probe.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=2026-06-15T12:00Z.
+- No Studio investigation this pulse (no real PULSE_ALERT — scraper blind, not
+  a verified spike), staying within HTTP limits.
+- TOP PRIORITY for next non-pulse run: port monitor_voidline.py to the
+  camoufox-stealth MCP so view stats actually populate; until then every pulse
+  is a no-op snapshot of blanks.
+- Pipeline still dry behind v1_bonus_briggs — the 06-13 DRIFT_FLAG (next batch
+  / v4 not scheduled) is unresolved.
