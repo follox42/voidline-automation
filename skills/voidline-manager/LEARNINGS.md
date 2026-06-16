@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-16 15:08 — Pulse is flying blind: monitor scraper fully dark
+**Observation**: First hourly pulse since 06-13. `monitor_voidline.py` parsed
+**0 of 13** view counts (06-13 got 2/13 — v2_hook 4v, v3_answer 106v). Anonymous
+`curl -sL` to youtube.com/shorts/... returns consent/anti-bot HTML in the cloud
+container, so the `"viewCount"` regex never matches → every row blank. The runner
+dutifully logged "no notable delta" — but that's computed over empty data, so the
+pulse's entire reason for existing (catching a >1000v Short / >100v long-form /
+>50v delta spike) is currently non-functional. It would not detect a viral break.
+Separately, `v1_bonus_briggs` (vZ68HlWfT-Q, scheduled 06-15 12:00Z) was still
+SCHEDULED in state but is live (oEmbed 200) — same silent-autopublish drift as
+06-13; reconciled to PUBLIC.
+**Learning**:
+1. The 06-13 monitor coverage (2/13) was luck, not a working path — the curl
+   scraper degrades to 0 in the cloud. "No alert" from this pulse means "blind",
+   not "healthy". Do not trust pulse deltas until the data source is fixed.
+2. oEmbed (200/401) remains the reliable session-safe signal in the container —
+   good for publish-status reconciliation, useless for view counts.
+3. Pipeline is now fully dry: v1_bonus_briggs (06-15) was the last staged Short,
+   nothing behind it. The DRIFT_FLAG from 06-13 is now hard reality — channel goes
+   silent without a new batch.
+**Action**:
+- TOP PRIORITY for next maintenance window: port `monitor_voidline.py` view
+  fetch to camoufox-stealth (cookie_profile=voidline) or yt-dlp. Until then the
+  hourly pulse cannot do its job. (Did NOT attempt the port this pulse — out of
+  scope for an hourly run + would risk burning Studio HTTP budget on debugging.)
+- No PULSE_ALERT triggered, so per the runbook no Studio analytics dive this run
+  (and it'd be pointless against blank data anyway). Stayed within hard limits:
+  0 Studio HTTP actions, 0 Flow generations.
+- Reconciled v1_bonus_briggs → PUBLIC. Pipeline still dry — production of the
+  next batch (v4 Roanoke) remains the open blocker (Flow submit-button issue
+  from 06-13 unresolved).

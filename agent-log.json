@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-16 15:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219215:08: no notable delta"
+    },
+    {
+      "t": "2026-06-16 15:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 15:08\u219215:08: no notable delta"
+    },
+    {
+      "t": "2026-06-16 15:10 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED in state (scheduled 06-15 12:00Z) but verified PUBLIC via oEmbed (HTTP 200) ~27h after slot. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Same silent-autopublish drift pattern as 06-13."
+    },
+    {
+      "t": "2026-06-16 15:10 UTC",
+      "action": "PULSE_BLIND",
+      "detail": "monitor_voidline.py returned 0/13 view counts this pulse (vs 2/13 on 06-13). Anonymous curl to youtube.com served anti-bot/consent pages in the cloud container; no viewCount parsed for any asset. 'no notable delta' is FALSE COMFORT \u2014 pulse spike-detection is non-functional until monitor is ported to camoufox-stealth (cookie_profile=voidline) or yt-dlp."
     }
   ]
 }
