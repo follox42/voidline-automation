@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-16 06:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219206:08: no notable delta"
+    },
+    {
+      "t": "2026-06-16 06:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 06:08\u219206:08: no notable delta"
     }
   ]
 }
