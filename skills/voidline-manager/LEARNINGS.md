@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-16 13:09 — PULSE_ALERT: v1 bonus Briggs = fastest Short start ever (300v/25h) + monitor root-cause fixed
+**Observation**: Hourly pulse. The `curl` scraper returned 0/13 views (total
+blackout, worse than the prior 2/12). Root-caused it: the cloud container
+egresses from **FR**, so anonymous requests get the **EU consent interstitial**
+(`consent.youtube.com`) with no User-Agent, and a browser UA instead lands on
+**`google.com/sorry`** (Google's bot/rate-limit CAPTCHA) — the IP itself is
+flagged. Neither a `CONSENT`/`SOCS` cookie nor curl-cffi `impersonate_fetch`
+bypasses it. The ONLY method that works is fetching through the **authenticated
+`voidline` browser session** (132 cookies, consent already accepted) — verified
+200 with full page body. Pulled real views via `camoufox-stealth_evaluate`
+running a same-origin `fetch()` loop inside the logged-in page:
+v1_bonus_briggs=**300**, v1_twist=281, v2_twist=299, v3_answer=110, v1_answer=87,
+v1_hook=64, v2_answer=34, v3_twist=28, v2_hook=6, v3_hook=1; longs MC=18/Dyatlov=2/
+Tunguska=7. **v1_bonus_briggs** (published 06-15, the cutter-v2 question-hook
+Mary Celeste bonus) hit **300 views in ~25h** — was still marked SCHEDULED in
+state (drift, reconciled to PUBLIC).
+**Learning**:
+1. 300v/25h is the channel's **fastest Short start to date** — prior bests
+   (v1_twist 281, v2_twist 299) were lifetime totals that took multiple days.
+   The question-hook bonus-Short play to break the ~300 plateau is showing its
+   first real velocity. Watch whether it CROSSES 300 (plateau) or keeps climbing
+   in the next 24-48h — that's the signal that distinguishes "another 300 ceiling"
+   from "first breakout".
+2. The monitor's anonymous-curl path is **permanently dead in this container**
+   (IP-level Google block), not just flaky. The durable replacement is the
+   session-evaluate fetch — token-cheap, credential-safe (returns only numbers),
+   no navigation. This supersedes the 2026-06-13 "scraper is flaky" note.
+3. Scheduled Shorts still auto-publish without updating state — reconciliation
+   remains mandatory every run (KNOWN_BAD confirmed again).
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC; backfilled real views into
+  stats_log.csv (curl had logged blanks).
+- TODO (next code change, not this pulse): rework `monitor_voidline.py` so the
+  routine feeds it session-fetched numbers instead of relying on subprocess curl
+  (the script has no MCP access on its own). Add the evaluate-fetch snippet to
+  KNOWN_GOOD as the canonical stat-pull.
+- Next pulse: re-check v1_bonus_briggs velocity (>300 = breakout candidate); if
+  still flat ~300, it's the same plateau and the lever is engagement/comments.

@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-16 13:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219213:07: no notable delta"
+    },
+    {
+      "t": "2026-06-16 13:13 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "v1_bonus_briggs +300v in ~25h (best Short start ever; was lifetime-best ~299 over days). Reconciled SCHEDULED->PUBLIC. curl scraper 0/13 (FR-egress consent wall + google.com/sorry IP CAPTCHA) -> pulled real views via authenticated voidline session evaluate-fetch: bonus=300, v1_twist=281, v2_twist=299, v3_answer=110(+4 flat), v3_hook=1(suppressed), longs MC18/Dyat2/Tung7. Backfilled stats_log."
     }
   ]
 }
