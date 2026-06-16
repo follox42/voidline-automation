@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-16 07:07 — BLOCKER: voidline Google session is DEAD (re-login required)
+**Observation**: Hourly pulse ran clean (exit 0) but the curl scraper returned
+BLANK views for all 13 assets — total blackout, worse than the 2026-06-13 pulse
+where v2_hook (4v) + v3_answer (106v) still parsed. Investigated the authenticated
+fallback path: `camoufox-stealth_status` shows the `yt_upload` session
+(cookie_profile=voidline) parked on `accounts.google.com/.../signin/identifier`
+(`flowName=GlifWebSignIn`, next=studio.youtube.com/.../videos/short), idle ~37h.
+`auth_check(yt_upload)` returns `auth_valid: false`, `status: "dead"`,
+"Re-login required." The `flow` session (also cookie_profile=voidline) is idle
+~63h on a stale project page.
+**Learning**:
+1. The voidline Google account is logged out — the cookies expired/bounced to a
+   sign-in redirect. This blocks EVERYTHING that depends on the voidline profile:
+   Studio analytics pulls, Short scheduling/uploads, AND Google Flow image gen.
+2. This is almost certainly the SAME root cause as the 2026-06-13 "Flow submit
+   button disabled" blocker — not a UI redesign, but a degrading/dead voidline
+   auth session. The earlier symptom was the early warning; now it's fully dead.
+3. The camoufox-stealth fix-path for the scraper blindness (TODO from 2026-06-13)
+   is itself blocked until the voidline session is re-authenticated.
+**Action**:
+- EXIT CLEANLY per pulse hard-limits — no Studio/Flow actions attempted while
+  auth is dead (would only generate errors / risk anti-abuse flags).
+- USER ACTION REQUIRED: re-login the `voidline` cookie profile (YouTube +
+  Google Flow share it). Until then: no analytics, no scheduling, no thumb gen.
+- Recheck on the next pulse; if still dead, all downstream routines (daily plan,
+  weekly review) will also be blind/blocked.
