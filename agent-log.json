@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-16 19:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219219:04: no notable delta"
+    },
+    {
+      "t": "2026-06-16 19:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 19:04\u219219:05: no notable delta"
+    },
+    {
+      "t": "2026-06-16 19:06 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200) \u2014 scheduled 06-15 12:00 UTC auto-published on time. Set status=PUBLIC + actual_published_at. NOTE: pulse gap of ~3 days (last pulse 06-13 14:02 \u2192 now 06-16 19:05) suggests the hourly schedule was not firing. PIPELINE now FULLY DRY: v1_bonus_briggs was the last queued item; nothing scheduled ahead (standing DRIFT_FLAG from 06-13 persists)."
     }
   ]
 }
