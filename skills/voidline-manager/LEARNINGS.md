@@ -231,3 +231,46 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-16 12:11 — Pulse monitor fully blind (EU consent wall) + v1_bonus_briggs = best Short launch ever
+**Observation**: Hourly pulse logged "no notable delta" — but the data was a
+LIE: `monitor_voidline.py`'s anonymous `curl` returned blank views for ALL 12
+assets (was 2/12 on 06-13, now 0/12). Root cause pinned: the cloud container
+egresses from a **French IP**, so every unauthenticated youtube.com request is
+302'd to `consent.youtube.com` before any `viewCount` is served. Confirmed via
+`impersonate_fetch` (landed on consent page, `cookies_sent:0`, `gl=FR`). Guessed
+`SOCS`/`CONSENT=YES+` cookie headers did NOT bypass it. The only path that works
+is a **logged-in voidline session** (auth skips the consent interstitial).
+Pulled real counts via one authenticated browser navigate + a single in-page
+`fetch()` loop over all 13 ids (2 MCP actions, well under the 5-action cap):
+- **v1_bonus_briggs = 300v in ~24h** (published 06-15 12:00). Channel's FASTEST-
+  to-300 Short — the plateau shorts (v1_twist 281, v2_twist 299) took *days* to
+  reach there. This is the bonus Short produced specifically to "percer le
+  plafond 279v" (06-07 weekly review) — hypothesis VALIDATED.
+- Everything else flat/plateaued: v2_twist 299, v1_twist 281, v3_answer 110
+  (+4 in 9d — dead), v1_answer 86, v1_hook 64, v2_answer 34, v3_twist 28,
+  v2_hook 6, v3_hook 1.
+- Long-forms still suppressed: v1 18, v3 7, v2 2.
+**Learning**:
+1. Anonymous YouTube scraping is DEAD from this container (FR-geo consent wall),
+   not just "unreliable". Every future pulse will log false "no notable delta"
+   until the monitor is routed through auth. The 06-13 "port monitor to camoufox"
+   TODO is now BLOCKING, not nice-to-have.
+2. The python scripts can't call the camoufox MCP directly — only the agent can,
+   OR the script must hit mcphub over HTTP (mcp_stealth.py, bearer token). The
+   durable fix is to have `monitor_voidline.py` fetch via mcp_stealth.py's
+   authenticated session, not bare curl.
+3. The pulse alert logic also has a blind spot: a fresh publish (prior snapshot
+   blank/absent) never trips the >50v delta even when it goes 0->300, because the
+   delta loop skips assets with no prior value. A launch-day asset should alert on
+   absolute views, not just delta.
+**Action**:
+- THIS RUN: reconciled v1_bonus_briggs SCHEDULED->PUBLIC (oEmbed 200); wrote the
+  real authenticated snapshot into stats_log.csv so the next delta has a baseline;
+  logged PULSE_ALERT for the 300v launch.
+- NEXT: port monitor_voidline.py to mcp_stealth.py authenticated fetch (kills the
+  blind-pulse class of bug). Until then, the hourly pulse needs an agent-driven
+  auth read like this one to see anything.
+- STRATEGY: the question-hook bonus broke the plateau on launch velocity. Produce
+  more question-hook Shorts on the existing strong topics (Mary Celeste) rather
+  than waiting on the stalled v4 Roanoke long-form.

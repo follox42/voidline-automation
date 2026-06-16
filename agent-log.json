@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-16 12:10 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219212:09: no notable delta"
+    },
+    {
+      "t": "2026-06-16 12:10 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 12:09\u219212:10: no notable delta"
+    },
+    {
+      "t": "2026-06-16 12:14 UTC",
+      "action": "PULSE_AUTH_SNAPSHOT",
+      "detail": "Anonymous curl returned blank for all 12 assets (EU consent wall \u2014 container egresses FR IP, redirected to consent.youtube.com). Pulled REAL counts via authenticated voidline browser session (logged-in bypasses consent). Shorts: v1_bonus_briggs 300 (NEW, ~24h since 06-15 publish \u2014 fastest-to-300 ever), v2_twist 299, v1_twist 281, v3_answer 110, v1_answer 86, v1_hook 64, v2_answer 34, v3_twist 28, v2_hook 6, v3_hook 1. Long-forms still suppressed: v1 18, v3 7, v2 2. RECONCILE: v1_bonus_briggs was stale SCHEDULED in state -> set PUBLIC (oEmbed 200)."
+    },
+    {
+      "t": "2026-06-16 12:14 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "v1_bonus_briggs 0->300v in ~24h (>50v threshold). Best Short launch in channel history; validates question-hook-breaks-plateau hypothesis. Not surfaced by runner because anonymous monitor logged blanks."
     }
   ]
 }
