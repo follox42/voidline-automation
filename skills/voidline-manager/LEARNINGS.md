@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-17 14:15 — Briggs bonus Short breaks the ~300 plateau (319v) — pulse scraper was blind, Studio pull caught it
+**Observation**: HOURLY PULSE ran but `monitor_voidline.py` returned BLANK views
+for all 16 assets (0/16, worse than the 2/12 of the 06-13 run) — so the runner
+logged "no notable delta" purely because it had zero data, not because nothing
+moved. Pulled real numbers from the live `voidline` Studio session instead:
+- **v1_bonus_briggs "Why Did the Teetotal Captain Run?" (vZ68HlWfT-Q), published
+  15 juin = 319v** — the channel's #1 Short ever, beating v2_twist (299v) and
+  v1_twist (281v). This is exactly the "produce a v1 bonus question-hook Short to
+  break the 279 ceiling" action from Weekly Review #1 → it worked.
+- Full Shorts board: v2_twist 299, v1_twist 281, v3_answer 110, v1_answer 87,
+  v1_hook 64, v2_answer 34, v3_twist 28, v2_hook 6, v3_hook 1.
+- Long-forms: Mary Celeste 18v, Tunguska 8v (was "0v under suppression" — now 8v,
+  still dead but not zero), Dyatlov 2v.
+- A finished Short "9 Barrels Empty — Mary Celeste Vapor Theory" is sitting in
+  BROUILLON (Draft), unpublished, and is NOT tracked in shorts_state.json.
+- shorts_state had v1_bonus_briggs still SCHEDULED though it auto-published 15 juin
+  (same stale-schedule drift the daily-plan run hit) → reconciled to PUBLIC.
+**Learning**:
+1. Briggs broke the plateau but with **0 comments + 0 likes at 319v** — pure
+   passive scroll-by reach, zero engagement. The cutter-v2 outro debate card is
+   NOT converting views→comments on this one. Reach ≠ engagement; the ceiling we
+   broke was the *view* ceiling, not the *engagement* ceiling.
+2. "no notable delta" on an all-blank scrape is a FALSE NEGATIVE — the pulse will
+   keep reporting calm while real movement (a 319v Short!) goes unseen. The cloud
+   curl scraper is now fully unreliable; the pulse MUST read Studio (camoufox
+   voidline session) or it is blind.
+3. Question hook + iconic moral contradiction ("teetotal captain runs into a
+   storm") is the strongest hook formula yet — outperforms the prior best.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC; logged real Studio numbers to stats_log.csv
+  so the next pulse finally has a true baseline for deltas.
+- PRIORITY for daily-plan: publish the finished "Vapor Theory" Draft (fills the
+  dry-pipeline DRIFT_FLAG) and produce the 2nd v1 bonus Short — the question-hook
+  ceiling-break is now validated, double down.
+- Engagement fix needed: 319v / 0 comments means the outro CTA isn't landing —
+  test a stronger/earlier comment prompt on the next batch.
+- TODO still open: port monitor_voidline.py to fetch via camoufox-stealth so the
+  pulse stops going blind in the cloud.

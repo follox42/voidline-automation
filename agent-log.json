@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-17 14:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219214:07: no notable delta"
+    },
+    {
+      "t": "2026-06-17 14:15 UTC",
+      "action": "PULSE_STUDIO",
+      "detail": "Scraper returned 0/16 blank views (false 'no delta'); pulled real numbers from live voidline Studio session instead. KEY: v1_bonus_briggs 'Why Did the Teetotal Captain Run?' (vZ68HlWfT-Q, pub 15 juin) = 319v = NEW channel record, breaks the ~300 plateau (prev best v2_twist 299, v1_twist 281). But 0 comments + 0 likes at 319v = pure scroll-by reach, outro CTA not converting. Longs: MaryCeleste 18, Tunguska 8 (was 0 under suppression), Dyatlov 2 \u2014 none > alert threshold. No Short >1000v so no formal PULSE_ALERT. Reconciled v1_bonus_briggs SCHEDULED\u2192PUBLIC (stale drift). Found untracked finished Short '9 Barrels Empty / Vapor Theory' in Drafts. Logged real stats to stats_log.csv for a true baseline."
+    },
+    {
+      "t": "2026-06-17 14:15 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED in state but verified PUBLIC since 15 juin via Studio (319v). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z."
     }
   ]
 }
