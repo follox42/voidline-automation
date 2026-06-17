@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-17 08:03 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-17 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-17 08:06 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED in state but verified PUBLIC via oEmbed (HTTP 200) + voidline Studio (Publique, '15 juin 2026 / Publiee', 319v). Set status=PUBLIC + scheduled_at/actual_published_at=2026-06-15T12:00:00Z + views=319. Also corrected v3_answer actual_published_at 2026-06-12 -> 2026-06-05 (Studio ground truth 'It Never Landed' shows 5 juin 110v; the 06-13 reconcile over-trusted scheduled_at)."
+    },
+    {
+      "t": "2026-06-17 08:06 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "Studio has an UNTRACKED Short sitting as Brouillon (DRAFT): '9 Barrels Empty. The Mary Celeste Vapor Theory' \u2014 the intended v1-bonus ANSWER to pair with the v1_bonus_briggs HOOK. Added to state as v1_bonus_vapor/DRAFT. Per recovery cadence (HOOK Mon + ANSWER Wed) today Wed 06-17 was the ANSWER slot, but the Short was never scheduled out of draft -> missed publish. PIPELINE DRY: nothing is Programmee in Studio; next 3 days (Thu 06-18 / Fri 06-19 / Sat 06-20) empty. Next planned content = v4 Roanoke long-form Sun 06-22 + v4_hook 06-22 / v4_answer 06-24, but v4 long-form is NOT yet in Studio (render pending + Flow thumb blocked per LEARNINGS 06-13). ACTIONS NEEDED: (1) schedule v1_bonus_vapor draft to next ANSWER slot; (2) unblock+finish v4 render before 06-22 or the long-form day slips."
     }
   ]
 }

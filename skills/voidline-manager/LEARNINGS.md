@@ -231,3 +231,23 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-17 — Daily-plan: briggs reconcile + untracked vapor draft found
+**Observation**: Daily-plan (Wed 06-17, not a long-form day). (1) v1_bonus_briggs
+was stale SCHEDULED in state; verified PUBLIC via oEmbed 200 + voidline Studio
+(Publique, 15 juin, 319v). (2) Studio list shows an UNTRACKED Brouillon:
+"9 Barrels Empty. The Mary Celeste Vapor Theory" — the v1-bonus ANSWER meant to
+pair with the Briggs HOOK, created but never scheduled. (3) Nothing is currently
+Programmée; pipeline dry through 06-21. v4 Roanoke long-form (target 06-22) still
+not in Studio (render pending, Flow thumb blocked).
+**Learning**: Reconciliation must read the WHOLE Studio list, not just probe the
+short_ids already in state — drafts/extra uploads that never entered the state
+file are invisible to an oEmbed-by-id sweep. The Briggs HOOK shipped without its
+ANSWER because the ANSWER stalled as a draft; cadence pairing breaks silently when
+a render lands in Studio but is never scheduled out of Brouillon.
+**Action**:
+- Reconciled state: v1_bonus_briggs -> PUBLIC (319v); added v1_bonus_vapor/DRAFT;
+  corrected v3_answer actual_published_at to 2026-06-05 (Studio ground truth).
+- FLAGGED (agent-log DRIFT_FLAG): schedule v1_bonus_vapor to the next ANSWER slot;
+  unblock + finish v4 render before Sun 06-22 or the long-form day slips.
+- Today not a long-form publish day -> no Reddit r/UnresolvedMysteries seed drafted.

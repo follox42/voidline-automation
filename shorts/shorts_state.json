@@ -82,15 +82,26 @@
       "publish_at": "2026-06-12T12:00:00Z",
       "status": "PUBLIC",
       "scheduled_at": "2026-06-12T12:00:00Z",
-      "actual_published_at": "2026-06-12T12:00:00Z"
+      "actual_published_at": "2026-06-05T12:00:00Z",
+      "note": "Published ~5 days early due to schedule_shorts.py day_not_found bug; Studio shows 5 juin 2026"
     },
     {
       "short_id": "v1_bonus_briggs",
       "yt_id": "vZ68HlWfT-Q",
       "title": "Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872",
       "publish_at": "2026-06-15T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-15T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-15T12:00:00Z",
+      "actual_published_at": "2026-06-15T12:00:00Z",
+      "views": 319
+    },
+    {
+      "short_id": "v1_bonus_vapor",
+      "yt_id": null,
+      "title": "9 Barrels Empty. The Mary Celeste Vapor Theory",
+      "publish_at": null,
+      "status": "DRAFT",
+      "note": "Discovered as Brouillon in Studio 2026-06-17 (untracked). Intended v1-bonus ANSWER to pair with v1_bonus_briggs HOOK. Never scheduled."
     }
   ]
 }
