@@ -231,3 +231,24 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-17 09:06 — Pulse: curl scraper coverage collapsed to 0/13
+**Observation**: First pulse since 2026-06-13 14:02 (the routine did not fire
+hourly in between — ~4-day gap). Runner completed cleanly, no PULSE_ALERT, no
+notable delta. BUT `monitor_voidline.py`'s anonymous-curl path returned blank
+views for ALL 13 assets this run (3 long-forms + 10 Shorts) — including
+v3_answer, which parsed 106v on 2026-06-13. Coverage went 2/12 → 0/13.
+**Learning**:
+1. The curl-to-youtube.com stat path is now effectively dead in the cloud
+   container, not just flaky — YouTube is serving the consent/anti-scrape page
+   to every unauthenticated request. The "no notable delta" the runner reports
+   is therefore meaningless: it compares blanks to blanks, not real growth.
+2. Same KNOWN issue flagged on 2026-06-13 14:02, now fully manifested. The TODO
+   to port the monitor to camoufox-stealth (cookie_profile=voidline) or yt-dlp
+   is no longer optional — pulse produces zero usable signal until it lands.
+**Action**:
+- No Studio HTTP actions spent this run (no alert threshold crossed; stayed
+  within limits, exited clean).
+- Escalated priority: next non-pulse run should port `monitor_voidline.py` to
+  fetch view/like counts via the authenticated camoufox-stealth session so the
+  delta logic has real numbers to compare.
