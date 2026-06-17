@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-17 15:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219215:07: no notable delta"
+    },
+    {
+      "t": "2026-06-17 15:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 15:07\u219215:08: no notable delta"
+    },
+    {
+      "t": "2026-06-17 15:11 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "MANUAL OVERRIDE of auto 'no delta': anonymous scraper parsed 0/13 assets, so runner was blind. Read real counts from authenticated voidline Studio session. v1_bonus_briggs (vZ68HlWfT-Q) published 06-15 = 319v in 2 days = new all-time best Short (>v2_twist 299, >v1_twist 281) \u2014 0->319 delta missed by the blind pulse. Untracked DRAFT 'Mary Celeste Vapor Theory' in Studio not in state. Reconciled v1_bonus_briggs SCHEDULED->PUBLIC; backfilled real-data CSV snapshot. Infra: monitor must move to stealth Studio read (see LEARNINGS 2026-06-17)."
     }
   ]
 }

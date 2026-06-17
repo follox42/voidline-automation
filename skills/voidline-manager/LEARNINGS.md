@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-17 15:10 — Pulse blind-spot hid the channel's best-ever Short
+**Observation**: HOURLY PULSE logged "no notable delta" — but only because the
+anonymous curl scraper parsed 0/13 assets (all views blank), same blindness
+flagged on 06-13, now total. The authenticated `voidline` Studio session was
+alive (idle ~1h, sitting on the Shorts list), so I read the real numbers
+directly. They reveal a missed alert: **v1_bonus_briggs (vZ68HlWfT-Q, "Why Did
+the Teetotal Captain Run?"), published 06-15, is at 319 views in ~2 days** — the
+channel's all-time best Short, past v2_twist (299) and v1_twist (281). Whole
+catalogue snapshot: v1_bonus 319, v2_twist 299, v1_twist 281, v3_answer 110
+(+4 vs 06-13), v1_answer 87, v1_hook 64, v2_answer 34, v3_twist 28, v2_hook 6
+(+2), v3_hook 1. Also: an untracked DRAFT ("9 Barrels Empty — Mary Celeste
+Vapor Theory") sits in Studio, not in shorts_state.json. State drift fixed:
+v1_bonus_briggs was still SCHEDULED → set PUBLIC.
+**Learning**:
+1. The anonymous scraper is now 100% blind in the cloud container — it can no
+   longer be trusted to fire PULSE_ALERTs. A 0→319v event was logged as "no
+   delta." The alerting is only as good as its data source, and that source is
+   dead. The authenticated Studio session, by contrast, returns full real
+   numbers from a single extract_text on the already-loaded Shorts list (1
+   Studio HTTP action, cheap, session-safe).
+2. v1_bonus_briggs broke the ~300v plateau (319) — question-hook + cutter-v2 on
+   the proven Mary Celeste topic is the strongest combo so far. The Mary Celeste
+   bonus thesis (percer le plafond 279v) is validated.
+3. Snapshot CSV deltas only worked for 2/13 assets across 4 days because of the
+   scraper; backfilled a real-data snapshot (2026-06-17T15:10) so the next pulse
+   computes against true numbers, not blanks.
+**Action**:
+- PORT monitor_voidline.py to pull via camoufox-stealth (voidline profile)
+  extract_text on the Studio Shorts/Videos list instead of anonymous curl —
+  this is now the #1 infra fix; the pulse is effectively non-functional without
+  it. One extract_text per run stays well inside the 5-Studio-action limit.
+- Triage the untracked "Vapor Theory" DRAFT: finish+schedule or discard, and add
+  it to shorts_state.json either way so state matches Studio.
+- Capitalize on v1_bonus_briggs momentum: best validation yet that the Mary
+  Celeste vein + question hook converts — prioritize the next Mary Celeste Short
+  over cold v4 Roanoke.
