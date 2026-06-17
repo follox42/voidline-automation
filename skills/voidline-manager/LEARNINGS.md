@@ -231,3 +231,29 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-17 20:06 — Pulse blind: scraper 0/12 + 4-day cadence gap + bonus-short drift
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a ~4-day gap, so
+the "hourly" routine is NOT firing hourly (likely the schedule isn't active or
+the container was idle). The monitor scraper returned **0/12 view counts this
+run** (full blackout) — even v3_answer (was 106v) and v2_hook (was 4v) came back
+blank, vs 2/12 coverage on 06-13. Runner correctly logged "no notable delta" (no
+threshold crossed) but the delta is meaningless: there is no data to compare.
+Separately, v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15 12:00) auto-published
+on time — verified PUBLIC via oEmbed HTTP 200 — but state still read SCHEDULED.
+**Learning**:
+1. Anonymous-curl scraping in the cloud container has degraded from sparse to
+   ZERO coverage. The pulse is effectively blind; "no notable delta" is a false
+   all-clear until the monitor is ported off curl. This is the open TODO from
+   2026-06-13 (port monitor_voidline.py to camoufox-stealth cookie_profile=voidline
+   or yt-dlp) — it is now blocking, not optional.
+2. Scheduled Shorts keep auto-publishing silently; state reconciliation must
+   happen on EVERY run that reads it, not just daily-plan (same KNOWN_BAD as the
+   06-13 drift catch). oEmbed 200 remains the cheap, session-safe publish probe.
+**Action**:
+- Reconciled v1_bonus_briggs -> status=PUBLIC + actual_published_at=06-15 12:00.
+- No PULSE_ALERT (no real signal available); did NOT spend Studio HTTP actions or
+  Flow gen — exited within limits per "if blocked, log and exit cleanly."
+- Flagged to Nolann: monitor is the blocker. Next non-pulse window should port it
+  to camoufox-stealth so future pulses actually see views. Also confirm the
+  Hourly Pulse routine schedule is active (4-day gap is the symptom).
