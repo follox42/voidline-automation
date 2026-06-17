@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-17 18:06 — v1_bonus_briggs breaks the ~300v Short plateau (319v)
+**Observation**: HOURLY PULSE returned authenticated counts (no blank-curl rot
+this run — cookies healthy). v1_bonus_briggs (vZ68HlWfT-Q, "Why Did the Teetotal
+Captain Run? — Mary Celeste 1872") published 2026-06-15 and is at **319 views in
+~2 days** — the highest of ANY Short, edging past v2_twist (299) and v1_twist
+(281). It was still mis-marked SCHEDULED in shorts_state.json (same silent
+auto-publish state drift as the 06-13 daily run) — reconciled to PUBLIC +
+actual_published_at, verified live via oEmbed (HTTP 200). Full snapshot: v1_twist
+281, v2_twist 299, v1_answer 87, v3_twist 28, v2_hook 6; v3 Tunguska shorts +
+v2_answer + all 3 long-forms returned blank. Note: 319v but **0 likes** logged.
+**Learning**:
+1. The 06-07 hypothesis paid off: a QUESTION-hook bonus Short on the proven v1
+   Mary Celeste topic ("Why did the teetotal captain run?") was the exact lever
+   to pierce the 279–300v ceiling. Question hook + known-good topic = new high.
+2. The runner's delta logic reports "no notable delta" because the comparison
+   snapshot (06-13 14:02) was mostly blank, so a new high on a freshly-tracked
+   asset never trips the >50v delta rule. Threshold logic is blind to "best-ever
+   on first real read." Eyeball the absolute numbers, don't trust the delta flag.
+3. Scheduled Shorts STILL auto-publish without updating state — third occurrence.
+   Reconciliation on every pulse/daily run remains mandatory.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in state.
+- 319v < 1000v Studio-investigation threshold, so no Studio HTTP spent this pulse.
+  If it keeps climbing, next pulse pull retention + traffic sources to learn what
+  pushed it past the plateau (notification surface? search? suggested?).
+- Lean into it: the 2nd Mary Celeste bonus Short (question hook) is the next
+  obvious produce-and-schedule item — same recipe.
+- TODO still open: make monitor_voidline.py compute deltas against last NON-BLANK
+  value per asset, not just the previous snapshot, so best-ever reads alert.
