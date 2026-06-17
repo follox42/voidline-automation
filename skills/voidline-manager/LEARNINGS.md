@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-17 12:09 — v1_bonus_briggs breaks the ~300 plateau (new channel-record Short)
+**Observation**: Hourly pulse pulled real Studio numbers (the anon curl scraper
+returned 0/12 this run — fully blind). v1_bonus_briggs "Why Did the Teetotal
+Captain Run? — Mary Celeste 1872" (question hook, cutter v2) is at **319 views in
+~2 days** post-publish (live 15 juin). That is the channel's best-ever Short — it
+passes the prior ceiling set by v2_twist (299) and v1_twist (281), and clears the
+279v plateau the 06-07 weekly review explicitly set out to beat. Comments still 0,
+likes 0 (engagement not converting yet). Total Shorts library now ≈1,229v (was 861
+on 06-07). Older Shorts have plateaued: v2_twist 299 (flat since 06-05), v3_answer
+106→110 (flat over 10d). A new DRAFT also appeared in Studio — "9 Barrels Empty —
+The Mary Celeste Vapor Theory #shorts" — not in shorts_state.json.
+**Learning**:
+1. The question-hook + Mary-Celeste-bonus bet from the 06-07 action item WORKED:
+   percer le plafond 279v → 319v. Question/contradiction hooks on the strongest
+   topic (Mary Celeste = the channel's most reliable performer: 3 of top-4 Shorts)
+   beat the plateau. This is the clearest organic win since the pivot.
+2. The pulse scraper is now 0/12 blind in the cloud — the breakout would have been
+   completely missed if the pulse hadn't fallen back to the live `voidline` Studio
+   session. The monitor MUST be ported to pull view counts via camoufox-stealth
+   Studio extract (the parked Shorts-list page gives all 11 in ONE action). This
+   is the recurring KNOWN_BAD "trusting the state/scraper reflects reality."
+3. State drift again: v1_bonus_briggs sat SCHEDULED while it was PUBLIC at 319v.
+   Reconciled. Confirms scheduled Shorts auto-publish silently with no state write.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at; backfilled real
+  06-17 view counts into stats_log.csv (overwrote the blind blanks).
+- DOUBLE DOWN: the Mary Celeste vapor-theory draft already in Studio is the right
+  next ship — finish + schedule it (keeps the winning topic + question-hook combo).
+- Engagement still flat (0 comments on the 319v Short) — the outro debate card is
+  driving views but not comments. Revisit the comment-CTA wording in next weekly.
+- Reaffirm TODO: port monitor_voidline.py to camoufox-stealth so future pulses see
+  real numbers without manual Studio reads.
