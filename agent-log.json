@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-17 07:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219207:07: no notable delta"
+    },
+    {
+      "t": "2026-06-17 07:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 07:07\u219207:08: no notable delta"
+    },
+    {
+      "t": "2026-06-17 07:08 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 07:08\u219207:08: no notable delta"
+    },
+    {
+      "t": "2026-06-17 07:12 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Monitor scraper BLIND (0/15 via anon curl) \u2014 recovered real numbers via authenticated voidline Studio content table. NEW RECORD: v1_bonus_briggs (vZ68HlWfT-Q) auto-published from SCHEDULED and hit 319v in ~2d \u2014 beats prior ceiling (v2_twist 299, v1_twist 281), first Short to clear the ~300 plateau. State drift fixed: bonus_briggs SCHEDULED->PUBLIC. Untracked DRAFT in Studio: '9 Barrels Empty / Mary Celeste Vapor Theory' (Brouillon, no yt_id) \u2014 not in state, flag for daily-plan. Longs flat (MaryCeleste 18 / Tunguska 8 / Dyatlov 2, all <100). No Short >1000. BLOCKER: monitor_voidline.py anon-curl no longer returns viewCount; needs port to authenticated Studio content-table scrape (proven: 2 navigates+2 evals covers all 15 assets)."
     }
   ]
 }

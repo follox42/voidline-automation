@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-17 07:12 — Pulse: scraper fully blind + bonus_briggs breaks the ~300 plateau
+**Observation**: First HOURLY PULSE since 06-13 (4-day gap). `monitor_voidline.py`
+anon-curl returned 0/15 viewCounts (worse than 2/12 on 06-13) — YouTube SSR HTML
+no longer embeds `"viewCount"` for unauthenticated requests. The pulse logged "no
+notable delta" purely because there was NO DATA, not because views were flat.
+Recovered real numbers via the still-alive authenticated `voidline` Studio session
+(content table): **v1_bonus_briggs (vZ68HlWfT-Q) auto-published from SCHEDULED and
+hit 319v in ~2 days — new channel record**, beating v2_twist (299) and v1_twist
+(281). It's the FIRST Short to clear the ~300 ceiling flagged on 2026-06-02.
+Also found an untracked DRAFT in Studio — "9 Barrels Empty / Mary Celeste Vapor
+Theory" (Brouillon, no yt_id) — never added to shorts_state.json. Longs still
+near-dead (MaryCeleste 18 / Tunguska 8 / Dyatlov 2). No Short near 1000.
+**Learning**:
+1. The anon-curl monitor is now USELESS in the cloud — a "PULSE / no notable
+   delta" result from it is a FALSE all-clear. Blank views must be treated as a
+   blocker, never as "flat". The KNOWN_BAD "trusting state without verifying"
+   pattern now extends to "trusting the monitor's silence".
+2. v1_bonus_briggs breaking 300 confirms the question-hook + cutter-v2 thesis is
+   the real lever, AND that Mary Celeste (the first topic) still has the strongest
+   audience pull — both bonus Mary Celeste shorts were the play.
+3. Authenticated Studio content table is the efficient stat source: 2 navigates
+   (videos/upload + videos/short) + 2 in-page evaluates cover ALL 15 assets in
+   well under the 5-action pulse budget. This is the proven replacement.
+**Action**:
+- Reconciled state: v1_bonus_briggs SCHEDULED -> PUBLIC (+actual_published_at).
+- Wrote a REAL baseline snapshot into stats_log.csv (source: Studio table) so
+  future runs have something to diff against.
+- TODO (next focused session, not an hourly pulse): port `monitor_voidline.py`
+  to scrape the authenticated Studio content table via camoufox-stealth
+  (cookie_profile=voidline) instead of anon curl. Until then every pulse is blind.
+- TODO: add the untracked "Vapor Theory" draft to shorts_state.json once it has a
+  yt_id / is scheduled — surface in the next daily-plan.
