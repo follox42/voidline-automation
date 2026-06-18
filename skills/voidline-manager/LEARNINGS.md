@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 08:04 — v1 bonus Briggs Short = NEW CHANNEL RECORD (319v) + Studio cookies dead
+**Observation**: HOURLY PULSE picked up `v1_bonus_briggs`
+("Why Did the Teetotal Captain Run? — Mary Celeste 1872", vZ68HlWfT-Q) at
+**319 views** — the channel's best-performing Short ever, beating the prior
+ceiling (v2 TWIST 298v, v1 TWIST 274v). The runner's delta logic did NOT
+fire a PULSE_ALERT because this is a *new asset* (no prior snapshot to diff
+— it was still in the catalogue as the only un-snapshotted Short). Two
+secondary findings:
+1. **State drift (again)**: `v1_bonus_briggs` was still `SCHEDULED` in
+   shorts_state.json (scheduled 06-15 12:00 UTC) despite being live for ~3
+   days. oEmbed HTTP 200 confirms PUBLIC. Reconciled → status=PUBLIC +
+   actual_published_at=2026-06-15T12:00:00Z.
+2. **Studio cookies EXPIRED**: camoufox-stealth auth_check on
+   studio.youtube.com returns auth_valid=false / status=dead /
+   "Re-login required". So the deeper analytics dive (impressions,
+   retention, traffic sources for the 319v) is BLOCKED this pulse.
+**Learning**:
+1. The question-hook bonus Short broke the ~300v narrative plateau — this
+   is the strongest single confirmation yet that QUESTION hooks + cutter v2
+   are the right format. A Mary Celeste *question* hook (vs v1 TWIST's pure
+   narrative on the same topic) added ~45v of ceiling on the same subject.
+2. The pulse delta detector has a blind spot: a brand-new asset that lands
+   already-popular shows as "no notable delta" because there's no baseline.
+   Worth seeding new assets into stats_log at schedule time so the first
+   real snapshot diffs against 0, not against nothing.
+3. oEmbed remains the reliable session-safe public/scheduled probe; Studio
+   scraping needs live `voidline` cookies which have now lapsed.
+**Action**:
+- Reconciled state for v1_bonus_briggs (committed this run).
+- BLOCKER logged: voidline Studio cookies need refresh before any
+  Studio-analytics step (this pulse, daily plan, weekly review) can run.
+  Until then, monitoring falls back to oEmbed + public stats only.
+- Deferred (cookies-gated): pull 319v Studio analytics (impressions/CTR/
+  retention/traffic-source) to confirm whether the breakout is organic
+  Shorts-feed or a single external referral.

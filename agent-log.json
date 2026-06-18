@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-18 08:04 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219208:04: no notable delta"
+    },
+    {
+      "t": "2026-06-18 08:04 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED (06-15) but verified PUBLIC via oEmbed HTTP 200 with 319 views \u2014 NEW CHANNEL-RECORD Short (prior ceiling 298v on v2 TWIST). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Delta detector missed it because it's a new asset with no prior snapshot baseline."
+    },
+    {
+      "t": "2026-06-18 08:04 UTC",
+      "action": "BLOCKER",
+      "detail": "voidline Studio cookies DEAD \u2014 camoufox-stealth auth_check on studio.youtube.com returns auth_valid=false / status=dead / 'Re-login required'. Deep analytics on the 319v breakout (impressions/CTR/retention/traffic source) is blocked. Exited cleanly per pulse hard-limits. Cookie refresh required before any Studio-gated step in future runs."
     }
   ]
 }
