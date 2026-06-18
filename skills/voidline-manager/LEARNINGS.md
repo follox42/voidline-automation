@@ -231,3 +231,29 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 12:06 — Pulse: scraper fully blind + v1_bonus drift (5-day gap)
+**Observation**: First pulse since 2026-06-13. Two findings:
+1. The anonymous-curl monitor returned blanks for ALL 12 assets this run
+   (0/12 parsed, vs 2/12 on the 06-13 14:02 baseline). YouTube is now
+   serving the consent/anti-scrape page to every unauthenticated request
+   from the container — the pulse is effectively blind to view counts.
+2. `v1_bonus_briggs` (vZ68HlWfT-Q) was still `SCHEDULED` for 06-15 in
+   shorts_state.json but oEmbed returns 200 → it auto-published 3 days ago.
+   Reconciled to PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+**Learning**:
+- The agent-log shows no DAILY_PLAN since 06-13, so daily reconciliation
+  is NOT running on cadence — drift accumulated for 5 days undetected. The
+  pulse caught it only incidentally via the stats fetch. State drift is now
+  a standing risk whenever the daily routine is dormant.
+- Scraper degradation has gone from "sparse" (06-13) to "total" (06-18).
+  The camoufox-stealth port for monitor_voidline.py is no longer a nice-to-have;
+  the pulse produces zero usable signal without it. No PULSE_ALERT can ever
+  fire while every value is blank — silent failure mode.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC (this run).
+- ESCALATE: port monitor_voidline.py to fetch view counts via the
+  camoufox-stealth MCP (cookie_profile=voidline) — without it the hourly
+  pulse is non-functional. Tracked as the top TODO.
+- Pipeline still dry past v1_bonus_briggs (06-15); no Shorts staged for
+  06-16→06-18. v4 Roanoke still blocked on Flow thumb. Cadence is broken.
