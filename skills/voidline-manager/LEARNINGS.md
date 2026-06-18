@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 10:05 — Pulse resumes after 5-day gap: drift recurs + scraper fully blind + pipeline dry
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — the agent-log
+shows a 5-day gap, so the "hourly" routine was effectively dormant, not hourly.
+This pulse: (1) `monitor_voidline.py` returned BLANK views for ALL 16 assets
+(0/16 coverage, down from 2/12 on 06-13) — anonymous curl is now serving
+consent/anti-scrape pages across the board, so the pulse is fully blind and
+no delta/alert is computable. (2) State drift recurred exactly as predicted:
+`v1_bonus_briggs` (vZ68HlWfT-Q) was scheduled 06-15 12:00 UTC, verified PUBLIC
+via oEmbed HTTP 200 today, but state still said SCHEDULED — no daily-plan ran
+in between to catch it. Reconciled → status=PUBLIC + actual_published_at.
+(3) Pipeline now fully dry: last Short published 06-15, nothing staged behind
+it; v4 Roanoke still blocked on the Flow UI redesign (06-13 entry).
+**Learning**:
+1. The routines are not firing on their stated cadence — a 5-day pulse gap
+   means spike detection is theoretical. Whatever schedules these needs a
+   liveness check; "hourly" that runs once every 5 days catches nothing.
+2. Stat coverage via anonymous curl has gone from sparse to zero. The
+   monitor MUST move to camoufox-stealth (cookie_profile=voidline) or yt-dlp
+   before any pulse can do its actual job. Until then every pulse is a no-op
+   reconciliation pass at best.
+3. Daily reconciliation is load-bearing and it didn't run — pulse had to do
+   it. oEmbed remains the cheap, session-safe public/scheduled probe.
+**Action**:
+- Reconciled v1_bonus_briggs in shorts_state.json (committed this run).
+- ESCALATE: scraper blindness + routine dormancy both block the loop from
+  functioning. Porting monitor_voidline.py to camoufox-stealth is now the
+  top operational TODO (was deferred on 06-13, no longer deferrable).
+- Pipeline dry since 06-15 — v4 Roanoke must unblock (Flow UI) or a fallback
+  Short batch shipped, or the channel goes silent.
