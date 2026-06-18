@@ -231,3 +231,38 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 11:04 — Suppression LIFTED + v1 bonus Briggs is new channel record (319v)
+**Observation**: Hourly pulse. v1_bonus_briggs (vZ68HlWfT-Q, "Why Did the
+Teetotal Captain Run? — Mary Celeste 1872") published 06-15 and is at **319
+views in ~3 days** — the channel's best-ever Short, beating the documented
+plateau (v2 TWIST 298v, v1 TWIST 274v). Studio reach analytics (cookie_profile
+=voidline, period-since_publish) show traffic = **Shorts feed 96.6%**, Other
+YouTube 1.9%, YT Search 0.9% (top term "mary celeste" 33.3%), Channel pages
+0.6%. Two process issues: (1) cron_runner logged "no notable delta" — its delta
+math can't fire when the prior snapshot value is blank (scheduled→live), so it
+silently under-reports newly-published assets; (2) STATE DRIFT — v1_bonus_briggs
+was still `SCHEDULED` in shorts_state.json despite auto-publishing 06-15
+(reconciled this run → PUBLIC).
+**Learning**:
+1. The algorithmic suppression flagged 2026-06-13 (v3 HOOK 0v, "all traffic
+   sources insufficient data") has **lifted**. 96.6% Shorts-feed distribution is
+   the algo actively pushing the Short — the opposite of the suppression
+   signature. The pure-organic + reduced-cadence cooldown worked.
+2. First Short to cleanly break the ~300v narrative ceiling. It's a QUESTION
+   hook ("Why Did the Teetotal Captain Run?") on the proven Mary Celeste topic
+   (v1's strongest) + cutter v2 — confirms the question-hook + cutter-v2 +
+   strong-topic stack is the formula that scales past the plateau.
+3. Pulse delta logic has a blind spot: blank→value transitions (a Short going
+   live between snapshots) never trigger an alert. A fresh publish hitting 319v
+   is exactly what we most want flagged.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json this run.
+- TODO (not this pulse): patch cron_runner pulse to treat blank→value as a
+  positive delta (flag any asset crossing 0→>50v since last snapshot).
+- Strategy: suppression lifted + plateau broken → the v4 Roanoke batch and
+  more Mary-Celeste-style question-hook bonus Shorts are now worth shipping at
+  the durable cadence. Resolve the Flow thumb blocker (2026-06-13 entry) to
+  unblock v4.
+- Watch v1_bonus_briggs next pulses — if Shorts-feed % holds and views keep
+  climbing, this is the channel's first genuine breakout candidate.
