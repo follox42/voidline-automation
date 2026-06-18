@@ -231,3 +231,37 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 19:05 — v1 bonus Briggs is the new top Short (319v) + state drift
+**Observation**: Hourly pulse snapshot pulled view data for a wider set of
+assets than the flaky 06-13 baseline. `v1_bonus_briggs` (vZ68HlWfT-Q, "Why Did
+the Teetotal Captain Run? — Mary Celeste 1872") read **319 views** and oEmbed
+returned HTTP 200 → confirmed PUBLIC. State still had it as `SCHEDULED`
+(scheduled 06-15 12:00 UTC); it published on schedule and ran 3 days unnoticed.
+Same drift class as the 06-13 daily-plan catch — scheduled Shorts auto-publish
+silently and the state file is never updated by YouTube. Reconciled to
+status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Other parsed counts
+this run: v1_twist 281, v1_answer 87, v2_answer 34, v3_twist 28 (scraper still
+sparse — different asset subset parses each run, so cross-snapshot deltas don't
+overlap and the runner can't compute a true Δ; that's why no PULSE_ALERT fired
+despite a record being set).
+**Learning**:
+1. **319v is a new channel ceiling for a Short** — beats v2_twist (298) and
+   v1_twist (281/274). It's a pure QUESTION hook ("Why Did the Teetotal Captain
+   Run?"), re-confirming the 06-03/06-05 thesis: question/contradiction hooks >
+   narrative, and they're what finally nudged past the ~300 plateau.
+2. Mary Celeste keeps outperforming (v1_twist 281, v1_answer 87, bonus_briggs
+   319) — it's the channel's strongest IP in Shorts pull, ahead of Dyatlov and
+   Tunguska.
+3. The pulse delta engine is blind to multi-day organic growth: the anonymous
+   scraper parses a different asset subset each run, so the last-2-snapshots
+   comparison rarely has overlapping non-blank assets. Threshold alerts (>50v Δ)
+   effectively can't fire until the monitor pulls authenticated per-asset stats
+   (camoufox-stealth cookie_profile=voidline) — the known TODO.
+**Action**:
+- Reconciled shorts_state.json (v1_bonus_briggs → PUBLIC).
+- Lean into Mary Celeste: prioritise a 4th Mary Celeste question-hook Short over
+  starting a cold v4 topic — ride the IP that's converting.
+- Still-open TODO (Studio-action budget permitting): port monitor_voidline.py to
+  authenticated stat pulls so Δ alerts actually work; until then PULSE is a
+  snapshot tool, not an alerting tool.
