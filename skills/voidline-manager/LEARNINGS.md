@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 09:05 — v1 bonus Briggs Short breaks the 300v plateau
+**Observation**: HOURLY PULSE picked up `v1_bonus_briggs` (vZ68HlWfT-Q,
+"Why Did the Teetotal Captain Run? — Mary Celeste 1872") at **319 views** —
+the first Short in the catalogue to cross 300v, beating the prior best
+(v2 TWIST 298v) and the long-standing ~279-300 narrative ceiling. oEmbed
+confirms PUBLIC (HTTP 200). Two side notes: (1) state drift — it was still
+marked SCHEDULED for 2026-06-15 in shorts_state.json despite being live;
+reconciled to PUBLIC + actual_published_at. (2) Scraper coverage is still
+sparse (most assets blank, only briggs + a couple answers parsed) — the
+known anti-scrape limitation, not a real zero.
+**Learning**: The bonus Mary Celeste Short was produced explicitly to
+"percer le plafond 279v" with a QUESTION hook ("Why did the teetotal
+captain run?") + cutter v2. It worked — the question-hook + curiosity-gap
+formula breaks the narrative ceiling, validating the 2026-06-05 hypothesis
+at a higher view band. This is the strongest single-Short result to date
+and the first organic signal post-suppression-pivot.
+**Action**:
+- No PULSE_ALERT fired (319 < 1000v strict threshold), so deep Studio
+  analytics deferred to next daily/weekly to stay within HTTP rails.
+- NEXT pulse/daily: pull Studio retention + traffic sources for briggs to
+  confirm whether the plateau break is impressions-driven (algo finally
+  serving) or a one-off. If retention ≥ v2 TWIST's 67%, double down on
+  question-hook bonus Shorts for the existing v1/v2/v3 catalogue.
+- Keep v4 Roanoke on the question-hook + cutter v2 formula.
