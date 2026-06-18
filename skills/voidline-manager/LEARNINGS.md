@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 23:04 — v1 BONUS (Briggs) BREAKS the ~279v Short plateau at 319v
+**Observation**: First pulse in 5 days. `v1_bonus_briggs` (vZ68HlWfT-Q,
+"Why Did the Teetotal Captain Run? — Mary Celeste 1872") — scheduled for
+2026-06-15, now PUBLIC at **319 views** (0 likes). This is the channel's
+new top Short: it beats v2 TWIST (298v) and v1 TWIST (279v), the prior
+ceiling. It was produced specifically to "percer le plafond 279v" per the
+2026-06-07 weekly review — and it worked. cron_runner logged "no notable
+delta" only because the asset had no prior snapshot to diff against (it
+appeared fresh between 06-13 → 06-18), so the delta>50v trigger never fired.
+Two side-notes: state drift again (was still SCHEDULED in shorts_state.json
+despite auto-publishing on 06-15 — reconciled to PUBLIC this run); and the
+curl scraper is still blanking most assets (only v2_hook 4→6, v3_hook 1, and
+the bonus parsed — the known cloud anti-scrape issue, v3_answer's 106v even
+went blank this run).
+**Learning**:
+1. The QUESTION hook ("Why Did the Teetotal Captain Run?") on a STRONG
+   pre-existing topic (Mary Celeste, the channel's most-viewed subject)
+   outperforms a fresh-topic question hook. Layering a new question-hook
+   Short onto a proven topic compounds — the plateau wasn't a hard ceiling,
+   it was a topic/hook-quality ceiling.
+2. The pulse delta logic is blind to brand-new assets (no baseline → no
+   delta). A Short can silently auto-publish AND cross a milestone between
+   two sparse pulses and never trip a PULSE_ALERT. Net-first-sighting of an
+   asset above the historical best should itself be a flag.
+3. 0 likes at 319v = views are landing but engagement/outro-CTA still not
+   converting. The cutter-v2 debate card isn't driving likes/comments at
+   this volume.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC (actual_published_at=2026-06-15).
+- KEEP DOUBLING DOWN on Mary Celeste question-hook Shorts — it is the
+  proven topic; a second bonus Short on Briggs is the highest-ROI next
+  render, not a brand-new v4 topic cold-start.
+- TODO (code): teach the pulse to flag "new asset first-seen above prior
+  channel best" as a soft PULSE_ALERT, independent of the delta>50v rule.
+- Engagement still flat (0 likes/319v) — outro CTA needs rework; revisit in
+  weekly review.
