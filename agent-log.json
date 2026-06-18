@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-18 13:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219213:05: no notable delta"
+    },
+    {
+      "t": "2026-06-18 13:10 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Runner verdict 'no notable delta' was a FALSE all-clear \u2014 anonymous-curl scraper returned blank for all 13/13 assets, so the runner had zero data. Pulled real numbers via camoufox-stealth voidline session (reads valid; auth_check 'dead' is posting-auth only). REAL SIGNAL: v1_bonus_briggs (vZ68HlWfT-Q, 'Why Did the Teetotal Captain Run?', question hook) published 06-15 is now at 319v in ~3d \u2014 NEW CHANNEL RECORD, beats v2_twist(299) + v1_twist(281). Crosses delta>50v threshold. Everything else flat: v3_answer 106\u2192110, v1_twist 274\u2192281, v2_twist 298\u2192299, v2_hook 4\u21926, v3_hook stuck 1v, v1_hook 64, v1_answer 87, v2_answer 34, v3_twist 28. Long-forms <20v (MaryCeleste 18, Tunguska 12, Dyatlov 2). Staged: draft Short '9 Barrels \u2014 Vapor Theory' unpublished. Reconciled v1_bonus_briggs SCHEDULED\u2192PUBLIC + backfilled real views into stats_log."
     }
   ]
 }

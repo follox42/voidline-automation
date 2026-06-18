@@ -231,3 +231,43 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 13:10 — v1_bonus_briggs = NEW CHANNEL RECORD (319v), pulse was blind
+**Observation**: HOURLY PULSE runner logged "no notable delta" — but that was
+a FALSE all-clear: the anonymous-curl scraper returned blank views for ALL
+13/13 assets this run (worse than the 06-13 pulse, which still parsed 2/12).
+The runner had zero data and silently reported "no delta." Pulled the real
+numbers via the live camoufox-stealth `voidline` Studio session (reads are
+valid — `auth_check` reported "dead" but that probes *posting* auth only;
+the Studio content table rendered fully). Real signal: **v1_bonus_briggs**
+("Why Did the Teetotal Captain Run? — Mary Celeste", a QUESTION hook),
+published 06-15, is at **319v in ~3 days — the channel's highest-ever Short**,
+beating v2_twist (299) and v1_twist (281). Everything else is flat:
+v3_answer 106→110, v1_twist 274→281, v2_twist 298→299, v2_hook 4→6,
+v3_hook stuck at 1v; long-forms all <20v (MaryCeleste 18, Tunguska 12,
+Dyatlov 2). A draft Short "9 Barrels — Vapor Theory" is staged but unpublished.
+**Learning**:
+1. **The pulse is functionally blind without the stealth MCP.** The runner's
+   "no notable delta" is a false negative when the scraper returns blanks — a
+   real 319v breakout went undetected. The runner MUST distinguish "no data"
+   from "no delta," and the KNOWN_BAD "trust the state reflects reality without
+   reading back" pattern now applies to the *monitor* itself. Porting
+   monitor_voidline.py to fetch via camoufox-stealth (cookie_profile=voidline)
+   is no longer a TODO — it's blocking the pulse's core job.
+2. **Question hooks win again, decisively.** The 3 top Shorts are all
+   question/contradiction hooks: bonus_briggs (319, "Why Did..."),
+   v2_twist (299, "...Failed for 62 Years"), v1_twist (281, "...Boards an
+   Empty Ship"). The bonus Short produced specifically to break the ~300v
+   ceiling (per Weekly Review #1 action) DID break it. Format is validated.
+3. **`auth_check` "dead" ≠ session unusable.** It only gates posting; read
+   scraping of Studio works on the same cookies. Don't exit-clean on a "dead"
+   auth_check for read-only pulses — probe a real read first.
+**Action**:
+- PORT monitor_voidline.py to camoufox-stealth Studio content-table scrape
+  (channel/<id>/videos/short + /videos/upload give per-video views in one
+  load each) — next daily/weekly run. This pulse already reconciled state
+  (v1_bonus_briggs SCHEDULED→PUBLIC) + backfilled real views into stats_log.
+- Capitalize on bonus_briggs: the staged draft "9 Barrels — Vapor Theory"
+  (same Mary Celeste question-hook vein) should ship — flag for daily plan.
+- Watch bonus_briggs next pulses: 319v in 3d with this curve may still be
+  climbing — first real candidate to cross 1000v if it has legs.
