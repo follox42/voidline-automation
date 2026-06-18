@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 07:05 — v1 bonus Briggs breaks the 300v Shorts plateau
+**Observation**: Hourly pulse. `v1_bonus_briggs` ("Why Did the Teetotal
+Captain Run? — Mary Celeste") = 319v / 0 likes, ~3 days post-publish.
+First Short ever to clear the ~300v plateau (vs v1 TWIST 274v, v2 TWIST
+298v). It's a QUESTION hook on cutter v2. State drift on the publish side
+again: it was still marked SCHEDULED (06-15) in shorts_state.json despite
+being live — oEmbed 200 confirmed PUBLIC, reconciled to PUBLIC +
+actual_published_at. v3_answer flat-ish: 106→110v (+4) over 5 days. All
+other assets blank in the scraper (the known anon-curl anti-scrape issue —
+still unported to camoufox-stealth).
+**Learning**:
+1. Question-hook + cutter-v2 + a *bonus* Short on an already-warm topic
+   (Mary Celeste) is the first combo to beat the plateau. The "warm topic"
+   variable (returning to v1 after 3 published Mary Celeste assets) may be
+   what pushed it over — worth isolating.
+2. 0 likes at 319v = the outro debate/like CTA still isn't converting
+   engagement even when reach is good. Reach ≠ engagement on this channel.
+3. Publish-side state drift remains a standing tax every cycle until
+   scheduled-Short auto-publish writes back to state. oEmbed remains the
+   cheap session-safe probe.
+**Action**:
+- No PULSE_ALERT (319v < 1000v Short threshold) — logged, no user ping.
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- Next pulse: watch whether v1_bonus_briggs keeps climbing toward 1000v
+  (would be the first genuine breakout) or plateaus near 320.
+- Standing TODO unchanged: port monitor_voidline.py to camoufox-stealth so
+  pulses get full view coverage instead of one parsed asset.
