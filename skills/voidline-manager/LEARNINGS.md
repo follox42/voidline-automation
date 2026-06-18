@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 22:05 — Pulse resumes after 5-day gap, v1 bonus Short live at 319v
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (routine was
+dormant ~5 days). Runner logged no PULSE_ALERT — no threshold crossed.
+Scraper coverage still sparse (most assets blank, the known anonymous-curl
+limitation). One new data point: `v1_bonus_briggs` (vZ68HlWfT-Q), scheduled
+for 06-15, is now live and registered **319v** on a single scrape — the
+first bonus Short to surface stats, and it edges past the ~300v narrative-
+Short plateau noted on v1 TWIST (274) / v2 TWIST (298). v2_twist sits at
+~299v, v1_twist ~281v.
+**Learning**:
+1. 319v is one sparse-scrape snapshot, NOT a confirmed delta — treat as
+   preliminary until a second clean snapshot corroborates. Worth watching
+   whether a question-hook bonus Short reliably clears 300.
+2. State drift persists: `v1_bonus_briggs` still reads SCHEDULED in
+   shorts_state.json though it has clearly published (319v). This is the
+   known publish-side drift — reconciliation belongs to daily-plan, left
+   untouched here to stay within pulse scope.
+3. Long gaps between pulses leave only a wide-interval delta pair, so the
+   first pulse after dormancy is effectively a baseline, not a trend read.
+**Action**:
+- No Studio investigation (0/5 HTTP actions used — no alert justified it).
+- Flag for next daily-plan: reconcile v1_bonus_briggs → PUBLIC +
+  actual_published_at, and confirm the 319v figure against Studio.
+- No notification sent (run healthy, no actionable threshold).
