@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 20:04 — v1 BONUS (Briggs) breaks the Short plateau at 319v
+**Observation**: HOURLY PULSE J+3 post-publish on v1_bonus_briggs
+(vZ68HlWfT-Q, "Why Did the Teetotal Captain Run? — Mary Celeste 1872",
+auto-published on schedule 06-15 12:00Z). Scraper read **319 views, 0 likes**
+— the single highest view count of any Short on the channel, edging past the
+prior ceiling (v1 TWIST 274 → v2 TWIST 298 → 319). oEmbed HTTP 200 confirms
+PUBLIC. Same pulse: v2_twist flat at 299v (plateaued), v3_twist 28v. No
+algorithmic suppression visible on the bonus Short — it published normally and
+kept climbing, unlike the v3 HOOK 0v suppression episode. State had it stale as
+SCHEDULED (the known auto-publish-without-state-update drift) — reconciled to
+PUBLIC + actual_published_at.
+**Learning**:
+1. The "bonus Short to break the 279v plateau" bet from Weekly Review #1 PAID
+   OFF — a question hook ("Why Did the Teetotal Captain Run?") on the already-
+   warm Mary Celeste topic crossed the ceiling. Confirms QUESTION-hook + proven
+   topic > new cold topic for plateau-breaking.
+2. Burst-suppression has NOT recurred under the new slow cadence — the bonus
+   Short published clean and grew. The cooldown/cadence discipline is holding.
+3. Likes lag views hard (319v / 0 likes) — engagement-card CTA (cutter v2 outro)
+   is not converting to likes yet; comments/likes remain the channel's weak axis.
+**Action**:
+- Keep mining warm topics with fresh QUESTION hooks (the 2nd Mary Celeste bonus,
+  and apply the pattern to Dyatlov/Tunguska back-catalogue) rather than always
+  chasing new cold topics.
+- 319 < 1000 absolute alert threshold and the delta was uncomputable (prior
+  snapshot blank), so the runner logged "no notable delta" — but this IS the
+  result the bonus-Short experiment was waiting for. TODO already on file: port
+  monitor to camoufox-stealth so blanks stop hiding real deltas.
+- v4 Roanoke still the next long-form; bonus-Short plateau-break de-risks the
+  Shorts engine while the Flow thumb blocker gets resolved.
