@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-18 08:01 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-18 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-18 08:03 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, Teetotal Captain / Mary Celeste) was stale SCHEDULED in state for 2026-06-15T12:00 but verified PUBLIC via YouTube oEmbed (HTTP 200, title+author=Voidline match). Scheduled Short auto-published on 06-15; YouTube does not write back to state. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Catalogue now 10/10 Shorts PUBLIC, 0 SCHEDULED."
+    },
+    {
+      "t": "2026-06-18 08:03 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "Not a publish day (Thu 06-18). Pipeline 100% DRY: every Short published, nothing scheduled past 06-15. Next 3 days: Fri 06-19 (Short slot) EMPTY, Sat 06-20 EMPTY, Sun 06-21 (long-form anchor + Short slot) EMPTY. The Sunday 06-21 weekly long-form is only 3 days out with nothing staged. v4 Roanoke long-form (planned ~20 juin) is STILL blocked on the Google Flow Nano Banana 2 thumbnail-generation blocker open since 06-13 (5 days, submit button stays disabled / UI redesign). Cadence will break this week unless v4 is unblocked+rendered+scheduled, or a fallback (v3 Tunguska AI base as placeholder thumb per LEARNINGS) is used to ship on time. ACTION NEEDED before Sun 06-21."
     }
   ]
 }
