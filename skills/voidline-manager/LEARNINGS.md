@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 18:05 — v1 bonus Short = new channel record (319v), but pipeline dry 5d
+**Observation**: First pulse since 2026-06-13 (5-day gap in stats_log —
+routines appear not to have run in between). The v1 Mary Celeste bonus
+Short `v1_bonus_briggs` ("Why Did the Teetotal Captain Run?", vZ68HlWfT-Q),
+scheduled 06-15, auto-published and now sits at **319v / 0 likes** — the
+channel's best-ever Short, beating v2 TWIST (298v) and v1 TWIST (274v),
+and the first Short to clear the 300v ceiling. Below the 1000v pulse-alert
+threshold so no PULSE_ALERT fired. Other Shorts scrape sparse/flat as usual
+(v3_answer 106→110, v2_twist/v1_answer parse intermittently); all long-forms
+still blank/0. No delta >50v on any asset present in both snapshots.
+**Learning**:
+1. The bonus-question-hook strategy WORKED as designed — it was produced
+   specifically to "percer le plafond 279v" (weekly review #1) and did:
+   +14% over the prior best with a pure QUESTION hook on the strongest
+   topic (Mary Celeste). Confirms again: QUESTION/CONTRADICTION hooks >
+   narrative, and the v1 topic has the most pull.
+2. State drift recurs exactly as the 06-13 daily-plan learning predicted:
+   the Short auto-published silently and stayed SCHEDULED in state until
+   this pulse reconciled it (→ PUBLIC, actual_published_at=06-15).
+3. v1_bonus_briggs was the LAST item in the catalogue — pipeline is now
+   FULLY dry. The 06-13 DRIFT_FLAG (empty queue) was never resolved; 5 days
+   later there is still nothing scheduled. Momentum (a record Short) with
+   nothing staged to capitalize on it.
+**Action**:
+- Reconciled shorts_state.json: v1_bonus_briggs SCHEDULED → PUBLIC.
+- No Studio HTTP actions spent this pulse (no alert threshold crossed).
+- ESCALATE to daily/weekly: produce + schedule the next Short batch NOW —
+  ride the v1 bonus signal (more Mary Celeste question-hook bonuses, or
+  ship v4 Roanoke). Cadence has been broken since ~06-14.
+- Verify whether the routines actually ran 06-14→06-17 (the 5-day stats
+  gap suggests they were paused/not firing).
