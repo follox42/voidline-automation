@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 14:05 — Pulse runs blind: false "no notable delta" while best Short emerges unseen
+**Observation**: 2nd-ever cloud HOURLY PULSE (prior was 06-13 14:02). Runner
+exited 0 and logged "no notable delta" — but every view count in stats_log.csv
+is BLANK. `monitor_voidline.py:25-34` still uses anonymous `curl -sL` + a
+`"viewCount"` regex (the scraper flagged broken on 06-13, never ported). In the
+cloud container YouTube serves a consent/anti-scrape page, so views come back
+empty. The alert loop skips any asset with empty views (cron_runner.py:137), so
+the pulse can NEVER fire an alert and emits a falsely-reassuring all-clear.
+Cross-checked the live authenticated `voidline` Studio session (alive, idle
+~59min, on the Shorts list). Real numbers: v1_bonus_briggs 319 (NEW best),
+v2_twist 299, v1_twist 281, v3_answer 110, v1_answer 87, v1_hook 64, v2_answer 34,
+v3_twist 28, v2_hook 6, v3_hook 1. Also caught: (a) state drift — v1_bonus_briggs
+was still SCHEDULED in shorts_state.json but is Publiée since 15 juin; (b) an
+untracked DRAFT in Studio ("9 Barrels Empty. The Mary Celeste Vapor Theory")
+that isn't in shorts_state.json.
+**Learning**:
+1. The pulse's spike-detection is non-functional and has been since cold-start.
+   "no notable delta" from null data is worse than no signal — it's a false
+   all-clear. The blind pulse completely missed the channel's best Short
+   (v1_bonus_briggs, 319v in ~3 days — the question-hook "Why Did the Teetotal
+   Captain Run?" beats the prior ceiling of v2_twist 299 / v1_twist 281).
+2. The fix is unblocked: the authenticated `voidline` camoufox session is alive
+   and parses the Studio Shorts list cleanly via extract_text. The monitor must
+   read views from that session, not anonymous curl.
+3. State drift on scheduled→published is a recurring KNOWN_BAD; daily reconcile
+   remains mandatory. A manually-created Studio draft also needs to flow into
+   shorts_state.json or it won't be tracked/scheduled.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in shorts_state.json.
+- TODO (dedicated task, out of pulse scope): port monitor_voidline.py to fetch
+  views via the camoufox-stealth `voidline` session (Studio list extract_text →
+  parse the Vues column per row) so pulse deltas become real.
+- FLAG for user/daily-plan: the "9 Barrels Empty" draft is untracked — decide
+  publish slot + add to state, or it stays invisible to the pipeline.
+- No hard-threshold alert this run (best Short 319v < 1000v gate).
