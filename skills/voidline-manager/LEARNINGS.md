@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 21:04 — Pulse resumes after 5-day gap: drift again + pipeline fully dry
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (routine was dormant
+~5 days). Runner logged "no notable delta" — but the 21:04 snapshot scraped
+ALL 13 assets BLANK (worse than 06-13's 2/12 coverage), so there is effectively
+no view data to compute a delta from. Anonymous curl is fully blocked now.
+Separately, `v1_bonus_briggs` (vZ68HlWfT-Q, scheduled 06-15 12:00) was still
+marked SCHEDULED in state despite oEmbed returning HTTP 200 → it auto-published
+3 days ago. It was the LAST queued item: catalogue is now 100% published, 0
+scheduled, and nothing has shipped since 06-15 (J+3 dry).
+**Learning**:
+1. The scheduled-Short → silent-publish → stale-state drift is now a CONFIRMED
+   RECURRING pattern (again here after the 06-13 batch reconcile). Pulse/daily
+   reconciliation via oEmbed is mandatory; the state file never self-heals.
+2. Anonymous-curl stat coverage has degraded from sparse to zero. The pulse is
+   blind to view deltas until `monitor_voidline.py` is ported to the
+   camoufox-stealth MCP (cookie_profile=voidline) or yt-dlp. Until then the
+   "no notable delta" line is uninformative, not reassuring.
+3. Cadence is broken: target 5 Shorts/wk, actual = 0 scheduled, last publish 06-15.
+   v4 Roanoke is still blocked on the Flow thumb (per 06-13 entry) so no new batch
+   has shipped.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+- No PULSE_ALERT this run (no thresholds crossable with blank data) — did NOT
+  spend Studio HTTP actions; staying within pulse limits.
+- ESCALATE next non-pulse routine: (a) port monitor to stealth-MCP so pulses
+  regain real numbers, (b) unblock v4 Roanoke thumb + schedule a fresh Short
+  batch — pipeline is dry and the rhythm is already broken.
