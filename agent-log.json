@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-18 15:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219215:05: no notable delta"
+    },
+    {
+      "t": "2026-06-18 15:05 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Runner was BLIND (curl scraper 0/13 blank \u2014 'no notable delta' is a false negative). Pulled voidline Studio directly: v1_bonus_briggs = 319v, the channel's #1 Short and the FIRST to break the ~300v narrative plateau (prev best v2_twist 299, v1_twist 281). It is a question hook ('Why Did the Teetotal Captain Run?') \u2014 validates the question-hook thesis past the ceiling. Backfilled stats_log.csv 06-18 snapshot with real counts so next pulse can delta. Used 3/5 Studio HTTP actions."
+    },
+    {
+      "t": "2026-06-18 15:05 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was SCHEDULED in state but is PUBLIC (published on schedule 06-15, 319v). Set status=PUBLIC + actual_published_at. Same KNOWN_BAD publish-side drift as 06-13."
+    },
+    {
+      "t": "2026-06-18 15:05 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "Untracked DRAFT in Studio not in shorts_state.json: '9 Barrels Empty \u2014 The Mary Celeste Vapor Theory' (2nd bonus Short). Needs scheduling to hold cadence \u2014 use the Briggs question-hook formula. Also: v2_hook still the old narrative cut at 6v (planned question-hook re-render never executed). Also: hourly pulse has a 5-day gap (06-13\u219206-18) \u2014 schedule not firing hourly."
     }
   ]
 }

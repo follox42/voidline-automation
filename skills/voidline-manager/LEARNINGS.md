@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 15:05 — v1 bonus Briggs BREAKS the 300v plateau (319v, new #1)
+**Observation**: Hourly pulse — the curl scraper returned blank views for all
+13 assets (0/13 coverage, worse than the 2/12 of 06-13), so the runner logged
+"no notable delta" by construction (delta logic skips blank rows). Pulled the
+`voidline` Studio Shorts list directly to get truth. Real counts:
+v1_bonus_briggs **319v** (question hook, "Why Did the Teetotal Captain Run?"),
+v2_twist 299, v1_twist 281, v3_answer 110 (was 106 — flat), v1_answer 87,
+v1_hook 64, v2_answer 34, v3_twist 28, v2_hook 6 (still the old narrative cut),
+v3_hook 1. Briggs was marked SCHEDULED in state but is PUBLIC (published on
+schedule 06-15) → reconciled to PUBLIC. Also found an untracked DRAFT:
+"9 Barrels Empty — The Mary Celeste Vapor Theory" (2nd bonus, not in state).
+**Learning**:
+1. **The ~300v narrative plateau is beatable with a question hook.** Briggs
+   (319v in 3 days) is the first Short to cross the ceiling that v1_twist (281),
+   v2_twist (299) all stalled under. Confirms the journal's question-hook thesis
+   AND that the right hook compounds past the plateau, not just to it.
+2. The curl scraper is now effectively dead for the cloud container (0/13). The
+   pulse is blind without a Studio pull — "no notable delta" is a false negative,
+   not a healthy signal. Porting monitor_voidline.py to camoufox-stealth is no
+   longer a nice-to-have; it's required for the pulse to mean anything.
+3. v2_hook is STILL the narrative cut at 6v — the planned delete + question-hook
+   re-upload (06-07 / 06-13 action) was never executed.
+4. The hourly pulse has a 5-day gap (06-13 14:02 → 06-18 15:05): the schedule
+   has not been firing hourly.
+**Action**:
+- Reconciled state: v1_bonus_briggs SCHEDULED→PUBLIC. (KNOWN_BAD publish-side
+  drift again — schedules auto-publish, state never self-updates.)
+- HIGH-VALUE: the Briggs hook formula ("Why did [respectable person] do
+  [irrational thing]?") broke the plateau — make it the template for v4 Roanoke
+  Shorts and the staged "Vapor Theory" draft. Schedule that draft to keep cadence.
+- TODO (out of pulse budget): port monitor to camoufox-stealth so pulses see
+  real numbers; finally re-render v2_hook as a question hook.
