@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-18 16:06 — v1 bonus Briggs Short BREAKS the ~300v plateau
+**Observation**: HOURLY PULSE scrape: `v1_bonus_briggs` ("Why Did the
+Teetotal Captain Run? — Mary Celeste 1872") sits at **319 views** ~3 days
+after its 06-15 auto-publish — already the channel's #1 Short, edging past
+v2_twist (299, plateaued) and v1_twist (~274). oEmbed confirms PUBLIC (200).
+The state file still had it as SCHEDULED → reconciled to PUBLIC +
+actual_published_at=2026-06-15T12:00:00Z (same KNOWN_BAD scheduled-publish
+drift caught in the 06-13 daily-plan; YouTube never updates our state file).
+No PULSE_ALERT fired — 319v is below the >1000v short threshold and the 5-day
+gap to the prior (mostly-blank) baseline meant no >50v delta was computable —
+so this was caught from the raw scrape, not the threshold logic.
+**Learning**:
+1. The question-hook bonus Short was the explicit experiment from the 06-07
+   weekly review ("percer le plafond 279v" with v1 Mary Celeste question
+   hooks). It worked: a QUESTION hook on an already-validated topic broke the
+   ~300v ceiling that every prior narrative/single-topic Short plateaued at.
+2. Confirms the cumulative thesis: QUESTION/CONTRADICTION hook (06-03,
+   06-05) + cutter v2 + reusing a topic that already has a proven Short
+   compounds. Mary Celeste now has 3 Shorts; the bonus outperforms the
+   originals.
+3. Threshold-only alerting has a blind spot: a genuine best-ever result
+   slipped under both the >1000v gate and the delta gate (stale/blank
+   baseline). The pulse needs to also flag "new channel-max" regardless of
+   absolute threshold.
+**Action**:
+- Reconciled state (v1_bonus_briggs → PUBLIC). Pipeline still DRY beyond this
+  Short — no Short scheduled after 06-15, breaking the cadence (flagged
+  06-13). Producing the next batch is the priority lever.
+- Lean into the winning recipe for the next batch: QUESTION-hook Shorts on
+  topics that already have a proven Short, not only net-new topics.
+- TODO for monitor/pulse: add a "channel-max beaten" signal so sub-1000v
+  breakouts don't slip past the alert (separate from this pulse's HTTP budget).
+- Did NOT pull Studio analytics this pulse: no threshold crossed, staying
+  within the 5-action HTTP limit. If v1_bonus_briggs keeps climbing toward
+  1000v, next pulse should pull retention + traffic sources via camoufox.
