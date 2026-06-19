@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 11:04 — Pulse resumes after 6-day gap; channel has stalled
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 6-day dormant
+gap (routine was not firing hourly). No view spike: scraper parsed v2_answer
+(34v) + v3_twist (28v) this run, both far under the 1000v Short threshold;
+all long-forms still blank. No PULSE_ALERT. BUT the operational picture is the
+real signal:
+1. **Drift reconciled**: v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) was
+   still SCHEDULED in state but is live (oEmbed HTTP 200). Same silent
+   auto-publish pattern — set status=PUBLIC + actual_published_at=06-15.
+2. **Channel gone quiet**: last upload was briggs on 06-15. Nothing published
+   or scheduled in the 4 days since. Cadence (>=2 Shorts/wk) is broken.
+3. **v4 Roanoke still blocked**: no production progress since the 06-13 Flow
+   thumb-gen blocker (submit button disabled, UI redesign). v4 long-form was
+   targeted to ship ~06-20 (tomorrow) — at risk.
+**Learning**:
+- The pulse's view-spike thresholds are the wrong alarm during a *production*
+  stall — there's nothing new live to spike. The leading indicator of trouble
+  here is an empty pipeline + a blocked asset, not a delta.
+- Scraper coverage is still sparse and non-overlapping run-to-run (different
+  2 assets parse each time), so the runner's "delta" is near-meaningless until
+  monitor_voidline.py is ported to camoufox-stealth/yt-dlp (still TODO).
+**Action**:
+- Reconciled briggs in shorts_state.json (committed this run).
+- ESCALATE to user: v4 Roanoke Flow blocker is now the critical-path item —
+  it has held since 06-13 and the channel has had zero new content for 4 days.
+  Either unblock Flow (fresh-session re-inspect of the new submit flow) or ship
+  v4 with the v3-base placeholder thumb. Pinged via routine notification.
