@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 06:05 — v1 bonus Briggs Short = new channel record (319v) + publish drift
+**Observation**: HOURLY PULSE first full-coverage scrape since 06-13.
+v1_bonus_briggs ("Why Did the Teetotal Captain Run? — Mary Celeste 1872",
+vZ68HlWfT-Q) reads **319 views**, the highest of any Short to date — beats
+v1_twist (281, was 274) and finally crosses the ~300v narrative plateau noted
+on 2026-06-02. It is a QUESTION hook, re-confirming the 2026-06-05 learning that
+question/contradiction hooks outperform narrative. State drift caught: the Short
+was still SCHEDULED (publish_at 06-15) in shorts_state.json despite being live
+since 06-15 — verified PUBLIC via oEmbed (HTTP 200). Runner logged "no notable
+delta" (no asset crossed Short>1000v / long>100v / delta>50v; most prior 06-13
+snapshots were blank so no comparable baseline).
+**Learning**:
+1. The question-hook formula keeps winning: the only Short to break the 300v
+   ceiling is a pure question hook (v1 bonus), no narrative ceiling.
+2. Same publish-side drift as the 2026-06-13 daily reconciliation — scheduled
+   Shorts auto-publish silently and the state file is never updated by YouTube.
+   This recurs every batch until schedule_shorts.py writes back
+   actual_published_at, or every routine reconciles. oEmbed 200 stays the cheap,
+   session-safe probe.
+3. PULSE delta is blind across a 6-day gap when the prior snapshot was mostly
+   blank (anon-curl scrape gaps) — "no notable delta" can hide a real climb
+   (v1_bonus 0→319). Absolute thresholds matter more than deltas until the
+   monitor pulls authenticated stats.
+**Action**:
+- Reconciled v1_bonus_briggs → status=PUBLIC, actual_published_at=2026-06-15.
+- No Studio deep-dive triggered (under threshold, stayed within HTTP limits).
+- Still TODO (carried from 06-13): port monitor_voidline.py to camoufox-stealth
+  authenticated stats so blanks/deltas stop hiding real movement; add publish
+  write-back to schedule_shorts.py.
