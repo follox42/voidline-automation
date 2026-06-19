@@ -231,3 +231,44 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 21:05 — Bonus Short is the channel's first traction signal (319v)
+**Observation**: Hourly pulse scraped v1_bonus_briggs (vZ68HlWfT-Q, "Why Did the
+Teetotal Captain Run? — Mary Celeste") at **319 views** at J+4 (published
+2026-06-15). oEmbed 200 confirms PUBLIC. This is the channel's best-performing
+asset by ~3x — the prior all-time best was v3_answer at 106v (which has since
+stopped parsing). For a channel that spent weeks flat at <110v under suspected
+algorithmic suppression, 319v on a single Short is the first real positive signal.
+Two issues alongside it:
+1. **State drift (repeat of 06-13 pattern)**: v1_bonus_briggs was still marked
+   SCHEDULED in shorts_state.json despite its 06-15 scheduled time being 4 days
+   past. Scheduled Shorts auto-publish silently and never write back to state.
+   Reconciled → status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+2. **Pulse delta logic is fragile when run twice in one session**: the runner
+   compares timestamps[-2] vs [-1]. Because pulse ran twice this session, those
+   were two snapshots 20s apart (21:04:30 vs 21:04:50), so it logged "no notable
+   delta" and missed the real 06-13→06-19 story. The flaky anonymous-curl scraper
+   compounds this: no single asset has a numeric view value in BOTH the 06-13 and
+   06-19 snapshots (06-13 parsed v2_hook/v3_answer; 06-19 parsed
+   v3_long/v3_twist/v1_bonus), so a clean same-asset delta is uncomputable.
+**Learning**:
+1. The bonus Short (a quieter, single-video CTA-style hook, NOT part of the
+   3-act HOOK/TWIST/ANSWER burst) is outperforming the whole burst catalogue.
+   This is consistent with the 06-13 KNOWN_BAD finding that burst mode triggered
+   suppression — the standalone bonus may have escaped it. Worth weighting future
+   cadence toward standalone Shorts over multi-part bursts.
+2. 319v is below the formal >1000v Studio-investigation trigger, so no Studio
+   HTTP actions were spent this pulse (staying within the 5-action cap). If it
+   crosses 1000v, the next pulse should pull Studio retention + traffic sources
+   to learn WHY it broke out (Shorts feed vs browse).
+3. The pulse delta needs to skip intra-session duplicate snapshots — compare
+   against the last snapshot from a *prior day/run*, not the immediately previous
+   row, and ignore blank-view rows on both sides.
+**Action**:
+- Reconciled v1_bonus_briggs state drift (SCHEDULED → PUBLIC).
+- FLAG for daily-plan / next pulse: monitor v1_bonus_briggs trajectory — if it
+  keeps climbing past 1000v, pull Studio analytics and consider it the template
+  for v4 Roanoke's Shorts (standalone bonus-style over a 3-act burst).
+- TODO (code): fix run_pulse() to pick the last snapshot from a distinct prior
+  run and skip blank views; port monitor to camoufox-stealth so coverage isn't
+  a coin flip each run.
