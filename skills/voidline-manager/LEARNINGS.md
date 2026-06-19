@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 23:06 — Pulse after 6-day gap: pipeline starved + 2-week flatline
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (6-day gap — the
+routine was not firing in between). No PULSE_ALERT: no threshold crossed.
+Best signal v2_twist still ~299v (was 298v on 06-05 → +1v in 14 days, fully
+plateaued). v1_bonus_briggs (scheduled 06-15) auto-published silently — state
+was stale SCHEDULED, reconciled to PUBLIC via oEmbed 200 (same drift pattern as
+06-13). Scraper still intermittently blind: each monitor pass returns a
+different random subset of views (run A: v2_twist 299 / v1_long 18; run B:
+v1_hook 64 / v1_answer 87 / v2_answer 34; ~70% blank), confirming the
+unauthenticated anti-scrape issue persists since 06-13.
+**Learning**:
+1. NOTHING new has shipped since v1_bonus_briggs on 06-15 (J+4 dry). The v4
+   Roanoke batch flagged on 06-13 (DRIFT_FLAG) was blocked on Google Flow
+   (submit button disabled / UI redesign) and STILL has not shipped 6 days
+   later. The content pipeline has effectively stalled — this is now the #1
+   blocker, not an algorithm problem.
+2. The channel is genuinely flat (no Short past ~300, long-forms <20v), which is
+   the *expected* signature of pure-organic cold-start at J+23 per the 06-13
+   strategy note — so flatness alone is not the alarm. The alarm is supply-side:
+   no new content + an unresolved tooling blocker.
+3. Pulse data remains low-trust until monitor_voidline.py fetches via the
+   camoufox-stealth voidline session (still on the TODO from 06-13).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- NO Studio HTTP actions / NO Flow generation this pulse (no alert → stay within
+  rails; Flow already blocked, retrying it here would just burn the budget).
+- Escalated to user via notification: v4 Flow blocker needs a human decision
+  (fix the new Flow submit selector, or ship with the v3 placeholder thumb per
+  the 06-13 backup path) to unstall the pipeline.
