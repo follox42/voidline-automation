@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 22:05 — v1 bonus Briggs breaks the 300v plateau + state drift
+**Observation**: HOURLY PULSE. Two findings the runner's delta logic missed
+(scraper coverage is sparse — most snapshot cells came back blank, so
+consecutive-snapshot deltas rarely computed and it logged "no notable delta"):
+1. v1_bonus_briggs (vZ68HlWfT-Q, "Why Did the Teetotal Captain Run?",
+   scheduled 06-15) is at **319v** — the channel's best-performing Short ever,
+   finally clearing the ~300v ceiling that v2_twist (299v) and v1_twist (274v)
+   hit. It was still marked SCHEDULED in shorts_state.json; verified PUBLIC via
+   oEmbed (HTTP 200) and reconciled → status=PUBLIC + actual_published_at.
+2. v3 Tunguska long-form (FacPhS3hNjU) is at **36v** (oEmbed 200, PUBLIC).
+   Prior long-forms sat at 0-2v under suppression — first long-form to show
+   real organic life.
+**Learning**:
+1. The plateau-breaker is a QUESTION hook on the ALREADY-validated Mary Celeste
+   topic (v1's TWIST plateaued at 274 with a narrative hook; the bonus reframed
+   the same iconic detail — teetotal captain abandoning ship — as a question and
+   added +45v of headroom). Reinforces 2026-06-05: question/contradiction hooks
+   win, and revisiting a proven topic with a sharper hook beats chasing new ones.
+2. Long-form suppression appears to be EASING (36v vs the prior 0-2v floor) —
+   consistent with the cooldown-lift timeline. Watch whether v3 long crosses 100v.
+3. Recurring KNOWN_BAD reconfirmed: scheduled Shorts auto-publish silently and
+   the state file is never updated by YouTube — reconciliation each run is
+   mandatory, and the pulse delta logic is blind to it because the scraper is
+   too flaky to give clean consecutive snapshots.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- Notify Nolann: plateau broken + long-form stirring.
+- Carry-over: port scraper to camoufox-stealth so pulse deltas fire; pipeline
+  dry past 06-15 — v4 Roanoke batch still unscheduled (Flow thumb blocker).
