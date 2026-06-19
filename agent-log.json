@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-19 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-19 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-19 08:03 UTC",
+      "action": "RECONCILE",
+      "detail": "Stale SCHEDULED corrected: v1_bonus_briggs (vZ68HlWfT-Q, 'Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872') was scheduled 2026-06-15T12:00Z and still marked SCHEDULED in shorts_state, but verified PUBLIC via YouTube oEmbed (HTTP 200, author Voidline). Auto-published silently 06-15 \u2014 same stale-state pattern as 06-13 reconcile. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z."
+    },
+    {
+      "t": "2026-06-19 08:03 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "Today 2026-06-19 (Fri) NOT a publish day \u2014 0 Shorts scheduled today. Next 3 days check: Sat 06-20 (none), Sun 06-21 (LONG-FORM + Reddit-seed day per Sunday-17:00 cadence), Mon 06-22 (v4_hook Short per SHORTS_PLAN). PIPELINE DRY for all three: v4 Roanoke long-form is NOT rendered (no runs/v4-roanoke/render/), NOT scheduled, NOT in any state \u2014 stuck at the 06-13 Flow thumb blocker (6 days). v4_hook/v4_answer Shorts not rendered or staged either. Last actual publish was 06-15 (v1_bonus_briggs); if nothing ships by ~06-22 the channel crosses a >7-day gap \u2192 KNOWN_BAD 'cadence <1 video/week'. Also: SHORTS_PLAN labels 06-22 as 'long-form ship day' which conflicts with the Sunday-17:00 cadence (Sunday is 06-21) \u2014 internal calendar inconsistency to resolve. No Reddit seed drafted this run (step 4 only fires on a long-form publish day; today is Friday). ACTION NEEDED before Sun 06-21: unblock Flow thumb + render + schedule v4, or accept the slip and re-date the calendar."
     }
   ]
 }
