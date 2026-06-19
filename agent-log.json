@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-19 19:04 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219219:04 (6-day gap, first pulse since 06-13): no PULSE_ALERT. Scraper returned BLANK views for all 13 assets \u2014 anonymous-curl anti-scrape now 100% (vs 2/12 on 06-13). Monitoring effectively blind until monitor ports to camoufox-stealth."
+    },
+    {
+      "t": "2026-06-19 19:04 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) was stale SCHEDULED in state \u2014 verified PUBLIC via oEmbed HTTP 200. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z."
     }
   ]
 }

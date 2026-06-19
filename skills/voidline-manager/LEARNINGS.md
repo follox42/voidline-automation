@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 19:04 — Pulse blind spot: scraper now 100% blank + 6-day cadence gap
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 6-day gap for a
+routine that is nominally hourly (only 2 pulse runs exist total). This run the
+anonymous-curl scraper returned BLANK views for ALL 13 assets (0/13), worse than
+06-13's 2/12 (v2_hook 4v, v3_answer 106v parsed then). No PULSE_ALERT could fire
+because there is no data to threshold against. Separately, v1_bonus_briggs
+(vZ68HlWfT-Q, scheduled 06-15) had auto-published but was still stale SCHEDULED
+in state — same silent-publish drift pattern as 06-13; reconciled to PUBLIC via
+oEmbed 200.
+**Learning**:
+1. The pulse is effectively BLIND on view stats. Anonymous curl to youtube.com
+   from the cloud container now returns zero parseable viewCounts — YouTube is
+   serving consent/anti-scrape pages consistently. The "port monitor to
+   camoufox-stealth" TODO from 06-13 is no longer optional; it is the only way
+   pulse alerts will ever fire again.
+2. A 6-day gap between "hourly" pulses means either the routine schedule isn't
+   firing or it was dormant since the 06-13 reactivation. Either way the channel
+   has been unmonitored for ~6 days. The pulse cadence itself needs verifying in
+   the routine config, not just the script.
+3. oEmbed 200 remains the reliable session-safe public probe — it caught the
+   v1_bonus_briggs publish that the blind view-scraper missed. Daily reconcile
+   stays mandatory regardless of scraper health.
+**Action**:
+- Did NOT spend Studio HTTP actions this pulse — with views blank there is no
+  spike to investigate, so a Studio analytics pull would be wasted budget.
+- TODO (next non-pulse run, within Studio limits): port monitor_voidline.py to
+  fetch via camoufox-stealth (cookie_profile=voidline) so view stats populate.
+- FLAG for user: verify the Hourly Pulse routine is actually scheduled/firing —
+  6 days dark is not "hourly".
