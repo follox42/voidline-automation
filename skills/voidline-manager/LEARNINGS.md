@@ -231,3 +231,27 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 07:05 — Pulse scrape coverage hit ZERO + briggs drift reconciled
+**Observation**: Hourly pulse ran clean (logged "Δ 14:02→07:04: no notable
+delta", no PULSE_ALERT), but the anonymous-curl scraper returned blank views
+for ALL 13 assets this run — a full blackout vs 2/12 parsed on the 06-13 pulse.
+Even v3_answer (106v on 06-13) came back blank. Separately, v1_bonus_briggs
+was still marked SCHEDULED for 06-15 12:00 UTC — 4 days stale; oEmbed probe
+returned 200 (PUBLIC), so reconciled status→PUBLIC + actual_published_at.
+**Learning**:
+1. The flaky-curl issue (flagged 06-13 14:02) has progressed from sparse to
+   TOTAL — the pulse is now effectively BLIND to view data. The PULSE_ALERT
+   threshold logic (>1000v short / >100v long / >50v delta) cannot fire on
+   blank data, so the hourly alarm is silently disarmed until the monitor is
+   ported to camoufox-stealth (cookie_profile=voidline) or yt-dlp.
+2. The silent-auto-publish drift recurred exactly as predicted — scheduled
+   Shorts go live without the state file updating. oEmbed 200 remains the
+   cheap, session-safe confirmation (not a Studio HTTP action).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- ESCALATED priority: porting monitor_voidline.py to fetch via camoufox-stealth
+  is now the blocking item for the pulse to have any value — flat-blind
+  alerting is worse than no pulse. Next daily-plan should own this.
+- No notification sent: no alert threshold crossed and both findings are known
+  documented issues, not new failures.
