@@ -231,3 +231,38 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 20:05 — v3 long-form reads 35v: first non-zero, suppression may be lifting
+**Observation**: HOURLY PULSE (first since 06-13). Scraper coverage still
+sparse (10/12 assets blank — anonymous-curl anti-scrape), but the numbers
+that parsed are the cleanest signal in days:
+- v3_long_Tunguska (FacPhS3hNjU): **35v** — FIRST non-zero reading on this
+  asset. Every prior Studio-backed check (06-07 → 06-13) had it at 0v under
+  documented algorithmic suppression.
+- v1_answer Short: 87v / 4 likes (was blank before)
+- v2_answer Short: 34v / 0
+- v2_twist Short: 299v / 3 (flat vs the 298v plateau — confirms ~300 Short ceiling)
+- v3_twist Short: 28v / 1
+No PULSE_ALERT: 35v is below the 100v long-form alert threshold and 299v is
+below the 1000v Short threshold, so the runner correctly logged "no notable
+delta" and did not auto-escalate.
+**Learning**:
+1. v3 long-form crossing 0→35 is the first organic life on ANY long-form
+   since the suppression. It's below the alert threshold and comes from the
+   flaky scraper (not Studio), so treat as *unconfirmed signal*, not proof.
+   But it's exactly the inflection the strategy has been waiting on ("if still
+   0v at J+10 → downscale").
+2. v2_twist flat at 299v re-confirms the ~300v Short ceiling without comment
+   engagement — consistent with Weekly Review #1.
+3. The PULSE thresholds (Short>1000 / long>100 / Δ>50) are deliberately above
+   this reading, which is why no Studio actions were spent this run — correct
+   behaviour for a sparse, sub-threshold scraper blip.
+**Action**:
+- NEXT pulse / daily run: confirm the v3 long-form number via Studio analytics
+  (camoufox-stealth, cookie_profile=voidline) — pull impressions + traffic
+  sources to see whether the suppression genuinely lifted or this is residual
+  noise. Did NOT spend Studio actions this pulse (sub-threshold + flaky source).
+- If v3 long confirms >0 organic with real impressions, the v4 Roanoke ship
+  (~20 juin) lands into a recovering, not suppressed, algo window — green-light.
+- Scraper coverage still the bottleneck: porting monitor_voidline.py to fetch
+  via camoufox-stealth remains the open TODO (flagged 06-13).
