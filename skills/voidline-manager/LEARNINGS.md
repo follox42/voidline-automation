@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 16:04 — Pulse gap (6 days) + monitor fully blind + recurring publish drift
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a **6-day gap**, not
+hourly. The routine has not been firing on schedule. This run's scrape returned
+**blank views for all 13 assets** (0/13 parsed), down from 2/13 last run — the
+anonymous-curl monitor is now fully blind, so the runner logged "no notable delta"
+on *zero data* (false-negative: looks healthy, is actually blind). Separately,
+v1_bonus_briggs (vZ68HlWfT-Q), scheduled 06-15 12:00 UTC, was still marked
+SCHEDULED in state 4 days later — oEmbed HTTP 200 confirms it published on time.
+Reconciled → status=PUBLIC + actual_published_at.
+**Learning**:
+1. "No notable delta" from the pulse runner is meaningless when stat coverage is
+   0/13 — the runner must distinguish "no change" from "no data". A pulse that
+   parses zero views should log a MONITOR_BLIND alert, not a quiet null delta.
+2. The publish-drift pattern is now confirmed recurring (06-13 caught 5, 06-19
+   caught 1). Scheduled Shorts publish silently; oEmbed reconciliation must run
+   every pulse, not just daily. It's the cheapest reliable PUBLIC/SCHEDULED probe.
+3. The 6-day hourly-pulse gap means trigger scheduling is unreliable — verify the
+   Cloud Routine cron is actually active; pulses are not landing hourly.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- TODO (out of this pulse's Studio-action budget; no PULSE_ALERT fired so no Studio
+  investigation triggered): port monitor_voidline.py to pull views via
+  camoufox-stealth (cookie_profile=voidline) — anonymous curl is permanently
+  unreliable in-container and the channel can no longer be tracked without it.
+- TODO: make cron_runner emit a MONITOR_BLIND signal when 0 assets parse, so a
+  blind run notifies instead of silently reporting "no delta".
+- Pipeline: v1_bonus_briggs (06-15) was the last scheduled Short; nothing staged
+  behind it. Queue is dry again — v4 Roanoke batch still needs render+schedule.
