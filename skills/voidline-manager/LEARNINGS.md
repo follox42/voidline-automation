@@ -231,3 +231,43 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 14:05 — v1_bonus_briggs breaks the 300v ceiling (new channel record)
+**Observation**: First HOURLY PULSE since 06-13 (the "hourly" cadence has NOT
+been firing — 6-day gap). The runner logged "no notable delta" because its
+anonymous-curl scraper returned blank for 13/13 assets this run (worse than
+06-13's 2/13). Pulled REAL stats from the live authenticated `voidline` Studio
+session instead (cookie_profile=voidline, alive, idle ~23h, was parked on the
+bonus_briggs analytics page). Full content-table snapshot of all 11 Shorts:
+- **v1_bonus_briggs (vZ68HlWfT-Q) = 319 views in 4 days** — published 06-15
+  (was still mislabeled SCHEDULED in state; reconciled → PUBLIC). NEW RECORD.
+- v2_twist 299 (plateaued, +1 since 06-05), v1_twist 281 (+7), v3_answer 110
+  (+4 in 12d, dead-flat), v1_answer 87, v1_hook 64, v2_answer 34, v3_twist 28,
+  v2_hook 6, v3_hook 1 (suppressed). Total published Shorts ≈ 1,229v.
+- A DRAFT Short exists ("9 Barrels Empty — Mary Celeste Vapor Theory") staged
+  but never scheduled — 1 in the chamber, not in shorts_state.json.
+**Learning**:
+1. The QUESTION-HOOK + cutter-v2 formula is re-validated at scale: bonus_briggs
+   ("Why Did the Teetotal Captain Run?") is the FIRST asset to cross the
+   documented ~300v narrative ceiling (prev best: v1_twist 281, v2_twist 299).
+   Question hook + iconic-contradiction detail (teetotaller captain runs) +
+   debate-outro is the repeatable winner. The v3 batch (1v/28v) confirms
+   suppression is video-specific, not channel-wide — strong assets still surface.
+2. The hourly pulse's spike detector is BLIND in the cloud: anonymous curl to
+   YouTube returns consent pages, so PULSE_ALERT never fires even on a real
+   0→319 spike (>50v threshold). The fix (port monitor_voidline.py to pull via
+   camoufox-stealth voidline session) is now CRITICAL, not a TODO — the routine
+   cannot do its one job without it. The live Studio session IS readable for the
+   content-table view counts via extract_text; deeper analytics tiles
+   (impressions/CTR/traffic-source) are canvas/shadow-DOM and resist text
+   scraping — screenshot lands on the MCP host, not readable from the routine.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC (actual_published_at 06-15);
+  backfilled real view counts into stats_log.csv 06-19 snapshot.
+- NEXT BATCH should be more Mary-Celeste-style question hooks on the
+  teetotaller/contradiction angle — that's the proven vein. Schedule the
+  staged "9 Barrels Vapor Theory" draft to keep cadence (pipeline is otherwise
+  dry past it).
+- PRIORITY FIX: monitor_voidline.py → camoufox-stealth content-table scrape so
+  pulses see real numbers. Also: the hourly routine itself isn't running hourly
+  — verify the schedule in claude.ai/code/routines.

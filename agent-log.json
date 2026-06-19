@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-19 14:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219214:04: no notable delta"
+    },
+    {
+      "t": "2026-06-19 14:08 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Runner 'no notable delta' was a FALSE NEGATIVE \u2014 anonymous-curl scraper blank for 13/13 assets. Pulled real stats from live voidline Studio session (cookie alive, idle ~23h). v1_bonus_briggs (vZ68HlWfT-Q) = 319 views in 4 days = NEW CHANNEL RECORD, first asset to break the ~300v ceiling (prev best v2_twist 299, v1_twist 281). 0\u2192319 qualifies as >50v delta alert. Question-hook + cutter-v2 formula re-validated. v3 batch still suppressed (hook 1v / twist 28v). Total published Shorts ~1,229v."
+    },
+    {
+      "t": "2026-06-19 14:08 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs was stale SCHEDULED in state but verified PUBLIC (06-15, 319v) via Studio content table. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Backfilled real view counts into stats_log.csv 06-19 snapshot (was blank from scraper)."
+    },
+    {
+      "t": "2026-06-19 14:08 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "(1) Hourly pulse NOT firing hourly \u2014 6-day gap since 06-13. (2) Pulse spike detector blind in cloud (anon curl \u2192 consent page); CRITICAL to port monitor to camoufox-stealth. (3) One DRAFT Short staged but unscheduled ('9 Barrels Vapor Theory'), not in state \u2014 pipeline dry past it."
     }
   ]
 }
