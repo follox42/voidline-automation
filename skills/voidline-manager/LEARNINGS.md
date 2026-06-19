@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 18:05 — v1 bonus Short BREAKS the plateau (319v) + pulse runner blind spot
+**Observation**: First pulse in 6 days. The runner logged "no notable delta"
+but that was a false negative — it compares only the two most recent CSV
+timestamps, which this run were 18s apart (two monitor passes) and both
+crippled by the flaky scraper's blank views. Comparing against the 06-13
+baseline instead, the real story: **v1_bonus_briggs ("Why Did the Teetotal
+Captain Run?" — Mary Celeste question hook) is PUBLIC at 319 views** — the
+first Short to cross 300v and clear the documented ~279–298v narrative/question
+ceiling (v1 TWIST 274/279, v2 TWIST 298). It was the bonus explicitly produced
+to "percer le plafond 279v" (weekly review #1) — it worked. Also: long-forms
+showing first organic life — v3 Tunguska long-form at 35v (was 0 under
+suppression) and v1 Mary Celeste long-form at 18v (was 2v on 05-31).
+State drift again: v1_bonus_briggs was still SCHEDULED(06-15) in
+shorts_state.json despite being live (oEmbed HTTP 200) — reconciled to PUBLIC.
+**Learning**:
+1. The pulse runner's delta logic is structurally blind: it diffs only
+   `timestamps[-2]` vs `timestamps[-1]`. When two monitor passes land in the
+   same pulse (seconds apart) the "previous" snapshot is not the prior pulse,
+   and the flaky-blank scraper means most assets fail the `both-non-blank`
+   guard. Net: real multi-day gains never trip the >=50v alert. The runner
+   needs to diff against the last DISTINCT prior pulse (or a rolling max per
+   asset), not the immediately preceding row.
+2. The QUESTION-hook bonus strategy is validated a second time: v1_bonus_briggs
+   at 319v confirms question/contradiction hooks beat the narrative ceiling.
+   This is now two data points (v2 TWIST 298 + v1 bonus 319) — the format is
+   the channel's growth engine.
+3. Studio read-only works on the voidline session even when `auth_check`
+   reports "dead" (that probe is posting-specific). BUT the reach/traffic
+   metric cards render in shadow DOM/canvas behind a modal overlay — plain
+   `extract_text` only returns page chrome. To get impressions/CTR/traffic
+   sources next time, dismiss the overlay then read the cards via shadow_find
+   or a screenshot, not body-text extraction.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in shorts_state.json.
+- TODO (code fix, not this pulse): patch cron_runner.run_pulse to compare the
+  latest snapshot against the last DISTINCT prior pulse and/or a per-asset
+  rolling max, so multi-day gains actually fire PULSE_ALERT.
+- Did NOT extract exact impressions/CTR this run (cards not text-extractable +
+  posting-auth degraded) — logged cleanly, stayed within Studio action budget.
+- Next pulse: confirm long-form suppression is genuinely lifting (v3 Tunguska
+  35v → trending up?), and capture v1_bonus_briggs traffic sources via screenshot.

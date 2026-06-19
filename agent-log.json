@@ -19,6 +19,31 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-19 18:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219218:04: no notable delta"
+    },
+    {
+      "t": "2026-06-19 18:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 18:04\u219218:05: no notable delta"
+    },
+    {
+      "t": "2026-06-19 18:08 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Runner logged 'no notable delta' (false negative: diffs only the two most recent snapshots, 18s apart, both blank-crippled). Manual baseline diff (vs 06-13): v1_bonus_briggs PUBLIC at 319v \u2014 first Short past 300v, clears the ~279-298v narrative/question ceiling (the bonus built to break the plateau worked). Long-forms waking: v3_Tunguska 35v (was 0/suppressed), v1_MaryCeleste 18v (was 2v). All confirmed PUBLIC via oEmbed 200."
+    },
+    {
+      "t": "2026-06-19 18:08 UTC",
+      "action": "RECONCILE",
+      "detail": "State drift: v1_bonus_briggs(vZ68HlWfT-Q) was SCHEDULED(06-15) in shorts_state.json but live (oEmbed 200, 319v). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z."
+    },
+    {
+      "t": "2026-06-19 18:08 UTC",
+      "action": "STUDIO_NOTE",
+      "detail": "voidline session alive, 136 cookies restored, no login wall/CF. auth_check reports 'dead' but that is posting-specific; read-only renders fine. Reach metric cards are shadow-DOM/canvas behind a modal overlay so extract_text only returned page chrome \u2014 impressions/CTR/traffic NOT captured this run. Studio actions used: 1 navigate + 1 wait + 2 extracts (within 5-action budget)."
     }
   ]
 }
