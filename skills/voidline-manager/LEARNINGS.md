@@ -231,3 +231,27 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-19 12:06 — Pulse: pipeline went fully DRY, channel silent 4 days
+**Observation**: Hourly pulse — no view PULSE_ALERT (v2_twist flat 299, v1_hook
+64, v2_answer 34, all under thresholds; v3_answer blank = scraper miss not a
+drop). BUT: v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15 12:00) was still
+marked SCHEDULED in state though oEmbed returns 200 — it auto-published 4 days
+ago. It was the LAST queued item: nothing has published or been scheduled since
+06-15. The DRIFT_FLAG raised 06-13 ("pipeline empty, render+schedule next batch")
+has now fully materialized — the channel has been dark for 4 days and the 5/wk
+(or even the 2/wk cold-start) cadence is broken.
+**Learning**:
+1. The silent-publish drift recurs every batch — the state file is never the
+   source of truth for published status. Reconciliation (oEmbed probe) must run
+   even in the pulse, not just daily-plan, when a scheduled date has passed.
+2. v4 Roanoke is the only thing in flight and it's BLOCKED on the Flow UI redesign
+   (thumb gen, logged 06-13). With v4 stalled and no Shorts re-render queued, the
+   blocker is now directly starving the publish calendar — Flow being down is no
+   longer just a v4 problem, it's a whole-channel cadence problem.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in shorts_state.json.
+- ESCALATE to user (notification): pipeline dry, need a human decision — either
+  unblock v4 Flow thumb (fresh-cookie session) or ship a backup-thumb Short batch
+  to refill the calendar. Within pulse Studio-HTTP limits, no further scraping this
+  run.
