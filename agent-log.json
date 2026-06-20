@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-20 15:04 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219215:04: no notable delta"
+    },
+    {
+      "t": "2026-06-20 15:04 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q, scheduled 2026-06-15) was stale SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200) \u2014 published on schedule 5 days ago, state never auto-updated (known drift pattern). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z."
     }
   ]
 }

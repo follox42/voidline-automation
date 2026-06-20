@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 15:04 — Hourly pulse: 7-day snapshot gap + first full Shorts read
+**Observation**: This is the first pulse snapshot since 2026-06-13 14:02 — a
+7-day gap for a routine that is nominally HOURLY, so the "hourly" pulse was
+effectively dark all week (delta engine had only one stale baseline to compare
+against). Two upsides this run: (1) the curl scraper returned data for 7/12
+assets vs 2/12 last week (v1_twist 281, v1_answer 87, v2_hook 6, v3_hook 1,
+v3_twist 28, v3_answer 110), and (2) caught v1_bonus_briggs drift — it went
+PUBLIC on its 06-15 schedule but state was still SCHEDULED (verified via oEmbed
+200, reconciled). Computable deltas were tiny (v3_answer 106→110 +4v, v2_hook
+4→6 +2v) so NO PULSE_ALERT and no Studio deep-dive (5-action budget preserved).
+**Learning**:
+1. The pulse only computes deltas vs the *previous* snapshot. With a week-long
+   gap and a mostly-blank prior baseline, almost no deltas were computable even
+   though absolute view counts moved meaningfully (v1_twist 274→281, etc.). A
+   sparse/irregular snapshot cadence cripples the delta-alert logic.
+2. Content signals confirm prior learnings, nothing new strategically:
+   v1_twist plateaued ~281 (the ~300 ceiling holds), v3_hook collapsed to 1v
+   (suppression persists), v3_twist a weak 28v.
+3. The scheduled-Short-publishes-silently drift recurred (v1_bonus_briggs) —
+   confirms daily reconciliation via oEmbed remains mandatory; pulse caught it
+   only incidentally.
+**Action**:
+- Verify the Hourly Pulse routine is actually firing on schedule (the 7-day gap
+  suggests it was paused/inactive since 06-13). If irregular, the >50v delta
+  threshold is the wrong tool — consider tracking absolute milestones too.
+- No alert this run; left untouched otherwise. Reconciled bonus_briggs state.
