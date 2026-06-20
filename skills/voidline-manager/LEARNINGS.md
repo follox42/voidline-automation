@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 13:10 — Pulse: v3 long-form off the 0v suppression floor
+**Observation**: First HOURLY PULSE to track long-forms (monitor_voidline.py now
+carries LONGFORMS: v1 Mary Celeste sB8VXu2OHtY, v2 Dyatlov pM-u_8ONjI0, v3
+Tunguska FacPhS3hNjU). On the parsing run that succeeded, v3_long_Tunguska read
+**49 views** — vs the authoritative 0v / "all traffic sources insufficient data"
+suppression state recorded 2026-06-13 (J+7). v3_answer Short crept to 110v
+(+4 in a week — flat). v1_twist 281 (was 274 — flat). No PULSE_ALERT fired:
+nothing crossed the task thresholds (Short >1000, long-form >100, delta >50).
+Scraper remained its documented flaky self — long-forms parsed on only 1 of ~5
+samples, so this is a single anonymous-curl reading, not a confirmed Studio number.
+**Learning**:
+1. The thing the user flagged to watch ("v3 long-form 0v at J+10 -> re-evaluate")
+   has resolved in the positive direction: it is NO LONGER 0v. ~49 organic views
+   accumulating slowly suggests the algorithmic suppression has eased, not a
+   breakout — consistent with the "pure organic cold-start = slow" thesis.
+2. Catalogue is otherwise flat (every Short plateaued; v3_answer +4/wk). The
+   06-13 DRIFT_FLAG still stands: pipeline dry, no new Shorts scheduled, v4
+   Roanoke blocked on the Flow UI redesign. Stagnation, not decline.
+**Action**:
+- Confirm the 49v in the next DAILY PLAN via the camoufox-stealth Studio session
+  (cookie_profile=voidline) — single curl reading needs a real-data cross-check
+  before treating "suppression lifted" as fact.
+- Unblock the pipeline: v4 Flow submit path still needs the fresh-session
+  re-investigation (per 06-13 entry). Stagnation is the dominant risk now.
