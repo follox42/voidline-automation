@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 16:05 — v1_bonus_briggs is the new top Short (319v) + state drift
+**Observation**: First pulse in a week. v1_bonus_briggs (vZ68HlWfT-Q, the
+question-hook Mary Celeste bonus) auto-published on its 06-15 schedule and
+reached **319v** in 5 days — now the channel's #1 Short, ahead of v2_twist
+(299v) and v1_twist (281v, up from 274). State still had it as SCHEDULED;
+reconciled to PUBLIC via oEmbed HTTP 200 (same KNOWN_BAD drift: scheduled
+Shorts publish silently, state never updated). No PULSE_ALERT threshold
+crossed (no Short >1000v, no long-form >100v); all 3 long-forms remain
+blank/flat. v3_answer essentially flat week-over-week (106→110).
+**Learning**:
+1. The "produce question-hook bonus Shorts to break the ~300v narrative
+   ceiling" action from the 06-07 weekly review is VALIDATED in direction:
+   v1_bonus_briggs (question hook) became the top performer. But 319 is
+   still inside the ~280-320 plateau band — the hook format wins the
+   matchup yet does NOT trigger a breakout on its own. Plateau ≈ 320v is
+   the new soft ceiling; crossing it needs engagement/comments, not just a
+   better hook.
+2. Pulse delta logic is blind to week-over-week growth: it only diffs the
+   last two CSV snapshots, and back-to-back pulse runs (16:04 vs 16:04)
+   plus sparse anonymous scrapes make per-asset deltas unreliable. The
+   real signal here only surfaced by eyeballing the raw CSV vs the 06-13
+   baseline.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in
+  shorts_state.json (this pulse).
+- Pipeline STILL dry: nothing scheduled past 06-15 — v4 Roanoke is the
+  only thing in flight and it's blocked on the Flow UI change. Producing/
+  scheduling the next batch remains the #1 unblock (carried from 06-13
+  DRIFT_FLAG, now 5 days stale).
+- TODO (still open): port monitor to camoufox-stealth so pulse stats are
+  reliable; consider widening the pulse delta window to the last
+  *populated* snapshot per asset rather than strictly the last two.
