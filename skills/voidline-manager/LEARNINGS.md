@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 20:04 — v1 bonus (Briggs) breaks the ~300v plateau + silent-publish drift
+**Observation**: Hourly pulse caught `v1_bonus_briggs` (vZ68HlWfT-Q, "Why Did
+the Teetotal Captain Run? — Mary Celeste 1872", question hook + cutter v2) at
+**319 views — the channel's highest-performing Short ever**, edging past the
+prior record `v2_twist` (299v, now flat). It was still marked `SCHEDULED`
+(2026-06-15) in shorts_state.json: it auto-published on schedule and the state
+was never updated (the known KNOWN_BAD silent-publish pattern). Reconciled →
+status=PUBLIC + actual_published_at=2026-06-15T12:00Z. Other assets quiet:
+v2_twist 299 (flat), v3_answer 106→110, v1_answer 87, v2_hook 6; long-forms +
+several Shorts blank (curl scraper still flaky in cloud).
+**Learning**:
+1. The bonus question-hook Shorts produced *specifically* to "percer le plafond
+   ~300v" worked — 319v is the first asset to clear the documented narrative
+   ceiling (v1 TWIST 274, v2 TWIST 298/299). Question hook + cutter v2 on a
+   strong iconic detail ("teetotal captain run?") is the validated breakout
+   recipe so far.
+2. Plateau is real and asset-specific: v2_twist has been pinned at ~299 since
+   06-05 — old Shorts don't re-accelerate; growth comes from new uploads, not
+   tail.
+3. Pulse-level reconciliation is worth doing when a view count proves liveness
+   (319v ⇒ definitively PUBLIC), not just leaving it for daily-plan.
+**Action**:
+- No PULSE_ALERT (319 < 1000v Short gate) → no Studio deep-dive this pulse, per
+  hard limits. If v1_bonus_briggs keeps climbing toward 1000v, next pulse should
+  pull Studio retention + traffic sources to capture WHY it broke through.
+- Reconciled state drift in shorts_state.json this run.
+- Confirms the v4 Roanoke + future Shorts plan: keep question-hook + cutter v2 as
+  the mandatory recipe; the formula is now empirically validated past the ceiling.
