@@ -231,3 +231,29 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 12:05 — Pulse: 7-day gap + v1_bonus_briggs silent auto-publish
+**Observation**: First HOURLY PULSE to fire since 2026-06-13 14:02 — a 7-day
+gap, not hourly. The routine schedule clearly was not running on cadence in
+between. This run: scraper still sparse (only v2_hook=6 and v2_long_Dyatlov=2
+parsed, rest blank — the known anon-curl anti-scrape issue). No PULSE_ALERT
+(all below thresholds; biggest move v2_hook 4→6 over 7d, delta 2). Separately,
+v1_bonus_briggs (vZ68HlWfT-Q) was still marked SCHEDULED for 06-15 in
+shorts_state.json — oEmbed probe returned HTTP 200, confirming it auto-published
+~5 days ago. Reconciled to PUBLIC.
+**Learning**:
+1. The silent-auto-publish drift (06-13 entry) recurs every batch: scheduled
+   Shorts go live without updating state. oEmbed reconciliation is the standing
+   fix — must run each pulse/daily, not just when convenient.
+2. With no new uploads since v1_bonus_briggs (06-15), the pipeline is DRY again.
+   The 06-13 DRIFT_FLAG (v4 Roanoke not shipped) is still unresolved — Flow thumb
+   blocker from 06-13 likely still blocking v4.
+3. A 7-day silence on an "hourly" routine means deltas are weekly-scale, not
+   hourly — the >50v/asset delta threshold is essentially meaningless at this
+   cadence and growth rate (channel is flat/suppressed).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at.
+- Flagging to user: routine cadence + dry pipeline (no Shorts staged past 06-15,
+  v4 Roanoke still blocked on Flow). Next daily run should re-attempt v4 thumb in
+  a fresh Flow session and stage the next batch.
+- Stayed within limits: 0 Studio HTTP actions (oEmbed is public), 0 Flow gen.
