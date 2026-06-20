@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 06:05 — v1 bonus Briggs is new #1 Short; broke the ~300 plateau
+**Observation**: First pulse with broad stat coverage in a week. Consolidating
+both 06-20 snapshots: v1_bonus_briggs (vZ68HlWfT-Q, "Why Did the Teetotal
+Captain Run?") = **319v** ~5 days post-publish — now the channel's best Short,
+edging past v2_twist (299v) and v1_twist (281v). It also sits just above the
+~300v "plafond" the 06-05/06-07 learnings flagged. v3_answer crept 106->110v.
+v1 long-form Mary Celeste shows **18v** (first organic life on any long-form,
+was ~2v at 05-31). No configured threshold breached (no Short >1000, no long
+>100, no reliable delta >50), so no PULSE_ALERT.
+**Learning**:
+1. Question-hook bonus Shorts keep validating: the only Short to *exceed* the
+   300 ceiling is a question hook ("Why did the teetotal captain run?"),
+   consistent with the 06-05 finding. The 300 plateau is soft, not hard —
+   strong question framing nudges past it, but still no >1000 viral break.
+2. **3rd state-drift occurrence**: v1_bonus_briggs was still marked SCHEDULED
+   in shorts_state.json despite publishing 06-15. Confirmed PUBLIC via oEmbed
+   (HTTP 200) and reconciled (status=PUBLIC + actual_published_at). Scheduled
+   Shorts auto-publish and the state file is never updated by YouTube — this is
+   now a confirmed standing bug, not a one-off.
+3. Cloud scraper remains flaky: each monitor run returns a *different* subset
+   of blanks, so the runner's last-2-snapshot delta logic understates reality
+   (it only compares assets non-blank in both runs). Per-pulse alerts will keep
+   missing real movement until monitor pulls via camoufox-stealth/yt-dlp.
+**Action**:
+- Reconciled v1_bonus_briggs -> PUBLIC in shorts_state.json.
+- No deep Studio investigation triggered (under all thresholds) — stays within
+  the per-pulse Studio HTTP budget.
+- STILL OPEN: (a) auto-reconcile SCHEDULED->PUBLIC in monitor/daily-plan so the
+  state self-heals; (b) port monitor_voidline.py to camoufox-stealth for
+  reliable stats; (c) pipeline still dry — nothing scheduled past 06-15, v4
+  Roanoke not shipped (Flow submit blocker from 06-13 unresolved).
