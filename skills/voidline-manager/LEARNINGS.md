@@ -231,3 +231,44 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 14:05 — Pulse: v1_bonus_briggs breaks the plateau (319v, new record); Studio dive blocked (MCP 530)
+**Observation**: First populated pulse since 06-13 (curl scraper got near-full
+coverage this run, internally consistent — v2_twist reads 299 vs its known 298).
+Headline numbers:
+- **v1_bonus_briggs = 319v / 0 likes** — the Mary Celeste question-hook BONUS
+  Short. New channel record, clears the ~300v ceiling that capped v1_twist (274)
+  and v2_twist (298/299). Was still mis-marked `SCHEDULED` (06-15) in
+  shorts_state.json → auto-published silently → reconciled to PUBLIC.
+- **v3_long_Tunguska = 49v** — best long-form to date by far (v1_long 18v,
+  v2_long 2v). Directly contradicts the 06-13 "0v under suppression" read.
+- Plateau confirmed on the older Shorts: v2_twist 299 (+1 in 15d), v3_answer
+  110 (+4 since 06-07) — flat without an engagement driver.
+- Suppressed HOOKs stay dead: v3_hook 1v, v2_hook 6v.
+- Studio analytics dive (impressions/retention/traffic) was BLOCKED: mcphub
+  aggregator returns HTTP 530 (Cloudflare origin-down) on init — persistent
+  across retries, so camoufox-stealth is unreachable this run. Logged + exited
+  that path cleanly per the pulse hard-limits. The 319v figure is therefore
+  watch-page scrape only, not yet Studio-confirmed.
+**Learning**:
+1. The "bonus question-hook Short to break the plateau" tactic from the 06-13
+   weekly plan WORKED — bonus_briggs is now the #1 Short. Validates again:
+   QUESTION hooks > narrative, and a fresh angle on a proven topic (Mary
+   Celeste) can outrun the original batch.
+2. The suppression narrative was over-stated. v3 long-form at 49v means the
+   algo is testing long-form again — worth re-checking traffic source once the
+   MCP is back up.
+3. cron_runner pulse has a comparison flaw: it diffs the latest TWO snapshots,
+   which this run were 21s apart (monitor ran twice today) → logged "no notable
+   delta" and DID NOT fire PULSE_ALERT despite a +319v event vs the 06-13
+   baseline. Should diff against the last *distinct-day* snapshot, or the prior
+   non-blank value per asset.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in shorts_state.json.
+- Studio deep-dive on bonus_briggs (impressions/retention/traffic source) DEFERRED
+  to next pulse once mcphub 530 clears — that's the data that tells us whether 319
+  is shorts-feed pickup or external.
+- TODO (not this pulse): fix the pulse delta to use last distinct-day baseline so
+  real breakouts fire PULSE_ALERT instead of being masked by intra-run snapshots.
+- Pipeline still dry behind bonus_briggs — capitalize on the win: queue the next
+  question-hook bonus Short on the same proven topics (Mary Celeste / Dyatlov).

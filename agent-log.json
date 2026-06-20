@@ -19,6 +19,31 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-20 14:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219214:04: no notable delta"
+    },
+    {
+      "t": "2026-06-20 14:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:04\u219214:05: no notable delta"
+    },
+    {
+      "t": "2026-06-20 14:08 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED (06-15) in shorts_state.json but is live at 319v (watch-page scrape, internally consistent). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Known auto-publish drift pattern."
+    },
+    {
+      "t": "2026-06-20 14:08 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "v1_bonus_briggs=319v \u2014 NEW CHANNEL-RECORD Short, clears the ~300v plateau (prev best v2_twist 299). Question-hook Mary Celeste bonus. v3_long_Tunguska=49v best long-form ever (contradicts 0v-suppression read). NOTE: cron_runner logged 'no notable delta' because it diffed two 21s-apart same-day snapshots \u2014 masked the +319v vs 06-13 baseline."
+    },
+    {
+      "t": "2026-06-20 14:08 UTC",
+      "action": "MCP_BLOCKED",
+      "detail": "Studio analytics dive blocked: mcphub aggregator (https://mcphub.nocode18.com/mcp) returns HTTP 530 on init, persistent across retries. camoufox-stealth unreachable. Logged + exited that path cleanly per pulse hard-limits. Studio retention/traffic-source dive on bonus_briggs deferred to next pulse."
     }
   ]
 }
