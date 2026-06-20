@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 09:05 — v1 bonus Briggs Short BREAKS the 300v plateau (319v)
+**Observation**: HOURLY PULSE — `v1_bonus_briggs` ("Why Did the Teetotal
+Captain Run? — Mary Celeste 1872", vZ68HlWfT-Q) is at **319 views, 0 likes**.
+This is the channel's best-ever Short, edging past v2_twist (298v) and
+v1_twist (274v). Two state notes: (1) it was still marked `SCHEDULED` for
+06-15 in shorts_state.json — verified PUBLIC via YouTube oEmbed (HTTP 200) and
+reconciled to PUBLIC + actual_published_at=2026-06-15. (2) No PULSE_ALERT
+tripped: 319 < the 1000v Short threshold and the curl scraper still returns
+blanks for ~11/15 assets (only briggs 319, v2_answer 34, v3_twist 28 parsed),
+so the runner's snapshot delta is unreliable — the real signal came from
+reading the parsed rows directly.
+**Learning**:
+1. The ~300v ceiling flagged in the 06-07 weekly review IS breakable — and the
+   thing that broke it is exactly what that review prescribed: a QUESTION hook
+   ("Why did the teetotal captain run?") on the proven Mary Celeste topic.
+   This is the third datapoint confirming question/contradiction hooks >
+   narrative, and the first to actually cross the plateau rather than plateau at it.
+2. Engagement is still the weak link: 319v / 0 likes / 0 comments. Views climb
+   but the outro debate card isn't converting to comments yet on this one.
+3. State drift on auto-published scheduled Shorts remains a standing hazard —
+   third time the state file lagged reality. oEmbed 200 is the cheap, session-safe
+   confirmation (no Studio HTTP spend).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json (this run).
+- DID NOT burn a Studio deep-dive (319 < 1000v gate) — kept within pulse HTTP
+  limits. If briggs keeps climbing past ~500v before next weekly review, THEN
+  pull Studio retention + traffic-source analytics to see what's carrying it.
+- Topic+hook recipe confirmed for v4/v5: lead Shorts with a "why did X do the
+  irrational thing?" question on the episode's most human/iconic detail.
+- Engagement gap (0 likes at 319v) → revisit whether the outro card timing needs
+  another pass; flag for weekly review, not this pulse.
