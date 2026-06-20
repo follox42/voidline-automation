@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-20 08:01 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-20 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-20 08:02 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, scheduled 2026-06-15 12:00 UTC) was still stale SCHEDULED in shorts_state.json but verified PUBLIC via YouTube oEmbed (HTTP 200, controls 5e8ELVo5ARg + _TGvU9o7i4Q also 200). It auto-published on schedule 5 days ago; YouTube does not write back to the state file. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Studio cross-check via mcp_stealth.py was UNAVAILABLE this run \u2014 mcphub aggregator returning HTTP 530 (origin down) on initialize, twice. Fell back to oEmbed, the documented session-safe probe. State file now has 0 SCHEDULED, 11/11 PUBLIC."
+    },
+    {
+      "t": "2026-06-20 08:02 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "Not a publish day (Sat 06-20). Next 3 days: Sun 06-21 (weekly long-form cadence slot, 17:00 UTC) \u2014 EMPTY; Mon 06-22 (v4 Roanoke long-form ship day + v4_hook Short 12:00 per runs/v4-roanoke/SHORTS_PLAN.md) \u2014 NOTHING RENDERED OR SCHEDULED; Tue 06-23 \u2014 empty. Pipeline fully dry beyond 06-15. v4 Roanoke production is STALLED at script stage (script.json + SHORTS_PLAN done; voice/assets/render/thumb/Shorts all pending) blocked on the 2026-06-13 Google Flow Nano Banana 2 thumb blocker (submit button disabled, suspected free-tier/anti-abuse/UI redesign). With ship target 06-22 only 2 days out and ~4-6h of focused work + a hard Flow blocker remaining, v4 will MISS its slot unless production resumes now (resolve Flow in a fresh session or use the v3 Tunguska AI base as placeholder thumb per the 06-13 backup plan). Reddit r/UnresolvedMysteries seed NOT drafted today (step 4 triggers only on a long-form publish day; today is not one)."
     }
   ]
 }
