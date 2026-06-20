@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 08:04 — v1 BONUS Briggs Short breaks the ~300v plateau (319v)
+**Observation**: HOURLY PULSE snapshot. `v1_bonus_briggs` ("Why Did the
+Teetotal Captain Run? — Mary Celeste 1872", question hook) is at **319v**,
+the channel's highest-ever Short — clearing the long-standing ~300v ceiling
+(v1 TWIST 274, v2 TWIST 298). It auto-published on its 2026-06-15 12:00 UTC
+schedule (J+5) but was still marked `SCHEDULED` in shorts_state.json — the
+recurring "scheduled Shorts publish silently, state not updated" drift.
+Other captured stats this pulse: v1_answer 87v, v2_answer 34v, v3_twist 28v
+(scraper still sparse — most assets blank). No long-form views captured.
+**Learning**:
+1. The question-hook bonus strategy WORKED exactly as planned in the 06-07
+   weekly review ("produire 2 Shorts bonus v1 Mary Celeste, hooks question,
+   pour percer le plafond 279v"). 319 > 300 = first confirmed plateau break.
+2. Mary Celeste (v1) remains the channel's strongest topic — both the prior
+   ceiling-holder (TWIST 274) and the new record come from it. Topic-affinity
+   signal: lean bonus production into Mary Celeste / classic ship mysteries.
+3. Drift reconciliation is still mandatory every cycle until schedule_shorts.py
+   gets its post-publish read-back (KNOWN open TODO since 06-07/06-13).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in shorts_state.json.
+- 319 < 1000v PULSE_ALERT threshold → no Studio deep-dive this cycle (frugal).
+  If it crosses 1000v next pulse, pull Studio retention + traffic sources.
+- Feeds the weekly review: question-hook + Mary Celeste = the validated combo
+  to scale; consider a 2nd Mary Celeste bonus Short.
