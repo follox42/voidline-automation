@@ -231,3 +231,37 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 19:05 — Bonus Short breaks the ~300v plateau (channel record)
+**Observation**: HOURLY PULSE caught v1_bonus_briggs ("Why Did the Teetotal
+Captain Run? — Mary Celeste 1872", vZ68HlWfT-Q) at **319 views**, the highest
+of any Short on the channel. It was the first of the v1 Mary Celeste *bonus*
+question-hook Shorts queued specifically to "percer le plafond 279v". Prior
+record was v1_twist (now flat at 281v, up only ~7 from the 274 at 48h —
+plateau confirmed). Two side issues:
+1. **State drift (again)**: v1_bonus_briggs was still SCHEDULED in
+   shorts_state.json (publish_at 06-15) but has been PUBLIC 5 days. Verified
+   via oEmbed HTTP 200 (author=Voidline). Reconciled → status=PUBLIC +
+   actual_published_at=2026-06-15T12:00:00Z.
+2. **Pulse delta logic blind spot**: run_pulse() only computes a delta when
+   BOTH the prev and cur snapshot have non-blank views for the same asset.
+   The monitor scraper returns sparse/blank views (anti-scrape), so the two
+   snapshots almost never overlap on the same asset → delta-based PULSE_ALERTs
+   essentially never fire. This run the record-breaking 319v Short produced
+   "no notable delta" because its 14:02 snapshot was blank.
+**Learning**:
+1. The question-hook bonus strategy WORKS: a targeted question hook on a
+   proven topic (Mary Celeste) beat the channel's narrative-era ceiling on
+   its own. Confirms the cutter-v2 / question-hook thesis at the top of the
+   funnel.
+2. Pulse can't be trusted to flag growth while the scraper is flaky — the
+   absolute view counts must be read directly, not just the computed delta.
+   The configured thresholds (short >1000) also didn't fire at 319v, so a
+   record can pass silently.
+**Action**:
+- Reconciled state + logged RECONCILE in agent-log.
+- TODO (not this pulse, respects Studio HTTP limit): port monitor_voidline.py
+  to fetch via camoufox-stealth (cookie_profile=voidline) so snapshots are
+  complete; and make run_pulse() fall back to absolute-count alerts /
+  carry-forward last-known views when a snapshot is blank.
+- Strategy: ship the 2nd v1 Mary Celeste bonus Short — the format is validated.
