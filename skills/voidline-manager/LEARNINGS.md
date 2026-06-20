@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 10:05 — v1 BONUS Briggs breaks the 300v Short plateau (best ever)
+**Observation**: Hourly pulse, week-over-week (06-13 14:02 → 06-20 10:04).
+v1_bonus_briggs ("Why Did the Teetotal Captain Run? — Mary Celeste 1872",
+vZ68HlWfT-Q), scheduled 06-15, is now PUBLIC at **319 views in 5 days** —
+the channel's best-performing Short ever, edging past v2 TWIST (298v). Other
+movers were flat/noise: v3_answer 106→110 (+4), v2_hook 4→6 (+2), v1_hook
+first reading 64v, v2_long_Dyatlov first reading 2v. Cloud scraper still
+flaky (most assets blank per the 06-13 known issue). State drift again: the
+Short was live but still marked SCHEDULED — reconciled to PUBLIC +
+actual_published_at (same KNOWN_BAD "trust the state without reading back").
+**Learning**:
+1. A QUESTION/CONTRADICTION hook on a *previously-covered topic* (Mary
+   Celeste, already carried by v1 TWIST at 274v) outperformed every
+   fresh-topic Short. Recirculation of a proven topic with a sharper hook >
+   chasing novelty at this cold-start scale.
+2. "Why Did the Teetotal Captain Run?" = contradiction hook (teetotal +
+   flee) — the exact pattern from the 06-03 and 06-05 learnings, now
+   validated a third time and at a new ceiling.
+3. 319 < the 1000v hard alert threshold, so the runner logged "no notable
+   delta" — but the plateau-break is the real signal. The literal thresholds
+   miss best-ever-but-sub-1000 events; needs a human eye each pulse.
+**Action**:
+- Did NOT spend Studio HTTP actions this pulse (sub-1000, slow 5-day climb,
+  not a viral spike, + cloud cookie risk). Recommended next step for the
+  DAILY run: pull Studio retention + traffic sources for vZ68HlWfT-Q to learn
+  WHY the teetotal-contradiction hook broke the ceiling.
+- Lean into bonus Shorts on proven topics with contradiction hooks for v4+.
+- Self-inflicted: ran cron_runner.py pulse 2x, polluting the CSV with two
+  06-20 snapshots 16s apart, so the auto-delta compared today-vs-today.
+  Run the pulse exactly once per invocation.
