@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 23:05 — v1 bonus Briggs Short breaks the 300v ceiling (319v)
+**Observation**: First HOURLY PULSE since 06-13. v1_bonus_briggs
+("Why Did the Teetotal Captain Run? — Mary Celeste 1872", question hook,
+cutter v2) scraped at **319v** — the highest of any Short to date, edging
+past the long-documented ~300v plateau (v2 TWIST 298, v1 TWIST 281). It was
+SCHEDULED for 06-15 and had auto-published; shorts_state.json still read
+SCHEDULED (the recurring silent-publish drift) — verified PUBLIC via oEmbed
+200 and reconciled. Long-forms now non-zero for the first time: v1 Mary
+Celeste long = 18v, v2 Dyatlov long = 2v. v3_answer flat (106→110 over 7d).
+**Learning**:
+1. Question-hook + Mary Celeste topic + cutter v2 is the strongest combo so
+   far — the bonus Short thesis ("produce question-hook bonuses to pierce the
+   279/300 ceiling", 06-07 action) is now validated: 319 > all prior.
+2. The pulse runner's delta logic only compares the LAST TWO csv timestamps
+   and skips any asset with a blank in either snapshot. Because the scraper is
+   flaky (many blanks) and the monitor ran twice 17s apart, it reported
+   "no notable delta" — the real signal (319v new top Short) is only visible
+   comparing against the 06-13 baseline by hand. Runner under-reports.
+3. State drift on auto-published Shorts is now a reproducible pattern (4th
+   occurrence). Daily reconciliation remains mandatory until a post-publish
+   check is wired into the pipeline.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at 2026-06-15.
+- No PULSE_ALERT (below thresholds: no Short >1000, no long >100, no tracked
+  delta >50). Healthy modest organic growth, no notification warranted.
+- TODO (not this pulse): fix runner to compare against last DISTINCT-DAY
+  snapshot and to surface new assets (0→N) as deltas, so a new top Short
+  isn't masked. Also wire monitor through camoufox-stealth to kill blanks.
