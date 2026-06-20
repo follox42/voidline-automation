@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-20 11:05 — Pulse: first non-zero on a long-form + 7-day stall
+**Observation**: First HOURLY PULSE since 2026-06-13 (7-day gap — routine was
+dormant). Scraper still sparse (anon-curl blanks most assets per the known
+anti-scrape issue), but it parsed a notable first: **v3_long_Tunguska
+(FacPhS3hNjU) = 47v**, where Studio had previously confirmed this long-form at
+**0v under algorithmic suppression**. Shorts side is flat: v3_answer 106v→110v
+(+4v in 7 days), v2_answer ~34v, v2_hook 6v, v3_hook 1v. No threshold breached
+(no Short >1000v, no long-form >100v, no delta >50v) → no PULSE_ALERT, so no
+Studio deep-dive this run (stayed within HTTP limits). Also caught the known
+publish-drift: v1_bonus_briggs (vZ68HlWfT-Q), scheduled 06-15, was still marked
+SCHEDULED in state — verified PUBLIC via oEmbed (HTTP 200) and reconciled.
+**Learning**:
+1. The long-form suppression that held v3 at a confirmed 0v appears to be
+   easing — 47v is the first sign of organic life on ANY long-form. Below the
+   100v alert threshold, so treat as a weak signal, not a breakout, until a
+   second clean read confirms it isn't a one-off scraper parse.
+2. The Shorts catalogue has gone flat (v3_answer +4v/week). Consistent with the
+   "pure organic cold-start = slow" thesis AND with the dry pipeline: nothing
+   new shipped since 06-15, so there are no fresh uploads feeding the algo.
+3. 7-day pulse gap means delta math compares stale snapshots — single-pulse
+   deltas are unreliable when the routine hasn't run hourly. Cadence matters.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC (actual_published_at 2026-06-15T12:00Z).
+- PIPELINE STILL DRY: nothing scheduled past 06-15. v4 Roanoke remains blocked on
+  the Flow thumb (UI redesign, see 06-13 entry) — that blocker is now the
+  critical path to resuming cadence. Next session: re-investigate Flow submit
+  flow OR ship v4 with the placeholder thumb to break the 5-day upload gap.
+- Next pulse: re-read v3_long views to confirm the 47v signal; if it holds/grows,
+  pull Studio traffic-sources to see where the long-form views are coming from.
