@@ -231,3 +231,37 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 08:06 — Pulse resumes after 8-day gap; mcphub MCP is DOWN (530)
+**Observation**: First HOURLY PULSE to fire since 2026-06-13 14:02 — an 8-day
+gap in the snapshot history (the routine was not running in between). The pulse
+itself ran clean (exit 0, "no notable delta"), but `monitor_voidline.py`'s
+anonymous-curl scraper again returned BLANK views for 12/13 assets (only
+v2_long_Dyatlov parsed, 2v) — so "no delta" is blind, not reassuring. Attempted
+to fall back to the camoufox-stealth MCP via mcphub to pull real numbers /
+Studio analytics: **mcphub.nocode18.com returns HTTP 530 (Cloudflare origin
+unreachable) on every call**, retried twice. General outbound is fine (YouTube
+oEmbed = 200), so this is mcphub/origin down, not a container network issue.
+MCPHUB_TOKEN is present (len 51), so it is not an auth problem.
+Separately: `v1_bonus_briggs` (vZ68HlWfT-Q), scheduled 06-15, is now PUBLIC
+(oEmbed 200) — verified cheaply and reconciled in shorts_state.json (the same
+silent auto-publish drift caught on 06-13).
+**Learning**:
+1. The blind-scraper TODO (port monitor to camoufox-stealth) is now BLOCKING,
+   not just a nice-to-have: with mcphub down AND anonymous curl returning
+   consent pages, the pulse has zero reliable stats coverage. A spike could be
+   happening right now and we would not see it.
+2. mcphub is a single point of failure — a 530 there takes out ALL
+   stealth/Studio/Flow capability at once. No degraded fallback exists today.
+3. An 8-day pulse gap means the "hourly" cadence is not actually firing on
+   schedule — worth confirming the routine's trigger is live.
+**Action**:
+- Logged the block and exited cleanly per pulse hard-limits (0 Studio HTTP
+  actions used — MCP was unreachable; 0 Flow generations).
+- Reconciled v1_bonus_briggs → PUBLIC (06-15).
+- NEXT pulse: re-test mcphub init first; if 530 persists, the camoufox-stealth
+  host needs a manual kick (out of band) before any stats/Studio work can
+  resume. Consider a yt-dlp fallback in monitor_voidline.py so view counts
+  survive an mcphub outage.
+- PIPELINE still DRY: nothing scheduled past v1_bonus_briggs (06-15). 6 days
+  with no new uploads — cadence has broken.
