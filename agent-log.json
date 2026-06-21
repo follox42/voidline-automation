@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-21 07:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219207:05: no notable delta"
+    },
+    {
+      "t": "2026-06-21 07:06 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15 12:00) was stale SCHEDULED in state but verified PUBLIC via oEmbed (HTTP 200). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Same silent-auto-publish drift pattern as 06-13."
+    },
+    {
+      "t": "2026-06-21 07:06 UTC",
+      "action": "PULSE_NOTE",
+      "detail": "No PULSE_ALERT threshold crossed (no short>1000, no long>100, no computed delta>50 \u2014 prev 06-13 snapshot was mostly blank so the delta engine had nothing to diff). Real picture vs historical baselines: Shorts PLATEAUED \u2014 v1_twist 281v (was 274 on 06-02, +7 in 19d), v2_twist 299v (was 298 on 06-05, +1 in 16d), v1_answer 87, v2_answer 34, v3_twist 28. Long-forms got FIRST organic views ever: v1_long 18v, v2_long 2v (were 0/blank). Channel essentially flat ~2 weeks. Pipeline DRY: nothing scheduled/produced after v1_bonus_briggs (06-15) \u2014 6 days zero uploads, cadence broken (DRIFT_FLAG from 06-13 still unactioned). NOTE: hourly pulse only logged 06-13 + 06-21 \u2014 routine not actually firing hourly."
     }
   ]
 }

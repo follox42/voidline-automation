@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 07:06 — Pulse: 8-day gap, plateau confirmed, pipeline dry 6d
+**Observation**: First pulse since 06-13 14:02 (the "hourly" routine only
+fired twice in 8 days — it is NOT running hourly). Fresh scrape vs historical
+baselines:
+- Shorts PLATEAUED hard: v1_twist 281v (274 on 06-02 → +7 in 19 days),
+  v2_twist 299v (298 on 06-05 → +1 in 16 days), v1_answer 87, v2_answer 34,
+  v3_twist 28. No breakout. Channel ~flat for 2 weeks (~840 total Short views).
+- Long-forms got their FIRST organic views ever: v1_long 18v, v2_long 2v
+  (previously 0/blank under suppression). v3_long still blank.
+- v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) auto-published on time but
+  state was stale SCHEDULED → reconciled to PUBLIC via oEmbed 200.
+- No PULSE_ALERT threshold crossed (no short>1000, no long>100, no delta>50).
+- Pipeline DRY: nothing produced or scheduled after 06-15. The 06-13
+  DRIFT_FLAG (catalogue queue empty, need v4 batch) went UNACTIONED for the
+  full week. v4 Roanoke is still blocked on the Flow thumb generation (06-13).
+**Learning**:
+1. The delta engine in cron_runner is blind when the prior snapshot is blank
+   (it requires both prev & cur views to be non-empty). After a long gap or a
+   flaky scrape, "no notable delta" is a FALSE NEGATIVE — must cross-check
+   absolute values against historical baselines in LEARNINGS, not just trust
+   the delta line. (Candidate fix: also alert on absolute thresholds even when
+   prev is missing.)
+2. Plateau is real and matches the pure-organic cold-start thesis (J+25, no
+   breakout expected for 3-6 months). The ~300v ceiling on QUESTION-hook
+   Shorts holds; nothing has pushed past it.
+3. First long-form organic views = the suppression cooldown is lifting
+   (consistent with the user's 06-13 "cooldown lifted" call). Small but the
+   first non-zero signal on long-form since launch.
+4. The real risk is NOT a metric spike — it's STARVATION. 6 days of zero
+   uploads while plateaued. Cold-start organic growth dies without consistent
+   supply; the cadence break is the thing that needs a human.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC.
+- Notified Nolann: pipeline dry + v4 blocked + plateau (the standing
+  DRIFT_FLAG is now a week old and needs the human to unblock v4 Flow thumb
+  and ship the next batch).
+- Did NOT spend any Studio HTTP actions (no PULSE_ALERT to investigate) —
+  stayed within rails.
