@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-21 09:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219209:04: no notable delta"
+    },
+    {
+      "t": "2026-06-21 09:05 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs(vZ68HlWfT-Q) was stale SCHEDULED (06-15) in state but verified PUBLIC via YouTube oEmbed (HTTP 200). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Note: hourly pulse was dormant ~8 days (last run 06-13 14:02), so this auto-publish drift sat uncorrected. Scraper still returns blank views for most assets (known anti-scrape issue) \u2014 only v3_twist(28v) + v3_answer(110v) parsed this run; no thresholds crossed."
     }
   ]
 }
