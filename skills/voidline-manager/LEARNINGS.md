@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 21:05 — v1 bonus Briggs breaks the 300v Shorts plateau (319v)
+**Observation**: HOURLY PULSE found v1_bonus_briggs (vZ68HlWfT-Q, "Why Did the
+Teetotal Captain Run? — Mary Celeste 1872") at **319 views** — the channel's
+first Short to clear 300v, beating the prior records (v2 TWIST 298v, v1 TWIST
+274v). It was a SCHEDULED Mary Celeste bonus that auto-published 06-15;
+state file was still stale-SCHEDULED (oEmbed HTTP 200 confirms PUBLIC).
+The runner did NOT fire PULSE_ALERT because the curl scraper is sparse in
+the cloud and the asset had no prior non-empty snapshot to delta against —
+the record was only visible in the raw snapshot, not the threshold logic.
+Side signal: v3_long_Tunguska scraped 71v this pulse (was 0v under suppression
+on 06-13) — possible suppression cooldown lifting, but below the 100v long-form
+threshold and scraper-flaky, so treat as unconfirmed.
+**Learning**:
+1. The QUESTION-hook + cutter-v2 formula broke the plateau the LEARNINGS
+   predicted (≈300v ceiling without comment engagement). A bonus Short on an
+   already-covered topic (Mary Celeste) outperformed the original v1 batch —
+   topic saturation is not the constraint; hook quality is.
+2. PULSE threshold logic is blind to first-appearance records: a new asset's
+   first non-empty view count can never trip the >50v delta rule (no prev), and
+   319v is under the >1000v short rule. Records get missed unless a human reads
+   the raw snapshot. The runner needs an absolute-value "new high water mark"
+   check, not only deltas.
+3. State reconciliation remains mandatory every run — scheduled Shorts publish
+   silently and the state file never self-updates (recurring KNOWN_BAD pattern).
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED → PUBLIC (actual_published_at 06-15).
+- Studio deep-dive (impressions / retention / traffic sources for the 319v
+  break) DEFERRED: mcphub returned HTTP 530 (Cloudflare origin unreachable)
+  on initialize — camoufox-stealth path down this pulse. Retry next pulse.
+- TODO: add a high-water-mark alert to cron_runner.run_pulse so records fire
+  regardless of delta/threshold gaps.
