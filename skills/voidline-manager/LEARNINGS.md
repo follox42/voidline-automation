@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 12:07 — Pulse blind: scraper 0/19 + 8-day routine gap + stale SCHEDULED
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — an 8-day gap, so the
+routine has not actually been firing hourly. The pulse ran clean (exit 0) but
+`monitor_voidline.py` returned BLANK views for all 19 assets (0/19), degraded from
+the 2/12 partial coverage on 06-13. `monitor_voidline.py:29` still fetches via
+anonymous `curl -sL` + `"viewCount":"(\d+)"` regex; YouTube is serving a
+consent/anti-scrape page to unauthenticated curl in the cloud container, so every
+viewCount comes back empty. Consequence: PULSE_ALERT thresholds (>50v delta, 1000v
+short, 100v long) are uncomputable — the pulse is flying blind, "no notable delta"
+is a false-negative, not a real all-clear. Separately, `v1_bonus_briggs`
+(vZ68HlWfT-Q, scheduled 06-15 12:00) was still marked SCHEDULED in state but
+oEmbed returns HTTP 200 → it auto-published 6 days ago. Same silent-publish drift
+as the 06-13 reconcile.
+**Learning**:
+1. The pulse stat path is effectively dead until `monitor_voidline.py` is ported
+   off anonymous curl to the camoufox-stealth MCP (cookie_profile=voidline) or
+   yt-dlp. Until then every pulse is a no-op on its core job (spike detection).
+2. oEmbed HTTP 200 remains the reliable session-safe publish probe; viewCount
+   scraping is the broken half.
+3. Scheduled Shorts keep auto-publishing without state updates — drift reconcile
+   must run regardless of whether the stat scraper works.
+**Action**:
+- Reconciled v1_bonus_briggs → status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+- PRIORITY TODO (next non-pulse window, within Studio HTTP limits): port
+  `monitor_voidline.py` view-fetch to camoufox-stealth so pulses regain sight.
+- Pipeline still dry: nothing scheduled past v1_bonus_briggs (06-15). The v4
+  Roanoke batch flagged on 06-13 has not shipped — cadence has been silent ~6 days.
