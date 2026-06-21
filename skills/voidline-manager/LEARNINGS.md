@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 20:04 — Bonus Briggs Short breaks the 300v plateau
+**Observation**: Hourly pulse snapshot. `v1_bonus_briggs` ("Why Did the
+Teetotal Captain Run? — Mary Celeste 1872", question hook + cutter v2) is
+live at **319v / 0 likes** — the first Short ever to cross the ~300v
+ceiling (prior bests: v2_twist 299, v1_twist 281, now 281). No PULSE_ALERT:
+nothing crosses the Short >1000v / long-form >100v / Δ>50v thresholds, so
+no Studio investigation this run (0 HTTP actions used). Long-forms still
+flat (v2_long Dyatlov 2v, rest blank). Scraper still returns blanks for
+~half the assets (consent/anti-scrape page to anon curl — same as 06-13).
+**Learning**:
+1. The question-hook + cutter v2 formula DOES clear the old narrative
+   plateau, but only marginally (319 vs ~300) — the ceiling is soft, not
+   a hard algo wall. Breaking past ~300 needs engagement (comments), not
+   just a better hook. Consistent with Weekly Review #1.
+2. **State drift again**: v1_bonus_briggs is `SCHEDULED` (06-15) in
+   shorts_state.json but is plainly PUBLIC at 319v. Same KNOWN_BAD
+   "scheduled Shorts auto-publish silently, state not updated" pattern —
+   left for the daily routine to reconcile, not pulse's job.
+**Action**:
+- No alert, no notification — milestone is real but below pulse thresholds.
+- Daily routine: reconcile v1_bonus_briggs → PUBLIC + actual_published_at,
+  and confirm whether the 06-15 slot published on time or drifted.
+- The 319v top performer is a Mary Celeste question-hook — confirms the
+  v4 Roanoke Shorts should lead with question hooks (already planned).
