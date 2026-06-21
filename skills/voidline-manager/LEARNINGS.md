@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 16:05 — v1 bonus Briggs Short breaks the 279v plateau (319v)
+**Observation**: Hourly pulse scrape. `v1_bonus_briggs` ("Why Did the Teetotal
+Captain Run? — Mary Celeste 1872", question hook, cutter v2) published 06-15 and
+is at **319v / 0 likes** after ~6 days — the channel's best-ever Short, clearing
+the documented v1 TWIST (279v) and v2 TWIST (298v) ceiling. Other parsed assets:
+v1_answer 87v/4, v2_answer 34v, v3_answer 110v (was 106 on 06-07 — flat, +4 in
+2 weeks). 3 long-forms (Mary Celeste sB8VXu2OHtY, Dyatlov pM-u_8ONjI0, Tunguska
+FacPhS3hNjU) now appear in the CSV but scraped blank — anti-scrape, no long-form
+signal this pulse. State drift caught: bonus Briggs was still SCHEDULED in
+shorts_state.json despite being live — reconciled to PUBLIC.
+**Learning**:
+1. The question-hook + cutter-v2 formula DOES break the ~300v Short plateau. The
+   plateau was a content problem (narrative hooks / weak engagement card), not a
+   hard algo cap. 319v with 0 likes/comments means the outro debate card still
+   isn't converting engagement — reach is up, engagement is the next lever.
+2. Below the PULSE_ALERT bar (Short >1000v) so the runner correctly did NOT alert
+   — but a goal-achieving milestone is worth a learning even without an alert.
+3. v3_answer flat at 110v confirms older Shorts don't get re-surfaced; growth
+   comes only from new uploads. Scraper still blanks ~half of assets in-cloud
+   (camoufox-stealth port still the fix, deferred to stay within Studio limits).
+**Action**:
+- No Studio investigation this pulse (no threshold crossed; preserves HTTP budget).
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC in shorts_state.json.
+- Engagement-not-reach is now the bottleneck — next experiment: stronger outro
+  CTA / pinned comment to convert the 319v reach into likes/comments/subs.
+- Keep shipping question-hook + cutter-v2 Shorts; the formula is validated twice.
