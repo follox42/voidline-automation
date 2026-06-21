@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 23:05 — Pulse alert logic was dead (flaky scraper) + v1 bonus Short sets channel record
+**Observation**: Hourly pulse logged "no notable delta", but the raw CSV told a
+different story. (1) `v1_bonus_briggs` (vZ68HlWfT-Q) is live at **319v** — a new
+all-time Short record for the channel (prev best ~298 v2_twist / 281 v1_twist),
+and it was still marked SCHEDULED(06-15) in shorts_state.json (auto-publish drift
+again). (2) v1_twist=281, v2_twist=299, v3_answer 106→110, v1_hook=64, v2_answer=34,
+v2_hook 4→7, and v1_long_MaryCeleste long-form showing 18v (up from ~2). NONE of
+this triggered an alert because `run_pulse` only diffed the two most-recent
+timestamps, and the flaky scraper produces sparse, non-overlapping per-snapshot
+coverage — confirmed: 0 assets were populated in BOTH of the last two snapshots,
+so the threshold loop iterated over an empty set every time.
+**Learning**:
+1. The KNOWN_BAD "trusting state/output without reading back" pattern bit the
+   alerting layer itself: the pulse was structurally incapable of firing, not
+   just quiet. A green "no delta" from a watchdog that can't observe is worse
+   than a red one.
+2. With flaky coverage you must compare each asset to its last *populated* value,
+   not to a fixed prior timestamp.
+3. v1 Mary Celeste bonus question-hook Short (319v) broke the ~300 plateau the
+   bonus batch was produced to break — question/contradiction hooks confirmed
+   again as the format that converts.
+**Action**:
+- Patched `cron_runner.run_pulse`: builds `prev_views` = most-recent populated
+  value per asset across all earlier snapshots, diffs current snapshot against
+  that. Verified: now correctly surfaces v2_hook 4→7 instead of nothing; won't
+  false-fire on first-ever readings (no prior value → skipped).
+- Reconciled v1_bonus_briggs → PUBLIC (actual_published_at=2026-06-15).
+- Residual limitation: the *current* snapshot can itself be sparse, so a richer
+  reading may sit in a non-latest snapshot. Real fix is porting monitor_voidline
+  to the camoufox-stealth MCP (cookie_profile=voidline) for reliable coverage —
+  still the #1 monitoring TODO. No Studio HTTP actions spent this pulse.

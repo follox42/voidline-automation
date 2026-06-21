@@ -128,16 +128,27 @@ def run_pulse():
         return
 
     prev_ts, cur_ts = timestamps[-2], timestamps[-1]
-    prev = {r["asset"]: r for r in rows if r["ts"] == prev_ts}
     cur = {r["asset"]: r for r in rows if r["ts"] == cur_ts}
+
+    # The scraper is flaky: each snapshot has sparse, non-overlapping per-asset
+    # coverage, so comparing only to the immediately-prior timestamp routinely
+    # finds zero overlapping assets and silently drops every delta. Instead,
+    # compare each asset to its most-recent *populated* value from any earlier
+    # snapshot (rows are appended chronologically, so later wins).
+    prev_views = {}
+    for r in rows:
+        if r["ts"] == cur_ts:
+            continue
+        if r["views"]:
+            prev_views[r["asset"]] = r["views"]
 
     alerts = []
     for asset, c in cur.items():
-        p = prev.get(asset)
-        if not p or not c["views"] or not p["views"]:
+        pv = prev_views.get(asset)
+        if not pv or not c["views"]:
             continue
         try:
-            dv = int(c["views"]) - int(p["views"])
+            dv = int(c["views"]) - int(pv)
             cv = int(c["views"])
         except ValueError:
             continue
