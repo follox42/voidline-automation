@@ -7,9 +7,25 @@ Validated patterns. Use these by default.
 ## Hooks (S-tier)
 
 - **Contradiction**: "Every Dyatlov Pass Theory Failed for 62 Years" (299v + 1 sub)
-- **Forensic question**: "What Exploded the Sky?" (Tunguska, awaiting publish)
+- **Question + embedded contradiction**: "Why Did the Teetotal Captain Run?"
+  (319v — best Short to date, 2026-06-15)
 - **Inverted scale**: "1000× Hiroshima. No Crater." (great thumb hook)
 - **Time-locked mystery**: "112 Years. We Finally Know What Hit Us."
+
+> ✅ **Question/contradiction hooks confirmed 3× (2026-06-21).** On the *same*
+> topic, question framing beats narrative: Mary Celeste as a question = 319v
+> (v1_bonus_briggs) vs the narrative cuts at 281 (v1_twist) / 64 (v1_hook).
+> The format is the lever, not the topic.
+> NOTE: "What Exploded the Sky?" (forensic question) got only 1v — but that was
+> burst-suppression collateral (shipped at the tail of the 9-Short burst), not a
+> hook failure. The formula is sound; the timing killed the impression pool.
+
+## Bonus Shorts on already-published topics (validated 2026-06-21)
+
+- Re-cutting an already-covered story with a **fresh question hook** is the
+  cheapest way to break the ~300v plateau. v1_bonus_briggs (319) beat the
+  original Mary Celeste batch. Repeatable: pick a strong existing topic, reframe
+  the most counter-intuitive detail as a question, ship within the ≤2/week cap.
 
 ## Thumbnail recipe
 

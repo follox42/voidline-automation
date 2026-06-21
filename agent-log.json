@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-21 18:02 UTC",
+      "action": "WEEKLY_REVIEW",
+      "detail": "Week ending 2026-06-13. Best: v2_hook (+0v). Worst: v3_answer (+0v). "
+    },
+    {
+      "t": "2026-06-21 18:08 UTC",
+      "action": "WEEKLY_REVIEW_v2",
+      "detail": "Weekly review #2. BEST: v1_bonus_briggs 319v in 6d (06-15 publish) \u2014 best Short ever, beat v2_twist 299. Question+contradiction hook beat narrative on SAME topic (vs v1_twist 281 / v1_hook 64). WORST: v3_hook 1v \u2014 burst-suppression casualty, not hook failure (whole v3 batch throttled: 1/28/110). Cumulative ~1230 Short views (+43% vs 861 at review #1). 2 OPS FAILURES: (1) camoufox-stealth MCP DOWN \u2014 mcphub HTTP 530, no Studio analytics/scheduling/uploads; (2) PULSE monitor no snapshot since 06-13 \u2014 monitor_voidline.py curl lacks UA header -> consent-page blanks; fixed scrape manually this run, back-filled 06-21 snapshot. Reconciled v1_bonus_briggs SCHEDULED->PUBLIC (auto-pub 06-15, state stale). Sub count UNAVAILABLE (Studio down). Report: seeds/weekly-reports/2026-06-21.md"
     }
   ]
 }

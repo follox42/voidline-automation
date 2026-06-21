@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-13 — Auto weekly review
+**Observation**: Week ending 2026-06-13. Best: v2_hook (+0v). Worst: v3_answer (+0v). 
+**Auto-action**: manager reviewed. Manual interventions logged separately.
+
+
+## 2026-06-21 — Weekly review #2: bonus question-Short breaks the ceiling + 2 ops failures
+**Observation**: v1_bonus_briggs ("Why Did the Teetotal Captain Run? — Mary
+Celeste") published 06-15 reached **319v in 6 days — best Short in channel
+history**, edging past v2_twist (299). On the SAME topic, the two narrative
+Mary Celeste Shorts sit at 281 (v1_twist) and 64 (v1_hook). Meanwhile the v3
+Tunguska batch (hook 1, twist 28, answer 110) confirms the burst suppression —
+v3_hook is a good forensic-question hook that got 1 view because it shipped at
+the tail of the 9-Shorts burst, not because the hook failed.
+TWO infrastructure failures degraded this review:
+1. **camoufox-stealth MCP is down** — mcphub origin returns HTTP 530 (TCP
+   connects, so it's the backend/tunnel, not the network policy; youtube.com +
+   example.com both return 200). No Studio analytics, scheduling, or uploads.
+2. **PULSE monitor logged no snapshot since 2026-06-13** — `monitor_voidline.py`
+   uses bare `curl -sL` with no UA/Accept-Language, so YouTube serves the
+   consent page and viewCount parses blank. Adding a desktop UA +
+   `Accept-Language: en-US` header made the scrape work for 10/13 assets this
+   run (long-forms still blank — historically ~0v anyway).
+**Learning**:
+1. **Question/contradiction hooks confirmed 3rd time** and they beat the
+   narrative ceiling on the *same story* — format is the lever, not topic.
+2. **Bonus question-Shorts on an already-published topic** are the cheapest
+   plateau-breaker (319 > the original 281/64 batch). New repeatable tactic.
+3. The v3 batch is a clean isolated proof of the burst-suppression mechanic.
+4. `monitor_voidline.py`'s scraper needs the desktop-UA header fix to be
+   reliable in the cloud (the consent-page blank issue from 06-13 has a fix).
+**Action**:
+- Back-filled a manual 06-21 snapshot into stats_log.csv so future weekly
+  reviews have a real second data point.
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC (auto-published 06-15, state stale).
+- Report at seeds/weekly-reports/2026-06-21.md.
+- P0 next week: (a) patch monitor_voidline.py UA header + re-arm PULSE,
+  (b) restore camoufox-stealth (530), (c) ship next bonus question-Short,
+  (d) unblock v4 Roanoke Flow. Pull v1_bonus_briggs retention once Studio is back.
