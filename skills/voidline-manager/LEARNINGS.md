@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 14:05 — First full-coverage pulse confirms organic stall (J+25)
+**Observation**: First HOURLY PULSE with near-complete stats (8/12 assets
+parsed, vs 2/12 on 2026-06-13). Snapshot: v2_twist 299v, v1_answer 87v,
+v1_hook 64v, v2_answer 34v, v3_twist 28v, v3_hook 1v; long-forms
+v1_MaryCeleste 18v, v2_Dyatlov 2v. No PULSE_ALERT — no Short >1000, no
+long-form >100, no computable delta >50v. v2_twist sits at 299v, essentially
+flat vs its 298v on publish day (06-05) — 16 days, zero organic lift.
+**Learning**:
+1. The ~300v question-hook Short ceiling (first noted 06-05/06-07) is now
+   confirmed by a 16-day flat line: without comment-driven engagement the
+   algo does not re-surface. v2_twist predates cutter v2, so this is the
+   *expected* legacy ceiling, not a regression.
+2. J+25 organic stall across all assets is consistent with the "3-6 months to
+   first breakout for doc-niche cold-start" thesis — expected, not alarming.
+   No asset is decaying or breaking out; flat cold-start is the correct state.
+3. Scraper coverage jumped to 8/12 this run, but 4 still blank (v1_twist,
+   v2_hook, v3_answer, v1_bonus_briggs) — the camoufox-stealth port of
+   monitor_voidline.py is still the right reliability fix (carried-over TODO,
+   not done this pulse to stay within Studio HTTP limits).
+**Action**:
+- No notification (healthy/expected pulse, nothing actionable for user).
+- Watch next pulses for the FIRST cutter-v2 Short to test whether the 300
+  ceiling breaks with the debate-card outro — that's the real signal to look
+  for, not raw view count.
+- v1_bonus_briggs (SCHEDULED 06-15) reads blank → confirm it actually
+  published on a future daily-plan run (known silent-publish drift pattern).
