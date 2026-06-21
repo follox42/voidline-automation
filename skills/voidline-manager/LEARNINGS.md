@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 17:05 — v1_bonus_briggs breaks the ~300v Shorts plateau
+**Observation**: First pulse in 8 days (gap 06-13 → 06-21). The v1 Mary Celeste
+bonus Short `v1_bonus_briggs` ("Why Did the Teetotal Captain Run?", question hook,
+cutter v2) auto-published on 06-15 and now sits at **319v / 0 likes** — the highest
+view count of any Short on the channel, edging past v2_twist (299v) and the old
+v1_twist plateau (274v). State drift again: it was still marked SCHEDULED in
+shorts_state.json despite being live (oEmbed 200) — reconciled to PUBLIC. Other
+movers over the 8-day window: v2_twist blank→299, v2_answer →34, v3_answer 106→110
+(+4, still essentially flat), v3_hook 1v (suppression confirmed). v2_hook reads
+blank (likely the delete+re-upload from the journal, not yet re-tracked).
+**Learning**:
+1. The question-hook + cutter-v2 bonus thesis is VALIDATED on the publish side:
+   the explicit goal "percer le plafond 279v" (06-07 weekly review) is met — 319v.
+   The plateau is a *narrative-hook* ceiling, not a channel ceiling; question hooks
+   clear it organically with no external seed.
+2. NO threshold breach this pulse (max short 319 < 1000v alert bar; longs all blank;
+   no computable delta >50 because the record Short had no prior baseline). The
+   runner's delta logic is blind to first-appearance assets — a Short can publish and
+   hit a channel record without ever firing PULSE_ALERT. Known gap, not a regression.
+3. Pipeline is still DRY (last scheduled Short = v1_bonus_briggs, 06-15; 6 days with
+   nothing staged). The 06-13 DRIFT_FLAG is unresolved — cadence broken.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC; dropped a duplicate all-blank 17:05
+  snapshot (double-run artifact) from stats_log.csv.
+- Did NOT spend Studio HTTP actions (no threshold breach → retention/traffic-source
+  deep-dive not warranted this pulse). Next weekly review should pull v1_bonus_briggs
+  retention to confirm WHY it cleared the plateau.
+- Still need to render+schedule the next batch (v4 Roanoke) — pipeline dry 6 days.
