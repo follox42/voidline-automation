@@ -231,3 +231,41 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 13:05 — Hourly pulse is structurally blind + 8-day dormancy
+**Observation**: First pulse since 2026-06-13 14:02 — the "hourly" routine had
+an **8-day gap** (no runs 06-14 → 06-20). This pulse returned **0/13 assets with
+view data** (worse than the 2/13 on 06-13). Probed the failure directly: the
+container curl receives a *full* 1.18 MB YouTube page (NOT a consent redirect —
+that disproves the 06-13 "anti-scrape consent page" hypothesis), but the
+`"viewCount":"(\d+)"` field the monitor regexes for is simply **absent** from the
+served HTML. YouTube no longer ships viewCount in the initial unauth HTML for
+these requests, so `monitor_voidline.py` extracts nothing for any asset.
+The documented fallback — pull stats via camoufox-stealth MCP (cookie_profile=
+voidline) — was **not available this session**: no camoufox/stealth tool is
+exposed through mcphub in this container (ToolSearch returns nothing). So the
+pulse cannot see a single real number right now.
+Separately, oEmbed liveness confirms `v1_bonus_briggs` (vZ68HlWfT-Q, scheduled
+06-15) is now PUBLIC (HTTP 200) while shorts_state.json still marks it SCHEDULED
+— same auto-publish drift pattern as 06-13, for daily-plan to reconcile.
+**Learning**:
+1. The pulse stat pipeline is now effectively dead for view counts. The
+   `"viewCount"` regex is brittle and has stopped matching — anonymous HTML
+   scraping of YouTube is no longer viable from this container, full stop.
+2. No PULSE_ALERT can ever fire while the monitor returns all-blank — the
+   >1000v/>100v/>50v thresholds are unreachable without real numbers. The
+   hourly routine is producing snapshots of nothing.
+3. The stealth-MCP port flagged as the fix on 06-13 was never done, AND the
+   MCP itself isn't reachable here — so even a port would need the camoufox
+   server surfaced through mcphub in the routine container first.
+4. The "hourly" schedule clearly is not firing hourly (8-day gap) — the routine
+   cadence needs checking on the platform side.
+**Action**:
+- No view-based alerting possible this run. Logged clean exit, no false alarm.
+- Real fix requires `monitor_voidline.py` to fetch via camoufox-stealth (Studio
+  internal `get_video_analytics` or the public watch-page `ytInitialData`
+  innertube payload), AND the camoufox server must be exposed via mcphub in the
+  routine environment. Until then the pulse can only do oEmbed liveness, not
+  view deltas.
+- Flagged briggs drift for daily-plan RECONCILE (not mutating state in a pulse).
+- Flagged 8-day pulse dormancy for the user to check the routine schedule.
