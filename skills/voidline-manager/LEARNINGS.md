@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 18:05 — v1 bonus Briggs Short BREAKS the ~300v plateau (channel record)
+**Observation**: First hourly pulse since 06-13. `v1_bonus_briggs`
+("Why Did the Teetotal Captain Run? — Mary Celeste 1872", vZ68HlWfT-Q),
+published 06-15, is at **319v** at J+6 — the channel's best-performing Short
+ever, passing the prior records (v2_twist 298, v1_twist 281/274). Two earlier
+learnings (06-02, 06-07 weekly review) flagged ~300v as a hard ceiling for
+pure-narrative Shorts and set the explicit action "produce 2 bonus Mary Celeste
+Shorts with QUESTION hooks to break the 279v plateau." This is that experiment
+landing. Also: state had drifted (briggs still SCHEDULED) — reconciled to
+PUBLIC, the recurring "scheduled Shorts auto-publish silently" pattern.
+**Learning**:
+1. The question-hook bonus-Short hypothesis is CONFIRMED — a recycled topic
+   (Mary Celeste, already covered by v1_hook/twist/answer) with a fresh
+   QUESTION hook outperformed every original Short. Re-mining proven topics
+   with new question hooks is a viable, cheap growth lever.
+2. 300v is NOT a hard ceiling — it was a hook-format ceiling. Question hooks
+   clear it organically with zero external seed (pure-organic strategy holding).
+3. Below the routine's 1000v alert threshold, so no PULSE_ALERT — but it's the
+   first plateau-break and answers the open 06-07 action item, worth recording.
+**Action**:
+- Produce the SECOND Mary Celeste bonus Short (06-07 action called for 2) with
+  a question hook — the format is now validated.
+- Long-forms still dead (v1 18v, v2 2v, v3 blank) — no change, under threshold,
+  consistent with documented cold-start suppression. No action this pulse.
+- v4 Roanoke Flow-thumb blocker (06-13) still open — unblock in a daily run,
+  not this pulse (Studio/Flow HTTP limits).
