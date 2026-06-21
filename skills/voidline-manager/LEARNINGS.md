@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 — Daily-plan: briggs reconcile + mcphub outage + v4 pipeline stalled
+**Observation**: Sunday daily-plan run.
+1. **Reconcile**: v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED for 06-15;
+   oEmbed HTTP 200 confirms it auto-published on schedule. State → PUBLIC +
+   actual_published_at. Same publish-side drift class as the 06-13 batch.
+2. **mcphub down**: `mcp_stealth.py` initialize() → HTTP 530 (origin
+   unreachable). The camoufox-stealth Studio session could not be reached, so
+   no live Studio read-back was possible this run — oEmbed was the only working
+   verification channel.
+3. **v4 Roanoke stalled**: +8 days since the 06-13 Flow blocker, still
+   script-only. Per SHORTS_PLAN.md the long-form ships Mon 06-22 17:00 with
+   v4_hook 12:00 and v4_answer Wed 06-24 — none of it is rendered/uploaded/
+   scheduled. The upcoming publish week is empty unless v4 production runs today.
+**Learning**:
+- oEmbed remains the reliable session-free public/scheduled probe; it carried
+  the run when mcphub was down. Keep it as the primary routine status check and
+  only reach for Studio MCP when a write/read-back is genuinely required.
+- A long-form "ship date" in a plan is not a scheduled video. Daily-plan must
+  treat unrendered production as a hard drift, not a future item — 8 days of
+  silent slippage put tomorrow's ship at risk before anyone noticed.
+**Action**:
+- Complete v4 Roanoke today (voice → assets → render → thumb → 2 Shorts →
+  upload+schedule) OR formally slip the ship date and re-flag, to avoid an empty
+  publish week. Flow blocker still needs the fresh-session re-investigation noted
+  on 06-13.
+- When mcphub is back, do a real Studio read-back to confirm v1_bonus_briggs and
+  the v4 schedule once it exists.
+- On the actual long-form ship day, draft the r/UnresolvedMysteries seed (step 4).

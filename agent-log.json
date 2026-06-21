@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-21 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-21 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-21 08:05 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, 'Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872') was stale SCHEDULED for 2026-06-15 but verified PUBLIC via YouTube oEmbed (HTTP 200; controls: known-public y3xLIfOAPHA=200, bogus id=400). It auto-published on its 06-15 schedule without updating state \u2014 same publish-side drift class as the 06-13 batch. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. NOTE: Studio cross-check via mcp_stealth.py was NOT possible \u2014 mcphub endpoint returned HTTP 530 (origin down), so oEmbed was the sole verification path this run."
+    },
+    {
+      "t": "2026-06-21 08:05 UTC",
+      "action": "MCP_OUTAGE",
+      "detail": "mcphub aggregator (https://mcphub.nocode18.com/mcp) returned HTTP 530 on initialize() \u2014 camoufox-stealth Studio session unreachable from the routine container. Any task step requiring live Studio interaction (schedule read-back, upload) cannot run until mcphub is back. Public-side checks (oEmbed) still work over plain HTTPS."
+    },
+    {
+      "t": "2026-06-21 08:05 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "NOT a publish day today (Sun 06-21): 0 Shorts scheduled, no long-form scheduled. Next 3 days per runs/v4-roanoke/SHORTS_PLAN.md: Mon 06-22 = long-form ship 17:00 + v4_hook Short 12:00; Tue 06-23 = nothing; Wed 06-24 = v4_answer Short 12:00. SEVERE PIPELINE DRIFT: v4 Roanoke is still script-only (production steps 2-8 all pending since the 06-13 Flow blocker, +8 days). Long-form NOT rendered/uploaded/scheduled; neither v4 Short rendered/uploaded/scheduled. Unless v4 production is completed today, tomorrow's long-form ship + v4_hook Short WILL miss, and the entire upcoming publish week stays empty. Also: cadence target is long-form Sunday 17:00 \u2014 v4 plan slipped it to Monday 06-22, already off-cadence. When the long-form does ship, the r/UnresolvedMysteries seed (step 4) must be drafted that day."
     }
   ]
 }
