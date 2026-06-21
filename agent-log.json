@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-21 19:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219219:04: no notable delta"
+    },
+    {
+      "t": "2026-06-21 19:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 19:04\u219219:05: no notable delta"
+    },
+    {
+      "t": "2026-06-21 19:07 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "06-13->06-21 deltas (>50v on 2 assets): v1_bonus_briggs 319v (NEW BEST, reconciled SCHEDULED->PUBLIC via oEmbed), v1_twist 281v, v1_answer 87v, v1_hook 64v, v2_answer 34v, v2_long_Dyatlov 2v. First break above the ~106v ceiling -> cold-start suppression easing (sustained-organic, not breakout: no Short>1000v / long>100v). NOTE: pulse delta-engine logged 'no notable delta' because it skips assets with blank prev/cur views and the sparse scraper left 06-13 baseline mostly blank -- caught by manual CSV review."
+    },
+    {
+      "t": "2026-06-21 19:07 UTC",
+      "action": "BLOCKER",
+      "detail": "camoufox-stealth DOWN: mcphub.nocode18.com AND mcp-stealth.nocode18.com both HTTP 530 (origin unreachable), egress otherwise fine (YouTube oEmbed 200). Not cookies/401, not network policy. Studio analytics drill-down on v1 uptick deferred to next pulse."
     }
   ]
 }

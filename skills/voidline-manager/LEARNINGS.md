@@ -231,3 +231,43 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-21 19:05 — First organic uptick + Studio blocked (mcphub 530)
+**Observation**: Hourly pulse after an 8-day gap (last real snapshot 06-13).
+Public scraper is sparse as ever, but the 06-13→06-21 deltas are the first real
+movement the channel has shown:
+- **v1_bonus_briggs (vZ68HlWfT-Q): 319v** — new channel best, and it was still
+  marked SCHEDULED(06-15) in state. Verified PUBLIC via oEmbed 200 → reconciled
+  to PUBLIC + actual_published_at.
+- **v1_twist (x2VsCWJ-r1o): 281v** (was blank 06-13), v1_answer 87v, v1_hook 64v,
+  v2_answer 34v, v2_long_Dyatlov 2v (first non-zero long-form view).
+All four Mary-Celeste (v1) Shorts are now the movers — the bonus Briggs Short +
+the original twist are carrying. This breaks the ~106v ceiling that v3_answer sat
+at since 06-07. Reads as the suppression/cold-start finally loosening, NOT a viral
+spike (no Short >1000v, no long-form >100v) — sustained-organic, not breakout.
+**Learning**:
+1. The pulse delta logic is BLIND to this kind of growth: it `continue`s on any
+   asset where prev OR cur views are blank, and with the sparse scraper almost
+   every 06-13 baseline cell was blank → runner logged "no notable delta" while
+   real +200v deltas sat in the CSV. The threshold engine needs a populated
+   baseline to fire; sparse scraping defeats it. Until monitor pulls via stealth
+   (or yt-dlp), eyeball the CSV deltas manually each pulse — don't trust the
+   PULSE vs PULSE_ALERT verdict.
+2. Running `cron_runner.py pulse` twice in one session writes two snapshots
+   seconds apart and makes the "last two timestamps" comparison meaningless. One
+   pulse = one snapshot. Don't double-run.
+3. **BLOCKER**: camoufox-stealth is DOWN — both mcphub aggregator
+   (mcphub.nocode18.com) and the direct host (mcp-stealth.nocode18.com) return
+   HTTP 530 (origin unreachable), while general egress (YouTube oEmbed) is 200.
+   So this is the stealth origin being down, not cookies/auth (no 401) and not
+   our network policy. Studio impressions/retention/traffic-source investigation
+   for the v1 uptick is deferred to the next pulse when 530 clears.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC (oEmbed-verified).
+- Deferred Studio analytics drill-down on v1_bonus_briggs + v1_twist until the
+  stealth host is back (retry next pulse; if 530 persists >24h, flag the
+  nocode18 stealth infra to Nolann).
+- Pipeline STILL dry (06-13 DRIFT_FLAG unresolved): nothing scheduled past
+  v1_bonus_briggs(06-15); it's now 06-21, 6 days no new upload vs cadence. The
+  v1 uptick is the moment to feed the algorithm — getting the v4 Roanoke batch
+  shipped now matters more given there's finally organic traction to build on.
