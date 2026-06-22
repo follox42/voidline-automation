@@ -231,3 +231,38 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 22:05 — v1 bonus Briggs breaks the 300v plateau (new channel record)
+**Observation**: Hourly pulse pulled a near-complete stat snapshot (first clean
+run since the 06-13 scraper-flakiness day). Current Short standings:
+v1_bonus_briggs **319v** > v2_twist 299 > v1_twist 281 > v3_answer 110 >
+v1_answer 87 > v2_answer 34 > v3_twist 28 > v2_hook 7 > v3_hook 1.
+v1_bonus_briggs ("Why Did the Teetotal Captain Run? — Mary Celeste 1872",
+question hook, cutter v2) is now the channel's top-performing Short and the
+FIRST to cross the long-standing ~300v plateau. The narrative HOOKs stay dead
+(v2_hook 7, v3_hook 1). Long-forms (v1/v2/v3) now tracked but still blank/~0 —
+suppression unchanged. No PULSE_ALERT fired.
+**Learning**:
+1. The question-hook + cutter-v2 formula is now validated at a NEW ceiling
+   (319 > prior best 299). Both top-3 Shorts are question/contradiction hooks;
+   every narrative hook is bottom-tier. The hook-type law from 06-03/06-05 holds,
+   and the bonus Briggs Short proves the v1 Mary Celeste re-mine (question hooks
+   on the strongest topic) was the right call to pierce the plateau.
+2. STATE DRIFT recurred: v1_bonus_briggs was still SCHEDULED (06-15) in
+   shorts_state.json but auto-published ~7d ago (oEmbed 200, 319 real views).
+   Same KNOWN_BAD as the 06-13 daily-plan catch — scheduled Shorts publish
+   silently and the state file never updates. Reconciled → PUBLIC.
+3. The PULSE_ALERT threshold logic is defeated by sparse/missing baselines:
+   the 06-13 snapshot only parsed 2/12 assets, so today's big movers had no
+   prior value to diff against and no delta fired despite a real record. The
+   alert needs a "first clean reading above N" fallback, not just pairwise delta.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED → PUBLIC + actual_published_at in state.
+- Did NOT burn Studio HTTP budget this pulse (no PULSE_ALERT gate met; oEmbed +
+  scraper sufficient). Next pulse now has a dense baseline — deltas will be
+  meaningful going forward.
+- TODO (not this run): give run_pulse() an absolute-threshold fallback so a
+  first clean reading of a high-view asset alerts even without a prior snapshot;
+  keep porting monitor_voidline.py to camoufox-stealth to kill the blanks.
+- Strategy signal: double down on v1 Mary Celeste question-hook bonus Shorts —
+  it's the proven plateau-breaker while v4 Roanoke is still blocked on the Flow thumb.
