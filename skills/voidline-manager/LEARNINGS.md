@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 11:04 — Pulse goes fully blind: YouTube 429 + reCAPTCHA on the scraper
+**Observation**: Hourly pulse ran clean (no PULSE_ALERT, "no notable delta"),
+but `monitor_voidline.py` returned blank views/likes for ALL 13 assets
+(3 long-forms + 10 Shorts). Manual probe of a known-good asset
+(y3xLIfOAPHA / v3_answer, previously 106v) returns **HTTP 429** with a
+reCAPTCHA "unusual traffic" page (3255 bytes, no `viewCount`). Hard escalation
+of the 06-13 finding: anonymous-curl coverage went from 2/12 partial → 0/13
+total blackout.
+**Learning**:
+1. The container's egress IP is now rate-limited/CAPTCHA-walled by YouTube for
+   anonymous scraping. The pulse can no longer read any view counts, so its
+   core job — detecting Short >1000v / long-form >100v / delta >50v spikes — is
+   structurally non-functional. A clean pulse no longer means a healthy
+   channel; it just means the scraper saw nothing.
+2. The 06-13 TODO ("port monitor to camoufox-stealth, cookie_profile=voidline")
+   is now BLOCKING, not nice-to-have. yt-dlp would hit the same IP wall; only
+   the authenticated stealth session (or the Studio analytics path) can read
+   stats reliably from this IP.
+3. The camoufox-stealth tools were NOT exposed via mcphub in this session's
+   tool search, so the fix path itself needs verification (cookies + mcphub
+   routing) before it can be wired into `fetch_stats`.
+**Action**:
+- Logged the block per the "exit cleanly when blocked" rail — no Studio actions
+  burned (no alert to investigate; nothing to read with a dead scraper).
+- NEXT (out of this pulse's budget): rewrite `monitor_voidline.py:fetch_stats`
+  to pull via camoufox-stealth (cookie_profile=voidline) against the
+  watch/shorts page or Studio analytics, with anonymous curl kept only as a
+  fallback. Until then, treat "no notable delta" pulses as UNVERIFIED.
