@@ -231,3 +231,25 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 16:05 — v1 BONUS breaks the 300v Short ceiling + state drift
+**Observation**: Hourly pulse parsed `v1_bonus_briggs` ("Why Did the Teetotal
+Captain Run? — Mary Celeste 1872", question hook + cutter v2) at **319v** — the
+first Short ever above the documented ~300v plateau (prior best v2_twist ≈298v).
+It was still marked `SCHEDULED` in shorts_state.json despite its 06-15 slot being
+a week past — auto-published silently (the known KNOWN_BAD: state not reconciled).
+Runner logged "no notable delta" (scraper still anti-bot blocked, only 2/13 assets
+parsed: v2_twist 299v, v1_bonus_briggs 319v). No threshold alert (<1000v).
+**Learning**:
+1. The ~300v Short ceiling is NOT hard — a strong question hook on a familiar
+   topic (Mary Celeste, the channel's most-covered subject) on cutter v2 crossed
+   it organically. Bonus Shorts on already-covered subjects can outperform.
+2. Daily reconciliation gap persists: v1_bonus_briggs sat SCHEDULED→PUBLIC drift
+   for ~7 days. Pulse caught it only because the scraper happened to parse its view
+   count this run. Reconciled to PUBLIC + actual_published_at=06-15T12:00Z.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- For weekly review: confirm 319v reading (scraper flaky); if real, prioritize
+  more bonus question-hook Shorts on the strongest existing topics over net-new.
+- Scraper port to camoufox-stealth still the #1 infra TODO — view coverage of
+  2/13 makes every pulse near-blind.
