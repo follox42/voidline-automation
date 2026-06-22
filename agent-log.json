@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-22 18:04 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219218:04: no notable delta"
+    },
+    {
+      "t": "2026-06-22 18:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 18:04\u219218:04: no notable delta"
+    },
+    {
+      "t": "2026-06-22 18:07 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) scheduled 06-15 verified LIVE via oEmbed HTTP 200 but state still SCHEDULED (7 days drift). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Pulse note: first run since 06-13 (9-day monitoring gap); 9-day deltas flat (v2_twist 298->299, v1_twist 274->281, v3_answer 106->110); no threshold crossed; pipeline dry behind bonus; v4 still Flow-blocked."
     }
   ]
 }

@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 18:05 — Pulse resumes after 9-day gap: catalogue fully stalled, pipeline dry
+**Observation**: First pulse to land since 2026-06-13 14:02 — a 9-day hole in
+the stats_log.csv (no hourly rows in between), so the monitoring routine was
+effectively dormant for over a week. The 9-day deltas are flat across the whole
+catalogue: v2_twist 298→299 (+1), v1_twist 274→281 (+7), v3_answer 106→110 (+4),
+v3_twist now reads 28. Nothing approaches the 1000v/100v/50v thresholds → no
+PULSE_ALERT (correct). v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) verified
+LIVE via oEmbed HTTP 200 but was still marked SCHEDULED in state — the known
+silent-publish drift, 7 days unreconciled. Long-forms all still blank/0.
+**Learning**:
+1. The hourly pulse is only useful if it actually fires hourly. A 9-day dormancy
+   means deltas get computed against a stale baseline and the back-to-back
+   re-run trap fires: the runner compared two snapshots 22s apart (both my runs)
+   and saw "no delta," masking the real 9-day movement. The threshold logic
+   should ideally diff against the last *distinct-day* snapshot, not just
+   timestamps[-2].
+2. The drift pattern recurs every time daily-plan skips: scheduled Shorts
+   auto-publish and state never updates. With both pulse and daily-plan dormant
+   9 days, the bonus Short published silently and sat unreconciled.
+3. Strategic: v2_twist (the "first real signal") is dead flat at 299 — the ~300v
+   organic ceiling is fully confirmed, no breakout. The catalogue has had zero
+   meaningful growth in 9 days and the pipeline is dry — nothing scheduled behind
+   the now-published bonus, and v4 Roanoke is still stuck on the Flow thumb
+   blocker from 06-13. The channel has effectively gone silent for 10 days.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=2026-06-15 in state.
+- Flag to operator: the routine suite needs to be confirmed actually scheduled
+  (9-day gap suggests it wasn't running). Pipeline is dry — v4 needs to ship.
+- TODO (not this pulse, threshold/limit hygiene): change pulse delta to diff
+  against the most recent prior *calendar-day* snapshot so back-to-back runs
+  don't blank the signal.
