@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 23:04 — v1 bonus Briggs Short breaks the 300v plateau (NEW RECORD)
+**Observation**: Hourly pulse snapshot. `v1_bonus_briggs` ("Why Did the
+Teetotal Captain Run? — Mary Celeste 1872", vZ68HlWfT-Q) is live at **319v /
+0 likes** — the channel's highest-performing Short to date, edging past the
+prior best (v2_twist 298v, v1_twist 274v) and clearing the documented ~300v
+narrative plateau. Question-hook + cutter v2 again. v3_twist also ticked up to
+28v. Long-forms (sB8VXu2OHtY / pM-u_8ONjI0 / FacPhS3hNjU) all oEmbed-200 but
+returned blank view counts — same flaky-scraper miss as 2026-06-13 (11/13
+assets blank this run).
+**Learning**:
+1. The bonus Mary Celeste question-hook bet (flagged 2026-06-13 to "percer le
+   plafond 279v") worked — 319v confirms QUESTION hooks + cutter v2 push past
+   the narrative ceiling even with zero engagement (0 likes/comments). The
+   format breaks the plateau; the conversion lever (comments via outro debate
+   card) is still untapped.
+2. State drift (KNOWN_BAD) struck again: v1_bonus_briggs auto-published on its
+   2026-06-15 schedule but stayed `SCHEDULED` in shorts_state.json for 7 days.
+   Reconciled → PUBLIC + actual_published_at via oEmbed 200 probe.
+3. cron_runner's delta logic only fires when an asset has numeric views in BOTH
+   snapshots, so a freshly-published asset jumping 0→319 produces NO PULSE_ALERT
+   (logged "no notable delta"). The +319 still meets the routine's own >50v
+   delta threshold — the runner under-reports new publishes.
+**Action**:
+- Reconciled state (this commit). 319v is a strong organic signal but below the
+  1000v breakout threshold — no Studio deep-dive spent this pulse (stays within
+  HTTP limits), no panic-action needed.
+- TODO (carried): port monitor_voidline.py to fetch via camoufox-stealth so
+  pulse stats stop coming back blank; patch cron_runner delta logic to treat a
+  new-publish (absent→numeric) as a delta event.
