@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 13:06 — Pulse is now fully blind (scrape coverage 0/13)
+**Observation**: HOURLY PULSE ran clean (exit 0, no PULSE_ALERT, Δ 14:02→13:06
+"no notable delta"). But every one of the 13 monitored assets returned a BLANK
+view count this run — including v3_answer (y3xLIfOAPHA), which still parsed 106v
+on the 2026-06-13 14:02 snapshot. The monitor's anonymous-curl path has gone
+from 2/12 coverage (06-13) to 0/13. No cookies/401 error surfaced; it's the
+silent consent/anti-scrape page served to unauthenticated curl, just total now.
+**Learning**:
+1. The "no notable delta" result is currently MEANINGLESS — the pulse can't
+   detect a spike because it has zero view data. A green pulse here is a false
+   negative, not a real all-clear. The HOURLY PULSE is operationally blind until
+   the monitor pulls stats authenticated.
+2. The 2026-06-13 prediction ("coverage will stay sparse until the monitor pulls
+   via camoufox-stealth or yt-dlp") has fully materialized — sparse became zero.
+   The routine's core job (catch view spikes) is non-functional without it.
+3. Did NOT spend Studio HTTP actions investigating — correct call, since no
+   PULSE_ALERT threshold was crossed (and none CAN be crossed with 0 data).
+**Action**:
+- PRIORITY TODO (next non-pulse window): port monitor_voidline.py to fetch via
+  camoufox-stealth (cookie_profile=voidline) or yt-dlp so the pulse has real
+  numbers. Until then, treat "no notable delta" pulses as no-signal, not
+  all-clear.
+- Cleaned a duplicate 13:07 diagnostic snapshot out of stats_log.csv + agent-log
+  so the hour has a single canonical pulse row.
