@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 08:05 — Pulse after 9-day gap: bonus Short is new #1, long-forms show first life
+**Observation**: First HOURLY PULSE since 2026-06-13 (9-day gap). Scraper
+snapshot (one good pass, one flaky blank pass — the known curl/anti-scrape
+flakiness persists):
+- v1_bonus_briggs ("Why Did the Teetotal Captain Run? — Mary Celeste",
+  question hook + cutter v2) = **319v** — now the channel's #1 Short,
+  edging the prior plateau (v2_twist 299, v1_twist 281). State drift caught:
+  it was still SCHEDULED (06-15) in shorts_state.json despite being PUBLIC
+  for a week — reconciled via oEmbed HTTP 200.
+- v3_long_Tunguska long-form = **85v** (oEmbed 200). Long-forms were
+  previously 0v / "dead under suppression". 85v is the first real organic
+  signal on a long-form since the channel started.
+- No PULSE_ALERT: none of the user thresholds breached (Short >1000, long
+  >100, delta >50). Top Short 319 < 1000, top long-form 85 < 100.
+**Learning**:
+1. The question-hook + cutter-v2 formula RELIABLY lands ~300v on Shorts
+   (319/299/281 now cluster there) but still has NOT produced a breakout.
+   The ceiling is real and consistent — ~300 is the engagement-less plateau,
+   confirming the 2026-06-07 weekly-review hypothesis. Breaking it needs
+   comment-driven engagement, not more of the same hook formula.
+2. Long-form suppression may be lifting: 85v on v3 Tunguska contradicts the
+   "long-forms stay 0v under suppression" narrative. This matters for the
+   v4 Roanoke J+7 decision gate (was: 0v at J+7 → suppression persistent).
+   85v is below the 100v alert bar but trending toward it — watch next pulses.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC in shorts_state.json.
+- No notification sent (no threshold breached — respecting user-defined bars).
+- WATCH: if v3_long crosses 100v or any Short crosses a delta >50v next
+  pulse, escalate to Studio analytics (traffic sources — is the long-form
+  finally getting suggested/browse impressions?).
+- Pipeline still dry beyond v1_bonus_briggs (DRIFT_FLAG from 06-13 daily
+  plan still open) — v4 Roanoke production remains the blocker to resolve.
