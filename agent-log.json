@@ -3,22 +3,42 @@
     {
       "t": "2026-06-13 13:55 UTC",
       "action": "DAILY_PLAN",
-      "detail": "Today 2026-06-13 \u2014 0 Shorts publishing | "
+      "detail": "Today 2026-06-13 — 0 Shorts publishing | "
     },
     {
       "t": "2026-06-13 13:55 UTC",
       "action": "RECONCILE",
-      "detail": "Drift corrected: 5 Shorts were stale SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200) \u2014 v2_twist(vxP6XiJKLkg, 06-05), v2_answer(TwJNypz8c4I, 06-06), v3_hook(5e8ELVo5ARg, 06-08), v3_twist(0eDPVcgODvY, 06-10), v3_answer(y3xLIfOAPHA, 06-12). Set status=PUBLIC + actual_published_at=scheduled_at for each. Cross-checked: live voidline Studio session sitting on 5e8ELVo5ARg analytics period-since_publish."
+      "detail": "Drift corrected: 5 Shorts were stale SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200) — v2_twist(vxP6XiJKLkg, 06-05), v2_answer(TwJNypz8c4I, 06-06), v3_hook(5e8ELVo5ARg, 06-08), v3_twist(0eDPVcgODvY, 06-10), v3_answer(y3xLIfOAPHA, 06-12). Set status=PUBLIC + actual_published_at=scheduled_at for each. Cross-checked: live voidline Studio session sitting on 5e8ELVo5ARg analytics period-since_publish."
     },
     {
       "t": "2026-06-13 13:55 UTC",
       "action": "DRIFT_FLAG",
-      "detail": "Pipeline empty: no Shorts scheduled for next 3 days (Sun 06-14, Mon 06-15, Tue 06-16). Catalogue queue is dry beyond v3_answer (06-12) \u2014 the entire v3 Tunguska batch is now published with nothing staged behind it. Cadence target is 5 Shorts/wk (Mon/Wed/Fri/Sun) so 06-14 + 06-15 slots are already unfilled. ACTION NEEDED: render+schedule next batch (v4 topic). Also: tomorrow Sun 06-14 17:00 UTC is a long-form + Reddit-seed day per cadence, but no long-form appears scheduled \u2014 verify in tomorrow's run."
+      "detail": "Pipeline empty: no Shorts scheduled for next 3 days (Sun 06-14, Mon 06-15, Tue 06-16). Catalogue queue is dry beyond v3_answer (06-12) — the entire v3 Tunguska batch is now published with nothing staged behind it. Cadence target is 5 Shorts/wk (Mon/Wed/Fri/Sun) so 06-14 + 06-15 slots are already unfilled. ACTION NEEDED: render+schedule next batch (v4 topic). Also: tomorrow Sun 06-14 17:00 UTC is a long-form + Reddit-seed day per cadence, but no long-form appears scheduled — verify in tomorrow's run."
     },
     {
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-22 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-22 — 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-22 08:03 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, sched 06-15 12:00 UTC) was still SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200, title='Why Did the Teetotal Captain Run? — Mary Celeste 1872 #shorts', author=Voidline). Auto-published on schedule 7 days ago; state never updated. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Same publish-side drift pattern as 06-13."
+    },
+    {
+      "t": "2026-06-22 08:03 UTC",
+      "action": "STUDIO_DOWN",
+      "detail": "mcphub aggregator (https://mcphub.nocode18.com/mcp) returned HTTP 530 (origin unreachable) on stealth_status — live YouTube Studio verification UNAVAILABLE this run. Fell back to oEmbed public/scheduled probe (validated session-safe method). All status reconciliation this run done via oEmbed, not Studio."
+    },
+    {
+      "t": "2026-06-22 08:03 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "PIPELINE FULLY DRY + cadence broken. (1) No Shorts scheduled for today 06-22 (Mon) nor the next 3 days (Tue 06-23 / Wed 06-24 / Thu 06-25) — nothing staged past v1_bonus_briggs (06-15). Zero Shorts published 06-16→06-22 vs 3-5/wk target (Mon/Wed/Fri/Sun). (2) Yesterday Sun 06-21 17:00 UTC was a long-form + Reddit-seed slot per cadence — NO long-form was scheduled or shipped; slot missed. (3) v4 Roanoke still blocked on Google Flow thumb (submit button disabled since 06-13, UI redesign / quota / soft-block unresolved). ACTION NEEDED: unblock Flow thumb (fresh-session inspect or use v3 Tunguska placeholder base per LEARNINGS backup path), render+schedule v4 long-form + HOOK/ANSWER Shorts to restart rhythm before suppression deepens."
     }
   ]
 }

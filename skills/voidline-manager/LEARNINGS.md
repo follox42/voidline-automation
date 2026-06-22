@@ -231,3 +231,29 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 — Daily-plan: recurring publish-side drift + mcphub outage + dry pipeline
+**Observation**: Second Cloud daily-plan run.
+1. v1_bonus_briggs (sched 06-15) was STILL `SCHEDULED` in state 7 days after its
+   slot — auto-published on time, state never updated. Verified PUBLIC via oEmbed
+   (HTTP 200). Same pattern as the 06-13 reconcile of 5 Shorts.
+2. mcphub (`https://mcphub.nocode18.com/mcp`) returned **HTTP 530** on
+   stealth_status — origin/tunnel unreachable. No live Studio access this run.
+   oEmbed fallback carried the whole reconciliation.
+3. Pipeline fully dry: nothing scheduled for 06-22 or the next 3 days; zero Shorts
+   06-16→06-22 vs 3-5/wk cadence; Sun 06-21 long-form + Reddit-seed slot missed
+   (no long-form queued). v4 Roanoke still blocked on the Flow thumb since 06-13.
+**Learning**:
+- Publish-side state drift is now confirmed RECURRING, not a one-off — scheduled
+  Shorts always need post-slot oEmbed reconciliation; the state file is never
+  self-healing. Worth automating an oEmbed sweep inside cron_runner's daily-plan.
+- mcphub is a single point of failure for Studio automation. When it 530s, oEmbed
+  (public/scheduled probe) is the only session-safe status signal available.
+- The channel has had a 10-day production gap (last ship 06-15). The recovery
+  cadence (1 long/wk + HOOK/ANSWER Shorts) is not being met — execution, not
+  strategy, is now the bottleneck.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- Logged STUDIO_DOWN + DRIFT_FLAG in agent-log.json.
+- NEXT: unblock Flow (fresh-session inspect or v3 Tunguska placeholder base),
+  render + schedule v4 Roanoke long-form + 2 Shorts to restart the rhythm.
