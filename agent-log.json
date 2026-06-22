@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-22 12:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219212:06: no notable delta"
+    },
+    {
+      "t": "2026-06-22 12:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 12:06\u219212:07: no notable delta"
+    },
+    {
+      "t": "2026-06-22 12:09 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED; oEmbed HTTP 200 confirms PUBLIC (auto-published 2026-06-15 12:00 UTC, 7 days ago). Set status=PUBLIC + actual_published_at."
+    },
+    {
+      "t": "2026-06-22 12:09 UTC",
+      "action": "BLOCKER",
+      "detail": "Monitor blind: monitor_voidline.py curl scraper returned 0/16 view counts (cloud anti-scrape). camoufox-stealth MCP NOT exposed via mcphub this session, so Studio analytics + monitor-port both blocked. Pipeline dry since 06-15. Exiting cleanly per pulse rails."
     }
   ]
 }

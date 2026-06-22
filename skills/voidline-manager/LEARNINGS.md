@@ -231,3 +231,41 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 12:08 — Pulse resumes after 9-day silence: blind monitor + dry pipeline
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 9-day gap in
+agent-log.json with no entries, so the routine was effectively dormant.
+This run:
+1. **Monitor 0% coverage**: `monitor_voidline.py` (still the anonymous-curl
+   scraper) returned blank views/likes for ALL 16 assets — worse than the
+   2026-06-13 baseline where 2/12 still parsed. YouTube is serving the
+   consent/anti-scrape page to unauthenticated curl in the cloud container.
+   No PULSE_ALERT could fire because there is no data to delta against.
+2. **camoufox-stealth MCP not exposed**: the documented fix (pull stats via
+   the stealth browser, cookie_profile=voidline) is unavailable — mcphub in
+   this session exposes github/obsidian/plane/notion/etc. but NO
+   camoufox-stealth tools. So Studio analytics + the monitor port are both
+   blocked this run.
+3. **State drift**: `v1_bonus_briggs` (vZ68HlWfT-Q, scheduled 2026-06-15
+   12:00 UTC) was still marked SCHEDULED but oEmbed returns HTTP 200 → it
+   auto-published 7 days ago. Reconciled → PUBLIC + actual_published_at.
+4. **Pipeline DRY confirmed**: nothing scheduled or published since 06-15.
+   The DRIFT_FLAG raised on 2026-06-13 was never resolved; the 5/wk (or even
+   3/wk cold-start) cadence has been broken for a full week. v4 Roanoke is
+   still stuck at the Flow-thumb blocker (see 2026-06-13 entry).
+**Learning**:
+- The hourly pulse is structurally blind until either (a) monitor is ported
+  to camoufox-stealth, or (b) yt-dlp is used for view counts. Anonymous curl
+  is now a 0% path in the cloud — stop relying on it.
+- oEmbed 200/401 remains the only working session-safe probe and is enough
+  for publish/drift reconciliation, but NOT for view-count thresholds.
+- A "no notable delta" pulse is meaningless when coverage is 0 — the runner
+  should distinguish "flat" from "no data" (currently it logs them the same).
+**Action**:
+- Reconciled v1_bonus_briggs in shorts_state.json (oEmbed-verified PUBLIC).
+- Logged blind-monitor + missing-stealth-MCP as a blocker; exiting cleanly
+  per pulse safety rails (no Studio HTTP actions possible this run).
+- ESCALATE to user: pipeline dry 7 days + monitor blind. Top levers when
+  back: (1) confirm camoufox-stealth is wired into mcphub for the routine
+  env, (2) unblock v4 Roanoke thumb or ship with placeholder, (3) add a
+  "no data" guard to cron_runner so blind pulses don't masquerade as healthy.
