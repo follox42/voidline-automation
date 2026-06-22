@@ -231,3 +231,27 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 15:06 — Hourly pulse silent for 9 days + stale SCHEDULED drift
+**Observation**: First pulse since 2026-06-13 14:02 — a 9-day gap, so the
+"hourly" routine has NOT been firing on schedule (cron dormant or paused).
+This pulse: no threshold crossed (sparse scraper coverage — only v2_twist 299v,
+v1_answer 87v, v2_hook 7v parsed; rest blank as usual). v2_twist essentially
+flat (298→299 since 06-05). v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) was
+still marked SCHEDULED in shorts_state.json though oEmbed returns HTTP 200 →
+it auto-published a week ago. Reconciled to PUBLIC + actual_published_at.
+**Learning**:
+1. The hourly pulse is not actually running hourly — a 9-day silence means the
+   Cloud Routine schedule is not firing (or was paused). Pulse alerting is only
+   as good as the cadence; a dormant routine catches nothing.
+2. Scheduled-Short auto-publish drift persists: state file is never updated by
+   YouTube, so even the pulse run should oEmbed-probe any past-due SCHEDULED
+   entries, not just daily-plan. Caught v1_bonus_briggs a week late.
+3. Pipeline remains dry — nothing staged behind v1_bonus_briggs (06-15). No new
+   Shorts/long-form scheduled for the 7 days since. Cadence has broken.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- FLAG to user: verify the hourly-pulse Cloud Routine is enabled/firing — 9-day
+  gap is the headline issue, not the stats.
+- Pipeline still needs v4 (Roanoke) render + schedule to restore cadence
+  (carried over from 06-13 DRIFT_FLAG, still open).
