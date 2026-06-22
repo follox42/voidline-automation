@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 21:04 — Pulse resumes after 9-day gap: scraper fully dark + briggs drift
+**Observation**: First pulse since 2026-06-13 14:02 (≈9-day gap — the hourly
+routine has NOT been firing hourly). This run the anon-curl scraper returned
+**blank views for all 14 assets** (0/14 parsed, vs 2/12 on 06-13). No
+PULSE_ALERT possible — there is simply no data to delta against. Separately,
+v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) verified PUBLIC via oEmbed 200
+but state still read SCHEDULED → reconciled to PUBLIC + actual_published_at.
+All 3 long-forms (sB8VXu2OHtY / pM-u_8ONjI0 / FacPhS3hNjU) also oEmbed 200.
+**Learning**:
+1. The anon-curl scraper is now ~useless in the cloud container — YouTube
+   serves the consent/anti-scrape wall to unauthenticated requests, and this
+   run it caught 0%. The pulse cannot detect spikes until monitor_voidline.py
+   is ported to fetch via camoufox-stealth (cookie_profile=voidline) or yt-dlp.
+   This is the #1 blocker for the hourly pulse having any value.
+2. The auto-publish drift (scheduled Short flips PUBLIC, state not updated) is
+   now confirmed a THIRD time (v1_bonus_briggs). oEmbed 200 reconciliation is
+   the reliable, session-safe fix.
+3. A 9-day pulse gap means the cadence/spike-watch is effectively unmonitored.
+   Worth confirming the Cloud Routine schedule is actually armed hourly.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- PRIORITY TODO (next non-pulse window, exceeds pulse Studio-action budget):
+  port monitor_voidline.py to camoufox-stealth so pulses get real numbers.
+- Pipeline still DRY behind v1_bonus_briggs (06-15) — no Short scheduled for
+  the last week. Daily-plan run should stage the next batch.
+- No notification-worthy spike; flagging the scraper blackout + monitoring gap
+  to the user as the actionable item.
