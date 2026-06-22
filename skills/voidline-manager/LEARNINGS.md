@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-22 06:06 — v1 bonus Briggs Short crosses the 300 plateau ceiling
+**Observation**: Hourly pulse. `v1_bonus_briggs` (vZ68HlWfT-Q, "Why Did the
+Teetotal Captain Run? — Mary Celeste 1872") sits at **319v** ~7 days after
+its 06-15 publish — now the channel's #1 Short, edging past v1_twist (281,
+still flat after 20 days). Question hook. No PULSE_ALERT tripped (under the
+1000v Short threshold; deltas all <50v). State drift caught + reconciled:
+the Short was still marked SCHEDULED in shorts_state.json despite being live
+(oEmbed 200) — the known auto-publish-without-state-update pattern again.
+**Learning**:
+1. The ~300v plateau ceiling (noted 06-02/06-07 for narrative hooks) is
+   BREAKABLE with a question hook — v1_bonus_briggs is the first Short to
+   clear it organically (319v). Reinforces the question/contradiction-hook
+   rule, and that the bonus Mary Celeste Shorts were the right call to
+   "percer le plafond 279v" (weekly review #1 action).
+2. Plateau decay confirmed: v1_twist 274→281 over 20 days, v3_answer
+   106→110 — old Shorts do NOT compound; growth comes from fresh uploads.
+   Pure-organic cadence depends on shipping, not on back-catalog tailwind.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in
+  shorts_state.json (state drift, same pattern as 06-13 daily-plan run).
+- No Studio HTTP actions spent (no alert) — within pulse limits.
+- Pipeline still DRY past 06-15: this 319v signal is a reason to prioritize
+  the v4 Roanoke ship + the next question-hook Shorts batch; the back
+  catalog won't carry growth on its own.
