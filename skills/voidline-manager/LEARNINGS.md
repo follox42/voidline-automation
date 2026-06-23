@@ -231,3 +231,37 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 20:05 — Pulse went fully blind: scraper 0/13 + camoufox-stealth absent from mcphub
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (10-day gap — the
+"hourly" routine has not been firing). When it did run today:
+1. `monitor_voidline.py`'s anonymous curl scraper parsed **0 of 13 assets** —
+   every view count came back blank (worse than the 2/12 baseline on 06-13).
+   YouTube is serving the consent/anti-scrape page to unauthenticated curl in
+   the cloud container.
+2. Because the delta logic (`cron_runner.py:137`) skips any asset with a blank
+   prev/cur view count, **zero comparisons ran** — "no notable delta" is
+   vacuously true. No PULSE_ALERT can ever fire while the snapshot is empty.
+3. The documented authenticated fallback — camoufox-stealth MCP via mcphub
+   (`cookie_profile=voidline`) — is **NOT exposed through mcphub this session**.
+   `google-flow` is also absent. mcphub now lists only coolify, github,
+   karakeep, notion, obsidian, plane, protonmail, searxng, sequential-thinking,
+   stalwart, vault, video-gemini — a big shrink from the 453-tool / camoufox
+   inventory recorded on 2026-06-13.
+**Learning**:
+1. The pulse is currently BLIND on both paths: the cheap scraper is blocked and
+   the authenticated browser fallback isn't reachable. The routine's core job —
+   catching a Shorts/long-form spike — is non-functional, and it fails silently
+   ("no notable delta" looks healthy but means "no data").
+2. The camoufox-stealth + google-flow disappearance from mcphub also breaks the
+   upload/thumbnail pipeline, not just monitoring — anything depending on browser
+   automation through the aggregator is down this session.
+**Action**:
+- LOGGED + exited cleanly per the pulse hard-limit rule (block detected).
+- Notified Nolann — both stat paths down needs a human decision.
+- TODO when MCP is back: port `monitor_voidline.py` to fetch via camoufox-stealth
+  (or yt-dlp as a curl-free alternative) so a blank scrape can't masquerade as
+  "no delta". Add a guard in `run_pulse()` that logs PULSE_BLIND (not "no notable
+  delta") when 0 assets have parseable views.
+- Verify the mcphub config / token (`~/.openclaw-mcphub-token`) and why the
+  camoufox + flow servers dropped out of the aggregator's roster.
