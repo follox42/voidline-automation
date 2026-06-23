@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-23 10:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219210:04: no notable delta"
+    },
+    {
+      "t": "2026-06-23 10:05 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) scheduled 06-15 was stale SCHEDULED in state but verified live via YouTube oEmbed (HTTP 200). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z."
+    },
+    {
+      "t": "2026-06-23 10:05 UTC",
+      "action": "BLOCKER",
+      "detail": "Pulse blind: monitor_voidline.py curl scraper returned blanks for all 13 assets (YouTube anti-scrape page). Studio fallback unavailable \u2014 camoufox-stealth not behind mcphub (323 tools, 0 stealth); direct stealth server reachable but no voidline session running (running:false). No real view counts obtainable this pulse. Also: ~10-day gap since last pulse (06-13 14:02) \u2014 hourly schedule not firing. Did not launch a browser session (out of scope for hourly pulse, no alert to justify)."
     }
   ]
 }

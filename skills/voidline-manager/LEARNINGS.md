@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 10:05 — Pulse blind + 10-day schedule gap + camoufox off mcphub
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a ~10-day gap, not
+hourly. The runner ran clean (no PULSE_ALERT) but only because it is blind:
+`monitor_voidline.py`'s anonymous curl scraper returned blanks for ALL 13 assets
+this run (YouTube serving the anti-scrape/consent page in the container — the
+same flakiness flagged 06-13, now total). Tried to fall back to Studio analytics
+via `mcp_stealth.py`: camoufox-stealth is NOT behind mcphub this session (323
+tools exposed, 0 stealth/camoufox). The direct server (mcp-stealth.nocode18.com)
+IS reachable but `stealth_status` = `running:false, total_sessions:0` — no
+`voidline` session active. So the pulse has no path to real view counts right now.
+Separately: `v1_bonus_briggs` (vZ68HlWfT-Q), scheduled 06-15, was still marked
+SCHEDULED in state but is live (oEmbed HTTP 200) — 8 days of publish-side drift.
+**Learning**:
+1. The "hourly" pulse is not firing hourly — either the Cloud Routine schedule is
+   paused/misconfigured or this was a manual kick. A pulse that runs every 10 days
+   cannot catch a spike inside its decay window. Verify the routine cadence.
+2. Spike detection is structurally broken: curl is fully blocked AND camoufox is
+   detached from mcphub AND no stealth session auto-runs. The monitor MUST pull via
+   the stealth MCP (launch its own cookie_profile=voidline session) or yt-dlp — the
+   06-13 TODO to port it is now load-bearing, not optional.
+3. Publish-side drift recurs every cycle (KNOWN_BAD: trusting state reflects
+   reality). oEmbed reconcile must run on a schedule that actually fires.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED → PUBLIC (actual_published_at=06-15).
+- Logged the monitoring blocker; did NOT spin up a browser session (out of scope
+  for an hourly pulse, and no alert to justify the Studio actions).
+- FLAGGED to user: (a) verify hourly-pulse schedule is live, (b) reattach
+  camoufox-stealth to mcphub OR have monitor launch its own session, (c) the
+  curl-scraper port is the #1 reliability fix.
