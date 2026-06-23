@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 14:05 — Pulse data blackout: scraper 0/13 + stealth MCP off mcphub
+**Observation**: First HOURLY PULSE in 10 days (last was 2026-06-13 14:02 — the
+routine was dark in between). This run the anonymous-curl scraper in
+`monitor_voidline.py` returned **blank views for ALL 13 assets** (regression from
+2/12 last pulse). The documented Studio fallback could not be used either:
+`camoufox-stealth` is NOT in the set of servers mcphub currently exposes
+(coolify, github, karakeep, notion, obsidian, plane, protonmail, searxng,
+sequential-thinking, stalwart, vault, video-gemini — no stealth). No PULSE_ALERT
+fired only because there is no data to alert on, not because the channel is quiet.
+**Learning**:
+1. The pulse now has ZERO working data source: curl scrape is fully blocked AND
+   the camoufox-stealth fallback isn't reachable through the aggregator. The
+   "no notable delta" log line is misleading — it means "no data", not "no change".
+2. The 06-13 TODO (port monitor_voidline.py to fetch via camoufox-stealth) is now
+   load-bearing, not optional. Until it's done — and stealth is re-exposed on
+   mcphub — every pulse is blind.
+3. The 10-day gap means no eyes on the channel during a window where the 06-13
+   DRIFT_FLAG (pipeline dry, last Short scheduled 06-15, now 8 days stale, v4
+   Roanoke Flow-blocked) was open the whole time.
+**Action**:
+- Exited cleanly per pulse blocker policy (no Studio HTTP actions possible, 0 Flow
+  gens). Logged PULSE + this learning, committed to the feature branch.
+- NEXT non-pulse task: (a) confirm whether camoufox-stealth should be re-added to
+  mcphub or hit directly, then (b) port monitor_voidline.py to the stealth path so
+  pulses stop coming back empty.
+- DRIFT_FLAG + v4 Roanoke Flow blocker remain open — needs a production session.
