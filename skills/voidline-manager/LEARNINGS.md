@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 18:05 — Pulse routine is running but not delivering: PR sprawl + 10-day blind monitor
+**Observation**: First pulse on this branch since 2026-06-13 14:02 (10-day gap in
+*this* checkout's stats_log). The runner logged "no notable delta" — but only
+because the scrape returned BLANK views for all 14 assets (3 long-forms + 11
+Shorts). The anon-curl monitor has produced zero usable view counts since the
+106v read on 2026-06-07. Meanwhile GitHub shows ~30 open pulse PRs
+(#157→#186, all `claude/confident-meitner-*` → main, none merged), each
+re-discovering the same two facts: (a) v1_bonus_briggs auto-published and
+broke the ~300v plateau (~319v per parallel runs), and (b) the stats monitor
+is blind. Confirmed briggs PUBLIC myself via oEmbed 200; reconciled state
+SCHEDULED→PUBLIC (it was 8 days stale).
+**Learning**:
+1. The hourly pulse fires on isolated branches and opens a fresh PR each run.
+   Nobody is merging them, so every run starts from the same stale `main`
+   baseline and re-flags identical drift. The routine generates noise, not
+   signal — its output isn't being consumed.
+2. A "no notable delta" from the runner is currently MEANINGLESS: it can't
+   detect a spike because it can't read views at all. Blank ≠ healthy. The
+   pulse's core job (catch >1000v Shorts / >100v long / >50v delta) is
+   non-functional until the monitor pulls authenticated stats
+   (camoufox-stealth cookie_profile=voidline) or yt-dlp instead of anon curl.
+3. The ONE real positive (briggs breaking the plateau — the explicit goal from
+   the 06-07 weekly review) keeps being rediscovered and never landed.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC (oEmbed-verified) this run.
+- Did NOT pull Studio analytics: runner logged no PULSE_ALERT (blank stats),
+  and ~30 parallel runs are already hammering the session — stayed within
+  budget and exited clean.
+- FLAGGED to user (notification): the routine needs human attention — merge or
+  close the PR backlog, and port monitor_voidline.py to authenticated stats so
+  pulses stop being blind. Until then the hourly pulse is burning cycles
+  without doing its job.
