@@ -19,6 +19,31 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-23 11:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219211:04: no notable delta"
+    },
+    {
+      "t": "2026-06-23 11:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 11:04\u219211:05: no notable delta"
+    },
+    {
+      "t": "2026-06-23 11:08 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "v3_long_Tunguska (FacPhS3hNjU) read 95v at 11:04 \u2014 first long-form life signal ever (was 0-2v/'dead under suppression'). Right on the 100v threshold. cron_runner did not auto-alert: its delta only compares the last two 15s-apart flaky snapshots, not the 06-13 baseline. Other reads: v2_twist 299v (plateau as predicted), v3_answer 106->110v (stall confirmed), v3_hook 1v / v2_hook 7v (burst-era suppression persists)."
+    },
+    {
+      "t": "2026-06-23 11:08 UTC",
+      "action": "BLOCKER",
+      "detail": "camoufox-stealth MCP not registered on mcphub this run (323 tools exposed, 0 camoufox-stealth_*; stealth_status -> 'Server not found'). Could not pull Studio analytics to confirm the v3_long ~95v / check traffic sources. Logged and exiting cleanly per pulse safety rule. Studio confirmation deferred to next pulse when stealth is back. No Studio HTTP actions or Flow gens spent."
+    },
+    {
+      "t": "2026-06-23 11:08 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) scheduled 06-15 was stale SCHEDULED in state; oEmbed HTTP 200 = PUBLIC. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Same silent auto-publish drift pattern as the 06-13 batch."
     }
   ]
 }

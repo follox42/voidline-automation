@@ -231,3 +231,49 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 11:05 — First long-form LIFE signal (v3 Tunguska ~95v) + camoufox-stealth MCP down
+**Observation**: First HOURLY PULSE in 10 days (gap since 06-13 14:02).
+The anonymous YouTube scraper is as flaky as ever — across two back-to-back
+snapshots it only resolved a partial, rotating subset of assets — but the
+readings it DID return are a real shift from the 06-13 baseline:
+- **v3_long_Tunguska (FacPhS3hNjU): 95v** (kind=long). Every prior learning
+  had long-forms at 0-2v / "dead under suppression". A long-form at ~95v is
+  the FIRST organic long-form life signal in channel history, sitting right
+  on the 100v PULSE_ALERT threshold.
+- v2_long_Dyatlov: 2v (still flat).
+- v2_twist short: 299v — plateaued exactly where 06-05 predicted (~298, the
+  "narrative ceiling ~300" pattern holds).
+- v3_answer short: 106 → 110v over 10 days — stall confirmed (the J+7 flat
+  noted on 06-13 never broke).
+- v3_hook 1v, v2_hook 4→7v — suppression on the burst-era assets persists.
+The cron_runner did NOT emit a PULSE_ALERT because its delta logic compared
+the two snapshots I generated 15s apart (both flaky/partial), not the 06-13
+baseline. The meaningful 10-day delta is invisible to the current alert code.
+**Learning**:
+1. v3_long at ~95v means the long-form algorithmic suppression flagged on
+   06-13 may be LIFTING. This is the breakout lever the channel has waited
+   months for — but it needs Studio confirmation (impressions, retention,
+   traffic source: organic vs the never-tested external referral).
+2. BLOCKER: camoufox-stealth is no longer registered on mcphub. mcphub now
+   exposes 323 tools and ZERO `camoufox-stealth_*` (was 53 per 06-13).
+   `stealth_status` → "Server not found: camoufox-stealth_status". So the
+   Studio investigation this pulse explicitly calls for could NOT run. The
+   95v stays UNCONFIRMED until the stealth server is back and we read Studio.
+3. cron_runner pulse delta is structurally wrong for hourly cadence with a
+   flaky scraper: comparing only the last two snapshots means a 15s-apart
+   double-run (or two consecutive partial scrapes) shows "no delta" and
+   masks the real multi-day movement. Needs a baseline-aware comparison.
+**Action**:
+- FLAG for next pulse / when stealth is back: pull Studio analytics on
+  FacPhS3hNjU (cookie_profile=voidline) — confirm the ~95v, check if external
+  referral traffic appeared, retention curve, impressions/CTR. This is the
+  highest-value follow-up on the board.
+- Reconciled state drift: v1_bonus_briggs (vZ68HlWfT-Q) scheduled 06-15 was
+  still SCHEDULED in state but oEmbed=200 (PUBLIC) → set PUBLIC +
+  actual_published_at. Same silent-auto-publish pattern as the 06-13 batch.
+- TODO (code): make cron_runner pulse compare against a rolling baseline
+  (e.g. oldest snapshot in last 24h, or last snapshot with a non-blank value
+  per asset) instead of strictly ts[-2], so flaky/duplicate scrapes don't
+  swallow real deltas.
+- Did NOT spend any Studio HTTP actions (server unavailable) or Flow gens.
