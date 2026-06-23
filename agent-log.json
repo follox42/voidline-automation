@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-23 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-23 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-23 08:05 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, scheduled 2026-06-15 12:00 UTC) was still SCHEDULED in shorts_state.json but auto-published 8 days ago \u2014 verified PUBLIC via YouTube oEmbed (HTTP 200). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Catalogue is now 100% PUBLIC (11/11 Shorts live, 0 scheduled)."
+    },
+    {
+      "t": "2026-06-23 08:05 UTC",
+      "action": "TOOLING_GAP",
+      "detail": "Studio verification via mcp_stealth.py was UNAVAILABLE this run: camoufox-stealth is not exposed through mcphub right now (tools/list returns 323 tools, none browser/stealth/camoufox \u2014 only plane/obsidian/coolify/github/protonmail/notion/etc). Could not read schedule back from Studio per the task's step-3 cross-check. Fell back to oEmbed (session-safe public/scheduled probe per LEARNINGS 2026-06-13), which was sufficient since no Shorts were scheduled for today and the only open item was the stale 06-15 entry."
+    },
+    {
+      "t": "2026-06-23 08:05 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "PIPELINE DRY for 10+ days. Not a publish day today (Tue). Next 3 days checked: Wed 06-24 + Fri 06-26 are Shorts slots (Mon/Wed/Fri/Sun cadence) \u2014 BOTH EMPTY; nothing is scheduled in state beyond v1_bonus_briggs (06-15). No Short has published since 06-15 = 8 days of upload silence vs 2/wk recovery cadence (would expect ~2 Shorts in that window). Sun 06-21 long-form slot also appears to have been missed (no v4 long-form in state). Root cause unchanged from 06-13 DRIFT_FLAG: v4 Roanoke is in production (runs/v4-roanoke/) but blocked on Google Flow thumb generation (submit button disabled, UI redesign per LEARNINGS 2026-06-13). ACTION NEEDED: unblock Flow thumb (fresh-session retry or v3 Tunguska placeholder base per LEARNINGS backup path), then render + schedule v4 batch to refill the pipeline."
     }
   ]
 }
