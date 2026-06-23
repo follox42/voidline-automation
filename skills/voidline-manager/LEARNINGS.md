@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 06:06 — v1 bonus Briggs Short BREAKS the ~300 plateau (319v)
+**Observation**: HOURLY PULSE snapshot. `v1_bonus_briggs` ("Why Did the
+Teetotal Captain Run? — Mary Celeste") = **319 views**, the channel's new
+top-performing Short, surpassing v2 TWIST (299v) and the old v1 TWIST
+plateau (274–279v). It was a question-hook bonus Short on the v1 Mary Celeste
+arc, produced specifically to "percer le plafond" flagged in Weekly Review #1.
+Two side findings: (1) state drift — it was still `SCHEDULED` (06-15) in
+shorts_state.json despite being PUBLIC 8 days (oEmbed 200), reconciled to
+PUBLIC + actual_published_at=2026-06-15T12:00Z; (2) a fresh long-form
+`v1_long_MaryCeleste` (sB8VXu2OHtY) is live at 18v — modest but the first
+long-form to show organic life beyond the old 2v-dead pattern.
+**Learning**:
+1. The question-hook hypothesis is now validated on the GROWTH axis, not just
+   retention: a question hook on an already-covered topic (Mary Celeste) beat
+   every prior Short. Re-mining proven topics with sharper question hooks works.
+2. No PULSE_ALERT fired (correctly): 319 < 1000v Short threshold, and the
+   delta was undefined because the 06-13 14:02 baseline was blank for this
+   asset (scraper miss). The plateau-break is only visible because we now have
+   a fuller snapshot — reinforces that sparse baselines hide real movement.
+3. State drift on scheduled→public is recurring; pulse should keep doing the
+   cheap oEmbed reconciliation, not just daily-plan.
+**Action**:
+- Reconciled v1_bonus_briggs in shorts_state.json (PUBLIC).
+- No Studio HTTP actions spent this pulse (within limits; no alert).
+- Next production lever: ship a 2nd v1 question-hook bonus + apply the same
+  "question hook on covered topic" pattern to v4 Roanoke Shorts.
