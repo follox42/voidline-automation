@@ -231,3 +231,29 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 16:05 — Bonus Mary Celeste Short BREAKS the ~300v plateau
+**Observation**: First pulse in 10 days (06-13 → 06-23). v1_bonus_briggs
+(vZ68HlWfT-Q, "Why Did the Teetotal Captain Run?") — the question-hook bonus
+Short produced specifically to pierce the documented ~279-300v ceiling — is at
+**319 views**, now the channel's TOP Short. Surpasses v2_twist (299) and
+v1_twist (281, up from 274). It was also drifted in state (SCHEDULED for 06-15
+but confirmed PUBLIC via oEmbed HTTP 200) — reconciled to PUBLIC.
+**Learning**:
+1. The plan worked: a fresh QUESTION-hook Short on the proven Mary Celeste topic
+   (cutter v2) broke the plateau that pure-narrative and even earlier question
+   hooks plateaued at. Returning to a validated topic with a sharper hook beats
+   chasing new topics under suppression.
+2. PULSE_ALERT did NOT fire despite the real movement: the delta logic needs
+   BOTH snapshots non-blank, and the curl scraper returned blanks for ~half the
+   catalogue (anti-bot/consent page in-container — the KNOWN flaky-scraper
+   issue). bonus_briggs also had no prior row, so it can't produce a "delta".
+   The threshold alerting is effectively blind to first-appearance records and
+   to any asset the scraper missed last run.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in shorts_state.json.
+- Produce more bonus question-hook Shorts on validated topics (Mary Celeste /
+  Dyatlov) rather than only new-topic batches — the plateau is breakable.
+- Scraper port to camoufox-stealth still pending (logged 06-13); until then
+  PULSE alerts under-report. Consider alerting on absolute view milestones from
+  a single snapshot (not just deltas) so first-appearance records aren't missed.
