@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 15:07 — Hourly pulse was dark 10 days + stats scraper fully blind
+**Observation**: First pulse since 2026-06-13 14:02 — a ~10-day gap, so the
+"hourly" routine has NOT been firing hourly. The pulse itself ran clean
+(EXIT=0, no PULSE_ALERT), but only because `monitor_voidline.py` returned
+**0/13 view counts** — a total blackout, a regression from the 2/12 it managed
+on 06-13. `monitor_voidline.py:29` still scrapes `"viewCount"` from anonymous
+`curl -sL` of the watch/shorts page; YouTube now serves a consent/anti-scrape
+page to every unauthenticated request in this container, so every cell is blank.
+With all stats blank the runner's delta loop (`cron_runner.py:137`) skips every
+asset and logs "no notable delta" — a blind no-op, NOT a real all-clear. The
+recommended fallback (pull stats via camoufox-stealth MCP, cookie_profile=
+voidline) was unreachable: camoufox-stealth is not among the mcphub tools loaded
+this session, so no real numbers could be fetched either.
+Also caught a state drift: `v1_bonus_briggs` (vZ68HlWfT-Q) was scheduled
+2026-06-15 12:00 and is live now (oEmbed HTTP 200) but state still read
+SCHEDULED — reconciled to PUBLIC. The 3 long-forms (sB8VXu2OHtY, pM-u_8ONjI0,
+FacPhS3hNjU) also probe HTTP 200.
+**Learning**:
+1. "No PULSE_ALERT" is only meaningful when the monitor actually returns
+   numbers. A blind monitor that returns all-blank looks identical to a healthy
+   channel with no movement — the runner cannot tell the difference. This is the
+   KNOWN_BAD "trusting the state reflects reality without reading back" pattern,
+   now on the *stats* side.
+2. The 06-13 14:02 TODO ("port monitor_voidline.py to fetch via camoufox-stealth
+   or yt-dlp") was never done, and it has now fully degraded from sparse to zero.
+   Anonymous curl for YouTube stats is dead in the cloud — it must be replaced.
+3. The hourly routine not firing for 10 days means daily/weekly reconciliation
+   has also not been running; drift accumulates silently (v1_bonus_briggs).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at.
+- FLAGGED to user (notification): monitoring blind 10 days; needs (a) the
+  pulse/daily routines actually scheduled, (b) monitor_voidline.py rewritten to
+  fetch via camoufox-stealth (cookie_profile=voidline) or yt-dlp — anonymous
+  curl is permanently blocked.
+- Did NOT spend Studio HTTP actions this run (stealth MCP unavailable; nothing
+  to spend them on). Exited cleanly per the block-and-exit rule.
