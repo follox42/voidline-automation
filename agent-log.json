@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-23 08:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219208:05: no notable delta"
+    },
+    {
+      "t": "2026-06-23 08:07 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs reconciled SCHEDULED\u2192PUBLIC: live since 06-15 (oEmbed 200), read 319v/0likes this pulse \u2014 new channel record for a Short, edges past the ~298v plateau (v2 TWIST). Pure question hook. NOTE: 10-day pulse gap (last run 06-13 14:02) \u2014 hourly routine was not firing; operator should verify Cloud Routine schedule is enabled."
     }
   ]
 }

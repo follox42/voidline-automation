@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 08:05 — v1 bonus Briggs = new channel record (319v), but pulse went dark 10 days
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a **10-day gap**,
+so the "hourly" routine was not actually firing for that window. This run:
+v1_bonus_briggs ("Why Did the Teetotal Captain Run?") read **319v / 0 likes**,
+~8 days live (published 06-15). That is a new channel record for a Short,
+edging past the documented plateau (v1 TWIST 274v, v2 TWIST 298v). State still
+had it `SCHEDULED` — reconciled to PUBLIC (oEmbed 200, actual_published_at=06-15).
+**Learning**:
+1. The runner's PULSE_ALERT only fires for assets present in BOTH the prev and
+   current snapshot with non-empty views. A newly-published Short that reads
+   high on its first capture (briggs, 319v) is silently skipped — no alert,
+   logged as "no notable delta". Blind spot: first-appearance assets never trip
+   the threshold even when they cross a strategic ceiling.
+2. The QUESTION-hook thesis holds — briggs is a pure question hook and is now the
+   top Short, consistent with the 06-05 v2 TWIST signal. The ~300v plateau is
+   real but breachable by a few %.
+3. Scrape coverage still sparse: only briggs (319) parsed this pulse; 11/14
+   assets blank (anonymous curl anti-scrape, same as 06-13).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- TODO (not this pulse, respects Studio HTTP budget): patch cron_runner pulse to
+  alert on first-appearance assets above an absolute floor (e.g. Short ≥250v on
+  first read), not only on deltas between two snapshots.
+- FLAG to operator: the hourly routine did not run 06-13→06-23 — verify the
+  Cloud Routine schedule is actually enabled, else the pulse is blind.
+- briggs at 319v marginally beats the plateau but is NOT a breakout (<1000v);
+  no Studio deep-dive spent this pulse. Watch whether it keeps climbing.
