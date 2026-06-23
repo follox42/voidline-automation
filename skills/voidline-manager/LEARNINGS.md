@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 12:07 — Pulse blind: stealth MCP absent + 10-day routine gap
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a **10-day gap**,
+so the routine has effectively not been running on its hourly schedule. The
+pulse itself ran clean (exit 0) but produced **zero view data**: the anonymous
+curl scraper in `monitor_voidline.py` returned blank views for **12/12 assets**
+(worse than the 2/12 it parsed on 2026-06-13). Because every view is blank, the
+runner logged `PULSE` "no notable delta" — but that is the *absence of data*,
+not flat growth. Attempted the documented fallback (pull Studio analytics via
+camoufox-stealth MCP, cookie_profile=voidline): **the camoufox-stealth server is
+NOT exposed in this session's mcphub instance** (mcphub here surfaces coolify,
+github, karakeep, notion, obsidian, plane, protonmail, searxng,
+sequential-thinking, stalwart, vault, video-gemini — no stealth/camoufox). So
+there is no path to real stats this run. Separately, reconciled state drift:
+v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) is live — oEmbed HTTP 200 — but
+state still read SCHEDULED 8 days later. Set status=PUBLIC.
+**Learning**:
+1. The pulse is currently **flying blind on analytics**. With both the anonymous
+   scraper (anti-scrape) and the camoufox-stealth MCP (not provisioned here)
+   unavailable, no PULSE_ALERT can ever fire — a spike would be invisible. The
+   TODO from 2026-06-13 ("port monitor to camoufox-stealth") does not help if the
+   stealth server isn't attached to the routine's mcphub in the first place.
+2. The silent auto-publish drift recurs every batch: scheduled Shorts go PUBLIC
+   without state being updated. oEmbed 200/401 remains the cheap, session-safe
+   probe. Reconciliation must run regardless of analytics availability.
+3. A 10-day gap between hourly pulses means the schedule/trigger itself is not
+   firing as configured — worth the user verifying the routine cadence.
+**Action**:
+- Logged the blocker and exited cleanly per pulse rules (0/5 Studio HTTP actions
+  spent — stealth MCP unreachable).
+- Reconciled v1_bonus_briggs SCHEDULED → PUBLIC in shorts_state.json.
+- NEEDS USER: (a) attach camoufox-stealth to the routine's mcphub so analytics
+  can be pulled, otherwise the pulse is a no-op on its core job; (b) confirm the
+  hourly trigger is actually scheduled — last two pulses are 10 days apart.
+- Pipeline still DRY: nothing scheduled past v1_bonus_briggs (06-15). The v4
+  Roanoke batch flagged on 2026-06-13 has not shipped. Cadence broken ~8 days.
