@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 23:05 — Hourly pulse fired once in 10 days; scraper coverage → 0/12
+**Observation**: This HOURLY PULSE is the first since 2026-06-13 14:02 — a
+~10-day gap for a routine meant to run hourly. The pulse itself ran clean:
+no PULSE_ALERT (nothing breached Short >1000v / long-form >100v / delta >50v).
+But the anonymous-curl scraper returned **blank views for all 12 assets** this
+run (vs 2/12 parsed last run: v2_hook 4v, v3_answer 106v). So "Δ: no notable
+delta" is technically true but built on an empty current snapshot — the delta
+is uninformative, not reassuring. Separately verified v1_bonus_briggs
+(vZ68HlWfT-Q) is PUBLIC via oEmbed HTTP 200 despite state still showing
+SCHEDULED (06-15) — published fine, state just unreconciled (DAILY_PLAN's job).
+**Learning**:
+1. The "hourly" cadence is not actually firing hourly in the cloud — it ran
+   once in 10 days. Either the cron schedule isn't wired up or the container is
+   only spun up on demand. For a near-0v cold-start channel this costs nothing
+   right now (no spikes to miss), but it means the pulse cannot be trusted as a
+   real-time tripwire until the schedule is confirmed.
+2. Scraper coverage is now WORSE than the 2026-06-13 baseline (0/12 vs 2/12).
+   Confirms the LEARNINGS prediction: anonymous curl will keep degrading. A
+   "no notable delta" verdict on an all-blank snapshot is a false-green — the
+   runner should distinguish "no change" from "no data".
+**Action**:
+- TODO (still not done since 06-13): port monitor_voidline.py to fetch via
+  camoufox-stealth MCP (cookie_profile=voidline) or yt-dlp so pulses have real
+  numbers. Until then every pulse delta is noise.
+- TODO: make cron_runner.py log a distinct DATA_GAP marker (not "no notable
+  delta") when the current snapshot has 0 parsed views, so false-greens are
+  visible in the journal.
+- TODO (DAILY_PLAN, not pulse): reconcile v1_bonus_briggs SCHEDULED→PUBLIC.
+- No Studio HTTP actions taken (no PULSE_ALERT → no investigation warranted).
+  Stayed within all hard limits.
