@@ -22,18 +22,41 @@ LONGFORMS = [
 ]
 
 
+# Anonymous curl gets served a consent/anti-scrape page unless we look like a
+# real desktop browser (UA + Accept-Language + the CONSENT cookie). Without
+# these the watch page omits the stats blob entirely (cf. 2026-06-23 blind pulse).
+_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
+
+
 def fetch_stats(video_id: str, is_short: bool):
-    url = f"https://www.youtube.com/shorts/{video_id}" if is_short else f"https://www.youtube.com/watch?v={video_id}"
+    # watch?v= resolves stats for Shorts too and is more reliable than /shorts/.
+    url = f"https://www.youtube.com/watch?v={video_id}"
     try:
         out = subprocess.run(
-            ["curl", "-sL", "--max-time", "8", url],
-            capture_output=True, text=True, timeout=12,
+            ["curl", "-sL", "--max-time", "10",
+             "-A", _UA,
+             "-H", "Accept-Language: en-US,en;q=0.9",
+             "--cookie", "CONSENT=YES+1", url],
+            capture_output=True, text=True, timeout=14,
         ).stdout
     except Exception:
         return None, None
-    v = re.search(r'"viewCount":"(\d+)"', out)
+    views = None
+    # Legacy videoDetails shape (kept as primary; often stripped from served HTML).
+    m = re.search(r'"viewCount":"(\d+)"', out)
+    if m:
+        views = int(m.group(1))
+    else:
+        # Current shape: "viewCount":{"videoViewCountRenderer":{"viewCount":
+        #               {"simpleText":"110 views"} ...
+        m = re.search(
+            r'"videoViewCountRenderer":\{"viewCount":\{"simpleText":'
+            r'"([\d,]+) views?"', out)
+        if m:
+            views = int(m.group(1).replace(",", ""))
     l = re.search(r'"likeCount":"(\d+)"', out)
-    return (int(v.group(1)) if v else None, int(l.group(1)) if l else None)
+    return (views, int(l.group(1)) if l else None)
 
 
 def main():

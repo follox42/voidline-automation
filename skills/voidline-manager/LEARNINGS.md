@@ -231,3 +231,37 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 19:04 — Blind pulse: viewCount regex rotted + two real signals hiding behind it
+**Observation**: First pulse in 10 days (only 06-13 + 06-23 snapshots exist —
+the hourly cron is NOT firing hourly). The monitor returned all-blank for 13/13
+assets, so cron_runner auto-logged a false "no notable delta". Root cause:
+YouTube moved the public count out of `videoDetails.viewCount` ("viewCount":"N")
+into `"viewCount":{"videoViewCountRenderer":{"viewCount":{"simpleText":"N views"}}}`,
+and anonymous curl gets a consent/anti-scrape page without a desktop UA +
+`Accept-Language` + `CONSENT=YES+1` cookie. Recovered the real counts manually
+(all public scrapes, 0 Studio actions used):
+- **v1_bonus_briggs = 319v** — published 06-15, now the channel's BEST-ever Short,
+  finally breaking the ~300 plateau (prev ceiling: v2_twist 299, v1_twist 281).
+  This is the Mary Celeste question-hook bonus queued in weekly review #1
+  specifically to crack the 279v ceiling. It worked.
+- **v3_long_Tunguska = 95v** — was 0v under suppression on 06-13. First long-form
+  to show organic life; one nudge from the 100v long-form alert threshold.
+- v3_hook still 1v (persistent per-asset suppression artifact).
+- Rest flat: v1_twist 281, v2_twist 299, v3_answer 110 (was 106 on 06-07).
+**Learning**:
+1. Scrape selectors rot silently — the monitor will report "no delta" while
+   actually capturing nothing. A blind pulse is worse than a failed one because
+   it lies. Need a coverage guard: if >50% of assets return blank, log
+   SCRAPE_DEGRADED instead of computing deltas off the gaps.
+2. The question-hook + cutter-v2 formula DOES break the plateau (319v proves it),
+   and it's a v1 Mary Celeste bonus — the oldest topic still has organic pull.
+3. Suppression is lifting (v3_long 0->95) — consistent with the "wait for
+   cooldown" call from 06-13. No external seed was needed.
+**Action**:
+- Fixed monitor_voidline.py: new regex (videoViewCountRenderer fallback) + UA /
+  Accept-Language / CONSENT cookie. Backfilled the 06-23 snapshot with real counts.
+- Reconciled v1_bonus_briggs SCHEDULED->PUBLIC (oEmbed 200, auto-published 06-15).
+- FOLLOW-UPS: (a) produce more v1 Mary Celeste question-hook bonus Shorts — the
+  format is now proven to break 300; (b) verify the hourly pulse cron is actually
+  scheduled (10-day gap); (c) add the SCRAPE_DEGRADED coverage guard to cron_runner.
