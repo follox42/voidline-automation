@@ -231,3 +231,26 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 17:04 — Pulse scraper now FULLY blind (0/13 parsed)
+**Observation**: HOURLY PULSE ran clean (no PULSE_ALERT, "no notable
+delta") but `monitor_voidline.py` returned blank views for ALL 13 tracked
+assets — including `y3xLIfOAPHA` (v3_answer), which still parsed 106v on
+the 06-13 14:02 pulse. So the anonymous-curl scraper went from 2/13 →
+0/13 over 10 days: total blackout. 3 new long-form IDs are now in the
+monitor set (sB8VXu2OHtY Mary Celeste, pM-u_8ONjI0 Dyatlov,
+FacPhS3hNjU Tunguska) — also blank.
+**Learning**: The anonymous-curl path is now worthless for stats, not
+just flaky. Every pulse delta is uncomputable until the monitor pulls
+authenticated. YouTube is serving the consent/anti-scrape page to the
+container's unauthenticated curl 100% of the time now. This makes the
+"port monitor to camoufox-stealth (cookie_profile=voidline) or yt-dlp"
+TODO the blocking dependency for ALL pulse/daily delta logic, not a
+nice-to-have.
+**Action**:
+- Did NOT spend Studio HTTP actions this pulse (no PULSE_ALERT → step 3
+  not triggered; stayed within limits).
+- Escalate the monitor port to next actionable task: replace the curl
+  fetch in `monitor_voidline.py` with a camoufox-stealth call
+  (cookie_profile=voidline) so stats coverage returns; until then pulses
+  are blind and PULSE_ALERT thresholds can never fire.
