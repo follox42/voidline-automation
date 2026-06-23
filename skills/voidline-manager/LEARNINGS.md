@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-23 07:07 — 10-day routine blackout + pipeline still dry + briggs drift
+**Observation**: First pulse to land since 2026-06-13 14:02 — a **10-day gap**
+in the decision journal, meaning the Hourly Pulse (and presumably the other
+routines) did not run for that window. On resuming:
+1. `v1_bonus_briggs` (vZ68HlWfT-Q), scheduled 06-15, was still marked SCHEDULED
+   in shorts_state.json on 06-23 — verified PUBLIC via oEmbed (HTTP 200) and
+   reconciled (status=PUBLIC + actual_published_at=06-15). Same silent
+   auto-publish drift logged on 06-13.
+2. **Pipeline fully dry**: nothing scheduled after the 06-15 briggs Short. The
+   06-13 DRIFT_FLAG ("render+schedule next batch") was never actioned — v4
+   Roanoke is still blocked on the Flow submit-button UI change (06-13 entry).
+   That's now ~8 days (06-15 → 06-23) with zero new uploads vs the cadence.
+3. Pulse view delta: no notable change (no Short >1000v, no long >100v, no
+   asset Δ>50v) → no PULSE_ALERT, no Studio investigation spent. Scraper still
+   flaky (most assets blank views — known KNOWN_BAD from 06-13).
+**Learning**:
+- A pulse that finds the *routine itself was silent for 10 days* is more
+  signal than any view delta — the cron not firing is the real failure mode
+  for an autopilot channel, and the state drift + dead pipeline are its
+  downstream symptoms.
+- Publish-drift reconciliation must run on EVERY pulse (cheap oEmbed probe),
+  not just the daily plan, because scheduled Shorts auto-publish silently and
+  nothing else updates the state file.
+**Action**:
+- Reconciled briggs in state (this run).
+- ESCALATE to user: pipeline dry since 06-15, v4 Roanoke blocked on Flow UI —
+  needs a human unblock (fresh Flow session / new selector path) before the
+  cadence can resume. Nothing to schedule until v4 thumb+render clears.
+- Confirm with user whether the 10-day routine blackout was intentional (paused)
+  or a scheduling failure to fix.
