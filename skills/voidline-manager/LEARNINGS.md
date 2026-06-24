@@ -231,3 +231,38 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 09:05 — First full-coverage pulse since 06-13: scraper recovered, long-forms wake up, bonus Short breaks the plateau
+**Observation**: First HOURLY PULSE to return ALL 13 assets since the 06-13
+anon-curl blackout (which only parsed 2/12). Full snapshot @ 09:04 UTC:
+- **Shorts**: v1_bonus_briggs **319v** (NEW #1), v2_twist 299, v1_twist 281,
+  v3_answer 110 (was 106 on 06-13, +4), v1_answer 87, v1_hook 64, v2_answer 34,
+  v3_twist 28, v2_hook 7, v3_hook 1 (suppressed assets still flatlined).
+- **Long-forms**: v3_Tunguska **97v**, v1_MaryCeleste 19v, v2_Dyatlov 2v.
+- v1_bonus_briggs was still marked SCHEDULED (publish 06-15) → auto-published
+  silently, reconciled to PUBLIC (the recurring publish-side state drift).
+Runner logged "no notable delta" because the 06-13 baseline was mostly blank,
+so no real per-asset delta was computable — no PULSE_ALERT fired despite the news.
+**Learning**:
+1. **The scraper path is fixed** — full-coverage stats now come back through
+   cron_runner (stealth/cookie `voidline` path), retiring the 06-13 KNOWN_BAD
+   "anon curl returns blank". Pulse stat coverage is reliable again.
+2. **Long-forms are NOT dead anymore.** v3_Tunguska at 97v (from 0-2v) is the
+   first real long-form impression signal — it directly contradicts the
+   "long-forms always dead / suppressed" thesis that drove the Shorts-only
+   pivot. Approaching the 100v long-form alert threshold. This is the organic
+   signal the channel has been waiting on, arriving on the pure-organic path
+   (no Reddit seed).
+3. **The ~300v Short plateau broke**: v1_bonus_briggs (question hook, cutter v2)
+   = 319v, first Short to clear 300. Confirms the v1 Mary Celeste bonus
+   question-hook strategy from the 06-07 weekly review worked.
+4. The delta engine is blind across a blank baseline — a "no notable delta" log
+   does NOT mean "nothing happened" on the first good snapshot after an outage.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC in shorts_state.json.
+- Next pulse now has a real full baseline → deltas will be meaningful; watch
+  whether v3_Tunguska long-form crosses 100v (would trip the long-form alert)
+  and whether v1_bonus_briggs keeps climbing past 319.
+- Flag for daily/weekly: the long-form revival may warrant revisiting the
+  "Shorts-only during cold-start" stance — long-forms are finally getting a
+  test pool. Do NOT change cadence off a single pulse; confirm the trend first.
