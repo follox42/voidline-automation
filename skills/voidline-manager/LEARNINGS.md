@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 07:07 — Pulse fully blind: scraper 0/13 + stealth MCP fallback down
+**Observation**: First HOURLY PULSE in 11 days (prior run 2026-06-13 14:02 —
+no hourly rows in between, so the cron is NOT firing hourly). cron_runner ran
+clean, no PULSE_ALERT, but `monitor_voidline.py`'s curl scraper returned
+**0/13 view counts** this run (every asset blank), down from 2/12 on 06-13
+(v2_hook 4v, v3_answer 106v parsed then). The documented Studio fallback
+(camoufox-stealth via mcphub, cookie_profile=voidline) was **not available**:
+no `camoufox-stealth_*` tools are exposed behind mcphub this session
+(mcphub surfaced coolify/github/notion/obsidian/plane/protonmail/searxng/
+vault/video-gemini etc. — no stealth server). So both stat paths are down and
+the pulse can detect no spike of any kind.
+**Learning**:
+1. The pulse is now effectively non-functional for its core job (spike
+   detection). The cheap anonymous-curl scraper has degraded to 0% coverage
+   and there is no working fallback when camoufox-stealth isn't connected.
+2. The 06-13 TODO ("port monitor_voidline.py to fetch via camoufox-stealth")
+   is no longer optional — it's the only viable stat path, and it ALSO needs a
+   guard for when the stealth MCP itself is absent.
+3. The 11-day gap means the hourly cron is not actually scheduled/firing
+   hourly. Whatever triggered this run was sporadic, not the schedule.
+**Action**:
+- Logged + clean exit per hard limits (Studio path blocked, no Flow used,
+  0 extra Studio actions). No channel emergency — no spike data either way.
+- PRIORITIZE: port monitor_voidline.py to camoufox-stealth (cookie_profile=
+  voidline) with an explicit "stealth MCP unavailable" branch, and verify the
+  Hourly Pulse cron is actually active/firing.
