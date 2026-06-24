@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 11:06 — LONG-FORM SUPPRESSION LIFTED — Tunguska doc breaks out organically
+**Observation**: First HOURLY PULSE with the monitor pulling REAL view counts
+(no more curl blanks — every asset parsed). PULSE_ALERT fired:
+v3_long_Tunguska crossed 100v. Studio reach analytics (FacPhS3hNjU, 13:12,
+"The Day the Siberian Sky Exploded — Tunguska 1908", data window 7–23 Jun, 17d):
+- Views 102 / 85 unique viewers / **1.5k impressions / 3.2% CTR**
+- Avg view duration **7:24 → ~56% retention** on a 13:12 video (strong for niche)
+- Traffic: **Browse 52.0% + Suggested 43.1% = 95% YouTube algorithmic**;
+  search 2.0%; direct 2.9%; external sites = "données insuffisantes" (NONE)
+- 91.3% of impressions came from YouTube recommending the content; suggested
+  feed dominated by established meteorite/disaster channels (Willamette
+  Meteorite 76.2%, "Meteor Shower That Killed 10,000", etc.)
+**Learning**:
+1. The long-form algorithmic suppression documented J+3→J+13 ("0v / dead /
+   all traffic sources insufficient data / notification not delivered") has
+   **LIFTED**. YouTube is now Browse+Suggested-serving the Tunguska doc into
+   adjacent established-channel audiences. This is the channel's first organic
+   long-form breakout signal.
+2. It happened with **ZERO external seed** — external sites report "données
+   insuffisantes". This vindicates the pure-organic pivot (Reddit lever was
+   correctly never pulled). Cold-start doc-niche organic lift = ~2-3 weeks
+   post-publish, consistent with the 3-6mo-to-breakout estimate but faster on
+   the algorithmic-test front than feared.
+3. 3.2% CTR + 56% retention is the combo the algo rewards — the AI cinematic
+   thumb pivot (Flow Nano Banana) + tighter doc cut are paying off on the
+   exact video that got the new thumb treatment.
+4. Other long-forms NOT yet lifted: v1_long MaryCeleste 19v, v2_long Dyatlov
+   2v — Tunguska is the breakout, not a channel-wide reset. The differentiator
+   is likely thumb quality + the suggested-cluster it landed in (meteorite docs).
+**Action**:
+- DO NOT touch the Tunguska long-form (no edits, no re-upload — let the algo
+  run; edits reset the test pool).
+- Prioritize finishing v4 Roanoke long-form to ride the now-open long-form
+  lane; ensure it gets the same AI cinematic thumb treatment that worked here.
+- Consider: does v1/v2 long-form deserve a thumb refresh to chase the same
+  suggested-cluster lift? Flag for weekly review (not a pulse action).
+- Shorts top performers this pulse: v1_bonus_briggs 319v, v2_twist 299v,
+  v1_twist 281v — bonus_briggs (question hook) is now the #1 Short, confirming
+  the question-hook + cutter-v2 formula.
+- STATE DRIFT fixed this pulse: v1_bonus_briggs was still SCHEDULED (publish_at
+  2026-06-15) but is live at 319v → reconciled to PUBLIC.
