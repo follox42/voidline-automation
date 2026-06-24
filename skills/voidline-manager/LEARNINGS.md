@@ -231,3 +231,37 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 10:05 — First full-coverage pulse: Briggs bonus breaks the plateau + long-forms wake up
+**Observation**: First HOURLY PULSE since 06-13 with FULL stat coverage (the
+06-13 snapshot had blanks for 10/12 assets; this one parsed all 13). Highlights
+vs the channel's prior ceilings:
+- `v1_bonus_briggs` ("Why Did the Teetotal Captain Run?", QUESTION hook) is now
+  the **top Short at 319v** — first asset to clear the ~279–300v plateau noted on
+  v1_twist (281v) / v2_twist (299v). It was still marked `SCHEDULED` in
+  shorts_state.json (scheduled 06-15) despite being live 9 days — same auto-publish
+  state-drift pattern as 06-13. Verified PUBLIC via oEmbed (HTTP 200), reconciled
+  → status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+- Long-forms are no longer flat-zero: v3_long_Tunguska **97v** (+97 from 0),
+  v1_long_MaryCeleste 19v, v2_long_Dyatlov 2v. The cold-start suppression that
+  pinned long-forms at 0v through mid-June appears to have eased.
+- v3_hook still stuck at 1v (the 0v narrative-hook casualty — consistent with the
+  06-03 "narrative hooks tank" learning).
+**Learning**:
+1. QUESTION-hook Shorts DO break the ~300v plateau on this channel — Briggs (319v)
+   is the proof. The 279/281/298/299 cluster were all earlier/narrative-leaning;
+   the cleanest question hook is now the leader. Reinforces the cutter-v2 + question
+   hook formula as the production default.
+2. State drift on auto-published Shorts is recurring and WILL keep happening every
+   time a scheduled Short goes live — daily reconciliation is mandatory, and the
+   pulse should opportunistically reconcile when it sees a live asset still marked
+   SCHEDULED (done this run).
+3. No PULSE_ALERT fired (thresholds: Short >1000v / long-form >100v / Δ>50v).
+   v3_long is at 97v — just under the long-form alert line; worth watching next
+   pulse to see if it crosses 100 (would be the channel's first long-form alert).
+**Action**:
+- Within pulse limits (1 oEmbed probe, 0 Studio HTTP actions, no Flow gen). No deep
+  Studio analytics pull this run since no threshold breached.
+- WATCH: v3_long_Tunguska (97v) for the >100v long-form crossing next pulse.
+- Pipeline still dry beyond v1_bonus_briggs — the v4 Roanoke batch is the next
+  production lever (Flow thumb blocker from 06-13 still open). Flagged for daily plan.
