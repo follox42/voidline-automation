@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 16:05 — Pulse resumes after 11-day gap: channel dormant, pipeline dry
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (11-day silence — the
+routine was not firing). Pulse logged "no notable delta" (no PULSE_ALERT). Two
+real conditions surfaced underneath the clean delta:
+1. **Channel dormant since 06-15.** v1_bonus_briggs (vZ68HlWfT-Q) published on
+   schedule 06-15 12:00 UTC (verified PUBLIC via oEmbed HTTP 200) but state still
+   read SCHEDULED — same silent-publish drift as 06-13. Reconciled to PUBLIC +
+   actual_published_at. Nothing is scheduled after 06-15 → 9 days with zero
+   uploads. The v4 Roanoke batch flagged on 06-13 was never shipped (Flow
+   thumb blocker from 06-13 still open).
+2. **Scraper fully blank.** All 13 assets logged empty views this run (06-13 at
+   least captured v2_hook=4 + v3_answer=106). Anonymous-curl stat scrape is now
+   returning 0 parseable counts in the cloud container — the known KNOWN_BAD,
+   worse than before. No view truth available without the camoufox-stealth path.
+**Learning**:
+1. "No notable delta" on the pulse can mask a stalled operation — a flat channel
+   and a dormant channel produce the same null delta. The pulse should also flag
+   "pipeline dry / N days since last upload", not just view deltas.
+2. The hourly routine itself going silent for 11 days is invisible from inside a
+   single run except via the timestamp gap in agent-log. Worth a heartbeat check.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC. State now matches reality (all 11 Shorts
+  PUBLIC, queue empty).
+- ESCALATE to owner: pipeline dry 9 days, v4 Roanoke never shipped, Flow thumb
+  blocker still open, stat scraper dead. Needs a human decision to resume
+  production (or confirm intentional pause).
+- TODO (next daily): port monitor to camoufox-stealth for real view counts;
+  unblock or bypass the Flow thumb to ship v4.
