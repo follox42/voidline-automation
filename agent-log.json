@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-24 23:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219223:05: no notable delta"
+    },
+    {
+      "t": "2026-06-24 23:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 23:05\u219223:06: no notable delta"
+    },
+    {
+      "t": "2026-06-24 23:11 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Real snapshot via stealth session (monitor was blind 11d on blank curl). v1_bonus_briggs 0->319v since ~06-15 publish \u2014 new #1 Short, beat the ~298v plateau, but was stale SCHEDULED in state (reconciled -> PUBLIC). Others ~flat: v2_twist 299, v1_twist 281, v3_answer 110, v3_long 104. No Short >1000, no new long >100. Patched monitor_voidline.py to fetch via authenticated voidline stealth session (curl fallback); verified. Pipeline still DRY past 06-15 \u2014 produce next question-hook batch."
     }
   ]
 }

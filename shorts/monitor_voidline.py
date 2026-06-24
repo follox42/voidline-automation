@@ -15,6 +15,59 @@ ROOT = Path(__file__).parent
 STATE = ROOT / "shorts_state.json"
 CSV_LOG = ROOT / "stats_log.csv"
 
+# Allow importing mcp_stealth from the repo root (one level up from shorts/).
+_REPO_ROOT = ROOT.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+# The anonymous-curl scraper (fetch_stats_curl) is served an anti-scrape /
+# consent page in the cloud container, so viewCount is usually absent. When the
+# camoufox-stealth MCP is reachable (MCPHUB_TOKEN set) we fetch through the
+# authenticated `voidline` browser session instead, which returns the real
+# numbers. Body parsing happens here, so only the integers cross the wire.
+try:
+    import mcp_stealth  # noqa: E402
+    _STEALTH_OK = bool(__import__("os").environ.get("MCPHUB_TOKEN"))
+except Exception:
+    mcp_stealth = None
+    _STEALTH_OK = False
+
+_STEALTH_INIT = False
+
+
+def _stealth_session():
+    """Return a live stealth session name, or None if unavailable."""
+    global _STEALTH_INIT
+    if not _STEALTH_OK or mcp_stealth is None:
+        return None
+    if not _STEALTH_INIT:
+        try:
+            mcp_stealth.initialize()
+            _STEALTH_INIT = True
+        except Exception:
+            return None
+    return "default"
+
+
+def fetch_stats_stealth(video_id: str):
+    """Fetch viewCount/likeCount via the authenticated stealth session."""
+    sess = _stealth_session()
+    if not sess:
+        return None, None
+    try:
+        r = mcp_stealth.call("stealth_impersonate_fetch", {
+            "url": f"https://www.youtube.com/watch?v={video_id}",
+            "from_session": sess, "impersonate": "firefox135",
+            "max_body_chars": 0, "timeout": 30,
+        })
+        content = r["result"]["content"][0]["text"]
+        body = json.loads(content).get("body", "")
+    except Exception:
+        return None, None
+    v = re.search(r'"viewCount":"(\d+)"', body)
+    l = re.search(r'"likeCount":"(\d+)"', body)
+    return (int(v.group(1)) if v else None, int(l.group(1)) if l else None)
+
 LONGFORMS = [
     ("sB8VXu2OHtY", "v1_long_MaryCeleste"),
     ("pM-u_8ONjI0", "v2_long_Dyatlov"),
@@ -22,7 +75,7 @@ LONGFORMS = [
 ]
 
 
-def fetch_stats(video_id: str, is_short: bool):
+def fetch_stats_curl(video_id: str, is_short: bool):
     url = f"https://www.youtube.com/shorts/{video_id}" if is_short else f"https://www.youtube.com/watch?v={video_id}"
     try:
         out = subprocess.run(
@@ -34,6 +87,14 @@ def fetch_stats(video_id: str, is_short: bool):
     v = re.search(r'"viewCount":"(\d+)"', out)
     l = re.search(r'"likeCount":"(\d+)"', out)
     return (int(v.group(1)) if v else None, int(l.group(1)) if l else None)
+
+
+def fetch_stats(video_id: str, is_short: bool):
+    """Prefer the authenticated stealth session; fall back to anonymous curl."""
+    v, l = fetch_stats_stealth(video_id)
+    if v is not None:
+        return v, l
+    return fetch_stats_curl(video_id, is_short)
 
 
 def main():

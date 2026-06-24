@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 23:09 — Pulse un-blinded + v1_bonus_briggs is the new top Short (319v)
+**Observation**: First pulse in 11 days (last real snapshot 2026-06-13). The
+hourly monitor's anonymous-curl scraper was STILL returning blank views for all
+16 assets (the known cloud anti-scrape page), so the pulse had been flying blind
+the whole time — "no notable delta" was meaningless on empty data. Pulled a real
+snapshot through the authenticated `voidline` stealth session via
+`impersonate_fetch` (parsing viewCount server-side so only integers cross the
+wire). Real numbers: v1_bonus_briggs **319v** (PUBLIC, oEmbed 200), v2_twist 299,
+v1_twist 281, v3_answer 110, v3_long_Tunguska 104, v1_answer 87, v1_hook 64,
+v2_answer 34, v3_twist 28, v1_long 19, v2_hook 7, v2_long 2, v3_hook 1.
+Two findings: (1) v1_bonus_briggs was still marked SCHEDULED in shorts_state.json
+but published ~06-15 and is now the channel's #1 Short — it grew 0→319v entirely
+unnoticed and edged past the long-standing ~298v plateau. (2) No Short >1000, no
+new long-form >100.
+**Learning**:
+1. The 2026-06-13 TODO ("port monitor_voidline.py to fetch via camoufox-stealth")
+   was never done, so every pulse since has been blind. Anonymous curl in the
+   cloud container is permanently unreliable for viewCount — the stealth session
+   is the only working path.
+2. v1_bonus_briggs (question hook "Why Did the Teetotal Captain Run?") beating the
+   274/298 plateau confirms AGAIN that question hooks on the strongest IP (Mary
+   Celeste) are the breakout lever. The bonus-Short bet paid off.
+3. Scheduled Shorts auto-publish silently and the state file never updates itself
+   — state-vs-reality drift recurs every batch; reconciliation must read live.
+**Action**:
+- Patched `monitor_voidline.py`: `fetch_stats()` now tries the authenticated
+  stealth session first (`fetch_stats_stealth`), falls back to curl. Future
+  pulses get real numbers and can compute real deltas. Verified working this run.
+- Reconciled shorts_state.json: v1_bonus_briggs SCHEDULED → PUBLIC +
+  actual_published_at=2026-06-15T12:00:00Z.
+- Recorded the first real snapshot in 11 days to stats_log.csv (baseline for the
+  next pulse's deltas).
+- Pipeline still DRY (DRIFT_FLAG from 06-13 unresolved): nothing scheduled after
+  06-15. The 319v winner proves the format works — produce + schedule the next
+  question-hook batch to ride it. Flag for the daily-plan run.
