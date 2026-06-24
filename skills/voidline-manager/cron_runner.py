@@ -131,6 +131,18 @@ def run_pulse():
     prev = {r["asset"]: r for r in rows if r["ts"] == prev_ts}
     cur = {r["asset"]: r for r in rows if r["ts"] == cur_ts}
 
+    # Blind-run guard: if the latest snapshot has no usable view data at all,
+    # the threshold logic below can never fire, so "no notable delta" would be
+    # a lie (it reads as healthy-flat when we are actually flying blind on a
+    # broken scraper / dead session auth). Surface it loudly instead.
+    non_blank = sum(1 for c in cur.values() if c.get("views"))
+    if non_blank == 0:
+        msg = (f"all {len(cur)} assets returned blank views at {cur_ts} — "
+               "scraper broken or session auth dead; no stats this pulse")
+        log_decision("PULSE_BLIND", msg)
+        print("[blind] " + msg)
+        return
+
     alerts = []
     for asset, c in cur.items():
         p = prev.get(asset)

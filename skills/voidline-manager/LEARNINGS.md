@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 19:05 — Pulse fully blind: scraper blank + camoufox auth DEAD
+**Observation**: First HOURLY PULSE since 2026-06-13 (11-day gap). Runner exited
+0 with "no notable delta", but that is misleading — ALL 13 assets logged blank
+views in both new snapshots (2026-06-24T19:04 + 19:05). Root causes, in order
+tried: (1) `monitor_voidline.py` anon curl returns no `viewCount` in the cloud
+container (known since 2026-06-13, still unported); (2) no `yt-dlp`/`youtube-dl`
+binary or `yt_dlp` python module available as a fallback; (3) the camoufox-stealth
+`default` session is alive but `auth_check` returns `status: dead` /
+"Auth INVALID. Do NOT post. Re-login required." — it is parked on
+studio.youtube.com analytics for FacPhS3hNjU, idle ~6h, cookie_profile=null.
+So Studio analytics cannot be pulled either. Net: zero usable view data this run.
+**Learning**:
+1. The pulse's "no notable delta" path is dangerously misleading when every
+   `views` cell is blank — a blind run reads as a healthy-flat run. The threshold
+   logic in `cron_runner.run_pulse` skips blank rows silently, so it can NEVER
+   alert while the scraper is broken. Pulse should distinguish "no delta" from
+   "no data" and surface the latter loudly.
+2. The 2026-06-13 TODO (port monitor to camoufox-stealth) is now the blocking
+   dependency, and it ALSO requires the voidline YouTube session to be re-logged
+   in — the existing session auth has since expired/died.
+3. cookie_profile on the live session is null, not "voidline" — the profile the
+   routine expects to use was never bound to this session.
+**Action**:
+- BLOCKER logged, pulse exited cleanly within limits (0 Studio HTTP actions,
+  0 Flow generations). No PULSE_ALERT could be evaluated.
+- NEEDS HUMAN: re-login the voidline YouTube/Studio session in camoufox-stealth
+  (auth dead). Until then all stat-based pulses are blind.
+- NEXT (code, low-risk): patch `run_pulse` to emit a PULSE_BLIND log when the
+  latest snapshot has 0 non-blank view cells, so blind runs stop masquerading
+  as healthy. Port `monitor_voidline.py` to fetch via camoufox-stealth once the
+  session is re-authed.
