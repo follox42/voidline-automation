@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 15:07 — Operation stalled: 11-day pulse gap, dry pipeline, blind monitor
+**Observation**: First HOURLY PULSE to fire since 2026-06-13 (11-day gap in
+stats_log.csv — the hourly cron has NOT been running hourly). Pulse ran clean
+(no PULSE_ALERT) but three things surfaced:
+1. **Monitor blind**: monitor_voidline.py returned blank views for 13/13 assets
+   this run — worse than the 2/12 that parsed on 06-13. Same anonymous-curl
+   anti-scrape cause, now at 0% coverage. No delta computable → alerts can never
+   fire while the scraper stays blind.
+2. **Pipeline dry 9+ days**: the 06-13 DRIFT_FLAG (queue empty past v3_answer
+   06-12) is unresolved. Nothing has been produced or scheduled since the
+   v1_bonus_briggs Short. On the cold-start cadence (≈3 uploads/wk) that is ~4
+   missed slots and a broken rhythm.
+3. **State drift again**: v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) was
+   still marked SCHEDULED. Verified PUBLIC via oEmbed (HTTP 200) → reconciled to
+   PUBLIC + actual_published_at 2026-06-15. Confirms the KNOWN_BAD "trust the
+   schedule applied" pattern recurs every batch.
+**Learning**:
+- The hourly pulse is only useful if (a) the cron actually fires and (b) the
+  monitor returns real numbers. Both are currently broken, so the channel has
+  effectively had no automated eyes on it for 11 days. The blind-scraper TODO
+  (port monitor to camoufox-stealth cookie_profile=voidline, logged 06-13) is now
+  the blocking item for the whole pulse loop — not optional.
+- oEmbed remains the reliable, session-safe public/scheduled probe (HTTP 200 =
+  live) and should back every reconciliation until the monitor is fixed.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- Did NOT spend Studio HTTP actions: no PULSE_ALERT fired (per pulse rules the
+  Studio deep-dive is gated on an alert), and the scraper being blind is already
+  a known root cause — burning Studio calls would not change the verdict.
+- Flagged for the human: production has stalled (dry pipeline 9+ days) and the
+  monitor/cron are degraded. Next operator action = either resume v4 Roanoke
+  production + schedule the next batch, or confirm an intentional pause.
