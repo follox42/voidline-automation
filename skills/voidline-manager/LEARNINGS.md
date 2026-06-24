@@ -231,3 +231,41 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 12:07 — v1_bonus_briggs breaks the Shorts ceiling (319v, new channel record)
+**Observation**: First pulse since 06-13 (11-day gap — hourly routine clearly
+wasn't firing hourly). This run got FULL monitor coverage for the first time —
+views parsed for all 13 assets (vs 10/12 blank on 06-13). Snapshot highlights:
+- `v1_bonus_briggs` (vZ68HlWfT-Q, "Why Did the Teetotal Captain Run?") = **319v**
+  — now the #1 Short on the channel, beating the prior ceiling v2_twist (299v)
+  and v1_twist (281v).
+- v2_twist 299 / v1_twist 281 / v1_bonus_briggs 319 — top 3 are all
+  QUESTION/CONTRADICTION hooks.
+- v3_hook stuck at **1v** — algorithmic suppression on that asset is persistent.
+- Long-forms: v3_Tunguska 100v, v1_MaryCeleste 19v, v2_Dyatlov 2v — still weak
+  but v3 long is the only one with any pulse.
+- No PULSE_ALERT fired: max Short 319 < 1000 threshold, max long-form 100 (not
+  >100). Runner's delta logic also under-reported because the 06-13 baseline was
+  mostly blank — "no notable delta" is technically true but baseline-starved.
+**Learning**:
+1. The question-hook BONUS Short strategy from weekly-review #1 WORKED — it broke
+   the ~300v plateau that pure-narrative and even earlier question hooks couldn't.
+   A *bonus* Short on an already-published topic (Mary Celeste) outperformed every
+   first-run Short. Re-mining proven topics with fresh question hooks is a real
+   lever, not just net-new topics.
+2. STATE DRIFT recurred (KNOWN_BAD publish-side): v1_bonus_briggs auto-published
+   06-15 but stayed `SCHEDULED` in state for 9 days. Reconciliation must run every
+   pulse/daily, not just be assumed. Reconciled this run (oEmbed 200 → PUBLIC +
+   actual_published_at=2026-06-15).
+3. Monitor coverage was full this run — either the scraper is less flaky than the
+   06-13 run suggested, or it got intermittently lucky. Don't yet assume it's
+   fixed; keep watching coverage per pulse.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- STRATEGY SIGNAL for next daily/weekly: prioritize more question-hook bonus
+  Shorts on proven topics (Mary Celeste, Dyatlov) over chasing only new topics —
+  the ceiling-break came from re-mining, not novelty.
+- v3_hook (1v) is dead weight — suppression confirmed, no recovery in 16 days.
+  Don't burn effort reviving it.
+- Investigate the 11-day pulse gap — the hourly cron may not be live; flag for the
+  routine owner to confirm the schedule is actually firing.
