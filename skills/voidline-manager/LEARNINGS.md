@@ -231,3 +231,41 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 20:10 — 11-day pulse gap + scraper still blind; real Studio numbers show healthy slow organic growth
+**Observation**: First pulse since 2026-06-13 (11-day gap — hourly cron did not
+fire in between; only 06-13 and today appear in stats_log timestamps). The
+runner logged "no notable delta" but that verdict is unreliable: the anonymous
+curl scraper in `monitor_voidline.py` parsed only 1/16 assets again (v2_answer
+34v) — every other asset came back blank, so the threshold checks (1000v short /
+100v long / +50 delta) physically cannot fire. Pulled real numbers via
+camoufox-stealth (cookie_profile=voidline) — cookies still valid 11 days on.
+Ground truth from Studio content tab:
+- Long-form: Tunguska **103v** (just over the 100v long-form threshold, but flat,
+  no prior baseline), Mary Celeste 19v, Dyatlov 2v.
+- Shorts top: v1_bonus_briggs "Why Did the Teetotal Captain Run?" **319v**,
+  v2_twist "Every Dyatlov Theory Failed" **299v**, v1_twist "Captain Morehouse"
+  **281v**, v3_answer "It Never Landed" 110v (was 106v on 06-13 → +4v in 11 days,
+  confirms it is flat), v1_answer 87, v1_hook 64, v2_answer 34, v3_twist 28,
+  v2_hook 7, v3_hook 1.
+- An UNTRACKED short exists on the channel: "9 Barrels Empty. The Mary Celeste
+  Vapor Theory #shorts" (blank/0 views) — NOT in shorts_state.json. Likely
+  published/scheduled during the gap by another path; state file is out of sync.
+**Learning**:
+1. The pulse is structurally blind: with the curl scraper, PULSE_ALERT can never
+   trigger because views parse blank. "No notable delta" is a false-negative, not
+   a real all-clear. The 06-13 TODO (port monitor to camoufox-stealth) is now the
+   single highest-leverage fix — until done, every hourly pulse is a no-op.
+2. Real picture is healthy for a J+28 organic cold-start: 3 Shorts in the
+   280-320v band, no breakout (nothing near 1000v), long-form crawling (Tunguska
+   103). No spike, no emergency — just slow organic accumulation as expected.
+3. shorts_state.json drifted from the channel (untracked Vapor Theory short).
+**Action**:
+- Backfilled 13 ground-truth view rows into stats_log.csv at 20:10 as a real
+  baseline so future pulses have something to delta against.
+- No PULSE_ALERT escalation: nothing crossed a real spike threshold (top short
+  319v << 1000v; Tunguska 103v is barely over 100 and flat).
+- TODO (carry-forward, top priority): port monitor_voidline.py to fetch via
+  camoufox-stealth so the hourly pulse actually sees views; reconcile
+  shorts_state.json with the live channel (add the Vapor Theory short).
+- Stayed within rails: 3 Studio HTTP reads, 0 Flow gen, 1 push.
