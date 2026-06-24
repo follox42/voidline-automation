@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 13:08 — SUPPRESSION LIFTED: v3 Tunguska long-form breaks out organically
+**Observation**: First pulse in 11 days (06-13 → 06-24) — monitor finally
+returned real numbers (no more blank curl). PULSE_ALERT fired: v3_long_Tunguska
+(FacPhS3hNjU) crossed 100v. Studio reach analytics (period-since_publish, 17 days
+of data avail.):
+- Impressions **1.5k**, **91.3% served by YouTube recommending our content**
+- CTR 3.3% (3.2% on the impressions-vs-watchtime card), Views 102, 85 unique
+- Avg view duration **7:24 on a 13:12 video (~56% retention)**
+- Traffic sources: **Browse 52.0% + Suggested 43.1%** = 95% pure algorithmic;
+  Direct 2.9%, Search 2.0%
+- External sites/apps = "Données insuffisantes" → **ZERO external referral. No
+  Reddit. 100% organic.**
+- 76.2% of all *suggested* traffic comes from ONE feeder video: "The Willamette
+  Meteorite | The Largest Meteorite found in North America" — the algo has slotted
+  our doc into the established meteorite/space-disaster niche cluster.
+- Other long-forms also un-blanked: v1 Mary Celeste 19v, v2 Dyatlov 2v.
+- Shorts healthy: v1_bonus_briggs (new 06-15) **319v** = new best Short, v2_twist
+  299v, v1_twist 281v, v3_answer 110v.
+**Learning**:
+1. The cold-start algorithmic suppression that pinned long-forms at 0v/0 impressions
+   (logged 06-13) has **lifted**. 1.5k impressions with 91% YouTube-recommended is
+   the algo actively test-distributing the video — the opposite of suppression.
+2. The breakout is **suggested-video driven, not search/browse-keyword driven**.
+   Getting clustered next to a strong meteorite-niche video (Willamette) is what
+   unlocked reach. Topic adjacency to an established high-traffic video is the real
+   distribution lever for our docs — NOT external seeding.
+3. This **validates the 06-13 "pure organic, no Reddit seed" pivot** — the channel
+   broke out with zero external traffic. The Reddit lever was correctly dropped.
+4. CTR 3.3% is now the binding constraint (impressions exist; clicks are the gap).
+   Thumbnail quality is the next lever to pull, not distribution.
+5. KNOWN_BAD "burst mode triggers suppression" still holds — but suppression is a
+   *cooldown*, not permanent. ~17 days post-publish the algo re-tested and found the niche.
+**Action**:
+- Treat suggested-video adjacency as the primary growth model: title/thumb/topic
+  v4+ to sit next to known high-traffic niche videos (meteorite/disaster/unsolved).
+- Prioritize a thumbnail A/B on v3 Tunguska to lift the 3.3% CTR while the algo is
+  actively impressing it (1.5k imp = live test window — do not waste it).
+- Pipeline still DRY past v1_bonus_briggs (06-15) — v4 Roanoke must ship to ride
+  the re-opened distribution. Flow thumb blocker (06-13) is now the critical-path item.
+- Next pulse: re-read impressions trend — if it keeps climbing, the niche-cluster
+  entry is durable; promote to KNOWN_GOOD.
