@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 08:05 — Bonus Briggs breaks the Short plateau + long-form suppression lifts
+**Observation**: First clean full-channel pulse since the scraper started
+returning blanks (06-13). Two standouts vs all prior history:
+1. **v1_bonus_briggs = 319v** — now the channel's #1 Short, edging past the
+   documented ~300v ceiling (prior tops: v2_twist 299, v1_twist 281). It's a
+   pure QUESTION hook ("Why Did the Teetotal Captain Run?") on the proven v1
+   Mary Celeste topic — exactly the plateau-breaking lever the 06-07 weekly
+   review prescribed.
+2. **v3_long_Tunguska = 97v** (+ v1_long 19v, v2_long 2v). Long-forms were
+   "0v under algorithmic suppression" in mid-June; v3 recovering to 97v is the
+   first sign the suppression cooldown has lifted on the long-form side.
+   Scraper accuracy validated by consistency with known values (v1_twist
+   281~prior 274-279, v2_twist 299~298, v3_answer 110~106).
+3. State drift again: v1_bonus_briggs was still SCHEDULED (sched 06-15, now
+   well past) despite being live at 319v — same auto-publish-without-state-update
+   pattern. Reconciled to PUBLIC (oEmbed 200 confirmed).
+**Learning**:
+1. The validated formula (question hook + proven topic + cutter v2) DOES break
+   the ~300v narrative ceiling. Briggs is proof the plateau was a *content* limit,
+   not an algorithmic cap.
+2. Long-form suppression appears time-limited, not permanent — v3 climbing to
+   97v organically (no Reddit seed) supports the pure-organic thesis. Worth
+   watching whether it crosses 100v next pulse (would trip the long-form alert).
+3. The cloud scraper now works reliably (13/13 assets parsed vs 2/12 on
+   06-13) — the blank-stats problem from the first cloud pulse is resolved.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED->PUBLIC in shorts_state.json.
+- No PULSE_ALERT threshold strictly crossed (no Short >1000, long-form 97<100,
+  no clean computable delta) — so no extra Studio HTTP actions spent this pulse.
+- Watch v3_long next pulse: if it crosses 100v, investigate traffic sources.
+  Briggs's success argues for producing MORE question-hook bonus Shorts on
+  proven topics (v2 Dyatlov, v3 Tunguska), not only chasing new v4 topics.
