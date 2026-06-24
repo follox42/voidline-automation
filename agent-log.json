@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-24 08:01 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-24 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-24 08:05 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, 'Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872', scheduled 2026-06-15T12:00:00Z) was still marked SCHEDULED in shorts_state.json 9 days after its publish time. Verified PUBLIC via YouTube oEmbed (HTTP 200, author=Voidline). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Studio cross-check unavailable this run: camoufox-stealth browser server is not currently mounted on mcphub (handshake OK, but no stealth_* tools exposed / no live voidline session). oEmbed 200 is the established session-safe public probe and is conclusive. Catalogue is now 11/11 Shorts PUBLIC."
+    },
+    {
+      "t": "2026-06-24 08:05 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "PIPELINE FULLY DRY for 9 days. Not a publish day today (Wed 06-24): 0 Shorts scheduled, long-form cadence is Sunday so no long-form due. Checked next 3 days (Thu 06-25 / Fri 06-26 / Sat 06-27): NOTHING scheduled \u2014 zero Shorts, zero long-form, all 11 catalogue Shorts already PUBLIC with nothing staged behind v1_bonus_briggs (06-15). The channel has uploaded NOTHING since 06-15. Per recovery cadence (1 long/wk Sun 17:00 UTC + 2 Shorts/wk HOOK+ANSWER) the missed slots are: Shorts 06-17/06-19/06-22/06-24 and long-forms Sun 06-21 (and 06-28 at risk). Root cause: v4 Roanoke stalled on the 2026-06-13 Google Flow thumb blocker (submit button disabled, never resolved) \u2014 no batch was ever rendered/scheduled. ACTION NEEDED (human): unblock v4 Roanoke thumb gen in a fresh Flow session OR ship with the v3 Tunguska placeholder base, then render+schedule the v4 Shorts batch + long-form for Sun 06-28 17:00 UTC. Next long-form publish day = Sun 06-28; if still nothing queued by then the weekly cadence breaks a 2nd consecutive week."
     }
   ]
 }

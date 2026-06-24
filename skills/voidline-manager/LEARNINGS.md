@@ -231,3 +231,29 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 — Daily-plan: 1 stale Short reconciled + 9-day pipeline outage
+**Observation**: Daily-plan run (Wed 06-24). (1) v1_bonus_briggs (vZ68HlWfT-Q,
+06-15) was still SCHEDULED in state 9 days after publish — auto-published
+silently, verified PUBLIC via oEmbed (HTTP 200). Reconciled → catalogue now
+11/11 Shorts PUBLIC. (2) Pipeline is COMPLETELY DRY: nothing scheduled past
+06-15, next 3 days (06-25/26/27) empty, no long-form queued for the missed
+Sun 06-21 nor the upcoming Sun 06-28. (3) Studio cross-check via mcp_stealth
+was unavailable — mcphub handshake succeeds but the camoufox-stealth browser
+server is not currently mounted (no stealth_* tools, no live voidline session).
+**Learning**:
+1. The stale-SCHEDULED→PUBLIC drift recurs every daily-plan because YT never
+   writes back to shorts_state.json — daily oEmbed reconciliation stays mandatory.
+2. The real problem isn't drift, it's STARVATION: the v4 Roanoke Flow thumb
+   blocker (2026-06-13) was never resolved, so no batch shipped and the channel
+   has been silent for 9 days — directly violating the KNOWN_BAD "cadence <1
+   video/week" rule. The cooldown was lifted 06-13 but production never resumed.
+3. Studio verification can't be assumed available in a routine — the camoufox
+   server is mounted on-demand. oEmbed is the only reliable session-safe probe;
+   keep it as the primary status check, treat Studio as best-effort cross-check.
+**Action**:
+- Reconciled v1_bonus_briggs; logged RECONCILE + DRIFT_FLAG to agent-log.json.
+- ESCALATE to Nolann (human): the v4 Roanoke Flow thumb blocker is the single
+  gate holding the whole pipeline. Either unblock Flow in a fresh session or
+  ship with the v3 Tunguska placeholder base, then render+schedule the v4 batch
+  + long-form for Sun 06-28 17:00 UTC before a 2nd consecutive week is missed.
