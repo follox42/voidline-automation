@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-24 21:05 — Pulse resumes after 11-day dark gap; scraper fully blind (0/13)
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — an 11-day gap
+(last routine commit 2026-06-13 17:54). The cron either wasn't firing or the
+routine was paused; today's run is the first activity in 11 days. The pulse
+itself executed clean (exit 0) but `monitor_voidline.py` returned BLANK views
+for ALL 13 assets (3 long-form + 10 Shorts) — worse than 06-13 when v3_answer
+still parsed 106v. So the delta logged as "no notable delta" only because there
+is no data to compare, not because views are flat. No PULSE_ALERT (no thresholds
+crossable with zero data → no spike to investigate, so no Studio/camoufox HTTP
+spent this run).
+**Learning**:
+1. The scraper degradation predicted in the 2026-06-13 14:02 learning has now
+   gone to 100% — anonymous `curl` (monitor_voidline.py:29, no cookies) gets the
+   YouTube consent/anti-scrape page for every asset. The pulse is effectively
+   BLIND until the camoufox-stealth port (cookie_profile=voidline) is done. That
+   port was filed as a TODO on 06-13 and is now the single blocker making the
+   hourly pulse produce zero usable signal.
+2. The 11-day dark gap means the channel ran unmonitored through the entire
+   window where v4 Roanoke was supposed to ship (~20 juin per plan) and where
+   v1_bonus_briggs was SCHEDULED for 06-15 — state still shows it SCHEDULED, so
+   it may never have published. Pulse can't confirm (blind); daily-plan should
+   reconcile.
+**Action**:
+- PRIORITY for next maintenance window: port monitor_voidline.py stat fetch to
+  camoufox-stealth (profile=voidline) or yt-dlp so the pulse has real numbers.
+  Until then every pulse is a no-op snapshot.
+- Flagging the dark gap + blind scraper to the user via notification — the
+  routine has not been the channel's eyes for 11 days.
+- No Studio/Flow actions spent (0/5 HTTP, 0/1 Flow). Logged and exiting clean
+  per blocker protocol.
