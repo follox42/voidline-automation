@@ -122,3 +122,50 @@ instead of bare `stealth_navigate`).
   with mcphub-aware mcp_stealth.py + ROUTINE_PROMPTS.md ready for claude.ai/code/routines
 - 4 Cloud Routines ready to instantiate (hourly pulse / daily / weekly / monthly)
 - Verified: stealth_status call via mcphub works (returns the running session info)
+
+## 2026-06-24 14:08 — v3 Tunguska long-form breaks the test pool — and Reddit had NOTHING to do with it
+**Observation**: Hourly pulse caught v3_long_Tunguska (FacPhS3hNjU) crossing the
+100v threshold (102 views, 85 unique). Pulled Studio reach analytics
+(period-since-publish). The real story is in the numbers:
+- **Impressions: 1.5k** — vs the <25-impression "minimum test pool" every prior
+  long-form got (v1=19v, v2=2v). This is the FIRST long-form to escape the
+  new-channel impression cage described in the 2026-05-31 learning.
+- CTR 3.3%; avg view duration **7:24 on a 13:12 video ≈ 56% retention** — strong
+  enough that YouTube kept feeding impressions (91.3% of impressions came from
+  YouTube recommending the content).
+- Traffic sources: **Browse 52.0% + Suggested videos 43.1% = 95% YouTube-internal
+  algorithmic.** Search 2.0%, Direct 2.9%.
+- **External sites/apps: "données insuffisantes" → essentially ZERO external
+  referral.** The Reddit r/UnresolvedMysteries seed planned for 2026-06-08 (logged
+  as the channel's "#1 lever") drove no measurable traffic. Either it was never
+  posted or it converted nothing.
+- Suggested-video co-watch cluster: "The Willamette Meteorite" (76.2%), "The Meteor
+  Shower That Killed 10,000 People", "Tunguska Event | Disaster Records", etc.
+**Learning**: The breakout was pure YouTube algorithmic niche-fit + retention, NOT
+external seeding. YouTube finally slotted Tunguska into the meteorite/disaster
+co-watch graph, and the 56% retention earned a 1.5k-impression pool. The long-held
+thesis that long-forms are "dead until seeded from Reddit" is wrong — what they
+needed was (a) topical tightness so the co-watch graph can place them and (b)
+retention strong enough to survive the test pool. Reddit was a distraction.
+**Action**:
+- Demote the Reddit-seed lever. Re-verify whether the June 8 seed was ever posted;
+  if it was, it's proof external seeding ≠ traction for this niche.
+- Double down on the validated levers: tight topical titles/thumbs that match a
+  dense co-watch cluster (meteorite/disaster/cosmic), and front-load retention.
+- Treat 1.5k impressions @ 56% retention as the new long-form "escaped the cage"
+  baseline. Watch v3 over the next pulses — if impressions keep climbing it's a
+  genuine sustained pickup, not a one-time test burst.
+
+## 2026-06-24 14:08 — cron_runner.py pulse was broken in the cloud routine (host paths)
+**Observation**: `cron_runner.py pulse` crashed immediately:
+FileNotFoundError on `/host/home/follox/.openclaw/yt-viral/runs/voidline-.../remotion/public/agent-log.json`.
+ROOT/SKILLS were hardcoded to the local openclaw host paths, which do not exist in
+the cloud-routine container (repo is cloned to /home/user/voidline-automation).
+The portable `shorts/monitor_voidline.py` (uses `__file__`-relative paths + curl on
+public watch pages, no cookies) ran fine and produced the live stats.
+**Learning**: The runner was authored for the local host and never re-pathed for the
+cloud routine. Hourly pulses would crash unattended forever until fixed. The
+monitor + Studio MCP path is what actually works in the cloud.
+**Action**: Re-pathed cron_runner.py to repo-relative ROOT, made log_decision write
+an in-repo agent-log.json (creating it if absent) and stop doing its own git push
+(the routine owns commits). Pulse now runs portably in the cloud container.

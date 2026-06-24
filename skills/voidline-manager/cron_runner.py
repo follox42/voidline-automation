@@ -24,8 +24,12 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path("/host/home/follox/.openclaw/yt-viral/runs/voidline-20260527-002843")
-SKILLS = Path("/host/home/follox/.openclaw/yt-viral/.openclaw/skills/voidline-manager")
+# Repo-relative paths. This file lives at <repo>/skills/voidline-manager/cron_runner.py
+# so the repo root is two parents up. Works both in the cloud routine container
+# (/home/user/voidline-automation) and any local clone. An optional VOIDLINE_ROOT
+# env var overrides for non-standard layouts.
+SKILLS = Path(__file__).resolve().parent
+ROOT = Path(os.environ.get("VOIDLINE_ROOT", str(SKILLS.parents[1])))
 LOCKFILE = "/tmp/voidline-manager.lock"
 HALTFILE = ROOT / "HALT"
 
@@ -33,36 +37,27 @@ DRY_RUN = bool(os.environ.get("VOIDLINE_DRY_RUN"))
 
 
 def log_decision(action, detail):
-    """Append to agent-log.json + git push."""
-    log_path = ROOT / "remotion" / "public" / "agent-log.json"
-    data = json.loads(log_path.read_text())
-    data["decisions"].append({
+    """Append a decision to the in-repo agent-log.json.
+
+    The cloud routine owns commits/pushes, so this no longer self-pushes — it
+    just records the decision into a repo-tracked log the routine will commit.
+    Creates the log file (and its scaffold) if it does not yet exist.
+    """
+    log_path = SKILLS / "agent-log.json"
+    if log_path.exists():
+        try:
+            data = json.loads(log_path.read_text())
+        except (ValueError, OSError):
+            data = {"decisions": []}
+    else:
+        data = {"decisions": []}
+    data.setdefault("decisions", []).append({
         "t": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "action": action,
         "detail": detail,
     })
     log_path.write_text(json.dumps(data, indent=2))
-    if not DRY_RUN:
-        try:
-            subprocess.run(
-                ["git", "-C", str(ROOT / "remotion"),
-                 "add", "public/agent-log.json"],
-                check=False, capture_output=True, timeout=20,
-            )
-            subprocess.run(
-                ["git", "-C", str(ROOT / "remotion"),
-                 "-c", "user.email=nolann42400@gmail.com",
-                 "-c", "user.name=follox42",
-                 "commit", "-q", "-m", f"manager: {action}"],
-                check=False, capture_output=True, timeout=20,
-            )
-            subprocess.run(
-                ["git", "-C", str(ROOT / "remotion"),
-                 "push", "origin", "main"],
-                check=False, capture_output=True, timeout=30,
-            )
-        except Exception as e:
-            print(f"[warn] git push failed: {e}", file=sys.stderr)
+    print(f"[log] {action}: {detail}")
 
 
 def acquire_lock():
