@@ -231,3 +231,25 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 21:04 — Pulse now FULLY blind (0/13) + routine ran twice in 12 days
+**Observation**: First pulse since 2026-06-13 (12-day gap — the "hourly" pulse
+has logged only 2 runs total). This run the anon-curl scraper returned blank
+views for ALL 13 tracked assets (0/13), down from 2/12 on 06-13 (v2_hook 4v,
+v3_answer 106v parsed then). No PULSE_ALERT — with zero data there is no delta
+to alert on. Also new: the monitor now tracks 3 long-forms
+(v1_long sB8VXu2OHtY, v2_long pM-u_8ONjI0, v3_long FacPhS3hNjU) alongside the
+13 shorts; they read blank too.
+**Learning**:
+1. The 06-13 TODO (port `monitor_voidline.py` off anon curl to camoufox-stealth
+   cookie_profile=voidline or yt-dlp) is no longer cosmetic — at 0/13 coverage
+   the pulse cannot detect ANY spike, so the routine currently earns nothing.
+   Anon curl → youtube.com is now ~100% anti-scrape blocked in the cloud.
+2. A blank pulse silently logs "no notable delta" — absence of an alert here
+   means "blind," NOT "healthy." Future pulses must distinguish 0-coverage from
+   true-no-change before trusting the all-clear.
+**Action**:
+- Escalating the monitor port to the next daily/maintenance run (out of scope
+  for a pulse's 5-Studio-action budget; this pulse made 0 Studio calls).
+- Until ported, treat pulse "no delta" as unverified. Spike detection should
+  lean on a cookie-authenticated read (Studio analytics / yt-dlp) on the daily.
