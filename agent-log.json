@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-25 20:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219220:04: no notable delta"
+    },
+    {
+      "t": "2026-06-25 20:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 20:04\u219220:05: no notable delta"
+    },
+    {
+      "t": "2026-06-25 20:09 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Monitor was BLIND (anon-curl 0/13). Real stats pulled via voidline Studio session. NOTABLE: v3_long_Tunguska (FacPhS3hNjU) = 107v \u2014 crossed the 100v long-form threshold; was believed 0v under suppression on 06-13 (first long-form ever to break 100). v1_bonus_briggs (vZ68HlWfT-Q) = 319v, new best Short, broke the ~300 plateau (prior top 299). Reconciled briggs SCHEDULED->PUBLIC (drift). Backfilled real snapshot to stats_log.csv. DRAFT 'Vapor Theory' Short staged in Studio, not yet in state. TODO: port monitor to camoufox-stealth fetch (anon-curl unusable in cloud)."
+    },
+    {
+      "t": "2026-06-25 20:09 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED (scheduled 06-15); verified PUBLIC via oEmbed HTTP 200 + Studio 'Publi\u00e9e' 319v. Set status=PUBLIC, actual_published_at=2026-06-15T12:00:00Z."
     }
   ]
 }

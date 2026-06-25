@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 20:09 — Suppression lifted: v3 long-form crosses 100v + Briggs Short breaks the plateau
+**Observation**: First HOURLY PULSE since 2026-06-13 (12-day gap — routine had not
+fired). The anonymous-curl monitor was BLIND this run: 0/13 assets parsed views
+(vs 2/12 on 06-13), so cron_runner logged "no notable delta" — a FALSE NEGATIVE.
+Pulled the real numbers via the live `voidline` Studio session (cookie_profile=
+voidline) off the Vidéos + Shorts content tabs:
+- **v3_long_Tunguska (FacPhS3hNjU): 107 views** — was believed 0v under
+  algorithmic suppression on 06-13. First long-form on the channel to ever cross
+  100v. (v1_long Mary Celeste 19v, v2_long Dyatlov 2v.)
+- **v1_bonus_briggs (vZ68HlWfT-Q): 319 views** in 10 days — new best Short ever,
+  finally breaking the ~300 plateau ceiling (prior tops: v2_twist 299, v1_twist
+  281). Question hook "Why Did the Teetotal Captain Run?" — re-validates the
+  question-hook formula. State had it stale-SCHEDULED; reconciled → PUBLIC
+  (actual_published_at 2026-06-15), same silent-auto-publish drift as 06-13.
+- A second Mary Celeste bonus Short ("9 Barrels Empty / Vapor Theory") sits in
+  DRAFT in Studio — staged by the user, not yet in shorts_state.json.
+**Learning**:
+1. The "long-forms are dead / suppressed at 0v" thesis (06-13 pivot) is now
+   OUTDATED for v3 — Tunguska long-form recovered to 107v. The suppression looks
+   like a cold-start impression-pool delay, not a permanent penalty. Long-form is
+   back in play as a lever.
+2. The Briggs 319v proves the ~300 plateau is breakable with a strong
+   question/contradiction hook on a high-recognition topic (Mary Celeste). The
+   plateau was a hook-quality ceiling, not an algorithmic hard cap.
+3. The anonymous-curl monitor is now FULLY blind in the cloud (0/13), degraded
+   from 06-13 (2/12). The pulse PULSE/no-delta verdict is meaningless until
+   monitor_voidline.py is ported to fetch via camoufox-stealth — the Studio read
+   above proves the session route works and is the fix.
+**Action**:
+- Backfilled the real Studio snapshot into stats_log.csv so the next pulse has a
+  true baseline (not blanks) to delta against.
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC in shorts_state.json.
+- PRIORITY TODO (next daily/maintenance window, not this pulse — Studio-action
+  budget): port monitor_voidline.py stat fetch to the camoufox-stealth Studio
+  route; add the DRAFT "Vapor Theory" Short + the 3 long-forms to shorts_state.json.
+- Strategy nudge: with suppression lifting + Briggs breaking 300, the next batch
+  should keep question-hook Shorts pointing at the long-forms (Briggs→sB8VXu2OHtY
+  drove the Mary Celeste long to 19v). Long-form is worth re-investing in.
