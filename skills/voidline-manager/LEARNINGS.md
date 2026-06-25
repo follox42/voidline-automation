@@ -231,3 +231,51 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+
+## 2026-06-25 07:06 — First pulse in 12 days: channel waking up from suppression + TWIST is the breakout format
+**Observation**: First HOURLY PULSE since 2026-06-13 (12-day gap; routines were
+idle). The anonymous scraper finally got broad coverage this run — 11/20 assets
+parsed (vs 2/12 on 06-13), no Studio auth needed for that. Snapshot 2026-06-25:
+  Long-form: v1 Mary Celeste 19v · v2 Dyatlov 2v · **v3 Tunguska 104v** (crosses
+    the >100v long-form threshold)
+  Shorts: v1_hook 64 · **v1_twist 281** · v1_answer 87 · v2_hook 7 ·
+    **v2_twist 299** · v2_answer 34 · (v3 batch + v1_bonus_briggs = scraper misses)
+The runner logged "no notable delta" only because its delta logic compares
+assets present in BOTH snapshots, and the 06-13 snapshot was nearly blank — so
+it had nothing to diff against. The real signal is absolute: on 06-13 nearly
+everything was 0v under "algorithmic suppression"; by 06-25 there is organic
+life across the entire catalogue.
+**Learning**:
+1. SUPPRESSION APPEARS LIFTED. v3 long-form (Tunguska) at 104v is the channel's
+   best long-form and crosses the user's own >100v watch threshold. The 06-13
+   prediction "v3 long-form 0v is expected under suppression" no longer holds —
+   the algorithm is now distributing. This is the first organic-life signal the
+   cold-start has been waiting for (we're ~J+25).
+2. **TWIST is the breakout Short format — the 06-13 "skip TWIST" decision is
+   contradicted by data.** v1_twist (281v) and v2_twist (299v) are the two top
+   Shorts by a wide margin, beating HOOK (64v / 7v) and ANSWER (87v / 34v) ~4-40x.
+   The June-13 cadence call ("2 Shorts/wk = HOOK + ANSWER, skip TWIST") was made
+   blind (all assets 0v then). Now that data exists, TWIST should be IN the
+   2-Shorts/wk rotation, not dropped.
+3. Studio cookies are DEAD (auth_check: auth_valid=false, status=dead,
+   "Re-login required"). The live stealth session is parked on the Studio
+   /videos/short page but unauthenticated, so the deeper analytics pull
+   (impressions / retention / traffic sources for the v3 long-form breakout)
+   could NOT run this pulse. Pure-anon scraper stats are unaffected.
+4. Pipeline is STILL dry. The 06-13 DRIFT_FLAG (no Shorts scheduled, v4 Roanoke
+   blocked on Flow) has gone 12 days unaddressed — only one new asset appeared
+   (v1_bonus_briggs, vZ68HlWfT-Q). Channel is coasting on the back catalogue
+   exactly as organic distribution is finally kicking in — bad timing to be out
+   of fresh uploads.
+**Action**:
+- 0 Studio HTTP actions spent (auth dead — blocked cleanly, no Flow gen).
+- NEXT (needs user): re-login the voidline Studio cookie profile so the next
+  pulse can pull v3 Tunguska analytics (confirm whether the 104v is browse-feed
+  vs external referral) and check the suppression-lift hypothesis properly.
+- STRATEGY UPDATE for Daily Plan: fold TWIST back into the Shorts rotation;
+  prioritise rendering the next batch (pipeline empty 12 days) to capitalise on
+  the distribution window while it's open.
+- No PULSE_ALERT auto-fired; flagging manually because the absolute long-form
+  value crosses the documented >100v threshold and the qualitative shift
+  (suppression → organic) is the exact condition the pulse exists to catch.

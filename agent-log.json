@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-25 07:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219207:05: no notable delta"
+    },
+    {
+      "t": "2026-06-25 07:06 UTC",
+      "action": "BLOCKED",
+      "detail": "Studio auth dead (auth_check: auth_valid=false, status=dead, 'Re-login required'). Deep analytics pull for v3 Tunguska long-form (104v, crosses >100v threshold) skipped. 0 Studio HTTP actions, 0 Flow gens spent. Anon scraper unaffected (11/20 assets). Re-login voidline cookie profile before next pulse."
     }
   ]
 }
