@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 19:05 — Pulse blind 12 days; scraper all-blank + state drift on bonus Short
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (12-day gap — the
+routine wasn't firing). This run the curl scraper returned BLANK views for ALL
+13 assets (10 Shorts + 3 long-forms) — worse than 06-13, when v3_answer at least
+parsed 106v. No PULSE_ALERT fired, but only because there is zero view data to
+delta against, not because the channel is flat. Separately, public oEmbed (HTTP
+200) confirms v1_bonus_briggs (vZ68HlWfT-Q) went live ~06-15 yet state.json still
+flagged it SCHEDULED — same drift class the runner reconciled on 06-13.
+**Learning**:
+1. The anonymous-curl monitor is now effectively dead for stats in the cloud —
+   100% blank coverage. The pulse has been flying blind. Until monitor_voidline.py
+   is ported to fetch via the camoufox-stealth MCP (cookie_profile=voidline) or
+   yt-dlp, every "no notable delta" PULSE log is uninformative — absence of data,
+   not absence of movement. This is the TODO carried since 06-13; it is now
+   blocking, not optional.
+2. State drift recurs whenever a SCHEDULED asset publishes between runs and no
+   reconcile pass runs. The pulse runner does not reconcile; only the daily plan
+   did (06-13). With the routine dormant 12 days, the bonus Short sat mislabeled.
+3. A 12-day routine gap means cadence + pipeline assumptions are stale: the v3
+   batch is fully published and (per 06-13 DRIFT_FLAG) nothing was staged behind
+   it. Pipeline is almost certainly dry.
+**Action**:
+- Corrected state.json: v1_bonus_briggs -> PUBLIC, actual_published_at=scheduled_at
+  (06-15), verified via oEmbed 200.
+- Did NOT spend Studio HTTP budget this pulse: no PULSE_ALERT threshold tripped and
+  the blocker is the scraper, not a missing analytics drill-down. Studio drill-down
+  is pointless until the monitor can read baseline views.
+- PRIORITY for next working session (not this pulse): port monitor_voidline.py to
+  camoufox-stealth so pulses regain sight; then re-evaluate the dry pipeline / next
+  batch. Flagged to user via routine notification.
