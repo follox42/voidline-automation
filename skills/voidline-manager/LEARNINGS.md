@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 11:04 — First full-coverage pulse: long-form breaks 100v, state drift, runner false-negative
+**Observation**: First HOURLY PULSE since 06-13 to capture views for ALL 13
+assets (previous pulses only parsed 2/12 — anonymous-curl anti-scrape).
+Snapshot reveals three things at once:
+1. **v3 Tunguska LONG-FORM = 106v** (sB8VXu2OHtY v1=19, pM-u_8ONjI0 v2=2,
+   FacPhS3hNjU v3=106). On 06-13 this same long-form was logged "0v under
+   suppression." 0→106 over 12 days = the channel's best long-form ever and
+   a direct contradiction of the "long-forms are dead" thesis.
+2. **State drift**: v1_bonus_briggs (vZ68HlWfT-Q) was marked SCHEDULED/06-15
+   but is PUBLIC at 319v — now the channel's #1 Short, and it BROKE the
+   ~300v question-hook ceiling (prior best v2_twist 299). oEmbed 200 confirms
+   public; reconciled state → PUBLIC + actual_published_at 06-15T12:00Z.
+3. **Runner false-negative**: cron_runner pulse logged "no notable delta"
+   even though the long-form crossed 100v. Root cause: the alert loop
+   `continue`d on any asset lacking a PREVIOUS snapshot, so the absolute
+   "crossed 100v/1000v" checks never ran for first-seen assets (all 3
+   long-forms had no 14:02 baseline).
+**Learning**:
+1. Absolute "crossed" thresholds must NOT depend on a prior snapshot — they
+   should fire on first observation and then self-mute once a baseline above
+   the line exists. Delta checks are the only ones that legitimately need a
+   prev value. (This is the same KNOWN_BAD "trusting state without reading
+   reality" pattern, but in the alerting layer.)
+2. Scheduled Shorts still auto-publish silently — the 06-13 daily-plan
+   learning holds; reconciliation remains mandatory every pulse/day.
+3. The question-hook formula keeps compounding: v1_bonus_briggs (question
+   hook, Mary Celeste) is now top Short at 319v, beating every TWIST.
+**Action**:
+- Patched cron_runner.run_pulse(): crossing checks fire independent of prev,
+  guarded by `(pv is None or pv < threshold)` to avoid hourly repeat alerts.
+  Verified against current CSV → correctly emits `long100:v3_long_Tunguska(106)`.
+- Reconciled shorts_state.json: v1_bonus_briggs → PUBLIC.
+- **BLOCKED**: voidline cookie auth is DEAD (auth_check auth_valid=false,
+  "Re-login required"). Could NOT pull Studio traffic sources for the
+  long-form — cannot tell if the 106v is organic browse/search or an
+  external referral. Re-login the voidline profile, then a follow-up pulse
+  should open FacPhS3hNjU → tab-reach to read traffic sources + impressions.
+  0 new Studio navigations spent this pulse (all reads hit the stale session).
+- STRATEGIC FLAG for Nolann: long-forms may not be dead after all — one
+  crossed 100v organically. Worth re-weighing the "Shorts-only cold-start"
+  posture once auth is restored and traffic sources are visible.

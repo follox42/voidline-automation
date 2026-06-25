@@ -133,21 +133,31 @@ def run_pulse():
 
     alerts = []
     for asset, c in cur.items():
-        p = prev.get(asset)
-        if not p or not c["views"] or not p["views"]:
+        if not c["views"]:
             continue
         try:
-            dv = int(c["views"]) - int(p["views"])
             cv = int(c["views"])
         except ValueError:
             continue
-        # Threshold checks
-        if dv >= 50:
-            alerts.append(f"📈 {asset}: +{dv}v (now {cv})")
-        if cv >= 1000 and c["kind"] == "short":
+        # Previous value (may be absent — long-forms had no baseline before
+        # the monitor reached full coverage). Used for delta + crossing edge.
+        pv = None
+        p = prev.get(asset)
+        if p and p["views"]:
+            try:
+                pv = int(p["views"])
+            except ValueError:
+                pv = None
+        # Absolute "crossed" thresholds — fire on the pulse the asset first
+        # crosses, even with no prior snapshot. Guard against repeat alerts
+        # once a baseline above the line exists.
+        if c["kind"] == "short" and cv >= 1000 and (pv is None or pv < 1000):
             alerts.append(f"⭐ {asset}: crossed 1000 views!")
-        if cv >= 100 and c["kind"] == "long":
+        if c["kind"] == "long" and cv >= 100 and (pv is None or pv < 100):
             alerts.append(f"⭐ {asset} long-form: crossed 100v!")
+        # Delta threshold — needs a valid previous snapshot.
+        if pv is not None and cv - pv >= 50:
+            alerts.append(f"📈 {asset}: +{cv - pv}v (now {cv})")
 
     summary = f"Δ {prev_ts.split('T')[1][:5]}→{cur_ts.split('T')[1][:5]}"
     if alerts:
