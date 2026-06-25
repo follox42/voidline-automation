@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-25 08:01 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-25 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-25 08:02 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, scheduled 2026-06-15 12:00) was stale SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200, title='Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872 #shorts', author=Voidline). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Catalogue now 11 Shorts, all PUBLIC, 0 SCHEDULED."
+    },
+    {
+      "t": "2026-06-25 08:02 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "MAJOR PIPELINE STALL. (1) Routine gap: no daily-plan/pulse logged between 2026-06-13 14:02 and 2026-06-25 08:01 \u2014 ~12 days dark; automation was dormant. (2) Shorts queue fully DRY: nothing scheduled after 06-15; next 3 days (Fri 06-26 = Short day, Sat 06-27, Sun 06-28 = long-form + Short + Reddit-seed day) are all EMPTY. (3) Long-form cadence (Sundays 17:00 UTC) MISSED 06-14 and 06-21 \u2014 two Sundays with no publish. v4 Roanoke has script.json + SHORTS_PLAN.md at runs/v4-roanoke/ but NO rendered video and was last blocked on Google Flow thumb gen (UI redesign, see LEARNINGS 06-13). ACTION NEEDED before Sun 06-28: render+schedule v4 long-form, render+schedule next Shorts batch, draft Reddit r/UnresolvedMysteries seed."
     }
   ]
 }
