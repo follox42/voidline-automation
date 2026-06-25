@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-25 08:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219208:05: no notable delta"
+    },
+    {
+      "t": "2026-06-25 08:06 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "\u0394 08:05\u219208:06: \u2b50 v3_long_Tunguska long-form: crossed 100v!"
+    },
+    {
+      "t": "2026-06-25 08:10 UTC",
+      "action": "INVESTIGATE",
+      "detail": "Long-form spike follow-up: Tunguska (FacPhS3hNjU) = 104v/3 likes, FIRST long-form to break the 0v suppression floor (v1=19v, v2=2v still). Tried to pull Studio reach analytics (tab-reach/period-since_publish) for traffic source / impressions / Reddit-vs-organic \u2014 page threw persistent backend error 'Une erreur s'est produite', did not load after Reessayer retry. Traffic source UNKNOWN this pulse; retry next run. oEmbed 200 confirms video public. Studio actions used: navigate + 2 in-page clicks (within 5-action cap)."
+    },
+    {
+      "t": "2026-06-25 08:10 UTC",
+      "action": "RECONCILE",
+      "detail": "State drift fixed: v1_bonus_briggs (vZ68HlWfT-Q) was SCHEDULED(06-15) in shorts_state.json but is live at 319v (channel top Short). oEmbed 200 \u2014 set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Auto-published Shorts still don't write back to state (KNOWN_BAD)."
     }
   ]
 }

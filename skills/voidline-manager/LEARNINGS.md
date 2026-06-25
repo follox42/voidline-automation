@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 08:06 — FIRST long-form breakout: Tunguska crosses 100v
+**Observation**: First HOURLY PULSE since 2026-06-13 (12-day gap). The v3
+Tunguska **long-form** (FacPhS3hNjU, "The Day the Siberian Sky Exploded")
+is at **104 views / 3 likes** — PULSE_ALERT threshold (long-form >100v) hit.
+Context that makes this notable: long-forms have been DEAD the whole channel
+history — v1 Mary Celeste 19v, v2 Dyatlov stuck at 2v, and as of 2026-06-13
+the v3 long-form was treated as 0v under confirmed algorithmic suppression.
+A ~2.9% like rate (3/104) reads as genuinely engaged viewers, not an
+impression-test pool. Shorts also grew healthily over the 12 days:
+v1_bonus_briggs **319v** (new channel top Short), v2_twist 299, v1_twist 281,
+v3_answer 111, v1_answer 87, v1_hook 64.
+**Learning**:
+1. The long-form algorithmic suppression hypothesis (LEARNINGS 06-13) no
+   longer holds — at least one long-form has escaped the 0v floor. This is
+   the FIRST evidence long-form can gain organic traction on this channel.
+   Whether it's a delayed suppression lift or slow 12-day accumulation is
+   unconfirmed (see #2).
+2. Could NOT confirm the traffic source. Studio's reach analytics tab
+   (tab-reach/period-since_publish) threw a persistent backend error
+   ("Petit problème… Une erreur s'est produite") and would not load even
+   after a Réessayer retry — so impressions / CTR / organic-vs-external
+   (Reddit?) breakdown is UNKNOWN this pulse. Retry next pulse; if it keeps
+   erroring, fall back to the channel-level Studio analytics or yt-dlp.
+3. State drift recurred (KNOWN_BAD "trust state reflects reality"):
+   v1_bonus_briggs was still SCHEDULED(06-15) in shorts_state.json but is
+   live with 319v. Auto-published Shorts still don't write back to state —
+   reconciliation remains mandatory each run.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at (oEmbed 200
+  confirmed; FacPhS3hNjU long-form also oEmbed 200).
+- NEXT PULSE: re-pull Tunguska reach analytics for traffic source — the
+  organic-vs-external distinction decides whether to lean back into
+  long-form production. If organic, this validates resuming the 1 long/week
+  cadence with confidence.
+- Watching whether v1/v2 long-forms follow (still 19v / 2v — if they move
+  too, it's a channel-wide lift, not a single-video fluke).
