@@ -231,3 +231,38 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 10:05 — First full snapshot in 12 days: channel is NOT suppressed
+**Observation**: First HOURLY PULSE since 2026-06-13. Anonymous curl returned
+clean public stats for ALL 14 assets this run (vs 10/12 blank on 06-13 — the
+consent/anti-scrape page just didn't fire today; monitor code unchanged). Full
+snapshot:
+- Long-forms: v1 Mary Celeste **19v**, v2 Dyatlov **2v**, v3 Tunguska **106v** (3 likes).
+- Shorts: v1_bonus_briggs **319v** (top), v2_twist **299v**, v1_twist **281v**,
+  v3_answer **111v**, v1_answer 87v, v1_hook 64v, v2_answer 34v, v3_twist 28v,
+  v2_hook 7v, v3_hook 3v.
+PULSE_ALERT fired on v3 Tunguska long-form crossing 100v (threshold = long-form >100v).
+**Learning**:
+1. The "algorithmic suppression / v3 long-form 0v" narrative (06-13 pivot entries)
+   is CONTRADICTED by data. v3 Tunguska long-form sits at 106v and v3_answer Short
+   grew 106→111v since 06-13. Nothing is at zero — the channel is accumulating slow
+   organic views across the whole catalogue. The earlier "0v" reads were a curl
+   scrape artifact (consent page), not real suppression.
+2. Best performers are the most recent + the TWIST/bonus Shorts: v1_bonus_briggs
+   (319v, published 06-15, newest) is the channel leader, then v2_twist (299) and
+   v1_twist (281). HOOKs are the weakest (v3_hook 3v, v2_hook 7v). TWIST/bonus angle
+   out-pulls HOOK on this catalogue — re-weight Shorts mix toward twist/payoff hooks.
+3. Studio auth is DEAD (voidline cookies expired — auth_check status "dead",
+   auth_valid:false). No Studio analytics or uploads possible until re-login. So this
+   pulse could not pull traffic sources / impressions to answer the Reddit-referral
+   question — public stats only.
+4. The delta the runner logged (10:05→10:05) is a same-run double-snapshot artifact,
+   not a real 12-day delta. Treat this as a fresh baseline; next pulse gives a true Δ.
+**Action**:
+- USER ACTION NEEDED: re-login the voidline YouTube/Studio session to refresh cookies
+  (blocks all Studio analytics + Shorts uploads + v4 Flow thumb work).
+- Pipeline still dry beyond v1_bonus_briggs (06-15) — the 06-13 DRIFT_FLAG stands:
+  nothing staged behind it, and v4 Roanoke is blocked on the Flow thumb + dead cookies.
+- Strategy note for next Weekly Review: drop the "suppression" framing; shift to
+  "slow organic build, lead with twist/payoff Shorts, ship long-form cadence."
+- No Studio HTTP actions spent this pulse (auth dead → logged + exited clean).
