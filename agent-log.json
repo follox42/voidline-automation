@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-25 22:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219222:04: no notable delta"
+    },
+    {
+      "t": "2026-06-25 22:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 22:04\u219222:05: no notable delta"
+    },
+    {
+      "t": "2026-06-25 22:08 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Studio-verified (curl scraper blind, all 13 blank). v3_long_Tunguska 107v crosses long-form>100v threshold \u2014 recovered from 0v suppression (06-13). Top shorts: v1_bonus_briggs 319, v2_twist 299, v1_twist 281. None >=1000v. Reconciled v1_bonus_briggs SCHEDULED->PUBLIC (319v since 15 juin). New untracked draft '9 Barrels Vapor Theory' in Studio. Backfilled real stats."
     }
   ]
 }

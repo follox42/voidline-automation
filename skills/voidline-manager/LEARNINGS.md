@@ -231,3 +231,43 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 22:08 — Suppression lifted: v3 Tunguska long-form 0v→107v (Studio-verified)
+**Observation**: Hourly pulse ran clean (exit 0) but the curl scraper is STILL
+blind — all 13 assets logged blank views in stats_log.csv, exactly the failure
+predicted 2026-06-13 (anonymous curl gets YouTube's anti-scrape page in the
+cloud). So the runner's "no notable delta" PULSE log is meaningless this run.
+Pulled the real numbers from the live authenticated Studio session (the
+`default` camoufox-stealth session was already parked on the voidline channel
+content page, idle ~2h):
+- LONG-FORM: v3_long_Tunguska (FacPhS3hNjU, pub 8 juin) = **107 views** — was
+  documented at 0v under algorithmic suppression on 06-13. v1_long_MaryCeleste
+  = 19v, v2_long_Dyatlov = 2v (both ~dead).
+- SHORTS top: v1_bonus_briggs 319, v2_twist 299, v1_twist 281, v3_answer 112,
+  v1_answer 87, v1_hook 64. Tail: v2_answer 34, v3_twist 28, v2_hook 7, v3_hook 3.
+  None ≥1000v.
+- v3_answer Short 106→112 (+6 in 12 days) confirms organic growth is slow but
+  no longer zero.
+**Learning**:
+1. The v3 Tunguska long-form crossing 100v is the first sign the algorithmic
+   suppression flagged on 06-13 has LIFTED — the video is now accumulating
+   organic views (~6/day) instead of pinned at 0. This is the recovery signal
+   the cooldown strategy was waiting for. Only Tunguska recovered; v1/v2
+   long-forms stay near-dead, so it's title/topic-driven, not a blanket lift.
+2. State drift again: v1_bonus_briggs was stuck SCHEDULED in shorts_state.json
+   but has been Publique since 15 juin (319v) — reconciled to PUBLIC.
+3. A new untracked Short draft exists in Studio: "9 Barrels Empty — The Mary
+   Celeste Vapor Theory" (Brouillon, not in state, not published).
+4. The blind-scraper regression is now 12 days unfixed and silently nullifies
+   every automated PULSE_ALERT. Until monitor_voidline.py fetches via the
+   stealth session, threshold alerts cannot fire — manual Studio pulls are the
+   only reliable stats source.
+**Action**:
+- Backfilled the 13 real Studio-sourced view counts into stats_log.csv (ts
+  2026-06-25T22:08) so the next pulse has a real baseline to delta against.
+- Reconciled v1_bonus_briggs → PUBLIC.
+- TODO (next non-pulse run): port monitor_voidline.py fetch_stats() to the
+  camoufox-stealth session, and decide whether to finish + publish the
+  "9 Barrels Vapor Theory" draft (pipeline still dry beyond it).
+- Watch v3 Tunguska long-form next pulses: if it keeps climbing, the topic is
+  the breakout candidate — prioritise Tunguska-adjacent content.
