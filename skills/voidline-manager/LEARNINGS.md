@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 15:07 — Pulse resumed after 12-day gap; scraper now full blackout
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (12-day silence — the
+routine was not firing in between). Runner exited 0, logged two PULSE snapshots
+(15:06, 15:07) with "no notable delta", NO PULSE_ALERT. The monitor set has grown
+to 16 assets (13 Shorts + 3 long-form now tracked: v1_long_MaryCeleste sB8VXu2OHtY,
+v2_long_Dyatlov pM-u_8ONjI0, v3_long_Tunguska FacPhS3hNjU). BUT every single row in
+stats_log.csv this run has EMPTY views/likes — 0/16 parsed. On 2026-06-13 the same
+scraper still parsed at least v3_answer (106v). The known anti-scrape degradation has
+gone from "sparse" to "total blackout": anonymous curl now gets the consent/anti-bot
+page for 100% of assets.
+**Learning**:
+1. The "no notable delta" verdict this run is UNRELIABLE — it is computed over blank
+   view columns, so the pulse is effectively blind. A spike could be hiding behind the
+   blackout and the runner would still say "no delta". Delta logic should treat an
+   all-blank snapshot as NO-DATA, not as zero-change, to avoid false all-clear.
+2. The camoufox-stealth port (flagged TODO on 2026-06-13) is now the blocking
+   dependency for ANY useful pulse, not just a nice-to-have — without it the hourly
+   pulse produces no signal at all.
+3. Long-form assets entered the monitor set since the last run but inherit the same
+   blank-scrape problem.
+**Action**:
+- Did NOT spend Studio/stealth actions this run: no PULSE_ALERT fired (gating rule),
+  and with zero baseline data an investigation would have nothing to compare against.
+- Next maintenance pass (not a pulse): port monitor_voidline.py to fetch via
+  camoufox-stealth MCP (cookie_profile=voidline) or yt-dlp so view columns populate;
+  add an all-blank → NO_DATA guard to the delta computation in cron_runner.py.
+- Confirm whether the 12-day pulse gap was intentional (routine paused) or a missed
+  schedule — the routine resumed on its own this run.
