@@ -231,3 +231,49 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 09:05 — FIRST long-form breakout: Tunguska crosses 100v
+**Observation**: Hourly pulse fired PULSE_ALERT — v3 Tunguska long-form
+(FacPhS3hNjU, "The Day the Siberian Sky Exploded — 1908", NO CRATER thumb)
+sits at **104v**, the first long-form to ever cross 100v. The lift is
+single-video, NOT channel-wide: the other two long-forms are still flat
+(v1 Mary Celeste 19v, v2 Dyatlov 2v). Full Shorts coverage came back clean
+this run too (monitor now resolves every asset, no blank rows): top Shorts
+v1_bonus_briggs **319v**, v2_twist 299v, v1_twist 281v, v3_answer 111v.
+Tried to pull the Studio reach/traffic-source breakdown to see WHERE the
+104v came from (organic search vs browse vs external/Reddit) — the Studio
+per-video analytics BODY refused to render in the headless cloud session
+(blank content area below the header, "Une erreur s'est produite" on the
+advanced panel, 3 reloads, cookie_profile=voidline auth fine). So the
+traffic source is unconfirmed this pulse.
+**Learning**:
+1. The long-form suppression the channel was sitting under appears to have
+   LIFTED — at least for Tunguska. This effectively resolves the J+7
+   suppression test the user set ("if v4 long-form still 0v → persistent")
+   on the positive side: long-forms CAN now accumulate organic views.
+2. Because it's one video and not all three, this reads as topic/title/thumb
+   resonance (Tunguska + "Siberian Sky Exploded" + NO CRATER arrow thumb)
+   finding an audience, rather than a blanket algo unlock. v1/v2 long-forms
+   may just have weaker packaging.
+3. v1_bonus_briggs (question-hook bonus Short) is the new channel top at
+   319v — re-confirms QUESTION hooks > narrative, and that the bonus Shorts
+   to "break the 279v plateau" worked.
+4. Studio per-video reach analytics is NOT reliably scrapeable from the
+   cloud headless session — the analytics body fails to render. Reliable
+   signal is monitor view-count (oEmbed/yt-dlp); traffic-source attribution
+   needs a headed session or the YouTube Analytics API. Logged as a monitor
+   gap, not a cookie/auth failure (auth was valid throughout).
+5. STATE DRIFT (recurring KNOWN_BAD): v1_bonus_briggs was still SCHEDULED in
+   shorts_state.json despite being live at 319v since 06-15. Reconciled to
+   PUBLIC + actual_published_at this run.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- FLAG to user: long-form suppression looks lifted → strong argument to
+  prioritize shipping the v4 Roanoke long-form (currently blocked on the
+  Flow thumb). The packaging lesson from Tunguska (single iconic-detail
+  title + bold arrow thumb) should carry into v4.
+- Monitor TODO: add a traffic-source pull via the YT Analytics API (or a
+  headed session) so future long-form spikes can be attributed to
+  organic-search / browse / external on the spot.
+- Did NOT pull Studio further (stayed within the 5-action pulse cap; panel
+  was failing to render anyway).
