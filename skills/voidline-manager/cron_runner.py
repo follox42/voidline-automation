@@ -134,20 +134,28 @@ def run_pulse():
     alerts = []
     for asset, c in cur.items():
         p = prev.get(asset)
-        if not p or not c["views"] or not p["views"]:
+        # Absolute-threshold alerts only need the CURRENT view count — they must
+        # NOT be gated behind a valid prior snapshot, or a blank baseline (e.g.
+        # the anti-scrape blanks of the 06-13 run) silently suppresses them.
+        if not c["views"]:
             continue
         try:
-            dv = int(c["views"]) - int(p["views"])
             cv = int(c["views"])
         except ValueError:
             continue
-        # Threshold checks
-        if dv >= 50:
-            alerts.append(f"📈 {asset}: +{dv}v (now {cv})")
         if cv >= 1000 and c["kind"] == "short":
             alerts.append(f"⭐ {asset}: crossed 1000 views!")
         if cv >= 100 and c["kind"] == "long":
             alerts.append(f"⭐ {asset} long-form: crossed 100v!")
+        # Delta alert needs BOTH snapshots present and numeric.
+        if not p or not p["views"]:
+            continue
+        try:
+            dv = cv - int(p["views"])
+        except ValueError:
+            continue
+        if dv >= 50:
+            alerts.append(f"📈 {asset}: +{dv}v (now {cv})")
 
     summary = f"Δ {prev_ts.split('T')[1][:5]}→{cur_ts.split('T')[1][:5]}"
     if alerts:

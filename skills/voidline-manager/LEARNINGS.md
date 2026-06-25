@@ -231,3 +231,46 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 12:07 — Pulse: bonus Briggs is new #1 Short + a long-form crossed 100v + alert-gating bug
+**Observation**: First pulse with FULL stat coverage (12/12 assets parsed, vs
+2/12 on 06-13 — the anti-scrape blanks are gone this run). Three findings:
+1. **v1_bonus_briggs (vZ68HlWfT-Q) = 319v** — now the channel's #1 Short,
+   above v2_twist (299) and v1_twist (281). It was marked `SCHEDULED` for
+   06-15 in shorts_state.json but has been PUBLIC ~10 days (oEmbed 200).
+   Same silent auto-publish drift as the 06-13 daily-plan catch. Reconciled.
+2. **v3_long_Tunguska (FacPhS3hNjU) = 106v** — crosses the watched long-form
+   >100v threshold. Long-forms were assumed dead/suppressed (0–2v). v1_long=19,
+   v2_long=2 still flat, but v3 long has organic life. (Distinct ID + count
+   from the v3_answer Short y3xLIfOAPHA=111v, so not a monitor mislabel.)
+3. The runner logged "no notable delta" and did NOT fire PULSE_ALERT despite
+   both threshold crossings above.
+**Learning**:
+1. The bonus Briggs Short BROKE THE ~300v CEILING the channel had plateaued
+   at (v1 TWIST 274 → v2 TWIST 298 → now Briggs 319). It is a pure QUESTION
+   hook ("Why Did the Teetotal Captain Run?") — direct confirmation of the
+   2026-06-03/06-05 thesis that question/contradiction hooks beat narrative
+   and can push past the plateau. The two bonus Mary Celeste question-hook
+   Shorts were produced specifically to break 279v; this one did.
+2. v3 long-form at 106v is the first long-form organic signal — weakly
+   suggests the suppression debated on 06-13 may be easing on the oldest
+   upload, not the newest. Worth a Studio traffic-source check next pulse to
+   see if external referral appeared.
+3. **Alert-gating bug (fixed this run)**: `run_pulse` skipped any asset whose
+   PRIOR snapshot views were blank, which gated the ABSOLUTE thresholds
+   (crossed 100v long / 1000v short) behind a valid baseline. The 06-13
+   blank baseline therefore suppressed both of today's crossings. Absolute
+   thresholds now evaluate on the current count alone; only the +50v delta
+   requires both snapshots.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED → PUBLIC (+actual_published_at) in
+  shorts_state.json. Recurring drift — scheduled Shorts auto-publish without
+  updating state; daily/pulse reconciliation stays mandatory.
+- Patched cron_runner.run_pulse alert gating (above). Next pulse with this
+  data will correctly emit PULSE_ALERT for the 100v long-form crossing.
+- Strategy note: question-hook ceiling-break is now PROVEN at this scale —
+  keep all future Short HOOKs as questions/contradictions (already in
+  KNOWN_GOOD). Next long-form (v4 Roanoke) thumb/hook still gated on the
+  ≥75 virality score before ship.
+- No Studio HTTP actions spent this pulse (oEmbed only). Left within all
+  hard limits.
