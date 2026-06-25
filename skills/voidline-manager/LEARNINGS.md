@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 13:06 — FIRST long-form breakout: Tunguska crosses 100v (suppression lifted)
+**Observation**: First HOURLY PULSE in 12 days (last snapshot was 2026-06-13
+14:02 — the routine went dark for the whole gap). The monitor now tracks 3
+long-forms, and v3_long_Tunguska (FacPhS3hNjU, "The Day the Siberian Sky
+Exploded — Tunguska 1908") is at **106v / 3 likes** — the first long-form
+EVER to cross 100v on this channel, vs the "long-forms are dead, 0-2v under
+suppression" narrative that's been the standing assumption since J+17. The
+contrast is sharp within the same batch: v1_long_MaryCeleste 19v, v2_long_Dyatlov
+2v — only Tunguska broke out. On Shorts, v1_bonus_briggs hit **319v** (new channel
+high, finally clears the ~300 plateau flagged repeatedly), with v2_twist 299,
+v1_twist 281, v3_answer 111.
+**Learning**:
+1. Long-form suppression on this channel is NOT permanent — Tunguska recovered
+   from ~0v (06-13) to 106v over 12 days with no external seed pulled. The
+   "pure organic, 3-6 months to breakout" thesis is tracking; this is the first
+   organic long-form signal and it came on the strongest-hook topic (Tunguska).
+2. The breakout is topic-selective, not channel-wide: same upload cadence, same
+   thumbnail pipeline, yet Mary Celeste (19v) and Dyatlov (2v) long-forms stayed
+   flat. Topic/hook strength dominates the cold-start lottery, not channel age.
+3. v1_bonus_briggs 319v confirms the cutter-v2 + question-hook formula can break
+   the 300 Shorts plateau — the bonus Mary Celeste Shorts were the right call.
+4. Could NOT confirm the traffic source this run: YouTube Studio's analytics app
+   (yta-app) returned "Une erreur s'est produite" and auth_check reports the
+   `voidline` session "dead" (posting-auth invalid). The static Studio shell
+   loads but the YTA data API 401s, so impressions / retention / traffic-source /
+   external-referral breakdown is UNKNOWN. Whether Tunguska's 106v is Browse/Suggested
+   (algo recovery) vs an external referral is unresolved — needs a cookie refresh.
+**Action**:
+- Refresh the `voidline` cookie profile (re-login) so the next pulse can read
+  the Tunguska reach breakdown — the impressions/CTR/traffic-source data is the
+  single most valuable signal right now (is the algo finally surfacing long-forms?).
+- Reconciled state drift: v1_bonus_briggs was stale SCHEDULED in shorts_state.json
+  despite 319v — set PUBLIC + actual_published_at (KNOWN_BAD "trusting state
+  reflects reality" pattern, same as the 06-13 daily reconcile).
+- Routine-health flag: hourly pulse hadn't fired for 12 days. Verify the Cloud
+  Routine schedule is actually active, not silently paused.
+- Lean into Tunguska: it's the proven topic. Prioritize the v4 pipeline toward
+  high-iconic-detail mysteries over the flatter Mary Celeste / Dyatlov long-forms.
