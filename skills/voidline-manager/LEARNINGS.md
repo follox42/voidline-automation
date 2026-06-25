@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 06:07 — First full-coverage snapshot: organic traction confirmed, suppression lifting
+**Observation**: First HOURLY PULSE with full stat coverage since 2026-06-13 (the
+old curl scraper returned blanks for 10/12 assets; the monitor now resolves real
+view counts for all 14 assets). Numbers are materially up across the board and
+clearly organic:
+- v1_bonus_briggs (vZ68HlWfT-Q): **319v** — TOP performer, yet still marked
+  SCHEDULED in state (publish_at 06-15). Auto-published; reconciled to PUBLIC.
+- v2_twist (vxP6XiJKLkg): 299v · v1_twist (x2VsCWJ-r1o): 281v — strong Shorts.
+- v3_answer (y3xLIfOAPHA): 111v · v1_answer (foCq3gOm5dg): 87v · v1_hook: 64v.
+- Long-form: **v3_long_Tunguska (FacPhS3hNjU): 104v — crossed the 100v alert
+  threshold** (PULSE_ALERT fired). v1_long_MaryCeleste 19v, v2_long_Dyatlov 2v.
+- Laggards: v3_hook 3v, v2_hook 7v, v2_long_Dyatlov 2v.
+**Learning**:
+1. The "algorithmic suppression" narrative from 06-13 looks like it is LIFTING —
+   three Shorts in the 280–320v band and a long-form past 100v is real cold-start
+   traction for a doc niche at J+~29, not a suppressed channel. The pure-organic
+   bet (no Reddit seed) is paying off.
+2. The runner's delta logic is BLIND across a blank→real baseline transition:
+   line 137 skips any asset whose previous snapshot had empty views, so the
+   06-13→06-25 jump produced "no notable delta" even though growth was large.
+   Per-asset deltas only become meaningful from 06-25 onward (two real snapshots).
+   The absolute-threshold checks (≥1000 short / ≥100 long) are not delta-gated and
+   correctly caught the long-form milestone — keep relying on those across gaps.
+3. State drift recurred (KNOWN_BAD): v1_bonus_briggs auto-published on schedule but
+   state stayed SCHEDULED. Confirmed PUBLIC via oEmbed HTTP 200 (session-safe) and
+   the live 319v scrape. Reconciled → PUBLIC + actual_published_at.
+4. Studio deep-dive (impressions / retention / traffic sources / external-referral
+   for the Tunguska long-form) is BLOCKED this pulse: auth_check on the live session
+   ("default", on the voidline channel) returns auth_valid=false / status=dead —
+   re-login required. Public view counts don't need Studio auth, so the numbers
+   above stand; the analytics breakdown does not.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC in shorts_state.json.
+- DEFERRED: traffic-source / retention investigation for the Tunguska long-form
+  (104v) and the top Shorts — needs a session with fresh voidline cookies. Flag for
+  the next run after re-login; no Studio HTTP actions spent this pulse (auth dead).
+- Next pulse now has a real baseline → genuine per-asset deltas will compute; watch
+  v1_bonus_briggs (319v, fastest mover) and whether Tunguska long-form keeps climbing.
