@@ -231,3 +231,46 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 14:06 — Pulse: monitor coverage restored + long-form is NOT dead
+**Observation**: First HOURLY PULSE since 06-13 to return CLEAN stats for all 13
+assets (vs 10/12 blank on 06-13 — the anonymous-curl anti-scrape wall). The full
+snapshot rewrites two assumptions:
+1. **Long-forms are alive, not suppressed-to-zero.** Tunguska long-form
+   (FacPhS3hNjU) = 106v, Mary Celeste (sB8VXu2OHtY) = 19v, Dyatlov (pM-u_8ONjI0)
+   = 2v. The 06-13 strategy note "v3 long-form 0v is expected under suppression"
+   was measuring the scraper failure, not reality. Tunguska has organically
+   accumulated 106v over ~17 days — slow, but non-zero and growing. PULSE_ALERT
+   "crossed 100v" fired (note: this is a LEVEL check `cv>=100`, not a fresh
+   hourly delta — the delta this run was ~0).
+2. **State drift (again): v1_bonus_briggs auto-published on schedule (06-15) and
+   is now the TOP asset at 319v** — but shorts_state.json still had it SCHEDULED.
+   Reconciled → PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+Full Shorts board now: briggs 319 > v2_twist 299 > v1_twist 281 > v3_answer 112 >
+v1_answer 87 > v1_hook 64 > v2_answer 34 > v3_twist 28 > v2_hook 7 > v3_hook 3.
+Channel total ≈ 1361v (1234 shorts + 127 long), up from 861v at weekly review #1
+(06-07).
+**Learning**:
+1. Monitor coverage being green is a PRECONDITION for trusting any "0v =
+   suppression" conclusion. A blank read and a true zero look identical in the
+   alert log — never infer suppression from a pulse where the scraper was flaky.
+2. The bonus question-hook Short (briggs, 319v) beat the entire v3 Tunguska batch
+   AND its own v1_twist sibling (281v) — re-confirms question-hook >
+   narrative-hook and that v1 Mary Celeste still has audience pull.
+3. Studio analytics numbers live in canvas/shadow-DOM — `extract_text` on the
+   reach tab returns only nav chrome (289 chars). For traffic-source / external-
+   referral breakdowns the monitor CSV is the reliable channel, not text scraping
+   the Studio SPA. (Reddit seed was never pulled per 06-13 decision, so the 106v
+   is organic — no external referral to chase.)
+**Action**:
+- Reconciled briggs drift in shorts_state.json (the KNOWN_BAD "trust state
+  reflects reality without reading back" pattern — caught by the monitor).
+- Strategy flag for the daily/weekly run: long-form is a slow-burn, not dead.
+  Reconsider whether the 06-13 "downscale to long-form only if 0v at J+7" trigger
+  is still warranted given Tunguska is at 106v organically.
+- Pipeline still DRY (no Shorts scheduled past briggs 06-15) — the 06-13
+  DRIFT_FLAG remains unresolved; next batch (v4 Roanoke) needs producing.
+- The absolute-threshold alert (`cv>=100 long`) will re-fire every pulse now that
+  Tunguska is permanently ≥100v. Consider a transition check (pv<100 and cv>=100)
+  to avoid alert fatigue — logged for a future cron_runner tweak, NOT changed this
+  pulse (within HTTP/scope limits).
