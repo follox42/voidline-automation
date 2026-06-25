@@ -231,3 +231,44 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-25 18:05 — Pulse resumes after 12-day gap: bonus Short breaks the plateau + first long-form crosses 100v
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (12-day gap — cron
+was evidently paused/not firing). The `monitor_voidline.py` anon-curl scraper
+returned blank views for all 13/13 assets (worse than the 2/12 on 06-13), so
+`cron_runner` logged "no notable delta" — a FALSE all-clear, the pulse was
+blind. Pulled authoritative numbers from the live `voidline` Studio content
+list (Videos + Shorts tabs, read access valid even though `auth_check` reports
+posting-auth "dead"). Real picture:
+- **v1_bonus_briggs (vZ68HlWfT-Q) = 319v**, auto-published 06-15 (was SCHEDULED
+  in state). NEW channel #1 Short, beating v2_twist (299) and v1_twist (281).
+  First Short to clear the ~300v ceiling the journal kept hitting.
+- **v3_long_Tunguska long-form (FacPhS3hNjU) = 107v** — crossed the 100v
+  long-form threshold. Long-forms were assumed suppressed/dead (0v) since 06-13;
+  this one quietly accrued 107 organic views. Mary Celeste long 19v, Dyatlov 2v.
+- Everything else plateaued: v3_answer short 106->112 (+6/12d), v2_twist 299,
+  v1_twist 281 — all flat. v3_hook 3v, v2_hook 7v still dead (narrative hooks).
+- A NEW Short "9 Barrels Empty. The Mary Celeste Vapor Theory" sits in DRAFT
+  (Brouillon), unpublished, not in state.
+**Learning**:
+1. The bonus Briggs Short (QUESTION hook "Why Did the Teetotal Captain Run?",
+   on the already-validated Mary Celeste topic) broke the 300v plateau -> 319v.
+   Reinforces: question hook + proven topic > new topic. The plateau is beatable
+   by re-mining a winning topic, not only by chasing new ones.
+2. Long-forms are NOT categorically dead — Tunguska long is at 107v. The
+   "suppression" read from 06-13 was premature; long-form just has a slow burn.
+3. The pulse is structurally blind: anon curl + a CSV baseline of blanks =
+   delta logic compares empty->empty and reports calm. Until the monitor is
+   ported to the camoufox-stealth Studio read path, every pulse "no delta" is
+   untrustworthy. This is the standing TODO from 06-13, now biting.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED->PUBLIC (actual 06-15) in shorts_state.json.
+- Wrote a CORRECTED 06-25 snapshot into stats_log.csv with real Studio views so
+  the next pulse has a non-blank baseline.
+- TODO (high priority, not this pulse — Studio HTTP budget): port
+  `monitor_voidline.py` to scrape the Studio content list via camoufox-stealth
+  (path used here: navigate /videos/upload + /videos/short, extract
+  `ytcp-video-section-content`). This single change makes the pulse honest.
+- Strategy nudge: the draft "9 Barrels Empty" Short is ready to publish — a 3rd
+  Mary Celeste bonus on the topic that just produced the channel's best Short.
+  Worth shipping next cadence slot.

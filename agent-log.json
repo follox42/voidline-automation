@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-25 18:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219218:04: no notable delta"
+    },
+    {
+      "t": "2026-06-25 18:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 18:04\u219218:05: no notable delta"
+    },
+    {
+      "t": "2026-06-25 18:10 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Manual override of false all-clear (scraper blind 0/13). Studio read via camoufox-stealth: v1_bonus_briggs=319v (auto-published 06-15, NEW channel #1 Short, broke ~300v plateau) | v3_long_Tunguska long-form=107v (CROSSED 100v threshold; long-forms not dead) | v3_answer 106->112 flat, v2_twist 299, v1_twist 281 all plateaued | NEW draft Short \"9 Barrels Empty\" unpublished. Reconciled v1_bonus_briggs SCHEDULED->PUBLIC + wrote real-number snapshot to stats_log.csv."
     }
   ]
 }
