@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 13:08 — Pulse resumes after 13-day gap; catalogue dry 11 days
+**Observation**: First pulse to log since 2026-06-13 14:02 — a 13-day hole in
+agent-log.json with zero PULSE entries, so the hourly routine was not actually
+firing (paused, or runs not persisting). On resume: scraper still mostly blank
+(documented anti-scrape flakiness — only sporadic single assets parse, e.g.
+v1_answer 87v in one of three snapshots), so no reliable delta and no
+PULSE_ALERT. Reconciled drift: v1_bonus_briggs (vZ68HlWfT-Q) was stale-SCHEDULED
+for 06-15 but oEmbed returns HTTP 200 + correct title/author → auto-published on
+schedule 11 days ago; state corrected to PUBLIC + actual_published_at. Critical:
+**nothing has been uploaded since v1_bonus_briggs on 06-15** — 11 days dry. The
+v4 Roanoke long-form is still stuck on the 06-13 Google Flow thumb blocker
+(submit button disabled / UI redesign), and no Shorts batch has shipped against
+the 2/wk cold-start cadence.
+**Learning**:
+1. The drift pattern holds yet again: scheduled Shorts auto-publish silently and
+   the state file is never updated by YouTube — reconciliation via oEmbed 200 is
+   the cheap, session-safe probe (same as 06-13).
+2. The real problem is not analytics, it's supply: the pipeline has produced zero
+   new uploads in 11 days because production has been blocked on Flow since 06-13.
+   The pulse can watch growth, but there is nothing new growing.
+3. A silent multi-day gap in the pulse log is itself a signal the routine cadence
+   isn't healthy — worth surfacing, not just the view deltas it was built to catch.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- FLAG to Nolann: catalogue dry 11 days + v4 Roanoke still Flow-blocked. Unblock
+  options unchanged from 06-13: (a) re-inspect new Flow submit flow in a fresh
+  cookie session, or (b) ship v4 with the v3 Tunguska AI base as placeholder thumb
+  and iterate — better to break the 11-day silence than keep waiting on Flow.
+- Stats coverage will stay sparse until monitor_voidline.py is ported off anon
+  curl to camoufox-stealth (cookie_profile=voidline) — still the open TODO.
