@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 17:05 — Pulse resumes after 13-day gap: still blind + pipeline fully published
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (13-day dormancy —
+routines were evidently paused). Pulse ran clean (exit 0, no PULSE_ALERT).
+But `monitor_voidline.py` again returned **blank views for all 12 assets**
+(curl anti-scrape page, the known 06-13 issue) — so every delta is 0 and the
+pulse has no real signal to act on. Separately, `v1_bonus_briggs` (vZ68HlWfT-Q,
+Mary Celeste bonus) was still marked SCHEDULED for 06-15 but oEmbed returns
+HTTP 200 → it auto-published 11 days ago. Reconciled to PUBLIC. Catalogue is
+now **entirely published with nothing queued** — last upload was the 06-15
+bonus, ~11 days ago, vs the 3-uploads/week cold-start cadence.
+**Learning**:
+1. The pulse is structurally non-functional as a monitor: 13 days of blank
+   view data. The 06-13 TODO (port `monitor_voidline.py` to fetch via
+   camoufox-stealth MCP / yt-dlp instead of anonymous curl) is now the
+   blocking item — until it lands, hourly pulse only catches state drift, not
+   growth.
+2. Silent-publish drift recurs every batch: scheduled Shorts flip to PUBLIC
+   without updating the state file. oEmbed 200 remains the cheapest probe.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC (+actual_published_at).
+- Did NOT spend Studio HTTP budget: no PULSE_ALERT, cookies are 13 days old
+  (likely stale), so a Studio scrape this run isn't warranted.
+- Flagged to owner: pulse is blind + pipeline dry. Next production batch (v4
+  Roanoke) and the monitor camoufox port are the two unblockers.
