@@ -231,3 +231,37 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 11:06 — First full-coverage pulse: long-forms are NOT dead + bonus Short breaks 300 ceiling
+**Observation**: First HOURLY PULSE since 06-13 where the anonymous monitor
+scraper returned views for ALL 13 assets (06-13 returned blanks for 10/12).
+PULSE_ALERT fired: **v3_long_Tunguska long-form = 107v** (crossed the 100v
+threshold). Full snapshot:
+- Long-forms: v3 Tunguska **107v** / v1 Mary Celeste 19v / v2 Dyatlov 2v.
+- Shorts top: **v1_bonus_briggs 319v** (channel record, beats v2_twist 299v &
+  v1_twist 281v) / v1_answer 87 / v1_hook 64 / v3_answer 112 (was 106 on 06-13,
+  +6) / v2_hook 7 (was 4) / others <=34.
+- v1_bonus_briggs was still `SCHEDULED` in shorts_state.json despite a 06-15
+  publish date and 319 live views -> reconciled to PUBLIC (oEmbed 200 confirmed).
+**Learning**:
+1. The "long-forms are dead / 0v under suppression" assumption (06-13 entries)
+   was largely an ARTIFACT of the broken anonymous scraper, not reality. v3
+   Tunguska sits at 107v -- modest but alive. Suppression != zero distribution.
+2. v1_bonus_briggs (319v, "Why Did the Teetotal Captain Run?" question hook on
+   the *already-validated* Mary Celeste topic) broke the ~300v Short ceiling
+   noted 06-02/06-05. Recycling a proven topic with a fresh question hook beats
+   chasing net-new topics for ceiling-breaking.
+3. Studio session auth is DEAD (auth_check -> "re-login required"). Could not
+   pull retention/traffic-source breakdown for the Tunguska long-form, so the
+   "is the 107v external referral or YT browse?" question stays OPEN until the
+   `voidline` cookie profile is re-authed.
+4. State drift recurs whenever a scheduled item auto-publishes -- same KNOWN_BAD
+   pattern as 06-13. Reconciliation must stay in the daily routine.
+**Action**:
+- Re-login the `voidline` Studio cookie profile next session, then pull v3
+  Tunguska traffic sources + retention to decide if the long-form arm deserves
+  renewed investment now that suppression looks lifted.
+- Lean v4+ Shorts toward question-hook reframes of validated topics (the Briggs
+  319v playbook), not only net-new topics.
+- Watch v3 Tunguska long-form delta over the next pulses -- if it keeps climbing,
+  the long-form arm is back in play.
