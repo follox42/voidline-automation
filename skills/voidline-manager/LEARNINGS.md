@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 21:05 — Pulse resumes after 13d gap: briggs is the new #1 Short (319v)
+**Observation**: First HOURLY PULSE since 2026-06-13 (13-day silence — routine
+was dormant/paused). The runner logged "no notable delta" but it was BLIND:
+anonymous curl returned blank views for all 13 assets, same anti-scrape failure
+as 06-13. Pulled real numbers from the live `voidline` Studio session (already
+parked on the Shorts list, idle ~56min) in 1 HTTP action. Reality:
+- **v1_bonus_briggs "Why Did the Teetotal Captain Run?" = 319v**, now the
+  channel's #1 Short, beating v2_twist (299) and v1_twist (281). Published
+  06-15, accrued 319v in 11 days, fully organic — but state file still said
+  SCHEDULED (drift), and the runner never saw it.
+- Everything else crept up modestly: v1_twist 274->281, v2_twist 298->299 (flat),
+  v3_answer 106->112, v2_hook 4->7, v3_hook 0->3. Total ~1,234 Shorts views across
+  10 published (was 861 on 06-07). Slow but real organic growth, no suppression
+  death — but nothing near the 1000v Short alert threshold.
+- A NEW DRAFT Short — "9 Barrels Empty. The Mary Celeste Vapor Theory" — sits
+  unpublished in Studio (Brouillon), not tracked in shorts_state.json.
+**Learning**:
+1. The CONTRADICTION hook wins again: "devout teetotaller who never drank runs
+   into a storm" is the strongest hook the channel has shipped (319v). Confirms
+   the 06-03/06-05 rule — question/contradiction >> narrative — and the gap is
+   widening, not closing.
+2. The pulse is STILL functionally blind via curl (TODO from 06-13 never done).
+   Hourly pulses log "no delta" while real top-performers emerge unseen. Until
+   monitor_voidline.py pulls via camoufox-stealth, every pulse needs the manual
+   Studio read to mean anything. This is the priority fix.
+3. KNOWN_BAD repeats: scheduled Short auto-published, state never reconciled
+   (briggs). Daily reconciliation is mandatory; the pulse caught it 11 days late.
+**Action**:
+- Reconciled v1_bonus_briggs -> PUBLIC (actual_published_at 2026-06-15).
+- Backfilled this pulse's stats_log rows with real Studio view counts.
+- PRIORITY: port monitor_voidline.py to camoufox-stealth so the runner isn't
+  blind — without it the hourly routine is decorative.
+- DECIDE the stranded "9 Barrels Empty" draft: ship it (vapor-theory Mary Celeste
+  bonus, same vein as briggs) or delete. Flag for daily-plan.
+- Cadence note: 13-day pulse gap means the schedule isn't firing hourly — verify
+  the Cloud Routine is actually active.
