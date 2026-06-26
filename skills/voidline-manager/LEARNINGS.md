@@ -231,3 +231,51 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 23:10 — Suppression lifted: first real traction across the catalogue
+**Observation**: First pulse to run in 13 days (last was 2026-06-13 14:02 — the
+hourly cron evidently has not been firing). The curl scraper in
+`monitor_voidline.py` STILL returns blank views for all 13 assets (every
+stats_log.csv row this run is empty). Pulled real numbers from the live
+authenticated `default` Studio session (cookie_profile=voidline, alive, sitting
+on the channel content list) via camoufox-stealth extract_text. Real counts as
+of 06-26:
+- LONG: Tunguska 107v (8 juin), Mary Celeste 19v (27 mai), Dyatlov 2v (1 juin)
+- SHORTS: v1_bonus_briggs 319v, v2_twist 299v, v1_twist 281v, v3_answer 112v,
+  v1_answer 87v, v1_hook 64v, v2_answer 34v, v3_twist 28v, v2_hook 7v,
+  v3_hook 3v
+Context vs 06-13 baseline (when the learning recorded the channel as
+algorithmically SUPPRESSED — v3 long-form at 0v, all traffic sources
+"insufficient data"): the Tunguska long-form is now 107v (0 → 107) and four
+Shorts sit in the 100–320v band. The channel that was flatlined at near-0 two
+weeks ago is now accumulating organic views.
+**Learning**:
+1. The suppression called on 06-13 has lifted on its own. Pure-organic cold-start
+   recovered without the Reddit seed lever — consistent with the "3–6 months to
+   first breakout, we're very early" call. No single asset is a breakout
+   (<1000v), but the floor moved off zero across the board. This validates the
+   "wait out the cooldown, don't panic at 0v" decision.
+2. v1_bonus_briggs (319v) and v2_twist (299v) are the top performers — both are
+   HOOK/TWIST framings of the strongest mysteries (Briggs motive, Dyatlov
+   62-year failure). The ANSWER shorts underperform the hooks. Reinforces the
+   cold-start cadence note (HOOK + ANSWER) but suggests HOOK/TWIST out-pull
+   ANSWER for cold reach.
+3. The curl monitor remains useless in cloud (0/13 parsed) — the ONLY way to get
+   real numbers is the authenticated Studio read. The TODO to port
+   monitor_voidline.py to camoufox-stealth is now blocking: without it, every
+   automated pulse is blind and a human/Studio read is required to see anything.
+4. A 4th Mary Celeste Short ("9 Barrels Empty — Vapor Theory") exists as a DRAFT
+   in Studio but is NOT tracked in shorts_state.json.
+**Action**:
+- RECONCILED: v1_bonus_briggs was still SCHEDULED in state (06-15) but is PUBLIC
+  at 319v — set status=PUBLIC + actual_published_at (same auto-publish/state-
+  desync KNOWN_BAD pattern as the 06-13 batch).
+- Backfilled the real 06-26 snapshot into stats_log.csv so the next pulse has a
+  non-blank baseline to delta against.
+- FLAG (not actioned this pulse, respects Studio HTTP limit): hourly cron has not
+  fired in 13 days — verify the routine schedule is actually live. Pipeline is
+  still dry (no Shorts scheduled past the 06-15 briggs; v4 Roanoke stuck on the
+  Flow thumb blocker). Either ship the "9 Barrels" draft to refill the Shorts
+  slot or unblock v4.
+- Next pulse: with suppression lifted, watch for any asset crossing 1000v — that
+  would be the first real breakout signal.
