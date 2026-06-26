@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 14:10 — v3 Tunguska LONG-FORM breaks suppression: 107v pure organic
+**Observation**: Hourly pulse (first since 06-13 — 13-day gap, routine was not
+firing) flagged nothing because the curl scraper returned BLANK views for all
+12 assets (100% blackout, worse than 06-13 where 2 parsed). But the live
+`default` stealth session was already sitting authenticated on Studio analytics
+for FacPhS3hNjU (v3_long_Tunguska). Read off the page:
+- **Views 107 / 96 unique**, Impressions 1.6k, **CTR 3.2%** (3.3% on the
+  impressions-contribution panel).
+- Traffic: Browse 50.5% + **Suggested videos 44.9%** + Direct 2.8% +
+  YT search 1.9%. Avg view duration 7:14.
+- Suggested *by*: "The Willamette Meteorite", "The Meteor Shower That Killed
+  10,000 People", "The Largest Unexplained Explosion in History" — i.e. YouTube
+  is now slotting us into the established meteor/disaster-doc suggestion graph.
+- External sites: "donnees insuffisantes" → **zero Reddit/external referral**,
+  this is 100% organic.
+Also reconciled drift: v1_bonus_briggs (vZ68HlWfT-Q) was stale `SCHEDULED` in
+state — oEmbed 200 confirms it published 06-15. Set PUBLIC.
+**Learning**:
+1. The long-form algorithmic suppression documented on 06-13 (v3 = 0v, "all
+   traffic sources insufficient data") has **LIFTED**. 107v with 44.9% suggested
+   traffic is the FIRST long-form to enter YouTube's recommendation graph — the
+   pure-organic strategy is showing its first proof at J+18 from publish.
+2. The win is entirely organic (no Reddit), which validates the user's 06-13
+   decision to NOT pull the external-seed lever.
+3. CTR 3.2% on a placeholder-ish thumb is healthy for the niche; suggested-video
+   pull means the *content* is being matched, not just the thumb. Improving the
+   thumb could compound the already-working suggestion placement.
+4. OPERATIONAL: (a) the pulse routine has not fired hourly — 13 days between
+   snapshots; (b) the curl scraper in monitor_voidline.py is now 100% blank in
+   the container — stats MUST come from the authenticated Studio session, not
+   anonymous curl. The known TODO to port monitor_voidline.py to camoufox-stealth
+   is now blocking, not optional.
+**Action**:
+- Recorded v3_long=107 into stats_log.csv (scraper missed it) so weekly review
+  has the datapoint. Reconciled v1_bonus_briggs → PUBLIC.
+- FLAG for user: long-form suppression is over — consider leaning back into
+  long-form cadence and upgrading the v3/v4 thumbnails to compound the live
+  suggestion placement.
+- TODO (next maintenance window, not this pulse): port monitor_voidline.py to
+  pull stats via the `default`/voidline Studio session; investigate why the
+  hourly cron stopped firing between 06-13 and 06-26.
