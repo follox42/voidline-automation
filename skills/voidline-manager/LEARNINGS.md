@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 16:09 — Pulse blind on scraper, but Studio shows healthy organic growth (suppression panic refuted)
+**Observation**: First hourly pulse since 2026-06-13 (13-day gap — the hourly
+routine has not actually been firing hourly). The `monitor_voidline.py` curl
+scraper returned **0/13 assets** this run (every viewCount blank) — fully blind,
+worse than the 2/12 partial coverage on 06-13. So cron_runner's "no notable
+delta" is a FALSE CLEAR: there is no data to diff, not zero growth. Pulled
+ground truth from the live `voidline` Studio session (cookie_profile=voidline,
+channel analytics overview, 29 mai–25 juin):
+- Channel: **1,362 views / 28d**, 18.2h watch, **+3 subs**. Realtime: only
+  **9 views / 48h** (5 on the Tunguska long-form) — momentum cooling.
+- Top assets (28d views): v1_bonus_briggs **319** (60.4% ret) · v2_twist 299 ·
+  v1_twist 281 · v3_answer 112 · **v3_long_Tunguska 107** (long-form) ·
+  v1_answer 87 · v1_hook 64 · v2_answer 34 · v3_twist 28 · v1_long 19.
+- **v3 Tunguska long-form is at 107v, NOT 0v.** The 06-13 "algorithmic
+  suppression / long-form 0v" narrative was wrong — the channel is growing
+  organically, just slowly. long-form >100v threshold technically tripped, but
+  it's a flat cumulative figure (~106–107 for ~2 weeks), not a fresh spike.
+- v1_bonus_briggs (Mary Celeste bonus, pub 06-15) is the TOP performer at 319v /
+  60.4% retention → Mary Celeste remains the strongest niche.
+**Learning**:
+1. The pulse is operationally BLIND. Anonymous curl to YouTube is now 100%
+   anti-scraped in the cloud container. The 06-13 TODO (port monitor_voidline.py
+   to fetch via camoufox-stealth, cookie_profile=voidline) is now CRITICAL — the
+   pulse cannot detect a real spike until this is done, and "no notable delta"
+   must NOT be trusted while views are blank.
+2. Studio "28 derniers jours" views are a WINDOWED metric and are NOT comparable
+   to the scraper's lifetime viewCount — do not backfill them into stats_log.csv
+   (would manufacture false deltas). Recorded here in the journal instead.
+3. The cold-start suppression fear was overcalled. 1,362 views/28d + steady +subs
+   on a doc-niche channel at ~J+30 is normal-healthy organic, not suppression.
+**Action**:
+- Reconciled drift: v1_bonus_briggs SCHEDULED→PUBLIC (319v live, pub 06-15) in
+  shorts_state.json — same auto-publish-not-written-back pattern as 06-13.
+- PIPELINE STILL DRY: last upload was v1_bonus_briggs on 06-15 (11 days ago).
+  The 06-13 DRIFT_FLAG is now 13 days unaddressed. Lean into the Mary Celeste
+  signal (top 3 of top-4 are Mary Celeste) — prioritise the v4 Roanoke ship +
+  more Mary Celeste angles to restart cadence before momentum fully decays.
+- Did NOT spend a Google Flow generation or further Studio nav (realtime 9v/48h
+  rules out an active external/Reddit spike, so no traffic-source dig needed).
+- NEXT PULSE PRIORITY: port the monitor to the stealth MCP so the pulse stops
+  flying blind.
