@@ -231,3 +231,41 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 08:06 — v3 Tunguska LONG-FORM broke suppression, 100% organic
+**Observation**: First full-coverage pulse since the scraper started capturing
+long-forms. v3 Tunguska long-form (FacPhS3hNjU, "The Day the Siberian Sky
+Exploded — Tunguska 1908", 13:12) is at **1.6k impressions / 3.2% CTR / 107
+views / 96 unique / 7:19 avg watch (~55% retention)** at J+18. Traffic sources:
+Browse features 50.5% + Suggested videos 44.9% (96.7% of impressions are
+YouTube *recommending* the content). It is being suggested next to ESTABLISHED
+topical channels — "The Willamette Meteorite" (71.7% of suggested traffic),
+"The Meteor Shower That Killed 10,000 People", "Disaster Records — Tunguska".
+External sites = "données insuffisantes" → **zero Reddit / external seed.**
+Other long-forms picking up too: v1 Mary Celeste 19v, v2 Dyatlov 2v.
+**Learning**:
+1. The 2026-06-13 verdict ("v3 long-form 0v, algorithmic suppression confirmed")
+   is now WRONG / obsolete. The suppression was a cold-start impression-throttle,
+   NOT a permanent penalty. Waiting it out (the cooldown approach) worked — the
+   video entered the suggestion graph on its own ~2-3 weeks post-publish.
+2. The breakthrough lever was TOPICAL RELEVANCE, not external seeding. Sitting
+   next to "Willamette Meteorite" / "Disaster Records" means YouTube classified
+   us into the meteor/disaster-doc cluster. Pure organic CAN work for this niche.
+3. 3.2% CTR + 55% retention on a cold long-form is a healthy, promotable signal —
+   the algo keeps serving impressions when both hold. This is the first long-form
+   proof the format converts at all.
+4. RUNNER BUG: this pulse logged "no notable delta" even though the long-form
+   crossed the ≥100v threshold. cron_runner's absolute-value checks (≥1000v short,
+   ≥100v long) were nested INSIDE the `not p["views"]` guard, so they could only
+   fire when the *previous* snapshot also had a value — impossible on a first
+   full-coverage snapshot. Fixed: absolute thresholds now evaluate on the current
+   snapshot alone; only the delta check requires a prior value.
+**Action**:
+- Fixed cron_runner.py threshold gating — next pulse will correctly emit
+  PULSE_ALERT for the v3 long-form ≥100v crossing.
+- Reconciled state drift: v1_bonus_briggs (vZ68HlWfT-Q) was still SCHEDULED for
+  06-15; it is PUBLIC and the channel's TOP performer at 319v → marked PUBLIC.
+- STRATEGY: double down on long-form in the meteor/disaster/unexplained cluster
+  while we have algo momentum. v4 Roanoke fits the cluster — prioritize shipping it.
+- Watch v3 long-form daily: if CTR holds ≥3% and impressions keep climbing, it
+  may be the channel's first breakout. Do NOT touch the thumb/title mid-momentum.
