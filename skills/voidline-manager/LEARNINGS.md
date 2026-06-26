@@ -231,3 +231,26 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 22:06 — Pulse resumes after 13-day gap: drift reconciled, pipeline DRY
+**Observation**: First pulse since 2026-06-13 14:02 (13-day gap — routine
+was not firing hourly). Runner logged "no notable delta" but every asset
+came back blank this snapshot, including v3_answer which parsed 106v on
+06-13 — the documented anonymous-curl anti-scrape limitation, not a real
+drop. Separately, `v1_bonus_briggs` (scheduled 06-15 12:00) was still marked
+SCHEDULED; oEmbed probe returned HTTP 200 → it auto-published on schedule.
+**Learning**:
+1. The silent-publish state drift is now confirmed a THIRD time — scheduled
+   Shorts go PUBLIC without the state file updating. oEmbed 200 remains the
+   cheapest session-safe probe (no Studio HTTP action consumed).
+2. Pipeline is DRY: nothing published since v1_bonus_briggs on 06-15 (~11
+   days), v4 Roanoke still blocked on the changed Flow submit UI. The 5/wk
+   (now 3/wk cold-start) cadence has fully lapsed.
+3. Pulse stat coverage will stay blank until monitor_voidline.py is ported
+   to fetch via camoufox-stealth (still the open TODO from 06-13 14:02).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=2026-06-15.
+- No PULSE_ALERT (no parsable deltas), so no Studio deep-dive this run —
+  stayed within hard limits (0 Studio actions, 0 Flow gen).
+- FLAG for next daily/weekly: pipeline is dry — resolve the Flow UI blocker
+  or ship v4 with the placeholder thumb before the channel goes fully idle.
