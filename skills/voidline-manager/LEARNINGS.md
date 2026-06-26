@@ -231,3 +231,48 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 19:05 — First long-form breakout + bonus Short tops chart (13-day blind gap)
+**Observation**: First HOURLY PULSE in 13 days (last snapshot 2026-06-13
+14:02 — the hourly routine did not fire in between). Anonymous-curl scraper
+returned BLANK views for ALL 13 assets (0/13 parsed, worse than 2/12 on
+06-13), so no PULSE_ALERT auto-fired. Pulled a real read via the live
+camoufox-stealth `default` session (already parked on Studio analytics,
+auth valid — `auth_check` returned "dead" but that probe is posting-auth
+only and is a false negative for Studio reads). Channel 28d (29 mai–25 juin):
+**1 362 vues, 18,2 h watch, +3 abonnés**. Top content:
+1. v1_bonus_briggs "Why Did the Teetotal Captain Run?" (15 juin) — **319 v** (60,4%) ← new #1, beats prior best
+2. v2_twist "Every Dyatlov Theory Failed" — 299 v
+3. v1_twist "Captain Morehouse Boards an Empty Ship" — 281 v
+4. v3_answer "It Never Landed" — 112 v
+5. **v3 LONG-FORM "The Day the Siberian Sky Exploded — Tunguska 1908" — 107 v** ← crosses long-form >100v threshold
+**Learning**:
+1. **Long-form suppression has lifted.** Per the 06-13 learning the v3
+   Tunguska long-form was 0v under algorithmic suppression. It is now at
+   107 v (>100v alert threshold), accrued gradually over ~18 days since
+   the 8 juin publish — the shape reads ORGANIC (slow build), not a
+   Reddit-style burst. This is the FIRST long-form to get real traffic in
+   channel history. The "long-forms are dead" assumption is now stale.
+2. **Bonus Shorts on an OLD topic with a question hook broke the plateau.**
+   v1_bonus_briggs (Mary Celeste, the channel's first topic) is the new #1
+   at 319 v — above the prior 299v ceiling. Validates the weekly-review
+   action "produce bonus Shorts on v1 to pierce the 279v plateau."
+3. **Monitoring is blind in the cloud and the routine has cadence gaps.**
+   The curl scraper now parses 0/13; the documented TODO to port
+   `monitor_voidline.py` to camoufox-stealth is still open and is now
+   blocking — without it, every pulse computes "no delta" off empty data
+   and real breakouts (like this 107v long-form) are invisible to the
+   alerting. Also: 13-day gap means the hourly routine itself wasn't
+   running.
+**Action**:
+- Reconciled state drift: v1_bonus_briggs was SCHEDULED in state but is
+  PUBLIC (319v, 15 juin) → set PUBLIC + actual_published_at.
+- PRIORITY TODO (next daily, not this pulse — Studio action budget):
+  port `monitor_voidline.py` to fetch via camoufox-stealth cookie_profile
+  voidline so pulses see real numbers and PULSE_ALERT can actually fire.
+- Could not pull the v3 long-form traffic-source breakdown this run — a
+  Studio promo dialog overlay blocked the reach tab and I held the line at
+  4/5 Studio actions. Confirm organic-vs-referral in the next daily.
+- Strategy signal: long-forms are no longer dead weight. Prioritise the
+  v4 Roanoke long-form finish (Flow-blocked per 06-13) — the format now
+  converts.
