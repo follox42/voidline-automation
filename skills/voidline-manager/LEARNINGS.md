@@ -231,3 +231,48 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 09:07 — Scraper fixed → "suppression" was a measurement artifact; algo is actually distributing
+**Observation**: First full-data pulse since 2026-06-13. The monitor now returns
+view counts for ALL 12 assets (was 2/12 readable on 06-13 — the camoufox/yt-dlp
+TODO got resolved). Real organic numbers, since publish:
+- Shorts: v1_bonus_briggs **319v** (top), v2_twist 299v, v1_twist 281v,
+  v3_answer 112v, v1_answer 87v, v1_hook 64v, v2_answer 34v, v3_twist 28v,
+  v2_hook 7v, v3_hook 3v.
+- Long-form: v3 Tunguska **107v** (96 unique, 3 likes), v1 MaryCeleste 19v,
+  v2 Dyatlov 2v.
+PULSE_ALERT fired on the long-form ≥100v threshold. Hourly delta is ~0 (two
+snapshots 22s apart) — the real movement is the 13-day gap the routine was down,
+which the pulse delta logic missed because the 06-13 baseline rows were blank.
+Studio analytics for Tunguska long-form (FacPhS3hNjU), since-publish (~18d):
+1.6k impressions · 3.2% CTR · 107 views · **avg view duration 7:14 on a 13:12
+video (~55% retention)**. Traffic: Browse 50.5% + Suggested 44.9% (= ~95%
+algorithmic; 92.1% of impressions are YouTube recommending the content),
+Direct 2.8%, Search 1.9%. External sites: insufficient data. Suggested-from:
+70.8% "The Willamette Meteorite" + meteor/disaster-niche channels.
+**Learning**:
+1. The 06-13 "algorithmic suppression / v3 long-form 0v" panic was largely a
+   SCRAPER ARTIFACT, not reality. The video was accumulating views the blind
+   curl couldn't read. With working stats: YouTube is actively browse- and
+   suggest-promoting Tunguska into the correct meteorite/disaster niche, and
+   ~55% retention is genuinely good. NOT suppressed.
+2. The real bottleneck is not distribution — it's **CTR (3.2%) × impression
+   volume (1.6k)**. To grow long-form views, improve thumbnail/title CTR and
+   feed the algo more uploads; do not "wait out a suppression" that isn't there.
+3. No external referral appeared (no Reddit seed pulled — consistent with the
+   pure-organic decision). 100% of reach is YouTube-internal, which is the
+   healthy cold-start signal we wanted.
+4. Pulse delta logic has a blind spot: when a prior snapshot has blank views,
+   the asset is skipped, so multi-day catch-up growth registers as "no notable
+   delta." Absolute-level thresholds (≥100v long / ≥1000v short) are what
+   actually caught this.
+**Action**:
+- Reframe strategy from "fighting suppression" → "CTR + cadence optimization."
+  Tunguska's 50.5% browse share means the algo WILL show it; win the click.
+- v4 Roanoke: prioritize thumbnail CTR (the gate is youtube-virality-expert ≥75,
+  but real-world target is CTR >4% — Tunguska's 3.2% is the floor to beat).
+- Fixed state drift: v1_bonus_briggs was still SCHEDULED in shorts_state.json
+  but monitor read 319v → it's live (top-performing Short). Set status=PUBLIC +
+  actual_published_at. Same reconcile pattern as the 06-13 batch.
+- Catalogue queue still dry beyond v3/bonus — v4 Roanoke remains the next ship.
+- No further Studio actions this pulse (used 2/5). No Flow gen attempted.
