@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 10:05 — FIRST long-form breakout: v3 Tunguska crosses 100v, 100% organic algo
+**Observation**: HOURLY PULSE PULSE_ALERT — `v3_long_Tunguska` (FacPhS3hNjU,
+"The Day the Siberian Sky Exploded — Tunguska 1908", 13:12, pub 2026-06-08)
+crossed 100v: **107 views, 96 unique viewers, 1.6k impressions, 3.2% CTR,
+avg view duration 7:14 (~55% retention on a 13-min video)**. Studio reach tab
+(voidline session, live):
+- Traffic = **95.4% YouTube algorithmic**: Browse features 50.5% + Suggested
+  videos 44.9%. Direct 2.8%, YT search 1.9%. **External sites: "données
+  insuffisantes" — ZERO external referral (no Reddit, no seed).**
+- 92.1% of impressions came from YouTube *recommending* the content; CTR 3.3%,
+  6.27 watch-hours generated from impressions.
+- Suggested-from cluster: 70.8% from **"The Willamette Meteorite"**, then
+  "The Meteor Shower That Killed 10,000 People", "The Largest Unexplained
+  Explosion in History • Mystery Files", "Tunguska Event | Disaster Records".
+  YouTube slotted us into an established meteor/explosion mystery-doc cluster.
+Context: other long-forms still flat (v1 Mary Celeste 19v, v2 Dyatlov 2v).
+**Learning**:
+1. **The suppression thesis is now FALSIFIED for long-form.** A doc-niche
+   cold-start long-form CAN be picked up by Browse+Suggested with no external
+   push — it just takes ~2-3 weeks for the algo to find the right cluster. The
+   "v3 long-form 0v expected under suppression" entry (2026-06-13) is
+   superseded: 0v at J+0..J+5, then the algo woke up around J+15-18.
+2. **Pure-organic pivot is VALIDATED.** Dropping the Reddit seed was correct —
+   the breakout is 100% algorithmic, no seed touched it.
+3. **Retention is the lever, not CTR.** 3.2% CTR is modest, but ~55% avg
+   duration (7:14/13:12) is what keeps YouTube re-serving impressions.
+   Topic + pacing > thumbnail click-rate for long-form survival.
+4. **Entry cluster = meteor/impact/"largest explosion" content.** Tunguska maps
+   onto Willamette Meteorite's audience. Topics with a dense adjacent
+   established-channel cluster get surfaced; orphan topics (Mary Celeste,
+   Dyatlov) lack a suggestion neighborhood → stay flat. TOPIC-SELECTION signal.
+**Action**:
+- v4+ topic selection: prioritize subjects with a dense, high-traffic
+  established-doc cluster on YT (impact events, cosmic/space mysteries,
+  large-scale disasters) over isolated whodunit mysteries. Map the target
+  topic to ≥3 existing high-view docs BEFORE committing to production.
+- Do NOT re-introduce the Reddit seed — organic algo pickup confirmed.
+- Watch v3 Tunguska next pulses: if it climbs past 200-300v it's a genuine
+  breakout → study its retention curve for the cutter.
+- Cold-start expectation reset: budget ~15-20 days for algo pickup before
+  judging a long-form "dead" — do NOT panic-delete at J+7.
