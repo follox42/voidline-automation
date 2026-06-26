@@ -231,3 +231,52 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 20:08 — Pulse is BLIND: scraper fully dead + impersonate_fetch can't bypass FR consent
+**Observation**: First pulse since 2026-06-13 (13-day gap). `monitor_voidline.py`'s
+anonymous `curl` now returns the **consent.youtube.com wall** for 100% of assets
+(0/13 viewCount parsed, down from 2/13 on 06-13) — verified: a raw curl of the
+v3_answer short returns a 1.17MB page with `CONSENT`/`base href=consent.youtube.com`
+and no `"viewCount"`. The pulse therefore logged `PULSE: no notable delta`, which is
+a **FALSE all-clear** — there is simply no data to compute a delta from. Tested the
+06-13 TODO fix path (camoufox-stealth `impersonate_fetch` + `cookie_profile=voidline`):
+it ALSO redirects to `consent.youtube.com/m?...&gl=FR` with **`cookies_sent: 0`** —
+the profile cookies are not applied to a bare fetch, so impersonate_fetch alone does
+NOT solve the consent gate. The ONLY path that worked was driving the live
+authenticated Studio browser session (navigate + evaluate on
+studio.youtube.com/.../videos): that loaded fully logged-in as Voidline.
+**Learning**:
+1. The hourly pulse has been a no-op watchdog since at least 06-13 — it cannot detect
+   any spike because it has zero view data. Anonymous curl to youtube.com is now
+   permanently dead in the cloud container (EU/FR consent enforcement).
+2. `impersonate_fetch` + `cookie_profile` is NOT a drop-in fix — the profile cookies
+   aren't attached to the fetch (`cookies_sent: 0`) and YouTube serves the FR consent
+   gate. The viable monitor port is to drive the persistent authenticated camoufox
+   session (the `default` session sits logged into Studio) via navigate→evaluate, OR
+   read counts directly off the Studio /videos content list.
+3. Long-form Tunguska is flat at **107 views** (was 106 on 06-07) — confirmed dead,
+   no spike during the 13-day blind window. Long-forms remain suppressed/dead.
+**Action**:
+- Logged PULSE_BLIND + DRIFT in agent-log. NO PULSE_ALERT is trustworthy until the
+  monitor is ported off curl.
+- TODO (next daily-plan or a dedicated fix PR, not this hourly pulse — Studio action
+  budget hit): rewrite `monitor_voidline.py` to pull view counts via the authenticated
+  camoufox Studio session (navigate to /channel/<id>/videos/{short,upload} then
+  evaluate the row cells), NOT curl and NOT impersonate_fetch.
+
+## 2026-06-26 20:08 — State drift: untracked 11th Short live in Studio
+**Observation**: Studio `/videos/short` lists **11 Shorts**; `shorts_state.json` tracks
+only **10**. The extra row is **"9 Barrels Empty. The Mary Celeste Vapor Theory
+#shorts"** — this is the planned v1 Mary Celeste bonus #2 (per the 06-07 weekly plan:
+"Produire 2 Shorts bonus sur v1 Mary Celeste"). It rendered with `href: null` (no
+`/video/<id>/edit` link, unlike all 10 tracked rows), suggesting it is a DRAFT /
+processing / scheduled item rather than a published video. Its yt_id was not captured
+(Studio action budget reached).
+**Learning**: A Short was produced + uploaded during the 13-day unmonitored window and
+never written back to state — same class of drift as the 06-13 RECONCILE (state does
+not reflect reality). The pulse is not the right place to reconcile (read-only, action
+budget); flag for daily-plan.
+**Action**:
+- Flagged in agent-log as DRIFT for the next daily-plan to reconcile: capture the
+  yt_id + actual status of "9 Barrels Empty" and add it to shorts_state.json (likely
+  short_id `v1_bonus_vapor`).

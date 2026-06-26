@@ -19,6 +19,31 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-26 20:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219220:06: no notable delta"
+    },
+    {
+      "t": "2026-06-26 20:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 20:06\u219220:06: no notable delta"
+    },
+    {
+      "t": "2026-06-26 20:11 UTC",
+      "action": "PULSE_BLIND",
+      "detail": "Scraper 100% blind: anonymous curl hits consent.youtube.com wall (0/13 viewCount parsed). impersonate_fetch+cookie_profile=voidline ALSO redirects to consent (cookies_sent:0, gl=FR). 'no notable delta' is a FALSE all-clear. Only the live authenticated Studio browser session works. 13-day gap since last pulse (06-13)."
+    },
+    {
+      "t": "2026-06-26 20:11 UTC",
+      "action": "DRIFT",
+      "detail": "State drift: Studio /videos/short shows 11 Shorts, shorts_state.json tracks 10. Untracked: '9 Barrels Empty. The Mary Celeste Vapor Theory' (planned v1 bonus #2), href:null (likely draft/scheduled). yt_id not captured (Studio action budget). Flag for daily-plan reconcile."
+    },
+    {
+      "t": "2026-06-26 20:11 UTC",
+      "action": "PULSE_DATA",
+      "detail": "Only datapoint pulled this pulse (via authenticated Studio session): long-form Tunguska (FacPhS3hNjU) = 107 views, flat vs 106 on 06-07. No spike during the 13-day blind window. Long-forms remain dead."
     }
   ]
 }
