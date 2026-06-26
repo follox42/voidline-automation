@@ -233,8 +233,10 @@ redesign requires new selector path.
   decent base than wait indefinitely
 
 ## 2026-06-26 23:10 — Suppression lifted: first real traction across the catalogue
-**Observation**: First pulse to run in 13 days (last was 2026-06-13 14:02 — the
-hourly cron evidently has not been firing). The curl scraper in
+**Observation**: agent-log.json/main appear frozen at 2026-06-13 because EVERY scheduled
+run branches off main (which is never merged back), so each pulse re-starts
+from the same 06-13 baseline. The cron IS firing — there are 30+ open pulse/daily
+PRs dated 06-25/06-26, all independently re-discovering the same state. The curl scraper in
 `monitor_voidline.py` STILL returns blank views for all 13 assets (every
 stats_log.csv row this run is empty). Pulled real numbers from the live
 authenticated `default` Studio session (cookie_profile=voidline, alive, sitting
@@ -272,8 +274,10 @@ weeks ago is now accumulating organic views.
   desync KNOWN_BAD pattern as the 06-13 batch).
 - Backfilled the real 06-26 snapshot into stats_log.csv so the next pulse has a
   non-blank baseline to delta against.
-- FLAG (not actioned this pulse, respects Studio HTTP limit): hourly cron has not
-  fired in 13 days — verify the routine schedule is actually live. Pipeline is
+- FLAG (process): 30+ open pulse/daily PRs are piling up unmerged (branches off
+  main, main stuck at 06-13). Each run re-does the same reconciliation because
+  nothing lands on main. The real need is a merge/cleanup policy for these
+  routine branches, not more pulse runs. Pipeline is
   still dry (no Shorts scheduled past the 06-15 briggs; v4 Roanoke stuck on the
   Flow thumb blocker). Either ship the "9 Barrels" draft to refill the Shorts
   slot or unblock v4.

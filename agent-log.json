@@ -43,7 +43,7 @@
     {
       "t": "2026-06-26 23:10 UTC",
       "action": "FLAG",
-      "detail": "Hourly cron has not fired in 13 days (last pulse 06-13 14:02) - verify routine schedule is live. Monitor curl still blind in cloud (port to camoufox-stealth is now blocking). Pipeline dry past 06-15; untracked DRAFT '9 Barrels Empty' Short exists in Studio. v4 Roanoke still stuck on Flow thumb blocker."
+      "detail": "CORRECTION: cron IS firing — 30+ open pulse/daily PRs dated 06-25/06-26 exist; each branches off stale main (frozen 06-13) and re-discovers the same drift, so agent-log/state look unchanged. Real issue: unmerged routine-branch pileup needs a merge/cleanup policy. Monitor curl still blind (port to camoufox-stealth blocking). Pipeline dry past 06-15; untracked DRAFT '9 Barrels Empty' Short in Studio; v4 Roanoke stuck on Flow thumb blocker."
     }
   ]
 }
