@@ -3,22 +3,37 @@
     {
       "t": "2026-06-13 13:55 UTC",
       "action": "DAILY_PLAN",
-      "detail": "Today 2026-06-13 \u2014 0 Shorts publishing | "
+      "detail": "Today 2026-06-13 — 0 Shorts publishing | "
     },
     {
       "t": "2026-06-13 13:55 UTC",
       "action": "RECONCILE",
-      "detail": "Drift corrected: 5 Shorts were stale SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200) \u2014 v2_twist(vxP6XiJKLkg, 06-05), v2_answer(TwJNypz8c4I, 06-06), v3_hook(5e8ELVo5ARg, 06-08), v3_twist(0eDPVcgODvY, 06-10), v3_answer(y3xLIfOAPHA, 06-12). Set status=PUBLIC + actual_published_at=scheduled_at for each. Cross-checked: live voidline Studio session sitting on 5e8ELVo5ARg analytics period-since_publish."
+      "detail": "Drift corrected: 5 Shorts were stale SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200) — v2_twist(vxP6XiJKLkg, 06-05), v2_answer(TwJNypz8c4I, 06-06), v3_hook(5e8ELVo5ARg, 06-08), v3_twist(0eDPVcgODvY, 06-10), v3_answer(y3xLIfOAPHA, 06-12). Set status=PUBLIC + actual_published_at=scheduled_at for each. Cross-checked: live voidline Studio session sitting on 5e8ELVo5ARg analytics period-since_publish."
     },
     {
       "t": "2026-06-13 13:55 UTC",
       "action": "DRIFT_FLAG",
-      "detail": "Pipeline empty: no Shorts scheduled for next 3 days (Sun 06-14, Mon 06-15, Tue 06-16). Catalogue queue is dry beyond v3_answer (06-12) \u2014 the entire v3 Tunguska batch is now published with nothing staged behind it. Cadence target is 5 Shorts/wk (Mon/Wed/Fri/Sun) so 06-14 + 06-15 slots are already unfilled. ACTION NEEDED: render+schedule next batch (v4 topic). Also: tomorrow Sun 06-14 17:00 UTC is a long-form + Reddit-seed day per cadence, but no long-form appears scheduled \u2014 verify in tomorrow's run."
+      "detail": "Pipeline empty: no Shorts scheduled for next 3 days (Sun 06-14, Mon 06-15, Tue 06-16). Catalogue queue is dry beyond v3_answer (06-12) — the entire v3 Tunguska batch is now published with nothing staged behind it. Cadence target is 5 Shorts/wk (Mon/Wed/Fri/Sun) so 06-14 + 06-15 slots are already unfilled. ACTION NEEDED: render+schedule next batch (v4 topic). Also: tomorrow Sun 06-14 17:00 UTC is a long-form + Reddit-seed day per cadence, but no long-form appears scheduled — verify in tomorrow's run."
     },
     {
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-26 12:08 UTC",
+      "action": "PULSE",
+      "detail": "Δ 14:02→12:08: no notable delta"
+    },
+    {
+      "t": "2026-06-26 12:09 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Δ 12:08→12:08: ⭐ v3_long_Tunguska long-form: crossed 100v!"
+    },
+    {
+      "t": "2026-06-26 12:10 UTC",
+      "action": "INVESTIGATE",
+      "detail": "PULSE_ALERT followup — v3_long_Tunguska (FacPhS3hNjU) long-form organic breakout. Studio reach tab (voidline): 1.6k impressions, 3.2% CTR, 107v/96 unique, 7:14 avg watch on 13:12 (~55% retention). Traffic: Browse 50.5% + Suggested 44.9% + direct 2.8% + search 1.9%; external referrals = insufficient data (ZERO Reddit/external) -> PURE ORGANIC. Suggested-cluster = meteor/disaster (Willamette Meteorite, Meteor Shower That Killed 10k). Disproves 06-13 'algorithmic suppression' call: long-form was 0v then, recovered to 107v organically by J+18. ACTION: leave Tunguska untouched (active Browse push), re-prioritize v4 Roanoke to same cluster lever. Also reconciled v1_bonus_briggs drift: stale SCHEDULED -> PUBLIC (auto-published 06-15, now 319v = new Short ceiling)."
     }
   ]
 }

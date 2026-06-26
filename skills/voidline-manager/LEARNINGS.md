@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 12:09 — FIRST LONG-FORM ORGANIC BREAKOUT — suppression hypothesis disproven
+**Observation**: Hourly pulse (first run since 06-13, ~13-day gap) caught
+v3_long_Tunguska (FacPhS3hNjU, "The Day the Siberian Sky Exploded — Tunguska
+1908", 13:12) crossing 100v -> **107 views / 96 unique / 1.6k impressions /
+3.2% CTR / 7:14 avg watch (~55% retention)**. Studio reach tab (voidline
+profile) traffic sources: **Browse/home-feed 50.5% + Suggested videos 44.9%**,
+direct 2.8%, search 1.9%. External sites = "donnees insuffisantes" -> ZERO
+external referral. 92.1% of impressions are YouTube actively recommending the
+content. Suggested-video placement is in the meteor/disaster cluster (next to
+"The Willamette Meteorite", "The Meteor Shower That Killed 10,000 People",
+"The Largest Unexplained Explosion in History").
+**Learning**:
+1. The 2026-06-13 "algorithmic suppression" call was WRONG / temporary. The
+   v3 long-form was 0v then; it recovered to 107v PURELY ORGANICALLY by J+18.
+   Long-form cold-start latency on a sub-1k channel is ~2-3 weeks, NOT dead --
+   the minimum-impression-test verdict (05-31 learning) fires late, not never.
+2. PURE ORGANIC validated: the user's call to NOT pull the Reddit seed holds.
+   This breakout has zero external traffic -- 95% Browse+Suggested. The algo
+   found it on its own once the meteor/disaster suggestion cluster matured.
+3. 3.2% CTR + ~55% retention is the combo that flips Browse on. Retention
+   (7:14/13:12) is the strong lever; the AI cinematic thumb (Flow Nano Banana
+   base) converts at a viable rate, unlike the 0% photo-archive thumbs.
+4. v1_bonus_briggs Short hit 319v -- new Short ceiling (beats the ~300 plateau),
+   AND it was stale SCHEDULED in state (auto-published 06-15, never reconciled).
+   Reconciled -> PUBLIC. Other long-forms still cold: v1 MaryCeleste 19v,
+   v2 Dyatlov 2v -- only Tunguska broke out, so topic/thumb/cluster fit matters.
+**Action**:
+- DO NOT touch v3 Tunguska -- it's in an active Browse push. No edits to title/
+  thumb/description while it's climbing (metadata changes can reset the test).
+- Re-prioritize v4 Roanoke to LEAN INTO the same lever: meteor/disaster/unexplained
+  cluster adjacency + >=3% CTR thumb + retention-first cut. Tunguska proved the
+  formula; Roanoke should ride the same suggestion neighborhood where possible.
+- Monitor v3 Tunguska hourly -- if it climbs past ~200v, confirmed breakout and
+  long-form cadence can scale back up.
+- Routine gap: pulse hadn't run 06-13->06-26. Verify the hourly cron is actually
+  firing (13-day silence would have missed the breakout's onset).
