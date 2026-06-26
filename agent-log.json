@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-26 08:01 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-26 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-26 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-26 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-26 08:03 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, scheduled 2026-06-15T12:00Z) was still stale SCHEDULED in shorts_state.json 11 days past its publish time. Verified PUBLIC via YouTube oEmbed (HTTP 200, title 'Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872 #shorts', author Voidline/@voidlinedocs). It auto-published on schedule; state was never updated. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Same publish-side drift pattern as the 2026-06-13 reconcile of 5 Shorts."
+    },
+    {
+      "t": "2026-06-26 08:03 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "PIPELINE BONE-DRY. Today Fri 2026-06-26 is not a publish day; checked next 3 days: Sat 06-27 (empty), Sun 06-28 (LONG-FORM + Reddit-seed day per cadence \u2014 NOTHING queued), Mon 06-29 (Shorts day per Mon/Wed/Fri \u2014 NOTHING queued). Entire catalogue is now PUBLIC through v1_bonus_briggs (06-15); zero assets staged behind it for 11 days. v4 Roanoke is the next planned topic but was blocked on the Google Flow Nano Banana 2 thumb (submit button disabled, UI redesign \u2014 see LEARNINGS 2026-06-13). ACTION NEEDED before Sun 06-28: either unblock v4 Flow thumb (fresh session / new selector path) or ship v4 with the v3 Tunguska placeholder base, render+pre-ship-gate (\u226575), and schedule the long-form + draft the r/UnresolvedMysteries seed. Cadence (1 long/wk Sun 17:00 + 2 Shorts/wk) will break this weekend if nothing is produced."
     }
   ]
 }

@@ -231,3 +231,26 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 — Daily-plan: v1_bonus_briggs reconciled + 11-day pipeline gap
+**Observation**: Daily-plan run found v1_bonus_briggs (vZ68HlWfT-Q) still
+marked SCHEDULED for 2026-06-15 — 11 days stale. oEmbed returned HTTP 200
+with public metadata, so it auto-published on schedule; the state file was
+just never updated (same publish-side drift as the 5-Short reconcile on
+06-13). Reconciled → PUBLIC + actual_published_at=2026-06-15T12:00Z. The
+catalogue is now 100% PUBLIC with NOTHING staged behind it for 11 days.
+**Learning**:
+1. The publish-side drift is recurring — scheduled Shorts publish silently
+   and the state file never reflects it. Daily oEmbed reconciliation is
+   working as the safety net, but the *upstream* gap is production, not
+   tracking: nothing new has been rendered/scheduled since v1_bonus_briggs.
+2. v4 Roanoke has been stalled on the Flow Nano Banana 2 thumb blocker
+   (LEARNINGS 2026-06-13) for ~13 days. The "ship with v3 placeholder base"
+   backup path was never executed, so the pipeline simply went dry.
+**Action**:
+- Sun 06-28 is a long-form + Reddit-seed day with NOTHING queued. Before
+  then: unblock the Flow thumb in a fresh session OR execute the documented
+  placeholder-base backup, run the ≥75 pre-ship gate, schedule the v4
+  long-form, and draft the r/UnresolvedMysteries seed (not drafted today —
+  06-26 is a Friday, not a long-form publish day per the routine).
+- No new Shorts staged for Mon 06-29 either; 2-Shorts/wk cadence at risk.
