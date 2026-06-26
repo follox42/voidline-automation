@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 06:07 — Pulse resumes after 13-day gap; scraper fully blind (0/13)
+**Observation**: First HOURLY PULSE since 2026-06-13 (13-day dormant gap in the
+decision journal). The pulse ran clean (exit 0, no PULSE_ALERT) but the
+curl-based monitor returned BLANK views for all 13 assets — 0/13 coverage, down
+from 2/12 on the 06-13 run (which still parsed v2_hook 4v + v3_answer 106v).
+Even v3_answer, previously the only reliable signal at 106v, now reads blank.
+Public oEmbed liveness check confirms the channel is alive: v1_bonus_briggs
+(vZ68HlWfT-Q) and v3_long_Tunguska (FacPhS3hNjU) both HTTP 200. So this is a
+total anti-scrape blackout, not a dead channel. Separately: v1_bonus_briggs is
+live (oEmbed 200) but still marked SCHEDULED in shorts_state.json (was due
+2026-06-15) — minor state drift for the next DAILY_PLAN/RECONCILE to fix.
+**Learning**:
+1. The anonymous-curl monitor has degraded from "sparse" to "useless" — the
+   HOURLY PULSE can no longer detect any spike, so its core function (threshold
+   alerting on view deltas) is non-operational. The 06-13 TODO to port
+   monitor_voidline.py to camoufox-stealth (cookie_profile=voidline) is now a
+   blocker, not a nice-to-have: until it lands, every pulse is blind.
+2. A 13-day journal gap means the routine wasn't firing — pulses are not
+   accumulating the 2-snapshot history needed for deltas, so even a working
+   scraper would need a warm-up run before alerts mean anything.
+3. Content pipeline is still dry beyond v1_bonus_briggs (06-15) per the 06-13
+   DRIFT_FLAG — nothing staged, and v4 Roanoke was last blocked on the Flow
+   thumb-gen UI change.
+**Action**:
+- Logged blindness; exited cleanly within budget (0 Studio HTTP actions, 0 Flow
+  gens). Did NOT burn the camoufox-stealth/Studio budget chasing a non-alert —
+  no spike to investigate, and a one-off stealth pull wouldn't fix the structural
+  gap.
+- ESCALATE (next daily/manual session, not this pulse): (a) port
+  monitor_voidline.py to camoufox-stealth so pulses can see again; (b) reconcile
+  v1_bonus_briggs SCHEDULED→PUBLIC; (c) resume v4 Roanoke (Flow thumb or v3
+  placeholder base) since the pipeline is dry.
