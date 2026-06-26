@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-26 18:06 — Pulse resumes after 13-day gap; scraper fully blind + briggs drift
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a ~13-day gap, so the
+hourly routine was not actually firing on schedule during that window. Pulse ran
+clean (exit 0, no PULSE_ALERT). Two issues surfaced:
+1. **Stat coverage now 0/13** — every asset (3 long-form + 10 Shorts, including the
+   newly-tracked v*_long_* ids) logged blank views this run. Worse than 06-13, where
+   the anonymous-curl scraper at least parsed v3_answer (106v). YouTube is serving
+   the consent/anti-scrape page to unauthenticated curl in the cloud container for
+   100% of requests now. The pulse delta is therefore meaningless ("no notable
+   delta" = no data, not flat growth).
+2. **State drift (publish side)**: v1_bonus_briggs (vZ68HlWfT-Q) was still
+   `SCHEDULED` for 06-15 but oEmbed returns HTTP 200 → it auto-published on schedule
+   11 days ago. Reconciled → status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+   This is the recurring "scheduled Shorts publish silently, state not updated"
+   pattern — same as the 06-13 batch reconcile.
+**Learning**:
+1. The hourly pulse cannot be trusted to have run — a 13-day silent gap means
+   monitoring continuity is broken. Whatever growth/suppression happened across
+   06-13→06-26 was unobserved. Cron firing reliability needs a check.
+2. The anonymous-curl path in monitor_voidline.py is now effectively dead in the
+   cloud (0% parse rate). The TODO to port stats fetch to camoufox-stealth
+   (cookie_profile=voidline) or yt-dlp is no longer optional — without it every
+   pulse is blind and PULSE_ALERT can never fire.
+3. oEmbed 200 remains the reliable, session-safe publish probe and caught the drift
+   again — daily/pulse reconcile via oEmbed stays mandatory.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- No Studio HTTP actions spent this pulse (no PULSE_ALERT; data blank, not a spike
+  to investigate). Stayed within hard limits.
+- ESCALATE next maintenance window: port monitor_voidline.py stats fetch to the
+  stealth MCP so views actually populate; verify the hourly cron is scheduled/firing.
