@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 08:05 — SUPPRESSION LIFTED: Tunguska long-form gets organic algo push
+**Observation**: First full-coverage pulse since 06-13 (the 06-13 scraper
+returned blanks; this run captured all 13 assets). Thresholds: `v3_long_Tunguska`
+long-form crossed 100v → **111 views, 98 unique viewers, 1.7k impressions, 3.2%
+CTR**. Pulled Studio reach analytics (since-publish) for FacPhS3hNjU. Traffic
+sources: **Fonctionnalités de navigation (Browse) 50.5% + Suggestions de vidéos
+45.1% = 95.6% from YouTube's own recommendation surfaces**. Direct 2.7%, Search
+1.8%. "Sites/applications externes" = *insufficient traffic data* (≈0 external).
+Suggested-from breakdown: Willamette Meteorite 70.8%, "Meteor Shower That Killed
+10,000 People" 8.3%, Mystery Files Tunguska 4.2% — tight topical clustering.
+Avg view duration 7:14 on a 13:12 video (~55%). The other longs: v1=19v, v2=2v.
+**Learning**:
+1. The "long-forms are dead / algorithmically suppressed (all traffic sources
+   insufficient data)" thesis from 2026-06-13 is now **FALSIFIED** for v3.
+   YouTube is actively distributing the Tunguska long-form via Browse + Suggested
+   at 1.7k impressions. Cold-start suppression appears to lift around J+19 for
+   doc-niche — this is the first real long-form algo signal in channel history.
+2. The push is **100% organic (zero external referral)** — this directly
+   validates the user's 06-13 "pure organic growth, no Reddit seed" pivot. We did
+   NOT need to pull the external lever; the algo found it via topical suggestion.
+3. Browse 50.5% (home feed) is the strongest signal — YouTube is showing the
+   thumb to cold audiences on the home feed, not just suggesting it next to
+   related videos. 3.2% CTR is below the 4-6% "healthy" band but enough to keep
+   the impression flywheel turning.
+4. Why Tunguska and not v1/v2 long-forms? Likely the meteorite/explosion topic
+   cluster is denser + higher-demand than shipwreck (Mary Celeste) or hiking
+   (Dyatlov), so suggested-traffic neighbors exist. Topic-adjacency to popular
+   existing videos may be the real cold-start unlock, not thumb quality alone.
+**Action**:
+- DO NOT pull any external/Reddit seed — organic distribution is working. Stay
+  the pure-organic course.
+- Lever to pull: **CTR**. 3.2% is the ceiling on this flywheel. The v4 Roanoke
+  AI-thumb work (blocked on Flow 06-13) is now higher priority — a stronger thumb
+  on a Browse-pushed video is the highest-ROI improvement available.
+- Topic selection going forward should favour dense, high-demand clusters with
+  popular adjacent videos (meteor/space/explosion/disaster) over niche-isolated
+  mysteries, to maximise suggested-traffic surface.
+- Next pulse: re-check FacPhS3hNjU impressions trend — if Browse % holds and
+  impressions keep climbing, this is a sustained breakout, not a one-off blip.
+- State reconciled this run: v1_bonus_briggs (SCHEDULED→PUBLIC, 319v, now the #1
+  short) — auto-published on its 06-15 slot and was never reconciled.
