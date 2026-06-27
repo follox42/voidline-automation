@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 16:05 — Pulse resumes after 14-day gap; briggs drift + scraper fully blank
+**Observation**: First HOURLY PULSE since 2026-06-13 — a ~14-day gap, so the
+routine has NOT been firing hourly (manual/intermittent only). This run:
+1. No PULSE_ALERT — runner logged "Δ 14:02→16:04: no notable delta" (but the
+   06-13 baseline was itself sparse, so the delta is near-meaningless).
+2. monitor scraper returned BLANK views for ALL 13 assets this run — worse than
+   06-13 (which still parsed v2_hook=4 and v3_answer=106). Anonymous curl is now
+   getting zero `viewCount` hits, consistent with YouTube's anti-scrape page.
+3. State drift confirmed: v1_bonus_briggs (vZ68HlWfT-Q), scheduled 2026-06-15,
+   was still marked SCHEDULED 12 days later but is live (oEmbed 200). Reconciled
+   → PUBLIC + actual_published_at=2026-06-15T12:00Z.
+**Learning**:
+1. The hourly-pulse cron is effectively not running on cadence — deltas are
+   useless when snapshots are 14 days apart. Either the cron isn't installed or
+   it's been dormant; without regular snapshots PULSE_ALERT thresholds can never
+   trip meaningfully.
+2. The curl-based monitor is now returning 0/13 — the port-to-camoufox-stealth
+   TODO (flagged 06-13) is now blocking, not just degrading. Until that lands,
+   pulse stat coverage is effectively dead and oEmbed is the only reliable signal.
+3. oEmbed remains the cheap session-safe publish probe — caught the briggs drift
+   without spending any Studio HTTP action.
+**Action**:
+- Did NOT spend a Studio HTTP action this run (no PULSE_ALERT, no spike to chase)
+  — stayed well within the 5-action limit.
+- Reconciled briggs state in shorts_state.json.
+- ESCALATE next non-pulse routine: (a) verify the hourly-pulse cron is actually
+  scheduled, (b) prioritize the monitor → camoufox-stealth port so views aren't
+  blank. Both flagged for the daily-plan run.
