@@ -231,3 +231,33 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 22:05 — Pulse blind: stealth cookies dead + 14-day monitoring gap
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (14-day gap — routine
+did not fire in between). Two compounding problems:
+1. `camoufox-stealth_auth_check(youtube.com)` returns `auth_valid:false`,
+   `status:"dead"`, "Re-login required." The `voidline` cookie profile is expired,
+   so NO Studio analytics / view stats can be pulled via the MCP, and no posting
+   is possible.
+2. `monitor_voidline.py` anonymous-curl scraper now returns BLANK views for
+   ALL 13 assets — even v2_hook (was 4v) and v3_answer (was 106v) that parsed on
+   06-13. YouTube is fully serving the consent/anti-scrape wall to the container.
+   Result: pulse "no notable delta" is meaningless — there is no data to delta.
+3. State drift (again): `v1_bonus_briggs` (vZ68HlWfT-Q, scheduled 06-15) was still
+   marked SCHEDULED 12 days after its publish time. Verified PUBLIC via oEmbed (200).
+   Reconciled → status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+**Learning**:
+- The monitoring stack has no working stats path at all right now: anonymous curl
+  is dead (anti-scrape) and the authenticated MCP path is dead (expired cookies).
+  Until the voidline cookies are refreshed, every pulse is blind. The documented
+  TODO ("port monitor_voidline.py to fetch via camoufox-stealth") doesn't help
+  while the cookie profile itself is invalid.
+- The auto-publish drift pattern is now confirmed recurring (3rd occurrence) —
+  oEmbed reconciliation must stay in every daily/pulse run regardless of stats.
+**Action**:
+- BLOCKER for user: re-login the `voidline` cookie profile (YouTube/Google) so
+  the stealth MCP auth goes valid again. Nothing else (stats, Studio analytics,
+  scheduling, posting) works until then. Logged and exiting cleanly per pulse rules.
+- Reconciled v1_bonus_briggs to PUBLIC.
+- Pipeline still DRY beyond 06-15 bonus (no Shorts staged for 12 days) — unchanged
+  since the 06-13 DRIFT_FLAG; flagging again but production is the daily/weekly job.

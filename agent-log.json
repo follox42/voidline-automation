@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-27 22:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219222:04: no notable delta"
+    },
+    {
+      "t": "2026-06-27 22:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 22:04\u219222:05: no notable delta"
+    },
+    {
+      "t": "2026-06-27 22:06 UTC",
+      "action": "PULSE_BLOCKED",
+      "detail": "Pulse blind: stealth voidline cookies dead (auth_valid=false, re-login required) + curl scraper returns blank for all 13 assets. No stats path working. Reconciled v1_bonus_briggs SCHEDULED->PUBLIC via oEmbed(200). 14-day gap since last pulse. Exiting cleanly; user must re-login voidline profile."
     }
   ]
 }
