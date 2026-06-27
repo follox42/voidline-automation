@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 20:07 — Pulse fully blind: monitor scraper now 0/14, watchdog offline 14 days
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (14-day dormancy gap).
+Ran clean, no PULSE_ALERT ("delta 14:02->20:04: no notable delta"). But the cause of
+"no delta" is that `shorts/monitor_voidline.py`'s anonymous scraper returned BLANK
+views for **all 14 assets** (was 2/12 on 06-13 -- now fully degraded to 0/14).
+The delta logic skips any asset with empty views, so with zero coverage the pulse
+literally cannot fire an alert no matter what the channel does. The watchdog has
+been effectively offline. Meanwhile the `default` camoufox-stealth session is ALIVE
+(idle ~7h) and parked on Studio analytics for FacPhS3hNjU (v3_long_Tunguska), so
+the authenticated path the fix needs is available right now.
+**Learning**:
+1. The 06-13 TODO ("port monitor_voidline.py to fetch via camoufox-stealth /
+   cookie_profile=voidline") was never done, and the anon-curl source has now
+   decayed from sparse to ZERO. A pulse with no data source is not "all healthy" --
+   it is a blind watchdog reporting green. That is the dangerous failure mode.
+2. "no notable delta" is indistinguishable from "no data" in the current logic.
+   The runner should treat 0% stat coverage as a HARD WARN, not a quiet no-op.
+3. The auth session is healthy, so this is a build task, not an access blocker.
+**Action**:
+- PRIORITY for next dedicated session (out of pulse scope per Studio HTTP limits):
+  port monitor_voidline.py to pull viewCount via camoufox-stealth using the live
+  `default`/voidline session (impersonate_fetch with from_session, or read the
+  watch-page ytInitialData), so the pulse has real numbers.
+- Quick guard to add to cron_runner run_pulse(): if the latest snapshot has 0
+  parsed view counts, log PULSE_WARN("stat coverage 0/N -- monitor blind") instead
+  of a silent "no notable delta", so blindness is never mistaken for calm.
+- No Studio scrape performed this pulse (no alert to chase + within HTTP limits).
