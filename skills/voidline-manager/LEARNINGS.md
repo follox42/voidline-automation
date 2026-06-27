@@ -231,3 +231,41 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 15:05 — Pulse resumed after 14-day gap: monitor fully blind + drift again
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 14-day silence
+(the "hourly" routine did not fire for two weeks). This run:
+1. **Scraper 0/13**: monitor_voidline.py returned blank views for ALL 13 assets,
+   worse than 06-13 (which still parsed v2_hook 4v + v3_answer 106v). Anonymous
+   curl now gets the consent/anti-scrape page for every request. No PULSE_ALERT
+   could fire because there is no data to delta against.
+2. **State drift (again)**: v1_bonus_briggs (vZ68HlWfT-Q), scheduled 2026-06-15,
+   was still marked SCHEDULED 12 days past its slot. Verified PUBLIC via oEmbed
+   (HTTP 200) and reconciled → status=PUBLIC + actual_published_at=2026-06-15.
+3. **Studio session alive** but unusable for cross-origin reads: `default`
+   session is logged into studio.youtube.com (idle ~2h, on FacPhS3hNjU
+   analytics). A stealth_fetch of a www.youtube.com watch page from that origin
+   is CORS-blocked ("Failed to fetch") — not an auth failure, a same-origin
+   policy block.
+**Learning**:
+1. The pulse cannot detect spikes while the monitor is blind. The documented
+   TODO (port monitor_voidline.py to fetch via camoufox-stealth) is now the
+   single blocking item for the entire pulse routine — it is not optional
+   cleanup anymore, it is the difference between a working and a dead pulse.
+2. To read view counts via the stealth browser, the fetch must be SAME-ORIGIN.
+   Either (a) navigate the session to the watch page and extract viewCount from
+   the DOM/ytInitialData, or (b) call the Studio analytics API from the
+   studio.youtube.com origin (auth headers attach automatically). A bare
+   cross-origin fetch will always CORS-fail.
+3. Silent auto-publish drift is now confirmed THREE times (06-13 x5, 06-27 x1).
+   Reconciliation must run every pulse/daily, not just daily — 12-day-stale
+   state is the norm, not the exception, when routines skip runs.
+**Action**:
+- Reconciled v1_bonus_briggs in shorts_state.json.
+- NOT fixed this pulse (out of scope, keeps within Studio-action budget): the
+  monitor port to camoufox-stealth same-origin reads. Flagged as the top
+  blocking item for the next code session.
+- Pipeline still DRY: nothing scheduled after v1_bonus_briggs (06-15). Two weeks
+  with zero new uploads — the cadence (3/wk cold-start) has fully lapsed.
+- Investigate why the hourly routine did not fire for 14 days (cron disabled,
+  paused, or container reclaimed without rescheduling).

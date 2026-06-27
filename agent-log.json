@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-27 15:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219215:04: no notable delta"
+    },
+    {
+      "t": "2026-06-27 15:05 UTC",
+      "action": "PULSE_GAP",
+      "detail": "First pulse since 2026-06-13 14:02 \u2014 14-day silence; 'hourly' routine did not fire for two weeks. Investigate cron disabled/paused/container-reclaim."
+    },
+    {
+      "t": "2026-06-27 15:05 UTC",
+      "action": "MONITOR_BLIND",
+      "detail": "Scraper returned blank views for ALL 13 assets (worse than 06-13's 2/12). Anonymous curl hits consent/anti-scrape page. No PULSE_ALERT possible without data. Blocking item: port monitor_voidline.py to camoufox-stealth SAME-ORIGIN reads (cross-origin stealth_fetch CORS-fails)."
+    },
+    {
+      "t": "2026-06-27 15:05 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) scheduled 06-15 was still SCHEDULED 12 days late; verified PUBLIC via oEmbed HTTP 200; set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Pipeline DRY beyond this \u2014 2 weeks zero new uploads, cadence lapsed."
     }
   ]
 }
