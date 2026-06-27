@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 07:05 — Shorts FEED distribution recovered; v1 bonus Briggs breaks the plateau
+**Observation**: First pulse with FULL stat coverage in 14 days (curl scraper
+returned all 13 assets cleanly this run — the 06-13 anti-scrape blanks did not
+recur). v1_bonus_briggs ("Why Did the Teetotal Captain Run?" — question hook,
+Mary Celeste, published 06-15) is now the #1 asset in the catalogue at **319v**,
+clearing the ~300v plateau that capped v1_twist (281) and v2_twist (299). Studio
+Reach analytics (period-since_publish): **96.2 % of views from the Shorts feed**,
+2.2 % other YT features, 0.9 % search ("mary celeste" = 33 % of that sliver),
+0 % external, **notification CTR still 0 %** (bell notifications still not
+delivered). Long-forms also show first signs of life: v3_long_Tunguska 110v
+(+4 since the 06-07 plateau, tipped the >100v alert threshold), v1_long_MaryCeleste
+19v, v2_long_Dyatlov still 2v.
+**Learning**:
+1. The cold-start suppression is lifting on the FEED side specifically — 96 % feed
+   distribution at 319v is real organic algorithmic push, the first time a voidline
+   Short has been distributed at scale. Notification delivery is still suppressed
+   (0 % CTR), so feed-recovery and notification-recovery are separate gates.
+2. Question-hook + iconic-topic combo confirmed again as the format that breaks
+   through (validates the 06-07 action: "bonus Shorts to pierce the 279v ceiling").
+3. Growth is pure organic — zero external traffic, confirming the no-Reddit-seed
+   pivot can still produce feed breakouts.
+4. The PULSE_ALERT for the long-form (110v) is a threshold artifact (flat since
+   106v on 06-07), not a genuine spike — the real signal is the Briggs Short.
+**Action**:
+- Reconciled state drift: v1_bonus_briggs was still SCHEDULED in shorts_state.json
+  despite publishing 06-15 -> set PUBLIC + actual_published_at (recurring KNOWN_BAD:
+  scheduled Shorts auto-publish without updating state).
+- Lean into the winning format: prioritise question-hook Shorts on iconic mysteries
+  for the next batch (v4 Roanoke + future) now that feed distribution is proven.
+- Re-check next pulse for a v1_bonus_briggs delta (feed push may still be ramping).
