@@ -231,3 +231,25 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 19:04 — Pulse resumes after 14-day gap; briggs drift reconciled
+**Observation**: First HOURLY PULSE since 2026-06-13 (14-day gap — routine was
+not firing hourly). Runner logged no PULSE_ALERT, but only because the curl
+scraper still returns BLANK views for all 13 monitored assets (the known
+unauthenticated anti-scrape block). Separately, `v1_bonus_briggs` (vZ68HlWfT-Q,
+scheduled 06-15) was still marked SCHEDULED in shorts_state.json — oEmbed probe
+returned 200 → it auto-published on schedule 12 days ago.
+**Learning**:
+1. The blank-scraper degradation makes "no notable delta" a BLIND verdict, not a
+   healthy one — the pulse cannot detect a spike until monitor_voidline.py is
+   ported to fetch via camoufox-stealth (cookie_profile=voidline) or yt-dlp.
+   This is now the #1 blocker to the pulse doing its actual job.
+2. Silent-auto-publish drift confirmed AGAIN (3rd instance): scheduled Shorts go
+   PUBLIC without YouTube updating our state. oEmbed 200/401 remains the cheapest
+   session-safe public/scheduled probe.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+  All 10 Shorts now PUBLIC; pipeline DRY again (nothing scheduled ahead).
+- No Studio HTTP actions spent this pulse (no alert; scraper-blind, so a real
+  view delta was not computable). Deferred the monitor port to a daily/dedicated
+  run rather than burning Studio actions on an unalerted hourly tick.
