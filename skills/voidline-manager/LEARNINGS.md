@@ -231,3 +231,48 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 10:05 — FIRST long-form breakout: Tunguska crosses 100v, PURE organic
+**Observation**: Hourly pulse PULSE_ALERT — v3 Tunguska long-form (FacPhS3hNjU,
+"The Day the Siberian Sky Exploded — Tunguska 1908") crossed 100v: **111 views,
+98 unique, 1.7k impressions, 3.2% CTR, avg view duration 7:14 of 13:12 (~55%
+retention), 6.27h watch-time from impressions, 3 likes.** This is the channel's
+FIRST long-form to ever escape the minimum test pool — v1 Mary Celeste sits at
+19v and v2 Dyatlov at 2v on the same pull. Studio reach tab (cookie_profile
+voidline) traffic breakdown:
+- Browse features 50.5% + Suggested videos 45.1% = **95.6% pure algorithmic**
+- External sites/apps: "insufficient data" → **NO Reddit / no external seed**.
+  The pure-organic pivot (2026-06-13) is now validated by data.
+- Suggested-traffic anchor: **"The Willamette Meteorite" = 70.8%** of all
+  suggested views, then "Meteor Shower That Killed 10,000 People" 8.3%,
+  "Largest Unexplained Explosion in History" 4.2%. YouTube is slotting us into
+  the **meteorite / cosmic-impact / sky-disaster** content lane.
+**Learning**:
+1. Long-form suppression is NOT permanent — it lifted ~J+19 post-publish with
+   zero external help. The 2026-06-13 "0v is expected under suppression" entry
+   is now superseded: given enough impressions + strong retention, the algo
+   re-tests and breaks a cold long-form out organically.
+2. **Retention is the unlock.** 55% avg-view on a 13-min doc is what made the
+   algo keep feeding impressions (1.7k and climbing). CTR 3.2% is only OK; the
+   watch-time is what carried it. Long-form quality bar = retention, not CTR.
+3. **Topic adjacency is the discoverable lane.** The single biggest suggested
+   source (70.8%) is a meteorite video — cosmic/impact/sky-event topics sit
+   next to large established channels' content and inherit their audience.
+   Tunguska won because it IS a cosmic-impact event. Mary Celeste/Dyatlov are
+   "unexplained mystery" but lack a high-traffic adjacent lane, hence 19v/2v.
+4. monitor_voidline.py now returns real view counts for all 16 assets (was
+   blank for 10/12 in the 06-13 cloud pulse) — the scraper is reading stats
+   reliably this run.
+**Action**:
+- LEAN v4+ long-form topics toward the cosmic/impact/sky lane to ride the same
+  suggested-traffic anchors: candidates — Carancas 2007 (Peru meteorite +
+  illness), the 1490 Ch'ing-yang meteor shower (the "10,000 killed" sibling
+  video is already suggesting us), Chelyabinsk 2013, Vela Incident. v4 Roanoke
+  (colonial mystery) does NOT sit in this lane — expect it to behave like
+  Mary Celeste, not Tunguska. Consider re-prioritising a cosmic topic ahead of
+  Roanoke, or at minimum thumbnail/title Roanoke to imply a sky/impact angle.
+- Added the meteorite-adjacency finding + retention-as-unlock to KNOWN_GOOD.
+- DO NOT touch v3 Tunguska — it is mid-breakout; no edits to title/thumb/desc
+  that would reset its momentum.
+- Next pulses: watch v3 Tunguska velocity (110→?) and whether the breakout
+  pulls subscribers; watch if v1/v2 long-forms get a sympathetic re-test.

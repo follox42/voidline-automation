@@ -101,6 +101,20 @@ runs/<run_id>/
     └── thumbnails/               # final thumbs (active + alt variants)
 ```
 
+## 2026-06-27 — Long-form breakout formula (validated on Tunguska, 111v pure organic)
+- **Topic must sit in a high-traffic adjacency lane.** Tunguska broke out because
+  95.6% of its traffic was algorithmic (Browse 50.5% + Suggested 45.1%) and its
+  #1 suggested source was "The Willamette Meteorite" (70.8%). Cosmic/impact/
+  sky-disaster topics inherit audience from large meteorite channels. Pick v4+
+  long-form topics that have an obvious big-channel neighbour to be suggested next to.
+- **Retention, not CTR, is the unlock.** 55% avg-view-duration (7:14 / 13:12) is
+  what kept the algo feeding impressions (1.7k+). CTR was only 3.2%. Optimise the
+  edit/pacing for watch-time first, thumbnail CTR second.
+- **No external seed needed.** Pure organic broke through at ~J+19. External
+  sites = "insufficient data" — Reddit was never pulled. Patience + quality works.
+- ❌ Anti-pattern: pure "unexplained mystery" topics with no high-traffic adjacent
+  lane (Mary Celeste 19v, Dyatlov 2v) stall in the minimum test pool.
+
 ## 2026-06-13 — Recovery cadence (post-suppression)
 - ✅ 7-14 day total upload silence to let cooldown lift
 - ✅ Long-form ship Sunday 17:00 UTC (peak EU/US)

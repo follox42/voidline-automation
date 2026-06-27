@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-27 10:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219210:04: no notable delta"
+    },
+    {
+      "t": "2026-06-27 10:05 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "\u0394 10:04\u219210:05: \u2b50 v3_long_Tunguska long-form: crossed 100v!"
     }
   ]
 }
