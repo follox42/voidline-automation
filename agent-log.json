@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-27 09:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219209:04: no notable delta"
+    },
+    {
+      "t": "2026-06-27 09:08 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Runner false-negative (gating bug L137: absolute thresholds skipped when prior snapshot lacked a reading, and 06-13 snapshot was the sparse/broken one). Manual review of full 06-27 coverage: v3_long_Tunguska (FacPhS3hNjU) long-form = 110v \u2014 CROSSES >100v long-form threshold AND contradicts the 06-13 'long-form 0v under suppression' thesis. v1_bonus_briggs (vZ68HlWfT-Q) short = 319v \u2014 new all-time best Short (>v2_twist 298), still marked SCHEDULED in state (auto-published 06-15, drift). Shorts plateau holds: v1_twist 274\u2192281, v2_twist 298\u2192299, v3_answer 106\u2192112, v2_hook 4\u21927 (narrative hook still dead)."
+    },
+    {
+      "t": "2026-06-27 09:08 UTC",
+      "action": "BLOCKED",
+      "detail": "Studio deep-dive on FacPhS3hNjU traffic sources skipped: stealth default session is alive + parked on the exact analytics page, but auth_check returns auth_valid=false / status=dead ('Re-login required'). Google/Studio cookies expired. Logged and exited cleanly per hard rule; no dead-session push attempted. Monitor view-count fetch is public (viewCount regex) and unaffected."
     }
   ]
 }

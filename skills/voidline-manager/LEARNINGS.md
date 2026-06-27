@@ -231,3 +231,43 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 09:08 — Suppression thesis breaks: v3 long-form alive at 110v + briggs new short ceiling
+**Observation**: First full-coverage pulse since 06-13 (the monitor's
+consent/anti-scrape blank-views problem has resolved in the cloud — all 15
+assets parsed). The new snapshot overturns two prior beliefs:
+1. **v3 Tunguska LONG-FORM = 110v** (3 likes), crossing the >100v long-form
+   threshold. The 06-13 learning declared "v3 long-form 0v is expected under
+   algorithmic suppression." That is now false — it accumulated 110v. The
+   other two long-forms remain weak (v1 Mary Celeste 19v, v2 Dyatlov 2v), so
+   it's content-specific recovery, not a blanket lift.
+2. **v1_bonus_briggs Short = 319v** — new all-time best Short, beating the
+   ~298–300 plateau (v2_twist 299, v1_twist 281). It was still flagged
+   SCHEDULED (06-15) in shorts_state.json; it auto-published 12 days ago and
+   is live → classic state drift, daily reconciliation owes this fix.
+   Shorts plateau otherwise holds: v3_answer 106→112, v2_hook 4→7 (narrative
+   hook still dead), confirming earlier learnings.
+**Learning**:
+1. The "suppression" framing was premature — at J+17 the channel was simply
+   in the slow cold-start accumulation phase. 14 days later, the strongest
+   asset (Tunguska, both as Short v3_answer 112v and long-form 110v) is the
+   one quietly compounding. Tunguska is the topic that resonates; lean v4+
+   topic selection toward that flavour (cosmic / unexplained-physics).
+2. The pulse runner has a real gating bug (cron_runner.py L137): the absolute
+   threshold checks (long ≥100v, short ≥1000v) are skipped whenever the PRIOR
+   snapshot lacked a reading for that asset. Because 06-13 was the sparse
+   broken snapshot, every genuine threshold crossing this run was silently
+   suppressed and it logged "no notable delta." Absolute-value alerts should
+   not depend on a valid prior reading.
+**Action**:
+- Treat v3 Tunguska as the proven winner — prioritise the v4 topic toward
+  cosmic/physics-mystery angles over pure maritime/expedition lore.
+- Daily-plan: reconcile v1_bonus_briggs SCHEDULED→PUBLIC (live since 06-15,
+  319v) — drift fix owed.
+- Fix cron_runner.py L137 so absolute thresholds fire on the current reading
+  alone (only the delta check needs a prior). Deferred out of this pulse to
+  keep the run read-only on code; flagged for next daily-plan.
+- BLOCKED this run: deeper Studio traffic-source dive on FacPhS3hNjU was
+  skipped — stealth session is parked on its analytics page but auth_check =
+  dead (Google cookies expired). Re-login the `voidline` profile before the
+  next pulse that needs Studio reads.
