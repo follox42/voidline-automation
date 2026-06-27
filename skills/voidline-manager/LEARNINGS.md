@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 23:04 — Routines dormant ~14 days + monitor fully blind
+**Observation**: First pulse to run since 2026-06-13. The agent-log shows a
+14-day gap — no PULSE, DAILY_PLAN, WEEKLY_REVIEW or MONTHLY entries between
+06-13 14:02 and 06-27 23:04. The "hourly" delta this run was therefore computed
+against a snapshot 14 days stale (meaningless as an hourly signal; correctly
+flagged "no notable delta" only because it had nothing fresh to compare).
+Three compounding issues surfaced:
+1. **Monitor 100% blind**: scraper returned blank views for ALL 13 assets
+   (0/13 coverage) vs 2/12 on 06-13. The anonymous-curl/yt-dlp path is now
+   serving zero stats — pulse cannot detect a spike even if one happened.
+2. **Pipeline dry since 06-15**: last upload was v1_bonus_briggs (06-15). The
+   06-13 DRIFT_FLAG (render+schedule v4 batch) was never actioned. No Shorts or
+   long-form scheduled behind it. Cadence broken for ~12 days.
+3. **State drift uncorrected 12 days**: v1_bonus_briggs scheduled 06-15 went
+   PUBLIC on schedule (oEmbed 200) but state still read SCHEDULED — the daily
+   reconciliation that should catch this never ran. Reconciled this pulse.
+**Learning**:
+- The pulse cannot be the channel's eyes while the monitor returns zero stats.
+  Porting monitor_voidline.py to fetch via camoufox-stealth (cookie_profile=
+  voidline) — the standing TODO since 06-13 — is now blocking, not optional.
+- A 14-day silent gap means the routine schedule itself likely isn't firing on
+  cadence (or was paused). Worth confirming the cron is actually active.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=06-15.
+- Flagged to owner (dormancy + blind monitor + dry pipeline) via notification.
+- Did NOT pull Studio (no PULSE_ALERT, and stale baseline makes a spike-hunt
+  pointless) — stayed within HTTP limits.
+- Next actionable: port monitor to camoufox-stealth, then render+schedule v4.
