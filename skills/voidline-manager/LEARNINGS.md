@@ -231,3 +231,47 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 13:05 — FIRST LONG-FORM BREAKOUT: v3 Tunguska escapes suppression
+**Observation**: First pulse since 2026-06-13 (14-day gap). The monitor
+scraper now returns real view counts for ALL 12 assets (the cloud-curl
+blanking from 06-13 is gone). The headline: **v3_long_Tunguska (FacPhS3hNjU,
+"The Day the Siberian Sky Exploded — Tunguska 1908", 13:12) is at 112 views**
+— it was 0v / algorithmically suppressed at every prior check. Studio Reach
+analytics (period-since_publish, pulled via voidline session):
+- Impressions **1.7k**, CTR **3.3%** (3.2% on the impressions-detail card)
+- Views 112, unique viewers 98, **avg view duration 7:20** (~56% of 13:12)
+- Traffic sources: **Browse 50.0% + Suggested videos 44.6%** = 94.6% pure
+  algorithmic recommendation. Direct 2.7%, YT search 2.7%.
+- **External sites/apps: "données insuffisantes"** → zero Reddit/external
+  seed. This breakout is 100% organic algo reach, exactly the path chosen
+  on 06-13 (no Reddit lever).
+- Suggested-from cluster: Willamette Meteorite 71.4%, "Meteor Shower That
+  Killed 10,000 People" 8.2%, "Largest Unexplained Explosion" 4.1% — the
+  algo has correctly placed the video in the meteor/disaster-doc niche.
+- Other long-forms still flat: v1 Mary Celeste 19v, v2 Dyatlov 2v.
+- Bonus Short find: **v1_bonus_briggs hit 319v** (new channel-best Short,
+  beating v2_twist 299 / v1_twist 281) but was still stale-SCHEDULED in
+  shorts_state.json from its 06-15 slot → reconciled to PUBLIC.
+**Learning**:
+1. Long-forms are NOT permanently dead. The cold-start suppression lifted on
+   the v3 long-form somewhere in the 06-13→06-27 window. First proof the
+   channel can earn algorithmic long-form distribution organically.
+2. The breakout came via Browse + Suggested, NOT search or external seed —
+   validates the pure-organic pivot. The niche-cluster suggestion placement
+   (meteor/disaster docs) is the mechanism: a strong topical match to
+   established channels' videos is what got it surfaced.
+3. 3.3% CTR + 7:20 (56%) avg view duration is a healthy enough signal for
+   YouTube to keep feeding impressions — this is the flywheel starting.
+4. v1_bonus_briggs at 319v confirms QUESTION-hook Shorts keep beating the
+   ~300 narrative plateau, and that scheduled assets STILL auto-publish
+   without updating state (recurring drift — reconcile every run).
+**Action**:
+- Tunguska is the channel's proven topic vector. Lean the v4+ pipeline
+  toward the same cluster (cosmic/meteor/unexplained-explosion docs) to
+  ride the established suggestion graph rather than cold-starting a new one.
+- Watch v3 Tunguska hourly for the next few pulses — if impressions keep
+  climbing past 1.7k the flywheel is real; if it stalls it was a one-off
+  recommendation test pool.
+- No external/Reddit seed needed or used — keep pure organic.
+- State reconciled (v1_bonus_briggs → PUBLIC); monitor scraper healthy.
