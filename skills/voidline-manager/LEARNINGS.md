@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 12:08 — v3 Tunguska LONG-FORM breaks out: 111v, pure organic, suppression lifted
+**Observation**: First fresh stats snapshot in 14 days (the 06-13 scraper returned
+blanks for all long-forms). v3 Tunguska long-form (`FacPhS3hNjU`, "The Day the
+Siberian Sky Exploded — Tunguska 1908", 13:12, pub 06-08) is now at **111 views /
+98 unique viewers / 3 likes**, while the other two long-forms are still flatlined
+(v1 Mary Celeste 19v, v2 Dyatlov 2v). Studio Reach (period-since-publish):
+**1.7k impressions, 3.2% CTR, avg view duration from impressions 7:14** (~55% of a
+13-min doc). Traffic mix = **50.5% Browse features + 45.1% Suggested videos =
+95.6% algorithmic**, 2.7% direct, 1.8% YouTube search. **External sites/apps =
+"données insuffisantes" → ZERO Reddit/external referral.** YouTube is suggesting it
+alongside established meteor/disaster docs (Willamette Meteorite drove 70.8% of the
+suggested-traffic slice, "Meteor Shower That Killed 10,000 People" 8.3%).
+**Learning**:
+1. Suppression has LIFTED for this title — the algo is actively pushing it via
+   Browse + Suggested, the exact inverse of the J+3 "all traffic sources
+   insufficient data / notification not delivered" state. This is the channel's
+   FIRST long-form to get real organic algorithmic distribution.
+2. Validates the 06-13 pure-organic pivot: the breakout arrived with ZERO external
+   seed. Reddit was never pulled and was never needed.
+3. Niche cohesion is working — the algo clustered Tunguska with meteor/disaster
+   docs. The AI-cinematic thumb + question-hook treatment on v3 is the likely
+   differentiator vs v1/v2 long-forms still stuck at 19v/2v with their weaker thumbs.
+4. 3.2% CTR sits below the 4-6% healthy band, but 7:14 avg duration (~55%) is
+   strong — retention, not packaging, is carrying this. Thumbnail is the lever to
+   push the next long-form higher.
+**Action**:
+- No intervention — let it ride. Pure organic distribution is exactly the goal;
+  do not disturb a video the algo is actively serving.
+- Re-render v1/v2 long-form thumbs to the v3 AI-cinematic standard to try to
+  unlock their suppressed impression pools.
+- Prioritize finishing v4 Roanoke long-form (resolve the Flow thumb blocker) now
+  that the long-form format is proven to convert organically.
+- DRIFT for daily-plan: v1_bonus_briggs Short is at **319v** (new channel record,
+  broke the ~300 Shorts plateau) but is still marked `SCHEDULED` in
+  shorts_state.json — reconcile to PUBLIC on the next daily run.
