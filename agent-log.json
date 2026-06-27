@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-27 18:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219218:04: no notable delta"
+    },
+    {
+      "t": "2026-06-27 18:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 18:04\u219218:05: no notable delta"
+    },
+    {
+      "t": "2026-06-27 18:07 UTC",
+      "action": "SCRAPER_BLIND",
+      "detail": "Pulse \"no notable delta\" is a FALSE all-clear: naked-curl scraper parsed 0/13 assets in both 06-27 snapshots. Recovered real numbers via impersonate_fetch(from_session=default,chrome124): v3_answer=112v (was 106v on 06-13) = +6v/14d, flat. 14-day pulse gap (last run 06-13 14:02) \u2014 hourly trigger likely not firing."
+    },
+    {
+      "t": "2026-06-27 18:07 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) confirmed PUBLIC via oEmbed 200 but was still SCHEDULED in state (publish 06-15, 12d past). Set status=PUBLIC + actual_published_at=2026-06-15."
     }
   ]
 }

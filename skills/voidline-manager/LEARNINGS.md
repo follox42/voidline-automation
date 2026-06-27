@@ -231,3 +231,38 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 18:07 — Pulse went dark 14 days; scraper now 100% blind = false all-clear
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a **14-day gap** (the
+hourly routine was not firing). The pulse logged "no notable delta", but that is a
+**false all-clear**: `monitor_voidline.py`'s naked-curl scraper parsed views for
+**0 of 13 assets** in both 06-27 snapshots (down from 2/12 on 06-13). The delta
+loop only compares assets where BOTH snapshots have views, so zero coverage →
+silently "no notable delta". Recovered real numbers via
+`impersonate_fetch(from_session=default, chrome124)` on the watch page:
+v3_answer (y3xLIfOAPHA) = **112v** vs 106v on 06-13 → **+6v in 14 days** (flat,
+still deep cold-start, consistent with organic-only). Also: v1_bonus_briggs
+(vZ68HlWfT-Q) confirmed PUBLIC via oEmbed 200 but was still `SCHEDULED` in state
+→ reconciled to PUBLIC (same drift the 06-13 daily-plan hit; nothing was running
+to catch it for 12 days).
+**Learning**:
+1. KNOWN_BAD confirmed at scale: trusting "no alert" as "all healthy" when the
+   data source returns NOTHING. The pulse threshold logic needs a coverage guard —
+   if cur snapshot has 0 filled views it should log SCRAPER_BLIND, not "no delta".
+2. The anonymous-curl path to youtube.com is now fully dead in the cloud container
+   (was sparse on 06-13, zero on 06-27). The fix is no longer optional.
+3. `impersonate_fetch` with a chrome124 JA3 + `from_session=default` (the live
+   authenticated Studio session) returns real watch-page JSON where naked curl
+   gets blanked — `viewCount\":\"<n>\"` is escaped in-page. oEmbed 200/401 stays
+   the cheapest public/scheduled probe (tiny body).
+4. The `default` stealth session is alive (idle ~5h, age ~3.3d) sitting on Studio
+   analytics for the Tunguska long-form — channel auth is intact.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=2026-06-15.
+- TODO (next non-pulse window, code change, off the Studio-action budget): port
+  `monitor_voidline.py` to fetch each yt_id via `impersonate_fetch` (extract the
+  escaped `viewCount\":\"N\"`), and add the 0-coverage SCRAPER_BLIND guard to
+  `run_pulse()` so a blind scrape never reads as a green pulse.
+- Operational: the hourly schedule was dark for 14 days — confirm the cron trigger
+  is actually firing (this run was manual). Flagged for the user.
+- Growth flat (+6v/14d) is expected under organic cold-start — no strategy change.
