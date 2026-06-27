@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-27 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-27 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-27 08:03 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED (scheduled 2026-06-15T12:00Z) in state but verified PUBLIC via YouTube oEmbed HTTP 200 (title 'Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872 #shorts', author Voidline). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Catalogue is now 100% live: 11/11 Shorts PUBLIC, none SCHEDULED."
+    },
+    {
+      "t": "2026-06-27 08:03 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "PIPELINE FULLY DRY. Today Sat 2026-06-27 is not a publish day (cadence: Shorts Mon/Wed/Fri/Sun, Long-form Sun 17:00). Next 3 days all empty: Sun 06-28 (long-form + Reddit-seed + Shorts day per cadence) has NO long-form and NO Short queued; Mon 06-29 (Shorts day) empty; Tue 06-30 empty. Nothing scheduled since v1_bonus_briggs on 06-15 \u2014 a 12-day content gap. Also: agent-log has no DAILY_PLAN between 2026-06-13 and today (14-day routine gap). v4 Roanoke still blocked on Google Flow thumb submit (see LEARNINGS 06-13). No Reddit seed drafted today (today is not the long-form day, and no long-form is queued for tomorrow to seed). ACTION NEEDED: produce + schedule next batch and queue the Sunday long-form before the rhythm fully collapses."
     }
   ]
 }
