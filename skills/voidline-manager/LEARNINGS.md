@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 21:05 — Pulse resumes after 14d dark: long-form breakout + Short ceiling broken
+**Observation**: First HOURLY PULSE since 2026-06-13 (14-day gap — routine was
+dormant). The curl scraper returned 100% blanks this run (0/13 assets, worse than
+2/12 on 06-13), so cron_runner logged a FALSE "no notable delta" — the threshold
+loop skips any asset with empty views (line 137), so a blind scrape reads as
+"healthy" instead of "no data". Pulled the truth from the live `voidline` Studio
+session (channel analytics, 28d window 30 mai–26 juin):
+- **1 365 vues / 18,6 h watch / +3 abonnés** over 28d (vs 861 total at weekly
+  review #1 on 06-07 — growth continuing).
+- **v1_bonus_briggs "Why Did the Teetotal Captain Run?" = 319 vues, 60,4% avg** —
+  NEW channel top performer, first Short to break the ~298–300v ceiling every
+  prior LEARNING flagged as a hard plateau. Question hook on Mary Celeste +
+  cutter v2 = the formula that cracked it. (State drift: it was still SCHEDULED in
+  shorts_state.json despite publishing 06-15 → reconciled to PUBLIC this run.)
+- **v3 long-form "The Day the Siberian Sky Exploded — Tunguska 1908" = 110 vues**
+  and it is the CURRENT realtime driver (5 v/48h). Crosses the runner's own
+  long-form >100v alert threshold and DIRECTLY CONTRADICTS the 06-13 LEARNING
+  ("v3 long-form 0v is expected behavior under suppression"). The long-form found
+  an organic audience — the first real long-form signal in the channel's history.
+**Learning**:
+1. Algorithmic suppression on long-form has LIFTED. The doc-niche cold-start
+   long-form does eventually get a viewer pool — patience (not Reddit seed) was
+   the right call. 110v organic with ~45% retention on a 6-min video is the
+   breakout we'd been waiting for.
+2. The ~300v Short ceiling is NOT hard — a strong question hook can cross it
+   (319v). Bonus Shorts on already-tested topics (Mary Celeste) outperform.
+3. The pulse scraper is now USELESS in the cloud (anonymous curl fully blocked).
+   "no notable delta" is a false all-clear when views are blank — this run would
+   have stayed silent on a real long-form-crossed-100v event. monitor_voidline.py
+   MUST be ported to pull via the camoufox-stealth `voidline` session (the live
+   session already holds valid Studio auth — used it directly here).
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json.
+- PRIORITY for next daily-plan: port monitor_voidline.py to camoufox-stealth so
+  PULSE_ALERT thresholds actually fire (the 110v long-form crossing went
+  undetected by the runner this round — only caught by manual Studio read).
+- Strategic: double down on Mary Celeste question-hook Shorts (proven 319v) and
+  keep shipping long-form now that suppression is gone — v4 Roanoke should ship.
