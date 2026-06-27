@@ -231,3 +231,43 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-27 11:04 — Suppression LIFTED: v3 long-form at 110v + pulse alert false-negative bug
+**Observation**: First full-coverage pulse since 06-13 (the 06-13 snapshot was
+mostly blank curl scrapes). Public viewCount now parses for all 13 assets:
+- **v3 long-form Tunguska (FacPhS3hNjU) = 110v** — was reported 0v under
+  algorithmic suppression on 06-13; the explicit watch condition ("if still 0v
+  at J+10, re-evaluate") is now RESOLVED. The long-form is being served.
+- v1 long-form Mary Celeste = 19v (was ~2v on 05-31), v2 long Dyatlov = 2v (still flat).
+- **v1_bonus_briggs Short = 319v** — published from its 06-15 schedule; new
+  channel-record Short, finally crosses the ~300v narrative-Short plateau noted
+  for v1 TWIST (281v) and v2 TWIST (299v).
+- Other Shorts stable: v1_twist 281, v2_twist 299, v3_answer 112, v1_answer 87,
+  v1_hook 64, v2_answer 34, v3_twist 28, v3_hook 3, v2_hook 7.
+The runner logged "no notable delta" anyway — a false negative.
+**Learning**:
+1. **Pulse alert bug**: absolute-threshold checks (short ≥1000v, long ≥100v)
+   were gated behind `not p["views"]`, i.e. they only fired if the PREVIOUS
+   snapshot also had a parsed view count. Since 06-13 was blank and long-forms
+   were untracked before today, every threshold-crossing asset was skipped.
+   Absolute thresholds must fire on the current value alone. Fixed in
+   cron_runner.py — delta alert still requires a comparable prior snapshot,
+   but the ⭐ crossings no longer do.
+2. The cold-start suppression appears to have decayed on its own (~J+15 from the
+   06-12 publish), consistent with the "pure organic, 3-6 months to breakout,
+   no panic" thesis. The 110v is organic, not a Reddit seed (that lever was
+   deleted from TODOs on 06-13).
+3. v2 Dyatlov long-form flat at 2v is the outlier — the photo-archive thumb it
+   shipped with (audited 06-04 as "boring history class") likely caps it; v1/v3
+   moved, v2 didn't.
+**Action**:
+- Could NOT pull Studio analytics this pulse: `voidline` cookies are EXPIRED
+  (auth_check → status "dead", "Re-login required"). Logged as blocker, exited
+  the Studio path cleanly per hard limits. Traffic-source / impressions
+  breakdown for the v3 long-form deferred until cookies are refreshed —
+  Nolann needs to re-login the voidline profile in the camoufox session.
+- Reconciled state drift: v1_bonus_briggs SCHEDULED→PUBLIC (319 public views is
+  unambiguous proof it auto-published from its 06-15 slot).
+- Pipeline still DRY (last DRIFT_FLAG 06-13 stands): nothing staged behind the
+  v3 batch; v4 Roanoke still blocked on the Flow thumb. The view recovery makes
+  shipping v4 more urgent — the algo is serving again and there's nothing new to feed it.

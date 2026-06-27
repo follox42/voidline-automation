@@ -19,6 +19,16 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-27 11:04 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219211:04: no notable delta"
+    },
+    {
+      "t": "2026-06-27 11:07 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "CORRECTED (manual, runner false-negative now fixed): v3_long_Tunguska crossed 100v long-form threshold (110v) \u2014 suppression LIFTED vs 0v on 06-13. v1_bonus_briggs Short 319v (channel record, broke ~300 plateau). BLOCKER: voidline Studio cookies expired (auth dead) \u2014 could not pull traffic sources; re-login needed."
     }
   ]
 }

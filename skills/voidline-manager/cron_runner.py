@@ -133,21 +133,30 @@ def run_pulse():
 
     alerts = []
     for asset, c in cur.items():
-        p = prev.get(asset)
-        if not p or not c["views"] or not p["views"]:
+        if not c["views"]:
             continue
         try:
-            dv = int(c["views"]) - int(p["views"])
             cv = int(c["views"])
         except ValueError:
             continue
-        # Threshold checks
-        if dv >= 50:
-            alerts.append(f"📈 {asset}: +{dv}v (now {cv})")
+        # Absolute-threshold alerts — fire on the current value alone, even
+        # when the previous snapshot was blank or the asset is new (long-forms
+        # were untracked before 2026-06-27). Gating these behind a parsed prior
+        # snapshot caused a false "no notable delta" when v3 long-form crossed
+        # 100v after suppression lifted.
         if cv >= 1000 and c["kind"] == "short":
             alerts.append(f"⭐ {asset}: crossed 1000 views!")
         if cv >= 100 and c["kind"] == "long":
             alerts.append(f"⭐ {asset} long-form: crossed 100v!")
+        # Delta alert — needs a comparable prior snapshot.
+        p = prev.get(asset)
+        if p and p["views"]:
+            try:
+                dv = cv - int(p["views"])
+                if dv >= 50:
+                    alerts.append(f"📈 {asset}: +{dv}v (now {cv})")
+            except ValueError:
+                pass
 
     summary = f"Δ {prev_ts.split('T')[1][:5]}→{cur_ts.split('T')[1][:5]}"
     if alerts:
