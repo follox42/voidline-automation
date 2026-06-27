@@ -230,4 +230,41 @@ redesign requires new selector path.
   the new submit flow
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
+      decent base than wait indefinitely
+
+## 2026-06-27 14:08 — SUPPRESSION LIFTED: v3 Tunguska long-form breaks out organically
+**Observation**: First clean full-stats pulse since 2026-06-13 (14-day gap; the
+prior pulse only parsed 2/12 assets). v3 Tunguska **long-form** (FacPhS3hNjU) is at
+**112 views / 98 unique / 3 likes** with **1.7k impressions at 3.3% CTR**. Studio
+reach-viewers analytics (voidline session, since-publish):
+- Traffic: **Browse features 50.0% + Suggested videos 44.6%**, search 2.7%, direct 2.7%.
+- 93.4% of impressions are "YouTube recommending your content" (browse/suggested).
+- **External sites = "insufficient traffic data"** -> NO Reddit / no external seed.
+- Suggested feed pairs it with established meteor/disaster docs (Willamette Meteorite
+  71%, Mystery Files, "Meteor Shower That Killed 10,000") — algo has classified the
+  content into the correct niche cluster.
+Other long-forms: v1 Mary Celeste 19v, v2 Dyatlov 2v (still dead). Shorts confirm the
+~300v ceiling: v2_twist 299v, v1_twist 281v.
+**Learning**:
+1. The "algorithmic suppression" that drove the whole 2026-06-13 strategy pivot has
+   **lifted on its own**. The v2/v3-era reading of "24 impressions / 0 clicks / 0%
+   CTR / all traffic sources insufficient" is gone — the algo now serves 1.7k
+   impressions and recommends the video into the meteor/disaster suggested cluster.
+2. This is **pure organic recovery** — the user's decision NOT to pull the Reddit
+   external seed lever is vindicated. The breakout came from the recommendation engine
+   correctly classifying the content, exactly the "3-6 month cold-start, wait it out"
+   thesis, showing first signal early (~J+19 post-publish).
+3. The breakout asset has the strongest AI cinematic thumb (Tunguska forest-flattened)
+   + clearest question-hook title — consistent with the thumb pivot (2026-06-04). v2
+   Dyatlov flat at 2v suggests thumb/title still matters more than recency.
+**Action**:
+- Runner logged "no notable delta" only because it diffed against the blank 06-13
+  snapshot; the absolute long-form >100v threshold + suppression-lift IS the signal.
+  TODO: make cron_runner treat a long-form crossing 100v absolute as a PULSE_ALERT,
+  not just deltas.
+- Strategy stays pure-organic — it's working. Prioritize finishing the v4 Roanoke
+  long-form (strong AI thumb + question hook) to ride the recovered recommendation
+  surface.
+- Watch FacPhS3hNjU daily: if impressions keep climbing past 2k the suggested-cluster
+  placement is sticky and we should double down on meteor/disaster-adjacent topics. — better to ship with a
   decent base than wait indefinitely
