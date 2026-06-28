@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 07:05 — Pulse resumed after 15-day silence: cron not firing + scraper fully blind
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a **15-day gap**.
+The hourly cron has not been firing on schedule (only manual/routine invocation
+brought it back). This run the anonymous curl scraper in `monitor_voidline.py`
+returned blank views for **0/15 assets** (worse than 2/12 on 06-13) — YouTube
+serves a consent/anti-scrape page to unauthenticated curl in the container, so
+the "no notable delta" the runner logged was on empty data, not a real signal.
+Recovered real public counts via camoufox-stealth (cookie_profile=voidline,
+navigate + evaluate on watch pages — bypasses the curl block cleanly; note
+cookies_restored=0, so this is public-page scraping, NOT authenticated Studio):
+- v3_answer (Short): **112v** (was 106v on 06-13) → +6v in 15 days = dead organic
+- v1_long_MaryCeleste (flagship long-form): **19v**, 0 likes
+- v1_bonus_briggs (Short, published 06-15): **319v**, 0 likes — best recent asset
+No PULSE_ALERT threshold crossed (no Short ≥1000v, no long ≥100v, no Δ≥50v).
+State drift: v1_bonus_briggs was still SCHEDULED in shorts_state.json despite
+publishing 06-15 (confirmed via oEmbed HTTP 200 + stealth) — corrected to PUBLIC.
+**Learning**:
+1. The hourly pulse cron is effectively NOT running unattended — 15 days dark.
+   Either the schedule was paused or never registered in this cloud env. Needs
+   a human to verify the cron is actually armed, or the routine is blind to spikes.
+2. The curl-based monitor is now a dead pipeline in the cloud (0/15). The
+   already-logged TODO (06-13) to port `monitor_voidline.py` to camoufox-stealth
+   is now mandatory, not optional — every pulse delta is currently meaningless.
+3. Organic growth remains flat across the board 15 days on (v3_answer +6v;
+   flagship long-form at 19v). Consistent with the pure-organic cold-start thesis
+   — still pre-breakout, no suppression escalation, but no traction either.
+**Action**:
+- Backfilled the 3 real stealth-recovered counts into stats_log.csv (07:05:12 snapshot).
+- Corrected v1_bonus_briggs → PUBLIC + actual_published_at in shorts_state.json.
+- FLAG for next human touch: confirm the hourly cron is armed (15-day silence),
+  and prioritize porting the monitor to camoufox-stealth so deltas are real.
+- No Flow generation this run; stayed within Studio HTTP limits (3 stealth navigates).
