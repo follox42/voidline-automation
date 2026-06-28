@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 15:05 — Pulse went dark 15 days; stats path fully blind
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 UTC — a ~15-day gap,
+so the "hourly" routine was not actually firing on schedule. The pulse itself
+ran clean (EXIT 0, no PULSE_ALERT — "Δ 14:02→15:04: no notable delta"), but it
+had nothing to compare: the anonymous-curl scraper returned blank views for
+**all 13 assets** this run (full blackout), worse than the 2/12 partial coverage
+on 2026-06-13 (when v2_hook=4v, v3_answer=106v parsed). The documented fallback
+is also down: the live camoufox-stealth `default` session is parked on Studio
+analytics for FacPhS3hNjU but `auth_check` returns auth_valid=false / status=dead
+→ re-login required. Net: no working path to channel stats right now.
+**Learning**:
+1. The monitoring stack is fully blind. Two independent failures stacked:
+   (a) anon curl now 0% coverage, (b) voidline Studio cookies expired. Either
+   alone is survivable; together the pulse produces no signal at all.
+2. A 15-day silence means the schedule trigger itself is suspect, not just the
+   scraper — worth verifying the cron/routine is actually armed hourly.
+3. The 2026-06-13 TODO (port monitor_voidline.py to camoufox-stealth) would not
+   have helped this run anyway, because the stealth cookies are now dead too —
+   the cookie refresh is the upstream blocker.
+**Action**:
+- Logged and exited cleanly per runbook (blocker = expired cookies + dead anon
+  scraper). Did NOT attempt interactive re-login (out of scope / needs user).
+- No Studio analytics pulled (no PULSE_ALERT to justify it; auth dead anyway).
+  Spend this pulse: 1 stealth status + 1 auth_check, 0 Flow gen — within limits.
+- NEXT: user to refresh the voidline Studio cookie profile (re-login), then a
+  follow-up pulse can re-baseline. Until cookies are live, every pulse will keep
+  reporting "no notable delta" purely because it sees no data — not because the
+  channel is flat.
