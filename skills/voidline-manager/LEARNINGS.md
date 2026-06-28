@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 22:06 — Pulse resumes after 15-day silence; Studio auth DEAD, scraper fully blind
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 15-day gap (the
+routine did not fire for ~2 weeks). Pulse ran clean (exit 0) but every one of
+the 13 tracked assets returned BLANK views, including v3_answer which read 106v
+on 06-13. No PULSE_ALERT — but "no delta" is meaningless here because there is
+zero data to delta against. Stealth `status` shows the `voidline` Studio
+session (`default`) still alive, parked on Studio analytics for the v3 long-form
+(FacPhS3hNjU), idle ~1h. But `auth_check` returns **status=dead, auth_valid=false,
+"Re-login required"** — the Studio cookies have expired. That is the root cause:
+the anonymous-curl scraper gets the consent/anti-scrape page AND the logged-in
+session can no longer authenticate, so the channel is effectively unmonitored.
+Separately, oEmbed (public, session-safe — no auth needed) confirms 4 assets
+PUBLIC: v1_bonus_briggs (vZ68HlWfT-Q, was SCHEDULED 06-15 → auto-published 13
+days ago, stale in state), plus the 3 long-forms v1/v2/v3 (sB8VXu2OHtY,
+pM-u_8ONjI0, FacPhS3hNjU) which the monitor now tracks.
+**Learning**:
+1. Cookie expiry is the silent killer for this whole pipeline: it kills BOTH the
+   logged-in analytics read AND (indirectly) any posting. auth_check=dead is the
+   canonical "exit cleanly" signal — do NOT spend Studio HTTP actions scraping a
+   dead session; they will only return the login wall.
+2. The state-drift pattern repeats exactly as 06-13: a SCHEDULED Short
+   auto-publishes and YouTube never updates the state file. oEmbed reconciliation
+   remains mandatory and is auth-independent (works even with dead cookies).
+3. A 15-day routine gap means NO daily reconciliation ran for two weeks — drift
+   accumulates silently. The hourly pulse being down is itself a monitored
+   condition worth surfacing.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=2026-06-15 in
+  shorts_state.json.
+- BLOCKER LOGGED, exited cleanly per hard-rule: `voidline` Studio cookies expired,
+  re-login required. Used only 1 Studio HTTP action (auth_check); 0 Flow gens.
+- NEXT: user must re-auth the `voidline` cookie_profile before any analytics or
+  posting can resume. Until then the pipeline runs blind. The standing TODO to
+  port monitor_voidline.py to fetch via camoufox-stealth is moot while auth is
+  dead — re-login first.
+- Investigate why the hourly routine did not fire for 15 days (06-13→06-28).
