@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 17:05 — Pulse resumes after 15-day gap; scraper now fully blind + drift reconciled
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 15-day gap
+(routine effectively dormant). This run the anonymous-curl monitor parsed
+views for **0 of 13 assets** (vs 2/12 on the last run: v2_hook 4v, v3_answer
+106v). Even v3_answer, which parsed at 106v before, now returns blank.
+Runner reported "no notable delta" — but that verdict is meaningless when
+both snapshots are empty, so NO real PULSE_ALERT signal exists this run.
+Separately, `v1_bonus_briggs` (vZ68HlWfT-Q, scheduled 06-15) was still marked
+SCHEDULED 13 days past its publish time; oEmbed probe returned 200 → it
+auto-published silently. The 3 long-forms now in the tracking list
+(sB8VXu2OHtY, pM-u_8ONjI0, FacPhS3hNjU) all oEmbed 200 (PUBLIC, as expected).
+**Learning**:
+1. The anonymous-curl stat path in `monitor_voidline.py` has degraded from
+   sparse (2/12) to fully blind (0/13). YouTube is now serving the
+   consent/anti-scrape wall to every unauthenticated request from the
+   container. Pulse deltas are NON-FUNCTIONAL until the monitor is ported to
+   fetch via camoufox-stealth (cookie_profile=voidline) or yt-dlp. This is no
+   longer a "TODO when convenient" — it's the blocker on the whole pulse loop.
+2. The silent auto-publish drift (KNOWN_BAD: trusting state reflects reality)
+   recurred exactly as predicted — oEmbed 200/blank remains the cheapest,
+   session-safe reconciliation probe and caught it again.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at 2026-06-15.
+- PRIORITY for next maintenance window: port `monitor_voidline.py` stats
+  fetch to camoufox-stealth so pulses regain view visibility. Until then
+  every pulse is blind and PULSE_ALERT cannot fire.
+- Did NOT spend any Studio HTTP actions or Flow generations this run (within
+  hard limits) — no alert to justify deeper analytics scraping.
