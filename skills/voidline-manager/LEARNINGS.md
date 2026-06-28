@@ -231,3 +231,58 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 23:10 — LONG-FORM BREAKOUT: Tunguska crosses 100v, suppression lifted
+**Observation**: First HOURLY PULSE since 2026-06-13 (15-day routine gap).
+Two infra facts + one strategic breakout.
+1. **Anonymous stat pulls are 100% DEAD from the cloud container.** The
+   `monitor_voidline.py` curl scrape returned blank for ALL 13 assets (worse
+   than the 2/12 on 06-13), and `yt-dlp` (installed fresh) was rejected with
+   "Sign in to confirm you're not a bot" on every video — the datacenter IP is
+   flagged. oEmbed still works (200/401 public-status probe only, no counts).
+2. **Real counts pulled via the authenticated `voidline` Studio session**
+   (camoufox-stealth `default` session, already warm on Studio; note
+   `auth_check` reported "dead" — FALSE NEGATIVE, it probes a posting endpoint,
+   Studio loaded fine).
+3. **v3_long_Tunguska (FacPhS3hNjU) = 112 views** — the channel's FIRST
+   long-form over 100v. Studio reach: **1,700 impressions** (vs the 24-impression
+   "minimum test pool" that earlier long-forms got on 06-04), **3.1% CTR**,
+   102 unique viewers, **7:13 avg view duration on a 13:12 video (~55% ret)**.
+   Traffic = **50% Browse + 44.6% Suggested videos**, search 2.7%,
+   **External = "données insuffisantes"**. Suggested alongside established docs:
+   Willamette Meteorite (70%), "Meteor Shower That Killed 10,000 People",
+   "Mystery Files". Short record also broke: **v1_bonus_briggs 320v** (new #1,
+   beats the v2_twist 299 / v1_twist 281 plateau). Existing shorts otherwise
+   flat (v1_twist 274→281, v2_twist 298→299, v3_answer 106→113 over ~3wk).
+**Learning**:
+1. **Algorithmic suppression has LIFTED.** The burst-mode penalty (9 Shorts/12d)
+   cooldown predicted to clear J+10–14 on 06-13 has expired: long-form impression
+   pool jumped ~70× (24 → 1,700). This is the cooldown-recovery we were waiting on.
+2. **The breakout is PURE ORGANIC, no external seed** (external traffic =
+   insufficient data). 44.6% from *suggested videos* means the algo finally
+   clustered Voidline's Tunguska doc into the meteor/space-disaster suggestion
+   graph next to LEMMiNO-tier channels. This vindicates the 06-13 decision to
+   skip the Reddit seed and grow purely organic — the doc found its cluster on
+   retention alone (7:13 avg view is the lever, not the 3.1% CTR which is still
+   mediocre).
+3. The 320v briggs Short re-confirms QUESTION hooks ("Why Did the Teetotal
+   Captain Run?") break the ~300 narrative ceiling.
+4. A new **untracked DRAFT** Short exists in Studio — "9 Barrels Empty. The
+   Mary Celeste Vapor Theory #shorts" (Brouillon) — not in shorts_state.json.
+**Action**:
+- Reconciled state drift: v1_bonus_briggs SCHEDULED→PUBLIC (auto-published
+  ~06-15, now 320v). Backfilled a REAL snapshot into stats_log.csv so the next
+  pulse computes a true delta instead of blank-vs-blank.
+- PRIORITY (next session, not this pulse — Studio-action budget): port
+  `monitor_voidline.py` to pull via the authenticated camoufox-stealth Studio
+  table (the anon path is permanently dead). Until then every pulse is blind
+  and must hand-pull, as this one did.
+- Strategy: the suppression lift + suggested-cluster placement is the green
+  light to RESUME long-form production (v4 Roanoke) — the algo is now willing
+  to distribute. Ride the Tunguska momentum: consider an end-screen/playlist
+  linking Tunguska → the next meteor/disaster long-form to capture the 44.6%
+  suggested traffic.
+- Track v3_long_Tunguska hourly now — if it keeps climbing past 200–300v it's a
+  genuine breakout, not a one-off impression dump.
+- Resolve the untracked "9 Barrels Empty" draft: either finish+schedule it or
+  delete, and add it to shorts_state.json so state matches Studio.

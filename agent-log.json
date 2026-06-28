@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-28 23:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219223:04: no notable delta"
+    },
+    {
+      "t": "2026-06-28 23:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 23:04\u219223:05: no notable delta"
+    },
+    {
+      "t": "2026-06-28 23:10 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "REAL data via authenticated voidline Studio session (anon scraper + yt-dlp both bot-blocked). LONG-FORM BREAKOUT: v3_long_Tunguska 112v / 1.7k impressions / 3.1% CTR / 7:13 avg view (55% ret). Traffic 50% browse + 44.6% suggested, external=insufficient -> PURE ORGANIC, suppression lifted. Suggested next to Willamette Meteorite, Mystery Files (meteor/disaster cluster). Short record: v1_bonus_briggs 320v (new #1, beats v2_twist 299 plateau). Existing shorts flat (v1_twist 281, v2_twist 299, v3_answer 113)."
     }
   ]
 }
