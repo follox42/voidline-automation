@@ -231,3 +231,46 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 13:05 — v3 Tunguska long-form breakout: 112v, pure algorithmic
+**Observation**: First pulse to run in 15 days (last snapshot 2026-06-13 14:02,
+gap = hourly cron was not firing). New snapshot shows real organic growth that
+accrued during the gap:
+- **v3_long_Tunguska (FacPhS3hNjU)**: 112 views / 100 unique viewers — crossed
+  the 100v long-form threshold. Studio analytics (period since-publish, data
+  avail 7–27 Jun): 1.7k impressions, CTR 3.2%, avg view duration **7:13 on a
+  13:12 video ≈ 55% retention**. Traffic sources: **Browse 50.0% + Suggested
+  44.6% = 94.6% algorithmic**; Direct 2.7%; YT Search 2.7%; external sites
+  "données insuffisantes" (NO Reddit/external referral). Suggested alongside
+  established meteor/disaster videos (Willamette Meteorite 70%, "Meteor Shower
+  That Killed 10,000 People" 8%).
+- Other long-form: v1_MaryCeleste 20v, v2_Dyatlov 2v.
+- Shorts now with traction: v1_bonus_briggs 320v, v2_twist 299v, v1_twist 281v,
+  v3_answer 113v, v1_answer 87v. None near the 1000v Short threshold.
+**Learning**:
+1. **Suppression is OVER / was never persistent.** The 06-13 fear ("v4 still 0v
+   at J+7 → suppression persistent") is refuted — YouTube is now actively
+   distributing v3 long-form via Browse + Suggested (94.6%). The pure-organic
+   path chosen on 06-13 is working; no external seed was needed.
+2. 55% retention on a 13-min doc is the strongest signal — that's what earns the
+   suggested-feed placement next to large meteor channels. Retention, not CTR,
+   is carrying this. CTR 3.2% is the weak link (typical healthy = 4–10%) →
+   thumbnail/title is the lever to lift further.
+3. **Runner false-negative**: cron_runner pulse logged "no notable delta" and did
+   NOT fire PULSE_ALERT, even though a long-form crossed 100v. Cause: the 06-13
+   baseline rows had EMPTY views (monitor couldn't read them then), so the delta
+   loop `continue`s on `not p["views"]` and the absolute-threshold checks
+   (cv>=100 long, cv>=1000 short) never run because they sit *after* that guard.
+   Absolute-value thresholds should be evaluated even when the prior snapshot is
+   missing/empty.
+**Action**:
+- Surface to Nolann (push notification): long-form breakout + 15-day pulse gap.
+- TODO (next code-touch, not this pulse — keeps Studio/push limits): in
+  cron_runner.run_pulse, move the `cv>=1000 short` / `cv>=100 long` absolute
+  checks ABOVE the `not p["views"]` continue, so a fresh-baseline crossing still
+  alerts. Also investigate why the hourly cron stopped firing 06-13→06-28.
+- Lever to compound the win: re-cut v3 Tunguska thumbnail/title to lift CTR off
+  3.2%; the algorithm is already giving impressions (1.7k) — better CTR converts
+  them directly to views.
+- v4 Roanoke: ship it — the channel is now in an algorithmic-distribution phase,
+  a new long-form should ride the same Browse/Suggested surface.
