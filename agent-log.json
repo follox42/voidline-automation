@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-28 20:04 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219220:04: no notable delta"
+    },
+    {
+      "t": "2026-06-28 20:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 20:04\u219220:04: no notable delta"
+    },
+    {
+      "t": "2026-06-28 20:09 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Runner mis-logged 'no notable delta' \u2014 anon-curl scraper returned 0/13 assets (cloud anti-scrape). Pulled real numbers via authenticated Studio session (voidline). THRESHOLD CROSSED: v3_long_Tunguska (FacPhS3hNjU) = 112v (>100v long-form). First long-form ever past 100v, 100% ORGANIC \u2014 reach 1.7k impr / 3.1% CTR / ~55% retention (7:13 of 13:12) / 44.6% suggested-videos (meteor-doc cluster) / external referral = NONE (no Reddit). Bottleneck = CTR/thumbnail, not reach. Shorts recovered: v1_bonus_briggs 320v = new best (breaks ~300 plateau); total shorts ~1236v. State drift fixed: briggs SCHEDULED->PUBLIC. Real snapshot injected to CSV."
     }
   ]
 }

@@ -231,3 +231,50 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 20:05 — PULSE: first long-form ORGANIC breakout (Tunguska 112v, no seed)
+**Observation**: Pulse ran after a ~15-day gap (last pulse 06-13 14:02). The
+anon-curl scraper in `monitor_voidline.py` returned 0/13 assets this run (full
+regression from 2/13 on 06-13 — YouTube serving consent/anti-scrape to
+unauthenticated curl in the container), so the runner logged a meaningless
+"no notable delta". Pulled REAL numbers from the live authenticated Studio
+session (cookie_profile=voidline, was already parked on the channel analytics).
+Headline: **v3_long_Tunguska (FacPhS3hNjU) = 112 views** — crosses the >100v
+long-form alert threshold. This is the FIRST long-form ever past 100v.
+Reach analytics (since publish, J+20):
+  - Impressions 1.7k · CTR 3.1% (3.2% from recommendations)
+  - 112 views / 102 unique · avg view duration 7:13 of 13:12 = ~55% retention
+  - Traffic: 50.0% browse features + 44.6% suggested videos + 2.7% search + 2.7% direct
+  - Suggested-from: 70% "The Willamette Meteorite", + meteor/disaster docs cluster
+  - **External sites/apps: insufficient data → ZERO external referral. No Reddit.**
+Shorts also fully recovered: v1_bonus_briggs = **320v** (new all-time best Short,
+breaks the ~300 plateau: v2_twist 299, v1_twist 281). Total shorts ≈ 1,236v.
+v1_bonus_briggs was stale SCHEDULED in state but is PUBLIC since 06-15 (drift
+corrected). A new draft Short "9 Barrels Empty — Vapor Theory" exists, unpublished.
+**Learning**:
+1. The "long-forms are dead under suppression" narrative is OVER. Tunguska broke
+   suppression purely organically — 1.7k impressions delivered, 96.4% of them from
+   YouTube *recommending* the content, and the algo is suggesting it next to
+   LEMMiNO-tier meteor/impact docs. This validates the user's call to NOT pull the
+   Reddit seed — organic cold-start is working, just on the 3-6 month timeline.
+2. The bottleneck is now CTR (3.1%), NOT reach and NOT retention. Impressions are
+   healthy and ~55% retention is strong for a 13-min doc. The single highest-leverage
+   move is the THUMBNAIL/title, not more external promotion. This is exactly the
+   thumb-quality lesson from 06-04 (AI cinematic > photo archive) — Tunguska's thumb
+   is getting impressions but under-converting.
+3. The anon-curl monitor is now fully blind in the cloud. Hourly pulse cannot detect
+   spikes from the CSV until `monitor_voidline.py` is ported to the camoufox-stealth
+   MCP (or yt-dlp). The runner's "no notable delta" is a false-negative whenever the
+   scraper returns blanks — needs a guard that flags "0 assets parsed" as a degraded
+   run, not a clean one.
+**Action**:
+- Injected a real-data snapshot into stats_log.csv (13 assets) so weekly-review has
+  a true baseline; logged a corrected PULSE_ALERT to agent-log.json.
+- PRIORITY: re-thumbnail v3 Tunguska long-form (AI cinematic, higher contrast/face/
+  scale cue) to lift CTR above ~4-5% — this is the cheapest lever on a video the algo
+  already likes. Same treatment for the next long-form pre-ship.
+- TODO (not this pulse — Studio HTTP budget): port monitor to stealth MCP + add the
+  "0 parsed = degraded" guard to cron_runner.run_pulse so future blanks don't read
+  as healthy.
+- Keep producing: pipeline still thin (1 draft Short staged). The organic signal is
+  real now — feed it.
