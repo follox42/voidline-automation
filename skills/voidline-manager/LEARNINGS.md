@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 10:05 — Long-form suppression LIFTED: Tunguska breaks 100v, 95% algorithmic
+**Observation**: First pulse in 15 days (06-13 → 06-28). v3 long-form Tunguska
+"The Day the Siberian Sky Exploded — Tunguska 1908" (FacPhS3hNjU) went from
+blank/suppressed on 06-13 to **112 views / 100 unique viewers**. Studio reach
+(period-since-publish, voidline cookie):
+- Impressions **1.7k**, CTR **3.2%**, avg view duration **7:13** on a 13:12 video
+  (~55% retention) → 6.51h watch time from impressions.
+- Traffic sources: **Browse 50.0% + Suggested videos 44.6% = 94.6% pure YouTube
+  recommendation**. Direct 2.7%, Search 2.7%, External sites "insufficient data".
+- 94% of impressions came from YouTube recommending the content (not search/external).
+- Top suggesting video = "The Willamette Meteorite | Largest Meteorite found in
+  North America" (70% of suggested traffic), then "The Meteor Shower That Killed
+  10,000 People" (8%), "Largest Unexplained Explosion in History • Mystery Files"
+  (4%). Placement is in the meteor/impact-event doc cluster.
+- Other long-forms still flat: v1 MaryCeleste 20v, v2 Dyatlov 2v.
+**Learning**:
+1. The algorithmic suppression flagged on 06-13 has LIFTED for at least one
+   long-form. The lift is NOT from any external seed — external referral is
+   "insufficient data", i.e. **zero Reddit/external traffic**. This is a clean
+   validation of the 06-13 pure-organic pivot: the algo eventually surfaced the
+   long-form on its own (~3 weeks post-publish).
+2. The unlock vector is SUGGESTED-VIDEO niche adjacency. The Tunguska doc earns
+   its slot next to meteorite/impact docs (Willamette Meteorite is the single
+   biggest feeder). Topical adjacency to an established video in the niche is the
+   lever, not thumbnail/title virality (CTR is only 3.2%).
+3. 55% avg-view retention on a 13-min long-form is what kept it in the suggestion
+   pool — retention, not CTR, is carrying this. Future long-forms should optimise
+   first-half retention to stay recommendable.
+**Action**:
+- DO NOT seed Reddit — organic is working, stay the course (pure-organic pivot confirmed).
+- v4 Roanoke + future long-forms: lean into topic clusters with a strong adjacent
+  anchor video (find the "Willamette Meteorite" equivalent for each topic) and
+  keep runtime ≤13min to protect retention.
+- Monitor whether v1 MaryCeleste / v2 Dyatlov also break out on the same ~3-week
+  delay; if only Tunguska does, the adjacency-anchor theory is confirmed.
+- STATE DRIFT (same KNOWN_BAD as 06-13): v1_bonus_briggs (vZ68HlWfT-Q) was still
+  marked SCHEDULED for 06-15 in shorts_state.json but is live at **320v** (oEmbed
+  200, top performer of the catalogue). Reconciled → PUBLIC this run.
