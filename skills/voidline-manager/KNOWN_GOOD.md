@@ -107,3 +107,26 @@ runs/<run_id>/
 - ✅ Shorts: HOOK Monday + ANSWER Wednesday (max 2 per release)
 - ✅ Pre-ship gate: youtube-virality-expert score ≥ 75 mandatory
 - ✅ Catalogue depth target: 10+ long-forms before expecting algo whitelist
+
+## 2026-06-28 — Confirmed patterns (Weekly Review #2)
+
+### Question/contradiction-hook Short → Shorts-feed amplification (CONFIRMED 3rd time)
+Three question/contradiction-hook Shorts now sit in a tight 280-320v band, all
+amplified ~95% through the Shorts feed on 60-74% avg-viewed:
+- "Why Did the Teetotal Captain Run?" (v1_bonus_briggs) — 320v / 60.3% viewed
+- "Every Dyatlov Pass Theory Failed for 62 Years" (v2_twist) — 299v / 67.7%
+- "Captain Morehouse Boards an Empty Ship" (v1_twist) — 281v / 74.1%
+→ Standalone curiosity-gap hook in frame 0 is the single biggest Shorts lever.
+  % viewed drives feed distribution. This is the locked default for all Shorts.
+
+### Long-form organic breakthrough (NEW validated pattern)
+v3 Tunguska long-form: 1.7k impressions, 3.1% CTR, 112v, **Browse 50% +
+Suggested 44.6%**, co-listed beside established docu channels. Cold-start
+long-form suppression lifts ~J+20-30 with catalogue depth alone (no external
+seed). Once lifted, long-form is the highest-leverage asset (the Suggested
+graph compounds). Prioritize long-form production once the channel has 3+ live.
+
+### Audience profile (locked, for scripting/targeting)
+100% male, 79.3% aged 65+, 20.8% aged 55-64, 99.8% new viewers. The mystery/doc
+niche reaches an older male demographic. Script for clarity and narration
+quality (this demo rewards it with high AVD); do not expect Shorts likes/engagement.

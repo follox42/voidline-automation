@@ -19,6 +19,31 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-28 18:02 UTC",
+      "action": "WEEKLY_REVIEW",
+      "detail": "Week ending 2026-06-13. Best: v2_hook (+0v). Worst: v3_answer (+0v). "
+    },
+    {
+      "t": "2026-06-28 18:10 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED in state but published 06-15 and is now the top performer (320v, 60.3% avg-viewed, 95.9% Shorts feed). Set status=PUBLIC + actual_published_at. Wrote fresh real-number stats snapshot to stats_log.csv from authenticated Studio."
+    },
+    {
+      "t": "2026-06-28 18:10 UTC",
+      "action": "ESCALATION",
+      "detail": "POSITIVE: v3 Tunguska LONG-FORM crossed 100v (112v, 102 unique, 1.7k impressions, 3.1% CTR) via Browse 50% + Suggested 44.6% (96.4% of impressions = YT recommending). Co-listed beside established docu channels. Cold-start long-form suppression has LIFTED organically (~J+20-30, no external seed). Overturns KNOWN_BAD 'long-forms 0v under persistent suppression'."
+    },
+    {
+      "t": "2026-06-28 18:10 UTC",
+      "action": "ESCALATION",
+      "detail": "OPERATIONAL: routine outage \u2014 no automated run since 2026-06-13 (15 days). No pulse/daily/weekly, Shorts pipeline dry since 06-15, v4 Roanoke blocked since 06-13. Re-arm cron + unblock v4 = P0 next week."
+    },
+    {
+      "t": "2026-06-28 18:10 UTC",
+      "action": "WEEKLY_REVIEW_FULL",
+      "detail": "28d: 1,367 views / 18.7h / +3 subs / 650 monthly audience; last 48h only 8 views (plateau). Demo 100% male, 79.3% aged 65+. Best Short briggs 320v (question hook, 60.3% viewed). Worst v2_answer 34v (12.7% viewed retention cliff, ANSWER clip with no standalone hook). No sub milestone (still <50). Report: seeds/weekly-reports/2026-06-28.md."
     }
   ]
 }

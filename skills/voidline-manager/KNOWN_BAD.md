@@ -111,3 +111,22 @@ Validated anti-patterns. NEVER do these.
 - ❌ Swapping the thumbnail mid-suppression — algo has already de-prioritized
 - ❌ Title/description edits — same as above
 - ❌ Delete + re-upload — the channel-level flag persists
+
+## 2026-06-28 — Corrections + new anti-patterns (Weekly Review #2)
+
+### CORRECTION: "Long-forms get 0v under persistent suppression" — RETIRED
+The earlier 2026-06-13 claim that cold-start long-form suppression is permanent
+(and that delete+reupload / thumb swaps can't recover it) was WRONG about
+durability. The v3 Tunguska long-form recovered organically to 112v via
+Browse 50% + Suggested 44.6% (~J+20-30) with NO external seed. Cold-start
+long-form suppression is a TEMPORARY test-throttle, not a permanent flag — it
+lifts with catalogue depth + time. Do not panic-declare a long-form "dead"
+before ~J+30.
+
+### NEW: Standalone ANSWER/payoff Shorts
+- ❌ Publishing the "ANSWER" cut of a 3-part Short as a standalone feed item.
+  v2_answer "The 2021 Paper That Solved Dyatlov Pass" = 34v / 12.7% avg-viewed
+  (0:07). v3_twist similar (28v / 31%). They assume prior context, open with no
+  self-contained hook, and cliff in the first 3s → the Shorts feed test-pool
+  swipe-away rate throttles distribution. Every Short must open with a
+  standalone question/contradiction hook, or don't ship it.

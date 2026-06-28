@@ -231,3 +231,55 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-13 — Auto weekly review
+**Observation**: Week ending 2026-06-13. Best: v2_hook (+0v). Worst: v3_answer (+0v). 
+**Auto-action**: manager reviewed. Manual interventions logged separately.
+
+
+## 2026-06-28 — Weekly Review #2 (routine resumed after 15-day outage)
+**Observation**: First weekly-review to run since 2026-06-13 — the cron had
+been dark for 15 days (no pulse/daily/weekly, no uploads, Shorts pipeline dry
+since 06-15). Pulled live Studio analytics for the channel + best/worst/long.
+Channel 28d: 1,367 views, 18.7h, +3 subs, 650 monthly audience, BUT only 8
+views in the last 48h (low-velocity plateau). Demographic: 100% male, 79.3%
+aged 65+, 20.8% aged 55-64, 99.8% new viewers.
+
+**Learnings**:
+1. **Shorts-feed reach is gated almost entirely by swipe-through (% viewed),
+   and standalone ANSWER Shorts die.** Best Short = v1_bonus_briggs "Why Did
+   the Teetotal Captain Run?" (320v, 60.3% avg-viewed, 95.9% Shorts feed) — a
+   contradiction hook that stands alone. Worst with real exposure = v2_answer
+   "The 2021 Paper That Solved Dyatlov Pass" (34v, 12.7% avg-viewed / 0:07).
+   The algo gave v2_answer a feed test pool (91.2%) but the first-3s cliff
+   throttled it. The 9× spread between them is pure retention. ANSWER/payoff
+   clips assume prior context, have no self-contained hook, and cliff.
+2. **Cold-start long-form suppression is TEMPORARY, not permanent.** The v3
+   Tunguska long-form — previously logged as "0v / suppressed / persistent" —
+   now has 1.7k impressions, 3.1% CTR, 112 views (102 unique), driven by
+   Browse 50.0% + Suggested 44.6% (96.4% of impressions are YT recommending
+   it). It is co-listed in the suggested feed of established docu channels
+   (Willamette Meteorite, Mystery Files, Disaster Records). This OVERTURNS the
+   KNOWN_BAD "long-forms get 0v until ~10k Short views" and the
+   "suppression persistent" narrative. Lift happened ~J+20-30 with no external
+   seed — pure catalogue depth + time.
+3. **Audience is 100% male and ~80% over 65.** Far older than assumed. Explains
+   0-like Shorts (older viewers don't tap like) but strong long-form AVD
+   (7:13 avg view on the 13:12 Tunguska doc). Implication: long-form is where
+   this demo over-indexes — lean into it; script for clarity over fast-cut
+   pacing.
+
+**Action**:
+- P0: re-arm the cron routines (verify the claude.ai/code schedule actually
+  fires — 15-day silence means it isn't).
+- P0: unblock + ship v4 Roanoke long-form (Flow thumb blocker open since 06-13)
+  — long-form is now the proven growth lever.
+- P1: stop standalone ANSWER Shorts; enforce a self-contained question hook on
+  every Short (cutter v2 hook card) or drop ANSWER cuts.
+- P1: refill the dry Shorts pipeline at cold-start cadence (<=2-3/wk, question
+  hooks only).
+- P2: lift long-form CTR 3.1% -> 4-6% via thumbnail iteration (impressions are
+  flowing; CTR is now the bottleneck).
+- State reconciled: v1_bonus_briggs SCHEDULED -> PUBLIC (published 06-15, top
+  performer 320v). Fresh stats snapshot written to stats_log.csv.
+- Report: seeds/weekly-reports/2026-06-28.md
