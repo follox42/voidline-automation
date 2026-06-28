@@ -231,3 +231,52 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 11:05 — v3 Tunguska long-form BREAKS OUT — suppression lifted, first organic long-form on the channel
+**Observation**: HOURLY PULSE flagged `⭐ v3_long_Tunguska long-form: crossed 100v`.
+Studio reach tab (FacPhS3hNjU, "The Day the Siberian Sky Exploded — Tunguska 1908",
+13:12, since-publish 8 juin→aujourd'hui):
+- **Impressions 1.7 k** (vs ~3 imp / 0% CTR on every prior long-form — the algo is
+  finally distributing it), **CTR 3.2 %**, **112 vues / 100 spectateurs uniques**,
+  3 likes.
+- **Durée moyenne de visionnage 7:13 sur 13:12 ≈ 55 % de rétention** — fort pour un
+  doc de 13 min; c'est ce qui entretient la boucle de recommandation (6.51 h de
+  watch-time générées par les impressions, 94 % des impressions = recommandations
+  YouTube).
+- **Sources de trafic : Fonctionnalités de navigation 50,0 % + Suggestions 44,6 %
+  = ~95 % algorithmique pur.** Recherche 2,7 %, Direct/inconnu 2,7 %, **Sites
+  externes : "données insuffisantes" → ZÉRO referral externe.**
+- **Classification de niche verrouillée** : suggérée à côté de *The Willamette
+  Meteorite* (70 %), *The Meteor Shower That Killed 10,000 People* (8 %), *The
+  Largest Unexplained Explosion in History • Mystery Files* (4 %) — l'algo a
+  correctement rangé la vidéo dans le cluster météore/impact aux côtés de chaînes
+  établies.
+- Contexte : v1_long 20 v, v2_long 2 v sur le même pulse — Tunguska est seule à
+  percer.
+**Learning**:
+1. **La suppression n'était PAS permanente.** Le doc-niche cold-start a une longue
+   latence : v3 était à 0 v à J+7 (cas d'école de suppression), il perce à J+20.
+   "0 v à J+7" ≠ "mort" — c'est la queue de distribution normale. Ne pas paniquer
+   ni downscaler sur un long-form à 0 v avant ~3 semaines.
+2. **Le pivot pur-organique est validé empiriquement.** Le breakout est 95 %
+   Browse+Suggested, 0 % externe. Aucun seed Reddit n'a été nécessaire — le levier
+   externe qu'on a refusé de tirer n'était pas la condition du breakthrough.
+3. **La rétention est le moteur.** 55 % sur 13 min est ce qui retient l'algo dans
+   la boucle suggested. Le cutter v2 (hook fort) et le scripting sont ce qui paie,
+   pas une astuce de distribution.
+4. **Niche-fit confirmé** : être suggéré à côté de Willamette/Mystery Files prouve
+   que YouTube classe le contenu dans le bon cluster compétitif.
+**Action**:
+- Pas d'intervention requise — laisser tourner, ne RIEN toucher sur cette vidéo
+  (titre/thumb/tags) pendant qu'elle est dans la boucle suggested : un edit reset
+  souvent la vélocité.
+- Capitaliser sur le cluster gagnant : **v4/v5 devraient pencher vers le registre
+  météore/impact/explosion** (le cluster qui convertit déjà en Suggested) plutôt
+  que disparition-de-personnes. Roanoke (v4) est hors-cluster — envisager un sujet
+  impact/cosmique pour v5 pour rester dans la veine qui marche.
+- Surveiller au prochain pulse si la pente Impressions continue de monter (signe
+  que l'algo élargit le pool) — si CTR tient ≥3 % avec impressions en hausse, c'est
+  un vrai départ et non un pic.
+- Le seuil d'alerte long-form (100 v) a fonctionné mais a un quirk : il n'a flashé
+  qu'au 2ᵉ snapshot identique (11:05) car le snapshot précédent (06-13) avait des
+  views vides — non bloquant, mais à garder en tête.
