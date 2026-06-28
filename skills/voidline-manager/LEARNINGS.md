@@ -231,3 +231,41 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 09:05 — LONG-FORM SUPPRESSION LIFTED: v3 Tunguska algo-surfaced at 112v
+**Observation**: First full-coverage stats snapshot since 2026-06-13 (prior pulses
+returned blanks). v3 long-form Tunguska (FacPhS3hNjU) is at **112 views / 100 unique
+/ 3 likes** — crosses the long-form >100v pulse threshold. Studio analytics (since
+publish, 20 j): **1.7k impressions, 3.2% CTR, avg view duration 7:20 on a 13:12 video
+(~55% retention)**. Traffic sources = Browse features **50.0%** + Suggested videos
+**44.6%** + Direct 2.7% + YT Search 2.7%. External sites/apps = "insufficient data"
+(NO Reddit / NO external seed). **96.6% of impressions came from YouTube recommending
+the content**, surfaced alongside established docs (Willamette Meteorite 71.4% of
+suggested, "Meteor Shower That Killed 10,000," "Largest Unexplained Explosion • Mystery
+Files"). Meanwhile the other two long-forms stay dead (v1 MaryCeleste 19v, v2 Dyatlov 2v).
+**Learning**:
+1. The long-form algorithmic suppression DID lift — ~3 weeks post-publish, not the
+   "0v forever under suppression" thesis that dominated the 06-13 LEARNINGS. The
+   recovery is real and it is PURE ORGANIC: zero external referral, 94.6% of views
+   from YouTube's own browse+suggested surfaces. This validates the 2026-06-13
+   "pure organic growth, no Reddit seed" strategic pivot.
+2. The lever was RETENTION, not seeding. 7:20 avg watch (~55%) on a 13-min doc is the
+   signal that made the algo start recommending it next to LEMMiNO-tier meteorite/disaster
+   content. v1 (19v) and v2 (2v) never crossed the retention bar and stayed dead.
+3. v3 is the channel's FIRST long-form picked up by suggested-video traffic. Topic
+   adjacency matters: Tunguska sits in a dense, high-traffic doc cluster
+   (meteorite/explosion/disaster) — Mary Celeste & Dyatlov are thinner clusters.
+**Action**:
+- Pulse threshold logic is misleading here: runner logged "no notable delta" because
+  it diffed against the blank 06-13 baseline. Treat the FIRST non-blank snapshot per
+  asset as a fresh baseline, not a zero-delta. (TODO: fix cron_runner delta to skip
+  blank priors.)
+- Strategy: lean into the Tunguska-cluster win. v4/v5 long-form topics should favor
+  DENSE doc clusters with strong suggested-video adjacency (cosmic/disaster/unexplained-
+  explosion) over thin standalone mysteries, and gate on retention (target ≥50% avg).
+- Secondary find: Short v1_bonus_briggs = **319v** — first Short to break the ~300v
+  plateau noted repeatedly in prior entries (v1 twist 281, v2 twist 299). Question-hook
+  + cutter v2 formula confirmed pushing past the ceiling. Watch it next pulse.
+- NOTE: camoufox `auth_check` reports posting auth = "dead" (re-login needed before any
+  post/reply), but READ access to Studio analytics is intact. Reads OK; do not post
+  until re-auth.
