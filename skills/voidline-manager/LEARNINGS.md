@@ -231,3 +231,31 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 — Daily-plan (Sunday long-form day): cadence broken, pipeline empty
+**Observation**: Sunday 2026-06-28 is a long-form publish day per cadence (1/week,
+Sun 17:00 UTC). Verified the live `voidline` Studio session (content filter
+VISIBILITY=HAS_SCHEDULE) → **"Aucune vidéo correspondante"**: ZERO scheduled videos.
+The v4 Roanoke long-form (script WRITTEN since 06-13, blocked at the Flow thumb step)
+was never rendered or uploaded — runs/v4-roanoke/ still contains only script.json +
+SHORTS_PLAN.md, no render/ or shorts/. Its planned v4_hook (06-22) and v4_answer (06-24)
+Shorts were never produced and are absent from shorts_state.json. Last actual publish was
+v1_bonus_briggs on 2026-06-15 → **13 days of total channel silence**, and the 06-21/06-28
+long-form slots both went unfilled.
+Separately reconciled drift: v1_bonus_briggs (vZ68HlWfT-Q, sched 06-15) was still
+SCHEDULED in state but oEmbed returns HTTP 200 → auto-published. Set status=PUBLIC +
+actual_published_at=scheduled_at.
+**Learning**:
+1. The v4 Flow-thumb blocker from 06-13 was never resolved, and it silently stalled the
+   entire long-form pipeline for two weeks. A blocked sub-step (thumb gen) should not be
+   allowed to gate the whole ship — a placeholder-thumb fallback (already noted in the
+   06-13 LEARNINGS as the backup path) should have shipped v4 on time.
+2. Cadence <1 video/week is in KNOWN_BAD ("algo can't categorize the channel"). We are now
+   in that failure state. Resuming rhythm matters more than thumb perfection.
+**Action**:
+- PLANNED: Reddit seed for Roanoke / CROATOAN (r/UnresolvedMysteries) drafted at
+  seeds/2026-06-28_roanoke_croatoan_unresolvedmysteries.md (~620 words). GATED — cannot be
+  posted until the v4 long-form is actually live (link goes in first comment per KNOWN_BAD).
+- NEEDS USER/PRODUCTION: unblock v4 Roanoke — render with the placeholder thumb (v3 Tunguska
+  AI base) rather than waiting on Flow, then upload + schedule long-form + 2 Shorts. Until
+  then the channel has nothing in the pipeline for the next 3+ days.

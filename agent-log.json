@@ -19,6 +19,31 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-28 08:01 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-28 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-28 08:05 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, sched 2026-06-15 12:00) was stale SCHEDULED in state but oEmbed returns HTTP 200 (title 'Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872 #shorts', author Voidline) \u2014 auto-published. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z."
+    },
+    {
+      "t": "2026-06-28 08:05 UTC",
+      "action": "LONGFORM_MISSED",
+      "detail": "Sunday 2026-06-28 is a long-form publish day (cadence 1/wk, Sun 17:00 UTC). Verified live voidline Studio session (content filter VISIBILITY=HAS_SCHEDULE) \u2014 'Aucune vid\u00e9o correspondante': ZERO scheduled videos. v4 Roanoke long-form (script WRITTEN 06-13, blocked at Flow thumb step) was never rendered or uploaded; runs/v4-roanoke has only script.json + SHORTS_PLAN.md. v4_hook (06-22) + v4_answer (06-24) Shorts never produced (absent from state). Last actual publish = v1_bonus_briggs 06-15 \u2192 13 days channel silence; 06-21 + 06-28 long-form slots both unfilled. Cadence <1/wk = KNOWN_BAD state."
+    },
+    {
+      "t": "2026-06-28 08:05 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "Pipeline empty for the next 3 days (Mon 06-29, Tue 06-30, Wed 07-01): nothing scheduled, no rendered assets staged. ACTION NEEDED: unblock v4 Roanoke by rendering with placeholder thumb (v3 Tunguska AI base) instead of waiting on Flow, then upload+schedule long-form + 2 Shorts to restore cadence."
+    },
+    {
+      "t": "2026-06-28 08:05 UTC",
+      "action": "PLANNED",
+      "detail": "Reddit seed for Roanoke / CROATOAN (r/UnresolvedMysteries) drafted at seeds/2026-06-28_roanoke_croatoan_unresolvedmysteries.md (~620 words). GATED \u2014 cannot post until v4 long-form is live (YT link in first comment per KNOWN_BAD). Logged in LEARNINGS.md."
     }
   ]
 }
