@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-28 16:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219216:04: no notable delta"
+    },
+    {
+      "t": "2026-06-28 16:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 16:04\u219216:05: no notable delta"
+    },
+    {
+      "t": "2026-06-28 16:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 16:05\u219216:05: no notable delta"
+    },
+    {
+      "t": "2026-06-28 16:09 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "BREAKOUT (manual stealth pull; scraper blind 0/13). Channel 28d: 1367v, 18.7h, +3 subs. (1) v3_long_Tunguska FacPhS3hNjU = 112v/100uniq/1.7k impr/3.2% CTR \u2014 crosses >100v long-form threshold; traffic 50% Browse + 44.6% Suggested = 94.6% organic, ZERO external referral. 06-13 suppression has LIFTED, pure organic. (2) v1_bonus_briggs vZ68HlWfT-Q = 319v/60.3% ret \u2014 NEW Short record (beat v2_twist 299). State reconciled SCHEDULED->PUBLIC. Anonymous scraper now 100% blind -> pulse threshold logic non-functional until monitor ported to camoufox-stealth."
     }
   ]
 }

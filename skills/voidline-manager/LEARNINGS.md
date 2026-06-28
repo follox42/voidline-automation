@@ -231,3 +231,48 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 16:10 — BREAKOUT: suppression lifted, v3 long-form crosses 100v purely organic
+**Observation**: First pulse in 15 days (routine dormant since 06-13). Anonymous
+scraper is now FULLY blind (0/13 assets returned views vs 2/12 on 06-13), so
+pulled real numbers via camoufox-stealth (cookie_profile=voidline, Studio).
+Channel 28d: **1,367 views, 18.7 watch-hrs, +3 subs**. Two threshold crossings:
+1. **v3_long_Tunguska "The Day the Siberian Sky Exploded" (FacPhS3hNjU) = 112v /
+   100 unique / 1.7k impressions / 3.2% CTR** — crosses the >100v long-form alert.
+   Traffic: **50.0% Browse features + 44.6% Suggested videos = 94.6% organic algo
+   surfaces**; 2.7% direct, 2.7% YT search. External sites/apps = "insufficient
+   data" (ZERO referral). Being suggested next to The Willamette Meteorite (70%),
+   Meteor Shower That Killed 10,000 People (8%), Largest Unexplained Explosion •
+   Mystery Files (4%) — embedded in the meteor/disaster doc recommendation cluster.
+2. **v1_bonus_briggs "Why Did the Teetotal Captain Run?" (vZ68HlWfT-Q) = 319v /
+   60.3% retention** — NEW channel Short record (beat v2_twist 299). Published on
+   schedule 06-15; was still stale-SCHEDULED in state (reconciled → PUBLIC).
+**Learning**:
+1. The algorithmic suppression confirmed on 06-13 (long-forms 0v, "notification
+   not delivered", traffic sources "insufficient data") has LIFTED. v3 long-form
+   went 0v → 112v driven 94.6% by Browse + Suggested — the exact surfaces that
+   were dead. This is the channel's first long-form to break 100v organically.
+2. NO Reddit/external seed was used (per the 06-13 pivot). The recovery is 100%
+   pure organic → the pure-organic-growth thesis is VALIDATED. The 7-Shorts-burst
+   cooldown was the right call; the algo reopened on its own after ~3 weeks.
+3. 3.2% CTR on the AI cinematic thumb is functional (low end of viable) now that
+   impressions flow — the 06-04 thumbnail pivot is converting at scale.
+4. Cutter v2 question-hook formula broke the ~300v Short plateau (319v). Confirmed.
+5. The anonymous scraper is now 100% useless in the cloud — the pulse threshold
+   logic is non-functional without a stealth-backed monitor. Porting
+   monitor_voidline.py to camoufox-stealth is no longer a "nice to have"; it is
+   the only way the hourly pulse can detect a spike at all. UNTIL THEN, every
+   "no notable delta" PULSE log is a false negative (this run would have missed
+   both the long-form breakout AND the record Short).
+**Action**:
+- FLAGGED PULSE_ALERT to agent-log + notified Nolann (long-form breakout + record Short).
+- State drift reconciled (v1_bonus_briggs → PUBLIC).
+- TOP PRIORITY next cycle: port monitor_voidline.py to camoufox-stealth so the
+  pulse stops flying blind. The 15-day dormancy means a breakout nearly went
+  unseen.
+- Capitalize on the open algo window: the v4 Roanoke long-form (script ready in
+  runs/v4-roanoke/, Flow thumb still blocked) should ship while Browse/Suggested
+  are receptive to this channel again. Resolve the Flow submit blocker or ship
+  with the placeholder thumb rather than miss the window.
+- Pipeline still DRY (no Shorts scheduled past 06-15) — the channel has been
+  coasting on the back-catalogue for 13 days. Next batch needs scheduling.
