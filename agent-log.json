@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-28 14:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219214:04: no notable delta"
+    },
+    {
+      "t": "2026-06-28 14:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:04\u219214:05: no notable delta"
+    },
+    {
+      "t": "2026-06-28 14:07 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED (06-15) in state \u2014 verified PUBLIC via YouTube oEmbed (HTTP 200), 13 days overdue. Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Same silent-auto-publish drift pattern as 06-13."
+    },
+    {
+      "t": "2026-06-28 14:07 UTC",
+      "action": "PULSE_BLOCKED",
+      "detail": "Hourly pulse is BLIND. (1) Anonymous monitor scraper returns 0/12 view coverage (degraded from 10/12 blank on 06-13 \u2014 full block). (2) Authenticated voidline Studio session: browser alive but auth_check=DEAD ('Re-login required'), cannot pull analytics. No PULSE_ALERT possible \u2014 a real spike would be silently missed. Also: last real snapshot was 06-13 (15-day gap), routine appears not to have run hourly. Exiting cleanly per blocker rule; no Studio HTTP actions spent (auth dead), 0 Flow generations."
     }
   ]
 }

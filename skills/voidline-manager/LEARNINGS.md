@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 14:06 — Pulse fully blind: voidline cookies dead + scraper 0/12
+**Observation**: First hourly pulse since 2026-06-13 (15-day gap — routine
+hasn't actually been firing hourly). Two independent monitoring paths are
+both down:
+1. The anonymous `monitor_voidline.py` curl scraper returned **0/12** view
+   coverage (every asset blank). On 2026-06-13 it was 10/12 blank; now it's
+   a full block — YouTube serves the consent/anti-scrape page to all
+   unauthenticated container requests.
+2. The authenticated `voidline` Studio session: browser process is alive
+   (session sitting idle ~4h on FacPhS3hNjU analytics) but
+   `auth_check` returns **status=dead, auth_valid=false** ("Re-login
+   required"). Cookies expired.
+Net: the pulse cannot compute a real delta, so "no PULSE_ALERT" is
+meaningless — a genuine spike (>1000v Short / >100v long) would be silently
+missed. Also caught drift: v1_bonus_briggs (vZ68HlWfT-Q) was stale
+SCHEDULED (06-15) but is PUBLIC per oEmbed — 13 days overdue, reconciled.
+**Learning**:
+1. oEmbed (HTTP 200) is the ONLY monitoring signal that still works
+   session-free in the container — but it only gives public/scheduled
+   state, not view counts. Status reconciliation survives; stat tracking
+   does not.
+2. The voidline cookie profile needs periodic re-login or every pulse,
+   daily, and weekly stat pull is blind. This is now the #1 blocker for the
+   whole routine fleet, not just the pulse.
+3. A live browser session ≠ a valid auth session. `status` says alive;
+   only `auth_check` reveals the cookies are dead. Always auth_check before
+   trusting Studio reads.
+**Action**:
+- Logged PULSE_BLOCKED in agent-log; exited cleanly within hard limits
+  (0 Studio HTTP actions spent since auth is dead, 0 Flow generations).
+- NEEDS HUMAN: re-login the voidline Google account in the camoufox
+  profile (Studio + Flow share it) to restore stat tracking AND unblock
+  the v4 Roanoke Flow thumb generation from 06-13.
+- Until cookies are refreshed, treat all "no notable delta" pulses as
+  unverified, not as healthy.
