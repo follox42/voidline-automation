@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 08:06 — SUPPRESSION LIFTED: first long-form organic breakout
+**Observation**: Hourly pulse (first real stat pull since 06-13 — the curl
+scraper now returns full data, no consent-page blanks). v3_long_Tunguska
+crossed the >100v long-form threshold: **112 views, 100 unique viewers,
+1.7k impressions, 3.2% CTR, 7:20 avg view duration (~55% on a 13:12 video)**.
+Studio reach analytics (period-since_publish, voidline session):
+- Traffic sources: Browse 50.0% + Suggested 44.6% = **94.6% algorithmic**;
+  YouTube search 2.7%; direct 2.7%.
+- External sites/apps: "Données insuffisantes" → **zero external referral,
+  100% organic** (no Reddit, confirming the 06-13 pure-organic pivot worked).
+- Suggested-alongside: Willamette Meteorite (71.4%), Meteor Shower That
+  Killed 10,000 (8.2%), Largest Unexplained Explosion (4.1%) — the algo
+  has placed the video in the meteorite/impact-event neighborhood.
+- Other long-forms also alive: v1_long_MaryCeleste 19v, v2_long_Dyatlov 2v
+  (was all 0v/dead under suppression on 06-13).
+- Top Short: **v1_bonus_briggs (question hook) = 319v**, a new channel high
+  that broke the ~300 plateau v1_twist (281) / v2_twist (299) sat at.
+**Learning**:
+1. The algorithmic suppression diagnosed on 06-13 (0v, "insufficient data"
+   on every source) has fully lifted — Browse+Suggested at 94.6% means the
+   algo is *pushing* the content, not throttling it. ~J+20 from publish, the
+   pure-organic timeline (3-6mo to breakout) is running AHEAD of expectation.
+2. The Google Flow Nano Banana 2 cinematic thumb pivot (06-04) is validated:
+   3.2% CTR vs the 0% CTR of the old photo-archive thumbs. Thumbnail was the
+   binding constraint on long-form reach, not the algo alone.
+3. Question-hook Shorts keep climbing — bonus_briggs (319v) confirms the
+   06-05 finding that question/contradiction hooks break the narrative-hook
+   plateau, and that a *bonus* Short on an old topic (Mary Celeste) can
+   outperform the originals.
+4. State drift again: v1_bonus_briggs was still SCHEDULED in shorts_state.json
+   despite being live at 319v — same auto-publish-without-state-update pattern
+   as the 06-13 reconciliation. Fixed this run.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC (actual_published_at 2026-06-15T12:00Z).
+- DO NOT touch v3 Tunguska — it is mid-breakout; any delete/re-upload would
+  reset the algorithmic momentum. Let it run.
+- The thumb→CTR→reach causal chain is now proven. Prioritize finishing v4
+  Roanoke's AI thumb (the Flow blocker from 06-13) over any other v4 work —
+  thumb quality is the highest-leverage lever for the next long-form.
+- Within pulse hard limits this run: 1 Studio navigate + 1 text extract
+  (≤5 cap), 0 Flow gens, 1 git push.
