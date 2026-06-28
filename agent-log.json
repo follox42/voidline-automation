@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-28 12:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219212:06: no notable delta"
+    },
+    {
+      "t": "2026-06-28 12:07 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "\u0394 12:06\u219212:07: \u2b50 v3_long_Tunguska long-form: crossed 100v!"
+    },
+    {
+      "t": "2026-06-28 12:10 UTC",
+      "action": "INVESTIGATE",
+      "detail": "v3_long_Tunguska (FacPhS3hNjU) Studio reach-viewers, period-since_publish: 1.7k impressions, 3.2% CTR, 112 views / 100 unique, avg view duration 7:13 (~55% retention on 13:12). Traffic: 50.0% Browse features + 44.6% Suggested videos = 94% algo-served; External sites 'insufficient data' (NO Reddit/external seed). Suggested next to meteor/explosion docs (Willamette Meteorite 70% of suggested). CONCLUSION: long-form suppression has LIFTED ~21d post-publish via topical adjacency \u2014 pure organic algo. CTR 3.2% (weak thumb) is the bottleneck, retention healthy. 1 Studio read action used."
+    },
+    {
+      "t": "2026-06-28 12:10 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED in state (scheduled_at 06-15) but is 320v live \u2014 top Short, broke the ~300v plateau (v1_twist 281, v2_twist 299). Set status=PUBLIC + actual_published_at=2026-06-15. Same silent auto-publish drift as 06-13."
     }
   ]
 }

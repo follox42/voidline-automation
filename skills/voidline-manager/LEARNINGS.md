@@ -231,3 +231,53 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 12:10 — Long-form suppression LIFTED: v3 Tunguska crosses 100v on pure algo
+**Observation**: First pulse in 15 days (06-13 → 06-28). v3 Tunguska long-form
+"The Day the Siberian Sky Exploded — Tunguska 1908" (FacPhS3hNjU, 13:12) is at
+**112 views / 100 unique viewers** — the first long-form on the channel to show
+real organic life (long-forms had been 0-2v under suppression). Studio
+reach-viewers analytics (period-since_publish):
+- **1.7k impressions, 3.2% CTR, avg view duration 7:13 (~55% retention)**.
+- Traffic: **50.0% Browse features (home feed) + 44.6% Suggested videos = 94%
+  algorithmically served by YouTube**. Direct 2.7%, YT search 2.7%.
+- **External sites = "insufficient data"** → NO Reddit / external seed. This is
+  100% organic algo distribution, consistent with the no-external-seed strategy.
+- Suggested-video adjacency: surfaced next to big meteor/explosion docs —
+  "The Willamette Meteorite" (70% of suggested traffic), "The Meteor Shower That
+  Killed 10,000 People", "Largest Unexplained Explosion • Mystery Files",
+  "Disaster Records" Tunguska. The algo placed it in the meteor/impact cluster.
+- Other long-forms still cold: v1 Mary Celeste 20v, v2 Dyatlov 2v.
+**Learning**:
+1. Long-forms are NOT permanently dead — the algo handed v3 a ~1.7k-impression
+   test pool **~21 days post-publish** via browse + suggested. The "0v forever
+   under suppression" assumption (06-13) was wrong; suppression is a delay, not a
+   death. Cold-start long-form just has a long fuse.
+2. The breakout vector is **topical adjacency** (suggested next to established
+   meteor/explosion videos), NOT search or external seeding. Picking topics that
+   sit in a dense, high-traffic recommendation cluster matters more than seeding.
+3. Retention (55% on 13min) is healthy; **CTR 3.2% is the bottleneck**. Same thumb
+   weakness flagged 06-04. Lifting CTR is now the highest-leverage lever — the algo
+   is already serving impressions, we're under-converting them.
+**Action**:
+- KEEP feeding the meteor/impact cluster — v3 proves the niche adjacency works.
+  Future long-form topics chosen for recommendation-cluster density.
+- Thumbnail CTR is the constraint: prioritize a stronger v3 thumb (and v4 Roanoke)
+  to convert the impressions already flowing. Resolve the Flow Nano Banana blocker.
+- Do NOT pull the Reddit lever — organic algo is now demonstrably working.
+- Watch v3 impressions trend next pulses: if 1.7k keeps climbing, this is a
+  genuine breakout and warrants doubling long-form cadence.
+
+## 2026-06-28 12:10 — v1_bonus_briggs Short breaks the ~300v plateau (320v) + state drift
+**Observation**: v1_bonus_briggs ("Why Did the Teetotal Captain Run? — Mary
+Celeste 1872", vZ68HlWfT-Q) is at **320 views** — the channel's top Short, past
+the ~300v plateau that v1_twist (281) and v2_twist (299) stalled at. It was still
+marked `SCHEDULED` (scheduled_at 2026-06-15) in shorts_state.json despite being
+13 days live — the same auto-publish-without-state-update drift caught on 06-13.
+**Learning**: The ~300v Short ceiling is breakable — a question-hook Mary Celeste
+bonus cleared it. Confirms the 06-02/06-05 finding that question/contradiction
+hooks on the strongest IP (Mary Celeste) outperform. Also re-confirms: scheduled
+assets auto-publish silently; state reconciliation every pulse is mandatory.
+**Action**:
+- Reconciled v1_bonus_briggs → status=PUBLIC, actual_published_at=2026-06-15.
+- Next batch should lean Mary Celeste question hooks — strongest converting IP.
