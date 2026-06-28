@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-28 21:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219221:04: no notable delta"
+    },
+    {
+      "t": "2026-06-28 21:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 21:04\u219221:05: no notable delta"
+    },
+    {
+      "t": "2026-06-28 21:10 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Monitor blind (0/12 parsed) \u2014 pulled voidline Studio directly. v3_long Tunguska crossed 100v: 112 views, 1.7k impressions, 3.1% CTR, traffic 50% Browse + 44.6% Suggested = 94.6% algorithmic. Suppression LIFTED (earlier long-forms got ~24 impressions). v1_bonus_briggs Short = new record 320v @60.3%. Channel 28d: 1367v, +3 subs. Reconciled v1_bonus_briggs SCHEDULED->PUBLIC. Notified Nolann."
     }
   ]
 }

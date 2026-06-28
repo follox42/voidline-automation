@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-28 21:10 — BREAKOUT: v3 Tunguska long-form is being recommended (suppression lifted)
+**Observation**: First pulse to fire since 2026-06-13 (15-day routine gap). The
+anonymous-curl monitor returned BLANK for 12/12 assets (degraded from 2/12 on
+06-13) and logged "no notable delta" — a false negative. Pulled the `voidline`
+Studio session directly instead. Channel 28d (May 31–Jun 27): **1,367 views,
+18.7 watch-hrs, +3 subs**. Two threshold crossings the blind monitor missed:
+1. **v3_long Tunguska "The Day the Siberian Sky Exploded" = 112 views** (crosses
+   the >100v long-form PULSE_ALERT threshold). Video stats: **1.7k impressions,
+   3.1% CTR, 102 unique viewers.** Traffic = **50.0% Browse + 44.6% Suggested
+   = 94.6% pure algorithmic**; 96.4% of impressions from YouTube recommending the
+   content; external sites = "insufficient data" (no Reddit, as decided). It is
+   now suggested alongside real meteor/disaster docs (Willamette Meteorite, etc.).
+2. **v1_bonus_briggs Short = 320v @ 60.3% retention in 13d** — new channel record,
+   beats the prior ~298-300 ceiling (v2_twist 299, v1_twist 281). Question-hook
+   formula validated again.
+**Learning**:
+1. The algorithmic suppression flagged 06-13 has **LIFTED**. Earlier long-forms got
+   ~24 impressions; Tunguska got **1,700**. This is the cold-start regime change
+   we were waiting for — and it happened on pure organic, no external seed.
+2. The monitor's anonymous-curl scrape path is now 100% dead in the cloud. It can
+   no longer detect ANY breakout — it would have reported "all healthy" through
+   this entire window. Pulse stats are blind until the monitor is ported to fetch
+   via the `voidline` Studio session / camoufox MCP (TODO carried since 06-13, now
+   urgent — it cost us 15 days of blind alerting on the channel's first breakout).
+3. The hourly pulse cron did not fire for 15 days (06-13 -> 06-28). Routine
+   scheduling itself needs a health-check; a silent stalled cron is invisible.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED->PUBLIC (auto-published 06-15, state was
+  stale 13 days — same publish-side drift pattern as 06-13).
+- PRIORITY: lean into the lifted suppression while the algo is serving long-forms —
+  the v4 Roanoke long-form should ship ASAP to ride the momentum (it was blocked on
+  the Flow thumb; ship with the placeholder base rather than wait).
+- URGENT eng task: port `monitor_voidline.py` to read views via the Studio session
+  (cookie_profile=voidline) so pulses stop being blind.
+- Notified Nolann (PULSE_ALERT: long-form >100v + suppression lifted).
