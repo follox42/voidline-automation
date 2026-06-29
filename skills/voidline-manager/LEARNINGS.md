@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 08:08 — v3 Tunguska LONG-FORM broke 100v — organic suppression has LIFTED
+**Observation**: First full-coverage pulse since 06-13 (monitor scraper now
+returns stats for all 13 assets — the anonymous-curl blank-views problem is
+gone this run). PULSE_ALERT fired: v3_long_Tunguska long-form crossed 100v.
+Studio (reach tab, cookie_profile=voidline, since-publish 08 Jun → today, J+21):
+- Impressions **1.7k** · CTR **3.1%** · Views **114** · Unique viewers **102**
+- Avg view duration **7:13 / 13:12 ≈ 55% retention** — healthy for a 13-min doc
+- Traffic: Browse features **49.1%** + Suggested **44.7%** = **93.8% from
+  YouTube's own recommendation surfaces**; Search 2.6%, Direct 2.6%
+- External sites/apps: **insufficient data → ZERO external referral** (NOT
+  Reddit, NOT any seed — this is pure algorithmic discovery)
+- Suggested next to established meteorite/disaster docs (Willamette Meteorite
+  70%, "Meteor Shower That Killed 10,000 People" 8%, Mystery Files 4%)
+**Learning**:
+1. The "long-forms are dead / algorithmically suppressed (0–2v)" narrative from
+   the 06-13 entries is FALSE as of now. The algo is actively surfacing v3
+   Tunguska via Browse + Suggested — 96.4% of impressions are YouTube
+   recommending the content. Suppression lifted (or the burst-mode penalty
+   simply aged out at ~J+21).
+2. The discovery engine paired us with the RIGHT neighbours (meteorite/space-
+   disaster channels). Niche cohesion is working; the topic is legible to the
+   algo.
+3. The binding constraint is now **thumbnail CTR (3.1%)**, not distribution.
+   YouTube is giving impressions freely; we're converting ~1 in 32. Pushing CTR
+   from 3.1% → 4%+ is the single highest-leverage move (would ~+30% views on the
+   same impression pool). This vindicates the 06-04 pivot to AI cinematic thumbs.
+4. Confirms the 06-13 "pure organic, no Reddit seed" decision was correct — the
+   breakout came with zero external traffic. The Reddit lever was never needed.
+**Action**:
+- Long-forms are BACK in the strategy. Resume the v4 Roanoke long-form push;
+  do NOT downscale to "Shorts-only".
+- Pre-ship gate stays score ≥75, but weight the THUMBNAIL/CTR sub-score hardest
+  — that's the proven bottleneck now, not the hook or the algo.
+- Consider iterating the v3 Tunguska thumbnail in place (A/B) to lift its 3.1%
+  CTR while impressions are still flowing — cheap win on a live winner.
+- Next pulses: watch whether v3 long-form impressions keep climbing (algo still
+  pushing) or plateau (test pool exhausted). Reconciled v1_bonus_briggs drift
+  (was SCHEDULED in state, live at 320v — top Short) in shorts_state.json.
