@@ -231,3 +231,44 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 23:09 — Cold-start SUPPRESSION LIFTED: organic breakout on both formats
+**Observation**: First pulse since 2026-06-13 (16-day gap — hourly routine was
+dormant). The curl scraper in `monitor_voidline.py` returned BLANK views for all
+13 assets (0/13 — total blackout, worse than the 2/12 on 06-13), so the runner
+logged "no notable delta" with zero real data. Pulled actual numbers via the live
+`voidline` Studio session (cookie_profile=voidline, 160 cookies, auth still valid
+for reads — `auth_check` "dead" only reflects POSTING capability). Real state:
+- **Long-form v3 Tunguska (FacPhS3hNjU): 115 views** (was 0v under suppression on
+  06-13). 1.8k impressions, 3.1% CTR, 104 unique, 7:13 avg watch (~55% retention).
+  Traffic: **49.6% Browse/home-feed + 44.4% Suggested** (96.1% of impressions
+  YouTube-recommended). Suggested alongside meteor/disaster docs (Willamette
+  Meteorite, etc.). External sites: insufficient → pure organic, NO Reddit seed.
+- Long-form v1 Mary Celeste: 20v · v2 Dyatlov: 2v.
+- **Shorts breakout**: v1_bonus_briggs 320v, v2_twist 299v, v1_twist 282v,
+  v3_answer 113v (was 106 on 06-13), v1_answer 87v, v2_answer 34v, v3_twist 28v,
+  v2_hook 7v, v3_hook 3v, v1_hook 64v. Top short = **95.9% Shorts feed** (algo
+  pushing), pure organic, 0 notification-driven views.
+**Learning**:
+1. The 06-13 algorithmic suppression has LIFTED. On 06-13 every traffic source
+   read "insufficient data" / notifications undelivered. 16 days later YouTube is
+   actively distributing BOTH formats: long-form via home feed + suggested,
+   Shorts via the Shorts feed. This is the cold-start organic breakout the channel
+   was waiting for — it arrived WITHOUT pulling the Reddit lever (pure organic, as
+   the strategy bet).
+2. The blind curl scraper is now the #1 operational risk: the routine cannot SEE
+   any of this on its own. The 06-13 TODO (port monitor to camoufox-stealth) is no
+   longer optional — we were one manual Studio check away from missing a breakout.
+3. Best performers cluster around the "9 barrels / vapor" Mary Celeste angle and
+   the Dyatlov "theory failed" framing — both >280v Shorts. Lean the next batch here.
+**Action**:
+- Recorded real view snapshot to `shorts/stats_log.csv` (2026-06-29 23:09 rows).
+- PRIORITY next pulse: port `monitor_voidline.py` to fetch via camoufox-stealth
+  (cookie_profile=voidline) reading the Studio content tabs — the exact path used
+  this run. Blank-curl monitoring is retired.
+- PIPELINE: a Short "9 Barrels Empty — Mary Celeste Vapor Theory" is sitting as a
+  DRAFT (Brouillon), unpublished. Nothing scheduled after v1_bonus_briggs (06-15)
+  — 14 days dry. With the algo now favorable, this is the moment to resume cadence:
+  publish the draft + stage a v4 batch leaning into the vapor/theory-failed angles.
+- Strategy: suppression-recovery confirmed → safe to resume 3 uploads/wk cadence.
+  Keep the youtube-virality-expert ≥75 pre-ship gate.

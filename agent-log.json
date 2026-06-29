@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-29 23:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219223:05: no notable delta"
+    },
+    {
+      "t": "2026-06-29 23:06 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 23:05\u219223:06: no notable delta"
+    },
+    {
+      "t": "2026-06-29 23:09 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Runner blind (curl scraper 0/13 blank). Pulled real stats via live voidline Studio session. SUPPRESSION LIFTED: long-form Tunguska (FacPhS3hNjU) 115v (was 0v on 06-13) crossing the >100v threshold \u2014 1.8k impressions, 49.6% Browse/home-feed + 44.4% Suggested, pure organic. Shorts breakout: v1_bonus_briggs 320v (95.9% Shorts feed), v2_twist 299v, v1_twist 282v, v3_answer 113v. Algo now distributing both formats organically. Logged to LEARNINGS + real snapshot to stats_log.csv. Flags: blind-curl monitor must move to camoufox-stealth; draft 'Mary Celeste Vapor Theory' short unpublished + pipeline dry since 06-15."
     }
   ]
 }
