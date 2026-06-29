@@ -231,3 +231,34 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 21:05 — Pulse fully blind: scraper 0/12 + voidline cookies dead
+**Observation**: Hourly pulse ran clean (exit 0, no PULSE_ALERT) but with zero
+usable data. The curl scraper returned blank views for ALL 12 assets (last
+working pulse on 06-13 still parsed 2/12: v2_hook 4v, v3_answer 106v). Followed
+up with `camoufox-stealth_auth_check` on studio.youtube.com (cookie_profile=
+voidline) → `auth_valid:false, status:"dead", "Re-login required"`. So both data
+paths are down at once: anonymous scrape is anti-bot-blocked, and the
+authenticated Studio session is expired.
+**Learning**:
+1. The pulse's threshold alerting (Short >1000v / long >100v / Δ>50v) is
+   meaningless while every stat field is blank — "no notable delta" is a
+   false-negative, not a real all-clear. A blind pulse should be treated as an
+   outage, not a healthy run.
+2. The curl-based `monitor_voidline.py` is now effectively dead in the cloud
+   container (0/12). The long-standing TODO to fetch via the camoufox-stealth
+   MCP is now the only viable path — but that path itself requires live
+   `voidline` cookies, which just expired.
+3. Cookie lifetime for the voidline profile: last confirmed-live session was the
+   06-13 daily-plan run; dead by 06-29. Re-login is a manual/owner action the
+   routine cannot self-heal (no credentials in-container).
+**Action**:
+- BLOCKED & exited cleanly per runbook (cookies expired). No Studio HTTP
+  actions beyond the single auth_check; no Flow generation.
+- Owner action required: refresh the `voidline` cookie profile (re-login to
+  YouTube/Studio) so the next pulse can pull analytics via the stealth MCP.
+- Until cookies are refreshed, every pulse will report empty data — do not trust
+  "no delta" as a signal.
+- Pending state note (for the daily-plan job, not this pulse): v1_bonus_briggs
+  was SCHEDULED for 06-15 and is 2 weeks past due in shorts_state.json — needs
+  publish-reconciliation once auth is restored.
