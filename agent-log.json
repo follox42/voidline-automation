@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-29 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-06-29 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-06-29 08:03 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, scheduled 2026-06-15 12:00 UTC) was still stale SCHEDULED in state but verified PUBLIC via YouTube oEmbed (HTTP 200, title \"Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872\", author Voidline). Set status=PUBLIC + scheduled_at + actual_published_at=2026-06-15T12:00:00Z. Same auto-publish-not-reflected-in-state pattern as the 06-13 reconcile."
+    },
+    {
+      "t": "2026-06-29 08:03 UTC",
+      "action": "DRIFT_FLAG",
+      "detail": "PIPELINE FULLY DRY for 14 days. Last upload = v1_bonus_briggs published 2026-06-15; nothing scheduled since. 0 Shorts in state for today (Mon 06-29, a HOOK-Short day per recovery cadence) or the next 3 days (Tue 06-30, Wed 07-01 = ANSWER day, Thu 07-02). No SCHEDULED items remain at all. Next long-form slot Sun 07-05 17:00 UTC has nothing queued. v4 Roanoke remains blocked on the Google Flow Nano Banana 2 thumb (disabled-submit blocker from 06-13, never resolved). This now violates KNOWN_BAD 'Cadence <1 video/week \u2192 algo can't categorize the channel' \u2014 the channel has been silent ~2 weeks. ACTION NEEDED: unblock v4 Flow thumb (fresh-session Flow inspect OR ship with v3 forest base placeholder) + render/schedule next Short batch before rhythm fully breaks."
     }
   ]
 }
