@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 18:06 — Pulse resumed after 16-day dormancy; scraper fully blind
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a **16-day gap**
+(the hourly schedule did not fire in between). The runner itself ran clean
+(no PULSE_ALERT), but ONLY because `monitor_voidline.py` returned **blank
+views for all 15 assets (0/15 parsed)** — worse than the 2/15 of the last
+run. Verified videos are all alive via oEmbed (HTTP 200 ×5 sampled), so the
+blanks are purely the anti-scrape wall, not pulled videos. Confirmed the wall
+is now hard: anonymous `curl` AND `impersonate_fetch` (chrome124) both get
+redirected to `consent.youtube.com` (gl=FR EU consent page, cookies_sent=0).
+The ONLY path that returns real numbers is the cookie-authenticated `voidline`
+Studio session. Pulled v1_bonus_briggs from the live Studio analytics tab:
+**320 views / 18 days**, traffic = 95.9% Shorts feed, 0.9% YouTube search
+("mary celeste" = 33% of that), 0% notification CTR, external referrals
+"insufficient data". Also caught state drift: v1_bonus_briggs was still
+SCHEDULED in shorts_state.json despite being live 18 days — reconciled to
+PUBLIC + actual_published_at=2026-06-15T12:00:00Z.
+**Learning**:
+1. The pulse's threshold detection has been **structurally non-functional**:
+   with blank views every run, a PULSE_ALERT can NEVER fire even if a video
+   went viral. The watchdog has been asleep — "no notable delta" is a false
+   all-clear, not a real one.
+2. `impersonate_fetch` does NOT solve the scrape problem in this FR-geo
+   container — it hits the same consent wall as plain curl because no cookies
+   are sent. A standalone python script (which can't call MCP tools) therefore
+   cannot get stats; only the agent, via the authenticated stealth session,
+   can. The standing "port monitor to camoufox-stealth" TODO needs to become
+   "the pulse AGENT reads Studio and writes the CSV", not "the script calls the
+   MCP" (architecturally impossible from a subprocess).
+3. v1_bonus_briggs 320v/18d is the catalogue's **best Short**, beating the v1
+   TWIST (274) and v2 TWIST (298) plateaus — question-hook format ("Why Did the
+   Teetotal Captain Run?") is durably validated. Still slow steady organic, no
+   breakout, no >1000v spike → genuinely no threshold event this pulse.
+**Action**:
+- Recorded the real 320v datapoint into stats_log.csv for the 18:05 snapshot so
+  the next pulse has a non-blank baseline to delta against.
+- Reconciled v1_bonus_briggs state drift.
+- FLAG for owner: (a) hourly schedule was dormant 16 days — verify the routine
+  trigger is actually enabled; (b) monitor scraper is blind — until the pulse
+  agent does the Studio readout itself, automated spike detection is OFF.
+- Did NOT burn a Flow generation or further Studio actions (stayed within the
+  5-action pulse budget: impersonate_fetch + 1 Studio extract).
