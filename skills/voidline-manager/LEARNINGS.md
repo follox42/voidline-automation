@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 12:08 — Suppression narrative REVERSED: organic distribution confirmed
+**Observation**: First full-coverage pulse in 16 days (06-13 → 06-29). The monitor
+returned real view counts for all 13 assets (vs the curl-blank coverage on 06-13).
+Numbers are healthy, not suppressed:
+- v3_long_Tunguska (FacPhS3hNjU): 114v / 102 unique, crossed the 100v alert line.
+  Studio reach tab: 1.7k impressions, 3.1% CTR, **7:13 avg view duration on a 13:12
+  video (~55% retention)**. Traffic = 49.1% Browse features + 44.7% Suggested videos;
+  95% of impressions came from YouTube recommending the content. Suggested-from feed
+  is meteor/disaster niche ("Willamette Meteorite" 68.6%, "Meteor Shower That Killed
+  10,000", "Tunguska Event"). External/Reddit traffic = insufficient (none seeded).
+- Top Short v1_bonus_briggs (vZ68HlWfT-Q, pub 06-15): 320v, **95.9% from the Shorts
+  feed** — full algorithmic distribution. Notification CTR 0% (cold subscriber base).
+- Other Shorts climbing organically: v2_twist 299v, v1_twist 282v, v3_answer 113v,
+  v1_answer 87v, v1_hook 64v. (Laggards: v3_hook 3v, v2_hook 7v, v2_long_Dyatlov 2v.)
+**Learning**:
+1. The 06-13 "algorithmic suppression confirmed" diagnosis was WRONG — it was a
+   cold-start artifact (sparse data + anti-scrape blanks read as zeros). With 16 days
+   of runway, both long-form and Shorts are getting genuine algorithmic distribution
+   (Browse + Suggested for long, Shorts feed for Shorts). No suppression.
+2. The real constraint is NOT distribution — it's CTR (3.1%) and impression volume.
+   Retention is already strong (7:13/13:12). Lever = thumbnails + titles + hook, not
+   more uploads or external seeding.
+3. The niche is finding its lane: YouTube is pairing the Tunguska doc with large
+   meteor/disaster videos. Leaning topic selection toward that adjacency should
+   compound the Suggested-traffic flywheel.
+**Action**:
+- Reconciled state drift: v1_bonus_briggs was stale SCHEDULED (06-15) but is live
+  with 320v → set PUBLIC + actual_published_at. (Same publish-side drift as 06-13.)
+- Strategy shift: stop treating low views as suppression. Prioritize CTR work
+  (thumb/title A/B on the v4 Roanoke batch) over upload volume.
+- Studio actions used this pulse: 2 of 5 (Tunguska reach read + bonus_briggs reach
+  nav). No Flow generation.
