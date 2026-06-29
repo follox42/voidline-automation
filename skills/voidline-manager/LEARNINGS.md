@@ -231,3 +231,38 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 15:09 — Pulse breaks 16-day blind spell: long-form crossed 100v, bonus Short broke the plateau
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 (a 16-day gap — the
+"hourly" routine is clearly NOT firing hourly). Anonymous curl scraper is now
+fully blind: 0/14 assets parsed (was 2/12 on 06-13). Pulled real numbers from
+the live `voidline` Studio session (content tab, both Videos + Shorts):
+- **Tunguska long-form (FacPhS3hNjU) = 114 views** — crosses the >100v long-form
+  threshold. This directly contradicts the 06-13 learning that "v3 long-form 0v
+  is expected behavior under suppression." It was never 0 in reality, or it has
+  since recovered — either way the suppression read was based on a blind scraper.
+- **v1_bonus_briggs (vZ68HlWfT-Q) = 320 views** — published 15 juin as scheduled
+  (state still said SCHEDULED → reconciled to PUBLIC). It is now the channel's
+  #1 Short, beating the old plateau (v2_twist 299, v1_twist 282). This is the
+  question-hook bonus Short produced specifically to break the ~279-300v ceiling.
+- Other long-forms: Dyatlov 2v, Mary Celeste 20v. Shorts total ≈ 1237v across 10
+  published (vs 861v/7 shorts at weekly review #1 on 06-07). A new untracked
+  DRAFT exists ("9 Barrels Empty — The Mary Celeste Vapor Theory"), not in state.
+**Learning**:
+1. The "long-form is suppressed to 0v" conclusion was an artifact of the blind
+   anonymous scraper, not reality. Studio is the only trustworthy view source —
+   anonymous curl must be treated as non-functional and the pulse should read
+   Studio (cookie_profile=voidline) directly, as the 06-13 TODO already flagged.
+2. The question-hook bonus Short DID break the plateau (320 > 300). The "pure
+   narrative ≈ 300v ceiling, question hooks push higher" thesis holds and the
+   bonus-Short tactic to pierce it is validated.
+3. The hourly pulse has a 16-day gap — the cron is not actually firing hourly.
+   Monitoring was effectively dark for the whole period; any real spike would
+   have been missed.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC in shorts_state.json; logged real
+  view snapshot to stats_log.csv (Studio-read, since the scraper rows were blank).
+- FLAGGED to user: (a) hourly pulse not firing — verify the cron schedule; (b)
+  port monitor_voidline.py to read Studio via camoufox-stealth (the curl path is
+  dead); (c) Tunguska long-form 114v + bonus Short 320v are the two real green
+  shoots — the long-form suppression assumption is retired.
