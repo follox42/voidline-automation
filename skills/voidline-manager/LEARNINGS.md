@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 19:05 — Pulse blocked: cookies dead + scraper broken + 16-day dormancy
+**Observation**: First HOURLY PULSE to fire since 2026-06-13 14:02 — a 16-day
+gap, the routine was effectively dormant. This run: (1) `auth_check` on the
+`voidline` cookie profile returned `auth_valid=false / api_status=0 /
+"re-login required"` — the Studio session is DEAD; (2) the anonymous curl
+scraper in monitor_voidline.py returned **0/13** assets (100% blank — even
+v2_hook 4v and v3_answer 106v, which parsed on 06-13, came back empty), so no
+real view delta was computable; (3) `v1_bonus_briggs` (vZ68HlWfT-Q, scheduled
+06-15) was still stale `SCHEDULED` in state but is live (oEmbed 200) — reconciled
+to PUBLIC. The runner's "no notable delta" is therefore meaningless this pulse:
+it compared blank-to-blank, not a true flat line.
+**Learning**:
+1. With cookies dead AND the anonymous scraper unreliable, the pulse has ZERO
+   stat sources — it degrades to a no-op that *looks* healthy ("no notable
+   delta") while actually being blind. The runner should distinguish
+   "data unavailable" from "data flat" so a dead session raises an alert
+   instead of a silent green.
+2. Cookie death is the top operational risk: it disables monitoring (Studio),
+   scheduling, and Flow generation simultaneously. Re-login is a manual,
+   human-in-the-loop step the routine cannot self-heal.
+3. The 16-day dormancy means daily reconciliation also did not run — drift
+   accumulated exactly as predicted (v1_bonus_briggs). The whole catalogue is
+   still dry: nothing staged past the 06-15 bonus, no v4 shipped.
+**Action**:
+- Logged PULSE_BLOCKED in agent-log.json and exited cleanly (no Studio HTTP
+  actions spent, no Flow gen, cookies untouched).
+- Reconciled v1_bonus_briggs -> PUBLIC.
+- NEEDS HUMAN: re-login the `voidline` Google profile to restore the stealth
+  session, then the pulse/daily/Flow paths come back online.
+- TODO (code): port monitor_voidline.py to fetch stats via camoufox-stealth
+  (cookie_profile=voidline) instead of anonymous curl, and have run_pulse()
+  flag all-blank snapshots as DATA_UNAVAILABLE rather than "no notable delta".
