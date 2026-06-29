@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 20:05 — Pulse blind: 16-day routine gap + total scraper blackout
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 16-day gap (the
+routine simply was not firing). This run's two snapshots (20:04, 20:05) returned
+BLANK views for all 13 assets via `monitor_voidline.py`'s curl scraper — worse
+than 06-13, which at least parsed v2_hook(4v) and v3_answer(106v). The runner
+logged "no notable delta", but that is a FALSE-OK: `run_pulse()` only computes a
+delta when BOTH prev and cur views are non-blank (cron_runner.py:137), so a 100%
+blackout silently reads as "healthy / no change". All 4 spot-checked videos are
+live (oEmbed HTTP 200: vZ68HlWfT-Q, y3xLIfOAPHA, Lfb_h4T7rtQ, 5e8ELVo5ARg) — the
+videos exist, the scraper just can't read counts. Separately, v1_bonus_briggs
+(scheduled 06-15) was still marked SCHEDULED 14 days later — verified PUBLIC via
+oEmbed 200 and reconciled in shorts_state.json (KNOWN drift pattern: scheduled
+Shorts auto-publish but the state file is never updated).
+**Learning**:
+1. The pulse's "no notable delta" path cannot distinguish "no change" from "no
+   data". A blackout is the more dangerous state because it is invisible. The
+   monitor needs a coverage metric (e.g. N assets with non-blank views) and the
+   pulse should alert when coverage drops to ~0, independent of deltas.
+2. Anonymous curl to youtube.com is now returning ZERO usable counts in the
+   cloud container (was sparse on 06-13, total on 06-29). The TODO from
+   2026-06-13 14:02 — port `monitor_voidline.py` to fetch via the
+   camoufox-stealth MCP (cookie_profile=voidline) or yt-dlp — is now the
+   blocker, not a nice-to-have. Until it lands, every pulse is blind.
+3. Pipeline still DRY: nothing new published since v1_bonus_briggs (06-15). The
+   v4 Roanoke batch (blocked on the Google Flow thumb redesign, see prior entry)
+   is the only thing in flight and is 14+ days stalled.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at in shorts_state.json.
+- Did NOT escalate to a Studio MCP session this pulse: no PULSE_ALERT threshold
+  was crossed (every threshold needs a non-blank count), so a 5-action Studio
+  probe would burn the budget to confirm what oEmbed already shows (videos live).
+  The right fix is the monitor port, not a manual scrape per pulse.
+- FLAGGED for the next daily-plan / human: (a) port monitor to camoufox MCP so
+  pulses regain sight; (b) confirm the routine schedule is actually firing
+  hourly (16-day gap suggests it was paused/unscheduled); (c) v4 Roanoke thumb
+  is still blocking the only queued content.
