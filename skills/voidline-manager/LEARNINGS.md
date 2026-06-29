@@ -231,3 +231,28 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 11:06 — Pulse resumes after 16-day gap; drift found as predicted
+**Observation**: First pulse since 2026-06-13 14:02 (16-day routine outage).
+Runner logged "no notable delta" — no PULSE_ALERT, no threshold crossed
+(Short >1000v / long >100v / delta >50v). Scraper still blank for 13/14
+assets (known anonymous-curl flakiness); only v1_long_MaryCeleste parsed
+(20v, up from 2v on 05-31 — tiny but the long-form is no longer flat-dead).
+v1_bonus_briggs was still SCHEDULED for 06-15 in state; oEmbed probe = HTTP
+200 → it auto-published on schedule 14 days ago. Reconciled → PUBLIC +
+actual_published_at.
+**Learning**:
+1. A routine cadence gap is itself a drift generator: every scheduled Short
+   that fires during the outage silently leaves the state file stale. The
+   longer the gap, the more reconciliation the first run owes. oEmbed (not a
+   Studio HTTP action) remains the cheap, session-safe way to settle it.
+2. No new content shipped since 06-13 (v4 Roanoke still blocked on the Flow
+   UI redesign). Pipeline is DRY — nothing scheduled past 06-15. The 5/wk (or
+   even the cold-start 3/wk) cadence has fully lapsed.
+**Action**:
+- Reconciled v1_bonus_briggs in shorts_state.json.
+- No Studio actions spent (no alert to justify them). Stat coverage stays
+  sparse until monitor_voidline.py is ported to camoufox-stealth.
+- FLAG for daily-plan/user: v4 Roanoke Flow blocker is now the critical path
+  — pipeline has been dry for 2 weeks. Needs the fresh-session Flow re-inspect
+  (or the placeholder-thumb backup path) to break the stall.
