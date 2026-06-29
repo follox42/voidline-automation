@@ -231,3 +231,39 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 10:06 — First pulse in 16 days: organic pivot is compounding on the back-catalogue
+**Observation**: Pulse resumed after a 16-day gap (last snapshot 06-13 14:02).
+First catalogue-wide real view data captured via the monitor scraper:
+v1_twist **281**, v2_twist **299** (both parked at the ~300 plateau noted
+06-02/06-05), v1_answer 87, v1_hook 64, v2_answer 34, v2_hook 7. The v3
+Tunguska batch came back blank (scraper miss — all 4 confirmed still PUBLIC
+via oEmbed 200). No PULSE_ALERT: nothing crossed 1000v (short) or 100v
+(long); the threshold-delta logic also can't fire because the 06-13 baseline
+was almost entirely blank, so per-asset deltas are uncomputable against it.
+**Learning**:
+1. The pure-organic pivot (no Reddit seed) is showing its first real signal:
+   the OLDEST batch — v1 Mary Celeste (05-31→06-04) — is still accruing
+   organic views weeks later (twist 281, answer 87, hook 64). Cold-start
+   organic compounds slowly on the back-catalogue, exactly the 3-6mo curve
+   we bet on. No breakout, but not dead.
+2. v1_twist 281 + v2_twist 299 both sit at the ~300 narrative/question
+   ceiling — re-confirms the plateau. Crossing it still needs the cutter-v2
+   outro-debate engagement lever, which the v1/v2 batches predate.
+3. Scraper remains non-deterministic in the cloud: two back-to-back pulse
+   runs gave full data (10:05) then ALL-blank (10:06). An all-blank snapshot
+   is actively harmful — it resets the delta baseline so the NEXT pulse can
+   never compute deltas. Dropped the 10:06 noise rows from stats_log.csv.
+4. Same stale-SCHEDULED drift as 06-13: v1_bonus_briggs (vZ68HlWfT-Q) was
+   marked SCHEDULED for 06-15 but has been PUBLIC for 14 days (oEmbed 200).
+   YouTube never writes back to state — reconciliation must be assumed
+   every run, not just daily-plan.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at=06-15.
+- Stripped the 10:06 all-blank snapshot so 10:05 stays the live baseline.
+- TODO (still open from 06-13): port monitor_voidline.py to fetch via
+  camoufox-stealth (cookie_profile=voidline) so pulse stat coverage stops
+  depending on anonymous-curl luck. Blank-snapshot guard would also help:
+  skip writing a snapshot when >50% of assets parse blank.
+- No Studio HTTP actions or Flow generations used this pulse (oEmbed probes
+  only) — within hard limits.
