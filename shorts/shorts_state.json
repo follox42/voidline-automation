@@ -8,14 +8,14 @@
     {
       "short_id": "v1_hook",
       "yt_id": "_TGvU9o7i4Q",
-      "title": "The Ship That Sailed Itself \u2014 Mary Celeste 1872",
+      "title": "The Ship That Sailed Itself — Mary Celeste 1872",
       "publish_at": "2026-05-31T18:00:00Z",
       "status": "PUBLIC"
     },
     {
       "short_id": "v1_twist",
       "yt_id": "x2VsCWJ-r1o",
-      "title": "Captain Morehouse Boards an Empty Ship \u2014 Mary Celeste",
+      "title": "Captain Morehouse Boards an Empty Ship — Mary Celeste",
       "publish_at": "2026-06-02T12:00:00Z",
       "status": "PUBLIC",
       "scheduled_at": "2026-06-02T12:00:00Z",
@@ -24,7 +24,7 @@
     {
       "short_id": "v2_hook",
       "yt_id": "Lfb_h4T7rtQ",
-      "title": "9 Soviet Hikers Cut Their Tent and Ran Barefoot \u2014 Dyatlov 1959",
+      "title": "9 Soviet Hikers Cut Their Tent and Ran Barefoot — Dyatlov 1959",
       "publish_at": "2026-06-03T12:00:00Z",
       "status": "PUBLIC",
       "scheduled_at": "2026-06-03T12:00:00Z",
@@ -33,7 +33,7 @@
     {
       "short_id": "v1_answer",
       "yt_id": "foCq3gOm5dg",
-      "title": "The 9 Missing Barrels Theory \u2014 Mary Celeste Solved?",
+      "title": "The 9 Missing Barrels Theory — Mary Celeste Solved?",
       "publish_at": "2026-06-04T12:00:00Z",
       "status": "PUBLIC",
       "scheduled_at": "2026-06-04T12:00:00Z",
@@ -60,7 +60,7 @@
     {
       "short_id": "v3_hook",
       "yt_id": "5e8ELVo5ARg",
-      "title": "What Exploded the Sky? \u2014 Tunguska 1908",
+      "title": "What Exploded the Sky? — Tunguska 1908",
       "publish_at": "2026-06-08T12:00:00Z",
       "status": "PUBLIC",
       "scheduled_at": "2026-06-08T12:00:00Z",
@@ -78,7 +78,7 @@
     {
       "short_id": "v3_answer",
       "yt_id": "y3xLIfOAPHA",
-      "title": "It Never Landed \u2014 The 2020 Tunguska Theory",
+      "title": "It Never Landed — The 2020 Tunguska Theory",
       "publish_at": "2026-06-12T12:00:00Z",
       "status": "PUBLIC",
       "scheduled_at": "2026-06-12T12:00:00Z",
@@ -87,10 +87,11 @@
     {
       "short_id": "v1_bonus_briggs",
       "yt_id": "vZ68HlWfT-Q",
-      "title": "Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872",
+      "title": "Why Did the Teetotal Captain Run? — Mary Celeste 1872",
       "publish_at": "2026-06-15T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-15T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-15T12:00:00Z",
+      "actual_published_at": "2026-06-15T12:00:00Z"
     }
   ]
 }

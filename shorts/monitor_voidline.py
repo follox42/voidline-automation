@@ -22,18 +22,47 @@ LONGFORMS = [
 ]
 
 
+# A desktop UA + language + consent cookie makes YouTube serve the full watch/shorts
+# page instead of a stripped interstitial. Without these the count fields are absent.
+_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
+
+# YouTube serves the view count in several shapes depending on watch vs shorts and
+# logged-in vs out. Try them in order of specificity. (The old single-regex
+# `"viewCount":"(\d+)"` only matched the authenticated watch shape and silently
+# returned blanks for everything else — that was the cause of the blind pulses.)
+_VIEW_PATTERNS = (
+    r'"viewCount":"(\d+)"',                                       # authed watch (videoDetails)
+    r'videoViewCountRenderer".{0,80}?simpleText":"([\d,]+) views?',  # logged-out watch
+    r'"views":\{"simpleText":"([\d,]+) views?"',                  # shorts reel
+    r'"accessibilityText":"([\d,]+) views?"',                    # shorts fallback
+)
+
+
+def _extract_views(html: str):
+    for pat in _VIEW_PATTERNS:
+        m = re.search(pat, html)
+        if m:
+            return int(m.group(1).replace(",", ""))
+    return None
+
+
 def fetch_stats(video_id: str, is_short: bool):
     url = f"https://www.youtube.com/shorts/{video_id}" if is_short else f"https://www.youtube.com/watch?v={video_id}"
     try:
         out = subprocess.run(
-            ["curl", "-sL", "--max-time", "8", url],
-            capture_output=True, text=True, timeout=12,
+            ["curl", "-sL", "--max-time", "12",
+             "-H", f"User-Agent: {_UA}",
+             "-H", "Accept-Language: en-US,en;q=0.9",
+             "-H", "Cookie: CONSENT=YES+1; SOCS=CAI",
+             url],
+            capture_output=True, text=True, timeout=15,
         ).stdout
     except Exception:
         return None, None
-    v = re.search(r'"viewCount":"(\d+)"', out)
+    v = _extract_views(out)
     l = re.search(r'"likeCount":"(\d+)"', out)
-    return (int(v.group(1)) if v else None, int(l.group(1)) if l else None)
+    return (v, int(l.group(1)) if l else None)
 
 
 def main():

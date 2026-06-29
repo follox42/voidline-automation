@@ -231,3 +231,45 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 06:14 — Pulse was blind for 16 days; real root-cause = stale regex, NOT a consent block
+**Observation**: First pulse since 2026-06-13 (16-day gap — the hourly routine
+had not fired). The runner exited clean with "no notable delta", but that was a
+FALSE NEGATIVE: `monitor_voidline.py` returned blank views for 26/26 rows, so it
+was diffing blank-against-blank. Recovered the real counts two ways — a logged-in
+same-origin `fetch()` loop in the `voidline` camoufox session (13/13), then
+reproduced them with plain system `curl` once I fixed the parser. The 06-13
+LEARNINGS blamed "anonymous curl serves a consent page" — that diagnosis was
+WRONG. curl gets the full 1.1MB page fine; YouTube simply changed the HTML shape
+and the monitor's single regex `"viewCount":"(\d+)"` (the authenticated
+videoDetails shape) no longer matched logged-out pages, which now use
+`videoViewCountRenderer.simpleText` (watch) and `accessibilityText`/`views.simpleText`
+(shorts). `curl_cffi` is NOT a usable fix here — its BoringSSL rejects the agent
+proxy's MITM cert (TLS error 35); only system curl honours the proxy + CA bundle.
+**Learning**:
+1. The blind-pulse bug was a stale parser, not anti-scrape. A multi-pattern
+   extractor + desktop UA + `Cookie: CONSENT=YES+1` recovers all 13 counts with
+   the proxy-friendly system curl — no new deps, no browser needed for routine stats.
+2. The runner's own "no notable delta" must never be trusted when the snapshot is
+   all-blank. A pulse that can't read views should report BLIND, not "all quiet."
+3. Real signal that was hidden the whole time: **v3_long_Tunguska long-form = 114v**,
+   crossing the long-form>100v alert threshold. It was 0v under suppression on 06-13.
+   This is the FIRST long-form ever past the algo's minimum pool — directly
+   contradicts the standing "long-forms are dead" thesis. v1_long_MaryCeleste also
+   moved 2→20.
+4. **v1_bonus_briggs = 320v** is the new channel top performer (question hook
+   "Why Did the Teetotal Captain Run?") — beats the old v2_twist 299 ceiling. It was
+   still mis-marked SCHEDULED in state (auto-published 06-15, silent as always) —
+   reconciled to PUBLIC. Same drift pattern as 06-13: scheduled Shorts publish
+   without touching the state file.
+5. Older Shorts are flat/dead: v2_twist 299 (+1 in 24d), v1_twist 281, v3_answer 113,
+   v2_answer 34, v3_twist 28, v2_hook 7, v3_hook 3 (suppressed batch never recovered).
+**Action**:
+- Patched `monitor_voidline.py`: multi-pattern `_extract_views()` + UA/lang/consent
+  headers. Verified 13/13 against browser truth. Future pulses can now see again.
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC. Logged corrected PULSE_ALERT in agent-log.
+- FOLLOW-UP for daily/weekly run (out of pulse scope): (a) the long-form-100v signal
+  on v3 Tunguska deserves a Studio analytics pull — where did 114v come from, is it
+  suppression lifting or a slow drip? (b) likes still parse blank on logged-out pages
+  (likeCount regex stale too) — low priority. (c) the hourly routine itself was dark
+  16 days — verify the cron is actually scheduled/enabled.
