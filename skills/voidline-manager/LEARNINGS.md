@@ -231,3 +231,30 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 22:05 — Pulse resumes after 16-day gap: scraper 100% blank + state drift
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 16-day dormancy gap
+(routine was not firing hourly). Pulse ran clean (exit 0, no PULSE_ALERT) but
+`monitor_voidline.py` returned BLANK views for all 13 assets (0/13 parsed),
+degraded from the 2/12 partial parse on 06-13. Anonymous curl to youtube.com is
+now fully blocked by the consent/anti-scrape interstitial in the cloud container,
+so the pulse has zero view-delta signal. Separately, oEmbed probe (HTTP 200,
+session-safe) confirmed v1_bonus_briggs (vZ68HlWfT-Q, scheduled 06-15) auto-
+published 14 days ago but state still read SCHEDULED — same publish-side drift
+as the 06-13 reconcile. Reconciled → PUBLIC.
+**Learning**:
+1. The pulse cannot produce its core deliverable (view deltas) while it relies on
+   anonymous curl — coverage has gone from sparse to nil. The documented fix
+   (port monitor to camoufox-stealth, cookie_profile=voidline, or yt-dlp) is now
+   blocking, not optional.
+2. Scheduled Shorts keep auto-publishing silently; oEmbed 200 remains the cheap,
+   reliable public/scheduled probe. State reconciliation must happen every run
+   that touches the queue, not just daily-plan.
+3. A 16-day pulse gap means no growth monitoring over a full half-month — confirm
+   the cron schedule is actually firing in the Cloud Routine, not just installed.
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED → PUBLIC (oEmbed 200, actual 06-15).
+- No Studio investigation this pulse (no PULSE_ALERT; honoring the 5-action cap).
+- TODO (next non-pulse window): port monitor_voidline.py to fetch via
+  camoufox-stealth so pulses regain real view data; verify the hourly cron is
+  live (16-day gap is the symptom to chase).

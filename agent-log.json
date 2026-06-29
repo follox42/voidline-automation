@@ -19,6 +19,26 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-29 22:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219222:04: no notable delta"
+    },
+    {
+      "t": "2026-06-29 22:05 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 22:04\u219222:05: no notable delta"
+    },
+    {
+      "t": "2026-06-29 22:07 UTC",
+      "action": "RECONCILE",
+      "detail": "v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED in state but verified PUBLIC via oEmbed HTTP 200 \u2014 auto-published 06-15, reconciled to PUBLIC + actual_published_at."
+    },
+    {
+      "t": "2026-06-29 22:07 UTC",
+      "action": "PULSE_BLOCKER",
+      "detail": "monitor_voidline.py returned BLANK views for 0/13 assets (full anti-scrape block on anon curl). No PULSE_ALERT possible without view data. 16-day gap since last pulse (06-13 14:02). TODO: port monitor to camoufox-stealth + verify hourly cron firing."
     }
   ]
 }
