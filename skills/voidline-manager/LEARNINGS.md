@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 13:08 — Suppression LIFTED: v3 Tunguska long-form breaks out organically
+**Observation**: First pulse since 06-13 (16d gap; scraper now has full coverage).
+PULSE_ALERT fired: v3_long_Tunguska (FacPhS3hNjU) long-form crossed 100v →
+**114 views / 102 unique / 1.7k impressions / 3.1% CTR / 7:13 avg view duration
+(~55% of 13:12)**. Studio reach tab (voidline session):
+- Traffic = **Browse 49.1% + Suggested videos 44.7% = ~94% pure algorithmic**;
+  direct 2.6%, YT search 2.6%. "Sites/apps externes" = insufficient data → **zero
+  external referral**. This is 100% organic YouTube distribution, NOT a Reddit seed.
+- Suggested-from cluster (44.7% of all traffic): "The Willamette Meteorite" (68.6%
+  of suggested), "The Meteor Shower That Killed 10,000 People", "Tunguska Event | A
+  Rare Natural Disaster", "Largest Unexplained Explosion in History • Mystery Files",
+  "Scariest Thunderstorm of All Time" — i.e. established meteor/impact/cosmic-disaster
+  docs. The algo has placed us INTO that niche suggestion graph.
+- Other long-forms also off zero: v1_MaryCeleste 20v, v2_Dyatlov 2v.
+- Shorts since 06-13: v1_bonus_briggs **320v** (new top Short), v2_twist 299,
+  v1_twist 282, v3_answer 113, v1_answer 87, v1_hook 64. Laggards: v2_hook 7,
+  v3_hook 3 (narrative-hook tax, as predicted).
+**Learning**:
+1. The 7-14d suppression cooldown CALLED IT — lift landed right on schedule. 1.7k
+   impressions vs the 3-24 impressions of the suppressed period is the unambiguous
+   signature of suppression release. Cold-start doc channels DO recover from a burst
+   penalty if you stop uploading and wait. Patience was the correct lever, not Reddit.
+2. The breakout vector is **topical suggestion adjacency**: Tunguska rode in next to
+   meteor/impact disaster docs, not mystery-genre docs. The niche the algo actually
+   filed us under is "cosmic/natural-disaster explainer", narrower than "unsolved
+   mysteries". 55% avg retention on a 13-min doc is what kept us in that graph.
+3. Pure-organic path is now VALIDATED at J+33 — earlier than the 3-6mo estimate.
+**Action**:
+- LEAN INTO the impact/cosmic-disaster cluster while the suggestion link is hot — the
+  next long-form topic should be impact/sky/cosmic adjacent (not the Roanoke v4, which
+  is colonial-mystery and sits in a different graph) OR ship Roanoke but queue an
+  impact-topic long-form right behind it to compound the Tunguska adjacency.
+- Reconciled drift: v1_bonus_briggs was stale SCHEDULED in shorts_state.json but live
+  at 320v (publish 06-15 in the past) → set PUBLIC + actual_published_at. Same known-bad
+  "trust state without reading back" pattern; daily reconcile still mandatory.
+- Reddit seed stays PARKED — organic is working, don't perturb it with a burst signal.
+- Next pulse: watch whether Tunguska impressions keep climbing (breakout confirms) or
+  plateau at ~1.7k (one-time test pool).
