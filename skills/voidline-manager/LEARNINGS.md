@@ -231,3 +231,48 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 09:06 — First real snapshot in 16 days: "suppression" was just cold-start latency
+**Observation**: Anonymous curl in `monitor_voidline.py` succeeded this run for
+ALL 13 assets (vs 10/12 blank on 2026-06-13 — different cloud egress IP got a
+non-blocked YouTube response). First full numeric snapshot since J+17. Numbers
+(views, since publish):
+- Long-form: v3_long_Tunguska **114** (102 unique), v1_long_MaryCeleste 20,
+  v2_long_Dyatlov 2.
+- Shorts: v1_bonus_briggs **320**, v2_twist 299, v1_twist 281, v3_answer 113,
+  v1_answer 87, v1_hook 64, v2_answer 34, v3_twist 28, v2_hook 7, v3_hook 3.
+Studio analytics on the Tunguska long-form (2 HTTP actions, voidline cookies
+still alive at 16d): 1.7k impressions, CTR 3.1%, avg view duration **7:13** on a
+13:12 video (~55% retention). Traffic = 49.1% Browse + 44.7% Suggested videos
+(~94% algorithmic), external sites "insufficient data" (no Reddit/referral).
+Suggested next to established docs — "The Willamette Meteorite" drove 68.6% of
+the suggested slice, plus "Meteor Shower That Killed 10,000 People" etc.
+**Learning**:
+1. The J+17 "algorithmic suppression" panic was WRONG / premature. The exact
+   video flagged as suppressed (all-sources-insufficient-data on 06-13) is now
+   recommended by YouTube at scale — 94% of its traffic is algorithmic browse +
+   suggested. This was cold-start indexing latency, not a penalty. The 9-Shorts
+   burst did NOT earn a lasting suppression. Update mental model: doc-niche cold
+   start has a multi-week lag before the algo starts placing content.
+2. The real bottleneck now is **CTR (3.1%)**, not reach. 1.7k impressions are
+   flowing; the thumbnail/title isn't converting them. CTR is the lever to pull
+   next, not "wait out suppression."
+3. Retention is strong (7:13 / ~55% on long-form) — once a viewer clicks, the
+   content holds. So the funnel leak is purely the click, reinforcing #2.
+4. Shorts are the channel's traffic engine: v1_bonus_briggs (320) + v2_twist
+   (299) + v1_twist (281) dwarf the long-forms. The "skip TWIST" cadence call is
+   questionable — both top TWIST Shorts outperform every long-form.
+5. STATE DRIFT: v1_bonus_briggs was still `SCHEDULED` (06-15) in shorts_state
+   with 320 views — clearly long-since PUBLIC. Reconciled this run.
+**Action**:
+- Fixed state drift: v1_bonus_briggs → PUBLIC, actual_published_at 2026-06-15.
+- NEXT (daily-plan): prioritize a CTR experiment on the Tunguska long-form —
+  swap thumbnail to a higher-contrast/curiosity frame and re-measure CTR in 7d.
+- Reconsider the "skip TWIST Shorts" rule — TWIST is the top-performing format.
+- The PULSE_ALERT here is a level-trigger (cv>=100), not a fresh delta (114→114
+  across the 23s double-snapshot). Future: alert on long-form crossing should
+  fire on the DELTA crossing 100, not the persistent level, to avoid re-firing
+  every pulse. Low-priority runner tweak.
+- Pulse stat coverage is now good via plain curl, BUT it's egress-IP-dependent
+  and may go blank again. The camoufox-stealth port (prior TODO) stays the
+  durable fix but is not urgent while curl works.
