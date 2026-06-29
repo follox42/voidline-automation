@@ -231,3 +231,32 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 17:05 — Pulse is blind: 16-day gap + 0/13 stat coverage
+**Observation**: First pulse snapshot since 2026-06-13 14:02 (16-day gap — no
+hourly pulses logged in between). Runner completed cleanly and logged
+`PULSE Δ 14:02→17:04: no notable delta` (no PULSE_ALERT). But every view/like
+cell in this snapshot is BLANK across all 13 tracked assets — including
+v3_answer, which parsed at 106v on 06-13. Coverage regressed from 2/12 on 06-13
+to 0/13 now. New assets are also being tracked with no data: 3 long-forms
+(sB8VXu2OHtY / pM-u_8ONjI0 / FacPhS3hNjU) and v1_bonus_briggs (vZ68HlWfT-Q,
+was SCHEDULED 06-15).
+**Learning**:
+1. "No notable delta" is NOT a clean health signal here — it's the curl scraper
+   returning a consent/anti-scrape page for every asset, so the pulse cannot
+   read views at all and therefore cannot detect a spike even if one occurred.
+   The hourly monitor is effectively dark.
+2. The 06-13 TODO to port monitor_voidline.py to the camoufox-stealth MCP
+   (cookie_profile=voidline) was never done — this is now the blocking gap, not
+   a nice-to-have. Until it lands, every pulse is a no-op data-wise.
+3. The 16-day logging gap means the routine either wasn't firing or wasn't
+   committing between 06-13 and 06-29 — worth confirming the Cloud Routine
+   schedule is actually active hourly.
+**Action**:
+- No Studio HTTP actions spent this pulse (no alert to investigate; staying
+  within limits while the data path is broken).
+- PRIORITY: port monitor_voidline.py to fetch via camoufox-stealth so future
+  pulses have real numbers; until then PULSE deltas are meaningless.
+- Daily-plan run should reconcile v1_bonus_briggs (SCHEDULED 06-15, now 14 days
+  past — almost certainly auto-published, state file not updated) and the 3 new
+  long-forms via the oEmbed probe.
