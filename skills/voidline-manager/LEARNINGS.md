@@ -231,3 +231,47 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 16:10 — v1_bonus_briggs breaks the plateau (320v, new #1 Short) + pulse was blind
+**Observation**: First pulse in 16 days (last real one 2026-06-13 14:02). The
+hourly runner logged "no notable delta" — but that was a FALSE NEGATIVE: the
+anonymous-curl monitor returned 0/13 blank view counts (worse than 06-13's 2/13),
+so the threshold logic in cron_runner.py (`if not c["views"]: continue`) could
+never fire. Pulled real numbers from the live `voidline` Studio session instead.
+Real Shorts standings (since-publish, 2026-06-29):
+- v1_bonus_briggs (question hook, "Why Did the Teetotal Captain Run?") = **320v** ⭐ NEW #1
+- v2_twist 299 · v1_twist 282 · v3_answer 113 · v1_answer 87 · v1_hook 64
+- v2_answer 34 · v3_twist 28 · v2_hook 7 · v3_hook 3
+Total ≈ 1,237v across 10 published Shorts (was 861v on 06-07).
+v1_bonus_briggs analytics: 95.9% Shorts Feed, 2.2% other YT, 0.9% search
+("mary celeste" 33%), 0.6% channel pages. External: insufficient. Notifs: 0 sent.
+**Learning**:
+1. The v1 Mary Celeste bonus + QUESTION HOOK strategy WORKED — it broke the
+   ~300 plateau and is now the channel's top Short, served 95.9% by the Shorts
+   feed (pure algorithmic, zero external seed). This is the strongest organic
+   validation yet that question hooks + the v1 topic convert. Confirms the
+   06-07 weekly-review action item.
+2. NOT suppressed — the algo is actively distributing via the feed. The earlier
+   "suppression" read (06-13) does not hold for this asset.
+3. The pulse alerter is structurally blind in the cloud: anonymous curl gets
+   0% coverage now. Every pulse will false-negative until monitor_voidline.py
+   is ported to fetch via the authenticated camoufox-stealth `voidline` session
+   (the session is alive and returns full stats in one extract_text — proven
+   this run). This is the #1 infra fix; logged as a TODO in 06-13 and now
+   confirmed fully broken.
+4. State drift recurred: v1_bonus_briggs auto-published 06-15 but stayed
+   SCHEDULED in shorts_state.json for 14 days (oEmbed 200 + Studio "Publiée").
+   Reconciled → PUBLIC + actual_published_at.
+5. New untracked DRAFT spotted in Studio: "9 Barrels Empty. The Mary Celeste
+   Vapor Theory #shorts" (Brouillon, not in shorts_state.json) — a v1 vapor-angle
+   bonus Short someone staged but never published.
+**Action**:
+- Reconciled v1_bonus_briggs state → PUBLIC.
+- PRIORITY: port monitor_voidline.py to pull stats via camoufox-stealth voidline
+  session (kills the blind-pulse false-negative bug). Until then, pulses must
+  read Studio directly to be meaningful.
+- Momentum lever: v1_bonus_briggs proves the v1-Mary-Celeste + question-hook
+  formula. Finish + publish the staged "9 Barrels Vapor Theory" draft and
+  produce more v1 question-hook bonus Shorts — that's the validated path, not
+  the cold v3 Tunguska topics (v3_hook 3v, v3_twist 28v are the weakest).
+- Pipeline still dry beyond the catalogue; next Short slots unfilled.

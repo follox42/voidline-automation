@@ -19,6 +19,31 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-29 16:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219216:06: no notable delta"
+    },
+    {
+      "t": "2026-06-29 16:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 16:06\u219216:07: no notable delta"
+    },
+    {
+      "t": "2026-06-29 16:10 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "RUNNER FALSE-NEGATIVE: monitor returned 0/13 blank views (anonymous-curl anti-scrape) so threshold logic never fired. Pulled real stats from live voidline Studio session. NOTABLE: v1_bonus_briggs (vZ68HlWfT-Q, question hook, pub 06-15) = 320v -> new #1 Short, broke the ~300 plateau (>50v delta from 0 baseline). Traffic 95.9% Shorts Feed = pure organic, NOT suppressed. Total Shorts ~1237v (was 861v on 06-07). First pulse in 16 days (last real 06-13 14:02)."
+    },
+    {
+      "t": "2026-06-29 16:10 UTC",
+      "action": "RECONCILE",
+      "detail": "State drift: v1_bonus_briggs auto-published 06-15 but stayed SCHEDULED for 14 days. Verified PUBLIC (oEmbed 200 + Studio 'Publiee', 320v). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Also spotted new untracked DRAFT in Studio: '9 Barrels Empty. The Mary Celeste Vapor Theory' (Brouillon, not in state)."
+    },
+    {
+      "t": "2026-06-29 16:10 UTC",
+      "action": "INFRA_FLAG",
+      "detail": "Pulse alerter is structurally blind in cloud: monitor_voidline.py anonymous curl = 0% stat coverage. Every pulse false-negatives until monitor is ported to fetch via authenticated camoufox-stealth voidline session (proven this run: one extract_text returns all stats). TODO from 06-13 now confirmed fully broken; #1 infra fix."
     }
   ]
 }
