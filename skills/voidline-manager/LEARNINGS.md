@@ -231,3 +231,42 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 07:07 — Pulse resumes after 16-day gap; scraper fully blind (false-green)
+**Observation**: First HOURLY PULSE since 2026-06-13 14:02 — a 16-day gap in the
+snapshot history (the routine simply was not firing). On resume the monitor wrote
+two snapshots (07:06, 07:07) in which **0 of 13 assets** returned a view count —
+every `views` cell is blank. On 2026-06-13 the anonymous-curl scraper still parsed
+2/12 (v2_hook 4v, v3_answer 106v); now it parses 0/13. The pulse logged
+"no notable delta" and exited clean, but that is a FALSE GREEN: the delta loop in
+cron_runner.py skips any asset where prev or cur `views` is empty, so a totally
+empty scrape is indistinguishable from "nothing changed." No PULSE_ALERT could
+ever fire while the scraper returns nothing. Separately, v1_bonus_briggs
+(vZ68HlWfT-Q, scheduled 06-15) was still marked SCHEDULED in state though its
+publish time is 14 days past — verified PUBLIC via oEmbed (HTTP 200) and reconciled
+to PUBLIC + actual_published_at=2026-06-15T12:00:00Z. oEmbed on v3_answer +
+v3_hook also 200, so the channel is alive and network is fine — the blanks are
+purely the scraper, not connectivity.
+**Learning**:
+1. Anonymous-curl view scraping in the cloud has degraded from sparse to ZERO. It
+   is no longer a monitoring source at all. The TODO from 2026-06-13 14:02 (port
+   monitor_voidline.py to camoufox-stealth, cookie_profile=voidline) is now
+   BLOCKING, not optional — the pulse is flying blind until it lands.
+2. "no notable delta" from the pulse is currently meaningless and must NOT be read
+   as "channel healthy." The runner needs a coverage guard: if 0 assets parsed,
+   log PULSE_BLIND (or DATA_GAP) instead of the silent no-delta path, so a broken
+   scraper is loud rather than invisible.
+3. Scheduled Shorts continue to auto-publish without updating state — the daily
+   reconciliation is still mandatory and caught briggs this run.
+4. The 16-day firing gap means the cron schedule itself was not running; whatever
+   re-enabled it should be confirmed as durable, else pulses keep missing.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json (drift fix).
+- Did NOT spend Studio/Flow actions this pulse: with no spike signal (because we
+  are blind) there was nothing to investigate via analytics; the right fix is the
+  monitor port, not a one-off manual scrape.
+- NEXT (highest priority): (a) port monitor_voidline.py to camoufox-stealth so
+  views actually populate; (b) add the 0-coverage PULSE_BLIND guard to
+  cron_runner.run_pulse; (c) confirm the cron is firing on schedule going forward.
+- Pipeline is STILL dry: nothing scheduled past briggs (06-15). Cadence has been
+  broken for ~2 weeks — v4 Roanoke batch needs to ship.
