@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-29 14:08 — Suppression LIFTED: Tunguska long-form is algo-recommended (breakout signal)
+**Observation**: First pulse with real data in 16 days (prior real snapshot 06-13).
+The v3 Tunguska long-form (FacPhS3hNjU, "The Day the Siberian Sky Exploded")
+crossed 100v — now **114 views / 102 unique, 1.7k impressions, CTR 3.1%, avg view
+duration 7:13 of 13:12 (~55% retention)**. On 06-13 this same video was 0v with
+all traffic sources "insufficient data" (confirmed algorithmic suppression). Studio
+reach tab (cookie_profile=voidline) now shows traffic = **Browse features 49.1% +
+Suggested videos 44.7% = ~94% YouTube-recommended**; 95% of impressions came from
+YouTube recommending the content. Direct 2.6%, Search 2.6%. External sites =
+"insufficient data" (NOT a Reddit/external referral — pure organic). Being suggested
+off a meteorite/disaster cluster (Willamette Meteorite 68.6%, Meteor Shower That
+Killed 10,000, Tunguska Event). Channel-wide growth since 06-13: v1_bonus_briggs
+320v (top Short, was scheduled 06-15), v2_twist 299v, v1_twist 282v, v3_answer 113v.
+**Learning**:
+1. The suppression flagged on 06-13 has LIFTED. The breakout the cold-start was
+   waiting for arrived via pure organic algo distribution (browse + suggested),
+   exactly the healthy growth shape — no external seed was needed, validating the
+   "pure organic" pivot.
+2. ~55% retention on a 13-min long-form is what earned the suggested-feed placement;
+   CTR 3.1% is modest, so thumbnail/title CTR is the next lever, not retention.
+3. The video rides a related-topic cluster (meteorite/natural-disaster). Future
+   long-forms in adjacent niches (impact events, natural cataclysms) will likely
+   inherit suggested-traffic from this cluster — topic adjacency is now a growth lever.
+**Action**:
+- Reconciled state drift: v1_bonus_briggs (vZ68HlWfT-Q) was stale SCHEDULED for
+  06-15 in shorts_state.json but is live at 320v — set status=PUBLIC +
+  actual_published_at.
+- No Reddit seed required — channel is self-sustaining on the algorithm now.
+- Next lever = CTR: A/B the Tunguska thumb/title while it still has algo momentum.
+- Keep the durable cadence (long/wk + 2 Shorts/wk); do NOT burst — burst caused the
+  original suppression (KNOWN_BAD).
