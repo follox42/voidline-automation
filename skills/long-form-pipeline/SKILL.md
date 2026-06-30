@@ -1,0 +1,103 @@
+---
+name: long-form-pipeline
+description: End-to-end production of a Voidline long-form (script → voice → assets → render → thumb → upload → schedule). 2 routines per week (Tue, Fri publish).
+metadata:
+  type: skill
+---
+
+# Long-form Pipeline
+
+You are the producer of a Voidline long-form. Run the steps in order. Each step writes to `runs/<topic>-<YYYY-MM-DD>/` so the next step can resume.
+
+## Pre-flight
+
+Read `skills/voidline-master/NEXT_VIDEOS.md` → find this run's LONG-1 or LONG-2 entry.
+Verify all fields filled (topic, hook, iconic detail, thumb prompt). If TBD remains → abort.
+
+## Step 1 — Script (script-smith)
+
+Generate `script.json` (6 chapters, target 11-13min, ~1250 words):
+- ch0: cold-open hook (45-60s, S-tier question hook from idea-forge)
+- ch1: setup / context (90-120s)
+- ch2: complication / first twist (120-150s)
+- ch3: investigation (120-150s)
+- ch4: deeper mystery (120-150s)
+- ch5: contemporary answer (90-120s)
+- ch6: open question for comments (30s)
+
+David Documentary VO style — calm, paced, sentence-level rhythm, no exclamations.
+
+## Step 2 — Voice (ElevenLabs)
+
+Requires env var `ELEVENLABS_KEY`. Voice: David Documentary (voice_id pinned in voidline-master).
+Generate one .mp3 per chapter into `runs/<topic>/voice/`.
+
+Cost ~$0.50 per 10min. Skip if `--no-voice` (uses placeholder silence).
+
+## Step 3 — Assets (asset-summoner)
+
+For each chapter, source:
+- 4-6 Wikimedia Commons images (license-clear, prefer 1280×720+)
+- 1-2 Veo 3.1 cinematic clips OR Flow Nano Banana 2 stills
+
+Save to `runs/<topic>/assets/` with attribution in `assets/ATTRIBUTION.md`.
+
+## Step 4 — Timeline (voidline-editor)
+
+Write `timeline.json` — each entry = (asset, start_s, duration_s, transition).
+Cut on beat. Default 4-6s per still, 8-12s per video clip.
+
+## Step 5 — Render (ffmpeg)
+
+`python3 skills/long-form-pipeline/render.py <topic>` → `runs/<topic>/render/voidline.mp4`
+
+Sepia + teal grade, 16:9, 1080p, h264 + AAC.
+Add Voidline logo bug (lower-left) + chapter cards at boundaries.
+
+## Step 6 — Thumb
+
+Use the `thumb prompt` from NEXT_VIDEOS.md → Flow Nano Banana 2 (via voidline cookie profile).
+Generate 2 candidates → pick highest visual contrast → Fern overlay (gold headline + red arrow):
+  `python3 shorts/make_fern_thumb.py <topic>_long <headline> <date>`
+
+## Step 7 — Upload
+
+`python3 skills/long-form-pipeline/upload_long.py <topic>` → uploads to YT Studio via camoufox-stealth, voidline cookie profile.
+
+Title format: `{Hook question} ({Year}) — {Iconic detail}`
+Description: standardized template (see `templates/description_long.md`)
+Tags: top 12 from youtube-virality-expert/sub-skills/seo.md
+Schedule: TUE or FRI 17:00 UTC (per NEXT_VIDEOS plan)
+
+## Step 8 — State + Learnings
+
+Append to `agent-log.json`:
+```json
+{
+  "at": "...",
+  "type": "long-form-produced",
+  "topic": "...",
+  "publish_at": "...",
+  "video_id": "...",
+  "thumb_path": "...",
+  "duration": "..."
+}
+```
+
+Commit + push. Auto-merge action handles the rest.
+
+## Hard limits
+
+- 1 long-form per pipeline run
+- Max $2 ElevenLabs cost
+- Max 30 Flow generations (anti-abuse)
+- Render must complete in < 20 min (else flag and abort)
+
+## Failure modes
+
+- ElevenLabs key missing → produce with silence + log BLOCKER
+- Wikimedia unavailable → fallback to Flow-only stills + log
+- Flow shows anti-abuse banner → abort + sleep 4h
+- Studio upload fails → save .mp4 to runs/<topic>/render/ + log UPLOAD_PENDING
+
+If 2 consecutive runs fail, escalate via LEARNINGS.md with FAILURE_STREAK tag.

@@ -1,0 +1,39 @@
+name: Auto-merge Claude routine PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    if: startsWith(github.head_ref, 'claude/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark PR ready if draft
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STATE=$(gh pr view ${{ github.event.pull_request.number }} --json isDraft -q .isDraft --repo ${{ github.repository }})
+          if [ "$STATE" = "true" ]; then
+            gh pr ready ${{ github.event.pull_request.number }} --repo ${{ github.repository }}
+          fi
+
+      - name: Enable auto-merge (squash)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} \
+            --repo ${{ github.repository }} \
+            --squash \
+            --auto \
+            --delete-branch \
+            || gh pr merge ${{ github.event.pull_request.number }} \
+                 --repo ${{ github.repository }} \
+                 --squash \
+                 --delete-branch
