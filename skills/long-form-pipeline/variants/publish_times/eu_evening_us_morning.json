@@ -1,0 +1,8 @@
+{
+  "_id": "eu_evening_us_morning",
+  "_description": "17:00 UTC standard slot. EU evening (19:00 CET) + US East morning (13:00 EST). Validated baseline for v1/v2/v3.",
+  "_default": true,
+  "_category": "voidline-baseline",
+  "publish_hour_utc": 17,
+  "audience_capture": ["EU-evening-primary", "US-EAST-morning", "AUS-bedtime"]
+}

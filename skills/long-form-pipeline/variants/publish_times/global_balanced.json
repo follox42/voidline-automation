@@ -1,0 +1,8 @@
+{
+  "_id": "global_balanced",
+  "_description": "20:00 UTC = 15:00 EST + 21:00 CET + 06:00 JST. Compromise capturing US afternoon + EU evening transition.",
+  "_default": false,
+  "_category": "balanced",
+  "publish_hour_utc": 20,
+  "audience_capture": ["US-afternoon", "EU-evening", "AUS-morning"]
+}

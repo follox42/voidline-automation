@@ -4,39 +4,46 @@
       "chapter_id": 0,
       "path": "runs/v4-roanoke/voice/ch0.mp3",
       "ok": true,
-      "chars": 610
+      "chars": 0,
+      "silence": true
     },
     {
       "chapter_id": 1,
       "path": "runs/v4-roanoke/voice/ch1.mp3",
       "ok": true,
-      "chars": 1245
+      "chars": 0,
+      "silence": true
     },
     {
       "chapter_id": 2,
       "path": "runs/v4-roanoke/voice/ch2.mp3",
       "ok": true,
-      "chars": 1543
+      "chars": 0,
+      "silence": true
     },
     {
       "chapter_id": 3,
       "path": "runs/v4-roanoke/voice/ch3.mp3",
       "ok": true,
-      "chars": 1397
+      "chars": 0,
+      "silence": true
     },
     {
       "chapter_id": 4,
       "path": "runs/v4-roanoke/voice/ch4.mp3",
       "ok": true,
-      "chars": 1526
+      "chars": 0,
+      "silence": true
     },
     {
       "chapter_id": 5,
       "path": "runs/v4-roanoke/voice/ch5.mp3",
       "ok": true,
-      "chars": 1547
+      "chars": 0,
+      "silence": true
     }
   ],
-  "total_chars": 7868,
-  "est_cost_usd": 0.8655
+  "total_chars": 0,
+  "est_cost_usd": 0.0,
+  "note": "SILENCE placeholders \u2014 ElevenLabs quota exhausted 2026-06-30. Re-gen after quota reset."
 }

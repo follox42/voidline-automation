@@ -1,0 +1,15 @@
+{
+  "id": "PASSIVE-TIME-001",
+  "type": "passive_observation",
+  "hypothesis": "Publishing at 00:00 UTC (US prime time) beats 17:00 UTC baseline on first_24h_views_per_subscriber",
+  "dimension": "publish_times",
+  "variant_under_test": "us_prime_time",
+  "control": "eu_evening_us_morning",
+  "metric": "first_24h_views_per_sub",
+  "min_videos": 1,
+  "min_impressions": 200,
+  "videos_tagged": ["Tlc-cKtAHuQ"],
+  "verdict": "pending",
+  "created": "2026-07-01",
+  "notes": "v4 Roanoke unintentionally scheduled at 00:00 UTC by routine. Treating as natural experiment vs v1/v2/v3 published at 17:00. Compare first_24h views (normalized by subscribers at publish time)."
+}

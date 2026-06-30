@@ -1,505 +1,360 @@
 {
-  "segments": [
+  "run_id": "v4-roanoke",
+  "total_duration_s": 715.0,
+  "chapters": [
     {
       "chapter_id": 0,
-      "asset": "runs/v4-roanoke/assets/ch0_ch0_roanoke_coast_map.jpg",
+      "title": "A Colony Gone",
       "start_s": 0.0,
-      "duration_s": 14.028,
-      "zoom_dir": "in",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": true
-    },
-    {
-      "chapter_id": 0,
-      "asset": "runs/v4-roanoke/assets/ch0_ch0_roanoke_coast_map.jpg",
-      "start_s": 14.028,
-      "duration_s": 14.028,
-      "zoom_dir": "out",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 0,
-      "asset": "runs/v4-roanoke/assets/ch0_ch0_roanoke_coast_map.jpg",
-      "start_s": 28.056,
-      "duration_s": 14.028,
-      "zoom_dir": "in",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 0,
-      "asset": "runs/v4-roanoke/assets/ch0_ch0_roanoke_coast_map.jpg",
-      "start_s": 42.083,
-      "duration_s": 14.028,
-      "zoom_dir": "out",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
+      "end_s": 45.5,
+      "voice_path": "runs/v4-roanoke/voice/ch0.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch0/img_00.jpg",
+          "start_s": 0.0,
+          "duration_s": 11.38,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch0/img_01.jpg",
+          "start_s": 11.38,
+          "duration_s": 11.38,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch0/img_02.jpg",
+          "start_s": 22.75,
+          "duration_s": 11.38,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch0/img_03.jpg",
+          "start_s": 34.12,
+          "duration_s": 11.38,
+          "transition": "dissolve"
+        }
+      ]
     },
     {
       "chapter_id": 1,
-      "asset": "runs/v4-roanoke/assets/ch1_ch1_elizabeth_i.jpg",
-      "start_s": 56.111,
-      "duration_s": 13.763,
-      "zoom_dir": "in",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": true
-    },
-    {
-      "chapter_id": 1,
-      "asset": "runs/v4-roanoke/assets/ch1_ch1_john_white_canoe.jpg",
-      "start_s": 69.874,
-      "duration_s": 13.763,
-      "zoom_dir": "out",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 1,
-      "asset": "runs/v4-roanoke/assets/ch1_ch1_john_white_village.png",
-      "start_s": 83.638,
-      "duration_s": 13.763,
-      "zoom_dir": "in",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 1,
-      "asset": "runs/v4-roanoke/assets/ch1_ch1_walter_raleigh.jpg",
-      "start_s": 97.401,
-      "duration_s": 13.763,
-      "zoom_dir": "out",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 1,
-      "asset": "runs/v4-roanoke/assets/ch1_ch1_elizabeth_i.jpg",
-      "start_s": 111.164,
-      "duration_s": 13.763,
-      "zoom_dir": "in",
-      "pan_dir": "center",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 1,
-      "asset": "runs/v4-roanoke/assets/ch1_ch1_john_white_canoe.jpg",
-      "start_s": 124.927,
-      "duration_s": 13.763,
-      "zoom_dir": "out",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 1,
-      "asset": "runs/v4-roanoke/assets/ch1_ch1_john_white_village.png",
-      "start_s": 138.691,
-      "duration_s": 13.763,
-      "zoom_dir": "in",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 1,
-      "asset": "runs/v4-roanoke/assets/ch1_ch1_walter_raleigh.jpg",
-      "start_s": 152.454,
-      "duration_s": 13.763,
-      "zoom_dir": "out",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
+      "title": "The 1587 Expedition",
+      "start_s": 45.5,
+      "end_s": 165.0,
+      "voice_path": "runs/v4-roanoke/voice/ch1.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_00.jpg",
+          "start_s": 45.5,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_01.jpg",
+          "start_s": 60.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_02.jpg",
+          "start_s": 75.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_03.jpg",
+          "start_s": 90.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_00.jpg",
+          "start_s": 105.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_01.jpg",
+          "start_s": 120.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_02.jpg",
+          "start_s": 135.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_03.jpg",
+          "start_s": 150.5,
+          "duration_s": 14.5,
+          "transition": "dissolve"
+        }
+      ]
     },
     {
       "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_debry_roanoke_map.jpg",
-      "start_s": 166.217,
-      "duration_s": 13.384,
-      "zoom_dir": "in",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": true
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_spanish_armada.jpg",
-      "start_s": 179.601,
-      "duration_s": 13.384,
-      "zoom_dir": "out",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_debry_roanoke_map.jpg",
-      "start_s": 192.986,
-      "duration_s": 13.384,
-      "zoom_dir": "in",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_spanish_armada.jpg",
-      "start_s": 206.37,
-      "duration_s": 13.384,
-      "zoom_dir": "out",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_debry_roanoke_map.jpg",
-      "start_s": 219.754,
-      "duration_s": 13.384,
-      "zoom_dir": "in",
-      "pan_dir": "center",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_spanish_armada.jpg",
-      "start_s": 233.138,
-      "duration_s": 13.384,
-      "zoom_dir": "out",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_debry_roanoke_map.jpg",
-      "start_s": 246.522,
-      "duration_s": 13.384,
-      "zoom_dir": "in",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_spanish_armada.jpg",
-      "start_s": 259.906,
-      "duration_s": 13.384,
-      "zoom_dir": "out",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_debry_roanoke_map.jpg",
-      "start_s": 273.291,
-      "duration_s": 13.384,
-      "zoom_dir": "in",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_spanish_armada.jpg",
-      "start_s": 286.675,
-      "duration_s": 13.384,
-      "zoom_dir": "out",
-      "pan_dir": "center",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 2,
-      "asset": "runs/v4-roanoke/assets/ch2_ch2_debry_roanoke_map.jpg",
-      "start_s": 300.059,
-      "duration_s": 13.384,
-      "zoom_dir": "in",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": false
+      "title": "Three Missing Years",
+      "start_s": 165.0,
+      "end_s": 325.0,
+      "voice_path": "runs/v4-roanoke/voice/ch2.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_00.jpg",
+          "start_s": 165.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_01.jpg",
+          "start_s": 180.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_02.jpg",
+          "start_s": 195.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_03.jpg",
+          "start_s": 210.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_00.jpg",
+          "start_s": 225.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_01.jpg",
+          "start_s": 240.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_02.jpg",
+          "start_s": 255.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_03.jpg",
+          "start_s": 270.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_00.jpg",
+          "start_s": 285.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_01.jpg",
+          "start_s": 300.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_02.jpg",
+          "start_s": 315.0,
+          "duration_s": 10.0,
+          "transition": "dissolve"
+        }
+      ]
     },
     {
       "chapter_id": 3,
-      "asset": "runs/v4-roanoke/assets/ch3_ch3_council_fire_alt.jpg",
-      "start_s": 313.443,
-      "duration_s": 14.606,
-      "zoom_dir": "in",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": true
-    },
-    {
-      "chapter_id": 3,
-      "asset": "runs/v4-roanoke/assets/ch3_ch3_croatoan_carving.jpg",
-      "start_s": 328.049,
-      "duration_s": 14.606,
-      "zoom_dir": "out",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 3,
-      "asset": "runs/v4-roanoke/assets/ch3_ch3_council_fire_alt.jpg",
-      "start_s": 342.655,
-      "duration_s": 14.606,
-      "zoom_dir": "in",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 3,
-      "asset": "runs/v4-roanoke/assets/ch3_ch3_croatoan_carving.jpg",
-      "start_s": 357.26,
-      "duration_s": 14.606,
-      "zoom_dir": "out",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 3,
-      "asset": "runs/v4-roanoke/assets/ch3_ch3_council_fire_alt.jpg",
-      "start_s": 371.866,
-      "duration_s": 14.606,
-      "zoom_dir": "in",
-      "pan_dir": "center",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 3,
-      "asset": "runs/v4-roanoke/assets/ch3_ch3_croatoan_carving.jpg",
-      "start_s": 386.472,
-      "duration_s": 14.606,
-      "zoom_dir": "out",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 3,
-      "asset": "runs/v4-roanoke/assets/ch3_ch3_council_fire_alt.jpg",
-      "start_s": 401.078,
-      "duration_s": 14.606,
-      "zoom_dir": "in",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 3,
-      "asset": "runs/v4-roanoke/assets/ch3_ch3_croatoan_carving.jpg",
-      "start_s": 415.683,
-      "duration_s": 14.606,
-      "zoom_dir": "out",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
+      "title": "CROATOAN: The Only Clue",
+      "start_s": 325.0,
+      "end_s": 470.0,
+      "voice_path": "runs/v4-roanoke/voice/ch3.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_00.jpg",
+          "start_s": 325.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_01.jpg",
+          "start_s": 340.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_02.jpg",
+          "start_s": 355.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_03.jpg",
+          "start_s": 370.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_00.jpg",
+          "start_s": 385.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_01.jpg",
+          "start_s": 400.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_02.jpg",
+          "start_s": 415.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_03.jpg",
+          "start_s": 430.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_00.jpg",
+          "start_s": 445.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_01.jpg",
+          "start_s": 460.0,
+          "duration_s": 10.0,
+          "transition": "dissolve"
+        }
+      ]
     },
     {
       "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_powhatan.png",
-      "start_s": 430.289,
-      "duration_s": 13.605,
-      "zoom_dir": "in",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": true
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_spanish_galleon.jpg",
-      "start_s": 443.894,
-      "duration_s": 13.605,
-      "zoom_dir": "out",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_powhatan.png",
-      "start_s": 457.498,
-      "duration_s": 13.605,
-      "zoom_dir": "in",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_spanish_galleon.jpg",
-      "start_s": 471.103,
-      "duration_s": 13.605,
-      "zoom_dir": "out",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_powhatan.png",
-      "start_s": 484.707,
-      "duration_s": 13.605,
-      "zoom_dir": "in",
-      "pan_dir": "center",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_spanish_galleon.jpg",
-      "start_s": 498.312,
-      "duration_s": 13.605,
-      "zoom_dir": "out",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_powhatan.png",
-      "start_s": 511.916,
-      "duration_s": 13.605,
-      "zoom_dir": "in",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_spanish_galleon.jpg",
-      "start_s": 525.521,
-      "duration_s": 13.605,
-      "zoom_dir": "out",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_powhatan.png",
-      "start_s": 539.126,
-      "duration_s": 13.605,
-      "zoom_dir": "in",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 4,
-      "asset": "runs/v4-roanoke/assets/ch4_ch4_spanish_galleon.jpg",
-      "start_s": 552.73,
-      "duration_s": 13.605,
-      "zoom_dir": "out",
-      "pan_dir": "center",
-      "transition": "crossfade",
-      "chapter_boundary": false
+      "title": "400 Years of Theories",
+      "start_s": 470.0,
+      "end_s": 600.0,
+      "voice_path": "runs/v4-roanoke/voice/ch4.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_00.jpg",
+          "start_s": 470.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_01.jpg",
+          "start_s": 485.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_02.jpg",
+          "start_s": 500.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_03.jpg",
+          "start_s": 515.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_00.jpg",
+          "start_s": 530.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_01.jpg",
+          "start_s": 545.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_02.jpg",
+          "start_s": 560.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_03.jpg",
+          "start_s": 575.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_00.jpg",
+          "start_s": 590.0,
+          "duration_s": 10.0,
+          "transition": "dissolve"
+        }
+      ]
     },
     {
       "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_dig_alt2.jpg",
-      "start_s": 566.335,
-      "duration_s": 14.121,
-      "zoom_dir": "in",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": true
-    },
-    {
-      "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_hatteras_island_map.jpg",
-      "start_s": 580.455,
-      "duration_s": 14.121,
-      "zoom_dir": "out",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_dig_alt2.jpg",
-      "start_s": 594.576,
-      "duration_s": 14.121,
-      "zoom_dir": "in",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_hatteras_island_map.jpg",
-      "start_s": 608.697,
-      "duration_s": 14.121,
-      "zoom_dir": "out",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_dig_alt2.jpg",
-      "start_s": 622.817,
-      "duration_s": 14.121,
-      "zoom_dir": "in",
-      "pan_dir": "center",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_hatteras_island_map.jpg",
-      "start_s": 636.938,
-      "duration_s": 14.121,
-      "zoom_dir": "out",
-      "pan_dir": "left",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_dig_alt2.jpg",
-      "start_s": 651.059,
-      "duration_s": 14.121,
-      "zoom_dir": "in",
-      "pan_dir": "right",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_hatteras_island_map.jpg",
-      "start_s": 665.179,
-      "duration_s": 14.121,
-      "zoom_dir": "out",
-      "pan_dir": "up",
-      "transition": "crossfade",
-      "chapter_boundary": false
-    },
-    {
-      "chapter_id": 5,
-      "asset": "runs/v4-roanoke/assets/ch5_ch5_dig_alt2.jpg",
-      "start_s": 679.3,
-      "duration_s": 14.121,
-      "zoom_dir": "in",
-      "pan_dir": "down",
-      "transition": "crossfade",
-      "chapter_boundary": false
+      "title": "What Archaeology Found",
+      "start_s": 600.0,
+      "end_s": 715.0,
+      "voice_path": "runs/v4-roanoke/voice/ch5.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_00.jpg",
+          "start_s": 600.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_01.jpg",
+          "start_s": 615.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_02.jpg",
+          "start_s": 630.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_03.jpg",
+          "start_s": 645.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_00.jpg",
+          "start_s": 660.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_01.jpg",
+          "start_s": 675.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_02.jpg",
+          "start_s": 690.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_03.jpg",
+          "start_s": 705.0,
+          "duration_s": 10.0,
+          "transition": "dissolve"
+        }
+      ]
     }
-  ],
-  "total_duration_s": 693.42
+  ]
 }

@@ -101,6 +101,28 @@
       "scheduled_at": "2026-06-30T14:00:00Z",
       "actual_published_at": "2026-06-30T13:50:00Z",
       "notes": "Daily Short W27 Tue discovery \u2014 Franklin Expedition. Uploaded as PRIVATE by routine (channel non-monetized = no native schedule), flipped to PUBLIC via camoufox 2026-06-30."
+    },
+    {
+      "short_id": "v4_hook",
+      "yt_id": "rF7LYZRgnbY",
+      "title": "115 People Vanished. One Word Was Left. CROATOAN. \u2014 Roanoke 1587",
+      "topic": "roanoke",
+      "publish_at": "2026-07-05T12:00:00Z",
+      "status": "SCHEDULED",
+      "scheduled_at": "2026-07-05T12:00:00Z",
+      "config_path": "runs/v4-roanoke/shorts/config_v4_hook.json",
+      "mp4_path": "runs/v4-roanoke/shorts/short_v4_hook.mp4"
+    },
+    {
+      "short_id": "v4_answer",
+      "yt_id": "wHwh8TTRNKw",
+      "title": "We Found Where They Went. Roanoke Colony Solved. (1587)",
+      "topic": "roanoke",
+      "publish_at": "2026-07-02T12:00:00Z",
+      "status": "SCHEDULED",
+      "scheduled_at": "2026-07-02T12:00:00Z",
+      "config_path": "runs/v4-roanoke/shorts/config_v4_answer.json",
+      "mp4_path": "runs/v4-roanoke/shorts/short_v4_answer.mp4"
     }
   ]
 }

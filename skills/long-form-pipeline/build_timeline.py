@@ -1,87 +1,107 @@
 #!/usr/bin/env python3
 """
-Step 4 — Timeline builder.
+Step 4 — Build timeline.json
+Maps assets to chapter timings from script.json.
 Usage: python3 skills/long-form-pipeline/build_timeline.py <run_dir>
-
-Reads script.json (chapter boundaries), assets/manifest.json (per-chapter
-stills) and voice/ch*.mp3 (actual durations via ffprobe), and writes
-timeline.json: a flat list of {chapter_id, asset, start_s, duration_s,
-zoom_dir, pan_dir, transition} segments covering each chapter's full voice
-duration by cycling through that chapter's available stills (~14s/segment,
-alternating Ken Burns directions so repeats don't look identical).
 """
-import json
-import os
-import subprocess
-import sys
+import os, sys, json
+from pathlib import Path
 
 RUN_DIR = sys.argv[1] if len(sys.argv) > 1 else "runs/v4-roanoke"
 SCRIPT_PATH = os.path.join(RUN_DIR, "script.json")
-MANIFEST_PATH = os.path.join(RUN_DIR, "assets", "manifest.json")
-VOICE_DIR = os.path.join(RUN_DIR, "voice")
-TARGET_SEGMENT_S = 14.0
-ZOOM_DIRS = ["in", "out"]
-PAN_DIRS = ["left", "right", "up", "down", "center"]
+ASSETS_MANIFEST = os.path.join(RUN_DIR, "assets", "manifest.json")
+VOICE_MANIFEST = os.path.join(RUN_DIR, "voice", "manifest.json")
+TIMELINE_PATH = os.path.join(RUN_DIR, "timeline.json")
 
-
-def ffprobe_duration(path):
-    out = subprocess.check_output(
-        ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
-        text=True,
-    )
-    return float(out.strip())
+CHAPTER_TITLES = [
+    "A Colony Gone",
+    "The 1587 Expedition",
+    "Three Missing Years",
+    "CROATOAN: The Only Clue",
+    "400 Years of Theories",
+    "What Archaeology Found",
+]
 
 
 def main():
     with open(SCRIPT_PATH) as f:
         script = json.load(f)
-    with open(MANIFEST_PATH) as f:
-        manifest = json.load(f)
+    with open(ASSETS_MANIFEST) as f:
+        assets = json.load(f)
+    with open(VOICE_MANIFEST) as f:
+        voice = json.load(f)
 
-    assets_by_chapter = {}
-    for a in manifest:
-        assets_by_chapter.setdefault(a["chapter_id"], []).append(a["path"])
+    chapters = script["chapters"]
+    timeline_entries = []
 
-    timeline = []
-    cursor = 0.0
-    for ch in script["chapters"]:
-        chapter_id = ch["chapter_id"]
-        voice_path = os.path.join(VOICE_DIR, f"ch{chapter_id}.mp3")
-        if not os.path.exists(voice_path):
-            print(f"WARN: no voice for ch{chapter_id}, skipping")
-            continue
-        duration = ffprobe_duration(voice_path)
-        assets = assets_by_chapter.get(chapter_id, [])
-        if not assets:
-            print(f"WARN: no assets for ch{chapter_id}")
-            continue
+    for ch in chapters:
+        ch_id = ch["chapter_id"]
+        start_s = ch["start_sec"]
+        end_s = ch["end_sec"]
+        duration = end_s - start_s
+        ch_title = CHAPTER_TITLES[ch_id] if ch_id < len(CHAPTER_TITLES) else f"Chapter {ch_id}"
 
-        n_segments = max(1, round(duration / TARGET_SEGMENT_S))
-        seg_len = duration / n_segments
+        ch_assets = assets.get(f"ch{ch_id}", [])
+        voice_file = os.path.join(RUN_DIR, "voice", f"ch{ch_id}.mp3")
+        v_entry = next((v for v in voice["chapters"] if v["chapter_id"] == ch_id), None)
 
-        for i in range(n_segments):
-            asset = assets[i % len(assets)]
-            zoom = ZOOM_DIRS[i % len(ZOOM_DIRS)]
-            pan = PAN_DIRS[i % len(PAN_DIRS)]
-            timeline.append({
-                "chapter_id": chapter_id,
-                "asset": asset,
-                "start_s": round(cursor, 3),
-                "duration_s": round(seg_len, 3),
-                "zoom_dir": zoom,
-                "pan_dir": pan,
-                "transition": "crossfade",
-                "chapter_boundary": i == 0,
+        if not ch_assets:
+            # Fallback: black frame for the full chapter duration
+            timeline_entries.append({
+                "chapter_id": ch_id,
+                "title": ch_title,
+                "start_s": start_s,
+                "end_s": end_s,
+                "voice_path": voice_file,
+                "slides": [{"asset": None, "start_s": start_s, "duration_s": duration, "transition": "none"}],
             })
-            cursor += seg_len
+            continue
 
-    out_path = os.path.join(RUN_DIR, "timeline.json")
-    with open(out_path, "w") as f:
-        json.dump({"segments": timeline, "total_duration_s": round(cursor, 3)}, f, indent=2)
+        # Distribute chapter duration across available images
+        n_imgs = len(ch_assets)
+        # Each image gets equal time, min 3s max 15s
+        img_dur = duration / n_imgs
+        img_dur = max(3.0, min(15.0, img_dur))
 
-    print(f"=== Timeline built: {len(timeline)} segments, {cursor:.1f}s total ===")
-    print(f"Wrote {out_path}")
+        # If images don't fill the chapter, cycle through them
+        slides = []
+        t = start_s
+        img_idx = 0
+        while t < end_s - 0.5:
+            remaining = end_s - t
+            actual_dur = min(img_dur, remaining)
+            asset = ch_assets[img_idx % n_imgs]
+            slides.append({
+                "asset": asset["path"],
+                "start_s": round(t, 2),
+                "duration_s": round(actual_dur, 2),
+                "transition": "dissolve" if img_idx > 0 else "none",
+            })
+            t += actual_dur
+            img_idx += 1
+
+        timeline_entries.append({
+            "chapter_id": ch_id,
+            "title": ch_title,
+            "start_s": start_s,
+            "end_s": end_s,
+            "voice_path": voice_file,
+            "slides": slides,
+        })
+
+        print(f"  ch{ch_id} '{ch_title}': {n_imgs} assets, {len(slides)} slides, {duration:.1f}s")
+
+    # Write timeline
+    out = {
+        "run_id": "v4-roanoke",
+        "total_duration_s": 715.0,
+        "chapters": timeline_entries,
+    }
+    with open(TIMELINE_PATH, "w") as f:
+        json.dump(out, f, indent=2)
+    print(f"\nTimeline written to {TIMELINE_PATH}")
 
 
 if __name__ == "__main__":
+    print("=== Step 4: Build Timeline ===")
     main()

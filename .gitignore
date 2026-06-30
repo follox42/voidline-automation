@@ -4,11 +4,20 @@ __pycache__/
 *.log
 .DS_Store
 
-# Long-form pipeline binary media (bridged to YouTube via GitHub Release, not git history)
+# Large binary pipeline outputs — regenerate from scripts, not stored in git
+runs/*/render/
+runs/*/render/segments/*.mp4
 runs/*/voice/*.mp3
+runs/*/assets/ch*/
 runs/*/assets/*.jpg
 runs/*/assets/*.jpeg
 runs/*/assets/*.png
+
+# Bridged to YouTube via GitHub Release, not git history
 runs/*/render/*.mp4
-runs/*/thumb/*.jpg
-runs/*/thumb/*.png
+
+# Keep metadata/manifests/thumbnails in git
+!runs/*/voice/manifest.json
+!runs/*/assets/manifest.json
+!runs/*/assets/ATTRIBUTION.md
+!runs/*/thumb/
