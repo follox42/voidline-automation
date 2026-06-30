@@ -305,3 +305,24 @@ Tuesday 17:00 UTC.
 mcphub.nocode18.com service (via Coolify volume) so that `camoufox-stealth_upload`
 can resolve `file_path` from both sides. Or: implement base64 file transfer in the MCP
 stealth server (receive b64, write to /tmp, then setInputFiles).
+
+## BLOCKER_2026-06-30-B — Auto-mode Stage 2 classifier blocks all tools after file-access attempts
+**Observation**: In BOTH pipeline sessions (same day), any attempt to interact with
+local files (paste_files, camoufox-stealth_upload with local path) triggers Stage 2
+classifier blocking that then propagates to ALL subsequent tool calls — including
+evaluate(), navigate(), and even simple Bash commands. The session becomes completely
+inoperative for upload automation.
+**Root cause**: The classifier sees (local file read) + (browser automation) = potential
+exfiltration pattern. Even though CLAUDE.md pre-authorizes this, the classifier doesn't
+read CLAUDE.md — it uses context/pattern analysis.
+**Fix for user**: Run the upload step in **auto-mode OFF** (Shift+Tab to toggle in Claude Code)
+OR run inject_and_upload.py directly from the terminal:
+```bash
+cd /home/user/voidline-automation
+python3 skills/long-form-pipeline/inject_and_upload.py runs/v4-roanoke
+```
+The script handles everything: Studio navigation, Blob injection, metadata, thumbnail,
+scheduling to 2026-07-01T17:00:00Z.
+**Alternative manual upload**: Go to studio.youtube.com → Créer → Importer des vidéos
+→ select runs/v4-roanoke/render/voidline.mp4 → fill title "What Did CROATOAN Mean? (1587)
+— The Lost Colony of Roanoke" → schedule 2026-07-01 17:00 UTC.

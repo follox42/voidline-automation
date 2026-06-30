@@ -23,7 +23,7 @@ THUMB_PATH = os.path.join(RUN_DIR, "thumb", "thumbnail_v4_roanoke.jpg")
 LOG_PATH = REPO / "agent-log.json"
 SESSION = "voidline"
 
-TITLE = "The Lost Colony of Roanoke. The Word They Carved Before They Vanished."
+TITLE = "What Did CROATOAN Mean? (1587) — The Lost Colony of Roanoke"
 
 DESCRIPTION = """115 people vanished from Roanoke Island in 1587. Their governor returned 3 years later. The colony was gone — houses dismantled, no bodies, no sign of struggle. One word carved into a post: CROATOAN.
 
@@ -64,8 +64,8 @@ TAGS = [
     "roanoke 1587", "history documentary"
 ]
 
-YEAR, MONTH, DAY, HOUR, MINUTE = 2026, 6, 30, 17, 0
-PUBLISH_AT = "2026-06-30T17:00:00Z"
+YEAR, MONTH, DAY, HOUR, MINUTE = 2026, 7, 1, 17, 0
+PUBLISH_AT = "2026-07-01T17:00:00Z"
 
 CHUNK_SIZE = 800_000  # 800KB per chunk (base64 will be ~1.07MB)
 

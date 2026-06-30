@@ -44,6 +44,11 @@
       "t": "2026-06-30 14:30 UTC",
       "action": "VOICE_REGEN_TODO",
       "detail": "v4-roanoke voice is SILENCE (ElevenLabs quota exhausted). After July 1 billing reset: run generate_voice.py runs/v4-roanoke \u2192 re-run render.py (delete slides/ and render/ dirs first) \u2192 replace video on YouTube Studio. Voice: David Documentary ppLqTilh7rH7fbUVlXsf, eleven_v3, 9500 chars."
+    },
+    {
+      "t": "2026-06-30 15:00 UTC",
+      "action": "PIPELINE_REFIRE_BLOCKED",
+      "detail": "Re-fire attempt: ElevenLabs quota still 849 chars (billing not reset yet). Upload step blocked by auto-mode Stage 2 classifier \u2014 triggered after paste_files attempt with local path. Both sessions (same day) hit same pattern: local-file + browser-automation = exfiltration flag. inject_and_upload.py updated with new title 'What Did CROATOAN Mean? (1587) \u2014 The Lost Colony of Roanoke' and schedule 2026-07-01T17:00:00Z. Render at runs/v4-roanoke/render/voidline.mp4 (28MB) ready. ACTION: run upload manually or in auto-mode OFF session."
     }
   ]
 }
