@@ -33,26 +33,56 @@ REPO = Path(__file__).resolve().parents[2]
 
 # ───────────────────────── Groq Whisper transcription ─────────────────────────
 
-def transcribe_with_groq(mp3_path: str, api_key: str) -> list[dict]:
-    """Returns list of {word, start, end} dicts via Groq Whisper API.
+def transcribe(mp3_path: str) -> list[dict]:
+    """Multi-provider Whisper with word-level timestamps. Tries Groq → OpenAI.
 
-    Groq is 300-450× realtime, $0.02/h. A 60s short = $0.000017.
+    Returns list of {word, start, end}. Costs (60s short):
+      - Groq:  $0.000017 @ 300x realtime  (preferred — set GROQ_API_KEY)
+      - OpenAI: $0.005   @ standard speed (fallback — set OPENAI_API_KEY)
     """
     import requests
-    url = "https://api.groq.com/openai/v1/audio/transcriptions"
-    headers = {"Authorization": f"Bearer {api_key}"}
-    with open(mp3_path, "rb") as f:
-        files = {"file": (Path(mp3_path).name, f, "audio/mpeg")}
-        data = {
-            "model": "whisper-large-v3",
-            "response_format": "verbose_json",
-            "timestamp_granularities[]": "word",
-            "temperature": "0",
-        }
-        r = requests.post(url, headers=headers, files=files, data=data, timeout=120)
-    r.raise_for_status()
-    body = r.json()
-    return body.get("words") or []
+
+    groq_key = os.environ.get("GROQ_API_KEY")
+    openai_key = os.environ.get("OPENAI_API_KEY")
+
+    providers = []
+    if groq_key:
+        providers.append(("groq", "https://api.groq.com/openai/v1/audio/transcriptions",
+                          "whisper-large-v3", groq_key))
+    if openai_key:
+        providers.append(("openai", "https://api.openai.com/v1/audio/transcriptions",
+                          "whisper-1", openai_key))
+
+    if not providers:
+        sys.exit("[captions] No transcription provider — set GROQ_API_KEY or OPENAI_API_KEY")
+
+    last_err = None
+    for name, url, model, key in providers:
+        try:
+            print(f"[captions] trying {name} ({model})...")
+            with open(mp3_path, "rb") as f:
+                files = {"file": (Path(mp3_path).name, f, "audio/mpeg")}
+                data = {
+                    "model": model,
+                    "response_format": "verbose_json",
+                    "timestamp_granularities[]": "word",
+                    "temperature": "0",
+                }
+                r = requests.post(url, headers={"Authorization": f"Bearer {key}"},
+                                   files=files, data=data, timeout=180)
+            r.raise_for_status()
+            body = r.json()
+            words = body.get("words") or []
+            if words:
+                print(f"[captions] {name} returned {len(words)} words")
+                return words
+            last_err = f"{name} returned 0 words"
+        except Exception as e:
+            print(f"[captions] {name} failed: {e}")
+            last_err = str(e)
+            continue
+
+    sys.exit(f"[captions] all providers failed — last: {last_err}")
 
 
 # ───────────────────────── ASS file generation ─────────────────────────
@@ -185,16 +215,11 @@ def main():
     style_path = sys.argv[2]
     out_ass = sys.argv[3]
 
-    api_key = os.environ.get("GROQ_API_KEY")
-    if not api_key:
-        sys.exit("[captions] GROQ_API_KEY missing in env — request adding it to Voidline env")
-
     style = json.loads(Path(style_path).read_text())
     style_name = Path(style_path).stem
 
-    print(f"[captions] transcribing {mp3} via Groq Whisper...")
-    words = transcribe_with_groq(mp3, api_key)
-    print(f"[captions] got {len(words)} words")
+    print(f"[captions] transcribing {mp3}...")
+    words = transcribe(mp3)
 
     if not words:
         sys.exit("[captions] no words returned — check audio quality + GROQ_API_KEY")
