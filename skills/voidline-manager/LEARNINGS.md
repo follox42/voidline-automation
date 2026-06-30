@@ -311,3 +311,31 @@ Error: "Stage 2 classifier error - blocking based on stage 1 assessment."
 3. OR: Build a camoufox-playbook for `youtube.com/studio` comment reply and mark it safe in settings — the playbook path may bypass the stage-1 heuristic.
 
 **State**: `replied_to.json` still has `pending_post` for the insightful comment. No double-post risk.
+
+## 2026-06-30 (long-form-pipeline run) — Flow Nano Banana 2 still broken, 17 days unresolved
+
+**Observation**: Resumed v4 Roanoke production (script + voice + Wikimedia assets done this
+run). Attempted the AI thumb via Flow per `cookie_profile=voidline`. Navigate succeeded
+(no classifier block this time — different from the community-manager blockers above).
+Opened a project, but `stealth_click` on the "Que voulez-vous créer ?" prompt field timed
+out after 60s, twice in a row. Page state inspection (`stealth_extract_text`) afterward
+showed the click never focused the field (placeholder text unchanged, no typed content),
+and the project I landed in turned out to be an unrelated older project ("Ship cabin with
+captain's logbook" in history) — project-list navigation via `stealth_find` + `stealth_click`
+on a project tile's text span isn't reliably opening the intended project either.
+**Learning**: This is the same underlying issue logged 2026-06-13 (Flow UI submit pipeline
+broken/changed), now confirmed unresolved 17 days later — not a one-off. The failure mode
+is a silent click timeout, not an explicit anti-abuse banner, so the SKILL.md "Flow shows
+anti-abuse banner → abort + sleep 4h" failure mode doesn't quite match; this looks like a
+genuine UI/selector regression that needs interactive (non-headless, visually-inspected)
+debugging to fix, not another blind retry.
+**Action**: Did not burn further Flow quota chasing this — followed the 06-13 entry's own
+recommended backup path instead: used a real Wikimedia Commons archival image (the
+19th-century CROATOAN-carving engraving sourced for ch3, more on-topic than reusing the old
+Tunguska base) as the thumb photo base, with a locally-rendered Fern-style PIL overlay
+(gold headline + red arrow), skipping AI generation entirely for this ship.
+**Recommendation for Nolann**: The Flow click-timeout needs a human session with a visible
+browser (not headless) to find the new selector path — `stealth_click` reports success/fail
+but can't show *why* a click silently doesn't focus the right element. Until then, treat
+Flow stills as unreliable and default new long-form thumbs to the Wikimedia+Fern-overlay
+path so production isn't blocked on it.

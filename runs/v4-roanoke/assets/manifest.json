@@ -1,0 +1,106 @@
+[
+  {
+    "chapter_id": 0,
+    "slug": "ch0_ch0_roanoke_coast_map.jpg",
+    "path": "runs/v4-roanoke/assets/ch0_ch0_roanoke_coast_map.jpg",
+    "width": 1000,
+    "height": 739,
+    "bytes": 252854
+  },
+  {
+    "chapter_id": 1,
+    "slug": "ch1_ch1_elizabeth_i.jpg",
+    "path": "runs/v4-roanoke/assets/ch1_ch1_elizabeth_i.jpg",
+    "width": 1920,
+    "height": 1760,
+    "bytes": 890635
+  },
+  {
+    "chapter_id": 1,
+    "slug": "ch1_ch1_john_white_canoe.jpg",
+    "path": "runs/v4-roanoke/assets/ch1_ch1_john_white_canoe.jpg",
+    "width": 1920,
+    "height": 1533,
+    "bytes": 501834
+  },
+  {
+    "chapter_id": 1,
+    "slug": "ch1_ch1_john_white_village.png",
+    "path": "runs/v4-roanoke/assets/ch1_ch1_john_white_village.png",
+    "width": 426,
+    "height": 298,
+    "bytes": 127468
+  },
+  {
+    "chapter_id": 1,
+    "slug": "ch1_ch1_walter_raleigh.jpg",
+    "path": "runs/v4-roanoke/assets/ch1_ch1_walter_raleigh.jpg",
+    "width": 1920,
+    "height": 2996,
+    "bytes": 2704555
+  },
+  {
+    "chapter_id": 2,
+    "slug": "ch2_ch2_debry_roanoke_map.jpg",
+    "path": "runs/v4-roanoke/assets/ch2_ch2_debry_roanoke_map.jpg",
+    "width": 1878,
+    "height": 1379,
+    "bytes": 1321058
+  },
+  {
+    "chapter_id": 2,
+    "slug": "ch2_ch2_spanish_armada.jpg",
+    "path": "runs/v4-roanoke/assets/ch2_ch2_spanish_armada.jpg",
+    "width": 1920,
+    "height": 1502,
+    "bytes": 970862
+  },
+  {
+    "chapter_id": 3,
+    "slug": "ch3_ch3_council_fire_alt.jpg",
+    "path": "runs/v4-roanoke/assets/ch3_ch3_council_fire_alt.jpg",
+    "width": 1280,
+    "height": 1094,
+    "bytes": 219446
+  },
+  {
+    "chapter_id": 3,
+    "slug": "ch3_ch3_croatoan_carving.jpg",
+    "path": "runs/v4-roanoke/assets/ch3_ch3_croatoan_carving.jpg",
+    "width": 1920,
+    "height": 1196,
+    "bytes": 1240614
+  },
+  {
+    "chapter_id": 4,
+    "slug": "ch4_ch4_powhatan.png",
+    "path": "runs/v4-roanoke/assets/ch4_ch4_powhatan.png",
+    "width": 1920,
+    "height": 2791,
+    "bytes": 12563632
+  },
+  {
+    "chapter_id": 4,
+    "slug": "ch4_ch4_spanish_galleon.jpg",
+    "path": "runs/v4-roanoke/assets/ch4_ch4_spanish_galleon.jpg",
+    "width": 1920,
+    "height": 1502,
+    "bytes": 767302
+  },
+  {
+    "chapter_id": 5,
+    "slug": "ch5_ch5_dig_alt2.jpg",
+    "path": "runs/v4-roanoke/assets/ch5_ch5_dig_alt2.jpg",
+    "width": 1920,
+    "height": 1337,
+    "bytes": 167118
+  },
+  {
+    "chapter_id": 5,
+    "slug": "ch5_ch5_hatteras_island_map.jpg",
+    "path": "runs/v4-roanoke/assets/ch5_ch5_hatteras_island_map.jpg",
+    "width": 1920,
+    "height": 1440,
+    "bytes": 684885
+  }
+]
