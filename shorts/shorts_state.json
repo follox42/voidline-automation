@@ -91,6 +91,16 @@
       "publish_at": "2026-06-15T12:00:00Z",
       "status": "SCHEDULED",
       "scheduled_at": "2026-06-15T12:00:00Z"
+    },
+    {
+      "short_id": "w27_discovery_franklin",
+      "yt_id": "sedBqHgilSM",
+      "title": "129 Men. Two Ships. Vanished. (1845)",
+      "publish_at": "2026-06-30T14:00:00Z",
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-30T14:00:00Z",
+      "actual_published_at": "2026-06-30T13:50:00Z",
+      "notes": "Daily Short W27 Tue discovery \u2014 Franklin Expedition. Uploaded as PRIVATE by routine (channel non-monetized = no native schedule), flipped to PUBLIC via camoufox 2026-06-30."
     }
   ]
 }
