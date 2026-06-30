@@ -1,0 +1,44 @@
+{
+  "_note": "BACK-TAGGED post-hoc. v4 Roanoke was produced 2026-06-30 before the variant framework existed. Tags reflect what the routine actually picked (by accident, matching our library entries).",
+  "_back_tagged_at": "2026-07-01T00:00:00Z",
+  "_yt_id": "Tlc-cKtAHuQ",
+  
+  "titles": {
+    "chosen": "iconic_question_year",
+    "reason": "back-tag — actual title 'What Did CROATOAN Mean? (1587) — The Lost Colony of Roanoke' matches the iconic_question_year template exactly",
+    "experiment_id": null,
+    "actual_title": "What Did CROATOAN Mean? (1587) — The Lost Colony of Roanoke"
+  },
+  
+  "voices": {
+    "chosen": "brian_baritone",
+    "reason": "back-tag — routine fallback'd to Brian (voice_id nPczCjzI2devNBz1zQrb) because David Documentary quota was momentarily flagged as exhausted, even though Creator was active. Actual voice ≠ EXP-VOICE-001 daniel_authoritative",
+    "experiment_id": null,
+    "actual_voice_id": "nPczCjzI2devNBz1zQrb"
+  },
+  
+  "thumb_prompts": {
+    "chosen": "cinematic_post_iconic",
+    "reason": "back-tag — Flow Nano Banana 2 broken (17d unresolved blocker), routine fell back to Wikimedia CROATOAN engraving (John White 19th c.) + Fern overlay (gold headline 'CROATOAN' + red arrow). Matches cinematic_post_iconic schema",
+    "experiment_id": null,
+    "thumb_path": "runs/v4-roanoke/thumb/thumbnail_v4_roanoke.jpg"
+  },
+  
+  "hooks": {
+    "chosen": "question_first_8s",
+    "reason": "back-tag — ch0 cold-open opens with 'August 1587. 115 people sail into the Outer Banks...' followed by iconic question. Matches question_first_8s structure (≤8 word question early).",
+    "experiment_id": null
+  },
+  
+  "publish_times": {
+    "chosen": "us_prime_time",
+    "reason": "back-tag — Première scheduled at 2026-07-01T00:00:00Z (= 19:00 EST = US East prime time). Matches us_prime_time variant. ACTIVE experiment: PASSIVE-TIME-001.",
+    "experiment_id": "PASSIVE-TIME-001"
+  },
+  
+  "caption_styles": {
+    "chosen": null,
+    "reason": "back-tag — captions were SKIPPED (Whisper 429 quota). No caption_style applied. Will tag null = control baseline (no captions).",
+    "experiment_id": null
+  }
+}
