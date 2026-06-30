@@ -18,7 +18,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-FONT_IMPACT = "/host/home/follox/clover-build/camoufox/bundle/fonts/windows/impact.ttf"
+FONT_IMPACT = "/usr/share/fonts/truetype/impact-alt/impact.ttf"
+FONT_NAME = "Anton"   # Anton is the Impact-style fallback available in container
 GOLD = "&H0000D7FF"   # BGR format
 WHITE = "&H00FFFFFF"
 RED = "&H003F34D9"    # #D9343F red
@@ -47,15 +48,15 @@ def build_ass(cfg, ass_path):
         "[V4+ Styles]",
         "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
         # HookCard: massive gold question, vertical center, FULL stack
-        f"Style: HookCard, Impact, 220, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 14, 8, 5, 60, 60, 0, 1",
+        f"Style: HookCard, Anton, 220, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 14, 8, 5, 60, 60, 0, 1",
         # Header: gold cap top, persists through body
-        f"Style: Header, Impact, 56, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 4, 0, 1, 4, 2, 8, 60, 60, 80, 1",
+        f"Style: Header, Anton, 56, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 4, 0, 1, 4, 2, 8, 60, 60, 80, 1",
         # Big captions during body
-        f"Style: Big, Impact, 140, {WHITE}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 10, 6, 5, 80, 80, 0, 1",
+        f"Style: Big, Anton, 140, {WHITE}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 10, 6, 5, 80, 80, 0, 1",
         # OutroQ: massive gold question at top (drives comments)
-        f"Style: OutroQ, Impact, 110, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 12, 6, 8, 80, 80, 120, 1",
+        f"Style: OutroQ, Anton, 110, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 12, 6, 8, 80, 80, 120, 1",
         # OutroCTA: smaller red below the question
-        f"Style: OutroCTA, Impact, 96, {RED}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 10, 4, 2, 80, 80, 200, 1",
+        f"Style: OutroCTA, Anton, 96, {RED}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 10, 4, 2, 80, 80, 200, 1",
         "",
         "[Events]",
         "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
@@ -137,8 +138,8 @@ def cut_short(cfg):
         f"[dimmed]drawbox=x=0:y=0:w=1080:h=1920:color=black:t=fill:enable='lt(t,{hook_end})'[hooked];"
         # Outro dark gradient on the last outro_dur seconds
         f"[hooked]drawbox=x=0:y=0:w=1080:h=1920:color=black@0.55:t=fill:enable='gte(t,{outro_start})'[finalvid];"
-        # ASS captions on top
-        f"[finalvid]ass='{ass_escaped}'[vout]"
+        # ASS captions on top (fontsdir points to Anton/Impact-alt fonts)
+        f"[finalvid]ass='{ass_escaped}':fontsdir=/usr/share/fonts/truetype/impact-alt[vout]"
     )
 
     # Audio: extract from start..duration of source. During hook (first 1.5s)

@@ -13,8 +13,10 @@
 | **duration_target** | 11:55 |
 | **publish_at** | 2026-07-01T17:00:00Z |
 | **script_path** | runs/v4-roanoke/script.json |
-| **status** | IN_PRODUCTION |
-| **upload_note** | Render ready at runs/v4-roanoke/render/voidline.mp4 (27MB). Run inject_and_upload.py in clean session to complete upload. Voice=SILENCE until ElevenLabs resets. Title updated: "What Did CROATOAN Mean? (1587) — The Lost Colony of Roanoke" |
+| **yt_id** | Tlc-cKtAHuQ |
+| **voice_actual** | Brian (nPczCjzI2devNBz1zQrb, eleven_multilingual_v2) — David Documentary quota was exhausted, re-gen on July 1 reset |
+| **status** | PREMIÈRE |
+| **upload_note** | Uploaded 2026-06-30 as YouTube Première (schedule-type-checkbox activated Première mode). Releases 2026-07-01T17:00:00Z. Thumbnail injected via edit-page Blob injection. Captions SKIPPED — OpenAI Whisper 429 quota; re-run generate_captions.py after quota resets. |
 
 ## LONG-2 (Friday 2026-07-04 17:00 UTC)
 

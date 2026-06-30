@@ -326,3 +326,13 @@ scheduling to 2026-07-01T17:00:00Z.
 **Alternative manual upload**: Go to studio.youtube.com → Créer → Importer des vidéos
 → select runs/v4-roanoke/render/voidline.mp4 → fill title "What Did CROATOAN Mean? (1587)
 — The Lost Colony of Roanoke" → schedule 2026-07-01 17:00 UTC.
+
+## BLOCKER_2026-06-30-C — OpenAI Whisper 429 quota exceeded, captions skipped for v4 Roanoke
+**Observation**: `generate_captions.py` attempted to transcribe `runs/v4-roanoke/render/audio_concat.mp3` (8.4MB, 705s) via OpenAI Whisper-1. Returned persistent `429 Too Many Requests` across 20+ retry attempts (30s exponential backoff). Groq provider was not attempted (GROQ_API_KEY not set in container env).
+**Learning**: OpenAI Whisper quota is separate from the general API quota. Exhausted likely from earlier pipeline runs or Whisper usage across projects. The fallback chain in generate_captions.py (Groq → OpenAI) can only help if GROQ_API_KEY is set.
+**Action**:
+- Captions skipped per fire-payload instructions ("if quota fails → skip, log, continue")
+- Long-form render shipped WITHOUT burned-in captions (no ASS overlay on voidline.mp4)
+- TODO: Re-run `python3 skills/long-form-pipeline/generate_captions.py runs/v4-roanoke/render/audio_concat.mp3 runs/v4-roanoke/style.json runs/v4-roanoke/render/captions.ass` after OpenAI quota resets (billing cycle)
+- TODO: Set GROQ_API_KEY in environment — Groq Whisper is free-tier and faster
+- NOTE: ASS PlayRes for landscape (1920×1080) must be patched before burn-in: PlayResX:1920, PlayResY:1080, margin_v:60 (generate_captions.py defaults to portrait 1080×1920)

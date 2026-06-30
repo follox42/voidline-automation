@@ -1,0 +1,31 @@
+{
+  "source": "runs/v4-roanoke/render/voidline.mp4",
+  "start_s": 0,
+  "duration_s": 60,
+  "out": "runs/v4-roanoke/shorts/short_v4_hook.mp4",
+  "header_text": "ROANOKE · 1587",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "115 PEOPLE.\\NONE WORD.\\NCROATOAN.",
+  "outro_question": "WHERE DID\\NTHEY GO?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 45,
+  "captions": [
+    {"start": 0.0, "end": 2.0, "text": "AUGUST 1587"},
+    {"start": 2.0, "end": 4.0, "text": "ROANOKE ISLAND"},
+    {"start": 4.0, "end": 6.0, "text": "115 ENGLISH\nSETTLERS"},
+    {"start": 6.0, "end": 8.5, "text": "MEN. WOMEN.\nCHILDREN."},
+    {"start": 8.5, "end": 11.0, "text": "GOVERNOR\nLEAVES FOR\nSUPPLIES"},
+    {"start": 11.0, "end": 14.0, "text": "RETURNS\n3 YEARS LATER"},
+    {"start": 14.0, "end": 17.5, "text": "COLONY GONE"},
+    {"start": 17.5, "end": 20.5, "text": "HOUSES\nDISMANTLED"},
+    {"start": 20.5, "end": 23.5, "text": "NO BODIES"},
+    {"start": 23.5, "end": 27.0, "text": "NO GRAVES"},
+    {"start": 27.0, "end": 30.0, "text": "NO SIGN OF\nSTRUGGLE"},
+    {"start": 30.0, "end": 34.0, "text": "ONE WORD"},
+    {"start": 34.0, "end": 38.0, "text": "CARVED\nINTO A TREE"},
+    {"start": 38.0, "end": 42.0, "text": "C R O A T O A N"},
+    {"start": 42.0, "end": 47.0, "text": "WHAT DID IT\nMEAN?"},
+    {"start": 47.0, "end": 52.0, "text": "WHO READ THE\nSIGN?"}
+  ]
+}

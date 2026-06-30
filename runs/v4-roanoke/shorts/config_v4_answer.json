@@ -1,0 +1,33 @@
+{
+  "source": "runs/v4-roanoke/render/voidline.mp4",
+  "start_s": 600,
+  "duration_s": 60,
+  "out": "runs/v4-roanoke/shorts/short_v4_answer.mp4",
+  "header_text": "ROANOKE · 1587",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "WE FOUND\\NTHE LOST\\NCOLONY.",
+  "outro_question": "ARE THEIR\\NDESCENDANTS\\NSTILL ALIVE?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0.0, "end": 2.5, "text": "2009"},
+    {"start": 2.5, "end": 5.0, "text": "TWO\nARCHAEOLOGICAL\nDIGS"},
+    {"start": 5.0, "end": 8.0, "text": "HATTERAS\nISLAND"},
+    {"start": 8.0, "end": 11.0, "text": "(THE\nCROATOAN)"},
+    {"start": 11.0, "end": 14.5, "text": "FOUND:"},
+    {"start": 14.5, "end": 17.5, "text": "COPPER\nRAPIER HILTS"},
+    {"start": 17.5, "end": 20.5, "text": "SLATE WRITING\nTABLETS"},
+    {"start": 20.5, "end": 24.0, "text": "ENGLISH\nGUNLOCKS\n1590-1620"},
+    {"start": 24.0, "end": 27.0, "text": "SITE X"},
+    {"start": 27.0, "end": 30.0, "text": "50 MILES\nINLAND"},
+    {"start": 30.0, "end": 33.0, "text": "TILEWORK BY\nANANIAS DARE"},
+    {"start": 33.0, "end": 37.0, "text": "THEY SPLIT"},
+    {"start": 37.0, "end": 41.0, "text": "INTO 2 GROUPS"},
+    {"start": 41.0, "end": 45.0, "text": "JOINED\nTHE LOCALS"},
+    {"start": 45.0, "end": 49.0, "text": "VIRGINIA DARE"},
+    {"start": 49.0, "end": 52.5, "text": "GREW UP\nSPEAKING\nALGONQUIAN"},
+    {"start": 52.5, "end": 55.0, "text": "DESCENDANTS"},
+    {"start": 55.0, "end": 56.0, "text": "ALIVE TODAY?"}
+  ]
+}

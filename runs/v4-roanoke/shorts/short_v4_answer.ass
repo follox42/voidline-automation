@@ -1,0 +1,37 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: HookCard, Anton, 220, &H0000D7FF, &H00FFFFFF, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 14, 8, 5, 60, 60, 0, 1
+Style: Header, Anton, 56, &H0000D7FF, &H00FFFFFF, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 4, 0, 1, 4, 2, 8, 60, 60, 80, 1
+Style: Big, Anton, 140, &H00FFFFFF, &H00FFFFFF, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 10, 6, 5, 80, 80, 0, 1
+Style: OutroQ, Anton, 110, &H0000D7FF, &H00FFFFFF, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 12, 6, 8, 80, 80, 120, 1
+Style: OutroCTA, Anton, 96, &H003F34D9, &H00FFFFFF, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 10, 4, 2, 80, 80, 200, 1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.50,HookCard,,0,0,0,,{\fad(0,120)}WE FOUND\NTHE LOST\NCOLONY.
+Dialogue: 0,0:00:01.50,0:00:56.00,Header,,0,0,0,,ROANOKE · 1587
+Dialogue: 0,0:00:01.50,0:00:04.00,Big,,0,0,0,,{\fad(120,120)}2009
+Dialogue: 0,0:00:04.00,0:00:06.50,Big,,0,0,0,,{\fad(120,120)}TWO\NARCHAEOLOGICAL\NDIGS
+Dialogue: 0,0:00:06.50,0:00:09.50,Big,,0,0,0,,{\fad(120,120)}HATTERAS\NISLAND
+Dialogue: 0,0:00:09.50,0:00:12.50,Big,,0,0,0,,{\fad(120,120)}(THE\NCROATOAN)
+Dialogue: 0,0:00:12.50,0:00:16.00,Big,,0,0,0,,{\fad(120,120)}FOUND:
+Dialogue: 0,0:00:16.00,0:00:19.00,Big,,0,0,0,,{\fad(120,120)}COPPER\NRAPIER HILTS
+Dialogue: 0,0:00:19.00,0:00:22.00,Big,,0,0,0,,{\fad(120,120)}SLATE WRITING\NTABLETS
+Dialogue: 0,0:00:22.00,0:00:25.50,Big,,0,0,0,,{\fad(120,120)}ENGLISH\NGUNLOCKS\N1590-1620
+Dialogue: 0,0:00:25.50,0:00:28.50,Big,,0,0,0,,{\fad(120,120)}SITE X
+Dialogue: 0,0:00:28.50,0:00:31.50,Big,,0,0,0,,{\fad(120,120)}50 MILES\NINLAND
+Dialogue: 0,0:00:31.50,0:00:34.50,Big,,0,0,0,,{\fad(120,120)}TILEWORK BY\NANANIAS DARE
+Dialogue: 0,0:00:34.50,0:00:38.50,Big,,0,0,0,,{\fad(120,120)}THEY SPLIT
+Dialogue: 0,0:00:38.50,0:00:42.50,Big,,0,0,0,,{\fad(120,120)}INTO 2 GROUPS
+Dialogue: 0,0:00:42.50,0:00:46.50,Big,,0,0,0,,{\fad(120,120)}JOINED\NTHE LOCALS
+Dialogue: 0,0:00:46.50,0:00:50.50,Big,,0,0,0,,{\fad(120,120)}VIRGINIA DARE
+Dialogue: 0,0:00:50.50,0:00:54.00,Big,,0,0,0,,{\fad(120,120)}GREW UP\NSPEAKING\NALGONQUIAN
+Dialogue: 0,0:00:54.00,0:00:56.00,Big,,0,0,0,,{\fad(120,120)}DESCENDANTS
+Dialogue: 0,0:00:56.00,0:01:00.00,OutroQ,,0,0,0,,{\fad(200,0)}ARE THEIR\NDESCENDANTS\NSTILL ALIVE?
+Dialogue: 0,0:00:56.30,0:01:00.00,OutroCTA,,0,0,0,,{\fad(300,0)}COMMENT ↓
