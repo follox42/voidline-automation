@@ -231,3 +231,36 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-30 06:07 — v1 bonus (question hook) breaks the ~300v narrative ceiling
+**Observation**: First pulse since 06-13 (17-day gap — routine was idle).
+cron_runner logged "no notable delta" but only because monitor_voidline.py's
+anonymous-curl scraper returned BLANK for all 13 assets (worse than 06-13 where
+2 parsed) — YouTube serves the consent/anti-scrape page to unauth'd curl in the
+cloud. The live `voidline` Studio session, however, is alive + authenticated and
+was already parked on vZ68HlWfT-Q analytics. Pulled it directly:
+v1_bonus_briggs ("Why Did the Teetotal Captain Run?") = **320 views** in 18 days,
+95.9% Shorts feed, search 0.9% ("mary celeste" 33%), notifications "Hors
+distribution" (0 notif views, still not delivered). Also: this Short was
+auto-published 06-15 but state still read SCHEDULED → reconciled to PUBLIC.
+**Learning**:
+1. 320v is the channel's new best Short, clearing the ~300v narrative ceiling
+   (v1_twist 274, v2_twist 298). It's a QUESTION hook — re-confirms the
+   06-03/06-05 finding that question/contradiction hooks outperform narrative.
+2. The notification-channel suppression first seen 06-13 PERSISTS (notif not
+   delivered, 0 notif views) — yet the Shorts FEED still distributed (95.9% of
+   320v). So suppression is channel-specific (notifications), not a blanket
+   throttle; the Shorts feed remains a working organic surface.
+3. The blind scraper is now the binding constraint on the pulse: with all-blank
+   stats the runner CAN'T detect a spike. The fix is already known (port
+   monitor_voidline.py to fetch via the live camoufox `voidline` session, which
+   this run proved works) — until then pulses are effectively flying blind on
+   anything not pulled by hand.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC + actual_published_at; backfilled 320v
+  into stats_log.csv (runner had logged blank).
+- Elevated TODO: port monitor_voidline.py to camoufox `voidline` session so the
+  pulse has real stats every run instead of curl blanks. This is now the #1
+  pulse-reliability fix.
+- No PULSE_ALERT this run (top asset 320v < 1000v short threshold). Within hard
+  limits: 1 Studio HTTP action used.
