@@ -1,0 +1,25 @@
+{
+  "_description": "Generic TikTok-trendy style. Yellow pulse highlight, big bouncy pop. Hot for Gen-Z but BREAKS Fern aesthetic. Test only as A/B experiment, never default.",
+  "_metadata": {
+    "category": "trendy",
+    "risk": "medium",
+    "use_when": "experiment only — A/B test if niche shifts toward casual TikTok"
+  },
+  "font_name": "Impact",
+  "font_size": 80,
+  "font_color": "#FFFFFF",
+  "highlight_color": "#FFFF00",
+  "outline_color": "#000000",
+  "outline_width": 6,
+  "shadow_color": "#000000",
+  "shadow_offset": 3,
+  "bold": true,
+  "alignment": 2,
+  "margin_v": 350,
+  "max_chars_per_line": 20,
+  "max_words_per_line": 3,
+  "pop_scale_pct": 140,
+  "pop_duration_ms": 200,
+  "fade_in_ms": 0,
+  "hold_after_last_word_ms": 300
+}

@@ -1,0 +1,25 @@
+{
+  "_description": "Mimic LEMMiNO's understated style. Smaller, no highlight color shift, just clean white-on-black with subtle fade. For high-trust documentary feel.",
+  "_metadata": {
+    "category": "competitor-mimic",
+    "risk": "low",
+    "use_when": "experiment vs voidline_core to test if minimalist beats branded"
+  },
+  "font_name": "Liberation Sans",
+  "font_size": 56,
+  "font_color": "#F5F5F5",
+  "highlight_color": "#FFFFFF",
+  "outline_color": "#000000",
+  "outline_width": 4,
+  "shadow_color": "#000000",
+  "shadow_offset": 2,
+  "bold": false,
+  "alignment": 2,
+  "margin_v": 280,
+  "max_chars_per_line": 32,
+  "max_words_per_line": 6,
+  "pop_scale_pct": 105,
+  "pop_duration_ms": 80,
+  "fade_in_ms": 150,
+  "hold_after_last_word_ms": 600
+}

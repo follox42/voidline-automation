@@ -1,0 +1,25 @@
+{
+  "_description": "More dramatic Voidline variant. Larger font, deeper outline, bigger pop. For high-tension reveal moments.",
+  "_metadata": {
+    "category": "voidline-native",
+    "risk": "low",
+    "use_when": "Long-form ch5 reveal segments, Short HOOK cards"
+  },
+  "font_name": "Impact",
+  "font_size": 86,
+  "font_color": "#FFFFFF",
+  "highlight_color": "#E0B854",
+  "outline_color": "#000000",
+  "outline_width": 7,
+  "shadow_color": "#D9343F",
+  "shadow_offset": 4,
+  "bold": true,
+  "alignment": 2,
+  "margin_v": 280,
+  "max_chars_per_line": 18,
+  "max_words_per_line": 2,
+  "pop_scale_pct": 130,
+  "pop_duration_ms": 180,
+  "fade_in_ms": 0,
+  "hold_after_last_word_ms": 500
+}

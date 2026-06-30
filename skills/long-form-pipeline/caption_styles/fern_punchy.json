@@ -1,0 +1,25 @@
+{
+  "_description": "Mimic Fern's punchy centered keywords. 2-3 word bursts in center-screen, large font, red shadow. High recall on iconic terms.",
+  "_metadata": {
+    "category": "competitor-mimic",
+    "risk": "medium",
+    "use_when": "experiment for HOOK Shorts where iconic terms drive watch-through"
+  },
+  "font_name": "Impact",
+  "font_size": 92,
+  "font_color": "#FFFFFF",
+  "highlight_color": "#E0B854",
+  "outline_color": "#000000",
+  "outline_width": 8,
+  "shadow_color": "#D9343F",
+  "shadow_offset": 5,
+  "bold": true,
+  "alignment": 5,
+  "margin_v": 0,
+  "max_chars_per_line": 14,
+  "max_words_per_line": 2,
+  "pop_scale_pct": 145,
+  "pop_duration_ms": 200,
+  "fade_in_ms": 0,
+  "hold_after_last_word_ms": 450
+}
