@@ -3,3 +3,12 @@ __pycache__/
 /tmp/
 *.log
 .DS_Store
+
+# Long-form pipeline binary media (bridged to YouTube via GitHub Release, not git history)
+runs/*/voice/*.mp3
+runs/*/assets/*.jpg
+runs/*/assets/*.jpeg
+runs/*/assets/*.png
+runs/*/render/*.mp4
+runs/*/thumb/*.jpg
+runs/*/thumb/*.png

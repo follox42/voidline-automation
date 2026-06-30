@@ -1,0 +1,42 @@
+{
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "path": "runs/v4-roanoke/voice/ch0.mp3",
+      "ok": true,
+      "chars": 610
+    },
+    {
+      "chapter_id": 1,
+      "path": "runs/v4-roanoke/voice/ch1.mp3",
+      "ok": true,
+      "chars": 1245
+    },
+    {
+      "chapter_id": 2,
+      "path": "runs/v4-roanoke/voice/ch2.mp3",
+      "ok": true,
+      "chars": 1543
+    },
+    {
+      "chapter_id": 3,
+      "path": "runs/v4-roanoke/voice/ch3.mp3",
+      "ok": true,
+      "chars": 1397
+    },
+    {
+      "chapter_id": 4,
+      "path": "runs/v4-roanoke/voice/ch4.mp3",
+      "ok": true,
+      "chars": 1526
+    },
+    {
+      "chapter_id": 5,
+      "path": "runs/v4-roanoke/voice/ch5.mp3",
+      "ok": true,
+      "chars": 1547
+    }
+  ],
+  "total_chars": 7868,
+  "est_cost_usd": 0.8655
+}
