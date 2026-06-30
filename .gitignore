@@ -3,3 +3,9 @@ __pycache__/
 /tmp/
 *.log
 .DS_Store
+
+# Render outputs — large files stored locally only
+runs/*/render/
+runs/*/voice/*.mp3
+runs/*/assets/images/
+

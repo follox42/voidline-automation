@@ -9,8 +9,8 @@ RUN_DIR = sys.argv[1] if len(sys.argv) > 1 else "runs/v4-roanoke"
 SCRIPT_PATH = os.path.join(RUN_DIR, "script.json")
 VOICE_DIR = os.path.join(RUN_DIR, "voice")
 ELEVENLABS_KEY = os.environ.get("ELEVENLABS_KEY", "")
-VOICE_ID = "ppLqTilh7rH7fbUVlXsf"  # David Documentary
-MODEL_ID = "eleven_v3"
+VOICE_ID = "nPczCjzI2devNBz1zQrb"  # Brian (fallback — David Documentary requires paid plan)
+MODEL_ID = "eleven_multilingual_v2"
 VOICE_SETTINGS = {
     "stability": 0.5,
     "similarity_boost": 0.75,

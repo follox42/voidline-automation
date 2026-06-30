@@ -1,0 +1,97 @@
+{
+  "chapter_assets": {
+    "0": [
+      {
+        "path": "runs/v4-roanoke/assets/images/ch0_placeholder.jpg",
+        "source": "placeholder",
+        "license": "local"
+      }
+    ],
+    "1": [
+      {
+        "path": "runs/v4-roanoke/assets/images/ch1_00_Sir_Walter_Ralegh_by_'H'_monogrammist.jpg.jpg",
+        "source": "File:Sir Walter Ralegh by 'H' monogrammist.jpg",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch1_01_The_church_under_Queen_Elizabeth;_an_historical_sk.jpg",
+        "source": "File:The church under Queen Elizabeth; an historical sketch (IA churchunderqueen00leefiala).pdf",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch1_02_The_beginnings_of_English_America_-_Sir_Walter_Ral.jpg",
+        "source": "File:The beginnings of English America - Sir Walter Raleigh's settlements on Roanoke Island, 1584-1587 (IA beginningsofengl00conn).pdf",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch1_03_Pomeiooc.in.1585.png.png",
+        "source": "File:Pomeiooc.in.1585.png",
+        "license": "Public domain"
+      }
+    ],
+    "2": [
+      {
+        "path": "runs/v4-roanoke/assets/images/ch2_04_The_Spanish_Armada.jpg.jpg",
+        "source": "File:The Spanish Armada.jpg",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch2_05_The_Carte_of_all_the_Coast_of_Virginia_by_Theodor_.jpg",
+        "source": "File:The Carte of all the Coast of Virginia by Theodor de Bry - Roanoke Island detail.jpg",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch2_06_The_Algonquian_series_(IA_algonquianseries08tookri.jpg",
+        "source": "File:The Algonquian series (IA algonquianseries08tookrich).pdf",
+        "license": "Public domain"
+      }
+    ],
+    "3": [
+      {
+        "path": "runs/v4-roanoke/assets/images/ch3_07_William_Ludwell_Sheppard_&_William_James_Linton_-_.jpg",
+        "source": "File:William Ludwell Sheppard & William James Linton - CROATOAN, The Lost Colony (John White).jpg",
+        "license": "No restrictions"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch3_08_William_Ludwell_Sheppard_&_William_James_Linton_-_.jpg",
+        "source": "File:William Ludwell Sheppard & William James Linton - CROATOAN, The Lost Colony (John White).jpg",
+        "license": "No restrictions"
+      }
+    ],
+    "4": [
+      {
+        "path": "runs/v4-roanoke/assets/images/ch4_09_Spanish_Galleon_Firing_its_Cannon.jpg.jpg",
+        "source": "File:Spanish Galleon Firing its Cannon.jpg",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch4_10_R43407_Drought_in_the_United_States_Causes_and_Cur.jpg",
+        "source": "File:R43407 Drought in the United States Causes and Current Understanding (IA R43407DroughtintheUnitedStatesCausesandCurrentUnderstanding-crs).pdf",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch4_11_Alcohol_use_among_American_Indians_and_Alaska_nati.jpg",
+        "source": "File:Alcohol use among American Indians and Alaska natives - multiple perspectives on a complex problem (IA alcoholuseamonga00mail).pdf",
+        "license": "Public domain"
+      }
+    ],
+    "5": [
+      {
+        "path": "runs/v4-roanoke/assets/images/ch5_12_The_aborigines_of_the_District_of_Columbia_and_the.jpg",
+        "source": "File:The aborigines of the District of Columbia and the Lower Potomac (IA aboriginesofdist00masouoft).pdf",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch5_13_The_biennial_report_of_the_North_Carolina_Historic.jpg",
+        "source": "File:The biennial report of the North Carolina Historical Commission (serial) (IA biennialreportof193638nort).pdf",
+        "license": "Public domain"
+      },
+      {
+        "path": "runs/v4-roanoke/assets/images/ch5_14_Coast_watch_(IA_coastwatch00uncs_12).pdf.jpg",
+        "source": "File:Coast watch (IA coastwatch00uncs 12).pdf",
+        "license": "Public domain"
+      }
+    ]
+  },
+  "total_downloaded": 15
+}

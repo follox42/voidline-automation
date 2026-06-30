@@ -1,0 +1,158 @@
+{
+  "run_id": "v4-roanoke",
+  "total_duration_s": 550.713,
+  "total_duration_hms": "00:09:10.71",
+  "chapter_count": 6,
+  "entries": [
+    {
+      "chapter_id": 0,
+      "chapter_title": "A Colony Gone",
+      "asset": "runs/v4-roanoke/assets/images/ch0_placeholder.jpg",
+      "voice": "runs/v4-roanoke/voice/ch0.mp3",
+      "start_s": 0.0,
+      "duration_s": 46.158,
+      "transition": "fade",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 1,
+      "chapter_title": "The 1587 Expedition",
+      "asset": "runs/v4-roanoke/assets/images/ch1_00_Sir_Walter_Ralegh_by_'H'_monogrammist.jpg.jpg",
+      "voice": "runs/v4-roanoke/voice/ch1.mp3",
+      "start_s": 46.158,
+      "duration_s": 21.427,
+      "transition": "fade",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 1,
+      "chapter_title": "The 1587 Expedition",
+      "asset": "runs/v4-roanoke/assets/images/ch1_01_The_church_under_Queen_Elizabeth;_an_historical_sk.jpg",
+      "voice": null,
+      "start_s": 67.585,
+      "duration_s": 21.427,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 1,
+      "chapter_title": "The 1587 Expedition",
+      "asset": "runs/v4-roanoke/assets/images/ch1_02_The_beginnings_of_English_America_-_Sir_Walter_Ral.jpg",
+      "voice": null,
+      "start_s": 89.012,
+      "duration_s": 21.427,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 1,
+      "chapter_title": "The 1587 Expedition",
+      "asset": "runs/v4-roanoke/assets/images/ch1_03_Pomeiooc.in.1585.png.png",
+      "voice": null,
+      "start_s": 110.439,
+      "duration_s": 21.427,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 2,
+      "chapter_title": "Three Missing Years",
+      "asset": "runs/v4-roanoke/assets/images/ch2_04_The_Spanish_Armada.jpg.jpg",
+      "voice": "runs/v4-roanoke/voice/ch2.mp3",
+      "start_s": 131.866,
+      "duration_s": 35.77,
+      "transition": "fade",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 2,
+      "chapter_title": "Three Missing Years",
+      "asset": "runs/v4-roanoke/assets/images/ch2_05_The_Carte_of_all_the_Coast_of_Virginia_by_Theodor_.jpg",
+      "voice": null,
+      "start_s": 167.636,
+      "duration_s": 35.77,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 2,
+      "chapter_title": "Three Missing Years",
+      "asset": "runs/v4-roanoke/assets/images/ch2_06_The_Algonquian_series_(IA_algonquianseries08tookri.jpg",
+      "voice": null,
+      "start_s": 203.407,
+      "duration_s": 35.77,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 3,
+      "chapter_title": "CROATOAN: The Only Clue",
+      "asset": "runs/v4-roanoke/assets/images/ch3_07_William_Ludwell_Sheppard_&_William_James_Linton_-_.jpg",
+      "voice": "runs/v4-roanoke/voice/ch3.mp3",
+      "start_s": 239.177,
+      "duration_s": 90.227,
+      "transition": "fade",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 4,
+      "chapter_title": "400 Years of Theories",
+      "asset": "runs/v4-roanoke/assets/images/ch4_09_Spanish_Galleon_Firing_its_Cannon.jpg.jpg",
+      "voice": "runs/v4-roanoke/voice/ch4.mp3",
+      "start_s": 329.404,
+      "duration_s": 38.339,
+      "transition": "fade",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 4,
+      "chapter_title": "400 Years of Theories",
+      "asset": "runs/v4-roanoke/assets/images/ch4_10_R43407_Drought_in_the_United_States_Causes_and_Cur.jpg",
+      "voice": null,
+      "start_s": 367.743,
+      "duration_s": 38.339,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 4,
+      "chapter_title": "400 Years of Theories",
+      "asset": "runs/v4-roanoke/assets/images/ch4_11_Alcohol_use_among_American_Indians_and_Alaska_nati.jpg",
+      "voice": null,
+      "start_s": 406.082,
+      "duration_s": 38.339,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 5,
+      "chapter_title": "What Archaeology Found",
+      "asset": "runs/v4-roanoke/assets/images/ch5_12_The_aborigines_of_the_District_of_Columbia_and_the.jpg",
+      "voice": "runs/v4-roanoke/voice/ch5.mp3",
+      "start_s": 444.421,
+      "duration_s": 35.431,
+      "transition": "fade",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 5,
+      "chapter_title": "What Archaeology Found",
+      "asset": "runs/v4-roanoke/assets/images/ch5_13_The_biennial_report_of_the_North_Carolina_Historic.jpg",
+      "voice": null,
+      "start_s": 479.852,
+      "duration_s": 35.431,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    },
+    {
+      "chapter_id": 5,
+      "chapter_title": "What Archaeology Found",
+      "asset": "runs/v4-roanoke/assets/images/ch5_14_Coast_watch_(IA_coastwatch00uncs_12).pdf.jpg",
+      "voice": null,
+      "start_s": 515.283,
+      "duration_s": 35.431,
+      "transition": "dissolve",
+      "effect": "ken_burns"
+    }
+  ]
+}
