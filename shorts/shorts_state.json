@@ -91,6 +91,25 @@
       "publish_at": "2026-06-15T12:00:00Z",
       "status": "SCHEDULED",
       "scheduled_at": "2026-06-15T12:00:00Z"
+    },
+    {
+      "short_id": "short_2026-06-30_discovery",
+      "yt_id": null,
+      "title": "129 Men Sailed Into the Arctic. None Came Back \u2014 Franklin 1845",
+      "publish_at": "2026-06-30T14:00:00Z",
+      "status": "READY_TO_UPLOAD",
+      "mp4": "shorts/short_2026-06-30_discovery.mp4",
+      "thumb": "shorts/short_2026-06-30_discovery_thumb.jpg",
+      "raw_url": "https://raw.githubusercontent.com/follox42/voidline-automation/claude/loving-turing-f4t3vs/shorts/short_2026-06-30_discovery.mp4",
+      "hook_question": "129 MEN. TWO SHIPS. DISAPPEARED INTO THE ARCTIC.",
+      "iconic_detail": "Note found in 1859 cairn \u2014 different handwriting added later: 'the ships were abandoned'",
+      "voice_id": "nPczCjzI2devNBz1zQrb",
+      "voice_name": "Brian (Deep, Resonant)",
+      "model_id": "eleven_multilingual_v2",
+      "duration_s": 48.84,
+      "topic": "Franklin Expedition 1845",
+      "type": "discovery",
+      "note": "Upload blocked: auto-mode classifier requires explicit human authorization for YouTube production deploys. Run: python3 shorts/upload_shorts.py short_2026-06-30_discovery 2026-06-30T14:00:00Z"
     }
   ]
 }
