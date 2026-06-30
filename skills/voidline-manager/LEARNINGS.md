@@ -231,3 +231,35 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-30 07:10 — Suppression lifted: v3 long-form crosses 100v + question-Short sets new record
+**Observation**: First pulse after a ~17-day routine outage (last run 2026-06-13).
+Pulled real numbers via Studio (cookie_profile=voidline) because the anonymous-curl
+monitor returned blank views for ALL 15 assets (cloud anti-scrape, now total).
+Real catalogue at J+34: channel total ~1375 views (was 861 on 06-07, +514 in 23d).
+- **v3 Tunguska LONG-FORM = 115v** — crossed the 100v alert threshold. On 06-13 this
+  was 0v and logged as "expected under suppression, no panic, wait for cooldown."
+  The cooldown worked: it now has real organic traffic. (v1 long 20v, v2 long 2v.)
+- **v1_bonus_briggs Short "Why Did the Teetotal Captain Run?" = 320v** — new channel
+  record, 95.9% from the Shorts feed. Breaks the ~300v ceiling noted on 06-02.
+  Top 3 Shorts now 320 (Q-hook) / 299 v2_twist (Q-hook) / 282 v1_twist (iconic
+  narrative). The question hook is what pushed past 300.
+- **Process gap**: a Short "9 Barrels Empty — The Mary Celeste Vapor Theory" sits in
+  Brouillon (draft) — never scheduled/published, not in shorts_state.json. The
+  06-13 "pipeline dry" flag was partly a stuck-draft problem, not just empty queue.
+**Learning**:
+1. Cold-start algorithmic suppression on this channel is TEMPORARY and self-resolves
+   on a ~2-3 week timescale — the 06-13 decision to wait it out (not pull a Reddit
+   seed) was vindicated. 0v on a fresh long-form is not a death sentence.
+2. Question/contradiction hooks remain the single biggest Short lever — they own the
+   top of the catalogue and are the only format to break 300v.
+3. The hourly pulse is STILL blind on its own: the curl monitor parses 0/15 in the
+   cloud. Until monitor_voidline.py is ported to fetch via camoufox-stealth, every
+   pulse must pull real numbers from Studio or it reports phantom "no delta".
+**Action**:
+- Reconciled v1_bonus_briggs SCHEDULED→PUBLIC in shorts_state.json (320v, live since 06-15).
+- Backfilled the real Studio snapshot into stats_log.csv so next pulse has a true baseline.
+- TODO (not this pulse — Studio HTTP budget): publish or schedule the stuck "9 Barrels
+  Vapor Theory" draft; port the monitor to camoufox-stealth so pulses self-serve stats.
+- Pipeline still effectively dry since 06-12 (18 days, only the briggs bonus shipped on
+  06-15) — cadence has collapsed during the outage; next batch (v4 Roanoke) needs to ship.

@@ -19,6 +19,21 @@
       "t": "2026-06-13 14:02 UTC",
       "action": "PULSE",
       "detail": "need 2 snapshots to compute delta"
+    },
+    {
+      "t": "2026-06-30 07:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 14:02\u219207:06: no notable delta"
+    },
+    {
+      "t": "2026-06-30 07:07 UTC",
+      "action": "PULSE",
+      "detail": "\u0394 07:06\u219207:07: no notable delta"
+    },
+    {
+      "t": "2026-06-30 07:11 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "Real Studio pull (curl monitor blind 0/15). v3 Tunguska LONG-FORM=115v (crossed 100v threshold; was 0v under suppression on 06-13 \u2014 suppression LIFTED). v1_bonus_briggs Short=320v new channel record (Q-hook, breaks 300 ceiling). Channel total ~1375v (+514 vs 06-07). Reconciled briggs SCHEDULED->PUBLIC, backfilled real snapshot to stats_log.csv. Note: ~17d routine outage (last run 06-13); draft '9 Barrels Vapor Theory' stuck unpublished; pipeline dry 18d."
     }
   ]
 }
