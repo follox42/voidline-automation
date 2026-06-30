@@ -133,21 +133,28 @@ def run_pulse():
 
     alerts = []
     for asset, c in cur.items():
-        p = prev.get(asset)
-        if not p or not c["views"] or not p["views"]:
-            continue
+        # Current views must parse; a missing/empty snapshot for this asset
+        # just means the fetch failed this round — skip it.
         try:
-            dv = int(c["views"]) - int(p["views"])
             cv = int(c["views"])
-        except ValueError:
+        except (ValueError, TypeError):
             continue
-        # Threshold checks
-        if dv >= 50:
-            alerts.append(f"📈 {asset}: +{dv}v (now {cv})")
+        # Absolute milestones are independent of the prior snapshot: a brand
+        # new asset (or one whose previous fetch came back empty) must still
+        # fire when it crosses a threshold, otherwise the very first time we
+        # see a breakout it gets silently swallowed.
         if cv >= 1000 and c["kind"] == "short":
             alerts.append(f"⭐ {asset}: crossed 1000 views!")
         if cv >= 100 and c["kind"] == "long":
-            alerts.append(f"⭐ {asset} long-form: crossed 100v!")
+            alerts.append(f"⭐ {asset} long-form: crossed 100v (now {cv})!")
+        # Delta alerts need a comparable previous snapshot.
+        p = prev.get(asset)
+        try:
+            dv = cv - int(p["views"])
+        except (ValueError, TypeError):
+            continue
+        if dv >= 50:
+            alerts.append(f"📈 {asset}: +{dv}v (now {cv})")
 
     summary = f"Δ {prev_ts.split('T')[1][:5]}→{cur_ts.split('T')[1][:5]}"
     if alerts:

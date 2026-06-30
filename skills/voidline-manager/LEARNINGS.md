@@ -231,3 +231,40 @@ redesign requires new selector path.
 - Backup path: use the v3 Tunguska AI base (forest flattened) as a
   PLACEHOLDER thumb for v4 + iterate after — better to ship with a
   decent base than wait indefinitely
+
+## 2026-06-30 08:07 — Suppression LIFTED: v3 Tunguska long-form picked up by YouTube recommendations
+**Observation**: First real pulse snapshot since 2026-06-13 (17-day monitoring
+gap — the hourly routine had not produced data in between). v3 Tunguska
+long-form (FacPhS3hNjU) is at **115 views, 11.4h watch time** since its 8 June
+publish. Studio analytics (voidline cookie profile, 160 cookies restored, auth
+OK) show traffic sources are now **93% YouTube recommendations**: Accueil/Home
+48.7% (56v) + À suivre/Suggested 44.3% (51v). Search only 2.6%, direct 3.5%.
+Retention is solid for a 13-min doc: avg view duration 6:01, 45.6% avg
+percentage viewed, 72% still watching at 0:30, one flagged "moment fort". Shorts
+also alive: v2_twist 299v, v1_twist 282v, v1_hook 65v, v1_answer 87v. No Short
+over 1000v; no external/Reddit referral — distribution is pure organic YouTube
+algorithm.
+**Learning**:
+1. This is the inverse of the 06-13 suppression signature ("notification not
+   delivered, all traffic sources insufficient data", v3 long-form 0v). The
+   algorithm is now ACTIVELY pushing the long-form via Home + Suggested. The
+   J+10 suppression test in the 06-13 plan resolves to: **suppression lifted,
+   pure-organic path validated.** No Reddit lever was ever needed.
+2. The doc niche cold-start broke through on the long-form first (recommendation
+   surface), not the Shorts — retention (45.6%) is what the recommender rewarded.
+3. Monitor/runner gap found & fixed: PULSE absolute-milestone alerts (short
+   ≥1000v, long ≥100v) previously required BOTH prev and cur snapshots to have
+   non-empty views, so a first-time breakout against an empty baseline was
+   silently swallowed — which is exactly why this 115v crossing did NOT auto-
+   fire PULSE_ALERT. Absolute milestones now fire independent of the prior
+   snapshot. Also dropped a junk all-empty 08:06:59 snapshot (double-run
+   artifact) from stats_log.csv so the next delta compares against clean data.
+**Action**:
+- Capitalize on the recommendation push: prioritize shipping the next long-form
+  (v4 Roanoke) to feed the now-open Suggested surface while the algorithm is
+  favorable — long-form retention is the proven lever, not Shorts volume.
+- Keep cadence disciplined (no burst — burst is what triggered the original
+  suppression per KNOWN_BAD). 1 long/week is the right tempo to ride this.
+- Investigate the 17-day pulse gap: the hourly cron did not log between 06-13
+  and 06-30. Verify the schedule is actually firing in the cloud routine.
+- Studio HTTP actions this pulse: 2 (navigate + extract). 0 Flow gens. Within limits.
