@@ -1,0 +1,27 @@
+{
+  "src": "runs/v4-roanoke/thumb/croatoan_base.jpg",
+  "out": "runs/v4-roanoke/thumb/thumbnail_v4_roanoke.jpg",
+  "headline": "JUST GONE",
+  "headline_size": 145,
+  "headline_color": "#E0B854",
+  "headline_stroke": 9,
+  "text_x": 40,
+  "text_y": 24,
+  "date": "1587",
+  "date_size": 95,
+  "date_x": 60,
+  "date_gap": 12,
+  "date_stroke": 5,
+  "brightness": 0.90,
+  "saturation": 0.75,
+  "contrast": 1.12,
+  "arrow": {
+    "tip": [820, 390],
+    "length": 200,
+    "angle": -40,
+    "shaft_w": 52,
+    "head_w": 120,
+    "head_len": 100,
+    "stroke_w": 6
+  }
+}

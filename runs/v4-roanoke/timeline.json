@@ -1,0 +1,360 @@
+{
+  "run_id": "v4-roanoke",
+  "total_duration_s": 715.0,
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "title": "A Colony Gone",
+      "start_s": 0.0,
+      "end_s": 45.5,
+      "voice_path": "runs/v4-roanoke/voice/ch0.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch0/img_00.jpg",
+          "start_s": 0.0,
+          "duration_s": 11.38,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch0/img_01.jpg",
+          "start_s": 11.38,
+          "duration_s": 11.38,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch0/img_02.jpg",
+          "start_s": 22.75,
+          "duration_s": 11.38,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch0/img_03.jpg",
+          "start_s": 34.12,
+          "duration_s": 11.38,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 1,
+      "title": "The 1587 Expedition",
+      "start_s": 45.5,
+      "end_s": 165.0,
+      "voice_path": "runs/v4-roanoke/voice/ch1.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_00.jpg",
+          "start_s": 45.5,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_01.jpg",
+          "start_s": 60.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_02.jpg",
+          "start_s": 75.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_03.jpg",
+          "start_s": 90.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_00.jpg",
+          "start_s": 105.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_01.jpg",
+          "start_s": 120.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_02.jpg",
+          "start_s": 135.5,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch1/img_03.jpg",
+          "start_s": 150.5,
+          "duration_s": 14.5,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 2,
+      "title": "Three Missing Years",
+      "start_s": 165.0,
+      "end_s": 325.0,
+      "voice_path": "runs/v4-roanoke/voice/ch2.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_00.jpg",
+          "start_s": 165.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_01.jpg",
+          "start_s": 180.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_02.jpg",
+          "start_s": 195.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_03.jpg",
+          "start_s": 210.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_00.jpg",
+          "start_s": 225.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_01.jpg",
+          "start_s": 240.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_02.jpg",
+          "start_s": 255.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_03.jpg",
+          "start_s": 270.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_00.jpg",
+          "start_s": 285.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_01.jpg",
+          "start_s": 300.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch2/img_02.jpg",
+          "start_s": 315.0,
+          "duration_s": 10.0,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 3,
+      "title": "CROATOAN: The Only Clue",
+      "start_s": 325.0,
+      "end_s": 470.0,
+      "voice_path": "runs/v4-roanoke/voice/ch3.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_00.jpg",
+          "start_s": 325.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_01.jpg",
+          "start_s": 340.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_02.jpg",
+          "start_s": 355.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_03.jpg",
+          "start_s": 370.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_00.jpg",
+          "start_s": 385.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_01.jpg",
+          "start_s": 400.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_02.jpg",
+          "start_s": 415.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_03.jpg",
+          "start_s": 430.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_00.jpg",
+          "start_s": 445.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch3/img_01.jpg",
+          "start_s": 460.0,
+          "duration_s": 10.0,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 4,
+      "title": "400 Years of Theories",
+      "start_s": 470.0,
+      "end_s": 600.0,
+      "voice_path": "runs/v4-roanoke/voice/ch4.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_00.jpg",
+          "start_s": 470.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_01.jpg",
+          "start_s": 485.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_02.jpg",
+          "start_s": 500.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_03.jpg",
+          "start_s": 515.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_00.jpg",
+          "start_s": 530.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_01.jpg",
+          "start_s": 545.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_02.jpg",
+          "start_s": 560.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_03.jpg",
+          "start_s": 575.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch4/img_00.jpg",
+          "start_s": 590.0,
+          "duration_s": 10.0,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 5,
+      "title": "What Archaeology Found",
+      "start_s": 600.0,
+      "end_s": 715.0,
+      "voice_path": "runs/v4-roanoke/voice/ch5.mp3",
+      "slides": [
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_00.jpg",
+          "start_s": 600.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_01.jpg",
+          "start_s": 615.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_02.jpg",
+          "start_s": 630.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_03.jpg",
+          "start_s": 645.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_00.jpg",
+          "start_s": 660.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_01.jpg",
+          "start_s": 675.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_02.jpg",
+          "start_s": 690.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "runs/v4-roanoke/assets/ch5/img_03.jpg",
+          "start_s": 705.0,
+          "duration_s": 10.0,
+          "transition": "dissolve"
+        }
+      ]
+    }
+  ]
+}
