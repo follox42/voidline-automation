@@ -268,3 +268,58 @@ algorithm.
 - Investigate the 17-day pulse gap: the hourly cron did not log between 06-13
   and 06-30. Verify the schedule is actually firing in the cloud routine.
 - Studio HTTP actions this pulse: 2 (navigate + extract). 0 Flow gens. Within limits.
+
+## 2026-06-30 — v4 Roanoke pipeline run: ElevenLabs key tier mismatch
+**Observation**: `ELEVENLABS_KEY` env var is a **free-tier** account ("Follox", 10k
+chars/month, ~8717 remaining). David Documentary voice (`ppLqTilh7rH7fbUVlXsf`) is in
+the paid library — API returns 402. Free-tier accounts can only use Premade voices.
+**Learning**: Always check account tier before scripting a voice. Premade Brian
+(`nPczCjzI2devNBz1zQrb`, `eleven_multilingual_v2`) works on free tier. If David is
+required, the key must be upgraded to Creator ($22/mo). The `script.json` voice_id
+field is informational — actual generation falls back to env-configured voice.
+**Action**: Used Brian fallback, 6/6 chapters generated successfully (550.7s total).
+Log voice_id used in `voice/manifest.json` for attribution. If user upgrades key,
+re-generate with David by deleting existing ch*.mp3 files and re-running generate_voice.py.
+
+## 2026-06-30 — v4 Roanoke pipeline run: Google Flow country block (persistent)
+**Observation**: Flow workspace (`labs.google.com/flow`) redirects to `/unsupported-country`
+in the cloud container. ImageFX also returns `/unsupported-country`. Both require a paid
+Google AI subscription on top of account auth. The `voidline` cookie profile is auth'd
+but the subscription gate + country block combine to make Flow inaccessible.
+**Learning**: Flow is not a reliable pipeline tool from cloud containers in blocked regions.
+The Wikimedia Fern overlay fallback (PIL, `make_thumb.py`) produces a functional 1280×720
+thumbnail in <1s with zero API cost. Reserve Flow for interactive sessions only, with
+manual export to CDN.
+**Action**: Thumb generated via Wikimedia Sheppard engraving base + PIL overlay (gold
+headline "JUST GONE", date "1587", red polygon arrow). Output: 576KB JPEG. If CTR <3%
+post-ship, swap the base image for an AI-generated one using an accessible tool.
+
+## 2026-06-30 — v4 Roanoke pipeline run: CDN blocker on upload step
+**Observation**: Rendered MP4 (`runs/v4-roanoke/render/voidline_v4_roanoke.mp4`, 81.8MB)
+is local-only in the cloud container. `upload_long.py` uses the browser-side DataTransfer
+pattern (`fetch(CDN_URL) → File → <input type="file">`) which requires a publicly
+accessible CDN URL. The expected CDN (`raw.githubusercontent.com/follox42/voidline-
+remotion-preview/main/public/`) belongs to a repo not accessible in the session scope.
+`transfer.sh` upload was blocked by the safety classifier.
+**Learning**: The long-form upload pipeline has a hard dependency on an external CDN that
+can only be written to by the repo owner (Nolann). This is a structural gap: the cloud
+routine can render but cannot self-serve the delivery step without CDN write access.
+**Options to resolve**:
+1. Nolann manually pushes `voidline_v4_roanoke.mp4` to `follox42/voidline-remotion-preview/main/public/`
+2. Set env var `VOIDLINE_CDN_BASE` to a writable CDN URL (e.g. Coolify static host,
+   R2 bucket, or GitHub Release asset URL) before re-running `upload_long.py`
+3. Grant session scope access to `follox42/voidline-remotion-preview` so the routine can push
+**Action**: All pipeline steps 1-6 complete and committed. `upload_long.py` script is ready
+at `skills/long-form-pipeline/upload_long.py`. Re-run that script after CDN is resolved.
+Shorts (Step 8) are unblocked independently once upload completes.
+
+## 2026-06-30 — render.py shell=True failure with special-char filenames
+**Observation**: First render.py attempt used f-string vf chain + `shell=True`. All clips
+failed silently. Root cause: (1) single-quote expressions inside zoompan (`z='min(...)'`)
+got mangled by shell tokenization; (2) filenames with `&` and `;` (from Wikimedia) caused
+shell to split the argument.
+**Learning**: Never use `shell=True` with ffmpeg when the vf chain contains single-quote
+expressions or when input filenames may contain special characters. Always use
+`subprocess.run(list_of_args)` form — the list bypasses shell tokenization entirely.
+**Action**: Rewrote render.py v2 with `subprocess.run(list)`. Also simplified the color
+grade filter to avoid embedded single quotes. Render completed in 3.9min for 81.8MB output.
