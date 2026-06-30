@@ -1,101 +1,106 @@
 [
   {
     "chapter_id": 0,
-    "slug": "ch0_roanoke_island_map",
-    "path": "runs/v4-roanoke/assets/ch0_ch0_roanoke_island_map.jpg",
-    "title": "File:Bridge to Roanoke Island Festival Park, Manteo, North Carolina (14274039378).jpg",
-    "width": 4000,
-    "height": 3000,
-    "bytes": 518395
+    "slug": "ch0_ch0_roanoke_coast_map.jpg",
+    "path": "runs/v4-roanoke/assets/ch0_ch0_roanoke_coast_map.jpg",
+    "width": 1000,
+    "height": 739,
+    "bytes": 252854
   },
   {
     "chapter_id": 1,
-    "slug": "ch1_walter_raleigh",
-    "path": "runs/v4-roanoke/assets/ch1_ch1_walter_raleigh.jpg",
-    "title": "File:Sir Walter Raleigh by Simon van de Passe (1617).jpg",
-    "width": 3791,
-    "height": 5915,
-    "bytes": 2704555
-  },
-  {
-    "chapter_id": 1,
-    "slug": "ch1_elizabeth_i",
+    "slug": "ch1_ch1_elizabeth_i.jpg",
     "path": "runs/v4-roanoke/assets/ch1_ch1_elizabeth_i.jpg",
-    "title": "File:Elizabeth I Armada Portrait British School.jpg",
-    "width": 2984,
-    "height": 2735,
+    "width": 1920,
+    "height": 1760,
     "bytes": 890635
   },
   {
     "chapter_id": 1,
-    "slug": "ch1_john_white_village",
+    "slug": "ch1_ch1_john_white_canoe.jpg",
+    "path": "runs/v4-roanoke/assets/ch1_ch1_john_white_canoe.jpg",
+    "width": 1920,
+    "height": 1533,
+    "bytes": 501834
+  },
+  {
+    "chapter_id": 1,
+    "slug": "ch1_ch1_john_white_village.png",
     "path": "runs/v4-roanoke/assets/ch1_ch1_john_white_village.png",
-    "title": "File:Pomeiooc.in.1585.png",
     "width": 426,
     "height": 298,
     "bytes": 127468
   },
   {
     "chapter_id": 1,
-    "slug": "ch1_john_white_canoe",
-    "path": "runs/v4-roanoke/assets/ch1_ch1_john_white_canoe.jpg",
-    "title": "File:Their manner of fishing in Virginia LCCN2001695730.tif",
-    "width": 5107,
-    "height": 4078,
-    "bytes": 501834
+    "slug": "ch1_ch1_walter_raleigh.jpg",
+    "path": "runs/v4-roanoke/assets/ch1_ch1_walter_raleigh.jpg",
+    "width": 1920,
+    "height": 2996,
+    "bytes": 2704555
   },
   {
     "chapter_id": 2,
-    "slug": "ch2_spanish_armada",
-    "path": "runs/v4-roanoke/assets/ch2_ch2_spanish_armada.jpg",
-    "title": "File:English Ships and the Spanish Armada, August 1588 RMG BHC0262.jpg",
-    "width": 7200,
-    "height": 5634,
-    "bytes": 970862
-  },
-  {
-    "chapter_id": 2,
-    "slug": "ch2_debry_roanoke_map",
+    "slug": "ch2_ch2_debry_roanoke_map.jpg",
     "path": "runs/v4-roanoke/assets/ch2_ch2_debry_roanoke_map.jpg",
-    "title": "File:Map of Virginia, Theodorus de Bry, 1591.jpg",
     "width": 1878,
     "height": 1379,
     "bytes": 1321058
   },
   {
+    "chapter_id": 2,
+    "slug": "ch2_ch2_spanish_armada.jpg",
+    "path": "runs/v4-roanoke/assets/ch2_ch2_spanish_armada.jpg",
+    "width": 1920,
+    "height": 1502,
+    "bytes": 970862
+  },
+  {
     "chapter_id": 3,
-    "slug": "ch3_croatoan_carving",
+    "slug": "ch3_ch3_council_fire_alt.jpg",
+    "path": "runs/v4-roanoke/assets/ch3_ch3_council_fire_alt.jpg",
+    "width": 1280,
+    "height": 1094,
+    "bytes": 219446
+  },
+  {
+    "chapter_id": 3,
+    "slug": "ch3_ch3_croatoan_carving.jpg",
     "path": "runs/v4-roanoke/assets/ch3_ch3_croatoan_carving.jpg",
-    "title": "File:William Ludwell Sheppard & William James Linton - CROATOAN, The Lost Colony (John White).jpg",
-    "width": 3664,
-    "height": 2282,
+    "width": 1920,
+    "height": 1196,
     "bytes": 1240614
   },
   {
     "chapter_id": 4,
-    "slug": "ch4_spanish_galleon",
-    "path": "runs/v4-roanoke/assets/ch4_ch4_spanish_galleon.jpg",
-    "title": "File:English Ships and the Spanish Armada, August 1588 RMG BHC0262.tiff",
-    "width": 7200,
-    "height": 5634,
-    "bytes": 767302
-  },
-  {
-    "chapter_id": 4,
-    "slug": "ch4_powhatan",
+    "slug": "ch4_ch4_powhatan.png",
     "path": "runs/v4-roanoke/assets/ch4_ch4_powhatan.png",
-    "title": "File:Pocahontas by Simon van de Passe (1616).png",
-    "width": 4885,
-    "height": 7101,
+    "width": 1920,
+    "height": 2791,
     "bytes": 12563632
   },
   {
+    "chapter_id": 4,
+    "slug": "ch4_ch4_spanish_galleon.jpg",
+    "path": "runs/v4-roanoke/assets/ch4_ch4_spanish_galleon.jpg",
+    "width": 1920,
+    "height": 1502,
+    "bytes": 767302
+  },
+  {
     "chapter_id": 5,
-    "slug": "ch5_hatteras_island_map",
+    "slug": "ch5_ch5_dig_alt2.jpg",
+    "path": "runs/v4-roanoke/assets/ch5_ch5_dig_alt2.jpg",
+    "width": 1920,
+    "height": 1337,
+    "bytes": 167118
+  },
+  {
+    "chapter_id": 5,
+    "slug": "ch5_ch5_hatteras_island_map.jpg",
     "path": "runs/v4-roanoke/assets/ch5_ch5_hatteras_island_map.jpg",
-    "title": "File:Bodie Island Lighthouse, Cape Hatteras National Seashore, Outer Banks, North Carolina (14246537250).jpg",
-    "width": 4000,
-    "height": 3000,
+    "width": 1920,
+    "height": 1440,
     "bytes": 684885
   }
 ]
