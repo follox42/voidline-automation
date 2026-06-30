@@ -34,6 +34,11 @@
       "t": "2026-06-30 08:10 UTC",
       "action": "PULSE_ALERT",
       "detail": "v3_long_Tunguska crossed 100v (now 115v, 11.4h watch). Studio: 93% traffic from YouTube recommendations (Home 48.7% + Suggested 44.3%), retention 45.6%/6:01. Suppression LIFTED \u2014 pure-organic algo distribution, no external referral. Shorts: v2_twist 299v, v1_twist 282v. Fixed runner so absolute milestones fire vs empty baseline."
+    },
+    {
+      "t": "2026-06-30 09:06 UTC",
+      "action": "PULSE_ALERT",
+      "detail": "\u0394 08:06\u219209:05: \u2b50 v3_long_Tunguska long-form: crossed 100v (now 115)!"
     }
   ]
 }

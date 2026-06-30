@@ -268,3 +268,39 @@ algorithm.
 - Investigate the 17-day pulse gap: the hourly cron did not log between 06-13
   and 06-30. Verify the schedule is actually firing in the cloud routine.
 - Studio HTTP actions this pulse: 2 (navigate + extract). 0 Flow gens. Within limits.
+
+## 2026-06-30 09:10 — v1 Mary Celeste bonus Short is now the TOP Short (320v) + state drift fixed
+**Observation**: First full-stat pulse snapshot (09:05 — the 08:06 snapshot was the
+all-blank scraper artifact, so this is the first real per-asset reading captured
+by the routine, not a manual Studio pull). It surfaced an asset the 08:07 entry
+never had data for: **v1_bonus_briggs ("Why Did the Teetotal Captain Run?" —
+Mary Celeste question hook, yt_id vZ68HlWfT-Q) is at 320 views** — now the
+channel's #1 Short, ahead of v2_twist (299v) and v1_twist (282v). It was still
+marked `SCHEDULED` for 2026-06-15 in shorts_state.json despite ~15 days live.
+Verified PUBLIC via oEmbed (HTTP 200) and reconciled → status=PUBLIC +
+actual_published_at=2026-06-15T12:00:00Z. Other deltas this snapshot are flat/
+modest: v3_answer 106→113v (+7, first growth in weeks), v3 Tunguska long-form
+holding 115v, the rest unchanged from the 08:07 baseline. No Short >1000v; no
+external referral.
+**Learning**:
+1. The bonus-Short thesis from Weekly Review #1 ("produce 2 Mary Celeste
+   question-hook bonus Shorts to break the ~279v plateau") is VALIDATED — the
+   first one broke past every prior Short (320 > 299) purely organically. The
+   question/contradiction-hook + cutter-v2 formula is the reliable lever for
+   Shorts, confirming the 06-05 finding at a new ceiling.
+2. The "crossed 100v" PULSE_ALERT this run is a re-fire artifact, NOT new news:
+   v3 long-form was already 115v and documented at 08:07. It fired only because
+   the absolute-milestone check ran against the empty 08:06 baseline (the exact
+   edge the 08:07 fix targeted — milestones now fire vs empty prev, which is
+   correct, but it means a milestone can re-announce a known crossing once after
+   a blank snapshot). Cosmetic; no action.
+3. State drift recurred (the KNOWN_BAD "trust the state reflects reality"
+   pattern): a scheduled Short auto-published and sat 15 days mismarked
+   SCHEDULED. Daily reconciliation against live views/oEmbed remains mandatory.
+**Action**:
+- Reconciled v1_bonus_briggs → PUBLIC in shorts_state.json (this pulse).
+- Strategy reinforce: the second planned Mary Celeste bonus Short (per Weekly
+  Review #1) should still ship — the first hit 320v, so the format clears the
+  plateau. Pair with the v4 Roanoke long-form push to keep feeding both surfaces.
+- Studio HTTP actions this pulse: 0 (oEmbed only — view data came from the
+  runner snapshot). 0 Flow gens. Within all limits.
