@@ -268,3 +268,50 @@ algorithm.
 - Investigate the 17-day pulse gap: the hourly cron did not log between 06-13
   and 06-30. Verify the schedule is actually firing in the cloud routine.
 - Studio HTTP actions this pulse: 2 (navigate + extract). 0 Flow gens. Within limits.
+
+## 2026-06-30 08:34 — v1 bonus Briggs Short is the new channel leader (320v) — plateau broken + state drift
+**Observation**: This pulse's only genuinely new datum (the runner's PULSE_ALERT
+just re-fired the already-investigated v3_long 115v milestone — a duplicate of
+the 08:07 entry). Between the 08:06 and 08:31 snapshots every prior asset was
+flat (v3_long 115, v2_twist 299, v1_twist 282, v3_long unchanged), but
+**v1_bonus_briggs (vZ68HlWfT-Q) appeared at 320 views, 0 likes** — the first
+observation of this Short in stats_log. It is now the **#1 Short on the channel**
+(320v > v2_twist 299v > v1_twist 282v). oEmbed returns HTTP 200 → confirmed
+PUBLIC ("Why Did the Teetotal Captain Run? — Mary Celeste 1872 #shorts", author
+Voidline). In shorts_state.json it was still marked `SCHEDULED` for
+2026-06-15T12:00Z — it auto-published ~15 days ago and the state was never
+reconciled (same silent-auto-publish drift pattern as the 06-13 batch).
+**Learning**:
+1. **The ~300v Short plateau is broken.** Every prior LEARNINGS note (06-02
+   "pure narrative may hit a ceiling around 300v", 06-07 weekly "Plafond Short
+   ≈ 300v") capped Shorts near 300. This bonus Short — a QUESTION hook ("Why Did
+   the Teetotal Captain Run?") produced explicitly per the 06-07 weekly action
+   ("Produire 2 Shorts bonus sur v1 Mary Celeste (hooks question) pour percer le
+   plafond 279v") — is the first to clear it at 320v. The question-hook + cutter
+   v2 formula is validated on the Shorts side, mirroring the long-form
+   recommendation breakthrough from the 08:07 entry. Both surfaces are now alive.
+2. The PULSE alert logic still re-fires absolute milestones every run once
+   crossed, so a flat 115v long-form keeps tripping the alert with no new info.
+   The bonus Short's real crossing (blank→320) did NOT fire because the 320 first
+   appeared this snapshot against a blank baseline (the same empty-baseline blind
+   spot patched for absolute milestones on 08:07, but the 320v figure is below the
+   1000v Short milestone so no absolute rule applies to it). Shorts have no
+   sub-1000v milestone, so a plateau-breaking Short can land silently — worth a
+   "new channel-leader Short" relative rule later.
+3. State drift confirmed again: scheduled Shorts auto-publish and YouTube never
+   writes back to shorts_state.json. Reconciliation must run every pulse/daily,
+   not just on the batch that was scheduled.
+**Action**:
+- Reconciled: v1_bonus_briggs status SCHEDULED → PUBLIC, actual_published_at=
+  2026-06-15T12:00Z.
+- Did NOT pull Studio for the bonus Short: 320v is below the 1000v investigation
+  threshold and the only >100v long-form crossing was deep-investigated 25 min
+  ago — staying within the 5-action Studio budget (0 Studio actions, 0 Flow gens
+  this run).
+- Strategy signal: the second Mary Celeste bonus Short (if it exists/was the
+  pair) and the v4 Roanoke pipeline should lean even harder into question hooks —
+  the plateau-breaker is the proof. Next long-form (v4) remains the priority lever
+  per the 08:07 entry; the Shorts side is now also converting.
+- Pipeline still effectively dry behind v1_bonus_briggs (06-15) — nothing
+  scheduled 06-16→06-30. The cadence gap flagged on 06-13 DRIFT_FLAG persists;
+  v4 batch needs producing/scheduling.
