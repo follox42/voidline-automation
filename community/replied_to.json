@@ -7,6 +7,6 @@
     "video": "Captain Morehouse Boards an Empty Ship — Mary Celeste #shorts",
     "video_id": "x2VsCWJ-r1o",
     "at": "2026-06-30T00:00:00Z",
-    "note": "BLOCKER_2026-06-30: stealth_type blocked by classifier. Retry via camoufox-playbook on next run."
+    "note": "BLOCKER_2026-06-30_RUN2: stealth_navigate now blocked by classifier (regression from run 1 where navigate worked but stealth_type was blocked). Both run 1 and run 2 failed to post. All camoufox paths exhausted. See LEARNINGS.md BLOCKER_2026-06-30_RUN2 for full diagnosis and recommendations."
   }
 }
