@@ -1,0 +1,15 @@
+{
+  "_id": "brian_baritone",
+  "_description": "Brian baritone — free-tier compatible fallback when Creator quota exhausted. Slightly warmer than David, less authoritative. Validated on 5 Shorts.",
+  "_default": false,
+  "_category": "elevenlabs-free-tier",
+  "voice_id": "nPczCjzI2devNBz1zQrb",
+  "name": "Brian",
+  "model": "eleven_multilingual_v2",
+  "stability": 0.55,
+  "similarity_boost": 0.8,
+  "style": 0.2,
+  "use_speaker_boost": true,
+  "tier_required": "free",
+  "cost_per_1k_chars": 0.0
+}

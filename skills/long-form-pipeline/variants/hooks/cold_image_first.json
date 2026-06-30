@@ -1,0 +1,17 @@
+{
+  "_id": "cold_image_first",
+  "_description": "Cold open IMAGERY first (3-5s, no narration). Question lands AFTER viewer is anchored. Higher 'curiosity gap' but slower hook = potential drop-off risk.",
+  "_default": false,
+  "_category": "competitor-mimic",
+  "structure": [
+    {"t": "0:00", "beat": "Single iconic image, slow ken-burns, ambient pad. No narration."},
+    {"t": "0:04", "beat": "Image cuts to second image — same scene, different angle. Still no narration."},
+    {"t": "0:08", "beat": "First narration line — date + place anchor (NOT question yet)."},
+    {"t": "0:14", "beat": "Iconic question lands. Hold image."},
+    {"t": "0:20", "beat": "Numbers stake."},
+    {"t": "0:40", "beat": "Soft promise + transition."}
+  ],
+  "duration_target_s": 55,
+  "voiceover_chars": 160,
+  "style_notes": "Higher production polish required. Cold imagery must be STRONG (iconic) or viewer bounces. Suit LEMMiNO-style content."
+}

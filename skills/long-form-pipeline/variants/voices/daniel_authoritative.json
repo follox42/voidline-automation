@@ -1,0 +1,15 @@
+{
+  "_id": "daniel_authoritative",
+  "_description": "Daniel — UK authoritative, slightly higher pitch than David. More 'BBC presenter' feel. Test variant for higher-stakes reveals.",
+  "_default": false,
+  "_category": "elevenlabs-premium",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "name": "Daniel",
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.9,
+  "style": 0.3,
+  "use_speaker_boost": true,
+  "tier_required": "creator",
+  "cost_per_1k_chars": 0.18
+}

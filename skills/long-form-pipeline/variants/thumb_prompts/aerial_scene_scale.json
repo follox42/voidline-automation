@@ -1,0 +1,12 @@
+{
+  "_id": "aerial_scene_scale",
+  "_description": "Aerial / wide establishing shot of the location. Conveys scale of mystery. Strong for big-event content (e.g., Tunguska, Dyatlov pass).",
+  "_default": false,
+  "_category": "voidline-native",
+  "prompt_template": "Cinematic aerial drone-style photograph of {location_description} at {time_of_day}, {weather}, sepia + cold teal grade, sweeping perspective showing scale, low atmospheric haze, Fern documentary aesthetic, LEMMiNO color palette, 16:9 1280x720, clean negative space lower-third for text overlay, no text in image, no logos",
+  "overlay_headline_pattern": "{year} | {location_short}",
+  "overlay_headline_color": "#E0B854",
+  "overlay_arrow_color": "#D9343F",
+  "overlay_anchor": "lower-left",
+  "style_notes": "Use when location IS the iconic detail. Avoid when there's a single object/face that's more iconic."
+}

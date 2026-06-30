@@ -1,0 +1,16 @@
+{
+  "_id": "question_first_8s",
+  "_description": "Iconic question opens at 0:00 (≤8 words). Then 5s cold-open imagery. Restate + context. Validated on v1, v2, v3 long-forms.",
+  "_default": true,
+  "_category": "voidline-native",
+  "structure": [
+    {"t": "0:00", "beat": "Iconic question voice-over (≤8 words). Black screen + slow fade-in of imagery."},
+    {"t": "0:03", "beat": "Cold open imagery — single still or slow ken-burns. No narration."},
+    {"t": "0:08", "beat": "Restate question with date and place anchor."},
+    {"t": "0:18", "beat": "Numbers stake: count + iconic detail."},
+    {"t": "0:35", "beat": "Soft promise — what we'll uncover. Transition to ch1."}
+  ],
+  "duration_target_s": 50,
+  "voiceover_chars": 180,
+  "style_notes": "First 3s decides watch-through. Question must be googleable in viewer's mind. NO 'hey welcome back' / NO music-only intros."
+}

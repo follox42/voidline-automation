@@ -1,0 +1,12 @@
+{
+  "_id": "face_emotional_anchor",
+  "_description": "Face-centered thumbnail with emotional anchor. CTR pattern proven by Fern/MrBallen — faces beat objects on impression CTR.",
+  "_default": false,
+  "_category": "competitor-mimic",
+  "prompt_template": "Cinematic close-up archival-style portrait of {historical_figure} from {year_period}, dramatic side-light, sepia + cold teal grade, deep crushed shadows, Fern documentary aesthetic, eyes locked on viewer with subtle melancholy, weathered texture, shot on Leica M 35mm, 16:9 1280x720, clean negative space right side for text overlay, no text in image",
+  "overlay_headline_pattern": "WHAT THEY {action}",
+  "overlay_headline_color": "#E0B854",
+  "overlay_arrow_color": "#D9343F",
+  "overlay_anchor": "right",
+  "style_notes": "Risk : faces increase CTR but may anchor expectation on biography, hurting retention if video is event-centric. Test on event-with-protagonist videos only."
+}

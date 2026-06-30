@@ -1,0 +1,17 @@
+{
+  "_id": "contradiction_punch",
+  "_description": "Open with a contradictory statement. 'They built walls. Then they took them apart.' High retention on first 15s — viewer's brain locks on resolving the contradiction.",
+  "_default": false,
+  "_category": "high-density",
+  "structure": [
+    {"t": "0:00", "beat": "First sentence of contradiction (≤6 words). Bold image."},
+    {"t": "0:03", "beat": "Second sentence resolving setup with twist (≤8 words)."},
+    {"t": "0:08", "beat": "Pause for 1.5s on key image. Single bass hit on cut."},
+    {"t": "0:11", "beat": "Date + place anchor + numbers."},
+    {"t": "0:25", "beat": "Question reframe — 'how do you...' / 'why would...'"},
+    {"t": "0:45", "beat": "Transition to ch1."}
+  ],
+  "duration_target_s": 55,
+  "voiceover_chars": 170,
+  "style_notes": "Best for stories where the contradiction IS the iconic detail. Avoid forcing — if no real contradiction in source material, this falls flat."
+}

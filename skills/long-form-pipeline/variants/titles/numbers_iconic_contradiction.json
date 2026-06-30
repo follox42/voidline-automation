@@ -1,0 +1,10 @@
+{
+  "_id": "numbers_iconic_contradiction",
+  "_description": "Numbers-first + iconic-word + contradiction. Higher density per character — denser than baseline. Use for stories with strong numerical anchor.",
+  "_default": false,
+  "_category": "high-density",
+  "template": "{count} {subject} Vanished in {year}. They Left One Word: {iconic_word}.",
+  "example": "115 People Vanished in 1587. They Left One Word: CROATOAN.",
+  "max_chars": 80,
+  "style_notes": "Two short sentences. First creates scale, second creates intrigue. Iconic word ALL CAPS for retention. Avoid hyperbole adjectives ('mysterious', 'incredible')."
+}

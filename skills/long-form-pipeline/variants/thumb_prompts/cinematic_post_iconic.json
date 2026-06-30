@@ -1,0 +1,12 @@
+{
+  "_id": "cinematic_post_iconic",
+  "_description": "Single weathered iconic detail in cinematic gold-hour side light. Fern/LEMMiNO classic — validated on v1, v2, v3 thumbnails.",
+  "_default": true,
+  "_category": "voidline-native",
+  "prompt_template": "Cinematic hyperreal photograph of {iconic_detail}, {year_period}, soft diffused golden hour side-light, sepia + cold teal grade, deep crushed shadows, Fern documentary aesthetic, LEMMiNO color palette, shot on Leica M 35mm, Kodak Portra warmth, 16:9 1280x720 ultra-wide, clean negative space upper-left for text overlay, no text in image, no logos",
+  "overlay_headline_pattern": "{date} | {iconic_word}",
+  "overlay_headline_color": "#E0B854",
+  "overlay_arrow_color": "#D9343F",
+  "overlay_anchor": "upper-left",
+  "style_notes": "The image should look like a real archival photograph, not AI-generated. Avoid faces unless the iconic detail IS a face."
+}

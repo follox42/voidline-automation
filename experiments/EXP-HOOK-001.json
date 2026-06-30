@@ -1,0 +1,14 @@
+{
+  "hypothesis": "contradiction_punch hook beats question_first_8s on retention_at_30s_pct (resolving contradiction = stronger anchor)",
+  "dimension": "hooks",
+  "variant_under_test": "contradiction_punch",
+  "control": "question_first_8s",
+  "metric": "retention_at_30s_pct",
+  "min_videos": 3,
+  "min_impressions": 500,
+  "id": "EXP-HOOK-001",
+  "created": "2026-06-30",
+  "verdict": "pending",
+  "result_7d": null,
+  "result_30d": null
+}

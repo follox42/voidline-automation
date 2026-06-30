@@ -1,0 +1,10 @@
+{
+  "_id": "year_anchored_action",
+  "_description": "Year first + action verb + iconic detail. SEO-friendly (year matches search), strong for evergreen content. Mimics MrBallen/RealLifeLore.",
+  "_default": false,
+  "_category": "competitor-mimic",
+  "template": "{year}: {subject} {action_verb} — {iconic_detail}",
+  "example": "1587: A Colony Carved Its Goodbye — The CROATOAN Mystery",
+  "max_chars": 70,
+  "style_notes": "Strong action verb in past tense. Em-dash separator. Year prefix helps both retention curiosity and search ranking."
+}

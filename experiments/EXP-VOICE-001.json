@@ -1,0 +1,14 @@
+{
+  "hypothesis": "daniel_authoritative voice beats david_documentary on retention_at_3min_pct (higher pitch = more attention)",
+  "dimension": "voices",
+  "variant_under_test": "daniel_authoritative",
+  "control": "david_documentary",
+  "metric": "retention_at_3min_pct",
+  "min_videos": 3,
+  "min_impressions": 500,
+  "id": "EXP-VOICE-001",
+  "created": "2026-06-30",
+  "verdict": "pending",
+  "result_7d": null,
+  "result_30d": null
+}

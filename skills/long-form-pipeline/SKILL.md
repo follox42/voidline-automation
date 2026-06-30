@@ -14,6 +14,20 @@ You are the producer of a Voidline long-form. Run the steps in order. Each step 
 Read `skills/voidline-master/NEXT_VIDEOS.md` → find this run's LONG-1 or LONG-2 entry.
 Verify all fields filled (topic, hook, iconic detail, thumb prompt). If TBD remains → abort.
 
+### 🎯 Step 0 — Pick variants for ALL dimensions (A/B testing)
+
+Run for each dimension :
+```
+python3 skills/long-form-pipeline/pick_variant.py titles        <run_id>
+python3 skills/long-form-pipeline/pick_variant.py voices        <run_id>
+python3 skills/long-form-pipeline/pick_variant.py thumb_prompts <run_id>
+python3 skills/long-form-pipeline/pick_variant.py hooks         <run_id>
+python3 skills/long-form-pipeline/pick_variant.py caption_styles <run_id>
+```
+The picker reads `experiments/*.json` (open) → `KNOWN_GOOD.md` → `_default` flag. It writes `runs/<run_id>/variants_used.json` automatically — read this back at each downstream step to know which template/voice_id/prompt to use.
+
+If no open experiment → picker returns the KNOWN_GOOD default. The whole pipeline runs on validated defaults unless an A/B is in flight, so behaviour is identical to today + autonomous learning ON TOP.
+
 ## Step 1 — Script (script-smith)
 
 Generate `script.json` (6 chapters, target 11-13min, ~1250 words):
@@ -29,10 +43,16 @@ David Documentary VO style — calm, paced, sentence-level rhythm, no exclamatio
 
 ## Step 2 — Voice (ElevenLabs)
 
-Requires env var `ELEVENLABS_KEY`. Voice: David Documentary (voice_id pinned in voidline-master).
-Generate one .mp3 per chapter into `runs/<topic>/voice/`.
+Requires env var `ELEVENLABS_KEY`. Voice config comes from `variants_used.json["voices"]` :
+```
+voice_path = json.load(open("runs/<run_id>/variants_used.json"))["voices"]["chosen"]
+voice_cfg = json.load(open(f"skills/long-form-pipeline/variants/voices/{voice_path}.json"))
+# → voice_cfg has voice_id, model, stability, similarity_boost, style, tier_required
+```
 
-Cost ~$0.50 per 10min. Skip if `--no-voice` (uses placeholder silence).
+If `tier_required == "creator"` and current ElevenLabs sub is free → fallback to a tier=free variant from KNOWN_GOOD (typically `brian_baritone`).
+
+Generate one .mp3 per chapter into `runs/<topic>/voice/`. Cost varies by variant (see `cost_per_1k_chars` in the variant JSON).
 
 ## Step 3 — Assets (asset-summoner)
 

@@ -1,5 +1,7 @@
 {
+  "_id": "voidline_core",
   "_description": "Voidline brand-coherent core style. Gold #E0B854 highlight, Impact font, subtle pop-in. Matches Fern/LEMMiNO documentary aesthetic. Use as default for first batch + baseline experiments.",
+  "_default": true,
   "_metadata": {
     "category": "voidline-native",
     "risk": "low",

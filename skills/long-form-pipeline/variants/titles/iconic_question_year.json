@@ -1,0 +1,10 @@
+{
+  "_id": "iconic_question_year",
+  "_description": "Question hook + (year) + iconic detail. The Fern/LEMMiNO classic. Currently validated on v1 Mary Celeste, v2 Dyatlov, v3 Tunguska.",
+  "_default": true,
+  "_category": "voidline-native",
+  "template": "{question}? ({year}) — {iconic_detail}",
+  "example": "What Did CROATOAN Mean? (1587) — The Lost Colony of Roanoke",
+  "max_chars": 70,
+  "style_notes": "Question must be answerable in the video. Iconic detail must be the unforgettable phrase. Use the em-dash (—), never the hyphen (-)."
+}

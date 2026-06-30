@@ -1,0 +1,15 @@
+{
+  "_id": "david_documentary",
+  "_description": "UK documentary baritone, calm pace. Fern/LEMMiNO-adjacent. Best for sustained narration over archival imagery.",
+  "_default": true,
+  "_category": "elevenlabs-premium",
+  "voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "name": "David Documentary",
+  "model": "eleven_multilingual_v2",
+  "stability": 0.5,
+  "similarity_boost": 0.85,
+  "style": 0.25,
+  "use_speaker_boost": true,
+  "tier_required": "creator",
+  "cost_per_1k_chars": 0.18
+}
