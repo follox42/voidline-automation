@@ -1,0 +1,58 @@
+{
+  "channel": "Fern",
+  "scan_date": "2026-07-01",
+  "access_note": "The /community URL (https://www.youtube.com/channel/UCODHrzPMGbNv67e84WDZhQQ/community) returned 'Cette Communauté n'est pas disponible' (This Community is not available) -- likely a locale/routing quirk since the channel's own nav bar (seen on /about) does list a 'Posts' tab. Falling back to /posts (https://www.youtube.com/channel/UCODHrzPMGbNv67e84WDZhQQ/posts) succeeded and returned 10 posts, confirming the channel does actively use the community-post feature.",
+  "posts_last_30d": [
+    {
+      "date": "2026-06-24 (approx, label: 'il y a 7 jours')",
+      "format": "image + text",
+      "text_excerpt": "We are launching something new: Roots. It starts with a newsletter, packed with awesome and weird stories (like why there is barely any Wendy's in Europe). And because you're early, you'll receive a printable monitor freebie when you sign up: https://roots.watchfern.com/",
+      "likes": 2900,
+      "poll_votes": null
+    },
+    {
+      "date": "2026-06-17 (approx, label: 'il y a 2 semaines')",
+      "format": "image + text",
+      "text_excerpt": "on the real, the next hacker story is an all-time classic :)",
+      "likes": 15000,
+      "poll_votes": null
+    },
+    {
+      "date": "2026-06-17 (approx, label: 'il y a 2 semaines (modifié)')",
+      "format": "image + text",
+      "text_excerpt": "Thank you for 5 million subscribers. We have so much amazing content planned for the rest of the year, hope you guys will enjoy :) - David, Jonas & the team",
+      "likes": 16000,
+      "poll_votes": null
+    },
+    {
+      "date": "2026-06-01 (approx, label: 'il y a 1 mois' -- borderline edge of the 30-day window from scan date 2026-07-01)",
+      "format": "image + text",
+      "text_excerpt": "Hey. For our latest video, we collaborated with @examination-news, a nonprofit newsroom investigating preventable health threats. Check out their story on the world's deadliest company: https://examination.news/...",
+      "likes": 8100,
+      "poll_votes": null
+    }
+  ],
+  "posts_outside_30d_seen_for_context": [
+    {"date": "~2026-05 (il y a 2 mois)", "text_excerpt": "Telly Awards nomination for China's secret highway documentary"},
+    {"date": "~2026-05 (il y a 2 mois)", "text_excerpt": "Mentour's new channel 'Black Box' shoutout"},
+    {"date": "~2026-05 (il y a 2 mois)", "text_excerpt": "Shorty Awards finalist, same documentary"},
+    {"date": "~2025-12 (il y a 7 mois)", "text_excerpt": "Year-in-review style update: storytelling/animation/on-site reporting improvements, doomsday cult episode teaser"},
+    {"date": "~2025-11 (il y a 8 mois)", "text_excerpt": "Freelance Thumbnail Designer job posting"},
+    {"date": "~2025-11 (il y a 8 mois)", "text_excerpt": "Spanish-speaking Video Editor / Motion Designer job posting (upcoming Spanish-language channel)"}
+  ],
+  "format_mix": {
+    "poll": 0,
+    "image": 4,
+    "text": 0,
+    "video": 0
+  },
+  "engagement_by_format": {
+    "image_plus_text": {
+      "avg_likes": 10500,
+      "avg_comment_replies": 444,
+      "note": "Comment-reply counts for the 4 in-window posts were 241, 445, 464, and 625 respectively (order matches posts_last_30d above). All 4 posts attach a still image (thumbnail/graphic), none are pure polls or pure text despite YouTube's poll UI wrapper being present on the DOM for every post type."
+    }
+  },
+  "cadence_days": 7,
+  "note": "4 posts landed inside the last 30 days (2026-06-01 through 2026-07-01), roughly one every 7-8 days, tracking closely with the video-upload cadence. Content mix: 1 new-product/newsletter announcement (Roots), 1 teaser/hype post for an upcoming video, 1 milestone/thank-you post (5M subscribers, signed by name -- 'David, Jonas & the team'), 1 cross-promotion/collab shoutout tied to a recent video's investigative partner. No true multiple-choice polls were used in this window despite the poll-capable post renderer wrapping every entry. The 5M-subscriber milestone post is the highest-engagement item (16k likes) and is also the only post with an on-record human signature, a useful data point for community-manager voice matching."
+}

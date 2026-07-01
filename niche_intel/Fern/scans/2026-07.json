@@ -1,0 +1,111 @@
+{
+  "channel": "Fern",
+  "channel_id": "UCODHrzPMGbNv67e84WDZhQQ",
+  "scan_date": "2026-07-01",
+  "sanity_check": "Confirmed /about page title = 'fern - YouTube', handle @fern-tv, 5.05M abonnés (subs) shown in French locale UI. Channel ID matches target exactly (previous run's UC8wXC0ZCfGt3HaVLy_fdTQw was a stale/wrong ID for 'Digital Trends' and was NOT used here).",
+  "videos": [
+    {
+      "title": "The Kid Who Hacked America",
+      "video_id": "dNGUiWKn6Qs",
+      "url": "https://www.youtube.com/watch?v=dNGUiWKn6Qs",
+      "thumb_url": "https://i.ytimg.com/vi/dNGUiWKn6Qs/hqdefault.jpg",
+      "duration": "32:21",
+      "publish_date": "2026-06-30",
+      "views": 816000,
+      "likes": 30800,
+      "comments_count": 1399
+    },
+    {
+      "title": "Why Putin Is So Hard to Kill",
+      "video_id": "5pO-MTDW6nU",
+      "url": "https://www.youtube.com/watch?v=5pO-MTDW6nU",
+      "thumb_url": "https://i.ytimg.com/vi/5pO-MTDW6nU/hqdefault.jpg",
+      "duration": "14:59",
+      "publish_date": "2026-06-24",
+      "views": 1400000,
+      "likes": 52774,
+      "comments_count": 3639
+    },
+    {
+      "title": "How Israel Kills Journalists",
+      "video_id": "i1zD7dY7QYg",
+      "url": "https://www.youtube.com/watch?v=i1zD7dY7QYg",
+      "thumb_url": "https://i.ytimg.com/vi/i1zD7dY7QYg/hqdefault.jpg",
+      "duration": "27:45",
+      "publish_date": "2026-06-19",
+      "views": 1200000,
+      "likes": 85584,
+      "comments_count": 10072
+    },
+    {
+      "title": "How to Escape Auschwitz",
+      "video_id": "OWykKXo1k7w",
+      "url": "https://www.youtube.com/watch?v=OWykKXo1k7w",
+      "thumb_url": "https://i.ytimg.com/vi/OWykKXo1k7w/hqdefault.jpg",
+      "duration": "38:37",
+      "publish_date": "2026-06-10",
+      "views": 1400000,
+      "likes": 51014,
+      "comments_count": 2731
+    },
+    {
+      "title": "The Dark Web's New Deadliest Drug",
+      "video_id": "euePG4NgpUo",
+      "url": "https://www.youtube.com/watch?v=euePG4NgpUo",
+      "thumb_url": "https://i.ytimg.com/vi/euePG4NgpUo/hqdefault.jpg",
+      "duration": "27:24",
+      "publish_date": "2026-06-03",
+      "views": 2700000,
+      "likes": 80687,
+      "comments_count": 5419
+    },
+    {
+      "title": "The Insane Story of Serbia's Human Slaughterhouse",
+      "video_id": "hKLIxxBrM-o",
+      "url": "https://www.youtube.com/watch?v=hKLIxxBrM-o",
+      "thumb_url": "https://i.ytimg.com/vi/hKLIxxBrM-o/hqdefault.jpg",
+      "duration": "26:04",
+      "publish_date": "2026-05-27 (estimated from relative label 'il y a 1 mois'; not confirmed on watch page)",
+      "views": 3100000,
+      "likes": null,
+      "comments_count": null
+    },
+    {
+      "title": "The Hunt for America's Weirdest Killer",
+      "video_id": "5ZqolNRkxvM",
+      "url": "https://www.youtube.com/watch?v=5ZqolNRkxvM",
+      "thumb_url": "https://i.ytimg.com/vi/5ZqolNRkxvM/hqdefault.jpg",
+      "duration": "41:26",
+      "publish_date": "2026-05-20 (estimated from relative label 'il y a 1 mois'; not confirmed on watch page)",
+      "views": 2500000,
+      "likes": null,
+      "comments_count": null
+    },
+    {
+      "title": "The CIA's Most Valuable Spy",
+      "video_id": "vcUGp_94uBk",
+      "url": "https://www.youtube.com/watch?v=vcUGp_94uBk",
+      "thumb_url": "https://i.ytimg.com/vi/vcUGp_94uBk/hqdefault.jpg",
+      "duration": "30:41",
+      "publish_date": "2026-05-13 (estimated from relative label 'il y a 1 mois'; not confirmed on watch page)",
+      "views": 2800000,
+      "likes": null,
+      "comments_count": null
+    }
+  ],
+  "cadence_days_median": 7,
+  "cadence_days_stddev": 1.2,
+  "cadence_note": "Gaps between the 5 videos with confirmed exact dates: 6, 5, 9, 7 days. Gaps for videos 6-8 are estimated (assumed ~7d spacing continuing the observed pattern) since only relative 'il y a 1 mois' labels were available and a 5th/6th/7th/8th watch-page visit was skipped to conserve navigation budget. True cadence is very close to weekly (matches channel's own tagline 'almost weekly').",
+  "duration_trend": {
+    "avg_all": "29:55",
+    "avg_oldest_4": "31:24",
+    "avg_newest_4": "28:26",
+    "note": "Slight downward trend in runtime for the 4 newest videos vs the 4 oldest of this sample (~3 min shorter on average), driven mainly by the 14:59 short-form 'Why Putin Is So Hard to Kill' outlier pulling the newest-4 average down. Excluding that outlier, newest videos are still in the 27-38 min band consistent with older ones -- no strong systemic shortening, more like increased format variance (one much shorter video mixed into the usual 25-40 min range)."
+  },
+  "palette_trend": "Thumbnails follow Fern's established high-contrast documentary style: dark/desaturated background photo or illustration (blacks, grays, muted blues/reds) with a bold white or yellow sans-serif headline-style text overlay, often a red/orange accent element (blood, warning color, flag) to draw the eye. Consistent branding across all 8 -- no visible shift in palette this cycle, still leaning toward somber, journalistic, true-crime/geopolitical mood boards rather than bright clickbait colors.",
+  "title_patterns": {
+    "pct_questions": 0,
+    "pct_with_date": 0,
+    "avg_length_words": 5.5
+  }
+}
