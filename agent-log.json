@@ -84,6 +84,11 @@
       "t": "2026-07-01 08:07 UTC",
       "action": "REDDIT_SEED_SKIPPED",
       "detail": "Daily-plan step 4 calls for a r/UnresolvedMysteries seed on a long-form publish day, but CLAUDE.md lists external seeding (Reddit/Discord/Twitter) as NOT authorized ('user has opted out: pas de reddit'), reaffirmed by the 2026-06-13 pure-organic pivot. Seed NOT drafted; no seeds/ file created. Pure-organic path stands."
+    },
+    {
+      "t": "2026-07-01 09:05 UTC",
+      "action": "MONTHLY_RECAL",
+      "detail": "Monthly recal 2026-07. Catalogue: 13 Shorts (13 live). Next: assess niche cohesion + catalogue depth target (10+ long-forms)."
     }
   ]
 }
