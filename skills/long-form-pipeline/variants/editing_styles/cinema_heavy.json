@@ -1,0 +1,17 @@
+{
+  "_id": "cinema_heavy",
+  "_description": "Hero-tier: Kling 3.0 i2v for period B-roll (better character consistency), Suno-generated custom score, 3D Blender globe flyover for maps, heavy sound design. Overkill for baseline but useful for signature moments.",
+  "_default": false,
+  "_category": "hero-tier",
+  "layers": {
+    "b_roll": {"source": "wikimedia + kling_3_i2v", "ai_i2v_ratio": 0.6, "ai_provider": "kling_3"},
+    "motion_graphics": {"chapter_cards": true, "kinetic_type": true, "callouts": true, "lower_thirds": true, "provider": "remotion_rendercomp"},
+    "data_viz": {"maps": true, "maps_style": "blender_3d_globe", "timelines": true},
+    "sound_design": {"beds": true, "beds_source": "suno_custom + purple_planet", "sfx_source": "freesound + elevenlabs_generate", "custom_score": true},
+    "transitions": {"style": "match_cut + light_leak + xfade"},
+    "grade": {"style": "sepia_teal_deep + kodak_portra", "grain": true, "gate_weave": true, "vignette": true}
+  },
+  "estimated_cost_per_long_form": 18.00,
+  "production_time_min": 90,
+  "notes": "Only for hero videos targeting >100k views. NEVER default. Test on 1 out of 4 productions max."
+}

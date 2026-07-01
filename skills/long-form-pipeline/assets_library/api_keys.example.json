@@ -1,0 +1,9 @@
+{
+  "_note": "Copy to api_keys.json (gitignored) and fill with real values. Env vars ($VAR) are dereferenced at runtime.",
+  "freesound": "your_freesound_oauth_token_from_freesound.org/apiv2",
+  "pixabay": "your_pixabay_key_from_pixabay.com/api/docs",
+  "pexels": "your_pexels_key_from_pexels.com/api",
+  "fal_ai": "your_fal_key_from_fal.ai",
+  "suno": "your_suno_key_from_suno.com/api",
+  "elevenlabs": "$ELEVENLABS_KEY"
+}

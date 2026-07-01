@@ -21,3 +21,12 @@ runs/*/render/*.mp4
 !runs/*/assets/manifest.json
 !runs/*/assets/ATTRIBUTION.md
 !runs/*/thumb/
+
+# API keys (per source) — never commit
+skills/long-form-pipeline/assets_library/api_keys.json
+assets_packs/_archive/
+# Uncompressed audio files (keep MP3 only)
+assets_packs/**/*.wav
+assets_packs/**/*.aiff
+# Very large video B-roll (>10MB) — link via index only
+# (individual files >10MB should be tracked via LFS or GitHub Release asset)

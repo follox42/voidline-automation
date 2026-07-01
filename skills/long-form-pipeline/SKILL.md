@@ -56,11 +56,54 @@ Generate one .mp3 per chapter into `runs/<topic>/voice/`. Cost varies by variant
 
 ## Step 3 — Assets (asset-summoner)
 
-For each chapter, source:
+For each chapter, source :
 - 4-6 Wikimedia Commons images (license-clear, prefer 1280×720+)
-- 1-2 Veo 3.1 cinematic clips OR Flow Nano Banana 2 stills
+- 1-2 AI B-roll clips (Veo 3.1 Fast or Kling 3.0 i2v — pass Wikimedia still as init frame)
 
 Save to `runs/<topic>/assets/` with attribution in `assets/ATTRIBUTION.md`.
+
+## Step 3.5 — Reusable pack assets (music beds + SFX + overlays)
+
+The `assets_packs/` library is a persistent, learning-driven store built by the routine over time. It's NOT re-downloaded per production — reused across all runs.
+
+For each chapter, use `asset_manager.py` :
+
+```bash
+# 1) Find suitable music bed for this chapter mood
+python3 skills/long-form-pipeline/asset_manager.py search music/dark "sustained cinematic tension slow"
+# → top 5 ranked by tag match + past scores + novelty boost. Pick one.
+
+# 2) Find whoosh transition SFX  
+python3 skills/long-form-pipeline/asset_manager.py search sfx/whoosh "deep cinematic reveal"
+# → pick
+
+# 3) Reveal sting for ch5 answer moment
+python3 skills/long-form-pipeline/asset_manager.py search sfx/sting "impact bass cinematic reveal"
+# → pick
+
+# 4) If library is thin (< 3 assets in a category), auto-populate:
+python3 skills/long-form-pipeline/asset_manager.py explore sfx/sting "impact bass cinematic reveal"
+# → fetches 10 candidates from Freesound + adds to index
+
+# 5) If nothing fits, generate on-demand via ElevenLabs:
+python3 skills/long-form-pipeline/asset_manager.py generate-sfx "deep bass cinematic impact after long silence" sting
+# → generated + indexed + reusable
+```
+
+**AFTER RENDER**, record scores for what you used :
+```bash
+python3 skills/long-form-pipeline/asset_manager.py record \
+  freesound_sfx_sting_impact-reveal_412896 v4-roanoke ch5-answer-reveal 4 "hit right on CROATOAN word"
+```
+
+Scores compound over time — after 8-12 productions the library is Voidline-native (self-tuned).
+
+See :
+- `assets_library/CATALOG.md` for exhaustive source list (60+ sources)
+- `assets_library/README.md` for organization schema + learning loop
+- `assets_library/api_keys.example.json` — copy to `api_keys.json` (gitignored) with real credentials
+
+Free-first stack (no keys required to start) : Wikimedia + ElevenLabs (already have) + local `assets_packs/` library. Add Freesound OAuth for 100k+ CC0 SFX, Pexels/Pixabay for free stock video, fal.ai for premium AI B-roll — each is optional and picked up when the key is present.
 
 ## Step 4 — Timeline (voidline-editor)
 

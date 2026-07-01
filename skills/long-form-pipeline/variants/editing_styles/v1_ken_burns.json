@@ -1,0 +1,15 @@
+{
+  "_id": "v1_ken_burns",
+  "_description": "Baseline: Wikimedia stills + Ken Burns zoompan + sepia/teal grade + chapter cards. Zero motion graphics, zero sound design, no B-roll AI. This is what v4 Roanoke shipped.",
+  "_default": true,
+  "_category": "voidline-baseline",
+  "layers": {
+    "b_roll": {"source": "wikimedia_only", "kb_zoompan": true},
+    "motion_graphics": {"chapter_cards": true, "kinetic_type": false, "callouts": false, "lower_thirds": false},
+    "sound_design": {"beds": false, "sfx_transitions": false, "sfx_reveals": false, "foley": false},
+    "transitions": {"style": "hard_cut"},
+    "grade": {"style": "sepia_teal_light", "grain": false, "vignette": true}
+  },
+  "estimated_cost_per_long_form": 0.87,
+  "production_time_min": 25
+}
