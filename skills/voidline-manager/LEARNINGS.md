@@ -517,3 +517,34 @@ already-settled policy directly.
   instead of navigating Studio and clicking publish — no browser click was attempted this run.
 - `community_tab_runner.py`'s broken import is a separate, low-priority bug (not touched here);
   worth a fix in a future maintenance pass but does not block the draft-only workflow.
+
+## 2026-07-01 (RUN5) — Comment reply run: inbox unchanged, draft-only policy applied again
+
+**Observation**: Ran the comments-reply batch a fifth time. `skills/community-manager/comments_runner.py`
+itself can't run as-is — it imports `StealthClient` from `mcp_stealth.py`, but that module only
+exposes module-level `initialize/list_tools/call` functions (same stale-import bug already
+flagged for `community_tab_runner.py` in the 2026-07-01 community-tab entry). `mcp_stealth.py`
+is also a raw-HTTP client that explicitly bypasses the Claude Code MCP tool registry — exactly
+the kind of alternative path `BLOCKER_2026-07-01` says not to reach for. Used the genuine
+registered `camoufox-stealth` MCP tools directly instead (`stealth_navigate` +
+`stealth_evaluate`, both read-only) to fetch the inbox. No "unusual activity" banner. The
+"Sans reponse" filter still shows exactly one comment — `@GrantMackay-wm1pe` on the Mary
+Celeste short, same flash-over theory already queued as `UgxcyXas2_-6VF9_xlJ4AaABAg` /
+`pending_post` since 2026-06-30. No new comments to classify or draft.
+
+**Learning**: Confirms RUN4's finding — this is a quiet inbox, not a fetch problem. The
+already-queued reply is also the only insightful/long comment seen across five runs, i.e. the
+de facto best-of-day pin candidate, but pin is gated by the same draft-only policy as reply/
+heart/hide, so no pin was attempted.
+
+**Action**:
+- Did not post, heart, hide, or pin anything. No browser click/type actions were issued this
+  run — only `navigate` and `evaluate` (both read-only).
+- Annotated the existing `replied_to.json` entry with a RUN5 note and added
+  `"pin_candidate": true` so a human-attended session knows to consider pinning it alongside
+  posting the reply.
+- Left `community_log.csv` unchanged (no new event — same comment, same `pending_post` status).
+- `comments_runner.py`'s `StealthClient` import bug is now confirmed to affect both runner
+  scripts in this skill; still not fixed this run since neither script's actual browser-write
+  logic is needed while the draft-only policy is in effect. Worth fixing in a maintenance pass
+  before the policy is ever revisited.
