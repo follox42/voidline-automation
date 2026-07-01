@@ -89,8 +89,10 @@
       "yt_id": "vZ68HlWfT-Q",
       "title": "Why Did the Teetotal Captain Run? \u2014 Mary Celeste 1872",
       "publish_at": "2026-06-15T12:00:00Z",
-      "status": "SCHEDULED",
-      "scheduled_at": "2026-06-15T12:00:00Z"
+      "status": "PUBLIC",
+      "scheduled_at": "2026-06-15T12:00:00Z",
+      "actual_published_at": "2026-06-15T12:00:00Z",
+      "notes": "Reconciled SCHEDULED->PUBLIC on 2026-07-01 daily-plan: verified PUBLIC via YouTube oEmbed (HTTP 200). Auto-published on schedule; state was never updated (same silent-publish class as the v2/v3 batch reconciled 2026-06-13)."
     },
     {
       "short_id": "w27_discovery_franklin",

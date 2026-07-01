@@ -386,3 +386,44 @@ content would be more disruptive than leaving it) so it was left as-is.
    for a staggered HOOK/ANSWER release.
 4. Add a real automated verification step to any future Studio-scheduling script:
    re-navigate and re-check `Visibilité` text after save, don't trust the click result.
+
+## 2026-07-01 08:06 — Daily-plan: FLAGSHIP long-form also published early (same silent-schedule bug)
+
+**Observation**: Wed 2026-07-01 is a long-form publish day (LONG-1 Roanoke, delayed
+from Tue per weekly_plans/2026-27.md). Verified the long-form's schedule per step 4 and
+found it drifted the same way the v4 shorts did. The Roanoke v4 long-form
+(`Tlc-cKtAHuQ`, "What Did CROATOAN Mean? (1587) — The Lost Colony of Roanoke") was
+scheduled on 2026-06-30 21:06 UTC as a **2026-07-01T17:00:00Z Première** but is now
+**already Publique**. Confirmed in Studio (voidline_admin session): `Visibilité: Publique`,
+zero Première/upcoming markers; the public watch page reports `publishDate=2026-07-01T00:00:06Z`
+(≈8h early, ~midnight UTC — not the validated 17:00 UTC peak window) with `viewCount=1`.
+This is the **third asset** from that single 21:06 UTC scheduling session to publish
+immediately instead of on its "Programmer" date — after v4_hook and v4_answer
+(BLOCKER_2026-07-01). The live build is the **compromised** one: Brian fallback voice
+(not David Documentary, ElevenLabs quota) + **no burned-in captions** (Whisper 429).
+
+**Learning**:
+1. The Studio "Programmer" click-automation silent-failure is now confirmed to hit
+   long-forms too, not just Shorts — it is a **systemic** scheduling bug, not a
+   per-format fluke. Every asset scheduled in the 2026-06-30 21:06 session published
+   immediately. The root fix (verify `Programmée`/`Visibilité` badge after save, item 3
+   of BLOCKER_2026-07-01) is now the highest-priority pipeline fix.
+2. Worst-case timing compounded: the flagship landed at ~midnight UTC (dead window) with
+   the fallback voice and no captions, during the exact window the algorithm had just
+   re-opened Suggested for the channel (suppression lifted 2026-06-30). One shot at the
+   favorable surface, spent on the degraded build at the wrong hour.
+3. Left live, not re-privatized — consistent with the prior-session call that
+   unpublishing live content is more disruptive than leaving it, and KNOWN_BAD says
+   delete+reupload forfeits algo trust. This is an **owner decision**, not a routine one.
+
+**Action**:
+- Reconciled shorts_state.json v1_bonus_briggs (16-day stale SCHEDULED → PUBLIC).
+- Logged LONG_FORM_DRIFT in agent-log.json; flagged owner decision (leave live vs
+  delete + reupload the corrected David-voice + captioned build).
+- Did NOT re-privatize or delete the long-form. Did NOT create a duplicate.
+- **PLANNED: Reddit seed for Roanoke — SKIPPED.** Step 4 asks for a
+  r/UnresolvedMysteries seed, but CLAUDE.md marks external seeding as NOT authorized
+  ("pas de reddit, on peut exploser naturellement") and the 2026-06-13 pivot locked the
+  pure-organic path. No seed drafted, per standing owner instruction.
+- Root fix still pending: post-save `Visibilité`/`Programmée` verification in the
+  Studio scheduling scripts (this drift would have been caught at schedule time).
