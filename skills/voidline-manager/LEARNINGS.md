@@ -470,3 +470,48 @@ autonomously publishing real public content on YouTube.
   unattended routines and downgrade this skill to draft-only (write replies to a review queue,
   human posts them). Recommend (b) as the durable fix — matches the "held for review" moderation
   pattern already used for hides.
+
+## BLOCKER_2026-07-01 (addendum, RUN4) — comments_runner.py's import bypasses the tool classifier
+
+**Observation**: Re-ran the comment-reply batch. Studio inbox (read-only, via legitimate
+`stealth_navigate`/`stealth_evaluate`) still shows exactly one unanswered comment — the same
+`@GrantMackay-wm1pe` Mary Celeste comment already logged as `pending_post` since 2026-06-30.
+No new comments this run.
+
+Before doing that read-only check, tried running `skills/community-manager/comments_runner.py`
+directly (`python3 comments_runner.py`) as the task instructions describe. It fails immediately:
+`ImportError: cannot import name 'StealthClient' from 'mcp_stealth'`. Reading `mcp_stealth.py`
+to understand why turned up something more significant than a broken import: the module is not
+a stub — it's a working raw HTTP/JSON-RPC client (`urllib`-based) that talks directly to the
+camoufox backend (`mcphub.nocode18.com` / `mcp-stealth.nocode18.com`), authenticating with
+`MCPHUB_TOKEN`, entirely outside the Claude Code MCP tool registry. Its own docstring says as
+much: "Bypasses the Claude Code MCP registry."
+
+**Learning**:
+1. This is not just a broken helper — it's a second, unsupervised path to the exact same
+   real-world action (driving a live browser against YouTube Studio: navigate, click Repondre,
+   heart, hide, pin) that BLOCKER_2026-07-01 (RUN3) already established the tool-level classifier
+   correctly refuses to let an unattended routine perform. If the `StealthClient` import were
+   fixed, `comments_runner.py` would post/heart/hide/pin via raw HTTP, with no tool-call
+   permission check in the loop at all — functionally identical to retrying a denied click
+   through a side door.
+2. Did not fix the import or otherwise get `comments_runner.py` running end-to-end. Did the
+   inbox check instead through the actual `camoufox-stealth_navigate`/`_evaluate` tools (the
+   same ones RUN3 confirmed work fine read-only), which keeps any future write attempt subject
+   to the same classifier that already made a considered decision here.
+3. This durably changes the recommendation from RUN3. It isn't enough to decide "don't attempt
+   the click" per run — as long as a working bypass client exists in the repo, a future session
+   (or a less careful read of CLAUDE.md's "try the alternative path" instruction) could use it to
+   actually post/hide/pin unsupervised. Flagging for explicit owner review rather than deleting
+   `mcp_stealth.py` unilaterally, since removing a safety-relevant bypass is a bigger call than
+   routine stale-file cleanup.
+
+**Action**:
+- Did not run or fix `comments_runner.py`. Did not post, heart, hide, or pin anything this run.
+- Confirmed via legitimate read-only tool calls that the inbox has no new comments beyond the
+  already-queued `pending_post` item; `community/replied_to.json` updated with a RUN4 note.
+- Recommend the owner either (a) delete/neuter `mcp_stealth.py`'s direct-HTTP path so
+  `comments_runner.py` can only run through the classified tool interface (and fix the
+  `StealthClient` import against that), or (b) explicitly confirm this bypass is intentional and
+  wanted — in which case the standing CLAUDE.md authorization language should say so plainly
+  rather than relying on an unrelated script to quietly provide the capability.
