@@ -64,6 +64,26 @@
       "t": "2026-06-30 21:06 UTC",
       "action": "SHORT_SCHEDULED",
       "detail": "v4_answer \u2014 'We Found Where They Went. Roanoke Colony Solved. (1587)' (yt_id: wHwh8TTRNKw) scheduled for 2026-07-02T12:00:00Z. Source: runs/v4-roanoke/shorts/short_v4_answer.mp4 (2.7MB). Config: config_v4_answer.json. Hook: 'WE FOUND THE LOST COLONY.' Outro: 'ARE THEIR DESCENDANTS STILL ALIVE?'"
+    },
+    {
+      "t": "2026-07-01 08:02 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-07-01 \u2014 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-07-01 08:05 UTC",
+      "action": "RECONCILE",
+      "detail": "Drift corrected: v1_bonus_briggs (vZ68HlWfT-Q, publish_at 2026-06-15) was still SCHEDULED in shorts_state.json 16 days after its slot. Verified PUBLIC via YouTube oEmbed (HTTP 200). Set status=PUBLIC + actual_published_at=2026-06-15T12:00:00Z. Same silent-publish pattern as the 2026-06-13 v2/v3 reconciliation."
+    },
+    {
+      "t": "2026-07-01 08:06 UTC",
+      "action": "LONG_FORM_DRIFT",
+      "detail": "FLAGSHIP DRIFT: Roanoke v4 long-form (Tlc-cKtAHuQ, 'What Did CROATOAN Mean? (1587)') was scheduled 2026-06-30 21:06 UTC as a 2026-07-01T17:00:00Z Premiere but is already PUBLIC. Verified in Studio (voidline_admin session): Visibilite=Publique, no Premiere/upcoming markers; watch-page publishDate=2026-07-01T00:00:06Z (~8h early, ~midnight UTC not the 17:00 peak window), viewCount=1. Identical silent 'Programmer'->immediate-publish failure that hit v4_hook + v4_answer from the SAME 21:06 UTC scheduling session (BLOCKER_2026-07-01). The live build is the COMPROMISED one: Brian fallback voice (not David Documentary) + NO burned-in captions (Whisper 429). Left live (not re-privatized) per prior-session policy that unpublishing live content is more disruptive than leaving it. OWNER DECISION NEEDED: leave live vs delete+reupload the corrected build (delete+reupload risks the just-lifted algo trust per KNOWN_BAD)."
+    },
+    {
+      "t": "2026-07-01 08:07 UTC",
+      "action": "REDDIT_SEED_SKIPPED",
+      "detail": "Daily-plan step 4 calls for a r/UnresolvedMysteries seed on a long-form publish day, but CLAUDE.md lists external seeding (Reddit/Discord/Twitter) as NOT authorized ('user has opted out: pas de reddit'), reaffirmed by the 2026-06-13 pure-organic pivot. Seed NOT drafted; no seeds/ file created. Pure-organic path stands."
     }
   ]
 }
