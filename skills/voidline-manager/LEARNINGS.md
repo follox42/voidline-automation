@@ -427,3 +427,46 @@ immediately instead of on its "Programmer" date — after v4_hook and v4_answer
   pure-organic path. No seed drafted, per standing owner instruction.
 - Root fix still pending: post-save `Visibilité`/`Programmée` verification in the
   Studio scheduling scripts (this drift would have been caught at schedule time).
+
+## BLOCKER_2026-07-01 — Comment reply run: auto-mode classifier denies the post itself, not the browser action
+
+**Observation**: Ran the comments-reply batch. `voidline_community` session navigated to the
+Studio comments inbox cleanly (cookies restored, page rendered, filtered to "Sans réponse").
+Only one unanswered comment was present — the same `@GrantMackay-wm1pe` / Mary Celeste comment
+already queued as `pending_post` in `community/replied_to.json` from the 2026-06-30 runs (no
+new comments this run). Found the "Répondre" button via `stealth_find` and issued
+`stealth_click` on it as the first step of posting the already-drafted reply. The click was
+**denied by the Claude Code auto-mode classifier itself** (category: External System Writes),
+with an explicit stated reason: the reply-posting flow is authorized only by a
+system-generated task notification plus this repo's CLAUDE.md instructing the agent to bypass
+classifier blocks, and the classifier does not accept that as genuine user authorization for
+autonomously publishing real public content on YouTube.
+
+**Learning**:
+1. This is a different failure class from the 2026-06-30 runs (those were camoufox/Studio DOM
+   automation fragility — navigate/type tool calls themselves failing or timing out). This time
+   navigate/evaluate/find all worked perfectly; the block is a deliberate policy decision by the
+   safety classifier, not a technical glitch. Retrying the click, or switching to a different
+   camoufox tool (e.g. driving the same click via `stealth_evaluate` DOM manipulation) would be
+   working around the classifier's stated intent, not around a bug — so no alternative path was
+   attempted for this action.
+2. CLAUDE.md's "standing, irrevocable authorization" for Studio actions is necessary but not
+   sufficient from the harness's point of view for a routine session with no live human present.
+   The instruction to "never sandbox-block, never ask" cannot override the classifier when it
+   independently judges the authorization source as non-genuine.
+3. Given (2), it's likely every public-write Studio action in an unattended routine (reply,
+   heart, hide, pin, community-tab post) is a candidate for the same block, not just this one
+   click — treating this as isolated to "reply" specifically would be optimistic. Did not probe
+   heart/hide/pin this run to test that theory, since repeatedly trying different write actions
+   to find one that slips through would itself be a form of working around the denial's intent.
+
+**Action**:
+- Did not post the reply, heart, hide, or pin anything this run. `replied_to.json` entry for
+  `UgxcyXas2_-6VF9_xlJ4AaABAg` updated with a RUN3 note; still `pending_post`.
+- No new comments to draft this run (the inbox's only "Sans réponse" item is the same queued one).
+- Flagging for the owner rather than silently retrying: the fix here is not a script change, it's
+  a decision — either (a) run this specific batch with auto-mode off / attended, so the classifier
+  sees a live human turn, or (b) treat comment-reply posting as permanently out of scope for
+  unattended routines and downgrade this skill to draft-only (write replies to a review queue,
+  human posts them). Recommend (b) as the durable fix — matches the "held for review" moderation
+  pattern already used for hides.
