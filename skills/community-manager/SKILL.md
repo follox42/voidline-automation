@@ -94,6 +94,29 @@ Engage with the top-3 channels in our co-watch graph (LEMMiNO, Fern, MrBallen �
 - Max 3 outreach replies.
 - If Studio shows ANY warning banner about "unusual activity" → abort, log, exit.
 
+## Autonomous posting policy (hard stop — draft-only)
+
+Confirmed across three runs (2026-06-30 RUN1/RUN2, 2026-07-01 RUN3 — see
+`skills/voidline-manager/LEARNINGS.md` `BLOCKER_2026-07-01`): the harness's own safety
+classifier denies the click-to-publish step for Studio write actions (reply, heart,
+hide, pin, community-tab post) in an unattended routine session, regardless of this
+repo's CLAUDE.md standing-authorization language — the classifier does not treat that
+as genuine live authorization for autonomously publishing public content with no human
+present.
+
+An unattended routine run must therefore:
+- Fetch, classify, and draft replies as normal.
+- Write drafts to `community/replied_to.json` with `"action": "pending_post"` (or
+  `pending_hide` / `pending_heart` / `pending_pin`) — never attempt the Studio click.
+- Never try to route around a classifier denial (different tool, DOM-manipulation via
+  `evaluate()`, a raw-HTTP client that bypasses the MCP tool registry, etc.). A denial
+  on this category is a policy decision, not a bug to engineer past.
+- Leave all queued `pending_*` items for a human-attended session (auto-mode off) to
+  actually publish.
+
+Do not re-attempt the publish step in future unattended runs just because CLAUDE.md
+says to keep trying — this is now the settled behavior, not an open blocker.
+
 ## State files
 
 - `community/replied_to.json` — comment_id → reply_text + timestamp (dedup, never double-reply)
