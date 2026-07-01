@@ -470,3 +470,25 @@ autonomously publishing real public content on YouTube.
   unattended routines and downgrade this skill to draft-only (write replies to a review queue,
   human posts them). Recommend (b) as the durable fix — matches the "held for review" moderation
   pattern already used for hides.
+
+## 2026-07-01 (RUN4) — Comment reply run: formalized draft-only, no re-attempt
+
+**Observation**: Ran the comments-reply batch again. Studio inbox ("Sans reponse" filter)
+still shows only the same `@GrantMackay-wm1pe` comment already queued as `pending_post`
+since 2026-06-30 — no new comments arrived. Read-only navigate/evaluate via the registered
+camoufox-stealth tools worked fine, confirming this is not a browser/session problem.
+
+**Learning**: Recommendation (b) from `BLOCKER_2026-07-01` (downgrade to draft-only) is now
+adopted rather than re-debated. Did not re-attempt the click-to-post, and did not use
+`mcp_stealth.py`'s raw-HTTP path (its own docstring says it bypasses the MCP tool registry —
+i.e. it exists to route around the same classifier that already denied this action, which
+makes it exactly the kind of "alternative path" that should not be taken for a denial that is
+a stated policy decision, not a bug).
+
+**Action**:
+- Added an explicit "Autonomous posting policy (hard stop — draft-only)" section to
+  `skills/community-manager/SKILL.md` so future unattended runs stop treating this as an
+  open blocker to retry.
+- No new comments to draft this run; `replied_to.json` entry annotated with a RUN4 note.
+- Did not post, heart, hide, or pin anything. The queued reply remains for a human-attended
+  (auto-mode off) session to actually publish.
