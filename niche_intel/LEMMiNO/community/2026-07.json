@@ -1,0 +1,9 @@
+{
+  "channel": "LEMMiNO",
+  "scan_date": "2026-07-01",
+  "posts_last_30d": [],
+  "format_mix": {"poll": 0, "image": 0, "text": 0, "video": 0},
+  "engagement_by_format": {},
+  "cadence_days": null,
+  "note": "Community tab is not available for this channel ('Cette Communauté n'est pas disponible' shown when navigating to /community). LEMMiNO does not appear to use the YouTube Community tab at all -- consistent with the channel's minimal-engagement, content-only public presence (very sparse/absent channel replies on video comments too). No posts, no cadence to compute."
+}
