@@ -336,3 +336,53 @@ scheduling to 2026-07-01T17:00:00Z.
 - TODO: Re-run `python3 skills/long-form-pipeline/generate_captions.py runs/v4-roanoke/render/audio_concat.mp3 runs/v4-roanoke/style.json runs/v4-roanoke/render/captions.ass` after OpenAI quota resets (billing cycle)
 - TODO: Set GROQ_API_KEY in environment — Groq Whisper is free-tier and faster
 - NOTE: ASS PlayRes for landscape (1920×1080) must be patched before burn-in: PlayResX:1920, PlayResY:1080, margin_v:60 (generate_captions.py defaults to portrait 1080×1920)
+
+## BLOCKER_2026-07-01 — Daily Short (Wed HOOK/v4-roanoke): source render missing + v4 Shorts already public with wrong schedule
+
+**Observation**: weekly_plans/2026-27.md rows Wed 2026-07-01 = HOOK/v4-roanoke and Fri
+2026-07-03 = ANSWER/v4-roanoke. Ran `skills/daily-short/daily_short_runner.py` per SKILL.md
+instructions. It failed cleanly (exit 1): `runs/v4-roanoke/render/voidline.mp4` does not
+exist in this container — render outputs are gitignored (`runs/*/render/*.mp4`) and the
+prior session that produced it ran in a different, now-discarded ephemeral container, so
+the local render artifact never persisted. `runs/v4-roanoke/shorts/short_v4_hook.mp4`
+(the already-cut Short file) is gone for the same reason.
+
+Investigated further before giving up: `shorts_state.json` already listed `v4_hook`
+(yt_id `rF7LYZRgnbY`, scheduled_at 2026-07-05T12:00) and `v4_answer` (yt_id `wHwh8TTRNKw`,
+scheduled_at 2026-07-02T12:00) as `SCHEDULED` — i.e. this exact HOOK short had already been
+produced and uploaded by the prior session (agent-log.json `SHORT_SCHEDULED` entries,
+2026-06-30 21:06 UTC). Checked both videos directly in YouTube Studio (voidline_admin
+session): **both are already `Publique` (live), not scheduled** — the "Programmer" step's
+click sequence apparently didn't persist (same class of issue as
+BLOCKER_2026-06-30-B/C — Studio dialog automation via evaluate() is fragile) and the
+uploads defaulted to publishing immediately instead. Worse, this means the **ANSWER short
+went public around the same time as the HOOK**, instead of the intended HOOK-then-ANSWER
+staggered order — the "WE FOUND THEM" reveal was live at (or before) the same time as the
+mystery setup, undercutting the format. This is already irreversible (unpublishing live
+content would be more disruptive than leaving it) so it was left as-is.
+
+**Action taken**:
+- Did NOT create a new/duplicate Short for today — the HOOK content for v4-roanoke is
+  already public on the channel, and creating another one would break the "1 Short/day"
+  limit and duplicate content that's already live.
+- Corrected `shorts/shorts_state.json`: both `v4_hook` and `v4_answer` flipped from
+  `SCHEDULED` to `PUBLIC` to match ground truth, with a note explaining the discrepancy.
+- Cleaned up dangling `shorts/short_2026-07-01_hook.{json,ass}` config artifacts left by
+  the failed cutter run (no video was produced, no other side effects).
+- No new API spend incurred (ElevenLabs/Flow untouched); only read-only Studio navigation.
+
+**Root fix needed**:
+1. `daily_short_runner.py`'s `upload_shorts.py` hand-off is broken for new short_ids —
+   `shorts/upload_shorts.py` is a hardcoded `SPECS` list of v1–v3 shorts, not a generic
+   `(short_id, publish_at)` uploader. Any future HOOK/ANSWER/discovery short produced via
+   the runner would silently no-op at the upload step (script exits 0 having matched
+   nothing). Needs a real generic uploader before this pipeline can run end-to-end again.
+2. Long-form/Shorts render artifacts need to persist across ephemeral sessions (commit
+   a lower-res proxy, or push to object storage) so a later session can still cut Shorts
+   from an already-rendered long-form without re-rendering from scratch.
+3. `schedule_publish()`/`schedule_one()`'s calendar-click automation should verify the
+   resulting state (`Programmée` badge) before treating the schedule as successful —
+   right now a silent failure defaults to immediate-public, which is the worst outcome
+   for a staggered HOOK/ANSWER release.
+4. Add a real automated verification step to any future Studio-scheduling script:
+   re-navigate and re-check `Visibilité` text after save, don't trust the click result.
