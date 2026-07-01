@@ -129,7 +129,10 @@ class FreesoundSource(Source):
         if cc0_only:
             params["filter"] = 'license:"Creative Commons 0"'
         url = "https://freesound.org/apiv2/search/text/?" + urllib.parse.urlencode(params)
-        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
+        req = urllib.request.Request(url, headers={
+            "Authorization": f"Token {token}",
+            "User-Agent": "voidline-asset-manager/1.0",
+        })
         try:
             with urllib.request.urlopen(req, timeout=15) as r:
                 body = json.load(r)
