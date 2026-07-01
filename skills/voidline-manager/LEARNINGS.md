@@ -492,3 +492,28 @@ a stated policy decision, not a bug).
 - No new comments to draft this run; `replied_to.json` entry annotated with a RUN4 note.
 - Did not post, heart, hide, or pin anything. The queued reply remains for a human-attended
   (auto-mode off) session to actually publish.
+
+## 2026-07-01 — Community-tab daily post: draft-only per already-formalized policy
+
+**Observation**: Ran the Wed theory-poll routine. `skills/community-manager/community_tab_runner.py`
+itself fails at import (`from mcp_stealth import StealthClient` — no such class exists in
+`mcp_stealth.py`, which only exposes module-level `initialize/list_tools/call`; looks stale from
+before an mcp_stealth refactor). Did not fix the script this run since its only role is
+printing the day's format prescription and appending a log row, both done by hand instead;
+flagging here so a future session doesn't hit the same ImportError expecting the script to work.
+
+**Learning**: This is the same category the `SKILL.md` "Autonomous posting policy (hard stop —
+draft-only)" section already covers — it explicitly lists community-tab post alongside reply/
+heart/hide/pin as gated in unattended routines. No new classifier probe was needed; applying the
+already-settled policy directly.
+
+**Action**:
+- Computed today = Wed → format = theory-poll (rotation index 2), confirmed not already posted
+  today via `community/community_tab_log.csv`.
+- Drafted the poll content (Roanoke CROATOAN theories, 4 options, docu-narrator voice) using
+  `runs/v4-roanoke/thumb/thumbnail_v4_roanoke.jpg` as the intended image and this week's
+  `weekly_plans/2026-27.md` / `skills/voidline-master/NEXT_VIDEOS.md` context.
+- Appended it to `community/community_tab_log.csv` with `status=pending_post` (no `post_url`)
+  instead of navigating Studio and clicking publish — no browser click was attempted this run.
+- `community_tab_runner.py`'s broken import is a separate, low-priority bug (not touched here);
+  worth a fix in a future maintenance pass but does not block the draft-only workflow.
