@@ -169,7 +169,10 @@ class PexelsVideoSource(Source):
             print("[pexels] no PEXELS_KEY — skip", file=sys.stderr)
             return []
         url = f"https://api.pexels.com/videos/search?query={urllib.parse.quote(query)}&per_page={limit}"
-        req = urllib.request.Request(url, headers={"Authorization": key})
+        req = urllib.request.Request(url, headers={
+            "Authorization": key,
+            "User-Agent": "voidline-asset-manager/1.0 (github.com/follox42/voidline-automation)",
+        })
         try:
             with urllib.request.urlopen(req, timeout=15) as r:
                 body = json.load(r)
@@ -194,7 +197,13 @@ class PexelsVideoSource(Source):
         return out
 
     def download(self, item: dict, out_path: Path):
-        urllib.request.urlretrieve(item["preview_url"], out_path)
+        # Pexels download URLs sometimes 403 without a User-Agent header
+        req = urllib.request.Request(item["preview_url"], headers={
+            "User-Agent": "voidline-asset-manager/1.0 (github.com/follox42/voidline-automation)",
+        })
+        with urllib.request.urlopen(req, timeout=60) as r, open(out_path, "wb") as f:
+            while chunk := r.read(65536):
+                f.write(chunk)
 
 
 class PixabayVideoSource(Source):
@@ -232,7 +241,14 @@ class PixabayVideoSource(Source):
         return out
 
     def download(self, item: dict, out_path: Path):
-        urllib.request.urlretrieve(item["preview_url"], out_path)
+        # Pixabay CDN sometimes 403 without User-Agent + Referer
+        req = urllib.request.Request(item["preview_url"], headers={
+            "User-Agent": "Mozilla/5.0 (voidline-asset-manager/1.0)",
+            "Referer": "https://pixabay.com/",
+        })
+        with urllib.request.urlopen(req, timeout=60) as r, open(out_path, "wb") as f:
+            while chunk := r.read(65536):
+                f.write(chunk)
 
 
 class ElevenLabsSfxSource(Source):
