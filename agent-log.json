@@ -84,6 +84,16 @@
       "t": "2026-07-01 08:07 UTC",
       "action": "REDDIT_SEED_SKIPPED",
       "detail": "Daily-plan step 4 calls for a r/UnresolvedMysteries seed on a long-form publish day, but CLAUDE.md lists external seeding (Reddit/Discord/Twitter) as NOT authorized ('user has opted out: pas de reddit'), reaffirmed by the 2026-06-13 pure-organic pivot. Seed NOT drafted; no seeds/ file created. Pure-organic path stands."
+    },
+    {
+      "t": "2026-07-01 09:05 UTC",
+      "action": "MONTHLY_RECAL",
+      "detail": "Monthly recal 2026-07. Catalogue: 13 Shorts (13 live). Next: assess niche cohesion + catalogue depth target (10+ long-forms)."
+    },
+    {
+      "t": "2026-07-01 10:30 UTC",
+      "action": "NICHE_INTEL_MONTHLY",
+      "detail": "Monthly deep recon complete for LEMMiNO/Fern/MrBallen (Fern channel_id was stale in SKILL.md, corrected to UCODHrzPMGbNv67e84WDZhQQ). Biggest gap found: our long-forms run 11-13min vs niche floor of 25-90min+ -> logged T-2607-01 duration test. Applied 2 adoptions (declarative titles, single-accent thumbnails) to KNOWN_GOOD.md, 1 avoidance (don't drop active comment-reply strategy based on large-channel survivorship data) to KNOWN_BAD.md. 2 experiments_to_open were auto-skipped (3-cap already hit by 4 pending experiments). Full report: monthly_intel/2026-07.md."
     }
   ]
 }

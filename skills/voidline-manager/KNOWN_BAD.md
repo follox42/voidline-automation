@@ -111,3 +111,7 @@ Validated anti-patterns. NEVER do these.
 - ❌ Swapping the thumbnail mid-suppression — algo has already de-prioritized
 - ❌ Title/description edits — same as above
 - ❌ Delete + re-upload — the channel-level flag persists
+
+## Niche avoidances — 2026-07
+
+- **Treating comment-reply silence as evidence that active community replies don't matter** — All 3 top channels (11M, 5M, 8.9M+ subs) run a near-zero comment-reply engagement model and still thrive — but that's survivorship data from channels that were never small, not proof the tactic is neutral for a cold-start channel. Don't use this scan to justify dropping our own active-reply strategy (skills/community-manager/SKILL.md) — see blindspots below.

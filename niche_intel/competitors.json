@@ -1,0 +1,39 @@
+{
+  "scan_date": "2026-07-01",
+  "run": "first",
+  "method": "incognito camoufox-stealth (context cleared), sidebar recs on last 3 published videos of @voidlinedocs",
+  "sidebar_observations": [
+    {
+      "our_video": "What Did CROATOAN Mean? (1587) — The Lost Colony of Roanoke",
+      "yt_id": "Tlc-cKtAHuQ",
+      "views_at_scan": 1,
+      "niche_adjacent_recs": [
+        "Historic Mysteries Untold", "AI Discovery", "History & Hearsay",
+        "Dark Centuries", "The Secret", "Stone & Bone", "Origins Future",
+        "The Forgotten", "Simplex Paléo"
+      ]
+    },
+    {
+      "our_video": "The Day the Siberian Sky Exploded — Tunguska 1908",
+      "yt_id": "FacPhS3hNjU",
+      "views_at_scan": 115,
+      "niche_adjacent_recs": ["The Space Race"]
+    },
+    {
+      "our_video": "9 Hikers Vanished in the Russian Snow. The 2021 Answer.",
+      "yt_id": "pM-u_8ONjI0",
+      "views_at_scan": 2,
+      "niche_adjacent_recs": []
+    }
+  ],
+  "blindspot": "Channel too new/small (1-115 views per video) for YouTube's co-watch graph to surface established niche leaders in the sidebar. Recs skew to generic FR 'Pour vous' entertainment (SQUEEZIE, MrBeast commentary, talk shows) plus a handful of small AI-narrated/dubbed mystery channels never seen before (Historic Mysteries Untold, AI Discovery, Dark Centuries, Stone & Bone, Origins Future, History & Hearsay, The Secret). None of these are large/stable enough to serve as this month's deep-scan target vs the established default seed.",
+  "decision": "Kept default seed per SKILL.md fallback rule (first run, no reliable co-watch signal yet).",
+  "top_3": [
+    {"name": "LEMMiNO", "channel_id": "UCRcgy6GzDeccI7dkbbBna3Q", "url": "https://www.youtube.com/channel/UCRcgy6GzDeccI7dkbbBna3Q"},
+    {"name": "Fern", "channel_id": "UC8wXC0ZCfGt3HaVLy_fdTQw", "url": "https://www.youtube.com/channel/UC8wXC0ZCfGt3HaVLy_fdTQw"},
+    {"name": "MrBallen", "channel_id": "UCtPrkXdtCM5DACLufB9jbsA", "url": "https://www.youtube.com/channel/UCtPrkXdtCM5DACLufB9jbsA"}
+  ],
+  "watchlist_for_next_scan": [
+    "Historic Mysteries Untold", "Dark Centuries", "Stone & Bone", "Origins Future"
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "channel": "MrBallen",
+  "channel_id": "UCtPrkXdtCM5DACLufB9jbsA",
+  "scan_date": "2026-07-01",
+  "videos": [
+    {
+      "title": "This television exec was attacked in his sleep",
+      "video_id": "PBskV8azPBo",
+      "url": "https://www.youtube.com/watch?v=PBskV8azPBo",
+      "thumb_url": "https://i.ytimg.com/vi/PBskV8azPBo/hqdefault.jpg",
+      "duration": "34:36",
+      "publish_date": "2026-06-30",
+      "views": 527000,
+      "likes": 26000,
+      "comments_count": 1463
+    },
+    {
+      "title": "Brazil tried to cover up this UFO encounter",
+      "video_id": "DPepYOiRDq0",
+      "url": "https://www.youtube.com/watch?v=DPepYOiRDq0",
+      "thumb_url": "https://i.ytimg.com/vi/DPepYOiRDq0/hqdefault.jpg",
+      "duration": "25:29",
+      "publish_date": "2026-06-28",
+      "views": 590000,
+      "likes": 29000,
+      "comments_count": 1714
+    },
+    {
+      "title": "You'll never order takeout again... | Campfire Stories with MrBallen",
+      "video_id": "0LeQzDJJeJA",
+      "url": "https://www.youtube.com/watch?v=0LeQzDJJeJA",
+      "thumb_url": "https://i.ytimg.com/vi/0LeQzDJJeJA/hqdefault.jpg",
+      "duration": "27:05",
+      "publish_date": "2026-06-27",
+      "views": 567000,
+      "likes": 33000,
+      "comments_count": 1906
+    },
+    {
+      "title": "This is what happens when you steal someone's life...",
+      "video_id": "UIjZBoeKDPQ",
+      "url": "https://www.youtube.com/watch?v=UIjZBoeKDPQ",
+      "thumb_url": "https://i.ytimg.com/vi/UIjZBoeKDPQ/hqdefault.jpg",
+      "duration": "30:18",
+      "publish_date": "2026-06-25",
+      "views": 774000,
+      "likes": 38000,
+      "comments_count": 2191
+    },
+    {
+      "title": "One beer was missing at the scene of this double murder",
+      "video_id": "6fsu4PAwXGI",
+      "url": "https://www.youtube.com/watch?v=6fsu4PAwXGI",
+      "thumb_url": "https://i.ytimg.com/vi/6fsu4PAwXGI/hqdefault.jpg",
+      "duration": "34:47",
+      "publish_date": "2026-06-23",
+      "views": 1000000,
+      "likes": null,
+      "comments_count": null
+    },
+    {
+      "title": "This is why you never search for the dead...",
+      "video_id": "2FkdaH2oC58",
+      "url": "https://www.youtube.com/watch?v=2FkdaH2oC58",
+      "thumb_url": "https://i.ytimg.com/vi/2FkdaH2oC58/hqdefault.jpg",
+      "duration": "30:01",
+      "publish_date": "2026-06-21",
+      "views": 1100000,
+      "likes": null,
+      "comments_count": null
+    },
+    {
+      "title": "She had a DEADLY sixth sense",
+      "video_id": "a3G1DnYY6T4",
+      "url": "https://www.youtube.com/watch?v=a3G1DnYY6T4",
+      "thumb_url": "https://i.ytimg.com/vi/a3G1DnYY6T4/hqdefault.jpg",
+      "duration": "26:10",
+      "publish_date": "2026-06-18",
+      "views": 997000,
+      "likes": null,
+      "comments_count": null
+    },
+    {
+      "title": "Her dating history created dozens of suspects",
+      "video_id": "SJlECJIhNlA",
+      "url": "https://www.youtube.com/watch?v=SJlECJIhNlA",
+      "thumb_url": "https://i.ytimg.com/vi/SJlECJIhNlA/hqdefault.jpg",
+      "duration": "38:37",
+      "publish_date": "2026-06-17",
+      "views": 1100000,
+      "likes": null,
+      "comments_count": null
+    }
+  ],
+  "cadence_days_median": 2,
+  "cadence_days_stddev": 0.64,
+  "duration_trend": {
+    "avg_all": "30:52",
+    "avg_oldest_4": "32:23",
+    "avg_newest_4": "29:22",
+    "note": "Very tight duration band (25-39 min) across all 8, unlike the wide-swing documentary channels in this niche-intel set (LEMMiNO, Fern). No real trend direction -- oldest-4 and newest-4 averages differ by only ~3 minutes, well within normal episode-to-episode variance. This reflects a factory-cadence, standardized-runtime format rather than a 'flagship documentary' model: MrBallen uploads studio narration episodes plus a distinct shorter-form 'Campfire Stories with MrBallen' sub-series (27:05, and per Community posts, a regular Friday/weekend slot) that keeps the average anchored near 30 min."
+  },
+  "palette_trend": "Consistent high-saturation, high-contrast thumbnail identity: dark/black backgrounds with a single dramatic color-graded photo or illustrated scene (fire orange, sickly green, blood red, UFO-beam teal) plus bold white/yellow sans-serif caption text overlaid directly on the image. Faces/human figures are frequently featured (unlike LEMMiNO's faceless vector style), often in shadow or partial silhouette for a true-crime/thriller mood. 'Campfire Stories' sub-series thumbnails use a warm firelight orange as a recognizable sub-brand cue. Very on-trend with mainstream true-crime/mystery YouTube thumbnail conventions (drop-shadow text, arrow/circle annotations not needed because the photo itself does the work) -- optimized hard for CTR rather than for a distinct minimalist identity.",
+  "title_patterns": {
+    "pct_questions": 0,
+    "pct_with_date": 0,
+    "avg_length_words": 8.5
+  }
+}

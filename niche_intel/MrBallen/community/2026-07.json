@@ -1,0 +1,45 @@
+{
+  "channel": "MrBallen",
+  "scan_date": "2026-07-01",
+  "posts_last_30d": [
+    {
+      "date": "2026-06-27",
+      "format": "text",
+      "text_excerpt": "When was the last time you ordered food for delivery? Hopefully not while you're watching this... A brand-new episode of \"Campfire Stories with MrBallen\" is available now! Today's story is a scary tale from Hong Kong...",
+      "likes": 2400,
+      "poll_votes": null
+    },
+    {
+      "date": "2026-06-20",
+      "format": "text",
+      "text_excerpt": "ICYMI this week... Monday -- \"Her dating history created dozens of suspects\" / Wednesday -- \"She had a DEADLY sixth sense\" / Tomorrow (Saturday): 3 haunting stories of people who witnessed death... Release: 2pm ET. - John",
+      "likes": 2100,
+      "poll_votes": null
+    },
+    {
+      "date": "2026-06-17",
+      "format": "text",
+      "text_excerpt": "Have you ever heard of a story so sinister that simply listening to it is enough to make you its next target? My NEW episode of \"Campfire Stories with MrBallen\" is out now! Today's story is one of the creepiest tales from Japan...",
+      "likes": 3100,
+      "poll_votes": null
+    },
+    {
+      "date": "2026-06-10",
+      "format": "text",
+      "text_excerpt": "ICYMI this week... Monday -- \"She disappeared in a Massachusetts gift shop\" / Wednesday -- \"Mysterious notes led to a horror show\" / OUT NOW (Friday) -- \"Top 5 Bingeable SCARY STORIES\". Tomorrow (Saturday): 3 stories of ordinary people... - John",
+      "likes": 2000,
+      "poll_votes": null
+    }
+  ],
+  "format_mix": {
+    "poll": 0,
+    "image": 0,
+    "text": 4,
+    "video": 0
+  },
+  "engagement_by_format": {
+    "text": {"avg_likes": 2400, "avg_comments_reported": 88, "note": "avg of the 4 in-window posts: likes 2.4k/2.1k/3.1k/2k; comment counts 93/48/144/38"}
+  },
+  "cadence_days": 7,
+  "note": "No dedicated /community tab exists for this channel ('Cette Communaute n'est pas disponible' at the /community URL) -- confirmed the /posts fallback works as noted in the task brief. Posting is strictly text-only, no polls/images/native video posts observed in this or the prior ~2 months of visible history. Exactly two recurring templates alternate on a roughly weekly rhythm: (1) a same-day 'new episode is live' announcement co-timed with each Campfire Stories release, and (2) a Friday/Saturday 'ICYMI this week' recap + next-day teaser with 3 story loglines and an exact release time (2pm ET / 7pm UK / 6am Sun AEDT). All posts are signed '-John' in first person, giving a consistent parasocial narrator voice distinct from the on-camera MrBallen persona. Cadence is tightly weekly (7-day median gap), which is much more regular than the 2-day video upload cadence -- community posts are a once-a-week digest/hype layer, not a per-video echo."
+}

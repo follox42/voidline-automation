@@ -21,7 +21,7 @@ Run `cron_runner.py monthly-recal` — catalogue audit, sub-count growth, niche 
 
 Default top-3 candidates (override if niche drifts):
 - LEMMiNO (UCRcgy6GzDeccI7dkbbBna3Q)
-- Fern (UC8wXC0ZCfGt3HaVLy_fdTQw)
+- Fern (UCODHrzPMGbNv67e84WDZhQQ) — corrected 2026-07: prior ID resolved to Digital Trends, not Fern
 - MrBallen (UCtPrkXdtCM5DACLufB9jbsA)
 
 ### Phase 3 — Per-channel deep scan

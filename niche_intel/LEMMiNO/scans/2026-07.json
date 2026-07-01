@@ -1,0 +1,109 @@
+{
+  "channel": "LEMMiNO",
+  "channel_id": "UCRcgy6GzDeccI7dkbbBna3Q",
+  "scan_date": "2026-07-01",
+  "videos": [
+    {
+      "title": "Shouting at Stars: A History of Interstellar Messages",
+      "video_id": "uFI5WpK2sgg",
+      "url": "https://www.youtube.com/watch?v=uFI5WpK2sgg",
+      "thumb_url": "https://i.ytimg.com/vi/uFI5WpK2sgg/hqdefault.jpg",
+      "duration": "2:27:36",
+      "publish_date": "2025-10-31",
+      "views": 4298881,
+      "likes": 167121,
+      "comments_count": 15342
+    },
+    {
+      "title": "The Unbreakable Kryptos Code",
+      "video_id": "jVpsLMCIB0Y",
+      "url": "https://www.youtube.com/watch?v=jVpsLMCIB0Y",
+      "thumb_url": "https://i.ytimg.com/vi/jVpsLMCIB0Y/hqdefault.jpg",
+      "duration": "47:01",
+      "publish_date": "2024-05-04",
+      "views": 8905918,
+      "likes": 294735,
+      "comments_count": 14206
+    },
+    {
+      "title": "5,000,000 - Q&A",
+      "video_id": "nx4V9Uh_FW0",
+      "url": "https://www.youtube.com/watch?v=nx4V9Uh_FW0",
+      "thumb_url": "https://i.ytimg.com/vi/nx4V9Uh_FW0/hqdefault.jpg",
+      "duration": "16:46",
+      "publish_date": "2023-10-01",
+      "views": 1365072,
+      "likes": 88250,
+      "comments_count": 4176
+    },
+    {
+      "title": "The Kennedy Assassination: Inside the Book Depository",
+      "video_id": "5u7euN1HTuU",
+      "url": "https://www.youtube.com/watch?v=5u7euN1HTuU",
+      "thumb_url": "https://i.ytimg.com/vi/5u7euN1HTuU/hqdefault.jpg",
+      "duration": "1:38:11",
+      "publish_date": "2023-07-24",
+      "views": 14904789,
+      "likes": 398348,
+      "comments_count": 42581
+    },
+    {
+      "title": "Bygone Visions of Cosmic Neighbors",
+      "video_id": "LhfCietvDZo",
+      "url": "https://www.youtube.com/watch?v=LhfCietvDZo",
+      "thumb_url": "https://i.ytimg.com/vi/LhfCietvDZo/hqdefault.jpg",
+      "duration": "34:11",
+      "publish_date": "2022-03-30",
+      "views": 8341962,
+      "likes": 243121,
+      "comments_count": 12714
+    },
+    {
+      "title": "Seas #TeamSeas",
+      "video_id": "zy4ay9xfKpQ",
+      "url": "https://www.youtube.com/watch?v=zy4ay9xfKpQ",
+      "thumb_url": "https://i.ytimg.com/vi/zy4ay9xfKpQ/hqdefault.jpg",
+      "duration": "2:34",
+      "publish_date": "2021-10-29",
+      "views": 1129537,
+      "likes": 92489,
+      "comments_count": 2574
+    },
+    {
+      "title": "The Enduring Mystery of Jack the Ripper",
+      "video_id": "lADBHDg-JtA",
+      "url": "https://www.youtube.com/watch?v=lADBHDg-JtA",
+      "thumb_url": "https://i.ytimg.com/vi/lADBHDg-JtA/hqdefault.jpg",
+      "duration": "1:09:09",
+      "publish_date": "2021-09-09",
+      "views": 15431419,
+      "likes": 501092,
+      "comments_count": 29993
+    },
+    {
+      "title": "4,000,000 - Q&A",
+      "video_id": "CEg30z7cO-s",
+      "url": "https://www.youtube.com/watch?v=CEg30z7cO-s",
+      "thumb_url": "https://i.ytimg.com/vi/CEg30z7cO-s/hqdefault.jpg",
+      "duration": "10:37",
+      "publish_date": "2021-01-31",
+      "views": 1529630,
+      "likes": 114239,
+      "comments_count": 6383
+    }
+  ],
+  "cadence_days_median": 216,
+  "cadence_days_stddev": 179.2,
+  "duration_trend": {
+    "avg_all": "53:15",
+    "avg_oldest_4": "29:07",
+    "avg_newest_4": "1:17:23",
+    "note": "Strong upward trend: the 4 most recent uploads (2022-2025) run roughly 2.7x longer on average than the 4 oldest in this sample (2021-2023). Driven mainly by the two feature-length outliers (Kennedy Assassination 1:38:11, Shouting at Stars 2:27:36). Two of the 8 are short-form Q&A milestone videos (10-17 min) and one is a <3min charity video (Seas #TeamSeas), so the trend is 'fewer but much longer flagship documentaries' rather than a uniform creep upward. Cadence is also very irregular (gaps range 50 to 545 days) -- consistent with a quality-over-quantity, no-fixed-schedule posting style."
+  },
+  "palette_trend": "Consistently dark/desaturated base (near-black, deep navy/purple night sky, muted brown/tan) with exactly one saturated accent hue driving the whole thumbnail -- e.g. teal-green light beam against purple starscape (Shouting at Stars), blood-red glowing typography on black (Kryptos), red-silhouetted figure against a dark blue window (Kennedy Assassination). Flat, minimal vector-illustration style, no photographic faces, no clutter of text/arrows. Very stable identity across years -- no discernible drift toward higher-contrast/primary-color YouTube-thumbnail norms that most channels chase.",
+  "title_patterns": {
+    "pct_questions": 0,
+    "pct_with_date": 0,
+    "avg_length_words": 4.9
+  }
+}

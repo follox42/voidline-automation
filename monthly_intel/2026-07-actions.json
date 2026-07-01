@@ -1,0 +1,68 @@
+{
+  "month": "2026-07",
+  "generated_at": "2026-07-01T10:03:17.761334+00:00",
+  "channels_scanned": [
+    {"channel": "LEMMiNO", "channel_id": "UCRcgy6GzDeccI7dkbbBna3Q", "last_scan_date": "2026-07-01"},
+    {"channel": "Fern", "channel_id": "UCODHrzPMGbNv67e84WDZhQQ", "last_scan_date": "2026-07-01", "note": "SKILL.md default-seed channel_id was stale (resolved to Digital Trends) — corrected this run"},
+    {"channel": "MrBallen", "channel_id": "UCtPrkXdtCM5DACLufB9jbsA", "last_scan_date": "2026-07-01"}
+  ],
+  "tests": [
+    {
+      "id": "T-2607-01",
+      "what": "16-18min long-form duration test (up from current 11-13min)",
+      "why": "All 3 top-3 competitors run 25-90min+ (Fern ~30min stable, MrBallen ~31min stable, LEMMiNO trending to 60-90min+ flagships). Our long-forms (11:46, 13:12, 11:54, 11:09) are 2-3x shorter than the niche floor. Not proposing we jump straight to 30min+ with a sub-1k catalogue, but the gap is wide enough to warrant a controlled step up.",
+      "month": "juillet"
+    },
+    {
+      "id": "T-2607-02",
+      "what": "Reinforce non-question, non-date-dump title format across next batch",
+      "why": "0% of 24 sampled titles across all 3 competitors are questions or contain a date/year — pure declarative statements ('How to Escape Auschwitz', 'She had a DEADLY sixth sense', 'The Enduring Mystery of Jack the Ripper'). This directly informs the pending EXP-TITLE-001 (numbers_iconic_contradiction vs iconic_question_year) — competitor evidence leans toward the non-question variant, but the experiment should still run to completion on our own data before we lock it in.",
+      "month": "juillet"
+    }
+  ],
+  "adoptions": [
+    {
+      "what": "Punchy declarative titles (no question marks, no date/year dumps), avg 5-8 words",
+      "why": "Confirmed on 3/3 top channels this scan (LEMMiNO avg 4.9 words, Fern avg 5.5, MrBallen avg 8.5 — all 0% questions, 0% dates). Reinforces our own KNOWN_BAD 'date dumps' rule with fresh cross-channel evidence."
+    },
+    {
+      "what": "Consistent dark/desaturated thumbnail base with exactly one dominant saturated accent, no clutter",
+      "why": "Confirmed on 3/3 channels (LEMMiNO single-hue vector, Fern dark+bold text+red/orange accent, MrBallen dark+single color-graded photo+caption) — matches our own locked 'ONE dominant element' KNOWN_BAD rule, reinforcing it rather than changing anything."
+    }
+  ],
+  "avoidances": [
+    {
+      "what": "Treating comment-reply silence as evidence that active community replies don't matter",
+      "why": "All 3 top channels (11M, 5M, 8.9M+ subs) run a near-zero comment-reply engagement model and still thrive — but that's survivorship data from channels that were never small, not proof the tactic is neutral for a cold-start channel. Don't use this scan to justify dropping our own active-reply strategy (skills/community-manager/SKILL.md) — see blindspots below."
+    }
+  ],
+  "content_gaps": [
+    {
+      "hook": "Cover the Zodiac Killer investigation from the press/police angle (not the murders themselves)",
+      "frequency": "explicit ask on LEMMiNO's Kennedy Assassination video, 3.5k-like comment",
+      "priority": "high"
+    },
+    {
+      "hook": "A 'viewer context follow-up' short/community post surfacing amateur theories + cultural context viewers volunteer unprompted in comments",
+      "frequency": "seen on 4/4 sampled MrBallen videos — a pattern MrBallen itself never acts on",
+      "priority": "medium"
+    }
+  ],
+  "experiments_to_open": [
+    {
+      "hypothesis": "16-18min long-form beats current ~12min baseline on average-view-duration and session-time contribution, without hurting completion rate",
+      "baseline": "current long-forms average ~11:56 runtime"
+    },
+    {
+      "hypothesis": "Removing the red arrow-pointer annotation from thumbnails (letting the AI base photo + headline text alone carry it) performs at parity or better on CTR",
+      "baseline": "current locked thumb recipe includes a red #D9343F arrow polygon pointing at the iconic detail"
+    }
+  ],
+  "blindspots": [
+    "Experiment cap already oversubscribed: 4 experiments are currently 'pending' (EXP-HOOK-001, EXP-TITLE-001, EXP-VOICE-001, PASSIVE-TIME-001) against a hard cap of 3 — both experiments_to_open above will be auto-skipped by cross_reference.py apply until an existing one closes (needs 14+ day age + min impressions). Next session should prioritize running experiment_tracker.py check to see if any can close.",
+    "No causal read on whether active comment-reply engagement drives sub growth for a cold-start channel — all 3 scanned competitors are large, established channels with a no-reply model; that's not comparable evidence for a sub-1k channel building initial trust.",
+    "No data on poll usage/effectiveness in this niche — all 3 channels' Community post UI renders the poll wrapper but none actually ran a multiple-choice poll this cycle.",
+    "Co-watch/sidebar signal (Phase 2) is still unreliable at our current view counts (1-115 views/video) — logged separately in niche_intel/competitors.json with a watchlist of small dubbed-mystery channels to revisit once our catalogue has more traction.",
+    "Fern's likes/comments counts for videos 6-8 (of 8) were not collected (estimated publish dates only) to stay within the per-channel navigation budget — minor gap in the duration/cadence dataset, not expected to change conclusions."
+  ]
+}

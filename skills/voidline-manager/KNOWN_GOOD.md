@@ -107,3 +107,8 @@ runs/<run_id>/
 - ✅ Shorts: HOOK Monday + ANSWER Wednesday (max 2 per release)
 - ✅ Pre-ship gate: youtube-virality-expert score ≥ 75 mandatory
 - ✅ Catalogue depth target: 10+ long-forms before expecting algo whitelist
+
+## Niche adoptions — 2026-07
+
+- **Punchy declarative titles (no question marks, no date/year dumps), avg 5-8 words** — Confirmed on 3/3 top channels this scan (LEMMiNO avg 4.9 words, Fern avg 5.5, MrBallen avg 8.5 — all 0% questions, 0% dates). Reinforces our own KNOWN_BAD 'date dumps' rule with fresh cross-channel evidence.
+- **Consistent dark/desaturated thumbnail base with exactly one dominant saturated accent, no clutter** — Confirmed on 3/3 channels (LEMMiNO single-hue vector, Fern dark+bold text+red/orange accent, MrBallen dark+single color-graded photo+caption) — matches our own locked 'ONE dominant element' KNOWN_BAD rule, reinforcing it rather than changing anything.
