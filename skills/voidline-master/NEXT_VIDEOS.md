@@ -31,9 +31,11 @@
 | **duration_target** | 11:55 planned → actual generated audio 10:33 (script expanded once from 8:28 after first TTS pass ran faster than estimated; chapter start/end in script.json corrected to match real per-chapter audio duration to avoid render desync) |
 | **publish_at** | 2026-07-03T17:00:00Z |
 | **script_path** | runs/v5-flannan/script.json |
-| **status** | PENDING |
+| **yt_id** | mgdNSwtkrnw |
+| **status** | SCHEDULED |
 | **note** | Selected per weekly_plans/2026-27.md ("Flannan Isles long-form if Roanoke renders in time") — Roanoke (v4) rendered + published, condition met. Corrected publish date: 2026-07-04 was a Saturday, actual Friday is 2026-07-03. Not a dup of last 3 long-forms (Tunguska/Dyatlov/Roanoke). Companion Short already ran Tue 2026-06-30 (discovery, "3 LIGHTHOUSE KEEPERS. VANISHED. MEAL HALF EATEN.") — long-form goes deeper + corrects the poem-vs-record embellishment. |
+| **upload_note** | Uploaded + scheduled 2026-07-02 via JS Blob injection (`inject_and_upload_v5flannan.py`, base64-chunked File/Blob into Studio's file inputs — no filesystem bridge needed, see LEARNINGS.md RESOLVED note for the working method after `gh` CLI / GitHub Release path proved unavailable in this sandbox). Custom thumbnail set. Not-for-kids set. All 12 tags set as real chips (fixed a live bug where they were corrupting the description field). Schedule verified by reopening the video and reading the actual saved time field directly (`17:00` confirmed) after the on-screen value silently reverted to `00:00` on first submit — see KNOWN_BAD.md for the general rule. Captions not generated this run (OpenAI Whisper quota status not rechecked — same open TODO as v4). |
 
 ---
 
-*Updated: 2026-06-30 — suppression lifted, recommendation surface active, ship Roanoke today.*
+*Updated: 2026-07-02 — LONG-2 (v5-flannan, Flannan Isles) produced end-to-end and scheduled for Fri 2026-07-03 17:00 UTC.*

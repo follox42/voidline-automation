@@ -1,0 +1,25 @@
+{
+  "src": "runs/v5-flannan/assets/thumbnails/source_storm.jpg",
+  "out": "runs/v5-flannan/assets/thumbnails/v5-flannan_long.jpg",
+  "brightness": 0.95,
+  "saturation": 0.6,
+  "contrast": 1.15,
+  "text_x": 40,
+  "text_y": 24,
+  "headline": "3 KEEPERS.\nVANISHED.",
+  "headline_size": 95,
+  "headline_color": "#E0B854",
+  "headline_stroke": 9,
+  "date": "1900",
+  "date_size": 72,
+  "date_stroke": 5,
+  "arrow": {
+    "tip": [980, 330],
+    "length": 230,
+    "angle": -150,
+    "shaft_w": 50,
+    "head_w": 110,
+    "head_len": 95,
+    "stroke_w": 6
+  }
+}

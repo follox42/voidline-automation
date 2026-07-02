@@ -86,9 +86,19 @@ Validated anti-patterns. NEVER do these.
     published 5 days early.
   → Always read back the publish date from Studio after setting.
 
-- ❌ **Setting time in non-UTC without conversion**
-  → Studio uses user's local timezone (Paris UTC+2). What you set as
-    "12:00" is 10:00 UTC.
+- ❌ **Assuming Studio's schedule timezone without checking**
+  → Directly verified 2026-07-02 (v5-flannan): the account's Studio timezone is
+    `(GMT+0000) Heure locale` — no offset needed, "17:00" set = 17:00 UTC. The
+    previously-assumed "Paris UTC+2" was never confirmed and is now contradicted by
+    direct observation — always check the "Fuseau horaire" selector's current value
+    before assuming an offset, don't hardcode one.
+- ❌ **Trusting the schedule time field's on-screen value without reading back the
+  actual saved schedule**
+  → v5-flannan: setting the time input to "17:00" displayed correctly and survived
+    navigating through the wizard, but the post-schedule confirmation dialog still
+    showed "00:00" — the value silently reverted before submit. Always reopen the
+    video after scheduling and read `input.value` directly to confirm, same as the
+    existing day-not-found rule below.
 
 ## Communication
 
