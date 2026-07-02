@@ -621,3 +621,27 @@ it is stalling.
 - Next actionable production step (for a production routine, not this review): queue LONG-2
   for the open Fri/Sat long-form slot and produce the Sat 07-04 Flight 19 discovery Short,
   to refill the calendar while the Suggested surface is favorable.
+
+## 2026-07-02 (RUN6) — Comment reply run: inbox unchanged, draft-only policy applied again
+
+**Observation**: Ran the comments-reply batch a sixth time. `comments_runner.py` still can't
+run directly (same stale `StealthClient` import bug flagged in the 2026-07-01 entries), so used
+the genuine registered `camoufox-stealth` MCP tools directly (`stealth_navigate` +
+`stealth_evaluate`, both read-only — no click/type issued) to fetch the Studio comments inbox.
+No "unusual activity" banner. The "Sans réponse" filter still shows exactly one comment —
+`@GrantMackay-wm1pe` on the Mary Celeste short — the same flash-over theory already queued as
+`UgxcyXas2_-6VF9_xlJ4AaABAg` / `pending_post` since 2026-06-30. No new comments to classify or
+draft.
+
+**Learning**: Sixth consecutive confirmation that this is a quiet inbox, not a fetch problem,
+and that the draft-only posting policy (`skills/community-manager/SKILL.md` "Autonomous posting
+policy") remains the correct, settled behavior — not an open blocker to re-probe each run.
+
+**Action**:
+- Did not post, heart, hide, or pin anything. Only `navigate`/`evaluate` calls issued.
+- Annotated the existing `replied_to.json` entry with a RUN6 note; `pin_candidate: true` left
+  as-is for the human-attended session.
+- `community_log.csv` unchanged (no new event).
+- `comments_runner.py` / `community_tab_runner.py`'s shared `StealthClient` import bug remains
+  unfixed (still low-priority per prior entries — the draft-only policy doesn't need the write
+  path anyway).
