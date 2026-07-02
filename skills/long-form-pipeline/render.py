@@ -19,14 +19,9 @@ CONCAT_AUDIO = os.path.join(RENDER_DIR, "audio_concat.mp3")
 W, H = 1920, 1080
 CHAPTER_CARD_DURATION = 2.5
 
-CHAPTER_TITLES = [
-    "A Colony Gone",
-    "The 1587 Expedition",
-    "Three Missing Years",
-    "CROATOAN: The Only Clue",
-    "400 Years of Theories",
-    "What Archaeology Found",
-]
+# Chapter titles come from timeline.json (written by build_timeline.py for this run),
+# not a hardcoded per-topic list — keeps render.py reusable across productions.
+CHAPTER_TITLES = []
 
 
 def build_concat_audio(chapters, out_path):
@@ -67,14 +62,20 @@ def render_slide(asset_path, duration_s, out_path, chapter_id=None, slide_idx_in
     title_overlay = ""
     if slide_idx_in_chapter == 0 and chapter_id is not None and chapter_id < len(CHAPTER_TITLES):
         ch_num = f"Chapter {chapter_id + 1}"
-        title_txt = CHAPTER_TITLES[chapter_id].replace("'", "\\'").replace(":", "\\:")
-        ch_num_txt = ch_num.replace("'", "\\'")
+        # Strip apostrophes rather than escape them: ffmpeg's filtergraph
+        # tokenizer scans for quote characters across the whole -vf value
+        # without tracking which quote type (' vs ") is currently open, so a
+        # literal "'" inside a "..." text value (e.g. "Robert Muirhead's
+        # Investigation") still desyncs the quote-nesting of the later
+        # enable='between(...)' clauses and breaks the filtergraph.
+        title_txt = CHAPTER_TITLES[chapter_id].replace("'", "").replace('"', "").replace(":", "\\:")
+        ch_num_txt = ch_num.replace("'", "").replace('"', "")
         t_start = 0.3
         t_end = min(CHAPTER_CARD_DURATION, duration_s - 0.1)
         title_overlay = (
             f",drawbox=x=0:y=850:w={W}:h=130:color=black@0.65:t=fill:enable='between(t,{t_start:.2f},{t_end:.2f})'"
-            f",drawtext=text='{ch_num_txt}':fontcolor=0xE0B854:fontsize=36:x=60:y=860:enable='between(t,{t_start:.2f},{t_end:.2f})'"
-            f",drawtext=text='{title_txt}':fontcolor=white:fontsize=52:x=60:y=905:enable='between(t,{t_start:.2f},{t_end:.2f})'"
+            f',drawtext=text="{ch_num_txt}":fontcolor=0xE0B854:fontsize=36:x=60:y=860:enable=\'between(t,{t_start:.2f},{t_end:.2f})\''
+            f',drawtext=text="{title_txt}":fontcolor=white:fontsize=52:x=60:y=905:enable=\'between(t,{t_start:.2f},{t_end:.2f})\''
         )
 
     if asset_path:
@@ -197,6 +198,8 @@ def main():
         timeline = json.load(f)
 
     chapters = timeline["chapters"]
+    global CHAPTER_TITLES
+    CHAPTER_TITLES = [ch.get("title", f"Chapter {ch['chapter_id']}") for ch in sorted(chapters, key=lambda c: c["chapter_id"])]
     print("=== Step 5: Render (concat-demuxer) ===")
 
     print("\n--- Step 5a: Audio ---")
