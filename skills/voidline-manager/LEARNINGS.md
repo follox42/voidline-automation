@@ -583,3 +583,41 @@ generated.
   priority pipeline fix; every future HOOK/ANSWER/discovery Short remains at risk of the
   same date-slot collision until schedule-time verification (post-save `Programmée` badge
   check) is added to the Studio scheduling scripts.
+
+## 2026-07-02 — Daily-plan review: today's slot clean, but rest-of-week pipeline is drifting
+
+**Observation**: Daily-plan (08:08 UTC). Step 3: v4_answer (wHwh8TTRNKw), the only
+Short stamped publish_at=today, is already PUBLIC in state and reconfirmed live via
+oEmbed (HTTP 200) — state matches ground truth, no reconcile. Step 4: not a long-form
+day (Thu; flagship already shipped early 07-01). Reddit seed skipped per standing
+CLAUDE.md opt-out. Step 5 (next 3 days) surfaced accumulating drift:
+- Fri 07-03 planned v4 ANSWER slot is spent — v4_answer went out early 07-01, so the
+  intended staggered HOOK->ANSWER release is already blown; nothing new ships Fri.
+- Sun 07-05 state slot is v4_hook, also already public since 07-01 — phantom slot.
+- LONG-2 this week (Fri per weekly plan / 07-04 per NEXT_VIDEOS) is still TBD/PENDING.
+  No second long-form queued while the recommendation surface is OPEN (suppression
+  lifted 06-30) — this is the wasted-favorable-window risk from KNOWN_GOOD's "ride the
+  Suggested surface with long-form retention" lever.
+- Sat 07-04 Flight 19 + Sun 07-05 discovery shorts not produced; Ourang Medan (Thu)
+  deferred and still unconsumed.
+
+**Learning**: The single 2026-06-30 21:06 UTC scheduling session (which silent-published
+3 assets immediately instead of on their Programmer dates) didn't just misfire once — it
+hollowed out the back half of W27's calendar. Two of the remaining planned Short slots
+(Fri ANSWER, Sun HOOK) are now already-live content, and no LONG-2 or discovery shorts
+are staged behind them. The channel finally has algo traction and the pipeline feeding
+it is stalling.
+
+**Action**:
+- Logged SHORT_VERIFY + DRIFT_FLAG in agent-log.json. No production/API calls (daily-plan
+  is review-only).
+- OPEN OWNER DECISION (unchanged from 07-01, still needs Nolann): flagship long-form
+  Tlc-cKtAHuQ is the degraded build (Brian fallback voice + no captions) live at ~midnight
+  UTC — leave live vs delete+reupload the corrected David-voice + captioned build (the
+  latter forfeits algo trust per KNOWN_BAD).
+- Highest-priority pipeline fix remains the Studio post-save Programmée/Visibilité
+  verification (BLOCKER_2026-07-01 item 3) — until it lands, every scheduled asset is at
+  risk of the same immediate-publish + slot-collision failure.
+- Next actionable production step (for a production routine, not this review): queue LONG-2
+  for the open Fri/Sat long-form slot and produce the Sat 07-04 Flight 19 discovery Short,
+  to refill the calendar while the Suggested surface is favorable.
