@@ -645,3 +645,25 @@ policy") remains the correct, settled behavior — not an open blocker to re-pro
 - `comments_runner.py` / `community_tab_runner.py`'s shared `StealthClient` import bug remains
   unfixed (still low-priority per prior entries — the draft-only policy doesn't need the write
   path anyway).
+
+## 2026-07-02 (RUN7) — Comment reply run: inbox unchanged again, draft-only policy holds
+
+**Observation**: Ran the comments-reply batch a seventh time (same day as RUN6). Used the
+registered `camoufox-stealth` MCP tools directly (`stealth_navigate` + `stealth_evaluate`,
+read-only — no click/type issued) against the Studio comments inbox, since
+`comments_runner.py`'s `mcp_stealth.StealthClient` import still bypasses the tool registry
+(unfixed, low-priority per prior entries). The "Sans réponse" filter shows exactly one
+comment — pagination footer confirms count `1` — same author (`@GrantMackay-wm1pe`), same
+video (Mary Celeste short), same alcohol-vapour-flash-over theory text already queued as
+`UgxcyXas2_-6VF9_xlJ4AaABAg` / `pending_post` since 2026-06-30. No "unusual activity" banner.
+
+**Learning**: Seventh consecutive confirmation that this is a quiet inbox, not a fetch
+problem. The draft-only posting policy (`skills/community-manager/SKILL.md` "Autonomous
+posting policy") remains the correct, settled behavior for unattended routine sessions —
+still not an open blocker to re-probe each run.
+
+**Action**:
+- Did not post, heart, hide, or pin anything. Only `navigate`/`evaluate` calls issued.
+- Annotated the existing `replied_to.json` entry with a RUN7 note; `pin_candidate: true`
+  left as-is for the human-attended session.
+- `community_log.csv` unchanged (no new event).
