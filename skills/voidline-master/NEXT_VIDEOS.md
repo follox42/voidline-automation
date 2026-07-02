@@ -27,8 +27,8 @@
 | **hook** | 3 Keepers Vanished in 1900. The Light Went Dark for the First Time Ever. |
 | **iconic_detail** | Overturned chair + one set of oilskins left behind + a storm-wrecked crane 110ft above the sea — no bodies, no note, no struggle, ever found |
 | **thumb_prompt** | Cinematic hyperreal photograph of a lone Scottish lighthouse (Eilean Mòr, Flannan Isles) on a jagged storm-battered cliff, December 1900, dusk with heavy fog rolling off the North Atlantic, single lit lamp room window glowing warm against a cold teal-grey sky, massive waves crashing far below on black rocks, sepia color grade with cold teal shadow tones, heavy atmospheric perspective, slight film grain, low contrast highlights, deep crushed shadows, ultra-wide 16:9 1280x720, photorealistic 4k documentary still, dramatic vignette built into the lighting, lighthouse sits center-right at mid distance, clean negative space upper-left for text overlay, no text on image, no logos, Fern documentary aesthetic, LEMMiNO color palette, shot on Leica M 35mm, Kodak Portra warmth, mysterious atmospheric tension, evocative of an unanswered distress call |
-| **voice_id** | TBD — pick_variant.py voices (KNOWN_GOOD default vs EXP-VOICE-001) |
-| **duration_target** | 11:55 |
+| **voice_id** | onwK4e9ZLuTAKqWW03F9 (Daniel Authoritative, eleven_multilingual_v2 — EXP-VOICE-001 test variant) |
+| **duration_target** | 11:55 planned → actual generated audio 10:33 (script expanded once from 8:28 after first TTS pass ran faster than estimated; chapter start/end in script.json corrected to match real per-chapter audio duration to avoid render desync) |
 | **publish_at** | 2026-07-03T17:00:00Z |
 | **script_path** | runs/v5-flannan/script.json |
 | **status** | PENDING |

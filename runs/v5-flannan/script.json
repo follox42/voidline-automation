@@ -8,8 +8,8 @@
     "The Flannan Isles Lighthouse Mystery (1900): What Really Happened?",
     "Flannan Isles 1900: We Finally Know Why the Light Went Dark."
   ],
-  "duration_sec": 715,
-  "target_runtime": "11:55",
+  "duration_sec": 632.7,
+  "target_runtime": "10:33",
   "output_mode": "long-form-chapters",
   "aspect_ratio": "16:9",
   "fps": 30,
@@ -36,16 +36,16 @@
     "veo_clips_count": 3
   },
   "_script_status": "WRITTEN",
-  "_total_voice_chars": 6637,
-  "_total_target_words": 1161,
+  "_total_voice_chars": 8361,
+  "_total_target_words": 1471,
   "_voice_v3_polish_notes": "N/A \u2014 Daniel voice uses eleven_multilingual_v2, no v3 bracket stage-direction tags used (would be read literally). Pacing/emphasis carried by punctuation and sentence length instead.",
   "chapters": [
     {
       "chapter_id": 0,
       "scene_type": "cold-open-hook",
       "start_sec": 0.0,
-      "end_sec": 45.5,
-      "target_words": 114,
+      "end_sec": 55.61,
+      "target_words": 124,
       "voiceover_status": "WRITTEN",
       "visual_mix": [
         "AI cinematic dusk shot of Eilean Mor lighthouse, lamp room dark for the first time, heavy fog (Veo 3.1 Fast, 8s)"
@@ -53,14 +53,14 @@
       "ai_shots": 1,
       "credit_cost": 40,
       "music_cue": "tense_cinematic_full_bass",
-      "voiceover": "For seven years, the light on Eilean Mor never failed. Not once.\n\nOn the twenty-sixth of December, nineteen-hundred, a relief ship finally reached the rock, and found the truth.\n\nNo flag on the mast. No men on the landing. Gate closed. Door closed.\n\nInside: an overturned chair. A stopped clock. Two sets of oilskins gone. One, left hanging.\n\nThree keepers. Vanished from a rock in the North Atlantic. No bodies. No note. No struggle.\n\nOnly a logbook remained. And the last word any of them wrote down was storm.\n\nThe Northern Lighthouse Board called this rock Eilean Mor. The fishermen of Lewis called it something else entirely.\n\nSo what actually happened on Flannan Isles?"
+      "voiceover": "For seven years, the light on Eilean Mor never failed. Not once.\n\nOn the twenty-sixth of December, nineteen-hundred, a relief ship finally reached the rock, and found the truth.\n\nNo flag on the mast. No men on the landing. Gate closed. Door closed.\n\nInside: an overturned chair. A stopped clock. Two sets of oilskins gone. One, left hanging.\n\nThree keepers. Vanished from a rock in the North Atlantic. No bodies. No note. No struggle.\n\nOnly a logbook remained. And the last word any of them wrote down was storm.\n\nThe Northern Lighthouse Board called this rock Eilean Mor. The fishermen of Lewis called it something else entirely, and for centuries, refused to sleep on it at all.\n\nSo what actually happened on Flannan Isles?"
     },
     {
       "chapter_id": 1,
       "scene_type": "context-the-station",
-      "start_sec": 45.5,
-      "end_sec": 165.0,
-      "target_words": 177,
+      "start_sec": 55.61,
+      "end_sec": 165.07,
+      "target_words": 240,
       "voiceover_status": "WRITTEN",
       "visual_mix": [
         "Wikimedia: Flannan Isles / Eilean Mor archive photos",
@@ -70,14 +70,14 @@
       "ai_shots": 0,
       "credit_cost": 0,
       "music_cue": "slow_atmospheric_strings",
-      "voiceover": "The Flannan Isles sit twenty miles west of Lewis, Scotland, seven bare rocks the old fishermen called the Seven Hunters. Sailors would not spend a night there. Some would not even step ashore without asking permission of whatever, or whoever, they believed still watched the island.\n\nIn 1899, the Northern Lighthouse Board built a station on the tallest rock anyway, engineered by David Alan Stevenson, of the same family that built most of Scotland's great lighthouses. The tower stood a hundred and ninety feet above the sea, reachable only when the swell allowed it.\n\nThree men worked it at a time, on rotation, with a fourth always resting onshore. In December 1900, the crew was James Ducat, the principal keeper, twenty years into the job and known for precision; Thomas Marshall, his assistant; and Donald MacArthur, filling in for a keeper sent home sick.\n\nSupply boats came roughly every two weeks, weather allowing. Between visits, the three men were as isolated as anyone in Britain. No radio. No telegraph. Just the light, the rock, and the log."
+      "voiceover": "The Flannan Isles sit twenty miles west of Lewis, Scotland, seven bare rocks the old fishermen called the Seven Hunters. Sailors would not spend a night there. Some would not even step ashore without asking permission of whatever, or whoever, they believed still watched the island.\n\nThe largest rock, Eilean Mor, held the ruin of a tiny chapel dedicated to a seventh-century monk named Flannan. Shepherds from Lewis grazed sheep there each summer, and by long custom, always addressed the island out loud before landing, as though it were a person owed respect, not a piece of property.\n\nIn 1899, the Northern Lighthouse Board built a station on that same rock anyway, engineered by David Alan Stevenson, of the same family that had built most of Scotland's great lighthouses for four generations. The tower stood a hundred and ninety feet above the sea, reachable only when the swell allowed it, sometimes not for weeks at a stretch.\n\nThree men worked it at a time, on rotation, with a fourth always resting onshore. In December 1900, the crew was James Ducat, the principal keeper, twenty years into the job and known for precision; Thomas Marshall, his assistant; and Donald MacArthur, filling in for a keeper sent home sick.\n\nSupply boats came roughly every two weeks, weather allowing. Between visits, the three men were as isolated as anyone in Britain. No radio. No telegraph. Just the light, the rock, and the log."
     },
     {
       "chapter_id": 2,
       "scene_type": "the-discovery",
-      "start_sec": 165.0,
-      "end_sec": 325.0,
-      "target_words": 221,
+      "start_sec": 165.07,
+      "end_sec": 284.87,
+      "target_words": 288,
       "voiceover_status": "WRITTEN",
       "visual_mix": [
         "Wikimedia: steamship archive photo (period-accurate)",
@@ -87,14 +87,14 @@
       "ai_shots": 1,
       "credit_cost": 20,
       "music_cue": "investigative_tension_build",
-      "voiceover": "On the fifteenth of December, a passing steamer called the Archtor noted something wrong. The Flannan light was not lit. The captain logged it, but rough seas kept him from reporting it ashore for days.\n\nThe relief ship, the Hesperus, was already running late, held in port by the same weather. It did not reach Eilean Mor until the twenty-sixth.\n\nNo flag was raised to greet it. No answer came to the ship's horn. Captain Jim Harvey sent a keeper named Joseph Moore, who knew all three men, ashore alone. Moore called out at the gate. Nothing answered but the wind.\n\nInside, one bed was unmade. A chair in the kitchen lay on its side. The clock had stopped. And by the door, two full sets of oilskin coats and boots were gone. A third set still hung on its peg.\n\nThat detail matters more than any other. On an island with no shelter from the Atlantic, a keeper did not step outside without his oilskins. One of the three men had.\n\nOutside, the gate and the fence around the station stood untouched, no sign of any struggle at the lighthouse itself. In the logbook, the final formal entry was dated the fifteenth. After that, nothing. For the first time since the light was built, the station had gone completely silent."
+      "voiceover": "On the fifteenth of December, a passing steamer called the Archtor noted something wrong. The Flannan light was not lit. The captain logged it, but rough seas kept him from reporting it ashore for days, and by the time word reached the mainland, no one thought to move quickly.\n\nThe relief ship, the Hesperus, was already running late, held in port by the same weather that had grounded half the fishing fleet on Lewis. It did not reach Eilean Mor until the twenty-sixth.\n\nNo flag was raised to greet it. No answer came to the ship's horn, even after Captain Jim Harvey ordered it sounded twice more. He sent a keeper named Joseph Moore, who knew all three men personally, ashore alone. Moore called out at the gate. Nothing answered but the wind.\n\nInside, one bed was unmade. A chair in the kitchen lay on its side. The clock had stopped. And by the door, two full sets of oilskin coats and boots were gone. A third set still hung on its peg.\n\nThat detail matters more than any other. On an island with no shelter from the Atlantic, a keeper did not step outside without his oilskins, not for a routine task, not even for a few minutes. One of the three men had gone out without his.\n\nOutside, the gate and the fence around the station stood untouched, no sign of any struggle at the lighthouse itself, no broken glass, no forced doors. In the logbook, the final formal entry was dated the fifteenth. After that, nothing. For the first time since the light was built, the station had gone completely silent, and no one on the mainland had any way of knowing for eleven days."
     },
     {
       "chapter_id": 3,
       "scene_type": "the-investigation",
-      "start_sec": 325.0,
-      "end_sec": 470.0,
-      "target_words": 261,
+      "start_sec": 284.87,
+      "end_sec": 416.24,
+      "target_words": 318,
       "voiceover_status": "WRITTEN",
       "visual_mix": [
         "Wikimedia: West landing crane / Northern Lighthouse Board archive",
@@ -104,14 +104,14 @@
       "ai_shots": 1,
       "credit_cost": 40,
       "music_cue": "revelation_building_bass",
-      "voiceover": "The Northern Lighthouse Board sent its own superintendent, Robert Muirhead, to investigate. He had inspected this station before. He knew exactly what should, and should not, be there.\n\nWhat he found was at the west landing, the smaller of the island's two landing points, used only when the sea was calm enough to risk it. A crane used to lift supplies, normally bolted a hundred and ten feet above the water, had been ripped clean from its mountings. The ropes were torn and tangled around it. A storage box lashed even higher up the cliff was simply gone. Turf had been stripped from the ground as high as two hundred feet above the sea.\n\nIn all his years on these islands, Muirhead had never seen storm damage like it. His conclusion: a wave, or a series of waves, driven by weather violent enough to be almost unprecedented for the site, had broken clean over the west landing.\n\nHis theory: the men went out to secure equipment at that landing during or just after such a storm. One, perhaps two, were caught by a wave and pulled into the sea. The third, seeing it happen, ran for oilskins he never got time to fasten, and went after them, or waited helplessly at the edge until the water took him too.\n\nIt explained the missing oilskins. It explained the overturned chair, quit in a hurry. It explained a clock nobody came back to wind. There was no locked door, no struggle inside the lighthouse, because whatever happened, happened outside it, all at once."
+      "voiceover": "The Northern Lighthouse Board sent its own superintendent, Robert Muirhead, to investigate in person. He had inspected this exact station before, on routine visits, and knew precisely what should, and should not, be there.\n\nHe spent three days walking the island end to end. What he found was at the west landing, the smaller of the island's two landing points, used only when the sea was calm enough to risk it. A crane used to lift supplies, normally bolted a hundred and ten feet above the water, had been ripped clean from its mountings. The ropes were torn and tangled around it. A storage box lashed even higher up the cliff was simply gone, no trace of it anywhere on the rock. Turf had been stripped from the ground as high as two hundred feet above the sea, gouged out in a way he could not explain by wind alone.\n\nIn all his years inspecting these islands, Muirhead had never seen storm damage like it. His conclusion: a wave, or a series of waves, driven by weather violent enough to be almost unprecedented for the site, had broken clean over the west landing.\n\nHis theory: the men went out to secure equipment at that landing during or just after such a storm, a routine task they had likely done in bad weather many times before without incident. One, perhaps two, were caught by a wave and pulled into the sea. The third, seeing it happen, ran for oilskins he never got time to fasten, and went after them, or waited helplessly at the edge until the water took him too.\n\nIt explained the missing oilskins. It explained the overturned chair, quit in a hurry mid-task. It explained a clock nobody came back to wind. There was no locked door, no struggle inside the lighthouse, because whatever happened, happened outside it, all at once, in a matter of minutes."
     },
     {
       "chapter_id": 4,
       "scene_type": "the-theories",
-      "start_sec": 470.0,
-      "end_sec": 600.0,
-      "target_words": 201,
+      "start_sec": 416.24,
+      "end_sec": 527.02,
+      "target_words": 248,
       "voiceover_status": "WRITTEN",
       "visual_mix": [
         "Wikimedia: period newspaper archive pages (1900-1912)",
@@ -121,14 +121,14 @@
       "ai_shots": 1,
       "credit_cost": 20,
       "music_cue": "myth_vs_record_contrast",
-      "voiceover": "The official report satisfied almost no one. Within weeks, newspapers were filling the silence with their own answers: a foreign spy ship, a mutiny between the keepers, a sea serpent, even men snatched off the rock by something not of this world.\n\nBut no single source did more to shape the legend than a poem. In 1912, Wilfrid Wilson Gibson published Flannan Isle, and gave the world the details everyone now remembers: a meal left half-eaten on the table, a chair flung back as though in fright, an overwhelming dread that met the rescuers at the door.\n\nNone of that is in Robert Muirhead's report. His kitchen was tidy. The dishes were put away. There is no mention of food left out at all.\n\nA century of documentaries, articles, and campfire retellings have quoted the poem as though it were the official record. And in a strange way, the legend outgrew the lighthouse itself, drawing visitors to Eilean Mor to this day, long after most people forgot which details were ever true.\n\nThe real record is stranger in a different way: not a scene of terror, but a scene of order, interrupted mid-routine, by something that left almost no trace behind."
+      "voiceover": "The official report satisfied almost no one. Within weeks, newspapers were filling the silence with their own answers: a foreign vessel had taken the men by force, a mutiny had broken out between the keepers, a sea serpent had come ashore, even that men had been snatched off the rock by something not of this world.\n\nBut no single source did more to shape the legend than a poem. In 1912, twelve years after the disappearance, Wilfrid Wilson Gibson published Flannan Isle, and gave the world the details everyone now remembers: a meal left half-eaten on the table, a chair flung back as though in fright, an overwhelming dread that met the rescuers at the door before they had even opened it.\n\nNone of that is in Robert Muirhead's report. His kitchen was tidy. The dishes were put away. There is no mention of food left out at all, half-eaten or otherwise.\n\nA century of documentaries, articles, and campfire retellings have quoted the poem as though it were the official record, sometimes without realizing the two were ever separate. And in a strange way, the legend outgrew the lighthouse itself, drawing visitors and film crews to Eilean Mor to this day, long after most people forgot which details were ever verified and which were simply good verse.\n\nThe real record is stranger in a different way: not a scene of terror, but a scene of order, interrupted mid-routine, by something that left almost no trace behind at all."
     },
     {
       "chapter_id": 5,
       "scene_type": "the-answer-and-open-question",
-      "start_sec": 600.0,
-      "end_sec": 715.0,
-      "target_words": 187,
+      "start_sec": 527.02,
+      "end_sec": 632.71,
+      "target_words": 253,
       "voiceover_status": "WRITTEN",
       "visual_mix": [
         "Wikimedia: modern automated Flannan Isles lighthouse photo",
@@ -138,17 +138,17 @@
       "ai_shots": 1,
       "credit_cost": 40,
       "music_cue": "reflective_close_strings",
-      "voiceover": "Modern reviews of the case, by meteorologists and engineers who have studied the Outer Hebrides coastline, keep landing in the same place Muirhead did. Waves over sixty feet are recorded in this stretch of the Atlantic most winters, and modern wave buoys off Lewis have measured swells even higher. Against a hundred-and-ten-foot cliff platform, in the right storm, that is more than enough.\n\nThe lighthouse was fully automated in 1971. No keeper has lived on Flannan Isles since. The isolation that made this mystery possible in 1900 is now permanent, by design; there is no one left out there for the sea to take.\n\nOne question still has no clean answer. Every keeper on that rotation was trained never to work the west landing alone, and never in bad weather, for exactly this reason. James Ducat had worked lighthouses for twenty years. He knew the rule better than anyone on that rock.\n\nSo why did three careful, experienced men break the one rule built to keep them alive?\n\nThat is the part the log cannot tell us. What do you think made them go out there together?"
+      "voiceover": "Modern reviews of the case, by meteorologists and engineers who have studied the Outer Hebrides coastline, keep landing in the same place Muirhead did more than a century ago. Waves over sixty feet are recorded in this stretch of the Atlantic most winters, and modern wave buoys off Lewis have measured swells even higher during the worst storms. Against a hundred-and-ten-foot cliff platform, in exactly the right storm, that is more than enough to explain everything Muirhead documented.\n\nThe lighthouse was fully automated in 1971, and the last keepers left the rock for good. No one has lived on Flannan Isles since. The isolation that made this mystery possible in 1900 is now permanent, by design; there is no one left out there for the sea to take, and no one left to write the next entry in a logbook that will never again go silent by accident.\n\nOne question still has no clean answer. Every keeper on that rotation was trained never to work the west landing alone, and never in bad weather, for exactly this reason. James Ducat had worked lighthouses for twenty years. He knew the rule better than anyone on that rock, and he was, by every account, the most careful of the three.\n\nSo why did three careful, experienced men break the one rule built specifically to keep them alive?\n\nThat is the part the log cannot tell us, and the part no wave-height chart will ever answer. What do you think made them go out there together?"
     }
   ],
   "_budget_summary": {
-    "voice_credits": "~6637 chars (Daniel Authoritative, eleven_multilingual_v2, $0.18/1k chars)",
-    "est_voice_cost_usd": 1.1947,
+    "voice_credits": "~8361 chars (Daniel Authoritative, eleven_multilingual_v2, $0.18/1k chars)",
+    "est_voice_cost_usd": 1.505,
     "veo_clips": 3,
     "nano_banana_2_shots": 2,
     "wikimedia_assets": 14
   },
   "_pending_research": [],
-  "_actual_total_duration": null,
-  "_voice_gen_status": "READY_TO_GENERATE"
+  "_actual_total_duration": 632.7,
+  "_voice_gen_status": "GENERATED"
 }

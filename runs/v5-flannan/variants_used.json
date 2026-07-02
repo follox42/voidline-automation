@@ -1,0 +1,32 @@
+{
+  "titles": {
+    "chosen": "numbers_iconic_contradiction",
+    "reason": "open experiment EXP-TITLE-001 \u2192 numbers_iconic_contradiction",
+    "experiment_id": "EXP-TITLE-001",
+    "at": "2026-07-02T06:10:02Z"
+  },
+  "voices": {
+    "chosen": "daniel_authoritative",
+    "reason": "open experiment EXP-VOICE-001 \u2192 daniel_authoritative",
+    "experiment_id": "EXP-VOICE-001",
+    "at": "2026-07-02T06:10:02Z"
+  },
+  "thumb_prompts": {
+    "chosen": "cinematic_post_iconic",
+    "reason": "_default flag \u2192 cinematic_post_iconic",
+    "experiment_id": null,
+    "at": "2026-07-02T06:10:02Z"
+  },
+  "hooks": {
+    "chosen": "contradiction_punch",
+    "reason": "open experiment EXP-HOOK-001 \u2192 contradiction_punch",
+    "experiment_id": "EXP-HOOK-001",
+    "at": "2026-07-02T06:10:02Z"
+  },
+  "caption_styles": {
+    "chosen": "voidline_core",
+    "reason": "_default flag \u2192 voidline_core",
+    "experiment_id": null,
+    "at": "2026-07-02T06:10:02Z"
+  }
+}

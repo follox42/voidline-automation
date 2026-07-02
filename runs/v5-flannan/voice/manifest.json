@@ -1,0 +1,42 @@
+{
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "path": "runs/v5-flannan/voice/ch0.mp3",
+      "ok": true,
+      "chars": 725
+    },
+    {
+      "chapter_id": 1,
+      "path": "runs/v5-flannan/voice/ch1.mp3",
+      "ok": true,
+      "chars": 1423
+    },
+    {
+      "chapter_id": 2,
+      "path": "runs/v5-flannan/voice/ch2.mp3",
+      "ok": true,
+      "chars": 1575
+    },
+    {
+      "chapter_id": 3,
+      "path": "runs/v5-flannan/voice/ch3.mp3",
+      "ok": true,
+      "chars": 1774
+    },
+    {
+      "chapter_id": 4,
+      "path": "runs/v5-flannan/voice/ch4.mp3",
+      "ok": true,
+      "chars": 1429
+    },
+    {
+      "chapter_id": 5,
+      "path": "runs/v5-flannan/voice/ch5.mp3",
+      "ok": true,
+      "chars": 1435
+    }
+  ],
+  "total_chars": 8361,
+  "est_cost_usd": 0.9197
+}
