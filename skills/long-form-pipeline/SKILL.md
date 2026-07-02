@@ -62,48 +62,72 @@ For each chapter, source :
 
 Save to `runs/<topic>/assets/` with attribution in `assets/ATTRIBUTION.md`.
 
-## Step 3.5 — Reusable pack assets (music beds + SFX + overlays)
+## Step 3.5 — Reusable pack assets (music beds + SFX + stills + B-roll)
 
-The `assets_packs/` library is a persistent, learning-driven store built by the routine over time. It's NOT re-downloaded per production — reused across all runs.
+The `assets_packs/` library is a persistent, learning-driven store built by the routine over time. It's NOT re-downloaded per production, it's reused across all runs. Always `search` the pack before sourcing anything new, and `explore` only when a category is thin (< 3 assets).
 
-For each chapter, use `asset_manager.py` :
+### Decision tree (first-try → fallback → last resort)
+
+- **Music bed** → Freesound (0€)
+- **Whoosh / transition SFX** → Freesound (0€) → if nothing scores well → ElevenLabs SFX gen (last resort)
+- **Reveal sting** → Freesound (0€) → if nothing scores well → ElevenLabs SFX gen (last resort)
+- **Period / historical still (AI)** → Flow, Nano Banana 2, Pro tier (0€ credits) → if Flow is down, shows the anti-abuse banner, or a real archival photo is needed → Wikimedia Commons (fallback)
+- **Stock B-roll (contemporary footage)** → Pixabay + Pexels (one `explore video/...` call hits both), 0€
+- **Overlays (grain, dust, light leaks)** → same chain as B-roll: Pixabay + Pexels first, Wikimedia if it's a still texture
+
+**Skip entirely, do not call:** Higgsfield (payant, credentials expired), Suno API (skip for now).
+
+### Commands
 
 ```bash
-# 1) Find suitable music bed for this chapter mood
+# Music bed: Freesound first-try
 python3 skills/long-form-pipeline/asset_manager.py search music/dark "sustained cinematic tension slow"
-# → top 5 ranked by tag match + past scores + novelty boost. Pick one.
+python3 skills/long-form-pipeline/asset_manager.py explore music/dark "sustained cinematic tension slow"   # only if thin
 
-# 2) Find whoosh transition SFX  
+# Whoosh / sting SFX: Freesound first-try
 python3 skills/long-form-pipeline/asset_manager.py search sfx/whoosh "deep cinematic reveal"
-# → pick
+python3 skills/long-form-pipeline/asset_manager.py explore sfx/sting "impact bass cinematic reveal"        # only if thin
 
-# 3) Reveal sting for ch5 answer moment
-python3 skills/long-form-pipeline/asset_manager.py search sfx/sting "impact bass cinematic reveal"
-# → pick
+# Period stills: Flow (Nano Banana 2) first-try, browser session on the voidline cookie profile
+camoufox-stealth_navigate(url="https://labs.google/flow", cookie_profile="voidline")
+# prompt Nano Banana 2 for the period still, then pull the generated image
+camoufox-stealth_download(url="<flow_output_url>", path="runs/<run_id>/assets/stills/<slug>.png")
 
-# 4) If library is thin (< 3 assets in a category), auto-populate:
-python3 skills/long-form-pipeline/asset_manager.py explore sfx/sting "impact bass cinematic reveal"
-# → fetches 10 candidates from Freesound + adds to index
+# Period stills: Wikimedia fallback (Flow unavailable, or a real archival photo is needed)
+python3 skills/long-form-pipeline/fetch_wikimedia_assets.py runs/<run_id>
 
-# 5) If nothing fits, generate on-demand via ElevenLabs:
+# Stock B-roll: Pixabay + Pexels in one call
+python3 skills/long-form-pipeline/asset_manager.py explore video/broll "candlelit colonial interior slow pan"
+
+# Custom SFX: ElevenLabs, last resort only, when Freesound has nothing usable
 python3 skills/long-form-pipeline/asset_manager.py generate-sfx "deep bass cinematic impact after long silence" sting
-# → generated + indexed + reusable
 ```
 
-**AFTER RENDER**, record scores for what you used :
+### Cost per asset type
+
+| Asset type | Source | Cost |
+|---|---|---|
+| Music bed | Freesound | 0€ |
+| Whoosh / sting SFX | Freesound | 0€ |
+| Period still (AI) | Flow (Nano Banana 2, Pro tier) | 0€ credits |
+| Period still (fallback) | Wikimedia Commons | 0€ |
+| Stock B-roll | Pixabay + Pexels | 0€ |
+| Custom SFX (last resort) | ElevenLabs sound-generation | 0€ marginal, but draws on the **shared Creator quota** also used for VO (Step 2); count it against the $2 cap |
+| Higgsfield | n/a | SKIP, payant, credentials expired |
+| Suno API | n/a | SKIP for now, don't wire it |
+
+### Scoring loop (reminder)
+
+Every asset that ends up in a render gets scored afterward, no exceptions: this is the only signal the picker has, and it's what compounds the library over time.
+
 ```bash
 python3 skills/long-form-pipeline/asset_manager.py record \
   freesound_sfx_sting_impact-reveal_412896 v4-roanoke ch5-answer-reveal 4 "hit right on CROATOAN word"
 ```
 
-Scores compound over time — after 8-12 productions the library is Voidline-native (self-tuned).
+Generic Flow stills (textures, unnamed period rooms, nothing tied to a single topic) can be dropped into `assets_packs/stills/<style>/` and picked up with `asset_manager.py index` so they re-enter the pack's search/score loop like anything else. Topic-specific stills (a named figure, a one-off event) stay in `runs/<run_id>/assets/` and don't join the pack.
 
-See :
-- `assets_library/CATALOG.md` for exhaustive source list (60+ sources)
-- `assets_library/README.md` for organization schema + learning loop
-- `assets_library/api_keys.example.json` — copy to `api_keys.json` (gitignored) with real credentials
-
-Free-first stack (no keys required to start) : Wikimedia + ElevenLabs (already have) + local `assets_packs/` library. Add Freesound OAuth for 100k+ CC0 SFX, Pexels/Pixabay for free stock video, fal.ai for premium AI B-roll — each is optional and picked up when the key is present.
+After 8-12 productions the library is Voidline-native and self-tuned. See `assets_library/CATALOG.md` for the full source list and `assets_library/README.md` for the schema.
 
 ## Step 4 — Timeline (voidline-editor)
 
