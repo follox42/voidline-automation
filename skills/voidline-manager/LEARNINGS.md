@@ -667,3 +667,26 @@ still not an open blocker to re-probe each run.
 - Annotated the existing `replied_to.json` entry with a RUN7 note; `pin_candidate: true`
   left as-is for the human-attended session.
 - `community_log.csv` unchanged (no new event).
+
+## 2026-07-02 — Community-tab daily post: drafted detail-crop, draft-only policy applied
+
+**Observation**: Daily community-tab routine. `community_tab_runner.py` still fails on the
+same `StealthClient` import bug (unfixed, low-priority, tracked since 2026-07-01) — computed
+today's slot directly instead: Thursday 2026-07-02 -> `detail-crop` per the rotation, and
+`community_tab_log.csv` had no 2026-07-02 row yet, so the daily post was not already made.
+
+**Learning**: The "Autonomous posting policy (hard stop — draft-only)" in
+`skills/community-manager/SKILL.md` explicitly lists community-tab posts among the Studio
+write actions the harness classifier denies in unattended routine sessions — the same
+settled behavior already applied to comment replies/hearts/hides/pins across RUN1-RUN7. No
+reason to treat the community-tab post differently or re-probe the classifier on it.
+
+**Action**:
+- Cropped the CROATOAN carving (with the pointing hand for context) from
+  `runs/v4-roanoke/thumb/croatoan_base.jpg`, saved to
+  `community/assets/2026-07-02_detail-crop_croatoan.jpg`.
+- Wrote a 3-line docu-narrator caption pointing back to Tuesday's Roanoke long-form.
+- Appended to `community/community_tab_log.csv`: `2026-07-02,detail-crop,...,,pending_post`.
+- Did NOT navigate to Studio or attempt the click-to-publish step. Queued for a
+  human-attended session (auto-mode off) to actually post the image + caption.
+- Logged `COMMUNITY_TAB_DRAFT` in `agent-log.json`.
