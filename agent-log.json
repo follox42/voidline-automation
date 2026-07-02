@@ -124,6 +124,11 @@
       "t": "2026-07-02 18:11 UTC",
       "action": "COMMUNITY_TAB_DRAFT",
       "detail": "Ran skills/community-manager/community_tab_runner.py (fails at StealthClient import per known unfixed low-priority bug -- confirmed same as prior LEARNINGS entries; day/format instead computed directly: Thursday 2026-07-02 -> detail-crop per ROTATION). Not already posted today (log had only 2026-06-30 and 2026-07-01 rows). Drafted content: cropped the CROATOAN carving detail (with pointing hand for context) from runs/v4-roanoke/thumb/croatoan_base.jpg, saved to community/assets/2026-07-02_detail-crop_croatoan.jpg, 3-line docu-narrator caption pointing back to Tuesday's Roanoke long-form. Appended to community/community_tab_log.csv with status=pending_post (post_url empty). Did NOT attempt Studio navigate/click-publish -- per the settled draft-only posting policy in skills/community-manager/SKILL.md ('Autonomous posting policy (hard stop -- draft-only)'), community-tab posts are explicitly one of the Studio write actions the harness classifier denies in unattended routine sessions; queued for a human-attended session (auto-mode off) to actually publish."
+    },
+    {
+      "t": "2026-07-02 21:20 UTC",
+      "action": "COMMENT_REPLY_RUN8",
+      "detail": "Ran comments-reply batch (RUN8). comments_runner.py still fails on the known StealthClient import bug (unfixed, low-priority, tracked since 2026-07-01) -- used the registered camoufox-stealth MCP tools directly (navigate + evaluate, read-only, no click/type) against the Studio 'Sans reponse' inbox filter instead. Result identical to RUN4-RUN7: only the same @GrantMackay-wm1pe comment (Mary Celeste flash-over theory), already queued as UgxcyXas2_-6VF9_xlJ4AaABAg / pending_post since 2026-06-30. No new comments to classify or draft. No unusual-activity banner. Did not post, heart, hide, or pin anything -- draft-only policy (skills/community-manager/SKILL.md) applied, eighth consecutive confirmation this is a quiet inbox not a fetch problem. replied_to.json annotated with a RUN8 note; community_log.csv left unchanged (no new event)."
     }
   ]
 }
