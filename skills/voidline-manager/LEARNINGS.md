@@ -548,3 +548,38 @@ heart/hide, so no pin was attempted.
   scripts in this skill; still not fixed this run since neither script's actual browser-write
   logic is needed while the draft-only policy is in effect. Worth fixing in a maintenance pass
   before the policy is ever revisited.
+
+## 2026-07-02 — Daily Short (Thu discovery/Ourang Medan): today's 12:00 UTC slot already burned by early v4_answer publish, skipped
+
+**Observation**: weekly_plans/2026-27.md row Thu 2026-07-02 = discovery, topic SS Ourang
+Medan 1947, hook "ONE SHIP. EVERYONE ON BOARD DEAD. SMILING.", iconic detail "Crew found
+dead with expressions of terror." Before starting production, checked `shorts_state.json`
+per the "1 Short/day @ 12:00 UTC" hard limit and found `v4_answer` (yt_id `wHwh8TTRNKw`,
+title "We Found Where They Went. Roanoke Colony Solved. (1587)") already stamped with
+`publish_at: 2026-07-02T12:00:00Z` and `status: PUBLIC` — this is the same short flagged in
+`BLOCKER_2026-07-01` as having published early (2026-07-01, alongside v4_hook) due to the
+Studio "Programmer" silent-schedule bug, landing on today's calendar slot instead of its
+intended staggered date. Reconfirmed live right now via YouTube oEmbed
+(`https://www.youtube.com/oembed?url=.../shorts/wHwh8TTRNKw` → HTTP 200).
+
+**Learning**: Today's Short slot is already occupied by content that's been public on the
+channel since yesterday, before this routine ever ran. This is the exact scenario the prior
+session already reasoned through for Wed 2026-07-01 (BLOCKER_2026-07-01): producing and
+publishing a second Short today would break the "1 Short/day" hard limit and put two Shorts
+live on the same date. The daily-short SKILL.md pipeline (script-smith → ElevenLabs → assets
+→ cutter → thumb → upload) was never started — no API calls made, no quota spent, no assets
+generated.
+
+**Action**:
+- Did NOT produce the Ourang Medan discovery Short today. No ElevenLabs/Flow calls, no
+  Wikimedia fetches, no upload attempt.
+- `shorts_state.json` left unchanged — no new entry (nothing was produced).
+- Left `weekly_plans/2026-27.md` as-is; the Ourang Medan topic/hook/iconic-detail is
+  unconsumed and should be picked up for the next open discovery slot (Sun 2026-07-05 is
+  still TBD in the current plan and is the natural candidate) rather than re-attempted today.
+- Logged `DAILY_PLAN` / `SLOT_CONFLICT_SKIP` in `agent-log.json`.
+- Root cause (Studio "Programmer" click automation silently publishing immediately instead
+  of scheduling) is unchanged from BLOCKER_2026-07-01/2026-06-30-B — still the highest
+  priority pipeline fix; every future HOOK/ANSWER/discovery Short remains at risk of the
+  same date-slot collision until schedule-time verification (post-save `Programmée` badge
+  check) is added to the Studio scheduling scripts.
