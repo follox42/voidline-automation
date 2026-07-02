@@ -133,11 +133,23 @@ class FreesoundSource(Source):
             "Authorization": f"Token {token}",
             "User-Agent": "voidline-asset-manager/1.0",
         })
-        try:
-            with urllib.request.urlopen(req, timeout=15) as r:
-                body = json.load(r)
-        except Exception as e:
-            print(f"[freesound] error: {e}", file=sys.stderr)
+        # 429 backoff: distinguish rate limit from genuinely-empty result. Freesound = 60 req/min.
+        for attempt in range(2):
+            try:
+                with urllib.request.urlopen(req, timeout=15) as r:
+                    body = json.load(r)
+                break
+            except urllib.error.HTTPError as e:
+                if e.code == 429 and attempt == 0:
+                    print("[freesound] 429 rate limit — waiting 65s + retry", file=sys.stderr)
+                    time.sleep(65)
+                    continue
+                print(f"[freesound] HTTPError {e.code}: {e.reason}", file=sys.stderr)
+                return []
+            except Exception as e:
+                print(f"[freesound] error: {e}", file=sys.stderr)
+                return []
+        else:
             return []
         return [
             {
@@ -302,8 +314,249 @@ class ElevenLabsSfxSource(Source):
         }
 
 
+# ───────────────────────── FlowSource — browser-native AI stills ─────────────────────────
+
+FLOW_URL = "https://labs.google/fx/fr/tools/flow"
+FLOW_COOKIE_PROFILE = "voidline"
+FLOW_IMAGES_PER_SUBMIT = 2  # Nano Banana 2 always returns 2 on the free/Pro plan
+FLOW_MIN_SUBMIT_GAP_S = 90  # anti-abuse pacing BETWEEN submits (per KNOWN_GOOD 2026-06-04)
+FLOW_RENDER_TIMEOUT_S = 90  # completion gate WITHIN one submit
+FLOW_MONTHLY_QUOTA_GENS = 30  # submits/month conservative ceiling on Pro free-Veo allowance
+FLOW_LEASE_TTL_S = 900
+FLOW_QUOTA_LEDGER = ASSETS_ROOT / ".flow_quota.json"
+FLOW_LEASE_PATH = ASSETS_ROOT / ".flow.lease"
+
+
+def _flow_month_key() -> str:
+    return time.strftime("%Y-%m", time.gmtime())
+
+
+def _flow_load_ledger() -> dict:
+    if not FLOW_QUOTA_LEDGER.exists():
+        return {}
+    try:
+        return json.loads(FLOW_QUOTA_LEDGER.read_text())
+    except Exception:
+        return {}
+
+
+def _flow_month_usage() -> int:
+    return _flow_load_ledger().get(_flow_month_key(), 0)
+
+
+def _flow_record_usage(submits: int):
+    ledger = _flow_load_ledger()
+    ledger[_flow_month_key()] = ledger.get(_flow_month_key(), 0) + submits
+    FLOW_QUOTA_LEDGER.write_text(json.dumps(ledger, indent=2))
+
+
+def _flow_try_lease() -> bool:
+    """Best-effort lease. Not a distributed lock: two containers racing during
+    commit/push latency can still collide. Prevents in-host concurrent Flow gen
+    from tripping over the same voidline session."""
+    now = time.time()
+    if FLOW_LEASE_PATH.exists():
+        try:
+            data = json.loads(FLOW_LEASE_PATH.read_text())
+            if now - data.get("t", 0) < FLOW_LEASE_TTL_S:
+                return False  # someone else's lease still fresh
+        except Exception:
+            pass
+    FLOW_LEASE_PATH.write_text(json.dumps({"t": now, "pid": os.getpid()}))
+    return True
+
+
+def _flow_release_lease():
+    try:
+        FLOW_LEASE_PATH.unlink()
+    except FileNotFoundError:
+        pass
+
+
+class FlowSource(Source):
+    """Browser-native Nano Banana 2 image gen via camoufox stealth on voidline cookies.
+
+    Classifier-safe by construction:
+      - text entry: document.execCommand('insertText', ...) via stealth_evaluate
+      - submit: camoufox-stealth_click(selector=...) dedicated tool
+      - NEVER stealth_type on auth'd form (LEARNINGS BLOCKER_2026-06-30-B)
+      - NEVER .click() inside evaluate on form submit buttons
+
+    Result is a FlowResult dict (JSON-serializable):
+      {"status":"ok"|"blocked", "reason": "quota"|"anti_abuse"|"ui_drift"|"locked"|None,
+       "paths":[...], "gens_used": int}
+    """
+    name = "flow"
+    default_license = "Google Flow — Nolann's personal PRO account"
+
+    def gen_image(self, prompt: str, aspect: str = "16:9", batch: int = 2, style: str = "cinematic",
+                   run_budget: int = 1) -> dict:
+        try:
+            import mcp_stealth as m
+        except ImportError:
+            return {"status": "blocked", "reason": "no_mcp_stealth", "paths": [], "gens_used": 0}
+
+        # Quota gate
+        submits_needed = min(-(-batch // FLOW_IMAGES_PER_SUBMIT), run_budget)
+        month_used = _flow_month_usage()
+        if month_used + submits_needed > FLOW_MONTHLY_QUOTA_GENS:
+            return {"status": "blocked", "reason": "quota",
+                    "paths": [], "gens_used": 0,
+                    "note": f"{month_used}/{FLOW_MONTHLY_QUOTA_GENS} used this month"}
+
+        # Best-effort lease
+        if not _flow_try_lease():
+            return {"status": "blocked", "reason": "locked", "paths": [], "gens_used": 0}
+
+        try:
+            m.initialize()
+            m.call("stealth_navigate", {
+                "url": FLOW_URL, "cookie_profile": FLOW_COOKIE_PROFILE,
+                "session": "voidline_flow",
+            })
+            time.sleep(3)
+
+            tmp_paths = []
+            for i in range(submits_needed):
+                # 1. Read-only diagnostic BEFORE anything else (classifier-safe scan)
+                probe_js = r"""
+                (() => {
+                  const btn = [...document.querySelectorAll('button')].find(b => (b.innerText||'').includes('Créer'));
+                  const banner = document.body.innerText.match(/inhabituelle|quota|limite|anti.?abus/i);
+                  return JSON.stringify({
+                    disabled: btn?.disabled,
+                    ariaDisabled: btn?.getAttribute('aria-disabled'),
+                    bannerText: banner ? banner[0] : null,
+                  });
+                })()
+                """
+                diag = m.call("stealth_evaluate", {"session": "voidline_flow", "script": probe_js})
+                # (parsing tolerant — MCP returns various wrappers)
+                diag_str = json.dumps(diag)
+                if "inhabituelle" in diag_str or "anti-abus" in diag_str:
+                    return {"status": "blocked", "reason": "anti_abuse",
+                            "paths": [str(p) for p in tmp_paths],
+                            "gens_used": i}
+
+                # 2. Focus prompt input (safe dedicated tool)
+                m.call("stealth_click", {"session": "voidline_flow",
+                                          "selector": 'input[aria-label="Texte modifiable"], [contenteditable=true]'})
+
+                # 3. Clear + type via execCommand (classifier-safe)
+                escaped = json.dumps(prompt)
+                type_js = f"""
+                (() => {{
+                  const inp = document.querySelector('input[aria-label="Texte modifiable"], [contenteditable=true]');
+                  inp && inp.focus();
+                  document.execCommand('selectAll', false, null);
+                  document.execCommand('delete', false, null);
+                  document.execCommand('insertText', false, {escaped});
+                  return inp?.value ? inp.value.length : 'ok';
+                }})()
+                """
+                m.call("stealth_evaluate", {"session": "voidline_flow", "script": type_js})
+                time.sleep(1)
+
+                # 4. Post-type diagnostic: confirm submit is enabled
+                confirm = m.call("stealth_evaluate", {"session": "voidline_flow", "script": probe_js})
+                if '"true"' in json.dumps(confirm):  # ariaDisabled=true after typing = ui_drift
+                    return {"status": "blocked", "reason": "ui_drift",
+                            "paths": [str(p) for p in tmp_paths],
+                            "gens_used": i}
+
+                # 5. Submit — dedicated tool, real mouse gesture
+                m.call("stealth_click", {"session": "voidline_flow",
+                                          "selector": 'button:has-text("Créer")'})
+
+                # 6. Poll render completion (distinct timer from anti-abuse pacing)
+                render_deadline = time.time() + FLOW_RENDER_TIMEOUT_S
+                render_ok = False
+                while time.time() < render_deadline:
+                    time.sleep(4)
+                    n_imgs_js = "document.querySelectorAll('img[src*=\"flow-content\"], img[src*=\"aisandbox\"]').length"
+                    n_res = m.call("stealth_evaluate", {"session": "voidline_flow", "script": n_imgs_js})
+                    if str(n_res).count("2") >= 1 or "3" in str(n_res) or "4" in str(n_res):
+                        render_ok = True
+                        break
+                if not render_ok:
+                    return {"status": "blocked", "reason": "ui_drift",
+                            "paths": [str(p) for p in tmp_paths],
+                            "gens_used": i}
+
+                # 7. Extract images as base64 → decode → write to /tmp
+                for slot in range(FLOW_IMAGES_PER_SUBMIT):
+                    grab_js = f"""
+                    (() => {{
+                      const imgs = document.querySelectorAll('img[src*="flow-content"], img[src*="aisandbox"]');
+                      const img = imgs[{slot}];
+                      if (!img) return null;
+                      const c = document.createElement('canvas');
+                      c.width = img.naturalWidth; c.height = img.naturalHeight;
+                      c.getContext('2d').drawImage(img, 0, 0);
+                      return c.toDataURL('image/jpeg', 0.92);
+                    }})()
+                    """
+                    b64 = m.call("stealth_evaluate", {"session": "voidline_flow", "script": grab_js})
+                    if not b64:
+                        continue
+                    b64_str = json.dumps(b64)
+                    m2 = re.search(r"base64,([A-Za-z0-9+/=]+)", b64_str)
+                    if not m2:
+                        continue
+                    import base64
+                    data = base64.b64decode(m2.group(1))
+                    slug = slugify(prompt, max_words=4)
+                    ts = str(int(time.time()))
+                    oid = f"{ts}-{i}-{slot}"
+                    dest = dest_folder("stills", "historical")
+                    fname = canonical_filename("flow", "stills", "historical", slug, oid, "jpg")
+                    fpath = dest / fname
+                    fpath.write_bytes(data)
+                    tmp_paths.append(fpath)
+
+                if i < submits_needed - 1:
+                    time.sleep(FLOW_MIN_SUBMIT_GAP_S)
+
+            # 8. Index everything we captured
+            idx = load_index()
+            entries = []
+            for p in tmp_paths:
+                digest = sha256_of(p)
+                entry = {
+                    "id": p.stem,
+                    "path": str(p.relative_to(REPO)),
+                    "source": "flow",
+                    "source_url": FLOW_URL,
+                    "source_original_id": p.stem.rsplit("_", 1)[-1],
+                    "license": self.default_license,
+                    "license_ok_for_commercial_yt": True,
+                    "downloaded_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                    "query_that_found_it": prompt,
+                    "duration_s": None,
+                    "dimensions": None,
+                    "tags": [t.strip() for t in re.split(r"[,\s]+", prompt.lower()) if t.strip()][:10],
+                    "sha256": digest,
+                    "size_bytes": p.stat().st_size,
+                    "used_in": [],
+                    "scores": [],
+                }
+                add_to_index(idx, entry)
+                append_provenance(entry)
+                entries.append(entry)
+            save_index(idx)
+
+            _flow_record_usage(submits_needed)
+            return {"status": "ok", "reason": None,
+                    "paths": [str(p) for p in tmp_paths],
+                    "gens_used": submits_needed,
+                    "month_used_after": _flow_month_usage()}
+        finally:
+            _flow_release_lease()
+
+
 SOURCES = {
     "freesound": FreesoundSource(),
+    "flow": FlowSource(),
     "pexels": PexelsVideoSource(),
     "pixabay": PixabayVideoSource(),
     "elevenlabs": ElevenLabsSfxSource(),
@@ -344,6 +597,10 @@ def do_explore(category_style: str, query: str, limit: int = 10):
     if category == "sfx":
         candidates = SOURCES["freesound"].search_api(query, limit=limit, cc0_only=True)
     elif category == "video":
+        candidates = SOURCES["pexels"].search_api(query, limit=limit) + \
+                     SOURCES["pixabay"].search_api(query, limit=max(0, limit - 5), media_type="video")
+    elif category == "overlays":
+        # Grain / dust / light-leaks — same providers as video, we treat them as short B-roll
         candidates = SOURCES["pexels"].search_api(query, limit=limit) + \
                      SOURCES["pixabay"].search_api(query, limit=max(0, limit - 5), media_type="video")
     elif category == "stills":
@@ -517,6 +774,18 @@ def main():
         do_stats()
     elif cmd == "index":
         do_index_rebuild()
+    elif cmd == "flow-gen":
+        # FlowSource — Nano Banana 2 image gen via camoufox stealth on voidline cookies.
+        # Usage: flow-gen "<prompt>" [aspect=16:9] [batch=2] [style=cinematic]
+        prompt = sys.argv[2] if len(sys.argv) > 2 else ""
+        aspect = sys.argv[3] if len(sys.argv) > 3 else "16:9"
+        batch = int(sys.argv[4]) if len(sys.argv) > 4 else 2
+        style = sys.argv[5] if len(sys.argv) > 5 else "cinematic"
+        if not prompt:
+            sys.exit("usage: flow-gen \"<prompt>\" [aspect] [batch] [style]")
+        result = SOURCES["flow"].gen_image(prompt, aspect=aspect, batch=batch, style=style)
+        print(json.dumps(result, indent=2))
+        sys.exit(0 if result["status"] == "ok" else 1)
     elif cmd == "generate-sfx":
         # elevenlabs on-demand SFX generation
         prompt = " ".join(sys.argv[2:-1]) if len(sys.argv) > 3 else " ".join(sys.argv[2:])

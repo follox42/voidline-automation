@@ -92,6 +92,39 @@ def download_image(url, out_path):
         return False
 
 
+def load_chapter_queries(script_path: str, run_dir: str) -> dict:
+    """Read chapter queries from (in order of priority):
+      1. runs/<topic>/wikimedia_queries.json  (if present, curated per-run override)
+      2. script.json ch[i].wikimedia_queries  (if present in the script)
+      3. CHAPTER_QUERIES hardcoded fallback   (Roanoke; used only when 1+2 absent)
+
+    Returns {ch_id_int: [queries]}.
+    """
+    override = Path(run_dir) / "wikimedia_queries.json"
+    if override.exists():
+        raw = json.loads(override.read_text())
+        return {int(k): v for k, v in raw.items()}
+
+    if os.path.exists(script_path):
+        try:
+            script = json.loads(open(script_path).read())
+            chapters = script.get("chapters") or []
+            per_ch = {}
+            for i, ch in enumerate(chapters):
+                q = ch.get("wikimedia_queries") or ch.get("assets_queries")
+                if q:
+                    per_ch[i] = q
+            if per_ch:
+                return per_ch
+        except Exception as e:
+            print(f"[wikimedia] script.json parse failed: {e}", file=sys.stderr)
+
+    print(f"[wikimedia] no per-run queries; falling back to hardcoded CHAPTER_QUERIES (Roanoke). "
+          f"Add script.json.chapters[i].wikimedia_queries OR runs/.../wikimedia_queries.json "
+          f"for other topics.", file=sys.stderr)
+    return CHAPTER_QUERIES
+
+
 def main():
     os.makedirs(ASSETS_DIR, exist_ok=True)
     attribution = []
@@ -99,7 +132,8 @@ def main():
 
     print("=== Step 3: Wikimedia Asset Fetch ===")
 
-    for ch_id, queries in CHAPTER_QUERIES.items():
+    queries_map = load_chapter_queries(SCRIPT_PATH, RUN_DIR)
+    for ch_id, queries in queries_map.items():
         ch_dir = os.path.join(ASSETS_DIR, f"ch{ch_id}")
         os.makedirs(ch_dir, exist_ok=True)
         ch_assets = []

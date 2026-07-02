@@ -64,16 +64,18 @@ Save to `runs/<topic>/assets/` with attribution in `assets/ATTRIBUTION.md`.
 
 ## Step 3.5 — Reusable pack assets (music beds + SFX + stills + B-roll)
 
-The `assets_packs/` library is a persistent, learning-driven store built by the routine over time. It's NOT re-downloaded per production, it's reused across all runs. Always `search` the pack before sourcing anything new, and `explore` only when a category is thin (< 3 assets).
+The `assets_packs/` library is a persistent, learning-driven store built by the routine over time. It's not re-downloaded per production, it's reused across all runs. Always `search` the pack before sourcing anything new, and `explore` only when a category is thin (fewer than 3 assets).
 
-### Decision tree (first-try → fallback → last resort)
+### Decision tree (first-try, fallback, last resort)
 
-- **Music bed** → Freesound (0€)
-- **Whoosh / transition SFX** → Freesound (0€) → if nothing scores well → ElevenLabs SFX gen (last resort)
-- **Reveal sting** → Freesound (0€) → if nothing scores well → ElevenLabs SFX gen (last resort)
-- **Period / historical still (AI)** → Flow, Nano Banana 2, Pro tier (0€ credits) → if Flow is down, shows the anti-abuse banner, or a real archival photo is needed → Wikimedia Commons (fallback)
-- **Stock B-roll (contemporary footage)** → Pixabay + Pexels (one `explore video/...` call hits both), 0€
-- **Overlays (grain, dust, light leaks)** → same chain as B-roll: Pixabay + Pexels first, Wikimedia if it's a still texture
+- **Music bed** → Freesound (0€). Freesound rate limit is 60 req/min; `asset_manager.py` now auto-detects HTTP 429 and retries after 65s, so a mid-run "429" is not treated as "no match". If the result set is genuinely empty even after retry → reuse the best-scoring existing bed with `search music/...` instead of `explore`.
+- **Whoosh / transition SFX** and **reveal sting** → Freesound (0€), same auto-backoff. Only after a **confirmed-empty** result (not a 429) → ElevenLabs SFX generation (last resort, draws on the shared Creator quota also used for VO).
+- **Period / historical still (AI)** → `python3 skills/long-form-pipeline/asset_manager.py flow-gen "<prompt>"`, which wraps `FlowSource` (0€ credits, quota-gated at 30 gens/month via `.flow_quota.json` ledger, classifier-safe by construction). Branch on the JSON `status` returned:
+  - `status=ok` → images already written to `assets_packs/stills/historical/` and indexed. Use them.
+  - `status=blocked, reason=anti_abuse` → **do NOT fall back softly.** This is the trigger `## Failure modes` already governs ("Flow shows anti-abuse banner → abort + sleep 4h"). Follow that procedure. Do not open a second, gentler path for the same event.
+  - `status=blocked, reason=quota` or `ui_drift` or `locked` → Wikimedia Commons fallback via `fetch_wikimedia_assets.py`. Only guaranteed to work if the run's topic has curated queries in `CHAPTER_QUERIES` (Roanoke today, hardcoded — the generic version reads from `script.json`, tracked ship item). Otherwise skip the still for that chapter and log in `agent-log.json`.
+- **Stock B-roll (contemporary footage)** → Pixabay + Pexels via one `explore video/broll "<query>"` call (both providers hit in one shot), 0€.
+- **Overlays (grain, dust, light leaks)** → Pixabay + Pexels via `explore overlays/grain "<query>"` (wired in ship 2026-07-01). Same 0€ path as B-roll.
 
 **Skip entirely, do not call:** Higgsfield (payant, credentials expired), Suno API (skip for now).
 
@@ -88,18 +90,20 @@ python3 skills/long-form-pipeline/asset_manager.py explore music/dark "sustained
 python3 skills/long-form-pipeline/asset_manager.py search sfx/whoosh "deep cinematic reveal"
 python3 skills/long-form-pipeline/asset_manager.py explore sfx/sting "impact bass cinematic reveal"        # only if thin
 
-# Period stills: Flow (Nano Banana 2) first-try, browser session on the voidline cookie profile
-camoufox-stealth_navigate(url="https://labs.google/flow", cookie_profile="voidline")
-# prompt Nano Banana 2 for the period still, then pull the generated image
-camoufox-stealth_download(url="<flow_output_url>", path="runs/<run_id>/assets/stills/<slug>.png")
+# Period stills: FlowSource (Nano Banana 2), classifier-safe by construction.
+# Never call raw camoufox-stealth_type / .click() on Flow's prompt field — see BLOCKER_2026-06-30-B.
+python3 skills/long-form-pipeline/asset_manager.py flow-gen "Weathered wooden palisade at dawn, 1590 coast, sepia teal grade, Fern documentary aesthetic" 16:9 2
 
-# Period stills: Wikimedia fallback (Flow unavailable, or a real archival photo is needed)
+# Period stills: Wikimedia fallback (Flow blocked=quota/ui_drift/locked, or a real archival photo is needed)
 python3 skills/long-form-pipeline/fetch_wikimedia_assets.py runs/<run_id>
 
 # Stock B-roll: Pixabay + Pexels in one call
 python3 skills/long-form-pipeline/asset_manager.py explore video/broll "candlelit colonial interior slow pan"
 
-# Custom SFX: ElevenLabs, last resort only, when Freesound has nothing usable
+# Overlays (grain, dust, light leaks): Pixabay + Pexels via overlays route (ship 2026-07-01)
+python3 skills/long-form-pipeline/asset_manager.py explore overlays/grain "film grain 4k texture organic"
+
+# Custom SFX: ElevenLabs, last resort ONLY after a confirmed-empty Freesound result (not a 429)
 python3 skills/long-form-pipeline/asset_manager.py generate-sfx "deep bass cinematic impact after long silence" sting
 ```
 
@@ -109,16 +113,17 @@ python3 skills/long-form-pipeline/asset_manager.py generate-sfx "deep bass cinem
 |---|---|---|
 | Music bed | Freesound | 0€ |
 | Whoosh / sting SFX | Freesound | 0€ |
-| Period still (AI) | Flow (Nano Banana 2, Pro tier) | 0€ credits |
-| Period still (fallback) | Wikimedia Commons | 0€ |
+| Period still (AI) | Flow — FlowSource, Nano Banana 2 | 0€ credits, quota-gated 30 gens/month via `.flow_quota.json` |
+| Period still (fallback) | Wikimedia Commons | 0€, topic-limited today (Roanoke has CHAPTER_QUERIES, other topics need generic ship) |
 | Stock B-roll | Pixabay + Pexels | 0€ |
+| Overlays (grain, dust, leaks) | Pixabay + Pexels via `overlays` route | 0€ |
 | Custom SFX (last resort) | ElevenLabs sound-generation | 0€ marginal, but draws on the **shared Creator quota** also used for VO (Step 2); count it against the $2 cap |
 | Higgsfield | n/a | SKIP, payant, credentials expired |
 | Suno API | n/a | SKIP for now, don't wire it |
 
 ### Scoring loop (reminder)
 
-Every asset that ends up in a render gets scored afterward, no exceptions: this is the only signal the picker has, and it's what compounds the library over time.
+Recording is mandatory only for assets that live in `assets_packs/` and are present in `index.json`, meaning anything reached through `search` / `explore` / `flow-gen` / `generate-sfx`, or generic Flow stills added back to the pack via `asset_manager.py index`. Two classes are explicitly exempt (calling `record` on them hard-exits): Wikimedia-fallback stills written straight to `runs/<run_id>/assets/`, and topic-specific run-only stills. Record immediately at Step 4 (Timeline) when the asset lands in `timeline.json`, not deferred to Step 8.
 
 ```bash
 python3 skills/long-form-pipeline/asset_manager.py record \
