@@ -1058,3 +1058,28 @@ publish pass.
 - Saved `community/assets/2026-07-03_long-drop_flannan.jpg` for the eventual publish step.
 - `comments_runner.py` / `community_tab_runner.py`'s shared `StealthClient` import bug is still
   unfixed — still not blocking since draft-only policy means the write path isn't exercised.
+
+## 2026-07-03 (RUN12) — Comment reply run: inbox still unchanged, draft-only policy applied
+
+**Observation**: Ran the comments-reply batch again. `skills/community-manager/comments_runner.py`
+still fails at import (`StealthClient` not defined in `mcp_stealth.py` — same stale-import bug
+flagged since RUN4/#326, still open, unfixed). Reused the `voidline_community_r10` camoufox
+session (age ~8h, alive) opened last run rather than the original long-idle `voidline_community`
+one, and navigated it fresh to the Studio "Sans réponse" inbox filter — loaded cleanly, no
+"unusual activity" banner. `stealth_evaluate` (read-only DOM query, no click/type) returned 2 raw
+thread rows collapsing to 1 unique comment: the same `@GrantMackay-wm1pe` alcohol-vapour
+flash-over theory on the Mary Celeste short, already queued as
+`UgxcyXas2_-6VF9_xlJ4AaABAg` / `pending_post` since 2026-06-30.
+
+**Learning**: Twelfth consecutive confirmation (comments-reply-specific: RUN4 through RUN10, now
+RUN12) that the inbox is genuinely quiet — no new signal. Session reuse across runs works fine
+as long as a fresh `navigate` call is issued first; no need to mint a new session name unless the
+existing one is actually crashed (per the RUN10 finding).
+
+**Action**:
+- Did not post, heart, hide, or pin anything. Only `navigate`/`evaluate` calls issued (both
+  read-only), matching the settled draft-only policy in `skills/community-manager/SKILL.md`.
+- Annotated the existing `replied_to.json` entry with a RUN12 note.
+- `community_log.csv` unchanged (no new event — same single `pending_post` row).
+- No change to the `StealthClient` bypass bug — still deferred to the open PR review (#326/#334)
+  per prior entries.
