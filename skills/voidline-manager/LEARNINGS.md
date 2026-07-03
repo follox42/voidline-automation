@@ -992,3 +992,32 @@ problem — no new signal beyond what RUN4/RUN5 already established. The draft-o
 - `comments_runner.py`'s `StealthClient` import bug is still unfixed — still not blocking since
   the draft-only policy means the script's browser-write path isn't exercised anyway. Leaving
   the fix for a maintenance pass, as previously noted.
+
+## 2026-07-03 (RUN10) — Comment reply run: session crash on stale browser, inbox unchanged
+
+**Observation**: Ran the comments-reply batch a tenth time. The long-lived `voidline_community`
+camoufox session (idle ~4h, alive ~52h) failed `stealth_navigate` twice in a row with
+`Page.goto: Page crashed`. Opened a fresh session (`voidline_community_r10`,
+`cookie_profile=voidline`) which restored cookies and navigated to the Studio "Sans réponse"
+inbox cleanly. `stealth_evaluate` (read-only, no click/type) returned only the same
+`@GrantMackay-wm1pe` comment on the Mary Celeste short — same alcohol-vapour-flash-over theory
+already queued as `UgxcyXas2_-6VF9_xlJ4AaABAg` / `pending_post` since 2026-06-30. No "unusual
+activity" banner. `comments_runner.py`'s `mcp_stealth.StealthClient` path was not used (still
+bypasses the tool registry, and is now the subject of open PR #326/#334 flagged for owner
+security review) — used the registered `camoufox-stealth` MCP tools directly instead, matching
+RUN6–RUN9.
+
+**Learning**: Tenth consecutive confirmation of a quiet inbox — not a fetch problem. New this
+run: long-idle camoufox sessions (many hours old, per `camoufox-stealth_status` there are 26
+accumulated sessions across all routines) can crash on navigate; the fix is simply to open a
+new session name rather than debug the stale one. Worth a lightweight session-recycling note in
+`skills/community-manager/SKILL.md` or the runner script (e.g. always mint a fresh per-run
+session id) so future runs don't burn a retry on a session that's just old.
+
+**Action**:
+- Did not post, heart, hide, or pin anything. Only `navigate`/`evaluate` calls issued, on a
+  freshly opened session after the stale one crashed.
+- Annotated the existing `replied_to.json` entry with a RUN10 note.
+- `community_log.csv` unchanged (no new event).
+- No change to the `StealthClient` bypass bug — still deferred to the open PR review per prior
+  entries.
