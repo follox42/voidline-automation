@@ -1,0 +1,330 @@
+{
+  "run_id": "v5-flannan",
+  "total_duration_s": 632.7,
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "title": "The Light Goes Dark",
+      "start_s": 0.0,
+      "end_s": 55.61,
+      "voice_path": "/home/user/voidline-automation/runs/v5-flannan/voice/ch0.mp3",
+      "slides": [
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch0/img_00.jpg",
+          "start_s": 0.0,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch0/img_01.jpg",
+          "start_s": 15.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch0/img_00.jpg",
+          "start_s": 30.0,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch0/img_01.jpg",
+          "start_s": 45.0,
+          "duration_s": 10.61,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 1,
+      "title": "The Station on Eilean Mor",
+      "start_s": 55.61,
+      "end_s": 165.07,
+      "voice_path": "/home/user/voidline-automation/runs/v5-flannan/voice/ch1.mp3",
+      "slides": [
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch1/img_00.jpg",
+          "start_s": 55.61,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch1/img_01.jpg",
+          "start_s": 70.61,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch1/img_02.jpg",
+          "start_s": 85.61,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch1/img_00.jpg",
+          "start_s": 100.61,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch1/img_01.jpg",
+          "start_s": 115.61,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch1/img_02.jpg",
+          "start_s": 130.61,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch1/img_00.jpg",
+          "start_s": 145.61,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch1/img_01.jpg",
+          "start_s": 160.61,
+          "duration_s": 4.46,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 2,
+      "title": "The Relief Ship Finds Nothing",
+      "start_s": 165.07,
+      "end_s": 284.87,
+      "voice_path": "/home/user/voidline-automation/runs/v5-flannan/voice/ch2.mp3",
+      "slides": [
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch2/img_00.jpg",
+          "start_s": 165.07,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch2/img_01.jpg",
+          "start_s": 180.07,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch2/img_02.jpg",
+          "start_s": 195.07,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch2/img_03.jpg",
+          "start_s": 210.07,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch2/img_00.jpg",
+          "start_s": 225.07,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch2/img_01.jpg",
+          "start_s": 240.07,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch2/img_02.jpg",
+          "start_s": 255.07,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch2/img_03.jpg",
+          "start_s": 270.07,
+          "duration_s": 14.8,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 3,
+      "title": "Robert Muirhead's Investigation",
+      "start_s": 284.87,
+      "end_s": 416.24,
+      "voice_path": "/home/user/voidline-automation/runs/v5-flannan/voice/ch3.mp3",
+      "slides": [
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_00.jpg",
+          "start_s": 284.87,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_01.jpg",
+          "start_s": 299.87,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_02.jpg",
+          "start_s": 314.87,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_03.jpg",
+          "start_s": 329.87,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_00.jpg",
+          "start_s": 344.87,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_01.jpg",
+          "start_s": 359.87,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_02.jpg",
+          "start_s": 374.87,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_03.jpg",
+          "start_s": 389.87,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch3/img_00.jpg",
+          "start_s": 404.87,
+          "duration_s": 11.37,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 4,
+      "title": "The Poem That Became the Legend",
+      "start_s": 416.24,
+      "end_s": 527.02,
+      "voice_path": "/home/user/voidline-automation/runs/v5-flannan/voice/ch4.mp3",
+      "slides": [
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch4/img_00.jpg",
+          "start_s": 416.24,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch4/img_01.jpg",
+          "start_s": 431.24,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch4/img_02.jpg",
+          "start_s": 446.24,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch4/img_00.jpg",
+          "start_s": 461.24,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch4/img_01.jpg",
+          "start_s": 476.24,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch4/img_02.jpg",
+          "start_s": 491.24,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch4/img_00.jpg",
+          "start_s": 506.24,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch4/img_01.jpg",
+          "start_s": 521.24,
+          "duration_s": 5.78,
+          "transition": "dissolve"
+        }
+      ]
+    },
+    {
+      "chapter_id": 5,
+      "title": "What the Sea Left Behind",
+      "start_s": 527.02,
+      "end_s": 632.71,
+      "voice_path": "/home/user/voidline-automation/runs/v5-flannan/voice/ch5.mp3",
+      "slides": [
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch5/img_00.jpg",
+          "start_s": 527.02,
+          "duration_s": 15.0,
+          "transition": "none"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch5/img_01.jpg",
+          "start_s": 542.02,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch5/img_00.jpg",
+          "start_s": 557.02,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch5/img_01.jpg",
+          "start_s": 572.02,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch5/img_00.jpg",
+          "start_s": 587.02,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch5/img_01.jpg",
+          "start_s": 602.02,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch5/img_00.jpg",
+          "start_s": 617.02,
+          "duration_s": 15.0,
+          "transition": "dissolve"
+        },
+        {
+          "asset": "/home/user/voidline-automation/runs/v5-flannan/assets/ch5/img_01.jpg",
+          "start_s": 632.02,
+          "duration_s": 0.69,
+          "transition": "dissolve"
+        }
+      ]
+    }
+  ]
+}
