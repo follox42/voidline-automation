@@ -690,3 +690,39 @@ reason to treat the community-tab post differently or re-probe the classifier on
 - Did NOT navigate to Studio or attempt the click-to-publish step. Queued for a
   human-attended session (auto-mode off) to actually post the image + caption.
 - Logged `COMMUNITY_TAB_DRAFT` in `agent-log.json`.
+
+## 2026-07-03 — Daily Short (Fri ANSWER/v4-roanoke): slot already burned by early v4_answer publish, skipped
+
+**Observation**: `weekly_plans/2026-27.md` row Fri 2026-07-03 = `ANSWER`/`v4-roanoke`, hook
+"WE FOUND THEM.", per the daily-short SKILL.md pipeline (rule: type=HOOK/ANSWER ->
+`skills/daily-short/daily_short_runner.py`). Before running it, checked `shorts_state.json`
+per the 1-Short/day @ 12:00 UTC hard limit: `v4_answer` (yt_id `wHwh8TTRNKw`, "We Found Where
+They Went. Roanoke Colony Solved. (1587)") is already `status: PUBLIC` — the exact ANSWER
+short this row calls for, already live since it silently published early on 2026-07-01
+(`BLOCKER_2026-07-01`, Studio "Programmer" click automation failing open to immediate-publish
+instead of scheduling). The 2026-07-02 daily-plan review had already predicted this exact
+outcome ("Fri 07-03 planned v4 ANSWER slot is spent — v4_answer went out early 07-01"; see
+`2026-07-02 — Daily-plan review` entry above). Reconfirmed live right now via YouTube oEmbed
+(`https://www.youtube.com/oembed?url=.../shorts/wHwh8TTRNKw` -> HTTP 200, title matches
+exactly).
+
+**Learning**: This is the same slot-collision class as the Thu 2026-07-02 skip
+(`v4_answer` had also landed on that day's calendar stamp). No new root cause here — just
+the second of the two burned Short-slots the 07-02 review flagged (Fri ANSWER + Sun HOOK)
+now being confirmed at its actual scheduled runtime. `daily_short_runner.py` was not even
+invoked, since the pre-check (source already public) makes the run a guaranteed no-op /
+duplicate risk — no reason to spend the subprocess call.
+
+**Action**:
+- Did NOT run `skills/daily-short/daily_short_runner.py`. No ElevenLabs/Flow calls, no
+  Wikimedia fetches, no cutter/thumb/upload steps, no API spend.
+- `shorts_state.json` left unchanged — nothing new produced, `v4_answer` entry already
+  reflects ground truth.
+- Left `weekly_plans/2026-27.md` as-is; Fri 2026-07-03's ANSWER row is spent content, not
+  something to re-attempt or backfill with different material (out of scope for the
+  daily-short routine, which produces from the plan's own row, not ad hoc substitutes).
+- Logged `DAILY_SHORT_SLOT_CONFLICT_SKIP` in `agent-log.json`.
+- Sun 2026-07-05's row is `v4_hook` (also already public since 07-01, per the same 07-02
+  review) — expect the same skip when that day's daily-short routine runs; the still-open
+  root fix (Studio post-save `Programmée`/`Visibilité` verification, `BLOCKER_2026-07-01`
+  item 3) remains the highest-priority pipeline fix to stop this recurring.

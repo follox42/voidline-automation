@@ -129,6 +129,11 @@
       "t": "2026-07-02 21:20 UTC",
       "action": "COMMENT_REPLY_RUN8",
       "detail": "Ran comments-reply batch (RUN8). comments_runner.py still fails on the known StealthClient import bug (unfixed, low-priority, tracked since 2026-07-01) -- used the registered camoufox-stealth MCP tools directly (navigate + evaluate, read-only, no click/type) against the Studio 'Sans reponse' inbox filter instead. Result identical to RUN4-RUN7: only the same @GrantMackay-wm1pe comment (Mary Celeste flash-over theory), already queued as UgxcyXas2_-6VF9_xlJ4AaABAg / pending_post since 2026-06-30. No new comments to classify or draft. No unusual-activity banner. Did not post, heart, hide, or pin anything -- draft-only policy (skills/community-manager/SKILL.md) applied, eighth consecutive confirmation this is a quiet inbox not a fetch problem. replied_to.json annotated with a RUN8 note; community_log.csv left unchanged (no new event)."
+    },
+    {
+      "t": "2026-07-03 08:05 UTC",
+      "action": "DAILY_SHORT_SLOT_CONFLICT_SKIP",
+      "detail": "weekly_plans/2026-27.md row Fri 2026-07-03 = ANSWER/v4-roanoke, hook 'WE FOUND THEM.'. Before running skills/daily-short/daily_short_runner.py, checked shorts_state.json per the 1-Short/day @ 12:00 UTC hard limit: v4_answer (yt_id wHwh8TTRNKw, 'We Found Where They Went. Roanoke Colony Solved. (1587)') is already stamped status=PUBLIC, the same Short flagged in BLOCKER_2026-07-01 as having published early (2026-07-01) due to the Studio Programmer silent-schedule bug, and explicitly predicted as a burned Fri slot in the 2026-07-02 daily-plan review ('Fri 07-03 planned v4 ANSWER slot is spent'). Reconfirmed live right now via YouTube oEmbed (https://www.youtube.com/oembed?url=.../shorts/wHwh8TTRNKw -> HTTP 200, title matches). Did NOT run daily_short_runner.py -- producing a second ANSWER short for content already public since 07-01 would violate the 1-Short/day limit and duplicate live content. No ElevenLabs/Flow calls, no Wikimedia fetches, no upload attempt, no API spend. shorts_state.json left unchanged (nothing new produced). Consistent with the same call made for the Thu 2026-07-02 discovery slot (also burned by this same early-publish incident)."
     }
   ]
 }
