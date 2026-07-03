@@ -966,3 +966,29 @@ much: "Bypasses the Claude Code MCP registry."
   `StealthClient` import against that), or (b) explicitly confirm this bypass is intentional and
   wanted — in which case the standing CLAUDE.md authorization language should say so plainly
   rather than relying on an unrelated script to quietly provide the capability.
+## 2026-07-02 (RUN6) — Comment reply run: inbox still unchanged, draft-only policy applied
+
+**Observation**: Ran the comments-reply batch again. `skills/community-manager/comments_runner.py`
+still fails at import (`StealthClient` not defined in `mcp_stealth.py` — same stale-import bug
+flagged in the 2026-07-01 RUN5 entry, not yet fixed). Used the registered `camoufox-stealth`
+MCP tools directly (`stealth_navigate` + `stealth_evaluate`, both read-only) to check the Studio
+inbox instead. The "Sans réponse" (unanswered) filter shows exactly one comment — same author
+(`@GrantMackay-wm1pe`), same video (Mary Celeste short), same flash-over theory already queued
+as `UgxcyXas2_-6VF9_xlJ4AaABAg` / `pending_post` since 2026-06-30. The DOM still doesn't expose
+the underlying comment-id attribute (only a Polymer-local `id="comment"`), so it can't be
+re-derived programmatically, but author + video + content match unambiguously. No
+"unusual activity" banner.
+
+**Learning**: Sixth consecutive run confirming the inbox is genuinely quiet, not a fetch
+problem — no new signal beyond what RUN4/RUN5 already established. The draft-only policy in
+`skills/community-manager/SKILL.md` continues to apply cleanly; no reason to revisit it.
+
+**Action**:
+- Did not post, heart, hide, or pin anything. Only `navigate` and `evaluate` calls were issued
+  (both read-only).
+- Annotated the existing `replied_to.json` entry with a RUN6 note.
+- Left `community_log.csv` unchanged (no new event — same comment, same `pending_post` status,
+  `pin_candidate` flag from RUN5 still stands for the human-attended session).
+- `comments_runner.py`'s `StealthClient` import bug is still unfixed — still not blocking since
+  the draft-only policy means the script's browser-write path isn't exercised anyway. Leaving
+  the fix for a maintenance pass, as previously noted.
