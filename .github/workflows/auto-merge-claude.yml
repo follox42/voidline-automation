@@ -15,6 +15,16 @@ jobs:
     if: startsWith(github.head_ref, 'claude/')
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Register merge drivers (union + json_union)
+        run: |
+          git config --global merge.json_union.name "Union of JSON append-only arrays"
+          git config --global merge.json_union.driver "python3 .github/scripts/json_union_merge.py %O %A %B %L"
+
       - name: Mark PR ready if draft
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -22,6 +32,29 @@ jobs:
           STATE=$(gh pr view ${{ github.event.pull_request.number }} --json isDraft -q .isDraft --repo ${{ github.repository }})
           if [ "$STATE" = "true" ]; then
             gh pr ready ${{ github.event.pull_request.number }} --repo ${{ github.repository }}
+          fi
+
+      - name: Try in-workflow rebase to auto-resolve append-only conflicts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+        run: |
+          # .gitattributes tells git how to resolve conflicts on append-only files
+          # (LEARNINGS.md, agent-log.json, PROVENANCE.md) via `union` / `json_union`
+          # drivers. But GitHub's server-side merge doesn't run our custom Python
+          # driver — so we rebase HERE, in the workflow runner, where the driver
+          # is registered, and force-push the resolved branch back.
+          BRANCH="${{ github.head_ref }}"
+          git config user.name "voidline-automerge[bot]"
+          git config user.email "voidline-automerge[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout "$BRANCH" 2>/dev/null || git checkout -B "$BRANCH" "origin/$BRANCH"
+          if git rebase origin/main; then
+            echo "Rebased cleanly onto main. Pushing resolved branch."
+            git push --force-with-lease origin "$BRANCH" || echo "Push declined (no changes or lease conflict)."
+          else
+            echo "Rebase had unresolved conflicts beyond append-only files. Aborting for owner review."
+            git rebase --abort || true
           fi
 
       - name: Enable auto-merge (squash)

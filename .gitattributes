@@ -1,0 +1,7 @@
+# Append-only journals — merge conflicts auto-resolve via union (both sides kept).
+# The `union` driver is a git built-in, no setup needed on collaborators.
+# Doc: https://git-scm.com/docs/gitattributes#_defining_a_custom_merge_driver
+agent-log.json                             merge=json_union
+skills/voidline-manager/LEARNINGS.md       merge=union
+assets_packs/PROVENANCE.md                 merge=union
+community/replied_to.json                  merge=json_union
