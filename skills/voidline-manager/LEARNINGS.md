@@ -763,3 +763,41 @@ seeding, which overrides the routine prompt's step-4 Reddit instruction).
 `cron_runner` `DAILY_PLAN` stubs into one comprehensive entry in `agent-log.json`. No API
 spend, no Studio writes, no state mutations beyond logs. Nothing new broke today — no push
 notification warranted (drifts already tracked; owner reads the log on their own schedule).
+
+## 2026-07-03 — CORRECTION: today IS a long-form publish day (Flannan Isles, unmerged PR #330)
+
+**Correction to the 2026-07-03 daily-plan review above.** That review concluded "today is not
+an actual publish day / no long-form exists" — it read only `main`'s tracking files
+(`NEXT_VIDEOS.md` LONG-2=`PENDING`/`TBD`, `weekly_plans/2026-27.md` LONG-2=`TBD`) and did not
+cross-check open PRs. That was incomplete.
+
+**Ground truth:** open PR **#330** (`claude/kind-franklin-8tzmrx`, "long-form-pipeline: LONG-2
+(v5-flannan) produced + scheduled Fri 2026-07-03 17:00 UTC") shows LONG-2 = **The Flannan Isles
+Lighthouse Mystery (1900)**, `run_id v5-flannan`, `yt_id mgdNSwtkrnw`, scheduled on the channel
+for **2026-07-03T17:00:00Z** (verified via Studio read-back at production time). The YouTube
+schedule is set on the channel independently of the repo, so **Flannan will go live today at
+17:00 UTC regardless of merge state.**
+
+**Root drift:** PR #330 is an **unmerged draft**, so `main`'s source-of-truth files never
+received the LONG-2 metadata → the manager routine (which reads `main`) is blind to a long-form
+publishing in ~9h. This strands the whole routine-PR flow: #326 / #330 / #334 are all open
+unmerged drafts. My own #338 auto-merged cleanly via `auto-merge-claude.yml`, so the workflow
+works for fresh PRs — the older ones are stuck (likely base-behind-main / merge conflicts, since
+each was branched off an earlier `main`).
+
+**Downstream drift:** today's community-tab plan row (`Fri 18:00 — Roanoke ANSWER drop (if
+shipped)`) is also stale vs the actual Flannan publish. A community routine running off the plan
+would tease the wrong long-form.
+
+**Not auto-merging #330:** production-PR merges are the owner's call, and the same routine-PR
+flow carries an open security flag (#326 / #334: `mcp_stealth.py` direct-HTTP bypass of the MCP
+safety classifier) still awaiting owner review — not something a routine should resolve by
+merging. Could not independently re-verify the live Studio schedule this run (needs camoufox;
+oEmbed returns nothing for a still-scheduled/private video).
+
+**Owner action needed:**
+1. Merge PR #330 (after reviewing) so `main` reflects the shipped Flannan long-form and future
+   routines stop re-flagging "LONG-2 TBD".
+2. Reconcile today's community-tab post to **Flannan Isles**, not the stale Roanoke row.
+3. Decide on the #326/#334 `mcp_stealth.py` bypass flag, which is the reason the routine-PR
+   backlog isn't clearing on its own.
