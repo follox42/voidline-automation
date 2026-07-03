@@ -726,3 +726,40 @@ duplicate risk — no reason to spend the subprocess call.
   review) — expect the same skip when that day's daily-short routine runs; the still-open
   root fix (Studio post-save `Programmée`/`Visibilité` verification, `BLOCKER_2026-07-01`
   item 3) remains the highest-priority pipeline fix to stop this recurring.
+
+## 2026-07-03 — Daily-plan review: clean no-op day, next-3-days drift reconfirmed
+
+**Observation**: Ran the daily-plan review for Fri 2026-07-03. `cron_runner.py daily-plan`
+exits 0 (writes a `DAILY_PLAN` marker to `agent-log.json`, no stdout). **Shorts today:** zero
+scheduled for 07-03 — no `shorts_state.json` entry carries a `publish_at` of 2026-07-03. The
+W27 plan's Fri `ANSWER`/v4-roanoke row is a burned slot (`v4_answer` went PUBLIC early on
+07-01 via `BLOCKER_2026-07-01`), already skipped + logged earlier today at 08:05
+(`DAILY_SHORT_SLOT_CONFLICT_SKIP`). Reverified live via YouTube oEmbed: `v4_answer`
+(`wHwh8TTRNKw`) → HTTP 200 and `v4_hook` (`rF7LYZRgnbY`) → HTTP 200 — both match the state
+file's `PUBLIC` stamp, no reconciliation needed.
+
+**Long-form:** today is not an actual publish day. `LONG-2` (tentatively Fri 07-03 in the
+W27 plan, Fri 07-04 in `NEXT_VIDEOS.md`) is still `PENDING` / topic `TBD` with no
+run_id/script/render/yt_id — nothing exists to publish or verify-schedule. Canonical
+post-suppression cadence is 1 long-form/week Sunday 17:00 UTC. No Reddit seed drafted (no
+long-form to seed; also moot — `CLAUDE.md` records the owner's standing opt-out of Reddit
+seeding, which overrides the routine prompt's step-4 Reddit instruction).
+
+**Learning / next-3-days drift (all pre-existing, first flagged 07-02):**
+- Sat 07-04 — NEW `Flight 19` discovery Short: genuine open slot, no conflict.
+- Sun 07-05 — `v4_hook` already PUBLIC since 07-01, so the 12:00 slot is pre-burned; the W27
+  Sun row is still `TBD`. Expect a Thu/Fri-style skip unless a discovery Short is produced to
+  backfill the day and hold the 1/day rhythm.
+- Mon 07-06 — W28 begins; only `weekly_plans/2026-27.md` exists → **W28 Idea Lock / weekly
+  plan is due** (~Sun/Mon 06:00 auto-lock).
+- `LONG-2` topic still `TBD` across both plan docs with W28 approaching — long-form pipeline
+  gap for the next Production routine to close.
+- Root cause unchanged and still top priority: `BLOCKER_2026-07-01` (Studio "Programmer"
+  schedule fails open to immediate publish); the post-save `Programmée`/`Visibilité`
+  verification fix remains the highest-value pipeline fix — it is the single cause of the
+  Thu + Fri + upcoming-Sun burned Short slots.
+
+**Action**: Reverified 2 shorts via oEmbed (read-only). Consolidated the duplicate
+`cron_runner` `DAILY_PLAN` stubs into one comprehensive entry in `agent-log.json`. No API
+spend, no Studio writes, no state mutations beyond logs. Nothing new broke today — no push
+notification warranted (drifts already tracked; owner reads the log on their own schedule).
