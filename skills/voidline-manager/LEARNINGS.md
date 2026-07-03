@@ -548,3 +548,34 @@ heart/hide, so no pin was attempted.
   scripts in this skill; still not fixed this run since neither script's actual browser-write
   logic is needed while the draft-only policy is in effect. Worth fixing in a maintenance pass
   before the policy is ever revisited.
+
+## 2026-07-03 (RUN6) — Comment reply run: inbox unchanged, draft-only policy applied again
+
+**Observation**: Ran the comments-reply batch a sixth time. `comments_runner.py` still can't
+run directly (same stale `from mcp_stealth import StealthClient` import bug noted in RUN5 —
+not touched, since it's a maintenance item orthogonal to the draft-only policy). Used the
+registered `camoufox-stealth` MCP tools directly instead. `stealth_navigate` on the
+`voidline_community` session hit `Page crashed` on both the first attempt and a retry (per
+CLAUDE.md's "network error → 1 retry" rule); fell back to the already-live
+`voidline_community_r10` session (same cookie profile, already parked on the Studio inbox
+URL with the "Sans réponse" filter) and read it with `stealth_evaluate` — read-only, no
+navigate/click needed since the page was already loaded. Inbox still shows exactly one
+comment: `@GrantMackay-wm1pe`'s alcohol-vapour-flash-over comment on the Mary Celeste short,
+same one already queued as `UgxcyXas2_-6VF9_xlJ4AaABAg` / `pending_post` since 2026-06-30. No
+new comments to classify or draft. No "unusual activity" banner.
+
+**Learning**: Sixth consecutive confirmation that this inbox is quiet, not that fetching is
+broken — a crashed page on one browser session is a session-level flake, recoverable by
+reusing another live session on the same cookie profile rather than treating it as a Studio
+outage. The draft-only policy (`BLOCKER_2026-07-01`, formalized in `SKILL.md`) continues to
+apply: no click, type, heart, hide, or pin action was attempted.
+
+**Action**:
+- Did not post, heart, hide, or pin anything. Only `evaluate` (read-only) was issued against
+  the live session; the two `navigate` attempts against the crashed session both failed
+  before any write action was tried.
+- Annotated the existing `replied_to.json` entry with a RUN6 note (comment, video, and
+  pin-candidate status unchanged).
+- Left `community_log.csv` unchanged (no new event).
+- `comments_runner.py`'s `StealthClient` import bug remains unfixed — still a maintenance
+  item, not a blocker for the draft-only workflow.
