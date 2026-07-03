@@ -1021,3 +1021,40 @@ session id) so future runs don't burn a retry on a session that's just old.
 - `community_log.csv` unchanged (no new event).
 - No change to the `StealthClient` bypass bug — still deferred to the open PR review per prior
   entries.
+
+## 2026-07-03 (RUN11) — Daily community-tab post: content drafted, publish deferred (draft-only policy)
+
+**Observation**: Ran `skills/community-manager/community_tab_runner.py` for today's community-tab
+post. The script itself fails at the same stale `mcp_stealth.StealthClient` import already
+flagged in prior runs (RUN4 onward), but printed the prescription before failing: today
+(2026-07-03, Friday) is `long-drop` per the Mon–Sun rotation, and `community_tab_log.csv` did not
+already contain today's date, so the daily cap wasn't hit.
+
+Read `skills/voidline-master/NEXT_VIDEOS.md` for this week's lineup: LONG-2 (v5-flannan, "3
+Keepers Vanished in 1900. They Left One Word: STORM.") is scheduled to publish today at 17:00 UTC.
+Built long-drop content per the SKILL.md template (thumb + title + 1-sentence promise, cool
+docu-narrator voice, lowercase, no first-sentence exclamation) and copied
+`runs/v5-flannan/thumb/thumbnail.jpg` to `community/assets/2026-07-03_long-drop_flannan.jpg` as
+the post image.
+
+Per the settled draft-only policy in `SKILL.md` ("Autonomous posting policy (hard stop —
+draft-only)", confirmed BLOCKER_2026-07-01 RUN3 and reaffirmed every run since) — which
+explicitly lists "community-tab post" among the Studio write actions an unattended routine must
+not click-to-publish — did not navigate to Studio's community tab or attempt the
+"Créer une publication" flow. Appended the drafted content to `community_tab_log.csv` with
+`status=pending_post` and no `post_url`, matching the same pattern already used for the
+2026-07-01 and 2026-07-02 entries still awaiting a human-attended publish.
+
+**Learning**: The draft-only policy applies uniformly to all queued Studio write actions,
+not just comment replies — this run confirms the community-tab post path follows the same rule
+with no new blocker needed. `community_tab_log.csv` now carries three consecutive `pending_post`
+rows (07-01 theory-poll, 07-02 detail-crop, 07-03 long-drop) all awaiting the same human-attended
+publish pass.
+
+**Action**:
+- Did not open a browser session or attempt any Studio click. No navigate/evaluate calls issued
+  either — content and asset prep only.
+- Appended `2026-07-03,long-drop,...,pending_post` to `community/community_tab_log.csv`.
+- Saved `community/assets/2026-07-03_long-drop_flannan.jpg` for the eventual publish step.
+- `comments_runner.py` / `community_tab_runner.py`'s shared `StealthClient` import bug is still
+  unfixed — still not blocking since draft-only policy means the write path isn't exercised.
