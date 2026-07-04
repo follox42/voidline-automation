@@ -1,7 +1,7 @@
 {
   "_id": "modern_2026",
-  "_description": "Modern documentary target: 50% AI B-roll (Veo 3.1 or Hailuo i2v from Wikimedia stills), motion graphics via Remotion (kinetic type + lower thirds + stat callouts), Manim for maps/timelines, sound design (Freesound + ElevenLabs SFX + Purple Planet beds), light-leak transitions, film grain LUT.",
-  "_default": false,
+  "_description": "Modern documentary target implemented via render_v2.py: grain overlay 15% screen-blend, kinetic ASS text on dates/numbers/iconic words, music bed ducked -18dB under narration, whoosh SFX at chapter cuts, reveal sting at ch5 answer. Consumes assets_packs/ library (Freesound + Pexels + Pixabay + ElevenLabs). PROMOTED to default 2026-07-03 after v1_ken_burns visual plateau observed. Motion graphics via Remotion + Manim + AI B-roll (Veo/Kling) are next iter — not required here.",
+  "_default": true,
   "_category": "target-2026",
   "layers": {
     "b_roll": {

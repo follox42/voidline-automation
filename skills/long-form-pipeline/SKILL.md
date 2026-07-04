@@ -18,11 +18,12 @@ Verify all fields filled (topic, hook, iconic detail, thumb prompt). If TBD rema
 
 Run for each dimension :
 ```
-python3 skills/long-form-pipeline/pick_variant.py titles        <run_id>
-python3 skills/long-form-pipeline/pick_variant.py voices        <run_id>
-python3 skills/long-form-pipeline/pick_variant.py thumb_prompts <run_id>
-python3 skills/long-form-pipeline/pick_variant.py hooks         <run_id>
+python3 skills/long-form-pipeline/pick_variant.py titles         <run_id>
+python3 skills/long-form-pipeline/pick_variant.py voices         <run_id>
+python3 skills/long-form-pipeline/pick_variant.py thumb_prompts  <run_id>
+python3 skills/long-form-pipeline/pick_variant.py hooks          <run_id>
 python3 skills/long-form-pipeline/pick_variant.py caption_styles <run_id>
+python3 skills/long-form-pipeline/pick_variant.py editing_styles <run_id>
 ```
 The picker reads `experiments/*.json` (open) → `KNOWN_GOOD.md` → `_default` flag. It writes `runs/<run_id>/variants_used.json` automatically — read this back at each downstream step to know which template/voice_id/prompt to use.
 
@@ -139,12 +140,31 @@ After 8-12 productions the library is Voidline-native and self-tuned. See `asset
 Write `timeline.json` — each entry = (asset, start_s, duration_s, transition).
 Cut on beat. Default 4-6s per still, 8-12s per video clip.
 
-## Step 5 — Render (ffmpeg)
+## Step 5 — Render (ffmpeg) — TWO-STAGE MANDATORY
+
+### 5a. Baseline render (Ken Burns + narration)
 
 `python3 skills/long-form-pipeline/render.py <topic>` → `runs/<topic>/render/voidline.mp4`
 
 Sepia + teal grade, 16:9, 1080p, h264 + AAC.
 Add Voidline logo bug (lower-left) + chapter cards at boundaries.
+
+### 5b. Modern layer (music + SFX + grain + kinetic text) — DEFAULT since 2026-07-03
+
+`python3 skills/long-form-pipeline/render_v2.py <topic>` → `runs/<topic>/render/voidline_v2.mp4`
+
+Consumes `assets_packs/` library autonomously :
+- **Music bed** picked from `assets_packs/music/dark/`, ducked -18dB under narration (sidechain)
+- **Whoosh SFX** at each chapter cut boundary (from `assets_packs/sfx/whoosh/`)
+- **Reveal sting** at ch5 answer boundary (from `assets_packs/sfx/sting/`)
+- **Grain overlay** (screen blend, 15% opacity) from `assets_packs/overlays/grain/`
+- **Kinetic text** on dates + numbers + iconic words via ASS subtitle burned in — pop-in fade animation
+
+Each layer degrades gracefully : missing music = no bed (grain + kinetic still apply); missing sfx = no cut swoosh. NEVER regresses below the v1 baseline.
+
+Kinetic events come from `script.json` : each chapter can have `kinetic_events: [{t_offset, text, style}]` where style ∈ {date, number, iconic}. If absent, script-smith should annotate 3-6 events per long-form.
+
+**Use `voidline_v2.mp4` as the upload artifact from Step 7 onward**, not the v1 baseline.
 
 ## Step 6 — Thumb
 

@@ -1,7 +1,7 @@
 {
   "_id": "v1_ken_burns",
-  "_description": "Baseline: Wikimedia stills + Ken Burns zoompan + sepia/teal grade + chapter cards. Zero motion graphics, zero sound design, no B-roll AI. This is what v4 Roanoke shipped.",
-  "_default": true,
+  "_description": "Baseline: Wikimedia stills + Ken Burns zoompan + sepia/teal grade + chapter cards. Zero motion graphics, zero sound design, no B-roll AI. This is what v4 Roanoke shipped. DEMOTED 2026-07-03 — visual quality plateau observed (Roanoke stalled at 4 views, no organic pickup). modern_2026 is now default.",
+  "_default": false,
   "_category": "voidline-baseline",
   "layers": {
     "b_roll": {"source": "wikimedia_only", "kb_zoompan": true},
