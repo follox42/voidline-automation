@@ -1214,3 +1214,39 @@ registry" as a workaround for a blocked/unavailable path.
   that's fixed, comment-reply and Short-upload routines can only make partial progress
   (production/drafting) but never reach the publish step, regardless of the draft-only
   policy.
+
+## 2026-07-04 (daily-plan review) — Flight 19 Short will miss its 12:00 UTC slot; render lost with prior container
+
+**Observation**: The Sat 2026-07-04 daily-plan review ran with today's only scheduled Short —
+`w27_discovery_flight19` (@12:00 UTC) — still `status: PENDING_UPLOAD`, `yt_id: null`. Two
+compounding blockers, both known-class:
+1. **No browser bridge this session.** Two `ToolSearch` queries for camoufox-stealth /
+   browser-automation returned nothing — no Studio upload path. Same missing-MCP-tool gap
+   already flagged in `BLOCKER_2026-07-04` (the 06:30 producing session) and RUN13.
+2. **Render artifact is gone.** This is a fresh container checkout; the previous session's
+   local-only `shorts/w27_discovery_flight19.mp4` (19MB, never committed per repo
+   binary-render convention) was reclaimed with that container. `runs/w27-flight19/` retains
+   only the committed `script.json`, `wikimedia_queries.json`, `assets/`, `thumb/` — no mp4,
+   no `voice/`. So even with a browser tool there is nothing on disk to upload without a
+   re-render first.
+
+Held: did **not** route around the missing tool with `mcp_stealth.py`'s raw-HTTP client
+(forbidden by the draft-only anti-bypass clause, PR #326/#334), and it would be moot anyway
+with no render present.
+
+**Reconciliation (read-only, allowed)**: verified public state via YouTube oEmbed (HTTP 200,
+not a Studio action) — `v4_hook`, `v4_answer`, `w27_discovery_franklin` all live; long-forms
+Roanoke (`Tlc-cKtAHuQ`) and Flannan Isles (`mgdNSwtkrnw`, scheduled 07-03 17:00) both live.
+No state drift on published assets. Today is not a long-form publish day (W27's two
+long-forms, Roanoke Wed + Flannan Fri, both already shipped) so no Reddit seed was drafted.
+
+**Drift flagged (next 3 days)**: Sun 2026-07-05 discovery Short is still `TBD` in
+`weekly_plans/2026-27.md` — unproduced, no `shorts_state.json` entry. `v4_hook`'s nominal
+07-05 slot already went PUBLIC early (`BLOCKER_2026-07-01`).
+
+**Owner action needed**: to hit today's slot, regenerate the render deterministically from the
+committed `shorts/w27_discovery_flight19.json` + `runs/w27-flight19/wikimedia_queries.json` +
+the VO script (re-fetch Wikimedia + re-run TTS is cheap/deterministic) and upload manually via
+studio.youtube.com before 12:00 UTC — or accept a missed Sat slot. The underlying fix remains
+the one from `BLOCKER_2026-07-04`/RUN13: attach a working camoufox-stealth MCP connector to
+routine sessions so upload/publish can complete end-to-end.
