@@ -1306,3 +1306,38 @@ community-tab row since 2026-07-01.
 - Did not open camoufox-stealth, did not navigate to Studio, did not click publish.
 - Queued for a human-attended session (auto-mode off) to actually post, same as the three
   prior pending rows (07-01, 07-02, 07-03).
+
+## 2026-07-04 (RUN17) — Comment reply run: no browser-automation tool available this session either
+
+**Observation**: Ran `skills/community-manager/comments_runner.py` first, per this run's
+instructions — confirmed it still fails at the same `ImportError: cannot import name
+'StealthClient' from 'mcp_stealth'` (unfixed since RUN4, still deferred to open PR #326/#334).
+Like RUN13 and unlike RUN6–RUN12/RUN14/RUN15, this session has **no camoufox-stealth or other
+browser-automation MCP tool registered at all** — confirmed via `ToolSearch` with three separate
+queries ("camoufox stealth browser navigate", "stealth_navigate stealth_evaluate stealth_click",
+and a direct `select:` query for the likely mcphub-prefixed tool names), all returning nothing.
+The `mcphub` MCP server itself never finished connecting this session either (checked via a
+`mcphub`-keyword `ToolSearch`, also empty).
+
+**Learning**: Same missing-tool bucket as RUN13 — the comments-reply routine's browser
+dependency continues to be intermittently available across sessions, not a fixed regression.
+With no browser path reachable at all, not even the read-only `navigate`+`evaluate` inbox check
+that RUN6–RUN12/14/15 relied on was possible, so no new comments could be fetched or classified.
+Did not fall back to `mcp_stealth.py`'s raw-HTTP client (`StealthClient`, which doesn't even
+exist as a class in that module — only bare `initialize()`/`list_tools()`/`call()` functions) to
+route around the missing MCP tool: that client bypasses the MCP tool registry entirely, is the
+same class of action flagged for owner security review in open PR #326/#334, and the draft-only
+policy's anti-bypass clause explicitly forbids exactly this kind of workaround.
+
+**Action**:
+- Did not navigate, evaluate, reply, heart, hide, or pin anything — no browser session was
+  reachable at all this run, so the inbox could not even be read.
+- Appended a RUN17 note to the existing `community/replied_to.json` entry
+  (`UgxcyXas2_-6VF9_xlJ4AaABAg`) recording the missing-tool state; the entry itself
+  (`pending_post`, `pin_candidate: true`) is otherwise unchanged — still awaiting a
+  human-attended session to actually publish.
+- `community/community_log.csv` unchanged — no new comment to log.
+- No fix attempted for `comments_runner.py`'s `StealthClient` import bug this run: the
+  underlying MCP tool still isn't reachable from this session either way, so a code fix
+  couldn't be verified, and the real fix (rewriting the script to call MCP tools instead of
+  the raw-HTTP bypass module) is the same scope already deferred to owner review in #326/#334.
