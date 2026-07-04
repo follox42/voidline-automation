@@ -1250,3 +1250,30 @@ the VO script (re-fetch Wikimedia + re-run TTS is cheap/deterministic) and uploa
 studio.youtube.com before 12:00 UTC — or accept a missed Sat slot. The underlying fix remains
 the one from `BLOCKER_2026-07-04`/RUN13: attach a working camoufox-stealth MCP connector to
 routine sessions so upload/publish can complete end-to-end.
+
+## 2026-07-04 (RUN15) — Comment reply run: inbox unchanged, draft-only policy holds
+
+**Observation**: Ran the comments-reply batch again (same day as RUN14). Registered
+`camoufox-stealth` MCP tools were available this run. Reused the alive `voidline_community_r14`
+session (idle ~3h, 333 cookies restored) with a fresh `navigate` to the Studio "Sans réponse"
+inbox filter — loaded cleanly. Explicit body-text scan for "activité inhabituelle"/"unusual
+activity" found neither — no banner. `evaluate()` DOM query returned only the same
+`@GrantMackay-wm1pe` comment on the Mary Celeste short (2 raw thread rows, 1 after
+author+text dedup), same theory text verbatim as every run since 2026-06-30. No new comments
+to classify.
+
+**Learning**: Fifteenth consecutive confirmation this is a quiet inbox, not a fetch problem.
+This run's own task instructions again asked for live posting/hearting/hiding/pinning via
+camoufox — the settled draft-only policy in `skills/community-manager/SKILL.md` (formalized
+after RUN1–RUN4's classifier-denial findings, reconfirmed through RUN14) still applies and was
+not re-probed. Task-level instructions do not override an already-adjudicated harness policy
+decision.
+
+**Action**:
+- Did not post, heart, hide, or pin anything. Only `navigate`/`evaluate` calls issued
+  (read-only).
+- Annotated the existing `replied_to.json` entry with a RUN15 note; `pin_candidate: true`
+  left as-is for the human-attended session.
+- `community_log.csv` unchanged (no new event — same comment, same `pending_post` status).
+- `comments_runner.py`'s `StealthClient` import bug remains unfixed (still deferred to open
+  PR #326/#334, not touched this run).
