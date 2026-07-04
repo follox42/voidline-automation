@@ -1,0 +1,20 @@
+{
+  "topic": "Flight 19 (1945) — Bermuda Triangle",
+  "type": "discovery",
+  "hook_question": "5 PLANES VANISHED. IN CLEAR WEATHER. TOGETHER.",
+  "iconic_detail": "Flight 19: 5 TBF Avengers, no debris",
+  "vo_text": "December 5th, 1945. Fort Lauderdale, Florida. Five Navy Avenger bombers climb into a clear afternoon sky on a routine training flight. Two hours out, the flight leader radios that both his compasses have failed. Then: everything looks wrong, we can't find the base. The sea is calm. Visibility is perfect. A rescue seaplane with thirteen men aboard takes off to find them. It never radios back. Six aircraft. Twenty-seven men. Not one wreck, not one body, not one drop of oil was ever recovered. The Navy closed the file with two words: cause unknown. Flight 19 vanished together, in clear weather, and the ocean has never given any of it back.",
+  "voice": {
+    "voice_id": "ppLqTilh7rH7fbUVlXsf",
+    "voice_name": "David Documentary",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.5,
+    "similarity_boost": 0.8
+  },
+  "wikimedia_queries": "see wikimedia_queries.json",
+  "assets_used": [
+    {"file": "assets/ch0/img_00.jpg", "role": "opening establishing shot — single Avenger"},
+    {"file": "assets/ch0/img_02.jpg", "role": "mid-video + thumbnail base — 5-plane formation over coastline"},
+    {"file": "assets/ch0/img_03.jpg", "role": "outro — lone Avenger over open ocean"}
+  ]
+}

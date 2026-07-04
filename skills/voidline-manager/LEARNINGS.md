@@ -1083,3 +1083,92 @@ existing one is actually crashed (per the RUN10 finding).
 - `community_log.csv` unchanged (no new event — same single `pending_post` row).
 - No change to the `StealthClient` bypass bug — still deferred to the open PR review (#326/#334)
   per prior entries.
+
+## BLOCKER_2026-07-04 — Daily Short (Sat discovery/Flight 19): produced end-to-end, upload not reachable from this sandbox
+
+**Observation**: Today's row in `weekly_plans/2026-27.md` is Sat 2026-07-04, discovery,
+topic Flight 19 (5 TBF/TBM Avengers, Bermuda Triangle 1945), hook "5 PLANES VANISHED. IN
+CLEAR WEATHER. TOGETHER.", iconic detail "5 TBF Avengers, no debris." Checked
+`shorts_state.json` first for a slot conflict (per the established Thu/Fri precedent where
+this exact check caught an early-published Short) — no entry existed for 2026-07-04, so
+production went ahead.
+
+**What was produced** (all local, verified by inspecting rendered frames):
+- Script: 111-word VO, written fresh in the "cool docu-narrator" voice (calm, evidence-aware,
+  no sensationalism) per `skills/community-manager/SKILL.md` voice rules.
+- Voice: David Documentary (`ppLqTilh7rH7fbUVlXsf`), `eleven_multilingual_v2`. The
+  `mcp__mcphub__elevenlabs-text_to_speech` MCP tool ran successfully but saved its output to
+  `/root/Desktop` **on the MCP server's own host**, not this container — identical
+  cross-host filesystem-isolation failure to `BLOCKER_2026-06-30` /
+  `BLOCKER_2026-07-02`. Worked around it with a direct HTTPS call to the ElevenLabs REST API
+  using `ELEVENLABS_KEY` from env (no bypass of anything — this is exactly the "paid API
+  call within subscription" case CLAUDE.md pre-authorizes), writing the mp3 straight into
+  `runs/w27-flight19/voice/vo.mp3`. This is a cleaner pattern than routing TTS through the
+  MCP tool going forward, since the MCP tool's output directory is unreachable by design.
+- Assets: 3 real Wikimedia Commons TBM/TBF Avenger photographs (`fetch_wikimedia_assets.py`
+  against a per-run `wikimedia_queries.json` override) — a lone aircraft, a 5-plane formation
+  over a coastline (used for both the mid-video beat and the thumbnail), and a lone Avenger
+  over open ocean (used for the outro card). Attribution in
+  `runs/w27-flight19/assets/ATTRIBUTION.md`.
+- Render: discovery Shorts have no long-form source to crop, so built a fresh 1080x1920
+  Ken-Burns video (3 images, `zoompan` + `xfade` crossfades, 55s) and muxed the narration in
+  directly — `runs/w27-flight19/render/base.mp4`.
+- Cut: `shorts/short_cutter_v2.py` with hook/outro cards, as instructed. Two small additive
+  fixes made to the shared cutter (both backward-compatible, default to old behavior):
+  1. `source_is_portrait` config flag — skips the `crop=405:720:438:0` landscape-slice
+     assumption (which is specific to cropping long-form 1920x1080 footage) for a source
+     that's already rendered at 1080x1920.
+  2. `hook_fontsize` config override — the shared `HookCard` style is hardcoded at size 220,
+     which overflowed the frame horizontally for this hook's 4-line text (words like
+     "VANISHED"/"WEATHER"/"TOGETHER" are wider than "CROATOAN"-length hooks). Verified by
+     rendering and visually inspecting frames — first attempt clipped off-screen, confirmed
+     fixed at fontsize 150 by re-rendering and re-inspecting.
+- Thumb: `shorts/make_fern_thumb.py` had a hardcoded font path
+  (`/host/home/follox/clover-build/camoufox/bundle/fonts/windows/impact.ttf`) pointing at a
+  different host's filesystem — `OSError: cannot open resource` in this container. Fixed to
+  use `/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf` (available locally). Used
+  the formation photo as the base image, headline "5 PLANES. VANISHED." / "1945", red arrow to
+  the foreground aircraft's cockpit.
+- Verified all of the above by extracting and viewing frames at the hook, several caption
+  beats, and the outro, plus checking video/audio stream durations line up (55.0s each).
+
+**Not done — upload**: No camoufox-stealth (or equivalent browser-automation) MCP tool was
+available in this session (`ToolSearch` for stealth/browser/navigate/upload tools returned
+nothing relevant), and `shorts/upload_shorts.py` in its current form can't be used either —
+it imports `mcp_stealth` from a hardcoded path on a different host
+(`/host/home/follox/.openclaw/...`, doesn't exist here), writes its own log to another
+hardcoded cross-host path, and its `SPECS` list / CLI interface don't even match the
+`upload_shorts.py {short_id} {publish_at}` calling convention `daily_short_runner.py`
+expects — it would need a real rewrite, not a quick fix, and I didn't want to rewrite the
+one piece of this pipeline that actually touches the live channel without that being a
+deliberate, reviewed change. This is the same class of blocker as
+`BLOCKER_2026-06-30`/`BLOCKER_2026-07-02` (MCP browser tool and this container don't share a
+filesystem), just with no working bridge script to fall back on this time.
+
+**Action**:
+- `shorts_state.json` has a `w27_discovery_flight19` entry with `status: "PENDING_UPLOAD"`
+  (deliberately *not* `PUBLIC` or `scheduled` — nothing was actually published) and every
+  piece of metadata (title, description, hook, file paths, voice/asset provenance) a human or
+  a future session with a working Studio bridge needs to finish the job with zero
+  re-derivation.
+- Local-only artifacts (not committed — matches repo convention of keeping binary renders out
+  of git): `shorts/w27_discovery_flight19.mp4` (19MB, 1080x1920, 55s),
+  `runs/w27-flight19/thumb/thumbnail.jpg`, `runs/w27-flight19/voice/vo.mp3`,
+  `runs/w27-flight19/assets/ch0/*.jpg`. These live in this session's container only and will
+  be lost when it's reclaimed — if upload isn't done from a session that still has this
+  container's filesystem, the render must be regenerated from
+  `shorts/w27_discovery_flight19.json` + `runs/w27-flight19/wikimedia_queries.json` +
+  the VO script above (re-fetching Wikimedia assets and re-running TTS is cheap and
+  deterministic; nothing here depends on this container specifically).
+- Committed: `shorts_state.json`, `agent-log.json`, this entry, the two `short_cutter_v2.py`
+  additive fixes, the `make_fern_thumb.py` font-path fix, the discovery Short's config
+  (`shorts/w27_discovery_flight19.json`), and the run's manifest/attribution/thumb
+  (`runs/w27-flight19/{assets/manifest.json,assets/ATTRIBUTION.md,thumb/}`).
+- **Owner action needed**: upload `shorts/w27_discovery_flight19.mp4` manually via
+  studio.youtube.com (or from a session with a working camoufox-stealth bridge) before
+  2026-07-04T12:00:00Z to hit today's slot. Title/description are in the `shorts_state.json`
+  entry above, ready to paste in.
+- Root cause (no browser-automation MCP tool reachable from this sandbox) is unchanged from
+  prior sessions — `upload_shorts.py` still needs the rewrite flagged above before any future
+  discovery/HOOK/ANSWER Short can complete its own upload step end-to-end from a fresh
+  session without a human in the loop.

@@ -48,7 +48,7 @@ def build_ass(cfg, ass_path):
         "[V4+ Styles]",
         "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
         # HookCard: massive gold question, vertical center, FULL stack
-        f"Style: HookCard, Anton, 220, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 14, 8, 5, 60, 60, 0, 1",
+        f"Style: HookCard, Anton, {cfg.get('hook_fontsize', 220)}, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 0, 0, 1, 14, 8, 5, 60, 60, 0, 1",
         # Header: gold cap top, persists through body
         f"Style: Header, Anton, 56, {GOLD}, {WHITE}, &H00000000, &H80000000, -1, 0, 0, 0, 100, 100, 4, 0, 1, 4, 2, 8, 60, 60, 80, 1",
         # Big captions during body
@@ -116,17 +116,26 @@ def cut_short(cfg):
     # During body (hook_end..outro_start): cropped video, slight blur band when needed
     # During outro (outro_start..dur): cropped video darkened
     mask_until = float(cfg.get("mask_until_s", 0))
+    # discovery Shorts render a fresh 1080x1920 source directly (Ken Burns over
+    # images) instead of cropping a portrait slice out of landscape long-form
+    # footage — skip the crop in that case, just scale/pad to fit.
+    source_is_portrait = bool(cfg.get("source_is_portrait", False))
+
+    if source_is_portrait:
+        base_crop = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,vignette=PI/5"
+    else:
+        base_crop = "crop=405:720:438:0,scale=1080:1920:flags=lanczos,vignette=PI/5"
 
     if mask_until > 0:
         body_chain = (
-            f"[0:v]crop=405:720:438:0,scale=1080:1920:flags=lanczos,vignette=PI/5,split=2[basevid][forblur];"
+            f"[0:v]{base_crop},split=2[basevid][forblur];"
             f"[forblur]crop=1080:680:0:420,boxblur=25:3[bluredband];"
             f"[basevid][bluredband]overlay=0:420:enable='lt(t,{mask_until})'[masked];"
         )
         last_label = "[masked]"
     else:
         body_chain = (
-            "[0:v]crop=405:720:438:0,scale=1080:1920:flags=lanczos,vignette=PI/5[basevid];"
+            f"[0:v]{base_crop}[basevid];"
         )
         last_label = "[basevid]"
 

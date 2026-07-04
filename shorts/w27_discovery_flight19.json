@@ -1,0 +1,25 @@
+{
+  "source": "runs/w27-flight19/render/base.mp4",
+  "start_s": 0,
+  "duration_s": 55,
+  "out": "shorts/w27_discovery_flight19.mp4",
+  "source_is_portrait": true,
+  "header_text": "FLIGHT 19 — 1945",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "5 PLANES\\NVANISHED.\\NIN CLEAR\\NWEATHER.\\NTOGETHER.",
+  "hook_fontsize": 150,
+  "outro_question": "WHERE DID THEY\\NGO?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0, "end": 6, "text": "DEC 5, 1945\\NFORT LAUDERDALE"},
+    {"start": 6, "end": 13, "text": "5 NAVY AVENGERS\\NCLEAR SKY. ROUTINE FLIGHT."},
+    {"start": 13, "end": 20, "text": "\"BOTH MY COMPASSES\\NHAVE FAILED\""},
+    {"start": 20, "end": 27, "text": "\"WE CAN'T FIND\\NTHE BASE\""},
+    {"start": 27, "end": 34, "text": "A RESCUE PLANE\\N13 MEN ABOARD"},
+    {"start": 34, "end": 40, "text": "IT NEVER\\NRADIOED BACK"},
+    {"start": 40, "end": 47, "text": "27 MEN. NO WRECKAGE.\\NNOT ONE DROP OF OIL."},
+    {"start": 47, "end": 51.5, "text": "OFFICIAL CAUSE:\\NUNKNOWN"}
+  ]
+}

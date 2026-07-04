@@ -1,0 +1,25 @@
+{
+  "src": "runs/w27-flight19/assets/ch0/img_02.jpg",
+  "out": "runs/w27-flight19/thumb/thumbnail.jpg",
+  "brightness": 0.95,
+  "saturation": 0.55,
+  "contrast": 1.15,
+  "text_x": 40,
+  "text_y": 24,
+  "headline": "5 PLANES.\nVANISHED.",
+  "headline_size": 100,
+  "headline_color": "#E0B854",
+  "headline_stroke": 9,
+  "date": "1945",
+  "date_size": 72,
+  "date_stroke": 5,
+  "arrow": {
+    "tip": [1030, 430],
+    "length": 230,
+    "angle": -150,
+    "shaft_w": 50,
+    "head_w": 110,
+    "head_len": 95,
+    "stroke_w": 6
+  }
+}
