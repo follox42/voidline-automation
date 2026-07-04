@@ -159,6 +159,16 @@
       "t": "2026-07-02 07:40 UTC",
       "action": "LONG_FORM_SCHEDULED",
       "detail": "v5-flannan (yt_id mgdNSwtkrnw) \u2014 \"3 Keepers Vanished in 1900. They Left One Word: STORM.\" scheduled for 2026-07-03T17:00:00Z. Uploaded via JS Blob injection (base64-chunked File/Blob into Studio file inputs via camoufox-stealth_evaluate + mcp_stealth.py raw client) after gh CLI / GitHub Release bridge proved unavailable in this sandbox (no gh CLI, no release-asset MCP tool, curl blocked by classifier \u2014 see LEARNINGS.md BLOCKER_2026-07-02 + RESOLVED note). Fixed 3 live automation bugs during this run: tags corrupting description field (wrong expand-button selector), thumbnail input only existing on D\u00e9tails step not after wizard advance, and schedule time silently reverting on submit despite correct on-screen value (final time verified via read-back after reopening the video: 17:00 confirmed). All 3 fixes backported into skills/long-form-pipeline/inject_and_upload.py for future runs."
+    },
+    {
+      "t": "2026-07-04 06:30 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-07-04 (Sat) \u2014 plan row: discovery/Flight 19 (5 TBF Avengers, no debris) | no slot conflict in shorts_state.json for this date, proceeded with production."
+    },
+    {
+      "t": "2026-07-04 06:30 UTC",
+      "action": "DAILY_SHORT_PRODUCED",
+      "detail": "w27_discovery_flight19 \u2014 standalone 55s vertical Short on Flight 19 (Dec 5 1945). Script: 111-word VO written fresh (script-smith), calm/evidence-aware per community-manager voice rules. Voice: David Documentary (ppLqTilh7rH7fbUVlXsf), eleven_multilingual_v2, generated via direct ElevenLabs REST call using ELEVENLABS_KEY (the mcp__mcphub__elevenlabs-text_to_speech MCP tool saved its output to the MCP server's own /root/Desktop, unreachable from this container \u2014 same cross-host filesystem-isolation class as BLOCKER_2026-06-30/2026-07-02; direct API call avoided the bridge entirely). Assets: 3 Wikimedia Commons TBM/TBF Avenger photos via fetch_wikimedia_assets.py (formation shot doubles as thumb base). Render: fresh 1080x1920 Ken-Burns build (3 images, xfade crossfades, muxed with narration) since this is a standalone discovery Short, not a long-form crop. Cut: shorts/short_cutter_v2.py with hook/outro cards \u2014 added a 'source_is_portrait' config option (skips the landscape-crop assumption for freshly-rendered portrait sources) and a 'hook_fontsize' override (default 220 overflowed the 4-line hook text; used 150), both additive/backward-compatible. Thumb: shorts/make_fern_thumb.py \u2014 fixed a broken hardcoded font path (pointed at a different host's filesystem, OSError in this container) to use an available system Liberation Sans Bold. NOT uploaded: no working camoufox-stealth MCP tool available in this session/sandbox to reach YouTube Studio. mp4 (19MB) and thumbnail are local-only production artifacts, not committed to git per repo convention (no binary renders in git history) \u2014 state, config, script text, and metadata committed instead. See LEARNINGS.md BLOCKER_2026-07-04 for manual-recovery / next-session instructions."
     }
   ]
 }

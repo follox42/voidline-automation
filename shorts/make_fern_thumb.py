@@ -17,7 +17,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
 
-FONT = "/host/home/follox/clover-build/camoufox/bundle/fonts/windows/impact.ttf"
+FONT = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
 W, H = 1280, 720
 
 WARM_GOLD = "#E0B854"   # warmer than pure #FFD700 — matches v1 thumb_A

@@ -1,0 +1,24 @@
+{
+  "ch0": [
+    {
+      "path": "runs/w27-flight19/assets/ch0/img_00.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Grumman_Avenger_TBM-3E._%2850526387607%29.jpg/1280px-Grumman_Avenger_TBM-3E._%2850526387607%29.jpg",
+      "license": "CC0"
+    },
+    {
+      "path": "runs/w27-flight19/assets/ch0/img_01.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Grumman_Avenger_TBM-3E_%2813957167686%29.jpg/1280px-Grumman_Avenger_TBM-3E_%2813957167686%29.jpg",
+      "license": "CC0"
+    },
+    {
+      "path": "runs/w27-flight19/assets/ch0/img_02.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/cd/A_formation_of_TBF_Avenger_aircraft_of_air_group_four_approaching_the_coast_of_French_Indochina_on_12_January_1945.jpg",
+      "license": "Public domain"
+    },
+    {
+      "path": "runs/w27-flight19/assets/ch0/img_03.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Damaged_Grumman_TBF_Avenger_of_VT-80_in_flight%2C_in_January_1945.jpg/1280px-Damaged_Grumman_TBF_Avenger_of_VT-80_in_flight%2C_in_January_1945.jpg",
+      "license": "Public domain"
+    }
+  ]
+}

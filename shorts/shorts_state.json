@@ -129,6 +129,22 @@
       "config_path": "runs/v4-roanoke/shorts/config_v4_answer.json",
       "mp4_path": "runs/v4-roanoke/shorts/short_v4_answer.mp4",
       "notes": "Published alongside/near v4_hook \u2014 ANSWER and HOOK went public together instead of the intended staggered HOOK-then-ANSWER order. See LEARNINGS.md BLOCKER_2026-07-01."
+    },
+    {
+      "short_id": "w27_discovery_flight19",
+      "yt_id": null,
+      "title": "5 Navy Planes Vanished Together \u2014 Flight 19, 1945 #shorts",
+      "topic": "flight19",
+      "publish_at": "2026-07-04T12:00:00Z",
+      "status": "PENDING_UPLOAD",
+      "hook_question": "5 PLANES VANISHED. IN CLEAR WEATHER. TOGETHER.",
+      "desc": "December 5, 1945. Five Navy Avenger bombers vanish over the Atlantic in perfect weather. A rescue plane sent after them disappears too. Six aircraft, 27 men, and not one piece of wreckage was ever found.\n\n#shorts #history #mystery #flight19 #bermudatriangle #voidline",
+      "config_path": "shorts/w27_discovery_flight19.json",
+      "mp4_path": "shorts/w27_discovery_flight19.mp4",
+      "thumb_path": "runs/w27-flight19/thumb/thumbnail.jpg",
+      "voice": "David Documentary (ppLqTilh7rH7fbUVlXsf), eleven_multilingual_v2, direct API (MCP text_to_speech tool cross-host filesystem isolation - see LEARNINGS.md)",
+      "assets": "3 Wikimedia Commons TBM/TBF Avenger photos, see runs/w27-flight19/assets/ATTRIBUTION.md",
+      "notes": "Produced fully (script, voice, 3 Wikimedia assets, Ken-Burns render, cut, thumb) but NOT uploaded this session \u2014 no working camoufox-stealth MCP tool available in this sandbox to reach YouTube Studio (same cross-host filesystem-isolation class as BLOCKER_2026-06-30/2026-07-02). mp4/thumb are local artifacts only, not committed to git (repo convention: no binary renders in git history). Needs upload via a session with a working Studio bridge, or manual upload by Nolann, before 2026-07-04T12:00:00Z to hit today's slot. See LEARNINGS.md BLOCKER_2026-07-04."
     }
   ]
 }
