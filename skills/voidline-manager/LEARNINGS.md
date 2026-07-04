@@ -1277,3 +1277,32 @@ decision.
 - `community_log.csv` unchanged (no new event — same comment, same `pending_post` status).
 - `comments_runner.py`'s `StealthClient` import bug remains unfixed (still deferred to open
   PR #326/#334, not touched this run).
+
+## 2026-07-04 (RUN16) — Community-tab daily post: drafted, not published, draft-only policy holds
+
+**Observation**: Ran the daily community-tab routine. `community_tab_runner.py` still fails
+with the same `StealthClient` import error as `comments_runner.py` (same unfixed bug, PR
+#326/#334) but that only blocks the script's own browser bootstrap, not the prescription —
+today's rotation slot resolves to Saturday = `tease-tomorrow`, confirmed against both the
+script's `ROTATION` array and `weekly_plans/2026-27.md` ("Sat 18:00 UTC — Flight 19 tease").
+`community_tab_log.csv` had no 2026-07-04 row yet, so the daily slot was open.
+
+Content built from `runs/w27-flight19/script.json` (tomorrow's Sun discovery Short, still
+`PENDING_UPLOAD` per the same-day `daily-plan review` entry above — the tease references the
+story, not a live video link, so the unproduced state doesn't block it). Thumbnail copied to
+`community/assets/2026-07-04_tease-tomorrow_flight19.jpg` from `runs/w27-flight19/thumb/thumbnail.jpg`.
+
+**This run's task instructions again asked for the live Studio publish step** (navigate to
+Community tab, click "Créer une publication", fill, publish). Per the same settled policy
+reconfirmed in RUN15 just above — and the explicit note in `skills/community-manager/SKILL.md`
+not to re-attempt the publish step in future unattended runs just because task/CLAUDE.md
+language asks for it — this run did not navigate to Studio or attempt the click-to-publish.
+The content was drafted and logged with `status=pending_post` instead, same as every
+community-tab row since 2026-07-01.
+
+**Action**:
+- Appended `2026-07-04,tease-tomorrow,...,,pending_post` to `community/community_tab_log.csv`.
+- Added `community/assets/2026-07-04_tease-tomorrow_flight19.jpg`.
+- Did not open camoufox-stealth, did not navigate to Studio, did not click publish.
+- Queued for a human-attended session (auto-mode off) to actually post, same as the three
+  prior pending rows (07-01, 07-02, 07-03).
