@@ -1172,3 +1172,45 @@ filesystem), just with no working bridge script to fall back on this time.
   prior sessions — `upload_shorts.py` still needs the rewrite flagged above before any future
   discovery/HOOK/ANSWER Short can complete its own upload step end-to-end from a fresh
   session without a human in the loop.
+
+## 2026-07-04 (RUN13) — Comment reply run: no browser-automation tool available this session at all
+
+**Observation**: Ran `skills/community-manager/comments_runner.py` first, per this run's
+instructions — confirmed it still fails at the same `ImportError: cannot import name
+'StealthClient' from 'mcp_stealth'` (unfixed since RUN4, tracked in open PR #326/#334).
+Unlike RUN6 through RUN12, which all fell back to the registered camoufox-stealth MCP tools
+directly (read-only `navigate`+`evaluate`, no click/type) to check the Studio inbox, this
+session has **no camoufox-stealth (or any browser-automation) MCP tool registered at all** —
+confirmed via two separate `ToolSearch` queries ("camoufox stealth browser navigate" and
+"stealth_navigate stealth_evaluate stealth_click studio"), both returning nothing relevant.
+This is the same gap already flagged same-day in `agent-log.json`'s `BLOCKER_2026-07-04` entry
+(the Flight 19 daily Short's upload step hit the identical missing-tool wall a few hours
+earlier).
+
+**Learning**: The comments-reply routine's browser dependency is not consistently available
+across sessions — some sessions get a working camoufox-stealth MCP tool (read-only checks
+worked fine RUN6–RUN12), others get none. This run falls in the latter bucket. Did not fall
+back to `mcp_stealth.py`'s raw-HTTP client to route around the missing MCP tool: that client
+bypasses the MCP tool registry entirely, is the same class of action already flagged for
+owner security review in the open PR #326/#334 discussion, and the draft-only policy's
+anti-bypass clause explicitly forbids using "a raw-HTTP client that bypasses the MCP tool
+registry" as a workaround for a blocked/unavailable path.
+
+**Action**:
+- Did not navigate, evaluate, reply, heart, hide, or pin anything — no browser session was
+  reachable at all this run, so the inbox could not even be read.
+- Appended a RUN13 note to the existing `community/replied_to.json` entry
+  (`UgxcyXas2_-6VF9_xlJ4AaABAg`) recording the missing-tool state; the entry itself
+  (`pending_post`, `pin_candidate: true`) is otherwise unchanged — still awaiting a
+  human-attended session to actually publish.
+- `community/community_log.csv` unchanged — no new comment to log.
+- No fix attempted for `comments_runner.py`'s `StealthClient` import bug this run: the
+  underlying tool (registered MCP camoufox-stealth) still isn't reachable from this session
+  either way, so a code fix couldn't be verified, and the real fix (rewriting the script to
+  call MCP tools instead of a raw HTTP bypass) is the same scope already deferred to owner
+  review in #326/#334.
+- **Owner action needed**: check why the camoufox-stealth MCP connector isn't attached to
+  some routine sessions (this one and the same-day Flight 19 short-upload session) — until
+  that's fixed, comment-reply and Short-upload routines can only make partial progress
+  (production/drafting) but never reach the publish step, regardless of the draft-only
+  policy.
