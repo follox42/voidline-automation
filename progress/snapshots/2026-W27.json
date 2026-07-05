@@ -1,0 +1,26 @@
+{
+  "week": "2026-W27",
+  "captured_at": "2026-07-05T10:13:07.296361+00:00",
+  "data_collection_status": "BLOCKED",
+  "blocker_ref": "BLOCKER_2026-07-05-WEEKLY-INTEL (see skills/voidline-manager/LEARNINGS.md)",
+  "blocker_summary": "camoufox-stealth unreachable this session (mcphub.nocode18.com and the direct mcp-stealth.nocode18.com fallback both returned 530/502; no camoufox-stealth or mcphub MCP tools registered via ToolSearch). No YouTube Studio analytics could be pulled — impressions/CTR/AVD/retention/traffic-sources/subs-gained are all Studio-only private metrics with no public-API or scrape fallback (WebFetch on the public watch page and channel /about page hit YouTube's logged-out bot-check redirect and the JS-rendered SPA shell respectively — confirmed no usable public substitute). This is the 3rd independent confirmation of the same outage today (06:30 UTC and 08:10 UTC daily-plan sessions already hit it, commit ce615ab).",
+  "videos_known_last_30d": [
+    {"short_id": "v2_twist", "yt_id": "vxP6XiJKLkg", "published": "2026-06-05", "metrics": null},
+    {"short_id": "v2_answer", "yt_id": "TwJNypz8c4I", "published": "2026-06-06", "metrics": null},
+    {"short_id": "v3_hook", "yt_id": "5e8ELVo5ARg", "published": "2026-06-08", "metrics": null},
+    {"long_form_id": "v3_tunguska", "yt_id": "FacPhS3hNjU", "published": "2026-06-08", "metrics": null},
+    {"short_id": "v3_twist", "yt_id": "0eDPVcgODvY", "published": "2026-06-10", "metrics": null},
+    {"short_id": "v3_answer", "yt_id": "y3xLIfOAPHA", "published": "2026-06-12", "metrics": null},
+    {"short_id": "v1_bonus_briggs", "yt_id": "vZ68HlWfT-Q", "published": "2026-06-15", "metrics": null},
+    {"short_id": "w27_discovery_franklin", "yt_id": "sedBqHgilSM", "published": "2026-06-30", "metrics": null},
+    {"short_id": "v4_hook", "yt_id": "rF7LYZRgnbY", "published": "2026-07-01", "metrics": null},
+    {"short_id": "v4_answer", "yt_id": "wHwh8TTRNKw", "published": "2026-07-01", "metrics": null},
+    {"long_form_id": "v4_roanoke", "yt_id": "Tlc-cKtAHuQ", "published": "2026-07-01", "metrics": null}
+  ],
+  "videos_pending_not_published": [
+    {"short_id": "w27_discovery_flight19", "target_slot": "2026-07-04T12:00:00Z", "status": "PENDING_UPLOAD — still blocked, see shorts_state.json"},
+    {"short_id": "w27_discovery_ourang", "target_slot": "2026-07-05T12:00:00Z", "status": "PENDING_UPLOAD — still blocked, see shorts_state.json"}
+  ],
+  "videos": [],
+  "channel_aggregates": {}
+}

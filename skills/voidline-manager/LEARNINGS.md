@@ -1485,3 +1485,69 @@ a write, and PR #326 already flagged it for owner security review rather than ro
   a code fix couldn't be verified end-to-end, and the real fix (rewriting the runner to call MCP
   tools instead of the raw-HTTP bypass module) is the same scope already deferred to owner review
   in #326/#334.
+
+## BLOCKER_2026-07-05-WEEKLY-INTEL — Studio bridge down for the Sunday weekly-intel run; 3rd+ confirmation in one day, escalating
+
+**Observation**: Ran the Weekly Intel v2 routine (7-phase closed-loop self-analysis,
+`skills/weekly-intel/SKILL.md`). Phase 1 requires pulling 30-day Studio analytics via
+camoufox-stealth (`cookie_profile=voidline`). Confirmed unreachable via three independent checks:
+(1) `ToolSearch` for "camoufox stealth navigate studio" and separately "mcphub" both returned no
+matching tools; (2) `python3 mcp_stealth.py init` (direct JSON-RPC to the mcphub aggregator) raised
+`HTTPError: HTTP Error 530`; (3) raw `curl` to both `https://mcphub.nocode18.com/mcp` and the
+direct fallback `http://mcp-stealth.nocode18.com/mcp` returned `502` for both. Also checked for any
+non-Studio substitute before giving up: no `YOUTUBE_API_KEY`/`YOUTUBE_OAUTH_TOKEN`/
+`GOOGLE_API_KEY`/`YT_ANALYTICS_TOKEN`/`YOUTUBE_CLIENT_SECRET` env vars are set (checked presence
+only, no values echoed), and `WebFetch` against a public watch page
+(`youtube.com/watch?v=Tlc-cKtAHuQ`) redirected to YouTube's logged-out bot-check ("sorry") page
+while the channel `/about` page returned only unrendered SPA nav chrome — no view/sub counts
+visible either way. This is at minimum the **3rd occurrence of this exact outage signature today**
+(2026-07-05): the 06:30 UTC daily-short session and the 08:10 UTC daily-plan session (commit
+`ce615ab`) both independently hit "Studio bridge UNREACHABLE... mcphub.nocode18.com returns HTTP
+530... no camoufox-stealth/browser-automation MCP tool is registered." A same-day comment-reply
+run (RUN18, commit `2475ea5`, entry directly above this one) hit the identical missing-tool
+condition too, making it arguably a 4th.
+
+**Learning**:
+1. This differs from the previously-logged blocker classes. It is not the auto-mode classifier
+   denying a *write* action (BLOCKER_2026-07-01's "External System Writes" denial), and it is not
+   the cross-host filesystem isolation that blocks *uploads* specifically (BLOCKER_2026-06-30).
+   Every read-only navigate/evaluate call is also failing, and the transport itself (mcphub
+   aggregator AND its direct fallback) is returning 5xx at the HTTP level — this looks like the
+   mcphub service being down/unreachable at the infrastructure layer, not a policy decision or a
+   filesystem mismatch.
+2. Because the entire skill fleet (weekly-intel Studio pull, daily-short uploads, comment mining,
+   community-tab posting) routes through this one bridge, a same-day 3-4x outage is a
+   single-point-of-failure incident, not routine-level noise to individually re-log each time.
+3. There is genuinely no substitute data source available to a routine session: no API
+   credentials, and public YouTube pages actively resist unauthenticated automated fetches
+   (bot-check redirect / unrendered SPA), consistent with the existing `KNOWN_BAD` finding from
+   2026-06-13 ("anonymous curl to youtube.com is unreliable for stats").
+
+**Action** (per CLAUDE.md's blocked-routine protocol — no alternative path existed, so state was
+saved and the session did not wait for input):
+- Did **not** fabricate any Studio metric. `progress/snapshots/2026-W27.json` lists the known
+  video/short IDs published in the last 30 days (compiled from `shorts/shorts_state.json`, not
+  invented) with every metrics field `null` and an explicit `data_collection_status: "BLOCKED"`.
+- `weekly_actions/2026-W27.md` and `viewer_feedback/2026-W27.json` both carry explicit blocked
+  markers instructing downstream Production/Idea-Lock routines to treat this week as "unknown,"
+  not "no issues found" / "no requests."
+- Did **not** append a row to `progress/weekly_curve.csv` — it doesn't exist yet (this is the
+  channel's first weekly-intel run), and an all-blank/zero first row would corrupt every future
+  4-week rolling average the ETA milestone calculation depends on. `progress_curve.py eta`
+  correctly reports "no data yet" instead.
+- Ran the two sub-phases that don't depend on Studio access at all: `experiment_tracker.py
+  status`/`check` (real output — 4 open experiments, 0 eligible for a verdict, see the separate
+  process finding below) and confirmed no curve data exists yet.
+- **Separate process finding, unrelated to the outage**: `experiment_tracker.py status` shows
+  4 open experiments against the documented cap of 3 ("OPEN (4/3)"). `PASSIVE-TIME-001.json` was
+  written directly to the `experiments/` dir on 2026-07-01 rather than via `experiment_tracker.py
+  open`, bypassing its cap check. Recommend no new experiment opens until one of the 4 closes
+  (earliest eligible 2026-07-14) and adding a cap guard wherever `experiments/*.json` gets written
+  directly instead of through the tracker CLI.
+- Full write-up in `self_eval/2026-W27.md` and `seeds/weekly-reports/2026-07-05.md`.
+- **Root fix needed (escalating, not a routine-session fix)**: the mcphub aggregator / camoufox-
+  stealth bridge availability itself needs investigation outside an automated routine — whether
+  it's a Coolify service down, a token/auth expiry, or a rate-limit lockout. Until it's diagnosed,
+  every Studio-dependent phase across every skill (not just weekly-intel) will keep hitting this
+  same wall, and each individual routine re-discovering it independently (as at least 4 sessions
+  did today) is a symptom of the underlying incident, not 4 separate bugs.
