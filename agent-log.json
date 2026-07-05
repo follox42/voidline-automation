@@ -209,6 +209,11 @@
       "t": "2026-07-05 18:00 UTC",
       "action": "COMMUNITY_TAB_DRAFT",
       "detail": "Daily community-tab routine RUN21. community_tab_runner.py still fails on the unfixed StealthClient import (deferred to PR #326/#334, not touched). Computed slot directly: Sunday 2026-07-05 -> reader-pick per ROTATION. community_tab_log.csv had no 07-05 row yet. Only insightful/pin_candidate comment on record all week is @GrantMackay-wm1pe's Mary Celeste flash-over theory (replied_to.json, unchanged since 06-30, inbox quiet or auth-dead every run through RUN20) -- used it as this week's reader-pick, credited by handle. Appended community_tab_log.csv row (2026-07-05,reader-pick,...,pending_post) and a RUN21 note to the replied_to.json entry. Per the settled draft-only policy (skills/community-manager/SKILL.md), which explicitly lists community-tab posts among gated Studio write actions, did not open camoufox-stealth, navigate to Studio, or attempt the publish click this run -- content authored entirely from repo state. Queued for a human-attended (auto-mode off) session alongside the four prior pending_post rows (07-01 through 07-04)."
+    },
+    {
+      "t": "2026-07-05 21:07 UTC",
+      "action": "COMMUNITY_RUN_BLOCKER",
+      "detail": "Comment-reply batch RUN22. comments_runner.py still fails on the unfixed StealthClient import (deferred to PR #326/#334, not touched). camoufox-stealth MCP tools reachable this run. Opened fresh session voidline_community_r22, cookie_profile=voidline, 335 cookies restored -- stealth_navigate to Studio inbox again landed on the Google account-chooser with Nolann marked Deconnecte (identical to RUN19/RUN20). stealth_auth_check confirmed auth_valid=false/status=dead/\"Auth INVALID. Do NOT post. Re-login required.\" The voidline cookie session has still not been refreshed since RUN19/RUN20; no inbox read was possible, no new comments to classify, no reply/heart/hide/pin attempted. Session closed cleanly. Owner action still needed: interactive re-login to refresh the voidline cookie profile before any Studio-dependent routine (comments, community-tab, uploads, weekly-intel) can proceed past this wall."
     }
   ]
 }

@@ -1682,3 +1682,30 @@ as RUN11's precedent (long-drop draft with no navigate/evaluate calls).
 - `community_tab_log.csv` now carries five consecutive `pending_post` rows (07-01 through 07-05)
   all awaiting the same human-attended Studio publish pass; only the 06-30 row (from before the
   draft-only policy was formalized) actually made it live.
+
+## 2026-07-05 (RUN22) — Comment reply run: `voidline` cookie session still dead, unchanged from RUN19/RUN20
+
+**Observation**: Ran the comment-reply batch per task instructions. `comments_runner.py` still
+fails at the same unfixed `ImportError: cannot import name 'StealthClient' from 'mcp_stealth'`
+(confirmed again, not touched — still deferred to open PR #326/#334). `camoufox-stealth` MCP
+tools were reachable this run. Opened a fresh session (`voidline_community_r22`,
+`cookie_profile=voidline`, 335 cookies restored) and navigated to the Studio comments inbox:
+landed on Google's account-chooser again, Nolann's account still labeled **"Déconnecté"**,
+identical to RUN19/RUN20 earlier this same day. `stealth_auth_check` confirmed again:
+`{"auth_valid": false, "status": "dead", "recommendation": "Auth INVALID. Do NOT post. Re-login
+required."}`.
+
+**Learning**: No change since RUN20 — the `voidline` cookie session has still not been refreshed.
+This is the same open blocker, not a new one. No inbox read was possible, so no new comments
+could be classified. Did not attempt to click through the account chooser or any sign-in flow —
+same reasoning as RUN19/RUN20.
+
+**Action**:
+- Closed the dead `voidline_community_r22` session cleanly.
+- Appended a RUN22 note to the existing `replied_to.json` entry (`UgxcyXas2_-6VF9_xlJ4AaABAg`);
+  entry itself unchanged (`pending_post`, `pin_candidate: true`). No new comment to log, so
+  `community_log.csv` is unchanged.
+- Logged `COMMUNITY_RUN_BLOCKER` in `agent-log.json`.
+- **Owner action needed** (unchanged from RUN19/RUN20): a fresh interactive login to the
+  `voidline` cookie profile is required before any Studio-dependent routine can proceed past this
+  wall.
