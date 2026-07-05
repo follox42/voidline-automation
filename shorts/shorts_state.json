@@ -145,6 +145,22 @@
       "voice": "David Documentary (ppLqTilh7rH7fbUVlXsf), eleven_multilingual_v2, direct API (MCP text_to_speech tool cross-host filesystem isolation - see LEARNINGS.md)",
       "assets": "3 Wikimedia Commons TBM/TBF Avenger photos, see runs/w27-flight19/assets/ATTRIBUTION.md",
       "notes": "Produced fully (script, voice, 3 Wikimedia assets, Ken-Burns render, cut, thumb) but NOT uploaded this session — no working camoufox-stealth MCP tool available in this sandbox to reach YouTube Studio (same cross-host filesystem-isolation class as BLOCKER_2026-06-30/2026-07-02). mp4/thumb are local artifacts only, not committed to git (repo convention: no binary renders in git history). Needs upload via a session with a working Studio bridge, or manual upload by Nolann, before 2026-07-04T12:00:00Z to hit today's slot. See LEARNINGS.md BLOCKER_2026-07-04. | 2026-07-04 daily-plan review: STILL PENDING_UPLOAD at review time (~09:2x UTC); confirmed the local render shorts/w27_discovery_flight19.mp4 is absent in this fresh container (previous session reclaimed, never committed). No browser MCP tool this session -> slot at 12:00 UTC will be missed unless Nolann uploads manually. Render is deterministically regenerable from the committed config/script/wikimedia_queries."
+    },
+    {
+      "short_id": "w27_discovery_ourang",
+      "yt_id": null,
+      "title": "One Ship. Everyone On Board Dead. Smiling. — SS Ourang Medan, 1947",
+      "topic": "ourang_medan",
+      "publish_at": "2026-07-05T12:00:00Z",
+      "status": "PENDING_UPLOAD",
+      "hook_question": "ONE SHIP. EVERYONE ON BOARD DEAD. SMILING.",
+      "desc": "June 1947, the Strait of Malacca: a Dutch freighter radios that every officer is dead, then sends one final transmission — \"I die.\" Rescuers find the whole crew dead with no wounds and no fire. Before a tow line can go on, the ship reportedly explodes and sinks. No shipping registry has ever listed a vessel named Ourang Medan. No wreck, no crew list, no original radio log has ever surfaced — only retellings.\n\n#shorts #history #mystery #ourangmedan #ghostship #voidline",
+      "config_path": "shorts/w27_discovery_ourang.json",
+      "mp4_path": "shorts/w27_discovery_ourang.mp4",
+      "thumb_path": "runs/w27-ourang/thumb/thumbnail.jpg",
+      "voice": "David Documentary (ppLqTilh7rH7fbUVlXsf), eleven_multilingual_v2, direct API (same cross-host MCP filesystem isolation as w27_discovery_flight19 — see LEARNINGS.md)",
+      "assets": "3 Wikimedia Commons 1940s-60s cargo freighter photos (generic period b-roll, not the actual Ourang Medan — no real photo of that ship is known to exist), see runs/w27-ourang/assets/ATTRIBUTION.md",
+      "notes": "Sunday W27 discovery slot was TBD in weekly_plans/2026-27.md; produced the SS Ourang Medan topic (the Thu 07-02 discovery that was deferred/never produced per LEARNINGS.md 2026-07-02 entry — backlog priority pick). Produced fully end-to-end this session (126-word VO script, ElevenLabs voice, 3 curated Wikimedia assets, 1080x1920 Ken-Burns render with corrected zoompan rate — see LEARNINGS.md for a zoompan-explosion bug hit and fixed mid-session, short_cutter_v2.py cut with hook/captions/outro, Fern-style thumb) but NOT uploaded — no camoufox-stealth or other browser-automation MCP tool reachable this session (confirmed via ToolSearch), and shorts/upload_shorts.py still imports a nonexistent 'mcp_stealth' module / cross-host paths, same as BLOCKER_2026-07-04. mp4/thumb are local artifacts only, not committed to git (repo convention). Needs upload via a session with a working Studio bridge, or manual upload by Nolann, before 2026-07-05T12:00:00Z to hit today's slot. Render is deterministically regenerable from the committed config/script/wikimedia assets."
     }
   ]
 }

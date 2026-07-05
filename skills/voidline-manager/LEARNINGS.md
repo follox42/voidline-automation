@@ -1341,3 +1341,106 @@ policy's anti-bypass clause explicitly forbids exactly this kind of workaround.
   underlying MCP tool still isn't reachable from this session either way, so a code fix
   couldn't be verified, and the real fix (rewriting the script to call MCP tools instead of
   the raw-HTTP bypass module) is the same scope already deferred to owner review in #326/#334.
+
+## BLOCKER_2026-07-05 — Daily Short (Sun discovery/Ourang Medan): produced end-to-end, upload not reachable from this sandbox
+
+**Observation**: Today's row in `weekly_plans/2026-27.md` was Sun 2026-07-05, discovery,
+hook/iconic-detail both still `TBD`. Checked `shorts_state.json` first for a slot conflict —
+`v4_hook` (Roanoke) already occupies `publish_at: 2026-07-05T12:00:00Z` in state, but that's the
+`BLOCKER_2026-07-01` early-publish phantom-slot artifact flagged in the 2026-07-02 daily-plan
+review (already live since 07-01, not a real conflict with today's discovery Short — different
+`short_id`, same nominal publish timestamp is just a coincidence of the same broken batch). Picked
+the topic from the plan header's own backlog note plus the 2026-07-02 LEARNINGS entry: **SS
+Ourang Medan, 1947** was the Thu 07-02 discovery topic that got deferred and never produced
+(slot burned by an early `v4_answer` publish that day) — still unconsumed per the 2026-07-02
+daily-plan review's drift list. That made it the natural fill for today's open TBD slot rather
+than picking a fresh topic.
+
+**What was produced** (all local, verified by inspecting rendered frames):
+- Script: 126-word VO, cool docu-narrator voice — cold open (distress call, "I die"), the
+  discovery (crew dead, no wounds, ship explodes and sinks before tow), then the twist that
+  distinguishes this from a straight retelling: no shipping registry has ever listed a vessel
+  named Ourang Medan, no wreck/crew-list/original radio log has ever surfaced, only retellings.
+- Voice: David Documentary (`ppLqTilh7rH7fbUVlXsf`), `eleven_multilingual_v2`, direct HTTPS call
+  to the ElevenLabs REST API with `ELEVENLABS_KEY` from env (same pattern as
+  `BLOCKER_2026-07-04` — the `mcp__mcphub__elevenlabs-text_to_speech` MCP tool wasn't even
+  reachable this session to test, see below). 57.08s output, `runs/w27-ourang/voice/vo.mp3`.
+- Assets: 3 real Wikimedia Commons 1940s–60s cargo-freighter photographs (Ex-USS Gadsden in the
+  Malacca Strait; the Liberty ship Alfred E. Smith; the freighter Barney Kirschbaum) — generic
+  period b-roll, not the actual Ourang Medan (no verified photo of that ship is known to exist,
+  which is itself part of the story). Rejected two Wikimedia hits that were book/document page
+  scans, not photos, before landing on these three. Attribution in
+  `runs/w27-ourang/assets/ATTRIBUTION.md`.
+- Render: built a fresh 1080x1920 Ken-Burns video from the 3 images (zoompan + xfade
+  crossfades, ~57s) and muxed the narration in — `runs/w27-ourang/render/base.mp4`. Hit and
+  fixed a real bug here: an initial `zoompan=z='zoom+0.0018':d=<frames>` expression on a
+  `-loop 1 -t <SEG> -i img.jpg` input over-zoomed to ~2x by the end of each ~19.7s segment
+  (frame inspection showed the last segment cropped down to just rigging lines, losing the ship
+  entirely) — the fix was switching to the standard `d=1` Ken-Burns idiom (`zoompan` evaluated
+  once per actual output frame, with an explicit `x`/`y` centering expression) with a
+  zoom-rate delta computed as `(target_zoom-1)/total_frames`, capped at 1.15x. Verified by
+  rendering each image as an isolated clip first and checking start/end frames before chaining
+  the 3 clips with `xfade`, then re-verified the full chained+muxed render at multiple
+  timestamps to confirm each segment shows the correct source image.
+- Cut: `shorts/short_cutter_v2.py` with `source_is_portrait: true` and hook/caption/outro cards.
+  Noticed the cutter's ASS styles hardcode the font name `"Anton"` (the `FONT_NAME` variable at
+  the top of the file is dead code, never referenced) and its `fontsdir` points to
+  `/usr/share/fonts/truetype/impact-alt`, which does not exist in this container (`fc-list` has
+  no Anton/Impact anywhere) — same class of cross-host font-path issue as the
+  `make_fern_thumb.py` fix from `BLOCKER_2026-07-04`. Did **not** need to patch it this time:
+  libass fell back to a substitute bold sans-serif gracefully (confirmed by extracting and
+  viewing hook-card/caption/outro frames — all legible, correctly styled, no crash), so the
+  render succeeded without a code change. Left the dead `FONT_NAME`/hardcoded-`"Anton"`
+  mismatch and the stale `fontsdir` in place rather than fixing pre-emptively, since the actual
+  failure mode (a container where libass has no substitute available) hasn't been observed —
+  flagging here so the next session that hits an actual font-render failure knows where to
+  look first.
+- Thumb: `shorts/make_fern_thumb.py` (font path already fixed in `BLOCKER_2026-07-04`, no
+  change needed) — used the Alfred E. Smith Liberty-ship photo as the base image, headline
+  "GHOST SHIP. / EVERYONE DEAD." / "1947", red arrow to the funnel/wheelhouse. Verified by
+  viewing the rendered JPEG directly.
+- Verified all of the above by extracting and viewing frames at the hook, several caption
+  beats, both crossfade transitions, and the outro, plus checking video/audio stream durations
+  (57.0s).
+
+**Not done — upload**: Confirmed via `ToolSearch` (two separate queries: "camoufox stealth
+browser navigate" and "stealth_navigate stealth_evaluate stealth_click text_to_speech
+elevenlabs") that no camoufox-stealth or other browser-automation MCP tool is reachable this
+session — same missing-tool bucket as `BLOCKER_2026-07-04`/RUN13/RUN17. Confirmed
+`shorts/upload_shorts.py` still can't be used either: `ModuleNotFoundError: No module named
+'mcp_stealth'` (the script imports it from a hardcoded path on a different host that doesn't
+exist in this container). Did not attempt a rewrite of the upload script for the same reason as
+`BLOCKER_2026-07-04` — it's the one piece of this pipeline that actually touches the live
+channel, and that deserves a deliberate, reviewed change rather than a quick patch made without
+a way to test it end-to-end.
+
+**Action**:
+- `shorts_state.json` has a `w27_discovery_ourang` entry with `status: "PENDING_UPLOAD"` and
+  every piece of metadata (title, description, hook, file paths, voice/asset provenance) a
+  human or a future session with a working Studio bridge needs to finish the job with zero
+  re-derivation.
+- `weekly_plans/2026-27.md` Sun 07-05 row filled in (hook question + iconic detail) and the
+  "All TBDs filled" validation gate checked off.
+- Local-only artifacts (not committed, matches repo convention of keeping binary renders out of
+  git): `shorts/w27_discovery_ourang.mp4` (1080x1920, 57s), `runs/w27-ourang/render/{base.mp4,
+  clip0.mp4,clip1.mp4,clip2.mp4,video_only.mp4}`, `runs/w27-ourang/voice/vo.mp3`,
+  `runs/w27-ourang/thumb/thumbnail.jpg`, `runs/w27-ourang/assets/ch0/*.jpg`. These live in this
+  session's container only and will be lost when it's reclaimed — if upload isn't done from a
+  session that still has this container's filesystem, the render must be regenerated from
+  `shorts/w27_discovery_ourang.json` + `runs/w27-ourang/script.json` (which carries the
+  wikimedia queries) + re-running the TTS call (cheap/deterministic, ~714 chars).
+- Committed: `shorts_state.json`, `weekly_plans/2026-27.md`, `agent-log.json`, this entry, the
+  discovery Short's config (`shorts/w27_discovery_ourang.json`), and the run's
+  script/manifest/attribution/thumb-config (`runs/w27-ourang/{script.json,
+  assets/manifest.json,assets/ATTRIBUTION.md,thumb/thumb_config.json}`).
+- **Owner action needed**: upload `shorts/w27_discovery_ourang.mp4` manually via
+  studio.youtube.com (or from a session with a working camoufox-stealth bridge) before
+  2026-07-05T12:00:00Z to hit today's slot. Title/description/hook are in the
+  `shorts_state.json` entry above, ready to paste in. Thumbnail at
+  `runs/w27-ourang/thumb/thumbnail.jpg`.
+- Also still open from Saturday: `w27_discovery_flight19` remains `PENDING_UPLOAD` (its
+  2026-07-04T12:00:00Z slot has now passed unattended) — same root cause, not re-attempted this
+  session since no new upload path became available. Root cause (no browser-automation MCP tool
+  reachable from this sandbox) is unchanged — `upload_shorts.py` still needs the rewrite flagged
+  in `BLOCKER_2026-07-04` before any future discovery/HOOK/ANSWER Short can complete its own
+  upload end-to-end from a fresh session without a human in the loop.
