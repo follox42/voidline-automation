@@ -1551,3 +1551,54 @@ saved and the session did not wait for input):
   every Studio-dependent phase across every skill (not just weekly-intel) will keep hitting this
   same wall, and each individual routine re-discovering it independently (as at least 4 sessions
   did today) is a symptom of the underlying incident, not 4 separate bugs.
+
+## 2026-07-05 (RUN19) — Comment reply run: bridge reachable this time, but `voidline` cookie session is dead — new failure signature
+
+**Observation**: Ran the comments-reply batch. `community/replied_to.json` and
+`community_log.csv` unchanged since RUN18 — still only the single `@GrantMackay-wm1pe` Mary
+Celeste comment, `pending_post`/`pin_candidate: true`. `comments_runner.py` still fails at the
+same unfixed `ImportError: cannot import name 'StealthClient' from 'mcp_stealth'` (confirmed
+again, not touched — same reasoning as RUN13/17/18: the real fix is the registry-bypass rewrite
+already deferred to owner review in #326/#334). Unlike RUN18 (no browser tool reachable at all)
+and unlike `BLOCKER_2026-07-05-WEEKLY-INTEL` (mcphub itself returning 502/530), this session
+**did** have `camoufox-stealth` MCP tools registered and reachable. `stealth_navigate` to the
+Studio comments inbox (`cookie_profile=voidline`, fresh session `voidline_community_r19`)
+reported `cookies_restored: 332` and `success: true`, but the resulting page was Google's
+account-chooser (`accounts.google.com/v3/signin/accountchooser`), not the Studio inbox — page
+text showed the Nolann account explicitly labeled **"Déconnecté"** (signed out). Retried once
+with a fresh navigate on the same session: identical result. Ran `stealth_auth_check` to confirm
+rather than guess: `{"auth_valid": false, "api_status": 0, "consecutive_errors": 0, "status":
+"dead", "recommendation": "Auth INVALID. Do NOT post. Re-login required."}`.
+
+**Learning**:
+1. This is a third, distinct failure signature for the Studio-access chain, alongside (a) the
+   auto-mode classifier's write-action denial (`BLOCKER_2026-07-01`) and (b) the mcphub
+   transport being down at the HTTP layer (`BLOCKER_2026-07-05-WEEKLY-INTEL`, same day). Here the
+   transport works and the browser tool responds normally — the saved `voidline` cookie profile
+   itself no longer holds a live Google session, so every cookie-restored navigate lands on the
+   account chooser instead of an authenticated page.
+2. No routine-session fix exists for this: re-establishing the session requires an interactive
+   Google login (password/2FA) that isn't available to an unattended run, and per CLAUDE.md
+   ("cookie_profile=voidline ... pre-authorized session, do not re-auth") re-authing was never
+   meant to be this session's job in the first place — it assumes the profile is already logged
+   in, which today it is not.
+3. Did not attempt to click through the account chooser or any sign-in flow — that would mean
+   either guessing at credentials (don't have them) or driving a live Google auth flow
+   unattended, which is exactly the kind of action that should wait for a human, not something to
+   improvise around a missing password.
+
+**Action**:
+- Closed the dead `voidline_community_r19` session cleanly (no further navigate/evaluate/click
+  attempts).
+- Did not read the inbox, classify, draft, reply, heart, hide, or pin anything new this run — the
+  auth-dead state made even the read-only navigate+evaluate check impossible.
+- Appended a RUN19 note to the existing `replied_to.json` entry (`UgxcyXas2_-6VF9_xlJ4AaABAg`)
+  recording the auth-dead state; entry itself unchanged (`pending_post`, `pin_candidate: true`).
+- `community_log.csv` unchanged — no new comment to log.
+- **Owner action needed**: the `voidline` cookie profile needs a fresh interactive login (open
+  Studio in a real/attended camoufox session with `cookie_profile=voidline`, sign in, let cookies
+  save) before any Studio-dependent routine — comments, community-tab, uploads, weekly-intel —
+  can do anything beyond hitting this same wall. Flagging as the same underlying-incident bucket
+  as `BLOCKER_2026-07-05-WEEKLY-INTEL`, but with a sharper diagnosis: it's not (only) the mcphub
+  transport, the `voidline` Google session itself has expired and needs a human to re-establish
+  it.
