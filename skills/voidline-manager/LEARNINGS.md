@@ -1602,3 +1602,43 @@ rather than guess: `{"auth_valid": false, "api_status": 0, "consecutive_errors":
   as `BLOCKER_2026-07-05-WEEKLY-INTEL`, but with a sharper diagnosis: it's not (only) the mcphub
   transport, the `voidline` Google session itself has expired and needs a human to re-establish
   it.
+
+## 2026-07-05 (RUN20) — Comment reply run, same day as RUN19: `voidline` cookie session still dead, unchanged
+
+**Observation**: Re-ran the comment-reply batch per this run's task instructions (fetch/classify/
+draft, then post replies + heart/hide/pin live via camoufox). `comments_runner.py` still fails at
+the same unfixed `ImportError: cannot import name 'StealthClient' from 'mcp_stealth'` (confirmed
+again, not touched — still deferred to open PR #326/#334). `camoufox-stealth` MCP tools were
+reachable this run via `mcphub` (`stealth_status` showed 2 unrelated live sessions, `flow2` and
+`verif`, no `voidline_community*` session alive). Opened a fresh session
+(`voidline_community_r20`, `cookie_profile=voidline`) and navigated to the Studio comments inbox:
+`cookies_restored: 335`, `success: true`, but the resulting page was again Google's
+account-chooser, with Nolann's account still labeled **"Déconnecté"** — identical to RUN19 earlier
+today. `stealth_auth_check` confirmed: `{"auth_valid": false, "status": "dead", "recommendation":
+"Auth INVALID. Do NOT post. Re-login required."}`.
+
+**Learning**:
+1. The `voidline` cookie session has not been refreshed since RUN19 (same day, ~4h apart per the
+   session timestamps) — this is not a new incident, it's the same still-open one. No routine
+   session can fix it: re-establishing a Google login needs a human with credentials/2FA present,
+   which is out of scope for an unattended run (and per CLAUDE.md, re-auth was never meant to be
+   this routine's job — it assumes the profile is already logged in).
+2. Because the read-only inbox check itself is blocked by dead auth, this run couldn't even reach
+   the point of testing the separately-settled draft-only posting policy
+   (`## Autonomous posting policy` above) — there was no inbox to fetch, classify, or draft
+   replies for in the first place.
+3. Did not attempt to click through the account chooser or drive any sign-in flow — same reasoning
+   as RUN19: that requires real credentials/2FA this session doesn't have, not something to
+   improvise around.
+
+**Action**:
+- Closed the dead `voidline_community_r20` session cleanly (no further navigate/evaluate/click
+  attempts).
+- Appended a RUN20 note to the existing `replied_to.json` entry (`UgxcyXas2_-6VF9_xlJ4AaABAg`);
+  entry itself unchanged (`pending_post`, `pin_candidate: true`). No new comment to log, so
+  `community_log.csv` is unchanged.
+- Logged `COMMUNITY_RUN_BLOCKER` in `agent-log.json`.
+- **Owner action needed** (unchanged from RUN19): a fresh interactive login to the `voidline`
+  cookie profile is required before any Studio-dependent routine can proceed past this wall. This
+  is the same open blocker as RUN19, not a new one — flagging the recurrence so it doesn't get
+  mistaken for a one-off next time this skill runs.
