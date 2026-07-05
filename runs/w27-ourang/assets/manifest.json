@@ -1,0 +1,22 @@
+{
+  "ch0": [
+    {
+      "path": "runs/w27-ourang/assets/ch0/img_00.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Ex-USSGadsdenYosuMalaccaStrait.jpg",
+      "license": "Public domain",
+      "title": "Ex-USS Gadsden, Yosu, Malacca Strait"
+    },
+    {
+      "path": "runs/w27-ourang/assets/ch0/img_01.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Alfred_E._Smith._Liberty_-_schip%2C_asset_D1FWagYZTEknGdYpefa0o6Ha.tif/lossy-page1-1280px-Alfred_E._Smith._Liberty_-_schip%2C_asset_D1FWagYZTEknGdYpefa0o6Ha.tif.jpg",
+      "license": "Public domain",
+      "title": "Alfred E. Smith Liberty ship"
+    },
+    {
+      "path": "runs/w27-ourang/assets/ch0/img_02.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Barney_Kirschbaum_%28IMO_5036999%29_Antwerp_AS.1968.001.2640.jpg/1280px-Barney_Kirschbaum_%28IMO_5036999%29_Antwerp_AS.1968.001.2640.jpg",
+      "license": "Public domain",
+      "title": "Barney Kirschbaum (IMO 5036999), Antwerp"
+    }
+  ]
+}

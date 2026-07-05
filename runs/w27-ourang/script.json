@@ -1,0 +1,22 @@
+{
+  "run_id": "w27-ourang",
+  "channel_slug": "voidline",
+  "format": "short-discovery",
+  "topic": "SS Ourang Medan, 1947",
+  "hook_question": "ONE SHIP.\\NEVERYONE ON BOARD DEAD.\\NSMILING.",
+  "iconic_detail": "Crew found dead, faces frozen in terror",
+  "_voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "_voice_name": "David Documentary, eleven_multilingual_v2",
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "voiceover": "June 1947, the Strait of Malacca. Two American ships pick up a distress call from a Dutch freighter, the S.S. Ourang Medan.\n\n\"All officers including the captain, dead. Lying in the chartroom and on the bridge.\"\n\nThen one last transmission: \"I die.\"\n\nA rescue crew reaches the ship. Every man aboard is dead. No wounds. No fire. Faces frozen in what witnesses called pure terror. Before a tow line goes on, the ship reportedly explodes and sinks, taking every scrap of evidence with it.\n\nHere is the problem. No shipping registry has ever listed a vessel named Ourang Medan. No wreck. No crew list. No original radio log survives. Only retellings.\n\nSo was this ever a real ship, or a story that just would not sink?",
+      "wikimedia_queries": [
+        "Dutch cargo freighter 1940s",
+        "merchant ship Strait of Malacca",
+        "SOS radio operator ship 1940s",
+        "cargo ship deck abandoned"
+      ]
+    }
+  ]
+}

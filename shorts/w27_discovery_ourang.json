@@ -1,0 +1,32 @@
+{
+  "source": "runs/w27-ourang/render/base.mp4",
+  "start_s": 0,
+  "duration_s": 57.0,
+  "out": "shorts/w27_discovery_ourang.mp4",
+  "source_is_portrait": true,
+  "header_text": "SS OURANG MEDAN — 1947",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "ONE SHIP.\\NEVERYONE ON BOARD\\NDEAD. SMILING.",
+  "hook_fontsize": 130,
+  "outro_question": "REAL SHIP,\\NOR LEGEND?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0, "end": 4, "text": "JUNE 1947\\NSTRAIT OF MALACCA"},
+    {"start": 4, "end": 8, "text": "DISTRESS CALL FROM\\NA DUTCH FREIGHTER"},
+    {"start": 8, "end": 11, "text": "\"ALL OFFICERS\\NINCLUDING THE CAPTAIN\\NDEAD\""},
+    {"start": 11, "end": 14, "text": "LYING IN THE\\NCHARTROOM AND BRIDGE"},
+    {"start": 14, "end": 17, "text": "THEN ONE LAST\\NTRANSMISSION"},
+    {"start": 17, "end": 19, "text": "\"I DIE\""},
+    {"start": 19, "end": 23, "text": "RESCUERS FIND\\NEVERY MAN DEAD"},
+    {"start": 23, "end": 26, "text": "NO WOUNDS. NO FIRE."},
+    {"start": 26, "end": 30, "text": "FACES FROZEN\\NIN PURE TERROR"},
+    {"start": 30, "end": 34, "text": "BEFORE A TOW LINE\\NGOES ON..."},
+    {"start": 34, "end": 38, "text": "THE SHIP EXPLODES\\NAND SINKS"},
+    {"start": 38, "end": 42, "text": "NO REGISTRY HAS EVER\\NLISTED THIS SHIP"},
+    {"start": 42, "end": 46, "text": "NO WRECK.\\NNO CREW LIST."},
+    {"start": 46, "end": 50, "text": "NO RADIO LOG\\NEVER SURVIVED"},
+    {"start": 50, "end": 53.5, "text": "WAS THIS EVER\\NA REAL SHIP?"}
+  ]
+}

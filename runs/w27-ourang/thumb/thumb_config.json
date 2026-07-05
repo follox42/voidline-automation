@@ -1,0 +1,25 @@
+{
+  "src": "runs/w27-ourang/assets/ch0/img_01.jpg",
+  "out": "runs/w27-ourang/thumb/thumbnail.jpg",
+  "brightness": 0.92,
+  "saturation": 0.6,
+  "contrast": 1.15,
+  "text_x": 40,
+  "text_y": 24,
+  "headline": "GHOST SHIP.\nEVERYONE DEAD.",
+  "headline_size": 82,
+  "headline_color": "#E0B854",
+  "headline_stroke": 8,
+  "date": "1947",
+  "date_size": 72,
+  "date_stroke": 5,
+  "arrow": {
+    "tip": [615, 330],
+    "length": 230,
+    "angle": -150,
+    "shaft_w": 50,
+    "head_w": 110,
+    "head_len": 95,
+    "stroke_w": 6
+  }
+}
