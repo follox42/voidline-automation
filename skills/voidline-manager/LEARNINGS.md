@@ -1444,3 +1444,44 @@ a way to test it end-to-end.
   reachable from this sandbox) is unchanged — `upload_shorts.py` still needs the rewrite flagged
   in `BLOCKER_2026-07-04` before any future discovery/HOOK/ANSWER Short can complete its own
   upload end-to-end from a fresh session without a human in the loop.
+
+## 2026-07-05 (RUN18) — Comment reply run: no browser-automation tool reachable, draft-only policy unchanged
+
+**Observation**: Ran the comments-reply batch. Read `community/replied_to.json` and
+`community/community_log.csv` first per this run's own instructions — both still show only the
+single `@GrantMackay-wm1pe` Mary Celeste comment queued as `pending_post`/`pin_candidate: true`
+since 2026-06-30. Ran `skills/community-manager/comments_runner.py` directly: still fails at the
+same `ImportError: cannot import name 'StealthClient' from 'mcp_stealth'` (unfixed since RUN4,
+`mcp_stealth.py` only ever exposed bare `initialize()`/`list_tools()`/`call()`, confirmed by
+reading the module — the class genuinely does not exist, this was never a transient bug).
+Checked for a camoufox-stealth or mcphub MCP tool as the established read-only fallback (RUN6–12/
+14/15's pattern): `ToolSearch` for "camoufox stealth browser navigate evaluate" and separately for
+"mcphub" both returned nothing this session — same missing-tool bucket as RUN13/RUN17, not the
+RUN6-style "tool present, inbox just quiet" case. Also confirmed via the GitHub MCP tools (now
+connected) that the two prior security-flag PRs referenced across this history are real and
+merged: #326 (RUN4, flagging `mcp_stealth.py`'s registry-bypass path) and #334 (RUN6, applying the
+draft-only policy) — both merged via the repo's auto-merge workflow, no owner pushback recorded
+against the draft-only policy in the 5 days since.
+
+**Learning**: Same conclusion as RUN13/RUN17 — the comment-reply routine's browser dependency is
+intermittently available across sessions (present in RUN6-12/14/15, absent in RUN13/17/18), not a
+fixed regression to chase. With no browser path reachable at all, not even the read-only
+navigate+evaluate inbox check was possible, so no new comments could be fetched, classified, or
+drafted this run. Per the settled draft-only policy (`skills/community-manager/SKILL.md`) and its
+anti-bypass clause, did not fall back to `mcp_stealth.py`'s raw-HTTP client to read the inbox
+either — that client bypasses the MCP tool registry regardless of whether it's used for a read or
+a write, and PR #326 already flagged it for owner security review rather than routine use.
+
+**Action**:
+- Did not navigate, evaluate, reply, heart, hide, or pin anything — no browser session was
+  reachable this run, so the inbox could not even be read.
+- Appended a RUN18 note to the existing `community/replied_to.json` entry
+  (`UgxcyXas2_-6VF9_xlJ4AaABAg`) recording the missing-tool state; the entry itself
+  (`pending_post`, `pin_candidate: true`) is otherwise unchanged — still awaiting a
+  human-attended session to actually publish.
+- `community/community_log.csv` unchanged — no new comment to log.
+- No fix attempted for `comments_runner.py`'s `StealthClient` import bug this run, for the same
+  reason as RUN13/RUN17: the underlying MCP tool isn't reachable from this session either way, so
+  a code fix couldn't be verified end-to-end, and the real fix (rewriting the runner to call MCP
+  tools instead of the raw-HTTP bypass module) is the same scope already deferred to owner review
+  in #326/#334.
