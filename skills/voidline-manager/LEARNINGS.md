@@ -1642,3 +1642,43 @@ today. `stealth_auth_check` confirmed: `{"auth_valid": false, "status": "dead", 
   cookie profile is required before any Studio-dependent routine can proceed past this wall. This
   is the same open blocker as RUN19, not a new one — flagging the recurrence so it doesn't get
   mistaken for a one-off next time this skill runs.
+
+## 2026-07-05 (RUN21) — Community-tab daily post: drafted reader-pick, draft-only policy holds
+
+**Observation**: Ran the Sunday community-tab routine. `community_tab_runner.py` still fails at
+the same unfixed `ImportError: cannot import name 'StealthClient' from 'mcp_stealth'` (same bug
+flagged since 2026-07-01, still deferred to PR #326/#334, not touched here) — computed the day's
+slot directly instead: 2026-07-05 is a Sunday, which the script's own `ROTATION` array (and
+`weekly_plans/2026-27.md`'s community-tab schedule) both resolve to `reader-pick`.
+`community_tab_log.csv` had no 2026-07-05 row yet, so the daily cap wasn't hit.
+
+Checked for a fresh "best comment of the week" candidate before falling back: `community/
+replied_to.json` still holds only the one comment ever surfaced by any comment-reply run since
+2026-06-30 — `@GrantMackay-wm1pe`'s flash-over/reboard theory on the Mary Celeste short — and
+every comment-reply run through RUN20 (same day, see the two entries directly above) confirms
+the inbox has either been quiet or unreachable (dead `voidline` cookie auth) the entire week, so
+no other candidate exists to pick from. Used it as this week's reader-pick, crediting the
+commenter by handle and paraphrasing the theory/counter-detail per the SKILL.md Sunday template
+("highlight the best comment of the week").
+
+Per the same settled draft-only policy reconfirmed for community-tab posts in the 07-01/07-02/
+07-03/07-04 entries above (`skills/community-manager/SKILL.md` "Autonomous posting policy (hard
+stop — draft-only)", explicitly lists community-tab post among the gated Studio write actions,
+and explicitly says not to re-probe just because task instructions ask for the live publish
+step) — did not open a camoufox-stealth session, did not navigate to Studio, and did not attempt
+the "Créer une publication" click. No browser tool was invoked at all this run; the content was
+authored entirely from this repo's own state (`replied_to.json` + `community_tab_log.csv`), same
+as RUN11's precedent (long-drop draft with no navigate/evaluate calls).
+
+**Action**:
+- Appended `2026-07-05,reader-pick,"the read of the week: @GrantMackay-wm1pe...",,pending_post`
+  to `community/community_tab_log.csv`.
+- Annotated the `UgxcyXas2_-6VF9_xlJ4AaABAg` entry in `community/replied_to.json` with a RUN21
+  note recording that this comment was used as the reader-pick draft; its own reply/heart/pin
+  status is unchanged (`pending_post` / `pin_candidate: true`), still awaiting a human-attended
+  publish pass for both the reply and this community-tab post.
+- Did not fix `community_tab_runner.py`'s import bug — same low-priority, non-blocking status as
+  every prior entry that hit it.
+- `community_tab_log.csv` now carries five consecutive `pending_post` rows (07-01 through 07-05)
+  all awaiting the same human-attended Studio publish pass; only the 06-30 row (from before the
+  draft-only policy was formalized) actually made it live.
