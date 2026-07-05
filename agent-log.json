@@ -199,6 +199,11 @@
       "t": "2026-07-05 13:10 UTC",
       "action": "COMMUNITY_RUN_BLOCKER",
       "detail": "Comment-reply batch RUN19. comments_runner.py still broken (unfixed StealthClient import). camoufox-stealth MCP tools were reachable this run (unlike RUN18), but stealth_navigate to Studio inbox (cookie_profile=voidline) landed on Google account-chooser with Nolann marked Deconnecte on two attempts; stealth_auth_check confirmed auth_valid=false/status=dead/\"Re-login required\". New failure signature: transport up, voidline cookie session itself expired -- distinct from RUN18 missing-tool and from same-day BLOCKER_2026-07-05-WEEKLY-INTEL mcphub 502/530 outage. No inbox read possible, no new comments, no reply/heart/hide/pin attempted. Logged as LEARNINGS.md RUN19 entry. Owner action needed: fresh interactive login to refresh voidline cookie profile."
+    },
+    {
+      "t": "2026-07-05 17:10 UTC",
+      "action": "COMMUNITY_RUN_BLOCKER",
+      "detail": "Comment-reply batch RUN20, same day as RUN19. comments_runner.py still fails at the same unfixed StealthClient import (not touched, deferred to open PR #326/#334). camoufox-stealth MCP tools reachable via mcphub this run. Opened fresh session voidline_community_r20, cookie_profile=voidline, 335 cookies restored -- stealth_navigate to Studio inbox again landed on the Google account-chooser with Nolann marked Deconnecte (identical to RUN19). stealth_auth_check confirmed auth_valid=false/status=dead/\"Auth INVALID. Do NOT post. Re-login required.\" The voidline cookie session has not been refreshed since RUN19; no inbox read was possible, no new comments to classify, no reply/heart/hide/pin/pin attempted. Session closed cleanly. Owner action still needed: interactive re-login to refresh the voidline cookie profile before any Studio-dependent routine (comments, community-tab, uploads, weekly-intel) can proceed past this wall."
     }
   ]
 }
