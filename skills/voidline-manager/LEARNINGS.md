@@ -1780,3 +1780,35 @@ an unattended agent.
   `shorts/w28_discovery_hauser.mp4` (regenerate via `bash` Ken-Burns steps documented in this
   entry, or ask a session to re-render from the committed `script.json`/`manifest.json`) manually
   via studio.youtube.com, title/desc pulled from `shorts_state.json`.
+
+## DRIFT_2026-07-06 — Daily-plan review: dead voidline cookie now blocking a full week of scheduled Studio publishes
+
+**Review run** (2026-07-06 ~08:15 UTC, daily-plan cron): reconfirmed the `voidline` cookie auth
+is DEAD *live this session* — opened a fresh camoufox session (voidline profile, 434 cookies
+restored), navigated to studio.youtube.com, redirected to Google's account-chooser with Nolann's
+account labelled **"Déconnecté"**; `auth_check` → `{status: "dead", recommendation: "Auth INVALID.
+Do NOT post. Re-login required."}`. Not a stale cache — a fresh session hits the same wall (same
+finding as BLOCKER_2026-07-06 / RUN19–22).
+
+**Today's slot missed**: `w28_discovery_hauser` (Kaspar Hauser, 12:00 UTC) stays `PENDING_UPLOAD` —
+never uploaded (yt_id null), so nothing exists in Studio to reconcile against; no status change made.
+The render `shorts/w28_discovery_hauser.mp4` is also absent in this fresh container (local-only
+artifact, prior container reclaimed) — so even with restored auth this session could not upload
+without re-rendering from the committed `script.json`/assets first.
+
+**Calendar drift — the whole rest of W28 is blocked on the same cookie**:
+- Tue 2026-07-07 — LONG-1 (Zodiac) publish **+** HOOK Short — Studio upload, blocked.
+- Wed 2026-07-08 — ANSWER Short (Z340 cipher) — blocked.
+- Thu 2026-07-09 — D.B. Cooper discovery Short — blocked.
+- Fri–Sun — LONG-2 (Ourang Medan) + 2 Shorts + discovery — all blocked.
+
+**Root cause / owner action (unchanged, escalating)**: the `voidline` cookie session is dead and
+there is *no* credential-refresh path available to an unattended routine. Every Studio-dependent
+routine (uploads, scheduling, comment replies, community-tab, analytics) is hard-blocked until
+Nolann does a **one-time interactive re-login** to the `voidline` cookie profile. This is now
+overdue ~2 days and, left unaddressed, will cause 7 consecutive scheduled publishes (1 long-form +
+6 Shorts) to miss their W28 slots.
+
+**Reddit seed (step 4)**: NOT drafted. Today is not a long-form publish day (LONG-1 is Tue 07-07),
+so the trigger did not fire — and independently, CLAUDE.md records an explicit owner opt-out on
+Reddit seeding ("pas de reddit on peux explosr natureellement"), which governs even on long-form days.
