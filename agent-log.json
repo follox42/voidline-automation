@@ -234,6 +234,11 @@
       "t": "2026-07-06 08:22 UTC",
       "action": "COMMUNITY_RUN_BLOCKER",
       "detail": "Comment-reply batch RUN23. comments_runner.py still fails on the unfixed StealthClient import (deferred to merged PR #326/#334, not touched). camoufox-stealth MCP tools reachable this run. Opened fresh session voidline_community_r23, cookie_profile=voidline, 432 cookies restored -- stealth_navigate to Studio inbox landed on the Google account-chooser again, Nolann marked Déconnecté, identical to RUN19/RUN20/RUN22 and this morning's 08:15 UTC daily-plan review. stealth_auth_check confirmed auth_valid=false/status=dead/'Auth INVALID. Do NOT post. Re-login required.' -- voidline cookie session dead for a 3rd consecutive day (07-04 through 07-06). No inbox read possible, no new comments to classify, no reply/heart/hide/pin attempted. Session closed cleanly. Owner action needed (unchanged): interactive re-login to refresh the voidline cookie profile."
+    },
+    {
+      "t": "2026-07-06 13:07 UTC",
+      "action": "COMMUNITY_RUN_BLOCKER",
+      "detail": "Comment-reply batch RUN24. Same signature as RUN19-23: comments_runner.py fails on the unfixed StealthClient import; fresh session (voidline_community_r24, 432 cookies) landed on Google account-chooser, Nolann Déconnecté, stealth_auth_check=dead. No inbox read, no reply/heart/hide/pin. Closed cleanly. Owner action needed (unchanged): interactive re-login."
     }
   ]
 }
