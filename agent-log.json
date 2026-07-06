@@ -229,6 +229,11 @@
       "t": "2026-07-06 08:15 UTC",
       "action": "DAILY_PLAN_DRIFT",
       "detail": "Daily-plan review 2026-07-06. TODAY: 1 Short due (w28_discovery_hauser, Kaspar Hauser, 12:00 UTC) — PENDING_UPLOAD, yt_id null, render absent in container, voidline auth CONFIRMED DEAD live this session (account 'Déconnecté', auth_check=dead). Today's 12:00 UTC slot will be MISSED. Not a long-form publish day (LONG-1 Zodiac = Tue 07-07), so no Reddit seed drafted (also: CLAUDE.md opt-out 'pas de reddit' governs regardless). DRIFT next 3 days, all blocked on same dead voidline cookie: Tue 07-07 LONG-1 Zodiac publish + HOOK Short; Wed 07-08 ANSWER Short; Thu 07-09 D.B. Cooper discovery Short. ROOT CAUSE: voidline cookie auth dead since ~07-04, needs Nolann interactive re-login — no routine-session fix exists. This is the 3rd consecutive daily Short slot at risk of miss on the same blocker."
+    },
+    {
+      "t": "2026-07-06 08:22 UTC",
+      "action": "COMMUNITY_RUN_BLOCKER",
+      "detail": "Comment-reply batch RUN23. comments_runner.py still fails on the unfixed StealthClient import (deferred to merged PR #326/#334, not touched). camoufox-stealth MCP tools reachable this run. Opened fresh session voidline_community_r23, cookie_profile=voidline, 432 cookies restored -- stealth_navigate to Studio inbox landed on the Google account-chooser again, Nolann marked Déconnecté, identical to RUN19/RUN20/RUN22 and this morning's 08:15 UTC daily-plan review. stealth_auth_check confirmed auth_valid=false/status=dead/'Auth INVALID. Do NOT post. Re-login required.' -- voidline cookie session dead for a 3rd consecutive day (07-04 through 07-06). No inbox read possible, no new comments to classify, no reply/heart/hide/pin attempted. Session closed cleanly. Owner action needed (unchanged): interactive re-login to refresh the voidline cookie profile."
     }
   ]
 }
