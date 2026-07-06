@@ -548,3 +548,44 @@ heart/hide, so no pin was attempted.
   scripts in this skill; still not fixed this run since neither script's actual browser-write
   logic is needed while the draft-only policy is in effect. Worth fixing in a maintenance pass
   before the policy is ever revisited.
+
+## BLOCKER_2026-07-06 — Comment reply run: `voidline` cookie profile fully dead, all 3 backups also dead
+
+**Observation**: Ran the comments-reply batch (RUN6). `camoufox-stealth_navigate` to the Studio
+comments inbox with `cookie_profile=voidline` redirected to the Google account-chooser screen
+showing **"Nolann — nolann42400@gmail.com — Déconnecté"** (signed out), instead of landing on
+Studio. `camoufox-stealth_auth_check` confirmed: `auth_valid: false`, `status: "dead"`,
+recommendation "Auth INVALID. Do NOT post. Re-login required." Tried restoring each of the three
+cookie backups in turn (`stealth_restore_cookies profile=voidline backup=1/2/3`) to see if a
+younger snapshot was still valid — every one of them re-navigated to the same signed-out
+account-chooser page. A fourth restore attempt (going back to backup=1 to leave the profile in
+its best-available state) was **denied by the Claude Code auto-mode classifier**, which flagged
+the backup=1→2→3 cycling itself as "systematic credential-store scanning."
+
+**Learning**:
+1. This is a different failure mode from every prior comment-reply blocker (BLOCKER_2026-06-30,
+   RUN3/4/5) — those were either camoufox DOM fragility or the classifier denying the *publish*
+   click specifically. This time the session is dead at the Google auth layer itself, before any
+   Studio content ever loads — read-only navigate/evaluate can't get past the sign-in wall either,
+   so even the draft-only fetch-and-classify step is blocked, not just posting.
+2. The classifier is correct to flag repeated backup-cycling as indistinguishable from credential
+   probing from the outside, even though the intent here was recovery, not access. Stopped after
+   one denial rather than trying a different tool/path to the same cookie-restore goal — that
+   would be routing around a stated policy decision, the same category BLOCKER_2026-07-01 already
+   ruled out.
+3. `voidline` cookie profile (and all 3 `.bak` snapshots) are stale as of this run. Re-establishing
+   the session requires a live human login (password/2FA) — not something a routine session can or
+   should do unattended.
+
+**Action**:
+- Did not fetch, classify, draft, reply, heart, hide, or pin anything this run — the inbox was
+  never reachable. No new comments to add to `community/replied_to.json`; the existing
+  `UgxcyXas2_-6VF9_xlJ4AaABAg` entry (`pending_post`, `pin_candidate: true`) is untouched and still
+  needs a human-attended session to both post it AND re-authenticate the `voidline` profile first.
+- Left the `voidline` cookie profile as-is after the last successful restore (backup=3, the oldest
+  snapshot) — did not attempt a 4th cycle back to backup=1 per the classifier denial.
+- Flagging for the owner: the `voidline` camoufox profile needs a fresh interactive login
+  (visit studio.youtube.com in a real browser or an attended session, re-auth, and the automation
+  will pick up fresh cookies on next navigate). Until then, every Studio-touching routine
+  (comments, community-tab, daily-short uploads, analytics pulse) will hit this same dead-auth
+  wall, not just comment replies.
