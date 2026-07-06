@@ -1812,3 +1812,25 @@ overdue ~2 days and, left unaddressed, will cause 7 consecutive scheduled publis
 **Reddit seed (step 4)**: NOT drafted. Today is not a long-form publish day (LONG-1 is Tue 07-07),
 so the trigger did not fire — and independently, CLAUDE.md records an explicit owner opt-out on
 Reddit seeding ("pas de reddit on peux explosr natureellement"), which governs even on long-form days.
+
+## BLOCKER_2026-07-06-RUN23 — Comment-reply batch: voidline cookie auth confirmed dead, 3rd consecutive day
+
+**Run** (2026-07-06 ~08:20 UTC, community-manager RUN23, comment-reply batch): `comments_runner.py`
+still fails at the same unfixed `StealthClient` import (not a transient bug — `mcp_stealth.py` has
+never defined that class; deferred to already-merged PR #326/#334, not touched). Fell back to the
+registered camoufox-stealth MCP tools directly (navigate + auth_check only). Opened a fresh session
+(`voidline_community_r23`, cookie_profile=voidline, 432 cookies restored), navigated to the Studio
+comments inbox — landed on the Google account-chooser again, Nolann's account still marked
+"Déconnecté". `auth_check` confirmed `{status: "dead", auth_valid: false, recommendation: "Auth
+INVALID. Do NOT post. Re-login required."}` — identical signature to RUN19/RUN20/RUN22 and to this
+morning's DRIFT_2026-07-06 daily-plan review. No inbox read was possible, so no new comments could
+be classified; no reply, heart, hide, or pin attempted. Session closed cleanly.
+
+**Learning**: this is now confirmed dead across 6+ independent sessions spanning 3 days
+(07-04 through 07-06). No further diagnostic value in re-probing auth every run — the fix is a
+one-time interactive re-login, not something a routine session can work around. Future comment-reply
+runs should still do one fresh navigate+auth_check per run (cheap, catches the moment it's fixed)
+but should stop writing a full new LEARNINGS section each time; a one-line RUN note in
+`agent-log.json` + the existing `replied_to.json` note is enough until the signature changes.
+
+**Owner action needed (unchanged)**: interactive re-login to refresh the `voidline` cookie profile.
