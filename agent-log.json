@@ -239,6 +239,11 @@
       "t": "2026-07-06 13:07 UTC",
       "action": "COMMUNITY_RUN_BLOCKER",
       "detail": "Comment-reply batch RUN24. Same signature as RUN19-23: comments_runner.py fails on the unfixed StealthClient import; fresh session (voidline_community_r24, 432 cookies) landed on Google account-chooser, Nolann Déconnecté, stealth_auth_check=dead. No inbox read, no reply/heart/hide/pin. Closed cleanly. Owner action needed (unchanged): interactive re-login."
+    },
+    {
+      "t": "2026-07-06 18:00 UTC",
+      "action": "COMMUNITY_TAB_RUN_BLOCKER",
+      "detail": "Daily community-tab post RUN25 (Mon, behind-scenes format per rotation). community_tab_runner.py still fails on the unfixed StealthClient import (same known bug as comments_runner.py, PR #326/#334). Drafted behind-scenes tease content for LONG-1 (Zodiac, Tue 07-07) from NEXT_VIDEOS.md iconic detail -- no thumb image asset exists yet (long-form pipeline for Tuesday's video hasn't run). Fresh stealth_navigate to Studio community tab (session voidline_community_r25, cookie_profile=voidline, 433 cookies) landed on the Google account-chooser again, Nolann Deconnecte; stealth_auth_check confirmed auth_valid=false/status=dead -- 4th consecutive day (07-04 through 07-06), same signature as RUN19-24. No publish attempted. Appended draft to community/community_tab_log.csv as status=pending_post (no post_url). Owner action needed (unchanged): interactive re-login to the voidline cookie profile."
     }
   ]
 }
