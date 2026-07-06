@@ -1,0 +1,22 @@
+{
+  "run_id": "w28-hauser",
+  "channel_slug": "voidline",
+  "format": "short-discovery",
+  "topic": "Kaspar Hauser, Nuremberg 1828",
+  "hook_question": "KEPT IN THE DARK\\N16 YEARS.\\NTHEN HE APPEARED.",
+  "iconic_detail": "Teenager appears in Nuremberg town square able to say almost nothing but his name, claims a lifetime in a darkened cell",
+  "_voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "_voice_name": "David Documentary, eleven_multilingual_v2",
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "voiceover": "May 1828, Nuremberg. A teenage boy stumbles into the town square, barely able to stand, clutching a letter to a cavalry captain. Asked his name, he can write only one thing: Kaspar Hauser.\n\nHe claims he spent his entire life alone, locked in a darkened cell, fed only bread and water, never once seeing another human face.\n\nNobody in Nuremberg comes forward to claim him. Rumors spread that he is the missing heir to the House of Baden, swapped at birth to clear a rival's path to the throne.\n\nFive years later, Kaspar Hauser is found stabbed in a public park. His dying words blame a stranger who was never identified.\n\nWho he really was has never been confirmed.",
+      "wikimedia_queries": [
+        "Kaspar Hauser portrait",
+        "Kaspar Hauser Nuremberg 1828",
+        "Nuremberg town square 19th century",
+        "Kaspar Hauser grave memorial"
+      ]
+    }
+  ]
+}

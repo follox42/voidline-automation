@@ -1,0 +1,22 @@
+{
+  "ch0": [
+    {
+      "path": "runs/w28-hauser/assets/ch0/img_04.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Arrival_of_Kaspar_Hauser_in_Nuremberg.jpg",
+      "license": "Public domain",
+      "title": "Arrival of Kaspar Hauser in Nuremberg"
+    },
+    {
+      "path": "runs/w28-hauser/assets/ch0/img_01.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/02/Hauser_2ndKreul_portrait.jpg",
+      "license": "Public domain",
+      "title": "Hauser 2ndKreul portrait (pastel)"
+    },
+    {
+      "path": "runs/w28-hauser/assets/ch0/img_05.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/2/20/Assassination_of_Kaspar_Hauser_at_Nuremberg.jpg",
+      "license": "Public domain",
+      "title": "Assassination of Kaspar Hauser at Nuremberg (Mary Evans Picture Library)"
+    }
+  ]
+}
