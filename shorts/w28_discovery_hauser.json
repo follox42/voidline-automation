@@ -1,0 +1,31 @@
+{
+  "source": "runs/w28-hauser/render/base.mp4",
+  "start_s": 0,
+  "duration_s": 51.5,
+  "out": "shorts/w28_discovery_hauser.mp4",
+  "source_is_portrait": true,
+  "header_text": "KASPAR HAUSER — 1828",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "KEPT IN THE\\NDARK 16 YEARS.\\NTHEN HE\\NAPPEARED.",
+  "hook_fontsize": 130,
+  "outro_question": "WHO WAS\\NHE REALLY?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0, "end": 4, "text": "MAY 1828\\NNUREMBERG"},
+    {"start": 4, "end": 8, "text": "A TEENAGE BOY\\NSTUMBLES INTO THE SQUARE"},
+    {"start": 8, "end": 11, "text": "BARELY ABLE\\NTO STAND"},
+    {"start": 11, "end": 14, "text": "HE CAN WRITE\\NONLY ONE THING"},
+    {"start": 14, "end": 16.5, "text": "\"KASPAR HAUSER\""},
+    {"start": 16.5, "end": 20, "text": "HE CLAIMS A LIFETIME\\NALONE IN A CELL"},
+    {"start": 20, "end": 23.5, "text": "FED ONLY\\NBREAD AND WATER"},
+    {"start": 23.5, "end": 27, "text": "NEVER ONCE SEEING\\NANOTHER HUMAN FACE"},
+    {"start": 27, "end": 30.5, "text": "NOBODY IN NUREMBERG\\NCOMES FORWARD"},
+    {"start": 30.5, "end": 34.5, "text": "RUMORS: THE MISSING\\NHEIR TO BADEN"},
+    {"start": 34.5, "end": 38, "text": "SWAPPED AT BIRTH\\NTO CLEAR A RIVAL'S PATH"},
+    {"start": 38, "end": 41.5, "text": "FIVE YEARS LATER..."},
+    {"start": 41.5, "end": 45, "text": "FOUND STABBED\\NIN A PUBLIC PARK"},
+    {"start": 45, "end": 48, "text": "DYING WORDS BLAME\\NA STRANGER"}
+  ]
+}

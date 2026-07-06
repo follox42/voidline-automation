@@ -1,0 +1,25 @@
+{
+  "src": "runs/w28-hauser/assets/ch0/img_04.jpg",
+  "out": "runs/w28-hauser/thumb/thumbnail.jpg",
+  "brightness": 0.95,
+  "saturation": 0.8,
+  "contrast": 1.12,
+  "text_x": 40,
+  "text_y": 24,
+  "headline": "16 YEARS\nIN THE DARK.",
+  "headline_size": 92,
+  "headline_color": "#E0B854",
+  "headline_stroke": 8,
+  "date": "1828",
+  "date_size": 72,
+  "date_stroke": 5,
+  "arrow": {
+    "tip": [860, 330],
+    "length": 220,
+    "angle": -150,
+    "shaft_w": 50,
+    "head_w": 110,
+    "head_len": 95,
+    "stroke_w": 6
+  }
+}

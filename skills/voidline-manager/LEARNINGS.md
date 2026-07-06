@@ -1709,3 +1709,74 @@ same reasoning as RUN19/RUN20.
 - **Owner action needed** (unchanged from RUN19/RUN20): a fresh interactive login to the
   `voidline` cookie profile is required before any Studio-dependent routine can proceed past this
   wall.
+
+## BLOCKER_2026-07-06 — Daily Short (Mon W28 discovery/Kaspar Hauser): produced end-to-end, upload still blocked — voidline cookie auth confirmed dead 3rd session running
+
+**Observation**: Today's row in `weekly_plans/2026-W28.md` was Mon 2026-07-06, discovery,
+topic Kaspar Hauser (Nuremberg, 1828) — already fully specified by the locked plan (topic,
+iconic detail, hook question), no TBD to fill this time.
+
+**What was produced** (all local, verified by inspecting rendered frames):
+- Script: 119-word VO, cool docu-narrator voice — cold open (boy appears in the square, can
+  write only his name), the claim (16 years alone in a darkened cell), the rumor (missing heir
+  to the House of Baden), the twist (stabbed 5 years later, identity never confirmed).
+  `runs/w28-hauser/script.json`.
+- Voice: David Documentary (`ppLqTilh7rH7fbUVlXsf`), `eleven_multilingual_v2`. Tried the
+  `mcp__mcphub__elevenlabs-text_to_speech` MCP tool first (reachable this session, unlike
+  BLOCKER_2026-07-04/05) — it succeeded but saved to `/root/Desktop/tts_*.mp3` on a host
+  unreachable from this sandbox (`ls /root/Desktop` here reports no such directory even though
+  we run as root — confirms the tool executes on a different container than this shell, the same
+  cross-host filesystem-isolation class as BLOCKER_2026-06-30). Fell back to a direct HTTPS call
+  to the ElevenLabs REST API with `ELEVENLABS_KEY` from env (same workaround as the prior two
+  discovery Shorts). 51.77s output, `runs/w28-hauser/voice/vo.mp3`. Subscription check: Creator
+  tier, 109,549/121,849 chars used this period before this call — comfortably within budget.
+- Assets: 3 real Wikimedia Commons public-domain images, and unlike Ourang Medan this subject
+  has real period depictions: "Arrival of Kaspar Hauser in Nuremberg" (the actual town-gate
+  arrival scene), a Kreul pastel portrait, and "Assassination of Kaspar Hauser at Nuremberg"
+  (the 1833 stabbing). Rejected a redundant engraving portrait, a low-visual-value handwritten
+  letter-address scan, and an illegible book-cover scan. Attribution in
+  `runs/w28-hauser/assets/ATTRIBUTION.md`.
+- Render: fresh 1080x1920 Ken-Burns video from the 3 images (zoompan + xfade crossfades, ~52s),
+  using the corrected zoompan idiom documented in BLOCKER_2026-07-05 (`d=1`, explicit x/y
+  centering, zoom-rate delta capped at 1.15x) — no re-occurrence of the over-zoom bug, verified
+  by inspecting start/mid/end frames of each segment. `runs/w28-hauser/render/base.mp4`.
+- Cut: `shorts/short_cutter_v2.py` with `source_is_portrait: true`, hook card ("KEPT IN THE DARK
+  16 YEARS. THEN HE APPEARED."), 15 paced captions, outro card ("WHO WAS HE REALLY?" / COMMENT).
+  Verified hook/body/outro frames visually. `shorts/w28_discovery_hauser.mp4` (51.5s, 5.4MB).
+- Thumb: Fern-style v1 thumb_A template, arrow pointing at the Kaspar Hauser figure in the
+  arrival-scene illustration, gold headline "16 YEARS / IN THE DARK." + "1828".
+  `runs/w28-hauser/thumb/thumbnail.jpg`.
+
+**Upload attempt — still blocked**: Checked `camoufox-stealth_auth_check` on two existing
+`voidline`-profile sessions from earlier today (`voidline_reauth`, `voidline_verify_fresh`) —
+both `auth_valid: false, status: dead`. Opened a brand-new session
+(`voidline_daily_short_0706`, `cookie_profile=voidline`, 345 cookies restored) and navigated
+directly to the Studio upload URL: landed on Google's account-chooser, Nolann's account still
+labeled **"Déconnecté"**, identical to RUN19/RUN20/RUN22 (2026-07-05). `auth_check` on this fresh
+session confirmed again: `{"auth_valid": false, "status": "dead", "recommendation": "Auth
+INVALID. Do NOT post. Re-login required."}`. This is not a stale-session artifact — a fully
+fresh session hits the same wall, so the underlying Google/YouTube cookie session itself is
+dead, not just this sandbox's cached view of it. `shorts/upload_shorts.py` remains unusable
+regardless (imports a nonexistent cross-host `mcp_stealth` module, hardcodes an unrelated
+`SPECS` list from the Mary Celeste/Dyatlov/Tunguska batch).
+
+**Learning**: The `voidline` cookie profile has now been confirmed dead across at least 4
+independent sessions spanning 2 days (RUN19, RUN20, RUN22 on 07-05; this daily-short run on
+07-06). This is a hard blocker on every Studio-dependent routine (uploads, comments,
+community-tab, weekly-intel analytics) until Nolann does an interactive re-login. No amount of
+retrying from routine sessions will fix it — there is no credential-refresh path available to
+an unattended agent.
+
+**Action** (per CLAUDE.md's blocked-routine protocol):
+- Saved `w28_discovery_hauser` as `PENDING_UPLOAD` in `shorts_state.json` with full title/desc/
+  hook/asset metadata so upload is a mechanical step once auth is restored.
+- mp4/thumb kept as local artifacts only (repo convention: no binary renders in git); script,
+  manifest, attribution, cutter config, and thumb config/image are committed so the render is
+  deterministically regenerable.
+- Logged `DAILY_SHORT` blocker entry in `agent-log.json`.
+- **Owner action needed** (unchanged, now overdue 2 days): a fresh interactive login to the
+  `voidline` cookie profile is required before any Studio-dependent routine can proceed. Until
+  then, the 12:00 UTC Monday slot will be missed unless Nolann uploads
+  `shorts/w28_discovery_hauser.mp4` (regenerate via `bash` Ken-Burns steps documented in this
+  entry, or ask a session to re-render from the committed `script.json`/`manifest.json`) manually
+  via studio.youtube.com, title/desc pulled from `shorts_state.json`.
