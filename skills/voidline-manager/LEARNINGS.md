@@ -1849,3 +1849,50 @@ today since there's no render to cut or upload anyway. No new root cause; both b
 **Action**: No production attempted, no state changes. Owner actions unchanged from
 DRIFT_2026-07-06: (1) interactive re-login to `voidline`, (2) run the long-form pipeline for
 LONG-1 so a render exists for future HOOK/ANSWER Short cuts.
+
+## DRIFT_2026-07-07 — Daily-plan: LONG-1 publish day + Tue HOOK Short both un-ready; cookie dead day 5
+
+**Daily-plan review (~08:1x UTC, 2026-07-07).** `cron_runner.py daily-plan` logged
+`Today 2026-07-07 — 0 Shorts publishing` — because the state file has **no** Short with
+`publish_at=2026-07-07`. Per `weekly_plans/2026-W28.md` today should carry TWO scheduled publishes,
+neither of which is ready:
+
+- **LONG-1 (Zodiac) long-form — Tue publish day.** No render exists (`runs/LONG-1` / no Zodiac run
+  dir), so there is nothing scheduled in Studio to verify and nothing to publish. Already predicted
+  by DRIFT_2026-07-06 and re-confirmed by the 2026-07-07 daily-short run (which failed on the same
+  missing render). **Today's long-form slot will be MISSED.**
+- **Tue HOOK Short (Zodiac, "THEY HAD A SUSPECT. ONE FINGERPRINT LET HIM WALK.").** Never produced
+  and never added to `shorts_state.json` (the daily-plan's `notable` list is empty for today, hence
+  "0 Shorts publishing"). Its HOOK cut depends on the LONG-1 render that doesn't exist, so it cannot
+  be produced either. **Today's 12:00 UTC Short slot will be MISSED.**
+
+**Step 3 (reconcile today's scheduled Shorts):** nothing to reconcile — 0 Shorts scheduled for today
+in state, and the past PENDING_UPLOAD backlog (flight19 07-04, ourang 07-05, hauser 07-06) is not
+today's and remains accurately PENDING_UPLOAD (yt_id null, never in Studio to verify). No status
+changes made.
+
+**Step 4 (Reddit seed on long-form day):** today IS a long-form publish day, but NOT drafting a
+Reddit seed — CLAUDE.md records an explicit standing owner opt-out on Reddit seeding ("pas de reddit
+on peux explosr natureellement"), which governs over the routine's step-4 trigger. Same call as
+every prior long-form day this cycle.
+
+**Cookie:** re-probed once (cheap, per RUN23 guidance) — fresh session `voidline_dailyplan_0707`,
+433 cookies restored, studio.youtube.com → Google account-chooser, Nolann marked "Déconnecté";
+`auth_check` → `{status: "dead", auth_valid: false}`. **Day 5** (07-03 → 07-07), same signature.
+
+**Next-3-day drift (all blocked on the same two root causes):**
+- Wed 2026-07-08 — ANSWER Short (Z340 cipher) — needs LONG-1 render (missing) + live cookie (dead).
+- Thu 2026-07-09 — D.B. Cooper discovery Short — needs a working Studio bridge (cookie dead).
+- Fri 2026-07-10 — LONG-2 (Ourang Medan) publish + HOOK Short — needs a rendered LONG-2 (not started)
+  + live cookie.
+
+**Owner actions (both overdue, unchanged and escalating):**
+1. One-time **interactive re-login to the `voidline` cookie profile** — unblocks every Studio-
+   dependent routine (uploads, scheduling, comment replies, community-tab, analytics). Now ~4 days
+   overdue.
+2. **Run the long-form pipeline for LONG-1 (Zodiac)** so a render exists — without it, today's
+   long-form AND the Tue/Wed HOOK+ANSWER Shorts that cut from it are all impossible. LONG-2 (Ourang
+   Medan, Fri) is not started either.
+
+With both unaddressed, W28 is on track to miss **1 long-form + its two dependent Shorts this week
+alone**, on top of the 3 discovery Shorts already missed 07-04→07-06.
