@@ -254,6 +254,21 @@
       "t": "2026-07-07 12:00 UTC",
       "action": "DAILY_SHORT_RUN_BLOCKER",
       "detail": "Daily Short routine, Tue 2026-07-07 (type=HOOK, source=LONG-1, hook=\"THEY HAD A SUSPECT. ONE FINGERPRINT LET HIM WALK.\"). Ran skills/daily-short/daily_short_runner.py per routine: failed immediately, source run dir runs/LONG-1 not found -- the Zodiac long-form has not been rendered yet (long-form-pipeline for Tue has not run, confirmed via DRIFT_2026-07-06 note and empty runs/ dir -- only v4-roanoke, v5-flannan, w27-flight19, w27-ourang, w28-hauser present). No HOOK short can be cut from a video that does not exist yet; this is an upstream dependency, not something daily-short can work around. Independently reconfirmed the voidline cookie is still dead: fresh session (voidline_dailyshort_20260707, 433 cookies restored) navigated to studio.youtube.com, landed on Google account-chooser, Nolann marked Deconnecte, stealth_auth_check -> auth_valid=false/status=dead -- same signature unchanged since 07-04, now day 4. Even once the long-form renders, upload would still be blocked on this. No render attempted, no upload attempted, no state file changes. Session closed cleanly. Owner actions needed (unchanged): (1) interactive re-login to the voidline cookie profile; (2) run/trigger the long-form-pipeline for LONG-1 (Zodiac) so runs/LONG-1/render/voidline.mp4 exists before the next daily-short attempt."
+    },
+    {
+      "t": "2026-07-07 08:08 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-07-07 — 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-07-07 08:08 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-07-07 — 0 Shorts publishing | "
+    },
+    {
+      "t": "2026-07-07 08:1x UTC",
+      "action": "DAILY_PLAN_DRIFT",
+      "detail": "Tue 07-07 is LONG-1 (Zodiac) publish day + Tue HOOK Short day; BOTH un-ready. LONG-1 has no render (runs/LONG-1 absent) -> long-form slot will be MISSED. Tue HOOK Short never produced, absent from shorts_state.json (daily-plan saw 0 shorts today) -> 12:00 UTC Short slot will be MISSED. Step3: nothing to reconcile (0 scheduled today; PENDING_UPLOAD backlog flight19/ourang/hauser unchanged). Step4: long-form day but Reddit seed NOT drafted per CLAUDE.md owner opt-out (\"pas de reddit\"). Cookie re-probed: session voidline_dailyplan_0707, 433 cookies, account-chooser/Deconnecte, auth_check status=dead (DAY 5, 07-03->07-07). Next-3-day drift: Wed ANSWER (Z340), Thu D.B.Cooper discovery, Fri LONG-2+HOOK all blocked on same 2 root causes. Owner actions overdue: (1) interactive re-login to voidline cookie, (2) run LONG-1 (and LONG-2) long-form pipeline. See LEARNINGS DRIFT_2026-07-07."
     }
   ]
 }
