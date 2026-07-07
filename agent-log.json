@@ -249,6 +249,11 @@
       "t": "2026-07-06 19:30 UTC",
       "action": "COMMUNITY_RUN_BLOCKER",
       "detail": "Comment-reply batch RUN26. comments_runner.py still fails on the unfixed StealthClient import (deferred to merged PR #326/#334, not touched). Fresh session (voidline_community_r26, 433 cookies restored) navigated to Studio comments inbox, landed on the Google account-chooser again, Nolann marked disconnected. stealth_auth_check confirmed auth_valid=false/status=dead/'Auth INVALID. Do NOT post. Re-login required.' -- same signature unchanged since 07-04. No inbox read, no reply/heart/hide/pin attempted. Session closed cleanly. Owner action needed (unchanged): interactive re-login to refresh the voidline cookie profile."
+    },
+    {
+      "t": "2026-07-07 12:00 UTC",
+      "action": "DAILY_SHORT_RUN_BLOCKER",
+      "detail": "Daily Short routine, Tue 2026-07-07 (type=HOOK, source=LONG-1, hook=\"THEY HAD A SUSPECT. ONE FINGERPRINT LET HIM WALK.\"). Ran skills/daily-short/daily_short_runner.py per routine: failed immediately, source run dir runs/LONG-1 not found -- the Zodiac long-form has not been rendered yet (long-form-pipeline for Tue has not run, confirmed via DRIFT_2026-07-06 note and empty runs/ dir -- only v4-roanoke, v5-flannan, w27-flight19, w27-ourang, w28-hauser present). No HOOK short can be cut from a video that does not exist yet; this is an upstream dependency, not something daily-short can work around. Independently reconfirmed the voidline cookie is still dead: fresh session (voidline_dailyshort_20260707, 433 cookies restored) navigated to studio.youtube.com, landed on Google account-chooser, Nolann marked Deconnecte, stealth_auth_check -> auth_valid=false/status=dead -- same signature unchanged since 07-04, now day 4. Even once the long-form renders, upload would still be blocked on this. No render attempted, no upload attempted, no state file changes. Session closed cleanly. Owner actions needed (unchanged): (1) interactive re-login to the voidline cookie profile; (2) run/trigger the long-form-pipeline for LONG-1 (Zodiac) so runs/LONG-1/render/voidline.mp4 exists before the next daily-short attempt."
     }
   ]
 }
