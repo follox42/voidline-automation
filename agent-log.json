@@ -274,6 +274,11 @@
       "t": "2026-07-07 09:1x UTC",
       "action": "COMMUNITY_RUN27",
       "detail": "Comment-reply batch RUN27. comments_runner.py still fails on the same unfixed StealthClient import (mcp_stealth.py has never defined that class; deferred to merged PR #326/#334, not touched). Fresh session (voidline_community_r27, 442 cookies restored) navigated to Studio comments inbox — landed on the Google account-chooser again, Nolann still marked Déconnecté, identical to RUN19-RUN26. stealth_auth_check confirmed auth_valid=false/status=dead/\"Auth INVALID. Do Not post. Re-login required.\" — day 6 (07-02 first seen dead, unbroken 07-03 through 07-07) with the same signature, unchanged. No inbox read was possible, so no new comments could be classified; no reply, heart, hide, or pin attempted (also moot given the settled draft-only policy in skills/community-manager/SKILL.md, which defers all live Studio writes to a human-attended session regardless of auth state). Session closed cleanly. Owner action needed (unchanged): interactive re-login to the voidline cookie profile."
+    },
+    {
+      "t": "2026-07-07 13:1x UTC",
+      "action": "COMMUNITY_RUN28",
+      "detail": "Comment-reply batch RUN28 (same day as RUN27). comments_runner.py still fails on the same unfixed StealthClient import (mcp_stealth.py has never defined that class; deferred to merged PR #326/#334, not touched). Fresh session (voidline_community_r28, cookie_profile=voidline, 444 cookies restored) navigated to Studio comments inbox -- landed on the Google account-chooser again, Nolann still marked Déconnecté. stealth_auth_check confirmed auth_valid=false/status=dead/'Auth INVALID. Do NOT post. Re-login required.' -- same signature as RUN19-RUN27, now day 6 (07-02->07-07). No inbox read possible, so no new comments to classify; no reply, heart, hide, or pin attempted. Session closed cleanly. Per RUN23's guidance, not writing a new LEARNINGS section since the signature is unchanged. Owner action needed (unchanged): interactive re-login to the voidline cookie profile."
     }
   ]
 }
