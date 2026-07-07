@@ -1896,3 +1896,49 @@ every prior long-form day this cycle.
 
 With both unaddressed, W28 is on track to miss **1 long-form + its two dependent Shorts this week
 alone**, on top of the 3 discovery Shorts already missed 07-04→07-06.
+
+## BLOCKER_2026-07-07-COMMUNITY — Daily community-tab post (Tue = long-drop): skipped, no LONG-1 content exists to drop
+
+**Observation**: Ran the daily community-tab routine. `community_tab_runner.py` still fails at the
+same stale `mcp_stealth.StealthClient` import flagged since RUN4 (unfixed, low-priority, doesn't
+block this routine since the script's only job is printing the prescription + logging). Computed
+today = Tuesday → rotation format = `long-drop` by hand; `community_tab_log.csv` has no 2026-07-07
+row yet, so the daily cap wasn't hit.
+
+Per the `long-drop` template ("image of today's long-form thumb + title + 1-sentence promise" /
+`SKILL.md`: "new one. [title]. [thumbnail]"), checked for LONG-1 (Zodiac Killer investigation,
+today's scheduled long-form per `weekly_plans/2026-W28.md`) production assets: **no `runs/LONG-1`
+or `runs/*zodiac*` directory exists at all** — not just unpublished, no render, no thumb, nothing
+to source an image or a real "up now" claim from. `DRIFT_2026-07-07` (this morning's daily-plan
+run) already confirmed LONG-1's publish slot is **MISSED** today for the same missing-render
+reason.
+
+This is a different situation from the 2026-07-03 `long-drop` precedent (RUN11, Flannan): that day
+a real render + thumb already existed (`runs/v5-flannan/thumb/`) and the video was genuinely
+scheduled to go live same-day — the community post just hadn't been *clicked* yet (draft-only
+policy). Today there is no video, no render, and no realistic same-day publish to promise. Drafting
+"new one. [Zodiac]. the full breakdown is up now." per the template would be a false public claim
+about content that does not exist, not a premature-but-eventually-true one — a materially different
+failure mode than the click-denial/draft-only pattern this skill already has settled behavior for.
+
+**Learning**: The draft-only policy (queue as `pending_post` for a human to publish once true)
+only works when the *content itself* is honest at draft time and just awaiting the publish click.
+It does not cover the case where the underlying asset the format requires doesn't exist yet —
+queuing a false "up now" claim as `pending_post` would hand a future human-attended session
+something that looks ready to publish but isn't actually true, which is worse than not drafting at
+all. Also re-confirmed the standing `voidline` cookie is still dead (`auth_check` →
+`{status: "dead", auth_valid: false}`, Google account-chooser shows Nolann "Déconnecté") — day 7 of
+the same outage — so the Studio publish step was unreachable regardless, but that was not the
+deciding factor here; the content gap is the actual blocker.
+
+**Action**:
+- Did not draft or queue any `long-drop` content for 2026-07-07. No row appended to
+  `community/community_tab_log.csv` for today — leaving it absent (rather than a fabricated
+  `pending_post` row) so tomorrow's Wed `theory-poll` routine runs normally and no false draft sits
+  in the queue waiting for a human to accidentally publish it.
+- Did not navigate past the read-only auth check (no `Créer une publication` attempt).
+- Root cause is upstream of this skill and already tracked: `DRIFT_2026-07-07`'s two owner actions
+  (re-login to `voidline` cookie profile; run the LONG-1/Zodiac long-form pipeline) are unchanged.
+  Once a LONG-1 render + thumb exist, a future community-manager run can produce the `long-drop`
+  post retroactively (same pattern as 07-03/Flannan) even if it lands a day or two late — a late
+  true post beats an on-time false one.
