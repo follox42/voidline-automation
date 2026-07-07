@@ -1834,3 +1834,18 @@ but should stop writing a full new LEARNINGS section each time; a one-line RUN n
 `agent-log.json` + the existing `replied_to.json` note is enough until the signature changes.
 
 **Owner action needed (unchanged)**: interactive re-login to refresh the `voidline` cookie profile.
+
+## 2026-07-07 — Daily Short (Tue HOOK/LONG-1): confirms DRIFT_2026-07-06 prediction, no new root cause
+
+**Observation**: Today's row is HOOK/LONG-1 (Zodiac, "THEY HAD A SUSPECT. ONE FINGERPRINT LET
+HIM WALK."). Ran `skills/daily-short/daily_short_runner.py` per SKILL.md — failed immediately,
+`runs/LONG-1` doesn't exist (the Zodiac long-form hasn't been rendered yet). This is exactly
+what DRIFT_2026-07-06 predicted for today. Re-confirmed the `voidline` cookie is still dead
+(fresh session, same account-chooser/Déconnecté/auth-dead signature, now day 4) — moot for
+today since there's no render to cut or upload anyway. No new root cause; both blockers
+(missing long-form render + dead cookie) are already tracked. Full detail in `agent-log.json`
+`DAILY_SHORT_RUN_BLOCKER` 2026-07-07 12:00 UTC entry.
+
+**Action**: No production attempted, no state changes. Owner actions unchanged from
+DRIFT_2026-07-06: (1) interactive re-login to `voidline`, (2) run the long-form pipeline for
+LONG-1 so a render exists for future HOOK/ANSWER Short cuts.
