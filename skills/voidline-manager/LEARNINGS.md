@@ -1942,3 +1942,32 @@ deciding factor here; the content gap is the actual blocker.
   Once a LONG-1 render + thumb exist, a future community-manager run can produce the `long-drop`
   post retroactively (same pattern as 07-03/Flannan) even if it lands a day or two late — a late
   true post beats an on-time false one.
+
+## 2026-07-07 (RUN30) — Comment reply run: `voidline` cookie session still dead, 8th consecutive day
+
+**Observation**: Ran the comment-reply batch per task instructions. Skipped re-running
+`comments_runner.py` — its `StealthClient` import has been confirmed broken (the class was never
+defined in `mcp_stealth.py`, not a transient bug) since RUN18, deferred to owner-merged PR #326/#334
+with no further diagnostic value in re-confirming it every run. Used the registered
+`camoufox-stealth` MCP tools directly instead (`stealth_navigate`, `stealth_auth_check`,
+`stealth_close`), per the anti-bypass clause.
+
+Opened a fresh session (`voidline_community`, cookie_profile=voidline, 448 cookies restored) and
+navigated to the Studio comments inbox — landed on the Google account-chooser, Nolann still marked
+"Déconnecté", identical to every run since RUN19 (2026-07-05). `stealth_auth_check` confirmed
+`auth_valid=false`, `status=dead`, `"Auth INVALID. Do NOT post. Re-login required."` — same
+signature, now **day 8** of the same unrefreshed cookie (07-02 through 07-07), and matches this
+morning's `DRIFT_2026-07-07` finding for the daily-plan/upload routines.
+
+No inbox read was possible, so no new comments could be classified, and no reply/heart/hide/pin was
+attempted (both because the inbox is unreachable and because the settled draft-only policy in
+`skills/community-manager/SKILL.md` would defer any live Studio write to a human-attended session
+regardless). The sole tracked entry (`UgxcyXas2_-6VF9_xlJ4AaABAg`, GrantMackay/Mary Celeste,
+`pending_post` + `pin_candidate`) is unchanged — logged as RUN30 in its `note` field. Did not
+attempt to click through the account chooser or any sign-in flow. Session closed cleanly.
+
+**Action**: No changes to `community/community_log.csv` or `community/community_tab_log.csv` (no
+new comments, no community-tab action this run). Appended the RUN30 note to
+`community/replied_to.json`. Owner action needed (unchanged, now 8 days overdue): interactive
+re-login to refresh the `voidline` cookie profile — this is the same root cause already blocking
+uploads, scheduling, community-tab posts, and analytics per `DRIFT_2026-07-07`.
