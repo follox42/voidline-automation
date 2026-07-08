@@ -2049,3 +2049,37 @@ No inbox read was possible, so no new comments could be classified. No reply, he
 attempted this run. The one known comment (`UgxcyXas2_-6VF9_xlJ4AaABAg`, @GrantMackay-wm1pe) remains
 `pending_post`/`pin_candidate` in `community/replied_to.json`, unchanged. Session closed cleanly.
 Owner action needed (unchanged): interactive re-login to refresh the voidline cookie profile.
+
+## 2026-07-08 — Comment-reply batch (RUN32): inbox DOM rendered for the first time since RUN19, but auth_check still reports dead
+
+`comments_runner.py` still fails on the same unfixed `StealthClient` import (`mcp_stealth.py` has
+never exposed that class — confirmed non-transient since RUN18, deferred to merged PR #326/#334).
+camoufox-stealth MCP tools were reachable this run; opened a fresh session (`voidline_community`,
+474 cookies restored) and navigated to the Studio "Sans réponse" inbox filter. Notably, unlike
+every probe from RUN19 (2026-07-05) through RUN31 (earlier today), this navigation actually
+rendered the real Studio Communauté inbox DOM — title "Communauté - YouTube Studio", "Voidline"
+channel name visible in the nav rail, the live comment thread with its "Répondre" button — rather
+than landing on the Google account-chooser.
+
+Despite that, `stealth_auth_check` still reported `auth_valid=false` / `status=dead` /
+`api_status=0` / "Auth INVALID. Do NOT post. Re-login required." — checked once immediately after
+navigate and again after a DOM query, both identical. `api_status=0` reads as "no Studio API call
+observed yet" rather than a hard-rejected auth response, so this may be a partially-recovered
+cookie state (DOM/session cookies valid enough to render the SPA shell + cached inbox list, but
+not yet exercising an authenticated API call) rather than the fully-dead account-chooser redirect
+seen on RUN19-31. Not enough signal to call this fixed; treated as still not-safe-to-post either
+way, consistent with the tool's own recommendation.
+
+The rendered inbox showed only the same single comment tracked since 2026-06-30
+(`UgxcyXas2_-6VF9_xlJ4AaABAg`, @GrantMackay-wm1pe, Mary Celeste short, alcohol-vapour-flashover
+theory; pagination footer confirms exactly 1 item) — no new comments to classify, so no new
+drafts. No reply, heart, hide, or pin attempted, per the settled draft-only policy in
+`skills/community-manager/SKILL.md` (applies regardless of auth status). Session closed cleanly.
+
+**Action**: Appended the RUN32 note to `community/replied_to.json`; no changes to
+`community/community_log.csv` (no new comments) or `community/community_tab_log.csv` this run.
+Owner action needed (unchanged, now 10 days since the cookie last worked at RUN19 2026-07-05):
+interactive re-login to refresh the `voidline` cookie profile. Worth the owner's attention: today's
+DOM-rendered-but-auth-dead signature is new and different enough from the prior 12 runs' clean
+account-chooser redirect that it may indicate the cookie is in a half-expired state rather than
+fully revoked — re-login should resolve either way.
