@@ -24,7 +24,6 @@ STATE_DIR.mkdir(exist_ok=True)
 LOG = STATE_DIR / "community_tab_log.csv"
 
 sys.path.insert(0, str(REPO))
-from mcp_stealth import StealthClient  # noqa
 
 ROTATION = ["behind-scenes", "long-drop", "theory-poll", "detail-crop", "long-drop", "tease-tomorrow", "reader-pick"]
 
