@@ -2083,3 +2083,59 @@ interactive re-login to refresh the `voidline` cookie profile. Worth the owner's
 DOM-rendered-but-auth-dead signature is new and different enough from the prior 12 runs' clean
 account-chooser redirect that it may indicate the cookie is in a half-expired state rather than
 fully revoked — re-login should resolve either way.
+
+## 2026-07-08 (RUN34) — Comment reply run: `comments_runner.py`'s import bug confirmed non-fixable without activating a flagged bypass; inbox error state was retry-recoverable, auth_check still false-negatives
+
+**Observation**: Re-ran the comments-reply batch. `comments_runner.py` still fails on the
+unfixed `StealthClient` import; re-read `mcp_stealth.py` directly this run and confirmed (as
+RUN18 first found) it only ever exposes bare `initialize()`/`list_tools()`/`call()` module
+functions — no `StealthClient` class exists or ever existed, so this was never a transient bug.
+Considered actually fixing `comments_runner.py` by wiring it to those raw functions instead of
+a nonexistent class, but did not: `mcp_stealth.py`'s own docstring says it is a raw-HTTP client
+that "bypasses the Claude Code MCP registry", and it's the same module already flagged in
+`BLOCKER_2026-07-01`/RUN4's reasoning and PR #326/#334-era notes as something not to route
+through for exactly that reason. Making the import succeed would turn a dead script back into a
+working bypass path that hasn't been cleared by the owner — that's a different, larger decision
+than fixing an ImportError, so left unfixed and still deferred to a maintenance pass with owner
+sign-off. Used the registered `camoufox-stealth` MCP tools directly instead, same as every run
+since RUN6.
+
+Navigated a fresh session (`voidline_community`, 553 cookies restored) to the Studio "Sans
+réponse" inbox filter. Unlike RUN32/33 (clean DOM render) or RUN19-31 (account-chooser
+redirect), this run hit a third, more specific signature: the page shell rendered fine but the
+comment list itself surfaced an explicit in-app error state ("Petit problème... Une erreur
+s'est produite... Réessayer") — i.e. Studio's own UI reported a failed data fetch, not just an
+empty/absent DOM. Clicked the "Réessayer" (retry) button — a plain data re-fetch, not a
+publish/post action, so outside the draft-only policy's click restriction — which cleared the
+error and loaded the real inbox: the same single comment tracked since 2026-06-30
+(`UgxcyXas2_-6VF9_xlJ4AaABAg`, @GrantMackay-wm1pe, Mary Celeste short, alcohol-vapour-flashover
+theory). `stealth_auth_check` still reported `auth_valid=false`/`status=dead`/`api_status=0`
+both before and after this successful retry-fetch.
+
+**Learning**:
+1. The retry-button behavior is new information for the `api_status=0` question RUN32 raised:
+   since the comment data demonstrably loaded correctly via the UI's own retry immediately
+   after `auth_check` called it dead, this is stronger evidence that `api_status=0` reflects
+   "the check hasn't observed a Studio API call in its own polling window" rather than a real
+   auth rejection — the Studio session itself can clearly still authenticate and fetch data.
+   Still treated as not-safe-to-post per the tool's own recommendation, since a UI data-fetch
+   succeeding is not the same guarantee as a write/post endpoint succeeding.
+2. The "erreur s'est produite" state is a new failure/recovery signature distinct from both
+   prior buckets (account-chooser redirect = hard-dead session; clean render = fine) — a
+   transient load hiccup that a simple retry clears, worth knowing about for future runs so a
+   single failed fetch isn't mistaken for a dead session before trying "Réessayer" once.
+3. `comments_runner.py`'s import bug is now conclusively a design-time mismatch, not a
+   regression — and fixing it "properly" is entangled with the still-open bypass-path
+   security-review question, not just a code fix. Future runs should stop re-verifying this
+   every time (matches RUN23's guidance for the auth signature) unless someone actually resolves
+   the PR #326/#334-era bypass question.
+
+**Action**:
+- No new comments to classify or draft — same single comment as every run since 2026-06-30.
+- No reply, heart, hide, or pin attempted, per the settled draft-only policy (applies regardless
+  of auth status or a successful retry).
+- Annotated `community/replied_to.json` with a RUN34 note. `community/community_log.csv` and
+  `community/community_tab_log.csv` unchanged (no new events either).
+- Session closed cleanly.
+- Owner action needed (unchanged, now 12 days since RUN19 2026-07-05): interactive re-login to
+  refresh the `voidline` cookie profile.
