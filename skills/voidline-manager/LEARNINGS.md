@@ -1971,3 +1971,23 @@ new comments, no community-tab action this run). Appended the RUN30 note to
 `community/replied_to.json`. Owner action needed (unchanged, now 8 days overdue): interactive
 re-login to refresh the `voidline` cookie profile — this is the same root cause already blocking
 uploads, scheduling, community-tab posts, and analytics per `DRIFT_2026-07-07`.
+
+## 2026-07-08 — Daily Short (Wed ANSWER/LONG-1): same two blockers, no new root cause
+
+**Observation**: Today's row is ANSWER/LONG-1 (Zodiac Z340 cipher, "WE FOUND THE CODE. NOT THE
+POLICE."). Ran `skills/daily-short/daily_short_runner.py` per SKILL.md — failed immediately,
+same as Tue's HOOK run (2026-07-07 entry above): `runs/LONG-1` still doesn't exist, the Zodiac
+long-form has not been rendered. Re-probed the `voidline` cookie once (fresh session
+`voidline_dailyshort_0708`, 448 cookies restored) — same account-chooser/Déconnecté/auth-dead
+signature (`auth_check` → `status: dead, auth_valid: false`), now **day 9** (07-02 through
+07-08). Moot for today since there's still no render to cut or upload regardless.
+
+**Learning**: No new information — both root causes (missing LONG-1 render, dead cookie) are
+already tracked since `DRIFT_2026-07-06`/`DRIFT_2026-07-07`. This is the second consecutive
+daily-short slot lost to the same pair of blockers (Tue HOOK, now Wed ANSWER); Fri's LONG-2 HOOK
+slot is next in line per `DRIFT_2026-07-07`'s next-3-day projection.
+
+**Action**: No production attempted, no state changes to `shorts_state.json`. Owner actions
+unchanged and now more overdue: (1) interactive re-login to the `voidline` cookie profile —
+day 9; (2) run the long-form pipeline for LONG-1 (Zodiac) so a render exists — without it,
+today's ANSWER Short and any future cuts from LONG-1 remain impossible.
