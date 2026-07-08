@@ -2032,3 +2032,20 @@ Re-login required."}`. Same signature as every probe since RUN19 (2026-07-05). S
 Running tally: W28 has now missed 3 discovery Shorts (07-04→07-06), the Tue HOOK + LONG-1 long-form
 (07-07), and the Wed ANSWER Short (07-08). On the current trajectory Thu's Short, Fri's LONG-2 +
 HOOK, and Sat's ANSWER are all next in line. Everything traces to the same two owner actions above.
+
+## 2026-07-08 — Comment-reply batch (RUN31): same dead cookie, day 9
+
+Re-ran the comment-reply batch per task instructions. `comments_runner.py` still fails on the
+same unfixed `StealthClient` import (`mcp_stealth.py` has never exposed that class — confirmed
+non-transient since RUN18, deferred to merged PR #326/#334). camoufox-stealth MCP tools were
+reachable this run; opened a fresh session (`voidline_community`, 447 cookies restored) and
+navigated to the Studio "Sans réponse" inbox filter — landed on the Google account-chooser again,
+Nolann still marked "Déconnecté", identical to every probe since RUN19 (2026-07-05).
+`stealth_auth_check` confirmed `auth_valid=false` / `status=dead` / "Auth INVALID. Do NOT post.
+Re-login required." — same root cause already tracked in today's DRIFT_2026-07-08 entry above, now
+day 9 of the unrefreshed voidline cookie session (07-02→07-08).
+
+No inbox read was possible, so no new comments could be classified. No reply, heart, hide, or pin
+attempted this run. The one known comment (`UgxcyXas2_-6VF9_xlJ4AaABAg`, @GrantMackay-wm1pe) remains
+`pending_post`/`pin_candidate` in `community/replied_to.json`, unchanged. Session closed cleanly.
+Owner action needed (unchanged): interactive re-login to refresh the voidline cookie profile.
