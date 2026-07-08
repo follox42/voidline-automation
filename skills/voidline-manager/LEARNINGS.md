@@ -1991,3 +1991,44 @@ slot is next in line per `DRIFT_2026-07-07`'s next-3-day projection.
 unchanged and now more overdue: (1) interactive re-login to the `voidline` cookie profile —
 day 9; (2) run the long-form pipeline for LONG-1 (Zodiac) so a render exists — without it,
 today's ANSWER Short and any future cuts from LONG-1 remain impossible.
+
+## DRIFT_2026-07-08 — Daily-plan: Wed ANSWER Short un-producible; cookie still dead; W28 losing slots daily
+
+**Daily-plan review (~08:1x UTC, 2026-07-08).** `cron_runner.py daily-plan` logged
+`Today 2026-07-08 — 0 Shorts publishing` — the state file has **no** Short with
+`publish_at=2026-07-08`. Per `weekly_plans/2026-W28.md`, today's slot is the **Wed ANSWER/LONG-1**
+Short (Zodiac Z340, "WE FOUND THE CODE. NOT THE POLICE."). It was never produced and cannot be:
+its ANSWER cut depends on the LONG-1 (Zodiac) render, and `runs/LONG-1` / any Zodiac run dir still
+does not exist. **Today's 12:00 UTC Short slot will be MISSED.**
+
+**Step 3 (reconcile today's scheduled Shorts):** nothing to reconcile — 0 Shorts in state for
+today. The PENDING_UPLOAD backlog (flight19 07-04, ourang 07-05, hauser 07-06) is unchanged and
+remains accurately PENDING_UPLOAD (`yt_id` null, never uploaded, never in Studio to verify; local
+renders were in prior reclaimed containers). No status changes made to `shorts_state.json`.
+
+**Step 4 (Reddit seed):** N/A — today is NOT a long-form publish day (LONG-1 was Tue 07-07, LONG-2
+is Fri 07-10). No seed drafted. (Independently, CLAUDE.md records a standing owner opt-out on Reddit
+seeding regardless.)
+
+**Cookie:** re-probed once (fresh session `voidline_dailyplan_0708`, 448 cookies restored) →
+studio.youtube.com redirected to the Google account-chooser, Nolann marked "Déconnecté";
+`auth_check` → `{status: "dead", auth_valid: false, recommendation: "Auth INVALID. Do NOT post.
+Re-login required."}`. Same signature as every probe since RUN19 (2026-07-05). Session closed cleanly.
+
+**Next-3-day drift (all blocked on the same two root causes):**
+- Thu 2026-07-09 — D.B. Cooper discovery Short ("HE JUMPED WITH THE CASH. NEVER LANDED.") — a NEW
+  topic (no long-form dependency) but still needs a working Studio bridge to upload → blocked by the
+  dead cookie.
+- Fri 2026-07-10 — LONG-2 (Ourang Medan) publish + its HOOK Short — no LONG-2 render exists
+  (`runs/` has no Ourang long-form dir; only the 07-05 discovery Short), plus dead cookie.
+- Sat 2026-07-11 — ANSWER/LONG-2 Short — depends on the same missing LONG-2 render + cookie.
+
+**Owner actions (both overdue and escalating, unchanged since DRIFT_2026-07-06/07-07):**
+1. One-time **interactive re-login to the `voidline` cookie profile** — unblocks every
+   Studio-dependent routine (uploads, scheduling, comment replies, community-tab, analytics).
+2. **Run the long-form pipeline for LONG-1 (Zodiac)** — without a render, the Tue/Wed HOOK+ANSWER
+   Shorts that cut from it are impossible. **LONG-2 (Ourang Medan, Fri) is not started either.**
+
+Running tally: W28 has now missed 3 discovery Shorts (07-04→07-06), the Tue HOOK + LONG-1 long-form
+(07-07), and the Wed ANSWER Short (07-08). On the current trajectory Thu's Short, Fri's LONG-2 +
+HOOK, and Sat's ANSWER are all next in line. Everything traces to the same two owner actions above.
