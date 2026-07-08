@@ -289,6 +289,11 @@
       "t": "2026-07-08 12:0x UTC",
       "action": "DAILY_SHORT_RUN_BLOCKER",
       "detail": "Daily Short (Wed ANSWER/LONG-1, Zodiac Z340 cipher, 'WE FOUND THE CODE. NOT THE POLICE.'). Ran skills/daily-short/daily_short_runner.py per SKILL.md — failed immediately, same as Tue's HOOK run: runs/LONG-1 does not exist (Zodiac long-form still not rendered). Re-probed the voidline cookie once (fresh session voidline_dailyshort_0708, 448 cookies restored) — same account-chooser/Déconnecté/auth-dead signature, now day 9 (07-02 through 07-08); moot for today since there is still no render to cut or upload. No new root cause; both blockers (missing LONG-1 render + dead cookie) already tracked since DRIFT_2026-07-06/2026-07-07. No production attempted, no state changes."
+    },
+    {
+      "t": "2026-07-08 08:1x UTC",
+      "action": "DAILY_PLAN_REVIEW",
+      "detail": "Wed 2026-07-08 (W28). cron_runner daily-plan logged '0 Shorts publishing' — state has no publish_at=2026-07-08 Short. Per weekly_plans/2026-W28.md today's slot is Wed ANSWER/LONG-1 (Zodiac Z340, 'WE FOUND THE CODE. NOT THE POLICE.'); un-producible because runs/LONG-1 (Zodiac long-form) still does not exist, so the ANSWER cut has no source. 12:00 UTC Short slot will be MISSED. Step 3: nothing to reconcile (0 Shorts in state today); PENDING_UPLOAD backlog flight19/ourang/hauser unchanged (yt_id null). Step 4: N/A — not a long-form publish day (LONG-1=Tue, LONG-2=Fri). Cookie re-probed once (session voidline_dailyplan_0708, 448 cookies) → account-chooser/Déconnecté, auth_check status=dead/auth_valid=false; same signature since RUN19 (2026-07-05). Next-3-day drift: Thu D.B.Cooper Short (cookie-blocked), Fri LONG-2 publish+HOOK (no LONG-2 render + cookie), Sat ANSWER (same). Two owner actions overdue: (1) interactive re-login to voidline cookie profile; (2) run the LONG-1/LONG-2 long-form pipeline. See LEARNINGS DRIFT_2026-07-08."
     }
   ]
 }
