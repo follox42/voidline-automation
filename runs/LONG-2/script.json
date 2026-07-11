@@ -1,0 +1,263 @@
+{
+  "idea_id": "w28-long2-ourang-medan",
+  "run_id": "LONG-2",
+  "channel_slug": "voidline",
+  "format": "long-form",
+  "title": "28 Men Died Smiling in 1947. The Ship Was a Ghost.",
+  "title_variants_for_ab": {
+    "chosen_arm": "EXP-TITLE-001 variant=numbers_iconic_contradiction",
+    "control_would_be": "The Ourang Medan Mystery (1947): What Killed the Crew?"
+  },
+  "duration_sec": 690,
+  "target_runtime": "11:30 (plan target 11-13 min, W26 critique target ~11:55)",
+  "output_mode": "long-form 16:9",
+  "aspect_ratio": "16:9",
+  "fps": 30,
+  "_creative_bible_ref": "skills/long-form-pipeline/SKILL.md Step 1",
+  "_voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "_voice_name": "Daniel (daniel_authoritative) — EXP-VOICE-001 VARIANT arm, 2nd data point",
+  "_voice_settings": {
+    "stability": 0.45,
+    "similarity_boost": 0.9,
+    "style": 0.3,
+    "use_speaker_boost": true,
+    "model_id": "eleven_multilingual_v2"
+  },
+  "_voice_v3_polish_notes": "N/A — Daniel uses eleven_multilingual_v2; no v3 bracket stage-direction tags (would be read literally, same rule as v5-flannan). Pacing and emphasis carried by punctuation and sentence length. W26 critique's [softly]/[reflective] tags apply only to eleven_v3 runs.",
+  "_research_sources": [
+    "De locomotief (Semarang, Dutch East Indies), three-article series, February 1948 — earliest post-war print telling",
+    "Yorkshire Evening Post (21 Nov 1940) and Daily Mirror (Nov 1940) — wartime versions of the same story, dateline Trieste, attributed to Silvio Scherli",
+    "Proceedings of the Merchant Marine Council, US Coast Guard, May 1952 — the retelling that gave the legend official-looking cover",
+    "Declassified CIA memo by C.H. Marck Jr., December 1959, asking about the Ourang Medan",
+    "Otto Mielke, 'Das Totenschiff in der Südsee' (1954)",
+    "Roy Bainton's registry research (Lloyd's Register, Dutch shipping records) — no vessel by that name found",
+    "Wikipedia: SS Ourang Medan (cross-checked against the above primary tellings)"
+  ],
+  "_visual_mix_target": "Wikimedia Commons archival stills (1940s freighters, Strait of Malacca, radio rooms, newspaper archives); Flow AI period stills only if quota+auth allow (expected blocked — voidline cookie dead since 2026-07-02)",
+  "_script_status": "WRITTEN 2026-07-11 by long-form-pipeline routine",
+  "_total_voice_chars": 8854,
+  "_total_target_words": 1560,
+  "_experiment_tags": {
+    "EXP-HOOK-001": {
+      "arm": "control",
+      "value": "question_first_8s"
+    },
+    "EXP-TITLE-001": {
+      "arm": "variant",
+      "value": "numbers_iconic_contradiction"
+    },
+    "EXP-VOICE-001": {
+      "arm": "variant",
+      "value": "daniel_authoritative"
+    },
+    "yt_id": null,
+    "note": "apply real yt_id to experiments/*.json videos_tagged once published"
+  },
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "scene_type": "cold-open-hook",
+      "title": "The Ship That Never Was",
+      "start_sec": 0.0,
+      "end_sec": 52.0,
+      "target_words": 120,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Derelict 1940s cargo freighter adrift at dusk, flat glassy water, tropical haze (archival still, slow Ken Burns)",
+        "1940s ship radio room, morse key, empty operator chair"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "tense_cinematic_low_drone",
+      "kinetic_events": [
+        {
+          "t_offset": 4.0,
+          "text": "JUNE 1947",
+          "style": "date"
+        },
+        {
+          "t_offset": 26.0,
+          "text": "\"I DIE.\"",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "How do twenty-eight men die smiling?\n\nJune, nineteen forty-seven. The Strait of Malacca. Ships pick up a distress call from a Dutch freighter, the S.S. Ourang Medan.\n\n\"All officers, including the captain, dead. Lying in the chartroom and on the bridge. Possibly whole crew dead.\"\n\nThen a burst of garbled static. Then two final words.\n\n\"I die.\"\n\nThe rescue party that boards her finds every man dead where he stood — eyes open, arms reaching at nothing, faces frozen somewhere between terror and a grin. No wounds. No survivors. And before she can be towed to port, the ship explodes, and takes every answer to the bottom.\n\nHere is the strange part. According to every shipping registry on Earth, the Ourang Medan never existed."
+    },
+    {
+      "chapter_id": 1,
+      "scene_type": "setup-context",
+      "title": "A Distress Call in the Strait",
+      "start_sec": 52.0,
+      "end_sec": 150.0,
+      "target_words": 225,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Map of the Strait of Malacca, 1940s shipping lanes",
+        "Merchant marine radio operator at listening post, headphones",
+        "American C-type cargo ship underway, 1940s"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "slow_pulse_investigative",
+      "kinetic_events": [
+        {
+          "t_offset": 10.0,
+          "text": "STRAIT OF MALACCA",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "The story, as it has been told for almost eighty years, goes like this.\n\nThe Strait of Malacca is one of the busiest sea lanes in the world — the narrow channel between Sumatra and Malaya that funnels everything moving between the Indian Ocean and the Pacific. In June of nineteen forty-seven, it is crowded with freighters rebuilding the trade routes the war tore apart.\n\nTwo American ships are threading the strait that morning when their radio operators catch the same transmission. The morse is clean at first. Deliberate. An operator who knows his key, spelling out the impossible: all officers dead. The captain dead. Possibly the whole crew.\n\nBritish and Dutch listening posts on shore catch it too. Between them, they triangulate the signal to a position in the strait, and the nearest vessel — an American freighter, the Silver Star — changes course.\n\nWhat is waiting for her looks ordinary at first. A mid-sized Dutch cargo ship, dead in the water. Hull intact. No list, no smoke, no flag. The kind of ship you would pass without a second glance, in a strait full of ships just like her.\n\nThe Silver Star hails her. Nothing. Signals her. Nothing. So they lower a boat."
+    },
+    {
+      "chapter_id": 2,
+      "scene_type": "complication-twist",
+      "title": "Twenty-Eight Dead, No Wounds",
+      "start_sec": 150.0,
+      "end_sec": 278.0,
+      "target_words": 290,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Ship's chartroom interior, 1940s, papers and instruments",
+        "Cargo ship deck looking toward the bridge, harsh tropical light",
+        "Explosion at sea / ship sinking, period photograph"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "tension_build_sparse",
+      "kinetic_events": [
+        {
+          "t_offset": 14.0,
+          "text": "28 DEAD",
+          "style": "number"
+        }
+      ],
+      "voiceover": "The boarding party climbs the ladder onto a silent deck. And then the story stops being ordinary.\n\nThe crew is everywhere. On the bridge. In the chartroom. In the wireless room, where the operator's hand is said to be resting on the key that sent the final message. Twenty-eight men, by the most common count — every one of them dead.\n\nNo blood. No wounds. No sign of struggle, or poison gas they could detect, or anything missing. Just bodies — on their backs, eyes open, mouths open, arms stretched out as if pushing something away. The accounts insist on one detail above all the others: the faces. Frozen, every one of them, in an expression the boarders could only describe as terror. Even the ship's dog is dead, teeth bared at nothing.\n\nAnd the details keep getting stranger. It is over a hundred degrees in the strait that day, but below decks, the boarding party reports a cold they can feel through their clothes. The ship is sound. Her cargo sits untouched in the holds. There is nothing wrong with the Ourang Medan except that everyone aboard her is dead.\n\nThe Silver Star's captain decides to take her under tow. The line goes across. And almost on cue, smoke starts rising from the number four hold.\n\nThe boarding party barely gets clear. The explosion that follows is violent enough, one account claims, to lift the freighter out of the water. She goes down fast, and she takes the bodies, the cargo, the logbook — every scrap of evidence — down with her.\n\nA perfect mystery. Self-sealing. Unfalsifiable.\n\nAlmost too perfect."
+    },
+    {
+      "chapter_id": 3,
+      "scene_type": "investigation",
+      "title": "The Search for a Ship on Paper",
+      "start_sec": 278.0,
+      "end_sec": 411.0,
+      "target_words": 300,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Lloyd's Register volumes / maritime archive shelves",
+        "1940s shipping registry ledger pages, close-up",
+        "Rotterdam / Dutch harbor 1940s, cargo ships at berth"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "investigative_ticking",
+      "kinetic_events": [
+        {
+          "t_offset": 30.0,
+          "text": "NO REGISTRY",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "Because here is what happens when anyone tries to verify a single fact in that story.\n\nStart with the ship. A Dutch freighter should appear in Dutch registries, and in Lloyd's Register of Shipping — the master list that has tracked virtually every ocean-going merchant vessel on Earth since the eighteenth century. Researchers have gone through it year by year. There is no Ourang Medan. Not in nineteen forty-seven. Not in any year. The Dutch records are just as empty, and so are the registries of every other maritime nation anyone has thought to check.\n\nNo registration. No owner. No insurance policy. No crew list, no cargo manifest, no port of departure. No families of twenty-eight dead sailors asking questions. In eight decades, not one relative, not one shipmate, not one dockworker has ever come forward with a name.\n\nThen there is the rescue ship, the Silver Star. She, at least, was real — an American freighter with real logs and a real crew. Her movements can be traced. And her records contain no distress call in the Strait of Malacca, no boarding of a death ship, no explosion. Nothing. The one verifiable vessel in the story has no memory of being in it.\n\nAn event like this should also have left an official wake. A ship exploding in one of the world's busiest straits, with dozens of foreign dead, would trigger inquiries in at least three countries. No inquiry exists. No naval report, no harbourmaster's note, no insurance claim, no wreck on any chart.\n\nEvery thread a real ship leaves in the world — and a real disaster leaves twice over — is simply missing.\n\nSo if the sea never recorded this story... where did it come from?"
+    },
+    {
+      "chapter_id": 4,
+      "scene_type": "deeper-mystery",
+      "title": "Where the Story Actually Began",
+      "start_sec": 411.0,
+      "end_sec": 544.0,
+      "target_words": 300,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "1940s newspaper printing press / newsroom",
+        "Yellowed newspaper front page close-up",
+        "Trieste harbor 1940s",
+        "US Coast Guard emblem / official document typeface"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "revelation_slow_build",
+      "kinetic_events": [
+        {
+          "t_offset": 34.0,
+          "text": "TRIESTE, 1940",
+          "style": "date"
+        },
+        {
+          "t_offset": 80.0,
+          "text": "U.S. COAST GUARD, 1952",
+          "style": "date"
+        }
+      ],
+      "voiceover": "Follow the paper trail, and the mystery inverts.\n\nThe earliest post-war telling anyone has found is not a naval report. It is a newspaper serial — three articles in February nineteen forty-eight, in De locomotief, a Dutch-language paper in colonial Indonesia. Months after the supposed disaster, an ocean away from any official record, and sourced, the paper admits, third-hand: a missionary, retelling the account of an alleged lone survivor who conveniently died after telling it.\n\nBut the trail goes back further. And this is where the date on the story falls apart.\n\nIn November nineteen forty — seven years before the Ourang Medan supposedly sank — British newspapers, including the Yorkshire Evening Post and the Daily Mirror, ran the same story. A death ship in the East Indies. A crew found frozen in terror. A final message ending in death. The wartime versions carry a dateline: Trieste, Italy. Their source, a man named Silvio Scherli, a writer with a documented habit of colourful sea stories.\n\nThe ghost ship of nineteen forty-seven, in other words, already existed in nineteen forty. The legend predates its own disaster.\n\nSo why does anyone still believe it? Largely because of one document. In May nineteen fifty-two, the story appeared in the Proceedings of the Merchant Marine Council — a publication of the United States Coast Guard. The Coast Guard did not investigate it. It reprinted it. But from that day on, the tale wore a federal uniform, and every retelling since has cited it as proof.\n\nEven the CIA was not immune. A declassified memo from December nineteen fifty-nine shows an assistant to the director asking, in apparent seriousness, what the agency knew about the Ourang Medan.\n\nA Trieste sea story had worked its way into the filing cabinets of the American government."
+    },
+    {
+      "chapter_id": 5,
+      "scene_type": "contemporary-answer",
+      "title": "The Cargo That Explains Everything",
+      "start_sec": 544.0,
+      "end_sec": 654.0,
+      "target_words": 250,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Chemical drums in ship hold, wartime cargo",
+        "Gas mask / hazmat period photo, 1940s",
+        "Calm sea at dusk, empty horizon"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "answer_reveal_sting",
+      "kinetic_events": [
+        {
+          "t_offset": 22.0,
+          "text": "POTASSIUM CYANIDE",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "There is one theory that could rescue the story — and it is elegant, because it explains the missing paperwork too.\n\nSuppose the Ourang Medan was real, but was never meant to be found on paper. A smuggler's ship, running leftover war chemicals out of occupied territory — potassium cyanide, say, and nitroglycerine, the kind of cargo Japan's wartime stockpiles left scattered across Southeast Asia. Sea water seeps into the hold. The cyanide releases gas, and the crew dies where they stand, airways burning, faces contorted — what witnesses would later call terror. Hours later, the same reaction reaches the nitroglycerine, and the ship erases herself in one blast. No registry entry, because smugglers do not register. No inquiry, because no government will claim her.\n\nIt is tidy. Chemists have noted the mechanism is at least plausible. Others have proposed carbon monoxide from a smouldering fire pooling below decks, killing quietly and leaving no mark.\n\nBut every one of those theories has to assume the one thing the evidence refuses to give us: that there was a ship at all.\n\nSet the theories beside the paper trail — a nineteen forty Trieste newspaper tale, recycled in nineteen forty-eight, laundered into credibility by a Coast Guard reprint in nineteen fifty-two — and the sober conclusion is hard to avoid. The Ourang Medan is not an unsolved disaster. It is a story that survived by being unsinkable in the only way that matters: there was never a wreck to find."
+    },
+    {
+      "chapter_id": 6,
+      "scene_type": "open-question-outro",
+      "title": "The Question That Remains",
+      "start_sec": 654.0,
+      "end_sec": 690.0,
+      "target_words": 80,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Empty sea horizon at dusk, slow fade"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "outro_fade",
+      "kinetic_events": [],
+      "voiceover": "And yet.\n\nThe strait is real. The chemicals were real, and so were the unregistered ships that moved them through those waters in nineteen forty-seven. Everything the legend needs existed. The only thing missing is proof that it happened.\n\nSo which do you find harder to believe — that twenty-eight men died smiling on a ship no registry ever knew? Or that a story with no ship, no wreck, and no witnesses has outlived every attempt to kill it for eighty years?\n\nTell us below."
+    }
+  ],
+  "_budget_summary": {
+    "elevenlabs_chars": 8854,
+    "elevenlabs_est_cost_usd": 1.59,
+    "cost_cap_usd": 2.0,
+    "flow_generations_planned": 0,
+    "flow_cap": 30,
+    "note": "Flow expected blocked (voidline cookie dead since 2026-07-02) — Wikimedia-only visual plan keeps Flow spend at 0"
+  },
+  "_pending_research": [],
+  "_actual_total_duration": null,
+  "_voice_gen_status": "PENDING",
+  "description": "In June 1947, ships in the Strait of Malacca picked up a morse distress call: \"All officers including captain dead... possibly whole crew dead.\" Then two final words — \"I die.\" The boarding party found 28 men dead with no wounds, faces frozen in terror. Before the ship could be towed, she exploded and sank.\n\nHere is the problem: no shipping registry on Earth has ever listed a vessel named Ourang Medan — and the story itself appeared in newspapers in 1940, seven years before the ship supposedly sank.\n\n⏱ Timestamps:\n0:00 — The Ship That Never Was\n0:52 — A Distress Call in the Strait\n2:30 — Twenty-Eight Dead, No Wounds\n4:38 — The Search for a Ship on Paper\n6:51 — Where the Story Actually Began\n9:04 — The Cargo That Explains Everything\n10:54 — The Question That Remains\n\nSources referenced in this video:\n- De locomotief (Semarang), three-article series, February 1948 — the earliest post-war telling\n- Yorkshire Evening Post (21 Nov 1940) and Daily Mirror — the wartime versions, dateline Trieste, attributed to Silvio Scherli\n- Proceedings of the Merchant Marine Council, US Coast Guard, May 1952\n- Declassified CIA memo, C.H. Marck Jr., December 1959\n- Otto Mielke, \"Das Totenschiff in der Südsee\" (1954)\n- Roy Bainton's Lloyd's Register and Dutch shipping-record research\n\nWhich do you find harder to believe — 28 men dead with no cause, or a ghost story that outlived every attempt to sink it? Let us know below.\n\n#OurangMedan #GhostShip #UnsolvedHistory",
+  "tags": [
+    "ourang medan",
+    "ss ourang medan",
+    "ourang medan mystery",
+    "ghost ship",
+    "ghost ship documentary",
+    "strait of malacca",
+    "maritime mystery",
+    "death ship 1947",
+    "silver star ourang medan",
+    "unsolved history",
+    "true mystery documentary",
+    "historical mysteries"
+  ],
+  "publish_at": "2026-07-14T17:00:00Z",
+  "_publish_note": "Original plan slot Fri 2026-07-10 17:00 UTC was MISSED (production never ran before this session + voidline cookie dead since 2026-07-02). Rescheduled to next standard slot Tue 2026-07-14 17:00 UTC, pending upload unblock."
+}

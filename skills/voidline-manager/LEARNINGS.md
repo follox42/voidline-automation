@@ -2139,3 +2139,51 @@ both before and after this successful retry-fetch.
 - Session closed cleanly.
 - Owner action needed (unchanged, now 12 days since RUN19 2026-07-05): interactive re-login to
   refresh the `voidline` cookie profile.
+
+## BLOCKER_2026-07-11-ELEVENLABS-QUOTA — LONG-2 production paused: voice quota exhausted until 2026-07-30
+
+**Observation**: First production attempt for LONG-2 (SS Ourang Medan, W28 Friday slot — already
+missed by the time this session ran). Pre-flight, Step 0 (variants) and Step 1 (script) completed
+cleanly; Step 2 voice generation aborted on quota: ElevenLabs Creator shows **120,957 / 121,849
+characters used (892 remaining)** vs 8,854 needed. `can_extend_character_limit=false`; the mcphub
+ElevenLabs MCP server reports identical numbers, so it shares the same account — no alternative
+key. Quota resets **2026-07-30 20:41 UTC**.
+
+Only ~8.4k of this month's usage is attributable to logged pipeline work (v5-flannan voice).
+~112k chars were consumed somewhere outside the production logs — possibly owner usage of the
+same account, possibly unlogged routine calls. Worth an owner glance at the ElevenLabs usage
+dashboard; if a routine burned it, that's a budget-tracking gap to fix.
+
+**Decisions taken (and why)**:
+1. **No silent render.** SKILL.md's "key missing → produce with silence" failure mode was NOT
+   applied: quota-with-known-reset is a different situation. A silent render would (a) break the
+   EXP-VOICE-001 daniel_authoritative arm (this run is its 2nd data point), and (b) be thrown
+   away anyway — chapter end_secs and the whole timeline derive from real mp3 durations.
+2. **Hook variant override.** pick_variant.py assigned `contradiction_punch` (variant under
+   test) to this run, but weekly_plans/2026-W28.md locks LONG-2 to the EXP-HOOK-001 **CONTROL**
+   arm (`question_first_8s`) because LONG-1 carries the variant. Overrode variants_used.json
+   manually. Systemic gap: the picker has no awareness of plan-locked arm assignments — if both
+   of a week's long-forms run through it naively, both land on the variant arm and the A/B has
+   no control. Ship item for a maintenance pass.
+3. **Durable partial state.** Assets (Step 3) completed and committed: 17 curated Wikimedia
+   stills (manifest + attribution committed; junk PDF-title-page hits and one propaganda-leaflet
+   false hit pruned), assets_packs music/dark and sfx/whoosh topped up via Freesound and
+   converted wav→mp3 so they actually persist in git (gitignore drops wavs — 14 index entries
+   from earlier sessions were already stale for exactly this reason; index cleanup = small ship
+   item). generate_voice.py now honors script.json `_voice_settings` so voice-arm settings stay
+   identical across experiment data points.
+4. **Thumb deferred, not faked.** Flow needs the dead voidline cookie, and KNOWN_BAD forbids
+   archival-photo thumbnails — prompt + overlay spec parked in runs/LONG-2/thumb/thumb_config.json.
+
+**Cookie status**: reprobed once this session (fresh session voidline_long2_0711, 550 cookies
+restored): `auth_valid=false / status=dead` — unchanged signature, **day 13** (2026-07-02 → 07-11).
+
+**Net effect on the week**: Fri LONG-2 publish missed (after Tue LONG-1 publish already missed);
+Fri HOOK and Sat ANSWER Shorts for LONG-2 remain un-producible (no render to cut). Both W28
+long-forms are now gated on the same two owner actions:
+1. Interactive re-login to the `voidline` cookie profile (13 days outstanding).
+2. ElevenLabs quota reset (2026-07-30) or an owner-side top-up — routine is not authorized to
+   add paid spend.
+
+**Resume**: full protocol in `runs/LONG-2/PRODUCTION_STATE.md`. When quota returns, produce
+LONG-1 AND LONG-2 (both scripts' voice together ≈ 18k chars, well within a fresh 100k+ month).
