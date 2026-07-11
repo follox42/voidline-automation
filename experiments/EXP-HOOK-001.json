@@ -13,5 +13,15 @@
   "result_30d": null,
   "videos_tagged": [
     "mgdNSwtkrnw"
+  ],
+  "pending_runs": [
+    {
+      "run_id": "LONG-2",
+      "topic": "SS Ourang Medan",
+      "arm": "control",
+      "value": "question_first_8s",
+      "produced": "2026-07-11 (script+assets only; voice/render/upload blocked)",
+      "note": "append yt_id to videos_tagged once published; blocked on ElevenLabs quota reset 2026-07-30 + voidline cookie re-login"
+    }
   ]
 }

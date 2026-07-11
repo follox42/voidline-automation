@@ -29,6 +29,13 @@ See: weekly_plans/2026-W28.md
 - test-tags (apply real yt_id once published): EXP-HOOK-001 variant=contradiction_punch · EXP-TITLE-001 control=iconic_question_year · EXP-VOICE-001 control=david_documentary
 
 ### LONG-2 — Friday 2026-07-10
+
+> **STATUS 2026-07-11 — PARTIAL, BLOCKED (`runs/LONG-2/PRODUCTION_STATE.md`).** Script + variants +
+> curated assets done and committed. Voice BLOCKED: ElevenLabs quota exhausted (892 chars left vs
+> 8,854 needed; resets 2026-07-30). Thumb/upload BLOCKED: voidline cookie dead day 13. Fri 07-10
+> slot MISSED; `script.json.publish_at` provisionally Tue 2026-07-14 17:00 UTC but realistic
+> earliest is post-quota-reset. Fri HOOK / Sat ANSWER Shorts un-producible (no render).
+
 - topic: SS Ourang Medan (1947, Strait of Malacca) — the ghost ship that may never have existed
 - source: backlog fallback (viewer_feedback/2026-W27.json BLOCKED this week — its own blocker_note says treat as unknown and fall back to backlog; this topic already ran as a validated discovery Short on 2026-07-05 with a strong hook, same short-then-long-form promotion pattern used for Flannan Isles in W27) — NOT a niche-radar pick, 0 queries used
 - iconic detail: Final radio transmission "I die" after every officer and the captain were found dead in the chartroom with no wounds and faces frozen in terror; the ship then explodes and sinks before a tow line can be attached — and no shipping registry has ever listed a vessel by that name
