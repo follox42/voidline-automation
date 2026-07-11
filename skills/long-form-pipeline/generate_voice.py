@@ -75,9 +75,25 @@ def main():
     with open(SCRIPT_PATH) as f:
         script = json.load(f)
 
+    # Variant settings from script.json win over module defaults, so A/B
+    # voice arms (pick_variant.py voices/*.json) keep identical settings
+    # across data points.
+    global VOICE_ID, MODEL_ID
+    vs = script.get("_voice_settings") or {}
+    if vs:
+        MODEL_ID = os.environ.get("MODEL_ID") or vs.get("model_id", MODEL_ID)
+        for k in ("stability", "similarity_boost", "style", "speed", "use_speaker_boost"):
+            if k in vs:
+                VOICE_SETTINGS[k] = vs[k]
+            elif k == "speed":
+                VOICE_SETTINGS.pop("speed", None)
+    if script.get("_voice_id"):
+        VOICE_ID = os.environ.get("VOICE_ID") or script["_voice_id"]
+
     print("=== Step 2: Voice Generation ===")
     print(f"Run dir: {RUN_DIR}")
     print(f"Voice: {VOICE_ID} ({MODEL_ID})")
+    print(f"Settings: {VOICE_SETTINGS}")
 
     # Check quota
     remaining = get_character_count()
