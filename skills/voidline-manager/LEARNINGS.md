@@ -2238,3 +2238,48 @@ committed to git per repo convention (thumb + all json/manifest/attribution comm
 
 **Owner action needed (unchanged, now 15 days outstanding)**: interactive re-login to the
 `voidline` cookie profile. Today's 12:00 UTC slot will be missed without it (or a manual upload).
+
+## 2026-07-12 — DAILY-PLAN review: cookie dead day 15 (reconfirmed), today's Short slot will miss, W29 calendar not locked (drift)
+
+**Ran**: `cron_runner.py daily-plan` (repo mode, no auto-push) → logged DAILY_PLAN to agent-log.json.
+Today (Sun 2026-07-12) has 1 scheduled item: `w28_discovery_beaumont` @ 12:00 UTC, PENDING_UPLOAD.
+
+**Studio verify (step 3)**: `w28_discovery_beaumont` has `yt_id=null` — never uploaded, so there is
+nothing in Studio to reconcile; PENDING_UPLOAD is the accurate state. Reprobed auth this review:
+`stealth_status` shows a fresh `voidline_community` session sitting on `accounts.google.com/.../
+accountchooser` (the dead-auth redirect), and `stealth_auth_check` on `voidline_daily_0712` returned
+`auth_valid=false / status=dead / "Auth INVALID. Do NOT post. Re-login required."` — same signature
+as every probe since RUN19 (2026-07-05). **Day 15** of the unrefreshed voidline cookie (07-02→07-12).
+Today's 12:00 UTC Beaumont slot will be MISSED (already past by publish time without owner action).
+
+**Long-form day check (step 4)**: today is NOT a long-form publish day. W28 scheduled both long-forms
+on Tue 07-07 (Zodiac / LONG-1) and Fri 07-10 (Ourang Medan / LONG-2) — both MISSED (LONG-1 never
+produced past plan; LONG-2 partial+blocked, see runs/LONG-2/PRODUCTION_STATE.md). No long-form is due
+today, so the Reddit-seed sub-step does not trigger. **Note on the routine prompt**: its step 4 asks to
+draft an r/UnresolvedMysteries seed on long-form days, but CLAUDE.md's NOT-authorized list records the
+owner has opted OUT of Reddit/Discord/X seeding ("pas de reddit on peux explosr natureellement"). These
+two directives conflict; deferred to the CLAUDE.md opt-out and drafted no seed. Flag for whoever owns
+ROUTINE_PROMPTS to reconcile the daily-plan prompt with the opt-out.
+
+**Next-3-days calendar drift (step 5)**: Mon 07-13 / Tue 07-14 / Wed 07-15 fall in W29.
+- **No W29 weekly plan exists** (`weekly_plans/` has only 2026-27.md and 2026-W28.md) and
+  `skills/voidline-master/NEXT_VIDEOS.md` still points at the now-expired W28. W28's Shorts calendar
+  ends today. => starting tomorrow there is no locked content lineup. The Idea Lock routine needs to
+  produce/lock 2026-W29 before Mon 12:00 UTC or Mon's Short slot has nothing planned. DRIFT.
+- The only dated item in the window, LONG-2 Ourang provisional publish Tue 07-14 17:00 UTC, is itself
+  blocked (ElevenLabs quota 892 chars vs ~8,854 needed, resets 2026-07-30; + dead cookie). Realistic
+  earliest is post-quota-reset — the Tue date will not hold.
+
+**Standing backlog (all one root cause)**: 4 discovery Shorts PENDING_UPLOAD / never uploaded
+(flight19 07-04, ourang 07-05, hauser 07-06, beaumont 07-12) + both W28 long-forms missed. Every one
+is gated on the same dead voidline cookie; the two long-forms are additionally gated on ElevenLabs
+quota. Nothing has shipped to the channel since 2026-07-01.
+
+**Owner actions needed (unchanged, escalating)**:
+1. Interactive re-login to the `voidline` cookie profile — now **15 days** outstanding. This is the
+   single blocker unlocking all 4 pending Shorts + both long-forms' upload step.
+2. ElevenLabs quota reset 2026-07-30 (or an owner-side top-up — routine not authorized to add spend)
+   to unblock LONG-1/LONG-2 voice.
+3. Idea Lock W29 (or let it run) so Mon+ has a planned lineup.
+
+No state mutated this review (Beaumont entry already accurate). agent-log.json updated; committed+pushed.
