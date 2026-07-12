@@ -304,6 +304,16 @@
       "t": "2026-07-11 16:1x UTC",
       "action": "LONG_FORM_PIPELINE_LONG2_PARTIAL",
       "detail": "LONG-2 (SS Ourang Medan, Fri W28 slot) production run. DONE: Step 0 variants (hooks overridden to question_first_8s \u2014 plan-locked EXP-HOOK-001 CONTROL arm; picker had wrongly assigned the variant arm), Step 1 script.json (7 chapters, 8,854 chars ~11:30, kinetic events, W26 critique format), Step 3 assets (17 curated Wikimedia stills, junk PDF-cover hits pruned; assets_packs topped up +9 music/dark +10 sfx/whoosh via Freesound, wav->mp3 so they persist in git; generate_voice.py patched to read _voice_settings from script.json). BLOCKED: Step 2 voice \u2014 ElevenLabs Creator quota 120,957/121,849 used (892 left vs 8,854 needed, can_extend=false, resets 2026-07-30 20:41 UTC; MCP server shares the same account). Steps 4-5 deferred (timeline/render depend on real voice durations; NO silent render \u2014 would break EXP-VOICE-001 daniel arm and be discarded on re-render). Step 6 thumb + Step 7 upload blocked by dead voidline cookie (reconfirmed this session: auth_valid=false/status=dead, day 13 since 2026-07-02; prompt saved in runs/LONG-2/thumb/thumb_config.json). Fri 2026-07-10 17:00 slot MISSED; script.json publish_at moved to Tue 2026-07-14 17:00 but realistic earliest is post-quota-reset ~2026-07-30 unless owner intervenes. Resume protocol in runs/LONG-2/PRODUCTION_STATE.md. NOTE: LONG-1 (Zodiac) hits the same quota wall \u2014 neither long-form can voice-gen until reset. Owner actions: (1) voidline re-login (open since 07-02), (2) quota reset wait or top-up (routine not authorized to buy)."
+    },
+    {
+      "t": "2026-07-12 11:16 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "Today 2026-07-12 \u2014 1 Shorts publishing | \ud83d\udcc5 TODAY w28_discovery_beaumont (None) at 12:00 UTC \u2014 status: PENDING_UPLOAD"
+    },
+    {
+      "t": "2026-07-12 11:18 UTC",
+      "action": "DAILY_PLAN_REVIEW",
+      "detail": "Sun 2026-07-12 review. Auth reprobed: voidline cookie DEAD day 15 (auth_check status=dead on voidline_daily_0712; fresh voidline_community session redirected to Google account-chooser). Today's only slot w28_discovery_beaumont 12:00 UTC (yt_id=null, PENDING_UPLOAD) will MISS \u2014 no Studio presence to reconcile, state accurate. Not a long-form publish day (W28 long-forms were Tue/Fri, both missed) -> no Reddit seed drafted (also owner-opted-out per CLAUDE.md). DRIFT: no W29 plan locked, NEXT_VIDEOS still on expired W28 -> Mon 07-13+ has no lineup; Idea Lock W29 needed before Mon 12:00 UTC. Backlog: 4 Shorts PENDING_UPLOAD + 2 long-forms missed, all gated on dead cookie (+ElevenLabs quota until 07-30). Owner action: re-login voidline cookie (15d overdue)."
     }
   ]
 }
