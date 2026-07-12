@@ -1,0 +1,26 @@
+{
+  "week": "2026-W28",
+  "captured_at": "2026-07-12T11:19:35.617949+00:00",
+  "data_collection_status": "BLOCKED",
+  "blocker_ref": "BLOCKER_2026-07-12-WEEKLY-INTEL (see skills/voidline-manager/LEARNINGS.md)",
+  "blocker_summary": "camoufox-stealth voidline cookie session reconfirmed dead this session (session voidline_weeklyintel_0712, 1303 cookies restored + a fresh backup-1 restore attempt, both landing on the Google account-chooser with Nolann marked 'Deconnecte'; stealth_auth_check returned auth_valid=false/status=dead/'Auth INVALID. Do NOT post. Re-login required.'). This is day 15 of the unrefreshed voidline cookie (2026-07-02 -> 2026-07-12), same signature logged continuously since RUN19 (2026-07-05). Unlike last week's W27 blocker (mcphub/camoufox infra itself unreachable, 530/502), the bridge is reachable this week but the session auth is invalid -- same net effect: no YouTube Studio analytics or comments access. No public-API/scrape fallback exists (Studio analytics and comments are private, no YOUTUBE_API_KEY/OAUTH present in env, public watch/about pages don't expose these metrics per KNOWN_BAD precedent from 2026-06-13).",
+  "videos_known_last_30d": [
+    {"short_id": "v3_answer", "yt_id": "y3xLIfOAPHA", "published": "2026-06-12", "metrics": null},
+    {"short_id": "v1_bonus_briggs", "yt_id": "vZ68HlWfT-Q", "published": "2026-06-15", "metrics": null},
+    {"short_id": "w27_discovery_franklin", "yt_id": "sedBqHgilSM", "published": "2026-06-30", "metrics": null},
+    {"short_id": "v4_hook", "yt_id": "rF7LYZRgnbY", "published": "2026-07-01", "metrics": null},
+    {"short_id": "v4_answer", "yt_id": "wHwh8TTRNKw", "published": "2026-07-01", "metrics": null},
+    {"long_form_id": "v4_roanoke", "yt_id": "Tlc-cKtAHuQ", "published": "2026-07-01", "metrics": null}
+  ],
+  "videos_pending_not_published": [
+    {"short_id": "w27_discovery_flight19", "target_slot": "2026-07-04T12:00:00Z", "status": "PENDING_UPLOAD -- cookie dead, see shorts_state.json"},
+    {"short_id": "w27_discovery_ourang", "target_slot": "2026-07-05T12:00:00Z", "status": "PENDING_UPLOAD -- cookie dead, see shorts_state.json"},
+    {"short_id": "w28_discovery_hauser", "target_slot": "2026-07-06T12:00:00Z", "status": "PENDING_UPLOAD -- cookie dead, see shorts_state.json"},
+    {"short_id": "w28_discovery_beaumont", "target_slot": "2026-07-12T12:00:00Z", "status": "PENDING_UPLOAD -- cookie dead, see shorts_state.json"},
+    {"long_form_id": "LONG-1 (Zodiac)", "target_slot": "2026-07-07", "status": "script/assets only -- voice/render/upload blocked, no yt_id"},
+    {"long_form_id": "LONG-2 (Ourang Medan long-form)", "target_slot": "2026-07-10", "status": "script/assets only -- voice/render/upload blocked on ElevenLabs quota (resets 2026-07-30) + dead cookie, no yt_id"}
+  ],
+  "note": "No video has published on the channel since 2026-07-01 (v4_hook/v4_answer/v4_roanoke) -- every scheduled Short and both W28 long-forms since then are PENDING_UPLOAD or unrendered, blocked on the same dead voidline cookie (Shorts) and/or ElevenLabs quota exhaustion (long-forms). This snapshot's video list is therefore identical in substance to 2026-W27's, since no new public video exists to measure.",
+  "videos": [],
+  "channel_aggregates": {}
+}

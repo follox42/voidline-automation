@@ -1,0 +1,9 @@
+{
+  "week": "2026-W28",
+  "data_collection_status": "BLOCKED",
+  "blocker_note": "Studio comments tab unreachable this session -- voidline cookie auth confirmed dead (day 15, see progress/snapshots/2026-W28.json and skills/voidline-manager/LEARNINGS.md BLOCKER_2026-07-12-WEEKLY-INTEL). No comment mining performed. Idea Lock should NOT treat requests=[] as 'no requests this week' -- treat as unknown/uncollected and fall back to the existing backlog (weekly_plans, monthly_intel/2026-07-actions.json, skills/voidline-master/NEXT_VIDEOS.md) for topic selection instead, same as 2026-W27.",
+  "requests": [],
+  "critiques": [],
+  "feature_asks": [],
+  "praise": []
+}

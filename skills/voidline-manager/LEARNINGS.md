@@ -2238,3 +2238,40 @@ committed to git per repo convention (thumb + all json/manifest/attribution comm
 
 **Owner action needed (unchanged, now 15 days outstanding)**: interactive re-login to the
 `voidline` cookie profile. Today's 12:00 UTC slot will be missed without it (or a manual upload).
+
+## BLOCKER_2026-07-12-WEEKLY-INTEL — Sunday weekly-intel run: Studio analytics/comments blocked, voidline cookie dead (day 15), 2nd consecutive weekly-intel run with no real data
+
+**Observation**: Ran the WEEKLY INTEL v2 routine (`skills/weekly-intel/SKILL.md`, 7 phases).
+Phases 1 (performance snapshot) and 6 (viewer feedback mining) both require YouTube Studio via
+camoufox-stealth (`cookie_profile=voidline`). Probed a fresh session (`voidline_weeklyintel_0712`,
+1303 cookies restored): `studio.youtube.com/.../analytics` redirected to the Google account-chooser
+with Nolann marked "Déconnecté." Tried the one available self-service remediation —
+`stealth_restore_cookies(profile="voidline", backup=1)` — reloaded 1303 cookies from `voidline.bak1`,
+re-navigated: identical account-chooser redirect. `stealth_auth_check` confirmed `auth_valid=false /
+status=dead / api_status=0` / "Auth INVALID. Do NOT post. Re-login required." **Day 15** of the
+unrefreshed cookie (2026-07-02 → 2026-07-12), same signature as every check since RUN19 and today's
+earlier daily-short entry above. No further cookie-restore attempts made — the backup path has now
+been tried and failed, consistent with 15 days of prior sessions; repeating it again next session
+would not be a new signal, just a fresh confirmation the outage is unchanged.
+
+**This is the 2nd consecutive weekly-intel run (W27, W28) with no real Studio data**, but with a
+*different* root cause each time: W27 was the camoufox-stealth/mcphub bridge itself being
+infrastructurally unreachable (530/502); W28 is the bridge working fine but the session auth being
+dead. Both collapse to the same net effect for this routine.
+
+**What was done**: followed the same honest-blocked pattern as W27 —
+`progress/snapshots/2026-W28.json`, `viewer_feedback/2026-W28.json`, and
+`weekly_actions/2026-W28.md` all carry explicit `BLOCKED`/`data_collection_status` markers rather
+than fabricated numbers. Known-videos list compiled from `shorts/shorts_state.json` only (no new
+video has actually published since 2026-07-01, so the last-30d list is substantively identical to
+W27's). Ran the two sub-phases that don't need Studio access: `experiment_tracker.py status`/
+`check` (4 open, still over the 3-cap from W27, all still <14d old, 0 closed) and
+`progress_curve.py eta` ("no data yet" — deliberately not appending a blank row, 2nd week running,
+to avoid poisoning the first real 4-week rolling average). Wrote `self_eval/2026-W28.md` escalating
+the failure-mode recurrence per Phase 7, and `seeds/weekly-reports/2026-07-12.md` as the 2-page
+summary. Full detail in those files.
+
+**Owner action needed (unchanged, now 15 days outstanding)**: interactive re-login to the
+`voidline` cookie profile. This is now blocking every scheduled Short upload since 2026-07-04, both
+W28 long-forms, comment replies, community-tab posting, and 2 consecutive weekly-intel runs. No
+routine action can resolve this further.
