@@ -16,6 +16,12 @@ runs/*/assets/*.png
 # Bridged to YouTube via GitHub Release, not git history
 runs/*/render/*.mp4
 
+# Shorts cutter output — same policy as runs/*/render/: regenerate from the
+# committed shorts/*.json config (short_cutter_v2.py), don't store in git.
+# The .ass is a derived subtitle file, regenerated fresh from the config each run.
+shorts/*.mp4
+shorts/*.ass
+
 # Keep metadata/manifests/thumbnails in git
 !runs/*/voice/manifest.json
 !runs/*/assets/manifest.json
