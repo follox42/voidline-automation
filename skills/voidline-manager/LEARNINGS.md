@@ -2187,3 +2187,54 @@ long-forms are now gated on the same two owner actions:
 
 **Resume**: full protocol in `runs/LONG-2/PRODUCTION_STATE.md`. When quota returns, produce
 LONG-1 AND LONG-2 (both scripts' voice together ≈ 18k chars, well within a fresh 100k+ month).
+
+## 2026-07-12 — Sunday daily-short (w28_discovery_beaumont): produced end-to-end, cookie still dead (day 15), plan hook line corrected pre-production
+
+**Observation**: Today's weekly_plans/2026-W28.md discovery slot (Sunday) is the Beaumont
+Children (Adelaide, 1966). Its locked hook question read "THREE KIDS WALKED TO THE BEACH. ONE
+CAME BACK." — this is factually wrong: none of the three children (Jane 9, Arnna 7, Grant 4)
+were ever found, which is the actual story. Corrected to "3 KIDS WALKED TO THE BEACH. NONE CAME
+BACK." before writing script.json, rather than publish a false claim about a real, still-open
+missing-children case. Logged here (not just in the run) since it's a plan-authoring issue, not a
+production one — worth a note back to whichever routine locks weekly_plans hook lines to
+double-check factual claims against the source, not just hook "shape," for true-crime topics
+where the twist is a real absence/negative (nobody found / nobody returned / no wreck) rather
+than an easy-to-misstate presence.
+
+**Cookie status**: reprobed this session (fresh session `voidline_daily_0712`, 1212 cookies
+restored). Notably `studio.youtube.com/.../comments/inbox` rendered a real "YouTube Creator
+Studio" page shell (not the account-chooser redirect seen on most probes since RUN19) — but
+`stealth_auth_check` still returned `auth_valid=false / status=dead / api_status=0` /
+"Auth INVALID. Do NOT post. Re-login required." Consistent with the RUN32/34 observation that a
+rendering shell doesn't mean auth is safe for posting; treated as still-dead. **Day 15** of the
+unrefreshed voidline cookie (2026-07-02 → 2026-07-12), 9 days past BLOCKER_2026-07-11's day-13
+check.
+
+**ElevenLabs quota**: reconfirmed live via `elevenlabs-check_subscription`: 120,957/121,849 chars
+used, 892 remaining, resets 2026-07-30T20:41:15Z — unchanged from BLOCKER_2026-07-11. This
+Short's 97-word VO (593 chars) would have technically fit inside the 892 remaining, but chose
+silent render + captions-only instead: spending nearly the entire remaining shared-account
+balance on a Short that can't even upload today (cookie dead) isn't worth it when LONG-1/LONG-2
+are still blocked on that same balance. Same conservation logic as BLOCKER_2026-07-11, extended
+to the daily-short lane. script.json keeps the VO text ready for a real voice re-render once
+quota resets.
+
+**Production**: completed fully — script.json, 3 curated Wikimedia stills (Franklin Street
+Adelaide 1963, the 1929 Type H 'Glenelg' tram, Glenelg Beach aerial; none depict the children or
+the reported stranger — none exist on Commons, and KNOWN_BAD + real-minor-privacy grounds argue
+against using one even if it surfaced), a new reusable render script
+`skills/daily-short/build_discovery_base.py` (portrait 1080x1920 Ken-Burns, one `zoompan` call
+per input clip rather than one long expression across a concatenated timeline — the same class of
+bug that caused the zoompan-explosion hit while producing w27-ourang), `short_cutter_v2.py` cut
+(51.5s, hook/13 captions/outro), Fern-style thumb with red arrow on the tram. Verified render
+visually (frame extraction) before proceeding — hook card, body caption, and outro card all
+render correctly.
+
+**Not uploaded**: per the dead-auth signature above. `shorts/upload_shorts.py` remains unusable
+(nonexistent cross-host `mcp_stealth` import, hardcoded stale SPECS list from the v1-v3 batch,
+doesn't know about this or any other 2026-07 short) — not invoked. Local .mp4/.ass artifacts not
+committed to git per repo convention (thumb + all json/manifest/attribution committed).
+`shorts/shorts_state.json` updated with a `w28_discovery_beaumont` PENDING_UPLOAD entry.
+
+**Owner action needed (unchanged, now 15 days outstanding)**: interactive re-login to the
+`voidline` cookie profile. Today's 12:00 UTC slot will be missed without it (or a manual upload).

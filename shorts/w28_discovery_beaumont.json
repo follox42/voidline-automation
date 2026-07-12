@@ -1,0 +1,30 @@
+{
+  "source": "runs/w28-beaumont/render/base.mp4",
+  "start_s": 0,
+  "duration_s": 51.5,
+  "out": "shorts/w28_discovery_beaumont.mp4",
+  "source_is_portrait": true,
+  "header_text": "THE BEAUMONT CHILDREN — 1966",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "3 KIDS WALKED TO\\NTHE BEACH.\\NNONE CAME BACK.",
+  "hook_fontsize": 120,
+  "outro_question": "WHO WAS\\NTHE STRANGER?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0, "end": 4, "text": "JANUARY 26, 1966\\NAUSTRALIA DAY"},
+    {"start": 4, "end": 8, "text": "THREE SIBLINGS TAKE\\NTHE TRAM TO GLENELG BEACH"},
+    {"start": 8, "end": 11, "text": "JANE, 9. ARNNA, 7.\\NGRANT, JUST 4."},
+    {"start": 11, "end": 14, "text": "FIRST TIME THEIR MOTHER\\NLETS THEM GO ALONE"},
+    {"start": 14, "end": 17, "text": "THEY NEVER\\NCOME HOME"},
+    {"start": 17, "end": 20.5, "text": "WITNESSES SAW THEM\\NPLAYING WITH A STRANGER"},
+    {"start": 20.5, "end": 24, "text": "TALL. FAIR-HAIRED.\\NMID-THIRTIES."},
+    {"start": 24, "end": 27.5, "text": "A SHOPKEEPER SAYS JANE PAID\\NWITH MONEY SHE DIDN'T HAVE"},
+    {"start": 27.5, "end": 31, "text": "ONE OF AUSTRALIA'S\\NLARGEST MANHUNTS BEGINS"},
+    {"start": 31, "end": 34.5, "text": "DECADES OF TIPS,\\NDIGS, FALSE CONFESSIONS"},
+    {"start": 34.5, "end": 38, "text": "A $1 MILLION REWARD\\NSTILL STANDS"},
+    {"start": 38, "end": 42, "text": "NEARLY 60\\NYEARS LATER..."},
+    {"start": 42, "end": 46, "text": "NOT ONE TRACE OF THEM\\NHAS EVER BEEN FOUND"}
+  ]
+}

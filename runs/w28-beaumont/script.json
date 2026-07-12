@@ -1,0 +1,23 @@
+{
+  "run_id": "w28-beaumont",
+  "channel_slug": "voidline",
+  "format": "short-discovery",
+  "topic": "The Beaumont Children, Adelaide Australia 1966",
+  "hook_question": "3 KIDS WALKED TO\\NTHE BEACH.\\NNONE CAME BACK.",
+  "iconic_detail": "Three siblings — Jane 9, Arnna 7, Grant 4 — vanish from Glenelg Beach, Adelaide, on Australia Day 1966 after witnesses see them with a tall fair-haired stranger. Nearly 60 years later, none of them has ever been found. Australia's most infamous cold case.",
+  "_voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "_voice_name": "David Documentary, eleven_multilingual_v2",
+  "_voice_status": "SILENT — ElevenLabs Creator quota at 892/121849 chars remaining this billing period (resets 2026-07-30, see LEARNINGS.md BLOCKER_2026-07-11-ELEVENLABS-QUOTA). VO text below (593 chars) would fit, but spending nearly the whole remaining shared-account balance on a Short that can't be uploaded today anyway (voidline cookie also dead) was judged not worth it — conserved for LONG-1/LONG-2 recovery. Render uses captions only, no narration audio (silent AAC track). Re-render with real VO once quota resets.",
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "voiceover": "January 26th, 1966, Australia Day. Nine-year-old Jane Beaumont takes her younger siblings, Arnna and Grant, on the short tram ride to Glenelg Beach, near Adelaide. It's the first time their mother lets them go alone.\n\nThey never come home.\n\nWitnesses see all three playing with a tall, fair-haired stranger in his thirties. Later, a shopkeeper says Jane pays with a pound note the children shouldn't have had.\n\nPolice launch one of Australia's largest manhunts. Decades of tips, digs, and false confessions follow.\n\nNearly 60 years later, no trace of Jane, Arnna, or Grant has ever been found.",
+      "wikimedia_queries": [
+        "Franklin Street Adelaide 1963",
+        "Glenelg tram Adelaide vintage",
+        "Glenelg Beach Adelaide aerial"
+      ]
+    }
+  ],
+  "editorial_note": "weekly_plans/2026-W28.md's locked hook line for this slot read 'THREE KIDS WALKED TO THE BEACH. ONE CAME BACK.' — factually wrong for this case (none of the three children were ever found or returned; that is precisely the story). Corrected to 'NONE CAME BACK' before production rather than publish a false claim about a real, still-open missing-children case. Same S-tier contradiction-hook shape, accurate to the sourced facts (Wikipedia: Disappearance of the Beaumont children)."
+}
