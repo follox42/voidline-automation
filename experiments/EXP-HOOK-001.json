@@ -22,6 +22,14 @@
       "value": "question_first_8s",
       "produced": "2026-07-11 (script+assets only; voice/render/upload blocked)",
       "note": "append yt_id to videos_tagged once published; blocked on ElevenLabs quota reset 2026-07-30 + voidline cookie re-login"
+    },
+    {
+      "run_id": "LONG-1-hauser",
+      "topic": "Kaspar Hauser",
+      "arm": "control",
+      "value": "question_first_8s",
+      "produced": "2026-07-13 (script+assets+thumb-config only; voice/render/thumb/upload blocked)",
+      "note": "append yt_id to videos_tagged once published; blocked on ElevenLabs quota reset 2026-07-30 + voidline cookie re-login (dead, reconfirmed 2026-07-13)"
     }
   ]
 }
