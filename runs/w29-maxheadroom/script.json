@@ -1,0 +1,23 @@
+{
+  "run_id": "w29-maxheadroom",
+  "channel_slug": "voidline",
+  "format": "short-discovery",
+  "topic": "Max Headroom signal intrusion, Chicago 1987",
+  "hook_question": "SOMEONE HIJACKED\\NLIVE TV FOR\\N90 SECONDS.\\NTHEN VANISHED.",
+  "iconic_detail": "A masked figure hijacked two Chicago TV broadcasts mid-program for less than 2 minutes total on the night of November 22, 1987; despite a federal FBI investigation into felony signal intrusion, no one was ever identified or charged.",
+  "_voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "_voice_name": "David Documentary, eleven_multilingual_v2 (NOT rendered this session — see editorial_note)",
+  "editorial_note": "SILENT render — ElevenLabs Creator quota was 892/121849 chars remaining as of the last check (2026-07-12, resets 2026-07-30, see LEARNINGS.md BLOCKER_2026-07-11-ELEVENLABS-QUOTA). Reconfirmed live this session: still 892/121849 remaining. This short's ~103-word VO (~610 chars) would technically fit, but spending nearly the entire remaining shared-account balance on a Short that cannot upload today anyway (voidline cookie also confirmed dead, auth_check status=dead) is not worth it while LONG-1/LONG-2 are still waiting on that same balance. Same conservation logic as w28_discovery_beaumont (2026-07-12). VO text kept below, ready for a real voice re-render once quota resets.",
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "voiceover": "November 22nd, 1987, Chicago. During the evening news on WGN-TV, the picture suddenly cuts to static. A masked figure in a Max Headroom costume flickers onto the screen, distorting and buzzing for seconds before engineers manage to cut the signal.\n\nTwo hours later it happens again, this time on WTTW, mid-episode of Doctor Who. The intruder rambles nonsense, gets spanked with a flyswatter, and vanishes just as fast.\n\nBroadcast intrusion is a federal felony. The FBI opens an investigation, traces equipment, chases leads for years.\n\nNobody is ever charged. No one has ever come forward. Whoever hijacked Chicago television for ninety seconds has never been identified.",
+      "wikimedia_queries": [
+        "television static noise screen",
+        "Chicago skyline 1987",
+        "broadcast transmission tower antenna",
+        "vintage television studio control room 1980s"
+      ]
+    }
+  ]
+}

@@ -2283,3 +2283,51 @@ quota. Nothing has shipped to the channel since 2026-07-01.
 3. Idea Lock W29 (or let it run) so Mon+ has a planned lineup.
 
 No state mutated this review (Beaumont entry already accurate). agent-log.json updated; committed+pushed.
+
+## 2026-07-13 — Monday daily-short (w29_discovery_maxheadroom): produced end-to-end, cookie still dead (day 17+), ElevenLabs quota unchanged
+
+**Plan**: weekly_plans/2026-W29.md locked 2026-07-12 (Idea Lock ran since the prior review's DRIFT flag).
+Monday's discovery slot: Max Headroom signal intrusion, Chicago 1987 (WGN-TV + WTTW hijacked mid-broadcast
+for under 2 minutes total; no one ever identified or charged).
+
+**Cookie status**: reprobed via `stealth_auth_check` on the existing `voidline_weeklyintel_0712` session —
+`auth_valid=false / status=dead / api_status=0 / "Auth INVALID. Do NOT post. Re-login required."` — identical
+signature to every check since RUN19 (2026-07-05). **Day 17+** of the unrefreshed voidline cookie
+(2026-07-02 → 2026-07-13).
+
+**ElevenLabs quota**: reconfirmed live via `elevenlabs-check_subscription`: 120,957/121,849 chars used,
+892 remaining, resets 2026-07-30 — unchanged since BLOCKER_2026-07-11. Same conservation call as
+w28_discovery_beaumont: this Short's ~103-word VO (~615 chars) would fit, but spending nearly the entire
+remaining shared balance on a Short that can't upload today anyway isn't worth it while LONG-1/LONG-2 are
+still waiting on that same balance. Rendered SILENT; script.json keeps the VO text ready for a real
+voice re-render once quota resets.
+
+**Assets note**: the automated `fetch_wikimedia_assets.py` generic-query pass returned unusable results
+(a 1947 thesis title page, a census reference map, an NPS archive PDF cover) for this topic — the actual
+1987 broadcast intrusion footage is proprietary news/TV material, not on Commons, so generic queries alone
+don't converge. Manually searched and hand-picked 3 real, on-theme, license-clear stills instead: the RCA
+Indian Head test pattern (period-accurate US broadcast test card), a CRT "NO SIGNAL" static photo (the
+hijack-static beat), and the KMOS-TV Master Control room (broadcast-engineering beat) — rejected several
+candidates first (an Indian Head test pattern with distracting red function-label callouts already baked
+in; a very obviously modern flat-panel control room with a stack of Dell shipping boxes visible, too
+anachronistic for a 1987 story; a "test pattern" photo that was actually a wall-mounted 2020s smart TV).
+Worth flagging: the hardcoded generic Wikimedia query fallback in `fetch_wikimedia_assets.py` produces
+noise for topics without curated `wikimedia_queries.json`/`script.json` queries tuned to the actual visual
+need (era + medium + specific object beats generic subject nouns) — same lesson as the Roanoke
+`CHAPTER_QUERIES` precedent, now confirmed again for a Shorts-scale topic.
+
+**Production**: completed fully — script.json (103-word VO), 3 curated Wikimedia stills (see above),
+`build_discovery_base.py` Ken-Burns render, `short_cutter_v2.py` cut (51s, hook + 14 captions + outro),
+Fern-style thumb (static-photo background, red arrow at the "NO SIGNAL" readout). Verified render visually
+via frame extraction — hook card, a body caption landing cleanly on the static-image beat, and the outro
+card all render correctly.
+
+**Not uploaded**: per the dead-auth signature above (day 17+, unchanged blocker). `shorts/upload_shorts.py`
+remains unusable (nonexistent cross-host `mcp_stealth` import, hardcoded stale v1-v3 SPECS list). Local
+.mp4 not committed to git per repo convention (thumb + all json/manifest/attribution committed).
+`shorts/shorts_state.json` updated with a `w29_discovery_maxheadroom` PENDING_UPLOAD entry.
+
+**Owner action needed (unchanged, now 17+ days outstanding)**: interactive re-login to the `voidline`
+cookie profile. Today's 12:00 UTC slot will be missed without it (or a manual upload). This single action
+also unblocks the standing backlog: 5 PENDING_UPLOAD Shorts (flight19, ourang, hauser, beaumont, now
+maxheadroom) plus both W28 long-forms' upload step.

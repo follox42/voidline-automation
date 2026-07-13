@@ -1,0 +1,31 @@
+{
+  "source": "runs/w29-maxheadroom/render/base.mp4",
+  "start_s": 0,
+  "duration_s": 51.0,
+  "out": "shorts/w29_discovery_maxheadroom.mp4",
+  "source_is_portrait": true,
+  "header_text": "MAX HEADROOM — 1987",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "SOMEONE\\NHIJACKED LIVE TV\\NFOR 90 SECONDS.\\NTHEN VANISHED.",
+  "hook_fontsize": 110,
+  "outro_question": "WHO WAS\\NBEHIND THE MASK?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0, "end": 3.5, "text": "NOVEMBER 22, 1987\\NCHICAGO"},
+    {"start": 3.5, "end": 7, "text": "WGN-TV, EVENING NEWS.\\NTHE PICTURE CUTS TO STATIC"},
+    {"start": 7, "end": 10.5, "text": "A MASKED FIGURE\\NFLICKERS ONTO SCREEN"},
+    {"start": 10.5, "end": 14, "text": "DRESSED AS\\N\"MAX HEADROOM\""},
+    {"start": 14, "end": 17.5, "text": "ENGINEERS CUT\\NTHE SIGNAL IN SECONDS"},
+    {"start": 17.5, "end": 21, "text": "TWO HOURS LATER...\\NIT HAPPENS AGAIN"},
+    {"start": 21, "end": 24.5, "text": "THIS TIME ON WTTW,\\NMID-EPISODE OF DOCTOR WHO"},
+    {"start": 24.5, "end": 28, "text": "THE INTRUDER RAMBLES,\\NGETS SPANKED WITH A FLYSWATTER"},
+    {"start": 28, "end": 31, "text": "THEN VANISHES\\NJUST AS FAST"},
+    {"start": 31, "end": 34.5, "text": "BROADCAST INTRUSION\\NIS A FEDERAL FELONY"},
+    {"start": 34.5, "end": 38, "text": "THE FBI OPENS\\NAN INVESTIGATION"},
+    {"start": 38, "end": 41.5, "text": "THEY TRACE EQUIPMENT,\\NCHASE LEADS FOR YEARS"},
+    {"start": 41.5, "end": 45, "text": "NOBODY IS\\NEVER CHARGED"},
+    {"start": 45, "end": 47, "text": "NO ONE HAS EVER\\NCOME FORWARD"}
+  ]
+}

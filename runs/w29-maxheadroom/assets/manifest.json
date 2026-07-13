@@ -1,0 +1,22 @@
+{
+  "ch0": [
+    {
+      "path": "runs/w29-maxheadroom/assets/ch0/img_00.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/1b/RCA_Indian_Head_test_pattern.JPG",
+      "license": "Public domain",
+      "title": "File:RCA Indian Head test pattern.JPG"
+    },
+    {
+      "path": "runs/w29-maxheadroom/assets/ch0/img_01.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/No_Signal_23.JPG/1280px-No_Signal_23.JPG",
+      "license": "CC BY-SA 4.0",
+      "title": "File:No Signal 23.JPG"
+    },
+    {
+      "path": "runs/w29-maxheadroom/assets/ch0/img_02.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Master_Control_-_KMOS-TV_-_Sedalia%2C_Missouri.jpg/1280px-Master_Control_-_KMOS-TV_-_Sedalia%2C_Missouri.jpg",
+      "license": "CC BY 2.0",
+      "title": "File:Master Control - KMOS-TV - Sedalia, Missouri.jpg"
+    }
+  ]
+}

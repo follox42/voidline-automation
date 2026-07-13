@@ -1,0 +1,25 @@
+{
+  "src": "runs/w29-maxheadroom/assets/ch0/img_01.jpg",
+  "out": "runs/w29-maxheadroom/thumb/thumbnail.jpg",
+  "brightness": 0.9,
+  "saturation": 0.8,
+  "contrast": 1.15,
+  "text_x": 40,
+  "text_y": 24,
+  "headline": "THEY HIJACKED\nLIVE TV.",
+  "headline_size": 92,
+  "headline_color": "#E0B854",
+  "headline_stroke": 8,
+  "date": "CHICAGO, 1987",
+  "date_size": 62,
+  "date_stroke": 5,
+  "arrow": {
+    "tip": [635, 500],
+    "length": 220,
+    "angle": -55,
+    "shaft_w": 50,
+    "head_w": 110,
+    "head_len": 95,
+    "stroke_w": 6
+  }
+}
