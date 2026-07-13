@@ -2359,3 +2359,22 @@ single 2-minute owner action: **interactive re-login to the `voidline` cookie pr
 unblocks all 4 backlog Short uploads. Long-form voice additionally needs the ElevenLabs reset
 (2026-07-30) or an owner-side top-up (routine not authorized for new spend). No routine-side
 alternative path remains — direct-API voice works but the upload surface is 100% cookie-gated.
+
+## BLOCKER_2026-07-13-COMMENTS-RUN42 — community-manager comments batch: same two blockers, no new comments
+
+**Ran**: community-manager comments-reply batch (RUN42). `python3 skills/community-manager/comments_runner.py`
+still raises `ImportError: cannot import name 'StealthClient' from 'mcp_stealth'` on import (line 21) —
+`mcp_stealth.py` has never exposed that class, unchanged design mismatch, still deferred to owner-merged
+PR #326/#334 (wiring it to the raw `call()`/`initialize()` functions instead would bypass the MCP tool
+registry — the same category of workaround SKILL.md's draft-only policy forbids, so left unfixed again).
+
+Bypassed the broken script and drove Studio directly via the properly-registered
+`mcp__mcphub__camoufox-stealth_*` tools instead (not a registry bypass). `stealth_navigate` to the comments
+inbox landed on the Google account-chooser (Nolann "Déconnecté"); `stealth_auth_check` on session
+`voidline_community` → `auth_valid=false / status=dead / api_status=0` — same signature as every probe
+since RUN19. Studio is unreachable, so there is nothing to fetch, classify, heart, hide, or pin this run.
+
+No new comments, no live Studio actions attempted (consistent with the RUN3 draft-only hard-stop policy in
+`skills/community-manager/SKILL.md`, and moot here regardless since auth is dead). `community/replied_to.json`
+note stamped with this reconfirmation; no other state changed. Owner action needed: unchanged (see
+DAILY_2026-07-13 above — interactive cookie re-login is the single unblock for this routine too).
