@@ -1,0 +1,348 @@
+{
+  "idea_id": "w29-long1-kaspar-hauser",
+  "run_id": "LONG-1-hauser",
+  "channel_slug": "voidline",
+  "format": "long-form",
+  "title": "16 Years in a Locked Room. Then One DNA Test Said Prince — And Another Said No. (1828)",
+  "title_variants_for_ab": {
+    "chosen_arm": "EXP-TITLE-001 variant=numbers_iconic_contradiction",
+    "control_would_be": "Kaspar Hauser (1828): Was the Boy in the Square a Lost Prince?"
+  },
+  "publish_at": "2026-07-14T17:00:00Z",
+  "publish_at_note": "Planned Tue slot per weekly_plans/2026-W29.md — WILL SLIP: ElevenLabs quota resets 2026-07-30, voidline cookie dead (owner re-login required). Update before upload.",
+  "duration_sec": 690,
+  "target_runtime": "11:30 (plan target 11-13 min)",
+  "output_mode": "long-form 16:9",
+  "aspect_ratio": "16:9",
+  "fps": 30,
+  "_creative_bible_ref": "skills/long-form-pipeline/SKILL.md Step 1",
+  "_voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "_voice_name": "Daniel (daniel_authoritative) — EXP-VOICE-001 VARIANT arm, per weekly_plans/2026-W29.md LONG-1",
+  "_voice_settings": {
+    "stability": 0.45,
+    "similarity_boost": 0.9,
+    "style": 0.3,
+    "use_speaker_boost": true,
+    "model_id": "eleven_multilingual_v2"
+  },
+  "_voice_v3_polish_notes": "N/A — Daniel uses eleven_multilingual_v2; no v3 bracket stage-direction tags (would be read literally). Pacing carried by punctuation and sentence length, same rule as LONG-2.",
+  "_research_sources": [
+    "Anselm von Feuerbach, 'Kaspar Hauser. Beispiel eines Verbrechens am Seelenleben des Menschen' (1832) — primary contemporary investigation",
+    "Feuerbach's private memorandum on the Baden theory addressed to Queen Caroline of Bavaria (1832)",
+    "The two letters carried at Unschlittplatz, 26 May 1828 (same-hand observation is part of the documented record)",
+    "1996 mtDNA analysis — Forensic Science Service (Birmingham) with LMU Munich, bloodstain from the preserved underwear (Ansbach) → NO match to the Beauharnais maternal line",
+    "2002 mtDNA analysis — University of Münster Institute of Legal Medicine, authenticated hair/cell samples → internally consistent, inconsistent with the 1996 bloodstain, and only one position away from the Beauharnais reference (prince theory 'cannot be excluded')",
+    "2024 mtDNA study (iScience) — modern sequencing across independently authenticated hair samples → consistent haplotype, does NOT match the House of Baden maternal line",
+    "Grave inscription (Stadtfriedhof Ansbach) and Hofgarten monument 'Hic occultus occulto occisus est'",
+    "Wikipedia: Kaspar Hauser (cross-checked against the above)"
+  ],
+  "_fact_note_vs_plan": "NEXT_VIDEOS.md's iconic-detail blurb inverts the two DNA results (says 1996=match, 2002=no-match). Documented record is the reverse: 1996 bloodstain = NO match; 2002 hair = near-match (one position off, not excludable). Script uses the correct direction; the hook line ('tested twice, two different answers') is unaffected.",
+  "_visual_mix_target": "Wikimedia Commons stills (Hauser portraits/engravings, Nuremberg, Baden court portraits, Ansbach Hofgarten + monuments); Flow AI period stills only if quota+auth allow (expected blocked — voidline cookie dead); w28-hauser Short already curated 3 usable Hauser images (see runs/w28-hauser/assets/manifest.json)",
+  "_script_status": "WRITTEN 2026-07-13 by long-form-pipeline routine",
+  "_total_voice_chars": 8941,
+  "_total_target_words": 1593,
+  "_experiment_tags": {
+    "EXP-HOOK-001": {
+      "arm": "control",
+      "value": "question_first_8s"
+    },
+    "EXP-TITLE-001": {
+      "arm": "variant",
+      "value": "numbers_iconic_contradiction"
+    },
+    "EXP-VOICE-001": {
+      "arm": "variant",
+      "value": "daniel_authoritative"
+    },
+    "yt_id": null,
+    "note": "apply real yt_id to experiments/*.json videos_tagged once published"
+  },
+  "description": "On 26 May 1828, a teenage boy appeared in a Nuremberg square, barely able to speak, carrying two letters written in the same hand. He said he had spent his whole life in a darkened cell. Five years later he was stabbed to death in a palace garden by a man who was never found — leaving behind only a mirror-writing note signed \"M. L. Ö.\"\n\nWas he the hereditary Prince of Baden, swapped out of his cradle in 1812 — or an impostor? In 1996, mitochondrial DNA from his preserved bloodstain said NO match to the Baden line. In 2002, DNA from his authenticated hair came back one position away from a match. Two tests. Two different answers.\n\n⏱ Timestamps:\n0:00 — Two Tests, Two Answers\n0:52 — The Boy in the Square\n2:37 — The Child of Europe\n4:39 — The Prince Theory\n6:47 — The Garden\n8:54 — The DNA Verdicts\n10:52 — The Better Question\n\nSources: Feuerbach (1832), the 1996 Forensic Science Service analysis, the 2002 University of Münster analysis, the 2024 iScience sequencing study, and the Ansbach court records tradition.\n\n#KasparHauser #UnsolvedMystery #Documentary",
+  "tags": [
+    "kaspar hauser",
+    "unsolved mystery",
+    "historical mystery",
+    "house of baden",
+    "dna mystery",
+    "kaspar hauser dna",
+    "lost prince",
+    "nuremberg 1828",
+    "true crime history",
+    "mystery documentary",
+    "19th century mystery",
+    "documentary"
+  ],
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "scene_type": "cold-open-hook",
+      "title": "Two Tests, Two Answers",
+      "start_sec": 0.0,
+      "end_sec": 52.0,
+      "target_words": 125,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Kreul pastel portrait of Kaspar Hauser, slow push-in (archival still)",
+        "Antique specimen vial with a lock of hair on a desk (thumb-adjacent beat, AI still if Flow unblocks)",
+        "Nuremberg square engraving, dawn light"
+      ],
+      "wikimedia_queries": [
+        "Kaspar Hauser portrait",
+        "Kaspar Hauser Kreul",
+        "Nuremberg engraving 19th century"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "tense_cinematic_low_drone",
+      "kinetic_events": [
+        {
+          "t_offset": 3.0,
+          "text": "TWO DIFFERENT ANSWERS",
+          "style": "iconic"
+        },
+        {
+          "t_offset": 9.0,
+          "text": "MAY 1828",
+          "style": "date"
+        }
+      ],
+      "voiceover": "His DNA was tested twice. The tests gave two different answers.\n\nIn May of 1828, a teenage boy shuffled into a Nuremberg square — barely able to speak, clutching a letter addressed to a man he had never met. He claimed he had spent his whole life alone, in a darkened cell, with no memory of a single human face.\n\nFive years later he was dead. Stabbed in a quiet palace garden, by a stranger who was never found.\n\nWas he a hidden prince, swapped out of his cradle to steal a throne? Or one of the greatest impostors in European history?\n\nTwo centuries later, forensic science finally weighed in. Twice. And the two answers do not agree."
+    },
+    {
+      "chapter_id": 1,
+      "scene_type": "setup-context",
+      "title": "The Boy in the Square",
+      "start_sec": 52.0,
+      "end_sec": 157.0,
+      "target_words": 250,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Arrival of Kaspar Hauser in Nuremberg (period illustration)",
+        "Unschlittplatz square, present-day or period photograph",
+        "19th-century handwritten letter close-up",
+        "Dark cell interior, single straw bed (AI still if available)"
+      ],
+      "wikimedia_queries": [
+        "Arrival of Kaspar Hauser in Nuremberg",
+        "Unschlittplatz Nuremberg",
+        "19th century handwritten letter German",
+        "Nuremberg old town 1828"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "sparse_piano_mystery",
+      "kinetic_events": [
+        {
+          "t_offset": 2.0,
+          "text": "MAY 26, 1828",
+          "style": "date"
+        },
+        {
+          "t_offset": 96.0,
+          "text": "16 YEARS",
+          "style": "number"
+        }
+      ],
+      "voiceover": "Whit Monday. The twenty-sixth of May, 1828. A shoemaker crossing Nuremberg's Unschlittplatz notices a teenager standing alone — maybe sixteen years old, sturdy but strangely stiff, walking as if his legs had never been used for walking.\n\nThe boy can barely speak. He repeats a handful of phrases, over and over. 'I want to be a cavalryman, as my father was.' He answers almost every question with 'don't know.' But when they hand him pen and paper, he writes a name in careful, practiced letters: Kaspar Hauser.\n\nHe carries two letters. One, supposedly from the laborer who has kept him since infancy, addressed to the captain of the local cavalry regiment: take the boy in, it says, or hang him. The second claims to be from his mother, written sixteen years earlier. Investigators would later note something odd — both letters appear to be written in the same hand.\n\nAnd then there is the story he eventually tells, once he has learned enough words to tell it. A cell, two meters long, too low to stand upright in. Straw to sleep on. Bread and water that appeared while he slept. Two carved wooden horses for toys. No sunlight. No voices. No memory of a human face — until, shortly before his release, a man he only ever calls 'the man who was always there' taught him to write one name, and one sentence, and turned him loose on the world.\n\nSixteen years, the story went. Sixteen years of darkness, ending in a town square in Bavaria."
+    },
+    {
+      "chapter_id": 2,
+      "scene_type": "complication-first-twist",
+      "title": "The Child of Europe",
+      "start_sec": 157.0,
+      "end_sec": 279.0,
+      "target_words": 290,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Kaspar Hauser portrait variants (period)",
+        "Friedrich Daumer portrait",
+        "Candlelit cellar stairs (AI still if available)",
+        "Lord Stanhope portrait",
+        "Ansbach town view, 19th century"
+      ],
+      "wikimedia_queries": [
+        "Friedrich Daumer",
+        "Kaspar Hauser 1830 portrait",
+        "Philip Henry Stanhope 4th Earl",
+        "Ansbach 19th century view"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "building_strings_unease",
+      "kinetic_events": [
+        {
+          "t_offset": 12.0,
+          "text": "\"THE CHILD OF EUROPE\"",
+          "style": "iconic"
+        },
+        {
+          "t_offset": 66.0,
+          "text": "OCTOBER 1829",
+          "style": "date"
+        }
+      ],
+      "voiceover": "Nuremberg adopted him like a foundling prince. The city council made him a ward of the town. Curious visitors paid to watch him eat. Scientists and nobles came from across the continent. The papers called him the Child of Europe.\n\nUnder the care of a schoolmaster named Friedrich Daumer, Kaspar learned with unnerving speed — reading, writing, drawing, even horsemanship. Too fast, said the skeptics. A boy raised in a lightless box should be a broken thing, not a quick student with an excellent seat on a horse. Doctors argued over him. Some saw the pale skin, the oddly soft feet, the violent reactions to meat and beer, and believed every word. Others saw a healthy young man with a talent for being looked at.\n\nThen, in October 1829, he was found bleeding in Daumer's cellar, a cut across his forehead. A hooded man, he said, had attacked him with a razor — and whispered that he must die before he could be recognized. The wound was real. The attacker was never found. Believers saw an assassin, sent to silence him. Doubters noticed the timing: Kaspar had just been caught in a lie by Daumer, and the cut was shallow.\n\nWhatever the truth, the attack changed his life. Guards were posted at his door. He was moved from house to house. Eventually a wealthy English aristocrat, Lord Stanhope, took over his patronage and promised to uncover his origins — then quietly cooled, moved him to the smaller town of Ansbach, left him with a schoolmaster who despised him, and stopped answering his letters. By 1833, the Child of Europe was a copying clerk in a provincial court office. Famous, friendless, and running out of protectors."
+    },
+    {
+      "chapter_id": 3,
+      "scene_type": "investigation",
+      "title": "The Prince Theory",
+      "start_sec": 279.0,
+      "end_sec": 407.0,
+      "target_words": 300,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Stéphanie de Beauharnais portrait",
+        "Grand Duke Karl of Baden portrait",
+        "Karlsruhe palace engraving",
+        "Anselm von Feuerbach portrait",
+        "Royal cradle / court interior (AI still if available)"
+      ],
+      "wikimedia_queries": [
+        "Stéphanie de Beauharnais portrait",
+        "Karl Grand Duke of Baden",
+        "Karlsruhe Schloss engraving",
+        "Anselm von Feuerbach"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "court_intrigue_low_strings",
+      "kinetic_events": [
+        {
+          "t_offset": 14.0,
+          "text": "SEPTEMBER 29, 1812",
+          "style": "date"
+        },
+        {
+          "t_offset": 30.0,
+          "text": "16 DAYS",
+          "style": "number"
+        },
+        {
+          "t_offset": 105.0,
+          "text": "\"A CRIME AGAINST THE SOUL\"",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "The rumor had followed him almost from the first week: the boy is royal.\n\nHere is the theory, as its believers tell it. On the twenty-ninth of September, 1812, the Grand Duchess of Baden — Stéphanie de Beauharnais, adopted daughter of Napoleon himself — gave birth to a son. The hereditary prince of Baden. Sixteen days later, the infant was declared dead. The examination was cursory. His mother, ill herself, was never allowed to see the body.\n\nWith that death, the succession slid toward the sons of the Countess von Hochberg — the old Grand Duke's second wife, from a marriage the court considered beneath the throne. And when the last prince of the main line died in 1830, it was exactly the Hochberg line that inherited.\n\nSo the believers ask: what if the baby never died? What if the Countess had the prince swapped in his cradle for a dying servant's child — and the real heir raised in secret, in a cell, until no one could recognize him? Count the years from 1812 to 1828, and the boy in the Nuremberg square is exactly the right age.\n\nIt sounds like a fairy tale. What gave it teeth was the caliber of the people who took it seriously. Anselm von Feuerbach — president of the Ansbach court of appeals, one of the founders of modern criminology — investigated Kaspar personally. In 1832 he published a book arguing the boy was the victim of a crime against the soul of a man. Privately, he drafted a memorandum on the prince theory for the Queen of Bavaria.\n\nIn May 1833, Feuerbach died suddenly, on the road. His family believed, to the end, that he had been poisoned. Seven months later, Kaspar Hauser followed him."
+    },
+    {
+      "chapter_id": 4,
+      "scene_type": "deeper-mystery",
+      "title": "The Garden",
+      "start_sec": 407.0,
+      "end_sec": 534.0,
+      "target_words": 300,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Ansbach Hofgarten in winter",
+        "Assassination of Kaspar Hauser illustration",
+        "Mirror-writing note recreation (AI still if available)",
+        "Kaspar Hauser grave stone",
+        "Hofgarten monument 'Hic occultus'"
+      ],
+      "wikimedia_queries": [
+        "Ansbach Hofgarten",
+        "Assassination of Kaspar Hauser",
+        "Kaspar Hauser Denkmal Hofgarten",
+        "Kaspar Hauser grave Ansbach"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "cold_sparse_tension",
+      "kinetic_events": [
+        {
+          "t_offset": 1.5,
+          "text": "DECEMBER 14, 1833",
+          "style": "date"
+        },
+        {
+          "t_offset": 58.0,
+          "text": "M. L. Ö.",
+          "style": "iconic"
+        },
+        {
+          "t_offset": 96.0,
+          "text": "\"I DIDN'T DO IT MYSELF.\"",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "The fourteenth of December, 1833. A gray winter afternoon in Ansbach.\n\nKaspar staggers home clutching his chest. He had been told, he gasps, to come to the court garden — a stranger had promised him news about his mother. About who he really was. In the garden, the man handed him a small violet purse. And then drove a knife once into his chest.\n\nThey found the purse in the snow. Inside was a note, written in Spiegelschrift — mirror writing, legible only when held up to a glass. It read, roughly: 'Hauser will be able to tell you exactly how I look and where I am from. To spare him the effort, I will tell you myself. I come from the Bavarian border. My name is M. L. Ö.'\n\nNo M. L. Ö. was ever identified. No arrest was ever made.\n\nThe wound reached deep — heart and liver. He died three days later, on the seventeenth of December. Among his last recorded words: 'I didn't do it myself.'\n\nHe had to say it, because the rival theory was already in the room: that Kaspar — his fame fading, his patron gone cold — had staged one more attack, as he may have staged the first, and this time the blade went deeper than he intended. Some pointed out that the note was folded exactly the way Kaspar folded his own letters. Others swore the angle of the wound made self-infliction nearly impossible. The inquest settled nothing.\n\nThey buried him under a stone that reads, in Latin: Here lies Kaspar Hauser. Riddle of his time. His birth unknown. His death mysterious. In the court garden, a second monument marks the spot where the knife went in: Here a mysterious one was killed in a mysterious way."
+    },
+    {
+      "chapter_id": 5,
+      "scene_type": "contemporary-answer",
+      "title": "The DNA Verdicts",
+      "start_sec": 534.0,
+      "end_sec": 652.0,
+      "target_words": 280,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "1990s forensic laboratory (AI still if available, per plan)",
+        "Mitochondrial DNA sequence visualization",
+        "Preserved clothing in museum case",
+        "Hair lock in specimen vial (thumb-adjacent beat)"
+      ],
+      "wikimedia_queries": [
+        "DNA sequencing laboratory",
+        "mitochondrial DNA",
+        "forensic laboratory analysis",
+        "Markgrafenmuseum Ansbach"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "modern_pulse_revelation",
+      "kinetic_events": [
+        {
+          "t_offset": 8.0,
+          "text": "1996",
+          "style": "date"
+        },
+        {
+          "t_offset": 52.0,
+          "text": "2002",
+          "style": "date"
+        },
+        {
+          "t_offset": 88.0,
+          "text": "ONE POSITION AWAY",
+          "style": "number"
+        },
+        {
+          "t_offset": 100.0,
+          "text": "2024",
+          "style": "date"
+        }
+      ],
+      "voiceover": "For a hundred and sixty years, the question froze exactly there. Then DNA thawed it.\n\nNineteen ninety-six. The Forensic Science Service in Birmingham, working with researchers in Munich, extracts mitochondrial DNA from a bloodstain on Kaspar's preserved clothing — kept under glass in Ansbach since the stabbing. Mitochondrial DNA passes down the maternal line. If Kaspar was Stéphanie de Beauharnais's son, his sequence should match her living descendants.\n\nIt did not. Headlines around the world declared the case closed. Kaspar Hauser was no prince.\n\nTwo thousand two. A team at the University of Münster tries again — this time with hair, from locks documented to have been cut from Kaspar himself, and cells lifted from his hat and trousers. All the new samples agree with each other. But they do not agree with the 1996 bloodstain. And when they are compared against the Beauharnais maternal line, they come out one position away from a match — so close that the researchers concluded the prince theory could no longer be ruled out.\n\nTwo tests. Two answers. Either the museum blood was never really his, or the hair was not. Forensic science had answered the question twice — once no, once maybe — and the mystery survived it.\n\nThe latest chapter arrived in 2024, when a team ran modern sequencing across multiple hair samples, independently authenticated, from different custodians. This time the result was consistent, and it was sobering: his maternal line does not match the House of Baden. If those hairs are his, Kaspar Hauser was almost certainly not the lost prince."
+    },
+    {
+      "chapter_id": 6,
+      "scene_type": "open-question-outro",
+      "title": "The Better Question",
+      "start_sec": 652.0,
+      "end_sec": 690.0,
+      "target_words": 85,
+      "voiceover_status": "WRITTEN",
+      "visual_mix": [
+        "Kaspar Hauser portrait, slow fade to black",
+        "Empty Nuremberg square at dusk"
+      ],
+      "wikimedia_queries": [
+        "Kaspar Hauser memorial",
+        "Nuremberg square dusk"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "outro_low_resolve",
+      "kinetic_events": [
+        {
+          "t_offset": 22.0,
+          "text": "WHO WAS M. L. Ö.?",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "But notice what that answer does not do. If he was not a prince, no throne was at stake — so why would anyone keep an anonymous child in a cell for sixteen years? Why teach him exactly one sentence, hand him two letters written in the same hand, and release him into a crowded square? And who, five years later, was M. L. Ö.?\n\nAn impostor explains the lies. It does not explain the knife.\n\nWhat's your theory? The comments are open."
+    }
+  ]
+}

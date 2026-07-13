@@ -1,0 +1,13 @@
+{
+  "status": "DEFERRED_AUTH",
+  "reason": "Flow Nano Banana 2 requires cookie_profile=voidline (dead since 2026-07-02, reconfirmed dead 2026-07-13 via stealth_auth_check, day 15+). KNOWN_BAD forbids photo-archive thumbnails (0% CTR on v2), so no Wikimedia fallback thumb was produced.",
+  "flow_prompt": "Cinematic hyperreal photograph of a single antique glass specimen vial containing a lock of hair, resting on a weathered 19th-century wooden writing desk beside a wax-sealed court document, soft diffused blue-hour window light through dusty glass, pale sepia + cold teal shadow color grade, heavy atmospheric perspective, slight film grain, low contrast highlights, deep crushed shadows, ultra-wide 16:9 1280x720, photorealistic 4k documentary still, dramatic vignette built into the lighting, vial sits center-right at mid distance, clean negative space upper-left for text overlay, no text on image, no logos, Fern documentary aesthetic, LEMMiNO color palette, shot on Leica M 35mm, Kodak Portra warmth",
+  "candidates_to_generate": 2,
+  "overlay": {
+    "tool": "shorts/make_fern_thumb.py",
+    "headline": "1828 | THE DNA CONTRADICTION",
+    "headline_color": "#E0B854",
+    "anchor": "upper-left",
+    "arrow_target": "the specimen vial with the lock of hair, center-right"
+  }
+}

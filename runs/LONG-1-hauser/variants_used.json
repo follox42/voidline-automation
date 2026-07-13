@@ -1,0 +1,39 @@
+{
+  "titles": {
+    "chosen": "numbers_iconic_contradiction",
+    "reason": "open experiment EXP-TITLE-001 \u2192 numbers_iconic_contradiction",
+    "experiment_id": "EXP-TITLE-001",
+    "at": "2026-07-13T06:08:44Z"
+  },
+  "voices": {
+    "chosen": "daniel_authoritative",
+    "reason": "open experiment EXP-VOICE-001 \u2192 daniel_authoritative",
+    "experiment_id": "EXP-VOICE-001",
+    "at": "2026-07-13T06:08:44Z"
+  },
+  "thumb_prompts": {
+    "chosen": "cinematic_post_iconic",
+    "reason": "_default flag \u2192 cinematic_post_iconic",
+    "experiment_id": null,
+    "at": "2026-07-13T06:08:44Z"
+  },
+  "hooks": {
+    "chosen": "question_first_8s",
+    "reason": "plan-lock override: weekly_plans/2026-W29.md assigns LONG-1 the EXP-HOOK-001 CONTROL arm (question_first_8s); LONG-2 (D.B. Cooper) carries the variant. Picker default (contradiction_punch) rejected to preserve the A/B split.",
+    "experiment_id": "EXP-HOOK-001",
+    "arm": "control",
+    "at": "2026-07-13T06:08:44Z"
+  },
+  "caption_styles": {
+    "chosen": "voidline_core",
+    "reason": "_default flag \u2192 voidline_core",
+    "experiment_id": null,
+    "at": "2026-07-13T06:08:44Z"
+  },
+  "editing_styles": {
+    "chosen": "modern_2026",
+    "reason": "_default flag \u2192 modern_2026",
+    "experiment_id": null,
+    "at": "2026-07-13T06:08:44Z"
+  }
+}

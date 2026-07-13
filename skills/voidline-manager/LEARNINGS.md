@@ -2283,3 +2283,44 @@ quota. Nothing has shipped to the channel since 2026-07-01.
 3. Idea Lock W29 (or let it run) so Mon+ has a planned lineup.
 
 No state mutated this review (Beaumont entry already accurate). agent-log.json updated; committed+pushed.
+
+## BLOCKER_2026-07-13-LONG1-HAUSER — LONG-1 (Kaspar Hauser, W29 Tue slot) produced through Step 3, gated on the same two owner actions
+
+**Observation**: Production run for W29 LONG-1 (Kaspar Hauser, Nuremberg 1828 — the identity /
+DNA-contradiction angle, not the appearance beat the w28-hauser Short already covered). Pre-flight
+clean: NEXT_VIDEOS.md LONG-1 entry fully specified, weekly_actions/2026-W27.md is the latest and is
+BLOCKED/empty (no CTR data), KNOWN_GOOD/KNOWN_BAD applied. Step 0 (variants) and Step 1 (script)
+completed; Step 3 (assets) completed and curated. Step 2 (voice) aborted on quota — identical
+signature to BLOCKER_2026-07-11: ElevenLabs Creator **120,957 / 121,849 used (892 left)** vs 8,941
+needed, `can_extend=false`, resets **2026-07-30 20:41 UTC**. voidline cookie reprobed this session:
+`stealth_auth_check` → `auth_valid=false / status=dead` (day 15+ since 2026-07-02).
+
+**Decisions taken (and why)**:
+1. **No silent render.** Same reasoning as LONG-2: quota-with-known-reset ≠ "key missing"; a silent
+   render breaks the EXP-VOICE-001 daniel_authoritative arm (this is its 2nd real data point,
+   alongside LONG-2) and gets thrown away once real mp3 durations exist.
+2. **Hook variant override, again.** pick_variant.py assigned `contradiction_punch` (variant) to
+   this run; weekly_plans/2026-W29.md locks LONG-1 to the EXP-HOOK-001 **CONTROL** arm
+   (`question_first_8s`) with LONG-2/D.B. Cooper carrying the variant. Overrode
+   variants_used.json manually — same picker blindspot to plan-locked arm assignments flagged in
+   BLOCKER_2026-07-11 (still an open ship item: picker has no plan-lock awareness).
+3. **Corrected a factual error in the plan.** NEXT_VIDEOS.md's iconic-detail blurb states 1996=match
+   / 2002=no-match. The documented record is the reverse: the **1996** Forensic Science Service
+   bloodstain analysis came back **NO match** to the Beauharnais/Baden maternal line; the **2002**
+   Münster hair analysis came back **one position away** (prince theory "cannot be excluded"); a
+   **2024** iScience sequencing study of authenticated hair again does **not** match Baden. Script
+   uses the correct direction (see script.json `_fact_note_vs_plan`). The S-tier hook line ("tested
+   twice, two different answers") is true either way, so the hook is unaffected.
+4. **Assets curated, not dumped.** 28 Wikimedia stills fetched, visually reviewed via contact
+   sheets, **18 kept / 10 pruned** (book covers, off-topic engravings, unrelated genetics
+   papers/PDF-render hits, a duplicate portrait). Manifest + ATTRIBUTION rebuilt from the curated
+   set; binaries gitignored (refetch via manifest source URLs). No Flow AI stills attempted (dead
+   cookie); Wikimedia-only visual bed is sufficient for render at resume.
+5. **Thumb deferred, not faked.** Prompt (DNA specimen vial) + Fern overlay spec parked in
+   runs/LONG-1-hauser/thumb/thumb_config.json. KNOWN_BAD forbids archival-photo thumbnails.
+
+**Net effect**: W29 Tue LONG-1 publish will slip past 2026-07-14 (same two blockers as the two W28
+backlog long-forms). This run consumes zero quota, so it does not delay LONG-2's resume. Three W29/W28
+long-forms now sit fully scripted+asseted, all waiting on exactly two owner actions:
+1. Interactive re-login to the `voidline` cookie profile (15+ days outstanding).
+2. ElevenLabs quota reset 2026-07-30 (or an owner-side top-up — routine not authorized for new spend).
