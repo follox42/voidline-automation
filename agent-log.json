@@ -340,6 +340,11 @@
       "steps_blocked": "2 voice (ElevenLabs quota 120957/121849, resets 2026-07-30), 6 thumb + 7 upload (voidline cookie dead, reconfirmed auth_valid=false)",
       "experiment_tags": "EXP-HOOK-001 control=question_first_8s (plan-lock override); EXP-TITLE-001 variant=numbers_iconic_contradiction; EXP-VOICE-001 variant=daniel_authoritative — all pending_runs tagged",
       "notes": "Corrected inverted DNA-result detail from plan (1996=no-match, 2002=near-match). No silent render, no faked thumb. See runs/LONG-1-hauser/PRODUCTION_STATE.md + LEARNINGS BLOCKER_2026-07-13-LONG1-HAUSER."
+    },
+    {
+      "t": "2026-07-13 08:10 UTC",
+      "action": "DAILY_PLAN",
+      "detail": "W29 daily-plan review (Mon 2026-07-13). SCHEDULED-Shorts-to-verify TODAY: 0 (planned Max Headroom discovery Short @12:00 UTC was never produced — production blocked by dead cookie + ElevenLabs quota; not in shorts_state.json). No Studio reconciliation possible: all 4 backlog Shorts are yt_id=null (never uploaded), nothing to verify against Studio, and cookie is dead anyway. PENDING_UPLOAD backlog (all missed slots, all gated on cookie re-login): flight19 (07-04), ourang (07-05), hauser (07-06), beaumont (07-12). No state change — PENDING_UPLOAD accurate for all 4. Not a long-form publish day (LONG-1 Hauser = Tue 07-14) -> Reddit seed step skipped. Blockers reconfirmed LIVE this session: voidline cookie auth_valid=false/status=dead (day 16, unrefreshed since 07-02); ElevenLabs Creator 120957/121849 chars (892 left, can_extend=false, resets 2026-07-30). Next-3-days drift: 07-13 Max Headroom Short = WILL MISS (not produced); 07-14 LONG-1 Hauser publish + HOOK Short = WILL SLIP (voice+upload blocked, Short not produced); 07-15 LONG-1 ANSWER Short = not produced. Entire W29 lineup frozen on ONE owner action: interactive re-login to the voidline cookie profile (now 16 days outstanding), which alone unblocks all 4 backlog Short uploads. Long-form voice additionally waits on ElevenLabs reset 2026-07-30."
     }
   ]
 }

@@ -2324,3 +2324,38 @@ backlog long-forms). This run consumes zero quota, so it does not delay LONG-2's
 long-forms now sit fully scripted+asseted, all waiting on exactly two owner actions:
 1. Interactive re-login to the `voidline` cookie profile (15+ days outstanding).
 2. ElevenLabs quota reset 2026-07-30 (or an owner-side top-up — routine not authorized for new spend).
+
+## DAILY_2026-07-13 — W29 daily-plan review: calendar frozen day 16, 4 Shorts missed, this week slipping
+
+**Review (Mon 2026-07-13, ~08:10 UTC).** Not a long-form publish day (LONG-1 Kaspar Hauser = Tue
+07-14), so the Reddit-seed step was skipped. Both root blockers reprobed live this session and
+unchanged:
+- **voidline cookie**: `stealth_auth_check` → `auth_valid=false / status=dead / "Re-login required."`
+  — **day 16** unrefreshed (07-02 → 07-13). Blocks every upload.
+- **ElevenLabs Creator**: 120,957 / 121,849 chars used (**892 left**, `can_extend=false`), resets
+  **2026-07-30**. Blocks long-form voice.
+
+**Shorts reconciliation (Step 3).** 0 Shorts to verify in Studio today: the W29-planned Max Headroom
+discovery Short (Mon 12:00 UTC slot) was never produced (production capacity is itself blocked), so
+it is not in `shorts_state.json`. The 4 PENDING_UPLOAD backlog Shorts all carry `yt_id=null` (never
+reached Studio), so there is nothing to reconcile against — PENDING_UPLOAD remains accurate for all
+four. No state mutated.
+
+| Short | slot | status |
+|---|---|---|
+| w27_discovery_flight19 | 2026-07-04 | PENDING_UPLOAD — missed (9d) |
+| w27_discovery_ourang | 2026-07-05 | PENDING_UPLOAD — missed (8d) |
+| w28_discovery_hauser | 2026-07-06 | PENDING_UPLOAD — missed (7d) |
+| w28_discovery_beaumont | 2026-07-12 | PENDING_UPLOAD — missed (1d) |
+
+**Next-3-days drift (Step 5).**
+- Mon 07-13 — Max Headroom discovery Short @12:00: **WILL MISS** (not produced).
+- Tue 07-14 — LONG-1 Kaspar Hauser publish + HOOK Short @12:00: **WILL SLIP** (voice+upload blocked;
+  Short not produced). LONG-1 is already scripted+asseted through Step 3 (see BLOCKER_2026-07-13-LONG1-HAUSER).
+- Wed 07-15 — LONG-1 ANSWER Short @12:00: not produced.
+
+**Bottom line — unchanged, escalating.** The whole content calendar has been frozen for 16 days on a
+single 2-minute owner action: **interactive re-login to the `voidline` cookie profile**. That alone
+unblocks all 4 backlog Short uploads. Long-form voice additionally needs the ElevenLabs reset
+(2026-07-30) or an owner-side top-up (routine not authorized for new spend). No routine-side
+alternative path remains — direct-API voice works but the upload surface is 100% cookie-gated.
