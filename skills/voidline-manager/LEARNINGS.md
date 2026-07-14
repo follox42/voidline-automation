@@ -2536,3 +2536,40 @@ No new comments, no live Studio actions attempted (consistent with the RUN3 draf
 per the settled policy recorded there — and moot here regardless since auth is dead). The one queued
 `pending_post` item in `community/replied_to.json` (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`) is unchanged; no
 other state files mutated this run. Owner action needed: unchanged — interactive voidline cookie re-login.
+
+## BLOCKER_2026-07-14-COMMUNITY — Daily community-tab post (Tue = long-drop): skipped, LONG-1 content doesn't exist yet
+
+**Observation**: Ran the daily community-tab routine. `community_tab_runner.py` ran clean and prescribed
+today's rotation slot (`long-drop`); `community_tab_log.csv` had no `2026-07-14` row, so the daily cap wasn't
+hit.
+
+Per the `long-drop` template (`SKILL.md`: "image of today's long-form thumb + title + 1-sentence promise" /
+"new one. [title]. [thumbnail]"), checked LONG-1 (Kaspar Hauser, `weekly_plans/2026-W29.md` Tuesday slot)
+production assets against `runs/LONG-1-hauser/PRODUCTION_STATE.md`: status **BLOCKED_AWAITING_QUOTA_AND_AUTH**.
+Voice was never generated (ElevenLabs Creator 892/121,849 chars left vs 8,941 needed, resets 2026-07-30), so
+render and timeline are both deferred — no video exists. Thumb is separately **BLOCKED**: Flow generation needs
+`cookie_profile=voidline`, dead since 2026-07-02 (day 12, reconfirmed dead again this same session by
+`BLOCKER_2026-07-14-COMMENTS-RUN45` and the Tue daily-plan/daily-short runs), and `KNOWN_BAD.md` forbids an
+archival-photo fallback thumb. So there is no render, no thumb, and no realistic same-day publish to promise.
+
+This is the same fact pattern as `BLOCKER_2026-07-07-COMMUNITY` (Zodiac): drafting "new one. Kaspar Hauser. the
+full breakdown is up now." would be a false public claim about content that does not exist — a materially
+different failure mode than the settled draft-only/click-denial policy, which only covers content that is
+honest at draft time and just awaiting the publish click (the 2026-07-03 Flannan precedent: real render + thumb
+already existed, video genuinely scheduled same-day, post just hadn't been clicked). Auth was not re-probed via
+a fresh browser session this run — it was already confirmed dead today, earlier in this same session, by two
+independent routines (comments RUN45, daily-short) — and the content gap (no render, no thumb) is independently
+decisive regardless of auth status.
+
+**Action**:
+- Did not draft or queue any `long-drop` content for 2026-07-14. No row appended to
+  `community/community_tab_log.csv` for today — leaving it absent (rather than a fabricated `pending_post` row)
+  so tomorrow's Wed `theory-poll` routine runs normally and no false draft sits in the queue waiting for a human
+  to accidentally publish it.
+- Did not navigate to Studio / attempt `Créer une publication` (would have been moot — content gap, not auth,
+  is the blocker; auth is separately dead anyway).
+- Root cause is upstream of this skill and already tracked (`runs/LONG-1-hauser/PRODUCTION_STATE.md` owner
+  actions: interactive voidline cookie re-login; ElevenLabs quota reset 2026-07-30 or owner top-up, not
+  authorized for the routine to self-serve). Once a LONG-1 render + thumb exist, a future community-manager run
+  can produce the `long-drop` post retroactively (same pattern as 07-03/Flannan) even if it lands late — a late
+  true post beats an on-time false one.
