@@ -2477,3 +2477,22 @@ Long-form voice additionally needs the ElevenLabs reset (2026-07-30) or an owner
 paid spend — NOT routine-authorized). No routine-side alternative remains. Today a *long-form*
 publish slot (larger than the daily Shorts that have been slipping) goes unfilled for the first time
 this cycle. **No state files mutated this run** (nothing new was produced or reconciled).
+
+## BLOCKER_2026-07-14-COMMENTS-RUN43 — community-manager comments batch: same two blockers, no new comments
+
+**Ran**: community-manager comments-reply batch (RUN43). `python3 skills/community-manager/comments_runner.py`
+still raises `ImportError: cannot import name 'StealthClient' from 'mcp_stealth'` on import (line 21) —
+unchanged design mismatch, still deferred to owner-merged PR #326/#334.
+
+Drove Studio directly via the registered `mcp__mcphub__camoufox-stealth_*` tools instead. `stealth_auth_check`
+on session `voidline_community` → `auth_valid=false / status=dead / api_status=0 / "Auth INVALID. Do NOT
+post. Re-login required."`. `stealth_navigate` to the comments inbox landed on the Google account-chooser
+(Nolann "Déconnecté"), 1354 cookies restored but session dead — same signature as every probe since RUN19,
+now day 12 since last refresh / day 23 since RUN19. Studio is unreachable, so there is nothing to fetch,
+classify, heart, hide, or pin this run.
+
+No new comments, no live Studio actions attempted (consistent with the RUN3 draft-only hard-stop policy in
+`skills/community-manager/SKILL.md`, and moot here regardless since auth is dead). The one queued
+`pending_post` item in `community/replied_to.json` (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`) is unchanged and
+still awaiting a human-attended session to publish. No state files mutated this run. Owner action needed:
+unchanged — interactive voidline cookie re-login (see DAILY_2026-07-14 above).
