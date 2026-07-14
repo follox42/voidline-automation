@@ -2573,3 +2573,22 @@ decisive regardless of auth status.
   authorized for the routine to self-serve). Once a LONG-1 render + thumb exist, a future community-manager run
   can produce the `long-drop` post retroactively (same pattern as 07-03/Flannan) even if it lands late — a late
   true post beats an on-time false one.
+
+## BLOCKER_2026-07-14-COMMENTS-RUN46 — community-manager comments batch: same two blockers, no new comments
+
+**Ran**: community-manager comments-reply batch (RUN46), triggered separately from RUN45 (PR #404) earlier
+today. `python3 skills/community-manager/comments_runner.py` still raises `ImportError: cannot import name
+'StealthClient' from 'mcp_stealth'` on import (line 21) — unchanged design mismatch, still deferred to
+owner-merged PR #326/#334.
+
+Called `mcp__mcphub__camoufox-stealth_auth_check` on session `voidline_community` directly →
+`auth_valid=false / status=dead / api_status=0 / "Auth INVALID. Do NOT post. Re-login required."`.
+`stealth_navigate` to the comments inbox landed on the Google account-chooser (Nolann "Déconnecté"), 1354
+cookies restored but session dead — same signature as every probe since RUN19, now day 12 since last refresh
+(07-02 → 07-14). Studio is unreachable, so there is nothing to fetch, classify, heart, hide, or pin this run.
+
+No new comments, no live Studio actions attempted (consistent with the RUN3 draft-only hard-stop policy in
+`skills/community-manager/SKILL.md` — this holds regardless of `CLAUDE.md`'s standing-authorization language,
+per the settled policy recorded there — and moot here regardless since auth is dead). The one queued
+`pending_post` item in `community/replied_to.json` (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`) is unchanged; no
+other state files mutated this run. Owner action needed: unchanged — interactive voidline cookie re-login.
