@@ -2378,3 +2378,41 @@ No new comments, no live Studio actions attempted (consistent with the RUN3 draf
 `skills/community-manager/SKILL.md`, and moot here regardless since auth is dead). `community/replied_to.json`
 note stamped with this reconfirmation; no other state changed. Owner action needed: unchanged (see
 DAILY_2026-07-13 above — interactive cookie re-login is the single unblock for this routine too).
+
+## BLOCKER_2026-07-14-DAILY-SHORT-HOOK — Tue HOOK Short cannot be cut, source long-form never rendered
+
+**Ran**: daily-short routine, `weekly_plans/2026-W29.md` Tue row (type=HOOK, source=LONG-1, hook
+"HIS DNA WAS TESTED TWICE. IT GAVE TWO DIFFERENT ANSWERS."). Per SKILL step 2, ran
+`python3 skills/daily-short/daily_short_runner.py`:
+
+```
+[daily-short] today's row: {'date': '2026-07-14', 'type': 'hook', 'source': 'LONG-1', ...}
+[daily-short] FAIL — source run dir not found: /home/user/voidline-automation/runs/LONG-1
+```
+
+Root cause isn't just the dir-name mismatch (actual run is `runs/LONG-1-hauser`) — even that dir
+has no `render/voidline.mp4` to cut from. Per `runs/LONG-1-hauser/PRODUCTION_STATE.md`, LONG-1 is
+`BLOCKED_AWAITING_QUOTA_AND_AUTH`: voice generation never ran (ElevenLabs Creator quota short
+8,941 of the chars needed), so render/timeline were never produced. A HOOK Short is a 60s cut of
+the actual rendered long-form (`start_s=0`, `mask_until_s=45` to avoid spoiling); with no render,
+there is nothing to cut regardless of the dir-name issue.
+
+**Reprobed both root blockers live this session** (unchanged from DAILY_2026-07-13):
+- ElevenLabs Creator: `check_subscription` → 120,957 / 121,849 chars used, **892 left**,
+  `can_extend_character_limit=false`, resets `2026-07-30` (unix 1785444075).
+- voidline cookie: fresh `stealth_navigate` to studio.youtube.com (session
+  `voidline_daily_0714`, 1355 cookies restored) → landed on Google account-chooser, Nolann
+  "Déconnecté"; `stealth_auth_check` → `auth_valid=false / status=dead / api_status=0 /
+  "Auth INVALID. Do NOT post. Re-login required."` — unrefreshed since 2026-07-02 (12 days
+  elapsed), same signature as every check since RUN19.
+
+**No alternative path attempted.** Substituting a different already-produced asset (e.g. the
+backlog `w28_discovery_hauser` Short, which is fully rendered but also PENDING_UPLOAD on the same
+dead cookie) would misrepresent today's plan-locked HOOK content — that Short is a standalone
+discovery piece, not a spoiler-masked teaser cut from LONG-1's actual render, and publishing it in
+today's slot would double-count Kaspar Hauser content against a different plan row. No routine-side
+fix exists for either blocker (ElevenLabs quota top-up = new paid spend, not authorized; cookie
+re-login = interactive owner action only). Today's HOOK Short slot is **MISSED**, consistent with
+DAILY_2026-07-13's predicted drift ("Tue 07-14 ... WILL SLIP"). No state files mutated (nothing was
+produced to record). Owner action needed: unchanged — voidline cookie re-login (12+ days) and
+ElevenLabs quota reset 2026-07-30 (or owner-side top-up).
