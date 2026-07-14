@@ -2416,3 +2416,64 @@ re-login = interactive owner action only). Today's HOOK Short slot is **MISSED**
 DAILY_2026-07-13's predicted drift ("Tue 07-14 ... WILL SLIP"). No state files mutated (nothing was
 produced to record). Owner action needed: unchanged — voidline cookie re-login (12+ days) and
 ElevenLabs quota reset 2026-07-30 (or owner-side top-up).
+
+## DAILY_2026-07-14 — W29 daily-plan review: LONG-1 publish day, but LONG-1 will not publish (day 12 cookie / quota freeze)
+
+**Review (Tue 2026-07-14, ~08:1x UTC).** Ran `cron_runner.py daily-plan` (appends a DAILY_PLAN
+decision; computed **0 Shorts publishing** today — correct, see Step 3). Today **is** a long-form
+publish day per `weekly_plans/2026-W29.md` (LONG-1 Kaspar Hauser, Tue 07-14). Both root blockers
+were already reprobed **live** earlier this session by the daily-short and long-form routines
+(BLOCKER_2026-07-14-DAILY-SHORT-HOOK above) and are unchanged — I did not re-open a redundant
+browser session:
+- **voidline cookie**: `auth_valid=false / status=dead / "Re-login required."` — **day 12**
+  unrefreshed (07-02 → 07-14). Blocks all uploads + Flow thumbs.
+- **ElevenLabs Creator**: 120,957 / 121,849 used (**892 left**, `can_extend=false`), resets
+  **2026-07-30**. Blocks long-form voice (LONG-1 needs 8,941 chars).
+
+**Step 3 — Shorts scheduled for publication TODAY: none to verify.** Today's plan-locked Short is
+the Tue HOOK (source=LONG-1), which was **never produced** (it is a spoiler-masked cut of LONG-1's
+render, and LONG-1 was never rendered — voice blocked), so it is not in `shorts_state.json`. The 4
+PENDING_UPLOAD backlog Shorts all carry `yt_id=null` (never reached Studio), so there is nothing to
+reconcile against Studio and nothing the dead cookie could reach anyway. **No state mutated.**
+
+| Short | slot | status |
+|---|---|---|
+| w27_discovery_flight19 | 2026-07-04 | PENDING_UPLOAD — missed (10d) |
+| w27_discovery_ourang | 2026-07-05 | PENDING_UPLOAD — missed (9d) |
+| w28_discovery_hauser | 2026-07-06 | PENDING_UPLOAD — missed (8d) |
+| w28_discovery_beaumont | 2026-07-12 | PENDING_UPLOAD — missed (2d) |
+
+**Step 4 — long-form publish day checks.**
+- *Is LONG-1 still scheduled correctly?* **No — it is not scheduled at all.**
+  `runs/LONG-1-hauser/PRODUCTION_STATE.md` = `BLOCKED_AWAITING_QUOTA_AND_AUTH`: voice never
+  generated (quota short 8,941 vs 892), so timeline/render/thumb/upload were never produced. The
+  channel is non-monetized (no native Studio scheduler), so a long-form only goes live via a
+  camoufox upload+publish — which is 100% cookie-gated. **`script.json.publish_at` = 2026-07-14
+  17:00 UTC will slip.** Realistic earliest: after the 07-30 quota reset AND an owner cookie
+  re-login. Nothing routine-side to fix.
+- *Reddit r/UnresolvedMysteries seed (500–700 words in `seeds/`):* **SKIPPED — deliberately, not
+  blocked.** Two reasons: (1) `CLAUDE.md` lists external Reddit/Discord/Twitter seeding under
+  **"❌ NOT authorized"** with the owner's explicit opt-out ("pas de reddit on peux exploser
+  naturellement") — a standing owner prohibition overrides the generic template step; (2) the seed
+  is meant to accompany a live long-form, and LONG-1 is not publishing, so it would be dead content
+  for a channel the owner opted out of. Creating the file would contradict the standing instruction
+  and mislead a future reader into thinking a seed is queued. Logged here instead of drafting it;
+  if the owner wants the daily-plan template's Reddit step reconciled with the CLAUDE.md opt-out,
+  that's a one-line owner edit to either doc.
+
+**Step 5 — next-3-days calendar + drift.**
+- **Tue 07-14** — LONG-1 Kaspar Hauser publish @17:00 + HOOK Short @12:00: **BOTH WILL MISS**
+  (voice+upload blocked; neither produced).
+- **Wed 07-15** — LONG-1 ANSWER Short @12:00 ("ONE THEORY SAYS PRINCE…"): not produced, **WILL MISS**.
+- **Thu 07-16** — Isdal Woman discovery Short @12:00 (NEW): production capacity is itself
+  cookie/quota-blocked, not produced, **WILL MISS**.
+- (Look-ahead) **Fri 07-17** — LONG-2 D.B. Cooper publish + HOOK Short: same two blockers, will miss
+  unless cookie re-login lands and quota is topped up before then.
+
+**Bottom line — unchanged, still escalating.** The entire content calendar has now been frozen for
+**12 days on one 2-minute owner action: interactive re-login to the `voidline` cookie profile.**
+That single action immediately unblocks all 4 backlog Short uploads (all fully rendered, waiting).
+Long-form voice additionally needs the ElevenLabs reset (2026-07-30) or an owner-side top-up (new
+paid spend — NOT routine-authorized). No routine-side alternative remains. Today a *long-form*
+publish slot (larger than the daily Shorts that have been slipping) goes unfilled for the first time
+this cycle. **No state files mutated this run** (nothing new was produced or reconciled).
