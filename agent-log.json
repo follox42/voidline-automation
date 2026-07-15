@@ -385,6 +385,11 @@
       "t": "2026-07-15 08:10 UTC",
       "action": "DRIFT_FLAG",
       "detail": "Next-3-days pipeline (Thu 07-16 / Fri 07-17 / Sat 07-18) is fully stalled on the same two owner-only blockers, both reconfirmed live earlier today by the daily-short run. SCHEDULED per weekly_plans/2026-W29.md, all 12:00 UTC unless noted: Thu 07-16 discovery Short (Isdal Woman, NEW) — not produced; Fri 07-17 HOOK Short (D.B. Cooper) + LONG-2 D.B. Cooper long-form publish (17:00) — LONG-2 is BLOCKED_AWAITING_QUOTA_AND_AUTH per runs/LONG-2/PRODUCTION_STATE.md (script+assets done, voice/render/thumb/upload blocked); Sat 07-18 ANSWER Short (D.B. Cooper) — depends on same LONG-2. Root blockers (both owner-only, unchanged): (1) voidline cookie DEAD since 2026-07-02 = day 13 today, blocks every Studio upload + Flow thumb; (2) ElevenLabs Creator quota exhausted, 892/121,849 chars left, resets 2026-07-30 ~20:41 UTC, blocks all voice = all long-forms + voiced shorts. Realistic earliest for LONG-1/LONG-2: after 07-30 quota reset unless owner tops up sooner AND refreshes the cookie. Consequence: LONG-1 (Tue 07-14) already MISSED; LONG-2 (Fri 07-17) will MISS; every daily-Short slot Thu–Sat will MISS. No content substituted (would misrepresent plan-locked ANSWER/HOOK slots + double-count topics). No state files mutated beyond this log. OWNER ACTIONS NEEDED (now ~13 days outstanding): interactive re-login to the voidline cookie profile; top up or wait out ElevenLabs quota. See LEARNINGS.md."
+    },
+    {
+      "t": "2026-07-15 UTC",
+      "action": "BLOCKER_COMMENTS_RUN48",
+      "detail": "Community-manager comments batch (RUN48, 2nd comments run today): comments_runner.py still ImportError on StealthClient (unchanged, deferred to PR #326/#334). stealth_navigate to Studio inbox with cookie_profile=voidline landed on Google account-chooser (Nolann Deconnecte, 1352 cookies restored); stealth_auth_check confirms auth_valid=false/status=dead, day 13 since 2026-07-02 cookie mint. No new comments, no live Studio actions (draft-only policy + dead auth). State unchanged beyond LEARNINGS.md entry. Owner action needed: interactive voidline cookie re-login."
     }
   ]
 }
