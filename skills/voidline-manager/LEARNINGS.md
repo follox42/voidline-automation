@@ -2626,3 +2626,35 @@ paid spend, not authorized; cookie re-login = interactive owner action only). To
 slot is **MISSED**. No state files mutated (nothing was produced to record — `shorts_state.json`
 unchanged). Owner action needed: unchanged — voidline cookie re-login (13+ days) and ElevenLabs
 quota reset 2026-07-30 (or owner-side top-up).
+
+---
+
+## 2026-07-15 daily-plan review — next-3-days forward drift (LONG-2 Fri 07-17 will miss)
+
+Ran the daily-plan checkpoint (`cron_runner.py daily-plan`, exit 0). **Today Wed 2026-07-15: 0
+Shorts scheduled** (nothing in `shorts_state.json` has `publish_at` = 07-15), and it is **not a
+long-form publish day** (weekly_plans/2026-W29.md: LONG-1 was Tue 07-14, LONG-2 is Fri 07-17), so
+no Studio reconciliation and no Reddit seed were due. Per step 5, checked the next 3 days:
+
+| Day | Slot (W29) | Status |
+|---|---|---|
+| Thu 07-16 12:00 | discovery Short — Isdal Woman (NEW) | not produced → will MISS |
+| Fri 07-17 12:00 | HOOK Short — D.B. Cooper (LONG-2) | will MISS |
+| Fri 07-17 17:00 | **LONG-2 long-form — D.B. Cooper** | BLOCKED (runs/LONG-2/PRODUCTION_STATE.md) → will MISS |
+| Sat 07-18 12:00 | ANSWER Short — D.B. Cooper (LONG-2) | depends on LONG-2 → will MISS |
+
+**Both root blockers unchanged, both owner-only** (reconfirmed live earlier today by the daily-short
+run, not re-probed here to avoid redundant Studio actions):
+1. **voidline cookie DEAD since 2026-07-02 — day 13.** Blocks every Studio upload + Flow thumb.
+2. **ElevenLabs Creator quota exhausted — 892/121,849 chars left, resets 2026-07-30 ~20:41 UTC.**
+   Blocks all voice = all long-forms + voiced shorts.
+
+LONG-1 (Kaspar Hauser, Tue 07-14) already missed; LONG-2 (D.B. Cooper, Fri 07-17) will now miss too —
+**both W29 long-forms lost this week** plus every daily-Short slot. Realistic earliest for either
+long-form is after the 07-30 quota reset, unless the owner tops up ElevenLabs sooner AND refreshes the
+cookie. No content substituted (would misrepresent plan-locked ANSWER/HOOK slots and double-count
+topics). No state files mutated beyond agent-log + this entry.
+
+**OWNER ACTIONS NEEDED (now ~13 days outstanding, escalating):**
+- Interactive re-login to the `voidline` cookie profile (unblocks uploads + thumbs immediately).
+- Top up or wait out the ElevenLabs quota (07-30 reset) to unblock long-form + voiced-short production.
