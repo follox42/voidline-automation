@@ -2592,3 +2592,37 @@ No new comments, no live Studio actions attempted (consistent with the RUN3 draf
 per the settled policy recorded there — and moot here regardless since auth is dead). The one queued
 `pending_post` item in `community/replied_to.json` (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`) is unchanged; no
 other state files mutated this run. Owner action needed: unchanged — interactive voidline cookie re-login.
+
+## BLOCKER_2026-07-15-DAILY-SHORT-ANSWER — Wed ANSWER Short cannot be cut, source long-form still unrendered (same blocker as Tue HOOK)
+
+**Ran**: daily-short routine, `weekly_plans/2026-W29.md` Wed row (type=ANSWER, source=LONG-1, hook
+"ONE THEORY SAYS PRINCE. ONE SAYS FRAUD. NEITHER IS PROVEN."). No `HALT` file present. Per SKILL
+step 2, ran `python3 skills/daily-short/daily_short_runner.py`:
+
+```
+[daily-short] today's row: {'date': '2026-07-15', 'type': 'answer', 'source': 'LONG-1', ...}
+[daily-short] FAIL — source run dir not found: /home/user/voidline-automation/runs/LONG-1
+```
+
+Identical root cause to `BLOCKER_2026-07-14-DAILY-SHORT-HOOK`: the runner looks for `runs/LONG-1`
+(actual dir is `runs/LONG-1-hauser`), but the dir-name mismatch is moot — `runs/LONG-1-hauser` still
+has no `render/voidline.mp4` to cut from. An ANSWER Short is a 60s cut starting at `start_s=600` of
+the actual rendered long-form; with no render, there is nothing to cut.
+
+**Reprobed both root blockers live this session** (unchanged from 07-13/07-14):
+- ElevenLabs Creator: `check_subscription` → 120,957 / 121,849 chars used, **892 left**,
+  `can_extend_character_limit=false`, resets `2026-07-30` (unix 1785444075) — unchanged since
+  07-11/07-13/07-14 checks (this routine consumes no chars, so no drift expected).
+- voidline cookie: fresh `stealth_navigate` to studio.youtube.com (session `voidline_daily_0715`,
+  1354 cookies restored) → landed on Google account-chooser, Nolann "Déconnecté"; `stealth_auth_check`
+  → `auth_valid=false / status=dead / api_status=0 / "Auth INVALID. Do NOT post. Re-login required."`
+  — unrefreshed since 2026-07-02, now **day 13**, same signature as every check since RUN19.
+
+**No alternative path attempted.** Same reasoning as the Tue HOOK blocker: substituting a different
+already-produced backlog Short would misrepresent today's plan-locked ANSWER content (a cut of
+LONG-1's actual resolution beat, not a standalone piece) and double-count Kaspar Hauser content
+against a different plan row. No routine-side fix exists for either blocker (ElevenLabs top-up = new
+paid spend, not authorized; cookie re-login = interactive owner action only). Today's ANSWER Short
+slot is **MISSED**. No state files mutated (nothing was produced to record — `shorts_state.json`
+unchanged). Owner action needed: unchanged — voidline cookie re-login (13+ days) and ElevenLabs
+quota reset 2026-07-30 (or owner-side top-up).
