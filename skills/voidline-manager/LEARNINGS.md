@@ -2658,3 +2658,24 @@ topics). No state files mutated beyond agent-log + this entry.
 **OWNER ACTIONS NEEDED (now ~13 days outstanding, escalating):**
 - Interactive re-login to the `voidline` cookie profile (unblocks uploads + thumbs immediately).
 - Top up or wait out the ElevenLabs quota (07-30 reset) to unblock long-form + voiced-short production.
+
+## BLOCKER_2026-07-15-COMMENTS-RUN47 — community-manager comments batch: same two blockers, no new comments
+
+**Ran**: community-manager comments-reply batch (RUN47). `python3 skills/community-manager/comments_runner.py`
+still raises `ImportError: cannot import name 'StealthClient' from 'mcp_stealth'` on import (line 21) —
+confirmed by direct grep of `mcp_stealth.py`: the module exposes `initialize()`, `list_tools()`, `call()`,
+etc. but no `StealthClient` class. Same design mismatch as every prior run, still deferred to owner-merged
+PR #326/#334.
+
+Called `mcp__mcphub__camoufox-stealth_navigate` directly to the Studio comments inbox with
+`cookie_profile=voidline` → 0 cookies restored, landed on the Google account-chooser (Nolann "Déconnecté").
+Same signature as every probe since RUN19 (2026-07-05), now day 10 since that check / longer since the
+07-02 cookie mint per today's earlier daily-short run. Studio is unreachable, so there is nothing to fetch,
+classify, heart, hide, or pin this run.
+
+No new comments, no live Studio actions attempted (consistent with the RUN3 draft-only hard-stop policy in
+`skills/community-manager/SKILL.md` — holds regardless of `CLAUDE.md`'s standing-authorization language, per
+the settled policy recorded there — and moot here regardless since auth is dead). The one queued
+`pending_post` item in `community/replied_to.json` (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`) is unchanged; no
+other state files mutated this run beyond this log entry and the note-compaction below. Owner action needed:
+unchanged — interactive voidline cookie re-login.
