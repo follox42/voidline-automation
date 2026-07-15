@@ -2726,3 +2726,31 @@ the settled policy recorded there — and moot here regardless since auth is dea
 other state files mutated this run beyond this log entry. Owner action needed: unchanged — interactive
 voidline cookie re-login (now 13 days outstanding) and the `comments_runner.py`/`mcp_stealth.py` API
 mismatch (owner-merged PR #326/#334).
+
+## BLOCKER_2026-07-15-COMMUNITY-RUN50 — Daily community-tab post (Wed = theory-poll): drafted, queued pending_post, no live Studio action
+
+**Ran**: community-manager daily community-tab routine. `python3 skills/community-manager/community_tab_runner.py`
+ran clean and prescribed today's rotation slot (`theory-poll`); `community_tab_log.csv` had no `2026-07-15`
+row before this run, so the daily cap wasn't hit.
+
+Per `weekly_plans/2026-W29.md`'s locked community-tab schedule ("Wed 18:00 UTC — theory poll on LONG-1
+('Prince of Baden, or elaborate fraud?')"), built the poll from the actual `runs/LONG-1-hauser/script.json`
+record rather than `NEXT_VIDEOS.md`'s iconic-detail blurb, which the script's own `_fact_note_vs_plan` flags
+as inverting the DNA results. Correct direction per script: 1996 bloodstain (Birmingham/Munich) = no match to
+the Beauharnais line; 2002 hair (Münster) = one position off, prince theory not excludable; 2024 iScience
+resequencing = no match again. Poll options mirror the ch6 "Better Question" beat (impostor explains the
+lies, not the knife) — four read options on who Kaspar Hauser was and what the DNA record does/doesn't
+settle. This is an editorial discussion post, not a claim that LONG-1 is live — unlike the `long-drop`
+format (`BLOCKER_2026-07-14-COMMUNITY`), it makes no "full breakdown is up" statement, so LONG-1's own
+still-`BLOCKED_AWAITING_QUOTA_AND_AUTH` status (unchanged since 2026-07-13 — ElevenLabs quota exhausted until
+2026-07-30, voidline cookie dead since 2026-07-02) does not make the draft a false claim.
+
+**Action**: Wrote the draft into `community/community_tab_log.csv` (`2026-07-15,theory-poll,...,pending_post`),
+replacing the runner's own placeholder `prescribed` row with the full content so a human can review and
+publish. Did not navigate to Studio or attempt `Créer une publication` — consistent with the settled
+draft-only/click-denial policy in `skills/community-manager/SKILL.md` ("Autonomous posting policy (hard
+stop — draft-only)"), which holds regardless of `CLAUDE.md`'s standing-authorization language, and doubly
+moot here since the voidline cookie has been reconfirmed dead multiple times today already
+(`BLOCKER_2026-07-15-COMMENTS-RUN47/48/49`). No other state files mutated this run. Owner action needed:
+unchanged — interactive voidline cookie re-login, then a human-attended session (auto-mode off) to review
+and publish the queued draft.
