@@ -2863,3 +2863,37 @@ around a dead cookie that needs interactive 2FA). The one queued `pending_post` 
 mutated this run beyond this log entry. Owner action needed: unchanged — interactive voidline cookie
 re-login (now 14 days outstanding) and the `comments_runner.py`/`mcp_stealth.py` API mismatch (owner-merged
 PR #326/#334).
+
+## BLOCKER_2026-07-16-COMMUNITY-TAB — daily community-tab post (Thu = detail-crop): drafted, publish skipped (auth dead)
+
+**Ran**: `python3 skills/community-manager/community_tab_runner.py` → today's base-rotation format =
+`detail-crop` (weekday index confirms Thursday). `weekly_plans/2026-W29.md`'s Thursday row layers a
+"viewer theory roundup" on top of the base crop, but explicitly says to fall back to the plain crop if the
+voidline cookie is still dead and nothing new has shipped to comment on by Thursday — both true (see below)
+— so this run used the plain `detail-crop` format only, no comment-mining component.
+
+Content source: checked `runs/LONG-1-hauser/PRODUCTION_STATE.md` and `runs/LONG-2/PRODUCTION_STATE.md` —
+both still `BLOCKED_AWAITING_QUOTA_AND_AUTH` (see `BLOCKER_2026-07-16-LONG2-PRODUCTION` above), so neither
+this week's long-form has an iconic asset to crop yet. Fell back to a previously-published long-form not
+yet featured in a `detail-crop` post: Flannan Isles (1900), iconic detail per `weekly_plans/2026-27.md`
+("half-eaten meal on the table" / oilskins missing) — already drop-carded (07-03) and tease-tomorrow'd
+(07-04) in this log but never crop-detailed. Drafted: "no struggle. no note. just this. | the table still
+set for a meal, one chair knocked over -- two sets of oilskins gone from the hooks, the third left folded,
+untouched. | the full breakdown is up now." Appended to `community/community_tab_log.csv` (2026-07-16 row,
+replacing the runner's own `prescribed` placeholder) with `status=pending_post`.
+
+Checked live-publish feasibility before drafting: `mcp__mcphub__camoufox-stealth_navigate` to the Studio
+community tab with `cookie_profile=voidline`, session `voidline_community_tab_0716` → 1422 cookies
+restored, landed on the Google account-chooser (Nolann "Déconnecté"), same as every probe since RUN19
+(2026-07-05). `camoufox-stealth_auth_check` → `auth_valid=false / status=dead / api_status=0 / "Auth
+INVALID. Do NOT post. Re-login required."` — day 14 since the 2026-07-02 cookie mint, unchanged from
+RUN52/53/54 earlier today. No navigate to "Créer une publication", no click, no publish attempted — both
+because Studio is unreachable and because the settled draft-only policy in
+`skills/community-manager/SKILL.md` (holds regardless of `CLAUDE.md`'s standing-authorization language,
+confirmed across RUN1–RUN3 and every run since) says an unattended session never takes the click-to-publish
+step for Studio writes, full stop. Left as `pending_post` for a human-attended session to actually publish.
+
+Hard limit respected: 1 community-tab entry drafted today, none previously logged for 2026-07-16 before
+this run. Owner action needed: unchanged — interactive voidline cookie re-login (day 14) is the single
+blocker on both this and the comments-reply routine; once live, a human-attended session should clear the
+backlog of `pending_post` rows in this log (oldest since 2026-07-01) in addition to today's.
