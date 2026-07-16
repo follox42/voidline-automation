@@ -1,0 +1,29 @@
+{
+  "source": "runs/w29-isdal/render/voiced.mp4",
+  "start_s": 0,
+  "duration_s": 48,
+  "out": "shorts/w29_discovery_isdal.mp4",
+  "source_is_portrait": true,
+  "header_text": "THE ISDAL WOMAN — 1970",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "SHE FILED OFF HER\\NOWN FINGERPRINTS.\\NTHEN SOMEONE\\NBURNED HER.",
+  "hook_fontsize": 120,
+  "outro_question": "WHO WAS\\NSHE REALLY?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0, "end": 4.5, "text": "NOVEMBER 1970\\NISDALEN VALLEY, NORWAY"},
+    {"start": 4.5, "end": 7, "text": "LOCALS CALL IT\\NDEATH VALLEY"},
+    {"start": 7, "end": 11, "text": "HIKERS FIND\\NA WOMAN'S BODY"},
+    {"start": 11, "end": 14, "text": "BURNED ALMOST\\NBEYOND RECOGNITION"},
+    {"start": 14, "end": 18, "text": "HER FINGERTIPS\\NFILED DOWN, ONE BY ONE"},
+    {"start": 18, "end": 21, "text": "EVERY CLOTHING LABEL\\NCUT OUT BY HAND"},
+    {"start": 21, "end": 26, "text": "HOTEL ROOMS:\\NSLEEPING PILLS FOUND"},
+    {"start": 26, "end": 29, "text": "SERIAL NUMBERS\\NSCRATCHED OFF"},
+    {"start": 29, "end": 33, "text": "FIVE PASSPORTS.\\NFIVE DIFFERENT NAMES"},
+    {"start": 33, "end": 36, "text": "FORGED WELL ENOUGH\\NTO CROSS A BORDER"},
+    {"start": 36, "end": 40, "text": "HER NOTEBOOK:\\NPAGES OF CODED NUMBERS"},
+    {"start": 40, "end": 43, "text": "A ROUTE THROUGH\\NA DOZEN EUROPEAN CITIES"}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "ch0": [
+    {
+      "path": "runs/w29-isdal/assets/ch0/img_00.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Isdalen.JPG",
+      "license": "Public domain",
+      "title": "Isdalen valley, Norway \u2014 the actual site where the body was found"
+    },
+    {
+      "path": "runs/w29-isdal/assets/ch0/img_01.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Oster%C3%B6y_S%C3%B6rfjorden_Trengereid_IMG_3725.JPG",
+      "license": "CC BY-SA 3.0",
+      "title": "Aerial view of fjord and mountains near Bergen, Norway"
+    },
+    {
+      "path": "runs/w29-isdal/assets/ch0/img_02.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hardbakkadalen,_Bergen.jpg",
+      "license": "CC BY-SA 4.0",
+      "title": "Hardbakkadalen, a remote valley near Bergen, Norway"
+    }
+  ]
+}

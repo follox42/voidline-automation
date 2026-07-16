@@ -1,0 +1,25 @@
+{
+  "src": "runs/w29-isdal/assets/ch0/img_00.jpg",
+  "out": "runs/w29-isdal/thumb/thumbnail.jpg",
+  "brightness": 0.9,
+  "saturation": 0.8,
+  "contrast": 1.15,
+  "text_x": 40,
+  "text_y": 24,
+  "headline": "SHE HAD NO\nFINGERPRINTS.",
+  "headline_size": 88,
+  "headline_color": "#E0B854",
+  "headline_stroke": 8,
+  "date": "NORWAY, 1970",
+  "date_size": 62,
+  "date_stroke": 5,
+  "arrow": {
+    "tip": [610, 470],
+    "length": 230,
+    "angle": -60,
+    "shaft_w": 50,
+    "head_w": 110,
+    "head_len": 95,
+    "stroke_w": 6
+  }
+}

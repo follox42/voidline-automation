@@ -1,0 +1,22 @@
+{
+  "run_id": "w29-isdal",
+  "channel_slug": "voidline",
+  "format": "short-discovery",
+  "topic": "The Isdal Woman, Bergen Norway 1970",
+  "hook_question": "SHE FILED OFF HER OWN\\NFINGERPRINTS. THEN\\NSOMEONE BURNED HER.",
+  "iconic_detail": "An unidentified woman found burned in a remote Norwegian valley, carrying multiple false passports and a coded notebook; suspected Cold War espionage, never identified",
+  "_voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "_voice_name": "David Documentary, eleven_multilingual_v2",
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "voiceover": "November 1970. Isdalen valley, Norway — locals call it Death Valley.\n\nHikers find a woman's body, burned almost beyond recognition.\n\nHer fingertips have been filed down, one by one. Every clothing label cut out by hand.\n\nIn her hotel rooms, police find sleeping pills with the serial numbers scratched off, and passports — five of them, five different names, each forged well enough to cross a border.\n\nThen they find her notebook: pages of coded numbers, tracking a route through a dozen European cities.\n\nInvestigators quietly suspect a Cold War operative. Fifty-six years later, the Isdal Woman still has no name.",
+      "wikimedia_queries": [
+        "Isdalen valley Norway",
+        "Isdalskvinnen",
+        "remote mountain valley Norway forest",
+        "Norway fjord mist mountains"
+      ]
+    }
+  ]
+}

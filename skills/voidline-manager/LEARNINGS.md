@@ -2778,3 +2778,47 @@ the settled policy recorded there — and moot here regardless since auth is dea
 other state files mutated this run beyond this log entry. Owner action needed: unchanged — interactive
 voidline cookie re-login (now 13 days outstanding) and the `comments_runner.py`/`mcp_stealth.py` API
 mismatch (owner-merged PR #326/#334).
+
+## BLOCKER_2026-07-16-DAILYSHORT — Isdal Woman discovery Short produced end-to-end, upload blocked (day 14)
+
+**Ran**: daily-short routine, Thursday W29 discovery slot (`weekly_plans/2026-W29.md`: Isdal Woman,
+Bergen Norway 1970, hook "SHE FILED OFF HER OWN FINGERPRINTS. THEN SOMEONE BURNED HER."). No HALT file
+present.
+
+**Produced fully end-to-end** into `runs/w29-isdal/`: a 101-word VO script (`script.json`), ElevenLabs
+voice via the same direct-REST-API workaround used for w27/w28 discoveries (616 chars — comfortably
+within the 885 chars left on the Creator quota this run: `check_subscription` showed
+character_count=120964/121849, next reset 2026-07-30), 3 Wikimedia Commons photos (the actual Isdalen
+valley, plus two atmospheric Bergen-area valley/fjord shots — manually verified one-by-one; two of the
+generic keyword searches, "Bergen fjord aerial view mountains" and "Norwegian spruce forest valley snow",
+returned scanned-PDF false positives because their rendered page thumbnails still end in `.jpg` and pass
+`fetch_wikimedia_assets.py`'s extension filter — worth noting for future discovery-Short asset runs, don't
+trust the automated picks without opening them), a 1080x1920 Ken-Burns render
+(`skills/daily-short/build_discovery_base.py` → `voice-muxed` via ffmpeg), a cut with hook card / captions
+/ debate outro (`shorts/short_cutter_v2.py`), and a Fern-style thumbnail with a red arrow
+(`shorts/make_fern_thumb.py`, purely local PIL — no cookie or Flow dependency).
+
+**NOT uploaded** — reconfirmed both root blockers live this session before spending anything:
+1. `mcp__mcphub__camoufox-stealth_navigate` to Studio with `cookie_profile=voidline` landed on the Google
+   account-chooser, Nolann marked "Déconnecté" (1456 cookies restored); `stealth_auth_check` →
+   `auth_valid=false / status=dead / "Auth INVALID. Do NOT post. Re-login required."` — day 14 since the
+   2026-07-02 cookie mint, identical signature to every check since RUN19.
+2. **New finding this run**: `shorts/upload_shorts.py` is broken independent of cookie state. It does
+   `sys.path.insert(0, "/host/home/follox/.openclaw/yt-viral/runs/voidline-20260527-002843")` and
+   `import mcp_stealth as m` — that path does not exist in this sandbox at all, so the script cannot even
+   start here regardless of auth. Same underlying design mismatch as the `comments_runner.py` /
+   `StealthClient` issue already deferred to owner-merged PR #326/#334, but this is the upload path, not
+   the comments path — worth folding into the same fix rather than treating as separate.
+
+**Action**: committed the durable artifacts (script, Wikimedia assets + manifest + attribution, cutter
+config, thumbnail) and appended a `PENDING_UPLOAD` entry to `shorts/shorts_state.json` +
+`agent-log.json`. Did not attempt `upload_shorts.py` (confirmed non-functional in this sandbox) or any
+raw `camoufox-stealth` posting calls (auth dead). The rendered `.mp4` itself is a local-only artifact per
+repo convention and will not survive this container's reclamation — a future session needs to redo only
+the voice+render step (script/assets/thumb are committed and reusable as-is) once quota/cookie allow, or
+Nolann can upload manually using `runs/w29-isdal/thumb/thumbnail.jpg` + a fresh render from the committed
+script/assets.
+
+Today's 12:00 UTC slot will be **MISSED** unless Nolann uploads manually. Owner actions needed (unchanged,
+now 14 days outstanding): interactive voidline cookie re-login; and separately, `upload_shorts.py` needs a
+real fix targeting infrastructure reachable from this sandbox, not just a path edit.
