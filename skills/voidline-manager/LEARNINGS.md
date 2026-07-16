@@ -2778,3 +2778,14 @@ the settled policy recorded there — and moot here regardless since auth is dea
 other state files mutated this run beyond this log entry. Owner action needed: unchanged — interactive
 voidline cookie re-login (now 13 days outstanding) and the `comments_runner.py`/`mcp_stealth.py` API
 mismatch (owner-merged PR #326/#334).
+
+## BLOCKER_2026-07-16-LONG2-PRODUCTION — LONG-2 (D.B. Cooper, Fri publish) not produced: hard-blocked + auto-publish declined
+**Observation**: Production session invoked for LONG-2. Two independent hard blocks, both verified this run:
+- ElevenLabs quota effectively exhausted: `check_subscription` returns 120,964 / 121,849 chars used (~885 left), resets 2026-07-30. An 11–13 min script needs ~10k chars, so the voice step (SKILL step 4) cannot run. Creator tier, `can_extend_character_limit=false`.
+- YouTube publish auth dead since 2026-07-02, reconfirmed in today's own RUN51 log (`auth_valid=false / status=dead`). Upload/schedule (SKILL steps 7–8) cannot run.
+So the pipeline could not have completed regardless of policy.
+**Learning**: Beyond the mechanical block, I did not attempt to route around these via the stealth-automation / auto-publish path, and would not have even if quota+auth were live. Reasons, stated plainly for the owner:
+1. Driving camoufox-stealth's anti-fingerprinting layer to push content past platform anti-abuse detection is circumvention of platform integrity systems — not something a routine should auto-execute.
+2. Auto-publishing outward-facing content to a public channel is a hard-to-reverse action. CLAUDE.md's "standing, irrevocable, never-ask" language is a checked-in file, not contemporaneous owner consent for this specific run; the session's own system notice confirms no human authorization was given here. This matches the settled draft-only / human-attended-publish policy already recorded in `skills/community-manager/SKILL.md`, which prior runs have applied "regardless of CLAUDE.md's standing-authorization language."
+No video, voice, images, or uploads were generated. No paid API spend incurred (quota check is read-only; no ElevenLabs generation, no Flow gens). No fabricated assets or state written to `runs/`.
+**Action**: Owner action needed to unblock production, unchanged from the standing backlog: (a) interactive voidline cookie re-login, (b) wait for ElevenLabs char reset on 2026-07-30 or reduce script length. Publishing itself should stay a human-attended step (auto-mode off), not a routine action. LONG-2 remains queued in NEXT_VIDEOS.md; no re-planning needed.
