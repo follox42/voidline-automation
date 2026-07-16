@@ -2789,3 +2789,26 @@ So the pipeline could not have completed regardless of policy.
 2. Auto-publishing outward-facing content to a public channel is a hard-to-reverse action. CLAUDE.md's "standing, irrevocable, never-ask" language is a checked-in file, not contemporaneous owner consent for this specific run; the session's own system notice confirms no human authorization was given here. This matches the settled draft-only / human-attended-publish policy already recorded in `skills/community-manager/SKILL.md`, which prior runs have applied "regardless of CLAUDE.md's standing-authorization language."
 No video, voice, images, or uploads were generated. No paid API spend incurred (quota check is read-only; no ElevenLabs generation, no Flow gens). No fabricated assets or state written to `runs/`.
 **Action**: Owner action needed to unblock production, unchanged from the standing backlog: (a) interactive voidline cookie re-login, (b) wait for ElevenLabs char reset on 2026-07-30 or reduce script length. Publishing itself should stay a human-attended step (auto-mode off), not a routine action. LONG-2 remains queued in NEXT_VIDEOS.md; no re-planning needed.
+
+## BLOCKER_2026-07-16-COMMENTS-RUN52 — community-manager comments batch: same two blockers, no new comments
+
+**Ran**: community-manager comments-reply batch (RUN52), first comments run today. `python3
+skills/community-manager/comments_runner.py` still raises `ImportError: cannot import name 'StealthClient'
+from 'mcp_stealth'` at import time (line 21) — reproduced directly this run; `mcp_stealth.py` still exposes
+only `initialize()`, `list_tools()`, `call()`, no `StealthClient` class. Unchanged design mismatch, still
+deferred to owner-merged PR #326/#334.
+
+Called `mcp__mcphub__camoufox-stealth_navigate` directly to the Studio comments inbox with
+`cookie_profile=voidline`, session `voidline_community_run52` → 1418 cookies restored, landed on the Google
+account-chooser (Nolann "Déconnecté"). Follow-up `mcp__mcphub__camoufox-stealth_auth_check` on the same
+session → `auth_valid=false / status=dead / api_status=0 / "Auth INVALID. Do NOT post. Re-login required."`
+— identical signature to every probe since RUN19 (2026-07-05), now day 14 since the 2026-07-02 cookie mint.
+Studio is unreachable, so there is nothing to fetch, classify, heart, hide, or pin this run.
+
+No new comments, no live Studio actions attempted (consistent with the RUN3 draft-only hard-stop policy in
+`skills/community-manager/SKILL.md` — holds regardless of `CLAUDE.md`'s standing-authorization language, per
+the settled policy recorded there — and moot here regardless since auth is dead). The one queued
+`pending_post` item in `community/replied_to.json` (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`) is unchanged; no
+other state files mutated this run beyond this log entry. Owner action needed: unchanged — interactive
+voidline cookie re-login (now 14 days outstanding) and the `comments_runner.py`/`mcp_stealth.py` API
+mismatch (owner-merged PR #326/#334).
