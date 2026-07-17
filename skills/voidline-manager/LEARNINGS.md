@@ -2966,3 +2966,51 @@ authorized for a routine — new paid spend per CLAUDE.md). Separately, worth a 
 rename `runs/LONG-2` → `runs/LONG-2-ourang` (freeing the slot) once that run resumes, so a future W29
 production session doesn't collide with it when it finally scripts D.B. Cooper. Sat 07-18 ANSWER Short
 (also source=LONG-2) and the LONG-2 17:00 UTC long-form publish will miss for the same reasons.
+
+## DAILY_PLAN 2026-07-17 (Fri, W29) — long-form publish day + HOOK-Short day, both MISS; Reddit-seed step declined per owner opt-out
+
+**Ran**: `python3 skills/voidline-manager/cron_runner.py daily-plan` → exit 0, appended a DAILY_PLAN
+stub to `agent-log.json` ("Today 2026-07-17 — 0 Shorts publishing"). Reconciled the human-judgment
+portion below.
+
+**Step 3 — Shorts scheduled TODAY (2026-07-17 UTC): NONE.** `shorts/shorts_state.json` has no entry
+with `publish_at` on 2026-07-17 (latest anything in state is 2026-07-12; the 4 PENDING_UPLOAD entries
+are all W27/W28 backlog, none dated today). W29's Fri HOOK Short (D.B. Cooper) was attempted this
+morning and failed before upload — `runs/LONG-2` holds no render and is still W28 Ourang Medan content,
+not D.B. Cooper (see BLOCKER_2026-07-17-DAILY-SHORT-HOOK above), so it never reached a SCHEDULED state
+in Studio. Nothing to verify/reconcile. Did NOT open a fresh camoufox/Studio probe: the daily-short
+routine at ~08:07 UTC today already reconfirmed the voidline cookie auth dead (day 15) with a fresh
+session (`voidline_dailyshort_0717`); a 3rd probe within the same hour adds no information and pushes
+against anti-abuse pacing.
+
+**Step 4 — Today IS a long-form publish day (LONG-2, D.B. Cooper, plan slot Fri 2026-07-17 17:00 UTC).**
+Long-form is NOT produced: no script and no render for D.B. Cooper exist. `runs/LONG-2` is still the
+W28 SS Ourang Medan run (`PRODUCTION_STATE.md` = BLOCKED_AWAITING_QUOTA_AND_AUTH; the W29 plan reuses
+the bare `LONG-2` slot for a different topic — the naming collision flagged this morning). Both root
+blockers reconfirmed this cycle: ElevenLabs Creator quota fully exhausted (121849/121849 chars used,
+resets 2026-07-30), voidline cookie dead day 15 (since 2026-07-02). Nothing is scheduled in Studio to
+verify → the 17:00 UTC long-form slot will MISS.
+
+**Reddit r/UnresolvedMysteries seed — DECLINED, not drafted.** The routine step says to draft a
+500–700 word seed on a long-form publish day and log a "PLANNED: Reddit seed" line. This conflicts
+directly with `CLAUDE.md`'s "❌ NOT authorized" section, which records a standing owner opt-out:
+"External seeding (Reddit, Discord, Twitter) — user has opted out: 'pas de reddit on peux explosr
+natureellement'." The owner's explicit, quoted preference outranks the generic routine step, so I did
+NOT create a `seeds/` file and did NOT add a PLANNED line. Corroboration: `seeds/` contains only
+`weekly-reports/`, no Reddit drafts — consistent with this step having been correctly skipped on every
+prior long-form day. Flagging for a human decision if the owner ever wants the Reddit channel turned
+back on; until then the opt-out holds.
+
+**Step 5 — next-3-day drift (checked despite today being a publish day):** Sat 2026-07-18 ANSWER Short
+(D.B. Cooper, source=LONG-2) and Sun 2026-07-19 discovery Short (Nazca Lines) will both miss for the
+same two blockers. Mon 2026-07-20 opens W30 — not yet planned/locked (Idea Lock runs on its own
+schedule). Trajectory unchanged from W27/W28: 0 shipped this week.
+
+**Owner actions needed (both owner-only, unchanged, now overdue):**
+1. Interactive re-login to the `voidline` cookie profile — day 15 (open since 2026-07-02). Single
+   blocker on all Studio automation (uploads, scheduling, Flow thumbs, comment mining).
+2. ElevenLabs quota — wait for the 2026-07-30 reset, or top up (new paid spend is NOT
+   routine-authorized per CLAUDE.md).
+
+Separately worth a human decision: rename `runs/LONG-2` → `runs/LONG-2-ourang` so a future D.B. Cooper
+production session doesn't collide with the paused W28 run.
