@@ -2924,3 +2924,45 @@ Hard limit respected: 1 community-tab entry drafted today, none previously logge
 this run. Owner action needed: unchanged — interactive voidline cookie re-login (day 14) is the single
 blocker on both this and the comments-reply routine; once live, a human-attended session should clear the
 backlog of `pending_post` rows in this log (oldest since 2026-07-01) in addition to today's.
+
+## BLOCKER_2026-07-17-DAILY-SHORT-HOOK — Fri HOOK Short (D.B. Cooper, source=LONG-2): source has no render + wrong-week content
+
+**Ran**: `python3 skills/daily-short/daily_short_runner.py`. Today's row (`weekly_plans/2026-W29.md`):
+type=HOOK, source=LONG-2, hook "HE JUMPED WITH $200,000. A KID FOUND $5,800 OF IT. NINE YEARS LATER."
+(D.B. Cooper). The runner resolved `source_run = runs/LONG-2` (that path does exist, so the runner's own
+existence check passed) and shelled out to `short_cutter_v2.py`, which failed: `Error opening input file
+/home/user/voidline-automation/runs/LONG-2/render/voidline.mp4` — no such file, exit 1.
+
+**Two stacked problems, not one**:
+1. **Content mismatch, not just a missing render**: `runs/LONG-2` is still W28's SS Ourang Medan run
+   (`script.json` → `"idea_id": "w28-long2-ourang-medan"`, title "28 Men Died Smiling in 1947..."), never
+   overwritten or renamed for W29's D.B. Cooper pick. There is no `runs/LONG-2-cooper` or equivalent —
+   D.B. Cooper's long-form has never been scripted, let alone rendered. This is a step worse than the
+   07-14/07-15 HOOK/ANSWER misses (LONG-1 vs `runs/LONG-1-hauser`), where the dir was merely misnamed but
+   at least held the *right* topic's script+assets. Here, even if render existed, cutting from `runs/LONG-2`
+   today would have produced an Ourang Medan clip mislabeled as a D.B. Cooper HOOK. Flagging so a future
+   production/idea-lock session gives each week's LONG-1/LONG-2 a stable, topic-qualified run-dir name
+   (e.g. `LONG-2-cooper`) instead of reusing the bare `LONG-1`/`LONG-2` slot across different weeks.
+2. **Root blockers unchanged, both reconfirmed live this run**: ElevenLabs `check_subscription` →
+   `character_count: 121849 / character_limit: 121849` — quota now fully exhausted (was ~892/885 chars
+   left on 07-14/07-15/07-16, now 0), `next_character_count_reset_unix: 1785444075` (2026-07-30). Fresh
+   camoufox session (`voidline_dailyshort_0717`, cookie_profile=voidline, 1423 cookies restored) to Studio
+   landed on the Google account-chooser again (Nolann "Déconnecté"); `stealth_auth_check` →
+   `auth_valid=false / status=dead / api_status=0 / "Auth INVALID. Do NOT post. Re-login required."` — day
+   15 since the 2026-07-02 cookie mint, unchanged since RUN19. So even a correctly-named, fully-scripted
+   LONG-2 could not have produced a voiced Short today regardless of the naming issue.
+
+No alternative content substituted (would misrepresent the plan-locked HOOK slot and double-count a
+different topic, same reasoning as every prior daily-short miss this week). Deleted the two stray
+intermediate files the failed cutter run left behind (`shorts/short_2026-07-17_hook.json`,
+`shorts/short_2026-07-17_hook.ass`) — dead artifacts pointing at a nonexistent source, not useful state;
+the runner regenerates them fresh on any future retry. `shorts/shorts_state.json` was never touched (the
+runner only writes it after a successful upload). Today's HOOK Short slot is MISSED, consistent with the
+DRIFT_FLAG predictions logged 07-15 and 07-16.
+
+**Action**: Owner action needed, unchanged: (a) interactive voidline cookie re-login (now 15 days
+outstanding since 2026-07-02); (b) ElevenLabs quota — wait for the 2026-07-30 reset or top up (not
+authorized for a routine — new paid spend per CLAUDE.md). Separately, worth a human decision on whether to
+rename `runs/LONG-2` → `runs/LONG-2-ourang` (freeing the slot) once that run resumes, so a future W29
+production session doesn't collide with it when it finally scripts D.B. Cooper. Sat 07-18 ANSWER Short
+(also source=LONG-2) and the LONG-2 17:00 UTC long-form publish will miss for the same reasons.
