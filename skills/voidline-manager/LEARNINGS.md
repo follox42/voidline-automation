@@ -3093,3 +3093,41 @@ reasoning as RUN56/RUN57. State files unchanged this run — the one queued `pen
 identical to RUN57, so neither was re-committed to avoid a no-op commit. Owner action needed: unchanged —
 interactive voidline cookie re-login (now 15 days outstanding) and the `comments_runner.py`/`mcp_stealth.py`
 API mismatch (owner-merged PR #326/#334).
+
+## BLOCKER_2026-07-17-COMMUNITY — Daily community-tab post (Fri = long-drop): skipped, LONG-2 content doesn't exist yet
+
+**Observation**: Ran the daily community-tab routine. `python3 skills/community-manager/community_tab_runner.py`
+ran clean and prescribed today's rotation slot (`long-drop`); `community_tab_log.csv` had no `2026-07-17` row
+going in, so the daily cap wasn't hit. The runner unconditionally appended its own placeholder row
+(`2026-07-17,long-drop,prescribed`) as a side effect of running it.
+
+Per the `long-drop` template (`SKILL.md`: "image of today's long-form thumb + title + 1-sentence promise" /
+"new one. [title]. [thumbnail]"), checked LONG-2 (D.B. Cooper, `weekly_plans/2026-W29.md` Friday slot,
+"D.B. Cooper (1971–1980): Why Did Only the Money Resurface?") production assets. This one is worse than the
+Tuesday/Hauser precedent: `runs/LONG-2/` still holds **W28's SS Ourang Medan** run
+(`PRODUCTION_STATE.md` = `BLOCKED_AWAITING_QUOTA_AND_AUTH`) — D.B. Cooper has no script, no voice, no render,
+no thumb, nothing produced at all (reconfirmed independently today by the daily-plan run, commit `6b447c0`:
+"the D.B. Cooper long-form is unproduced (no script/render — runs/LONG-2 still holds W28 Ourang Medan
+content)"). Both root blockers unchanged: ElevenLabs Creator quota fully exhausted (resets 2026-07-30),
+voidline cookie dead day 15 (since 2026-07-02, reconfirmed again today by RUN56/RUN57/RUN58 above). So there
+is no render, no thumb, and no realistic same-day publish to promise — same fact pattern as
+`BLOCKER_2026-07-14-COMMUNITY` (Hauser) and `BLOCKER_2026-07-07-COMMUNITY` (Zodiac): drafting "new one. D.B.
+Cooper. the full breakdown is up now." would be a false public claim about content that does not exist, a
+materially different failure mode than the settled draft-only/click-denial policy (which only covers content
+that is honest at draft time and just awaiting the publish click).
+
+**Action**:
+- Removed the runner's auto-appended `2026-07-17,long-drop,prescribed` placeholder row from
+  `community/community_tab_log.csv` rather than leaving a fabricated row or converting it to a false
+  `pending_post` draft — leaving today absent so tomorrow's Sat `tease-tomorrow` slot runs normally and no
+  false draft sits in the queue waiting for a human to accidentally publish it.
+- Did not navigate to Studio / attempt "Créer une publication" (would have been moot regardless — content
+  gap is the decisive blocker, and auth is separately dead too, per RUN56/57/58 above).
+- Root cause is upstream of this skill and already tracked in `runs/LONG-2/PRODUCTION_STATE.md` and today's
+  daily-plan entry: interactive voidline cookie re-login (owner-only), ElevenLabs quota reset 2026-07-30 or
+  owner top-up (not routine-authorized per `CLAUDE.md` — new paid spend). Separately, the `runs/LONG-2`
+  naming collision (still holding Ourang Medan, not Cooper) flagged in today's daily-plan entry needs a human
+  rename decision before a future production session can actually script D.B. Cooper into that slot.
+- Once a LONG-2/Cooper render + thumb exist, a future community-manager run can produce the `long-drop` post
+  retroactively (same pattern as the 07-03 Flannan precedent) even if it lands late — a late true post beats
+  an on-time false one.
