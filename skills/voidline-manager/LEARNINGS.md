@@ -3041,3 +3041,29 @@ around a dead cookie that needs interactive 2FA). The one queued `pending_post` 
 mutated this run beyond this log entry. Owner action needed: unchanged — interactive voidline cookie
 re-login (now 15 days outstanding) and the `comments_runner.py`/`mcp_stealth.py` API mismatch (owner-merged
 PR #326/#334).
+
+## BLOCKER_2026-07-17-COMMENTS-RUN57 — community-manager comments batch: same two blockers, no new comments
+
+**Ran**: community-manager comments-reply batch (RUN57, ~13:09 UTC, a few hours after RUN56). Same result,
+reconfirmed independently rather than assumed from RUN56's log:
+
+1. `python3 skills/community-manager/comments_runner.py` → `ImportError: cannot import name 'StealthClient'
+   from 'mcp_stealth'` at line 21, reproduced again. `mcp_stealth.py` still only exposes `initialize()`,
+   `list_tools()`, `_translate_tool_name()`, `call()` — no `StealthClient` class. Unchanged, deferred to
+   owner-merged PR #326/#334.
+2. Fresh session (`voidline_community_0717b`) → `camoufox-stealth_navigate` to the Studio comments inbox
+   with `cookie_profile=voidline` → 1421 cookies restored, landed on the Google account-chooser again
+   (Nolann "Déconnecté"). `camoufox-stealth_auth_check` (first call hit a transient Cloudflare 502 from
+   the mcphub gateway, retried once per the network-error policy in `CLAUDE.md`, succeeded on retry) →
+   `auth_valid=false / status=dead / api_status=0 / "Auth INVALID. Do NOT post. Re-login required."` —
+   identical signature to every probe since RUN19 (2026-07-05), now day 15 since the 2026-07-02 cookie
+   mint.
+
+Studio unreachable, so nothing to fetch/classify/reply/heart/hide/pin this run. No live Studio actions
+attempted (moot given dead auth; would also be gated by the RUN3 draft-only policy in
+`skills/community-manager/SKILL.md` regardless). No routing around either blocker attempted, same reasoning
+as RUN56. State files unchanged this run — the one queued `pending_post` item in
+`community/replied_to.json` (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`) and `community/community_log.csv` are
+identical to RUN56, so neither was re-committed to avoid a no-op commit. Owner action needed: unchanged —
+interactive voidline cookie re-login (15 days outstanding) and the `comments_runner.py`/`mcp_stealth.py`
+API mismatch (PR #326/#334).
