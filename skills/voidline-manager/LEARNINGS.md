@@ -3209,3 +3209,30 @@ unchanged — interactive voidline cookie re-login (16+ days) and ElevenLabs quo
 owner-side top-up). Separately still outstanding: a human rename/dedupe decision on `runs/LONG-2`
 before a future production session can actually script D.B. Cooper into that slot without colliding
 with the Ourang Medan backlog run.
+
+## BLOCKER_2026-07-18-COMMENTS-RUN60 — community-manager comments batch: same two blockers, no new comments
+
+**Ran**: community-manager comments-reply batch (RUN60). Reconfirmed both settled blockers
+independently rather than assuming carryover from RUN59 (2026-07-17):
+
+1. `python3 skills/community-manager/comments_runner.py` → `ImportError: cannot import name 'StealthClient'
+   from 'mcp_stealth'` at line 21, reproduced again this run. `mcp_stealth.py` still exposes only
+   `initialize()`, `list_tools()`, `_translate_tool_name()`, `call()` — no `StealthClient` class. Unchanged,
+   still deferred to owner-merged PR #326/#334; wiring the runner to the raw `call()`/`initialize()`
+   functions instead would bypass the MCP tool registry and remains flagged for owner security review.
+2. Fresh session (`voidline_community_0718`) → `camoufox-stealth_navigate` to the Studio comments inbox
+   with `cookie_profile=voidline` → 1412 cookies restored, landed on the Google account-chooser again
+   (Nolann "Déconnecté"). `camoufox-stealth_auth_check` on the same session → `auth_valid=false /
+   status=dead / api_status=0 / "Auth INVALID. Do NOT post. Re-login required."` — identical signature to
+   every probe since RUN19 (2026-07-05), now **day 16** since the 2026-07-02 cookie mint, unchanged from
+   RUN56-59.
+
+Studio unreachable, so nothing to fetch/classify/reply/heart/hide/pin this run. No live Studio actions
+attempted (moot given dead auth; would also be gated by the RUN3 draft-only policy in
+`skills/community-manager/SKILL.md` regardless — holds independent of `CLAUDE.md`'s standing-authorization
+language, per the settled policy recorded there). No routing around either blocker attempted, same
+reasoning as RUN56-59. State files unchanged this run — the one queued `pending_post` item in
+`community/replied_to.json` (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`) and `community/community_log.csv` are
+identical to RUN59, so neither was re-committed to avoid a no-op commit. Owner action needed: unchanged —
+interactive voidline cookie re-login (now 16 days outstanding) and the `comments_runner.py`/`mcp_stealth.py`
+API mismatch (owner-merged PR #326/#334).
