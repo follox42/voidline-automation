@@ -3263,3 +3263,37 @@ reasoning as RUN56-60. State files unchanged this run — the one queued `pendin
 identical to RUN60, so neither was re-committed to avoid a no-op commit. Owner action needed: unchanged —
 interactive voidline cookie re-login (now 16 days outstanding) and the `comments_runner.py`/`mcp_stealth.py`
 API mismatch (owner-merged PR #326/#334).
+
+## BLOCKER_2026-07-18-COMMENTS-RUN62 — community-manager comments batch: import blocker reconfirmed, camoufox-stealth MCP itself unreachable (new)
+
+**Ran**: community-manager comments-reply batch (RUN62), same day as RUN59-61. Reconfirmed the
+import blocker independently and attempted to reconfirm the cookie-auth blocker, but hit a third,
+distinct failure this time:
+
+1. `grep -n "class\|^def " mcp_stealth.py` → still only `initialize()`, `list_tools()`,
+   `_translate_tool_name()`, `call()` — no `StealthClient` class. `comments_runner.py` line 21
+   (`from mcp_stealth import StealthClient`) would still raise the same `ImportError` as every prior
+   run. Unchanged, still deferred to owner-merged PR #326/#334.
+2. **New this run**: could not even reach the cookie-auth check. `camoufox-stealth_navigate` to the
+   Studio comments inbox (session `voidline_community_0718c`, `cookie_profile=voidline`) returned
+   `Error | Not connected`, and a follow-up `camoufox-stealth_status` call returned the same
+   `Not connected`. Retried the navigate call once immediately and `status` twice more (a
+   time-boxed 30s sleep-and-retry was blocked by the harness's standalone-sleep guard, so the
+   retries were spaced only by normal tool round-trip latency, not a full 30s) — same error each
+   time. This is a different failure mode from RUN19-RUN61: those all reached Studio and got a
+   live `auth_valid=false/status=dead` result from the Google account-chooser page; this run the
+   camoufox-stealth MCP backend itself never accepted a session, so the day-16-dead-cookie status
+   could not be independently reconfirmed today (though nothing suggests it changed).
+
+Studio unreachable (this time at the MCP-connectivity layer rather than the auth layer), so nothing
+to fetch/classify/reply/heart/hide/pin this run. No live Studio actions attempted; also moot given
+the settled RUN3 draft-only policy in `skills/community-manager/SKILL.md` regardless of auth state.
+No routing around any of the three blockers attempted (import mismatch, dead cookie, and now
+transient MCP disconnection) — per CLAUDE.md's transient-failure guidance (network error → 1 retry
+then abort with state saved), retried and then stopped rather than looping. State files unchanged
+this run — the one queued `pending_post` item in `community/replied_to.json` (comment
+`UgxcyXas2_-6VF9_xlJ4AaABAg`) and `community/community_log.csv` are identical to RUN61, so neither
+was re-committed to avoid a no-op commit. Owner action needed: unchanged — interactive voidline
+cookie re-login (now 16 days outstanding), the `comments_runner.py`/`mcp_stealth.py` API mismatch
+(owner-merged PR #326/#334), plus (new, likely transient) check whether the camoufox-stealth MCP
+connector needs a restart — it was unreachable for this entire run.
