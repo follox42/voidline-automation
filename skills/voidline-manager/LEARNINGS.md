@@ -3297,3 +3297,41 @@ was re-committed to avoid a no-op commit. Owner action needed: unchanged — int
 cookie re-login (now 16 days outstanding), the `comments_runner.py`/`mcp_stealth.py` API mismatch
 (owner-merged PR #326/#334), plus (new, likely transient) check whether the camoufox-stealth MCP
 connector needs a restart — it was unreachable for this entire run.
+
+## BLOCKER_2026-07-18-COMMUNITY-TAB — Daily community-tab post (Sat = tease-tomorrow): skipped, SUN short (Nazca Lines) has zero production
+
+**Observation**: Ran the daily community-tab routine. `python3 skills/community-manager/community_tab_runner.py`
+ran clean, found no `2026-07-18` row in `community/community_tab_log.csv` (daily cap not hit), and prescribed
+today's rotation slot (`tease-tomorrow`). Per `weekly_plans/2026-W29.md`'s community-tab schedule ("Sat 18:00
+UTC — tomorrow tease for SUN short (Nazca Lines)") and `SKILL.md`'s template ("tomorrow we move 700 years
+earlier" style tease), the post needs to name/tease specific, real content coming tomorrow.
+
+Checked Sunday's short (`2026-07-19`, discovery, hook "THEY'RE ONLY WHOLE FROM THE SKY. BUILT 1,500 YEARS
+BEFORE FLIGHT.", topic Nazca Lines) for anything to honestly tease: no entry in `shorts/shorts_state.json`
+(last entries are still `w27_discovery_flight19` / `w27_discovery_ourang` / `w28_discovery_hauser` /
+`w28_discovery_beaumont`, all `PENDING_UPLOAD` from prior weeks), no `shorts/*nazca*` config, no `runs/`
+directory for it — i.e. not even a script has been written for this topic yet, a strictly worse content gap
+than the Hauser/Cooper long-drop precedents (`BLOCKER_2026-07-14-COMMUNITY`, `BLOCKER_2026-07-17-COMMUNITY`),
+where at least partial production existed. Same root cause as every other stalled asset this week: ElevenLabs
+Creator quota at 0/121,849 chars (resets 2026-07-30, reconfirmed live today in
+`BLOCKER_2026-07-18-DAILY-SHORT-ANSWER`) and the voidline Studio cookie dead since 2026-07-02 (day 16,
+reconfirmed today by RUN60/RUN61/RUN62 above) — but here production for the teased topic hasn't even started,
+so there's nothing true to promise regardless of upload/auth state. Drafting "tomorrow: [Nazca Lines tease]"
+would be a false public claim about content that doesn't exist, the same failure mode the Tue/Fri long-drop
+skips were built to avoid — not the settled draft-only/click-denial policy (which only covers honest drafts
+awaiting the publish click).
+
+**Action**:
+- Removed the runner's auto-appended `2026-07-18,tease-tomorrow,prescribed` placeholder row from
+  `community/community_tab_log.csv` rather than leaving a fabricated row or converting it to a false
+  `pending_post` draft — leaving today absent so tomorrow's Sun `reader-pick` slot runs normally and no false
+  draft sits in the queue waiting for a human to accidentally publish it.
+- Did not navigate to Studio / attempt "Créer une publication" (moot regardless — content gap is the
+  decisive blocker here, and auth is separately dead too, per RUN60-62 above).
+- Root cause is upstream of this skill: no script/voice/render/thumb exist yet for the Nazca Lines Short, and
+  the two standing infra blockers (ElevenLabs quota reset 2026-07-30 or owner top-up — not routine-authorized
+  new spend per CLAUDE.md; interactive voidline cookie re-login — owner-only) still block everything else this
+  week too.
+- Once the Nazca Lines Short (or whatever actually publishes Sunday) is produced, a future community-manager
+  run can post a true tease or drop card retroactively, even late — same "late true post beats an on-time
+  false one" principle as the Fri 07-17 precedent.
