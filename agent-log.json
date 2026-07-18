@@ -410,6 +410,21 @@
    "t": "2026-07-17 08:12 UTC",
    "action": "DAILY_PLAN",
    "detail": "W29 Fri review. Today = HOOK-Short day + LONG-2 (D.B. Cooper) long-form publish day (17:00 UTC). Step3: 0 Shorts scheduled today in state; HOOK Short failed pre-upload (runs/LONG-2 has no render, still W28 Ourang Medan content). No fresh Studio probe (daily-short reconfirmed cookie auth dead day15 at ~08:07). Step4: D.B. Cooper long-form NOT produced (no script/render); blockers reconfirmed (ElevenLabs quota 121849/121849 exhausted, resets 2026-07-30; voidline cookie dead day15) -> 17:00 UTC slot MISSES. Reddit r/UnresolvedMysteries seed DECLINED (not drafted): conflicts with CLAUDE.md owner opt-out on external seeding. Step5 drift: Sat 07-18 ANSWER + Sun 07-19 discovery Shorts also miss; W30 not yet locked. Owner actions (both owner-only, overdue): voidline cookie re-login (day15) + ElevenLabs quota. See LEARNINGS DAILY_PLAN 2026-07-17."
+  },
+  {
+   "t": "2026-07-18 08:08 UTC",
+   "action": "DAILY_PLAN",
+   "detail": "Today 2026-07-18 — 0 Shorts publishing | "
+  },
+  {
+   "t": "2026-07-18 08:14 UTC",
+   "action": "DAILY_PLAN",
+   "detail": "Sat W29 daily-plan review. Read shorts_state.json, KNOWN_GOOD/KNOWN_BAD, weekly_plans/2026-W29.md; cron_runner.py daily-plan ran (exit 0, appended the 08:08 stub entry). Step 3 (Shorts publishing today): 0 — no shorts_state.json entry has publish_at=2026-07-18 and none is in SCHEDULED status, so there is nothing to verify/reconcile in Studio. The plan's Sat ANSWER Short (D.B. Cooper, LONG-2) was never produced or uploaded — the daily-short session already logged this ~08:0x UTC today as BLOCKER_2026-07-18-DAILY-SHORT-ANSWER (runs/LONG-2 still holds W28's SS Ourang Medan run, not Cooper; runs/LONG-2/render/ does not exist, so short_cutter has no mp4 to cut). Did NOT burn a fresh camoufox Studio probe: voidline cookie auth-dead was reconfirmed live this morning by that same daily-short session (auth_valid=false/status=dead, day 16 since the 2026-07-02 mint) and daily re-probing is itself a KNOWN_BAD fingerprint risk. Step 4 (long-form publish day?): NO — W29's long-forms are Tue (LONG-1 Kaspar Hauser) + Fri (LONG-2 D.B. Cooper), both unproduced/blocked; today is Sat. No Reddit seed drafted (not a long-form day; also moot per CLAUDE.md owner Reddit opt-out)."
+  },
+  {
+   "t": "2026-07-18 08:14 UTC",
+   "action": "DRIFT_FLAG",
+   "detail": "Not a publish day -> checked next 3 days. Sun 2026-07-19: W29 Sun row = NEW discovery Short 'Nazca Lines' — genuine open slot for the daily-short routine, but will be blocked identically (ElevenLabs Creator quota 0/121849 until reset 2026-07-30 + voidline cookie dead) unless owner acts. Mon 2026-07-20: start of W30 — no weekly_plans/2026-W30.md exists yet, so the W30 Idea Lock is DUE (~Sun/Mon auto-lock); flag: W30 plan missing. Tue 2026-07-21: W30 content undefined until that plan locks. PIPELINE IS DRY: no Short scheduled for any of the next 3 days. Standing backlog drift (unchanged, previously logged, not re-probed): 4 Shorts still PENDING_UPLOAD with past slots ALL MISSED — w27_discovery_flight19 (07-04), w27_discovery_ourang (07-05), w28_discovery_hauser (07-06), w28_discovery_beaumont (07-12); plus both W29 long-forms (Hauser LONG-1, Cooper LONG-2) never produced. ROOT CAUSE unchanged & top priority: voidline cookie auth dead since 2026-07-02 (day 16 — needs interactive owner re-login) + ElevenLabs Creator quota exhausted (resets 2026-07-30). Both require owner action; no routine-side workaround exists."
   }
  ]
 }
