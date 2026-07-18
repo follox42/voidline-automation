@@ -3157,3 +3157,55 @@ reasoning as RUN56/57/58. State files unchanged this run — the one queued `pen
 identical to RUN58, so neither was re-committed to avoid a no-op commit. Owner action needed: unchanged —
 interactive voidline cookie re-login (now 15 days outstanding) and the `comments_runner.py`/`mcp_stealth.py`
 API mismatch (owner-merged PR #326/#334).
+
+## BLOCKER_2026-07-18-DAILY-SHORT-ANSWER — Sat ANSWER Short cannot be cut, LONG-2/Cooper still unproduced (naming collision unresolved)
+
+**Ran**: daily-short routine, `weekly_plans/2026-W29.md` Sat row (type=ANSWER, source=LONG-2, hook
+"NO BODY. NO PARACHUTE. NO SECOND DOLLAR. EVER.", iconic detail: zero further trace of Cooper/gear/
+body found beyond the Tina Bar money). Per SKILL step 2, ran
+`python3 skills/daily-short/daily_short_runner.py` (`VOIDLINE_DRY_RUN=1` first to inspect without
+touching state):
+
+```
+[daily-short] today's row: {'date': '2026-07-18', 'type': 'answer', 'source': 'LONG-2', ...}
+```
+
+The runner's existence check only tests that `runs/LONG-2` exists as a directory — it does, but it
+is still **W28's SS Ourang Medan run** (`script.json` title: "28 Men Died Smiling in 1947. The Ship
+Was a Ghost."), not D.B. Cooper. `runs/LONG-2/render/` does not exist at all. Same naming-collision
+root cause flagged in `BLOCKER_2026-07-17-COMMUNITY` (Fri long-drop skip) and today's D.B. Cooper
+long-form was never produced this cycle — no script, no voice, no render, no thumb — so there is
+nothing to cut a 60s ANSWER Short from regardless of the dir-name mismatch. Did not run the live
+(non-dry) path: it would only fail identically inside `short_cutter_v2.py` once it tried to open a
+`voidline.mp4` that doesn't exist, so no state was produced or mutated by the dry probe.
+
+**Reprobed both root blockers live this session** (unchanged from Fri 07-17 / RUN56-59):
+- ElevenLabs Creator: `check_subscription` → 121,849 / 121,849 chars used, **0 left**,
+  `can_extend_character_limit=false`, resets `2026-07-30` (unix 1785444075).
+- voidline cookie: fresh `stealth_navigate` to Studio comments inbox (session
+  `voidline_dailyshort_0718`, 1411 cookies restored) → landed on Google account-chooser, Nolann
+  "Déconnecté"; `stealth_auth_check` → `auth_valid=false / status=dead / api_status=0 /
+  "Auth INVALID. Do NOT post. Re-login required."` — unrefreshed since 2026-07-02, **day 16**
+  elapsed, identical signature to every probe since RUN19.
+
+**Runner bug found while probing**: `skills/daily-short/daily_short_runner.py`'s "Update state"
+block (final ~10 lines) is not gated by the `dry` flag — even under `VOIDLINE_DRY_RUN=1` it
+unconditionally appended a `status: "scheduled"` entry for `short_2026-07-18_answer` to
+`shorts/shorts_state.json` (and, as a side effect of Python's default JSON encoder, re-serialized
+every existing `—` em-dash in the file to `—`, a large cosmetic diff). Reverted both
+(`git checkout -- shorts/shorts_state.json`) and deleted the stray `shorts/short_2026-07-18_answer.json`
+cutter config the dry probe also wrote — that write happens above the `if dry:` guard too. Left the
+runner source itself unchanged (out of scope for today's routine; flagging here for whoever next
+touches it — the fix is to move the "Update state" block inside the existing `if dry: ... else:`
+branching used for every other step, same pattern the upload/thumb sections already follow).
+
+**No alternative path attempted.** No other already-rendered long-form maps to today's plan-locked
+D.B. Cooper ANSWER row without misrepresenting content (same reasoning as
+`BLOCKER_2026-07-14-DAILY-SHORT-HOOK` / `BLOCKER_2026-07-15-DAILY-SHORT-ANSWER`). No routine-side fix
+exists for either blocker (ElevenLabs top-up = new paid spend, not authorized; cookie re-login =
+interactive owner action only). Today's Sat ANSWER Short slot is **MISSED**. No state files mutated
+(nothing was produced to record; `shorts/shorts_state.json` unchanged). Owner action needed:
+unchanged — interactive voidline cookie re-login (16+ days) and ElevenLabs quota reset 2026-07-30 (or
+owner-side top-up). Separately still outstanding: a human rename/dedupe decision on `runs/LONG-2`
+before a future production session can actually script D.B. Cooper into that slot without colliding
+with the Ourang Medan backlog run.
