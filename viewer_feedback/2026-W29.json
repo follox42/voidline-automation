@@ -1,0 +1,8 @@
+{
+  "week": "2026-W29",
+  "data_collection_status": "BLOCKED — camoufox-stealth MCP connector unreachable, Studio comments tab could not be reached this session. See LEARNINGS.md BLOCKER_2026-07-19-WEEKLY-INTEL. Empty arrays below mean 'not collected', not 'no feedback' — Idea Lock should fall back to the existing backlog (weekly_plans/, skills/voidline-master/NEXT_VIDEOS.md) for topic selection rather than reading requests:[] as literal.",
+  "requests": [],
+  "critiques": [],
+  "feature_asks": [],
+  "praise": []
+}
