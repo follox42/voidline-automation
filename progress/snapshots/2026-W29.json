@@ -1,0 +1,21 @@
+{
+  "week": "2026-W29",
+  "captured_at": "2026-07-19T10:11:01.829611+00:00",
+  "data_collection_status": "BLOCKED — camoufox-stealth MCP connector unreachable ('Not connected', reconfirmed twice this session, 6th consecutive run across sessions since 2026-07-18). No Studio analytics (impressions, CTR, AVD, retention, traffic sources, subs) could be pulled. See LEARNINGS.md BLOCKER_2026-07-19-WEEKLY-INTEL.",
+  "videos": [
+    {"short_id": "w27_discovery_franklin", "yt_id": "sedBqHgilSM", "published": "2026-06-30", "metrics": null},
+    {"short_id": "v4_hook", "yt_id": "rF7LYZRgnbY", "published": "2026-07-01", "metrics": null},
+    {"short_id": "v4_answer", "yt_id": "wHwh8TTRNKw", "published": "2026-07-01", "metrics": null},
+    {"long_form_id": "v4_roanoke", "yt_id": "Tlc-cKtAHuQ", "published": "2026-07-01", "metrics": null}
+  ],
+  "videos_pending_not_published": [
+    {"short_id": "w27_discovery_flight19", "target_slot": "2026-07-04T12:00:00Z", "status": "PENDING_UPLOAD — 15 days overdue"},
+    {"short_id": "w27_discovery_ourang", "target_slot": "2026-07-05T12:00:00Z", "status": "PENDING_UPLOAD — 14 days overdue"},
+    {"short_id": "w28_discovery_hauser", "target_slot": "2026-07-06T12:00:00Z", "status": "PENDING_UPLOAD — 13 days overdue"},
+    {"short_id": "w28_discovery_beaumont", "target_slot": "2026-07-12T12:00:00Z", "status": "PENDING_UPLOAD — 7 days overdue"},
+    {"short_id": "w29_discovery_nazca", "target_slot": "2026-07-19T12:00:00Z", "status": "PENDING_UPLOAD — misses today's slot"},
+    {"long_form_id": "LONG-1-hauser (Kaspar Hauser)", "target_slot": "2026-07-14 (W29 Tue)", "status": "BLOCKED_AWAITING_QUOTA_AND_AUTH — never produced"},
+    {"long_form_id": "LONG-2 (D.B. Cooper)", "target_slot": "2026-07-17 (W29 Fri)", "status": "BLOCKED — runs/LONG-2 still holds stale W28 Ourang Medan content, never re-scripted for Cooper"}
+  ],
+  "channel_aggregates": {}
+}

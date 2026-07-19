@@ -435,6 +435,11 @@
       "t": "2026-07-19 08:08 UTC",
       "action": "DAILY_PLAN",
       "detail": "Today 2026-07-19 \u2014 1 Shorts publishing | \ud83d\udcc5 TODAY w29_discovery_nazca (None) at 12:00 UTC \u2014 status: PENDING_UPLOAD"
+    },
+    {
+      "t": "2026-07-19 10:11 UTC",
+      "action": "WEEKLY_INTEL",
+      "detail": "W29 weekly-intel run. camoufox-stealth MCP connector unreachable (Error | Not connected, retried once, 6th consecutive session since 2026-07-18) -- Phases 1/2/4/6 (Studio analytics, best/worst diagnostic, CTR/retention auto-actions, comment mining) blocked, no data collected. Ran init/experiment status+check/progress-curve eta (no Studio access needed): 4 open experiments still over the 3-cap, 3 of them now structurally stalled (comparison videos never published) independent of the outage; weekly_curve.csv still zero rows, deliberately not appending a blank row. New finding: 2026-W28 weekly-intel run never executed at all (no W28 snapshot/actions/feedback files ever existed), a gap worse than a blocked-but-attempted run. Wrote honest blocked-marked outputs to progress/snapshots/2026-W29.json, weekly_actions/2026-W29.md, viewer_feedback/2026-W29.json, self_eval/2026-W29.md, seeds/weekly-reports/2026-07-19.md. See LEARNINGS.md BLOCKER_2026-07-19-WEEKLY-INTEL. Owner action needed (unchanged): restart camoufox-stealth connector, voidline cookie re-login (17d dead), ElevenLabs quota resets 2026-07-30."
     }
   ]
 }

@@ -3484,3 +3484,49 @@ opened `BLOCKER_2026-07-19-DAILY-SHORT`). No new production; verify/reconcile/ca
 **Owner action needed** (reconfirmed, all owner-side): (1) restart the camoufox-stealth MCP connector
 (unreachable 4 runs running); (2) interactive voidline cookie re-login (17 days outstanding); (3) ElevenLabs
 quota auto-resets 2026-07-30; (4) confirm Idea Lock will lock `weekly_plans/2026-W30.md` before Mon 07-20.
+
+## BLOCKER_2026-07-19-WEEKLY-INTEL — Sunday weekly-intel run: camoufox-stealth connector unreachable, 6th consecutive session; W28 run discovered to have never executed
+
+**Ran**: `skills/weekly-intel/SKILL.md` 7-phase closed-loop self-analysis, due Sun 10:00 UTC before
+Idea Lock at 14:00.
+
+1. Checked the camoufox-stealth MCP connector fresh before starting: `camoufox-stealth_status` →
+   `Error | Not connected`, retried once per the CLAUDE.md transient-failure protocol → same error.
+   This is now documented as unreachable across **6 consecutive routine sessions**: community-manager
+   RUN62/RUN63 (2026-07-18), today's daily-short and daily-plan sessions (2026-07-19), and this run.
+   Same signature RUN62 first diagnosed: the MCP backend itself refuses any session — a
+   connector-level outage, distinct from (and compounding with) the separately-dead voidline cookie
+   (17 days unrefreshed since 2026-07-02) and the exhausted ElevenLabs Creator quota (resets
+   2026-07-30).
+2. Confirmed no fallback data source exists: `env | grep -iE 'youtube|google_api|yt_'` → nothing set.
+   No YouTube Data/Analytics API credentials in this environment, consistent with the same check in
+   `self_eval/2026-W27.md`.
+3. As a result, Phases 1 (Studio analytics snapshot), 2 (best/worst diagnostic), 4 (CTR/retention
+   auto-actions), and 6 (comment mining) could not execute — same phases blocked as
+   `BLOCKER_2026-07-05-WEEKLY-INTEL` two weeks ago.
+4. Ran everything that doesn't need Studio access: `weekly_runner.py init` (scaffolded W29 files),
+   `experiment_tracker.py status`/`check` (4 open, still over the 3-cap first flagged in W27's
+   self-eval and still unresolved; found 3 of the 4 are now structurally stalled independent of the
+   outage — their comparison videos were never actually published), `progress_curve.py eta`
+   ("no data yet" — `weekly_curve.csv` still has zero rows). Did **not** append a blank row to
+   `weekly_curve.csv` (would poison the rolling average, same reasoning as W27).
+5. **New finding, not previously logged**: the 2026-W28 weekly-intel run (due 2026-07-12) appears to
+   have **never executed** — no `progress/snapshots/2026-W28.json`, `weekly_actions/2026-W28.md`, or
+   `viewer_feedback/2026-W28.json` exist on disk, even though the 2026-07-12 Idea Lock log entry
+   references them as "BLOCKED." That entry was reading state that was never scaffolded in the first
+   place, not state that was collected-then-marked-blocked. This is a worse failure mode than W27's
+   or this week's (both ran the full loop and reported honest blocked-markers) — a routine that
+   silently doesn't run at all is harder to notice than one that runs and reports blocked.
+6. Wrote honest, explicitly-marked-blocked outputs (no fabricated/estimated numbers) to
+   `progress/snapshots/2026-W29.json`, `weekly_actions/2026-W29.md`, `viewer_feedback/2026-W29.json`,
+   `self_eval/2026-W29.md`, and `seeds/weekly-reports/2026-07-19.md`.
+
+No routing around the connector outage attempted (owner-side infra issue, no in-session workaround
+per CLAUDE.md). State saved and committed per the "no alternative works" branch of the CLAUDE.md
+blocked-action protocol.
+
+**Owner action needed** (unchanged across 3 consecutive weekly-intel reports, all owner-side): (1)
+restart/verify the camoufox-stealth MCP connector — unreachable 6 consecutive routine sessions now;
+(2) interactive voidline cookie re-login — dead 17 days since 2026-07-02; (3) ElevenLabs Creator
+quota self-resets 2026-07-30. (1)+(2) together unblock Studio analytics, comment mining, and every
+pending upload in one action.
