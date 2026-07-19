@@ -3369,6 +3369,38 @@ Owner action needed: unchanged — interactive voidline cookie re-login (now 16+
 camoufox-stealth MCP connector needs a restart — it has now been unreachable for two consecutive runs
 (RUN62, RUN63) rather than a single transient blip.
 
+## BLOCKER_2026-07-19-COMMENTS-RUN64 — community-manager comments batch: camoufox-stealth MCP unreachable for a 5th straight run, import blocker reconfirmed
+
+**Ran**: community-manager comments-reply batch (RUN64). Read `community/replied_to.json` and
+`community/community_log.csv` first — dedup state unchanged since RUN61/RUN63, still just the one queued
+`pending_post` item (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`, pin candidate). Reconfirmed both persistent
+blockers fresh, not assumed carried-over:
+
+1. `python3 -c "from mcp_stealth import StealthClient"` → same `ImportError`; `grep -n "class StealthClient"
+   mcp_stealth.py` → no match. `comments_runner.py` line 21 still cannot import, unchanged since first
+   reported, still deferred to owner-merged PR #326/#334.
+2. Drove the live MCP `camoufox-stealth_*` tools directly (registry access, not a bypass) instead of the
+   broken runner script: `camoufox-stealth_status` → `Error | Not connected`. `camoufox-stealth_auth_check`
+   (session `voidline_community`) → same `Error | Not connected`. Retried `camoufox-stealth_status` once more
+   per CLAUDE.md's network-error guidance — the harness's standalone-sleep guard again blocked an actual 30s
+   wait (same constraint RUN62/RUN63 hit), so the retry was spaced only by normal tool round-trip latency —
+   same `Not connected` error both times.
+
+This is now the **5th consecutive run** the camoufox-stealth MCP connector has refused any session
+(RUN62, RUN63, `BLOCKER_2026-07-19-DAILY-SHORT`, the same-day DAILY-PLAN review, and this run) — no longer
+a transient blip, a standing connectivity problem. The day-17-dead-cookie auth status from RUN19-RUN61
+still could not be independently reconfirmed today either, since the connector itself won't accept a session
+to check it against.
+
+Studio unreachable at the MCP-connectivity layer, so nothing to fetch/classify/reply/heart/hide/pin this run.
+No live Studio actions attempted; moot regardless given the settled RUN3 draft-only policy in
+`skills/community-manager/SKILL.md`. No routing around either blocker attempted (import mismatch, unreachable
+MCP backend) — consistent with every prior run in this series. State files unchanged this run —
+`community/replied_to.json` and `community/community_log.csv` are identical to RUN61/RUN63, so neither was
+re-committed to avoid a no-op commit. Owner action needed (unchanged, escalating): (1) restart the
+camoufox-stealth MCP connector — unreachable 5 runs running now; (2) interactive voidline cookie re-login,
+now 17+ days outstanding; (3) `comments_runner.py`/`mcp_stealth.py` API mismatch, owner-merged PR #326/#334.
+
 ## BLOCKER_2026-07-19-DAILY-SHORT — Sunday discovery Short (Nazca Lines): produced end-to-end, upload blocked (camoufox-stealth MCP unreachable, 3rd consecutive run)
 
 **Ran**: daily-short routine for the 2026-07-19 (Sun) discovery slot in `weekly_plans/2026-W29.md`
