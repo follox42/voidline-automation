@@ -3581,3 +3581,35 @@ identical to RUN65, so neither was re-committed to avoid a no-op commit. Owner a
 escalating): (1) restart the camoufox-stealth MCP connector — unreachable 8 sessions running now; (2)
 interactive voidline cookie re-login, 17+ days outstanding; (3) `comments_runner.py`/`mcp_stealth.py` API
 mismatch, owner-merged PR #326/#334.
+
+## BLOCKER_2026-07-19-COMMUNITY-TAB — Daily community-tab post (Sun = reader-pick): drafted, publish skipped (connector down, auth dead)
+
+**Ran**: `python3 skills/community-manager/community_tab_runner.py` → no `2026-07-19` row existed yet
+(daily cap not hit), today's base-rotation format = `reader-pick` (Sunday). Per `weekly_plans/2026-W30.md`'s
+community-tab schedule ("Sun 18:00 UTC — reader pick of the week").
+
+Content source: read `community/replied_to.json` for a candidate — still only one item ever seen in the
+Studio "Sans reponse" inbox since 2026-06-30 (the `@GrantMackay-wm1pe` Mary Celeste flash-over comment,
+already used for the 07-05 and 07-12 reader-pick slots), unchanged since RUN47 (2026-07-15). Comment mining
+can't refresh this list — Studio is unreachable (see below) — so this is now the **third consecutive week**
+reusing the same comment with no new candidate to rotate in. Drafted honestly acknowledging the repeat
+rather than implying a fresh pick: "the read still standing: @GrantMackay-wm1pe, on the Mary Celeste short --
+three weeks running now, nothing's replaced it. | the 2006 UCL flash-over test settles what happened to the
+air below deck; it doesn't touch why a crew who survived that would abandon a seaworthy ship for good. |
+that's the gap we keep sitting with." Appended to `community/community_tab_log.csv` as the `2026-07-19` row
+with `status=pending_post`, replacing the runner's own auto-appended `prescribed` placeholder row (removed
+rather than left alongside the real draft, same as the `BLOCKER_2026-07-18-COMMUNITY-TAB` precedent).
+
+Checked live-publish feasibility before drafting: `camoufox-stealth_status` → `Error | Not connected`, same
+signature as every probe since RUN62 (2026-07-18) — now the **9th consecutive session** the connector has
+refused any session. Did not attempt cookie restore, Studio navigation, or "Créer une publication" — moot
+regardless of connector state, because the settled draft-only policy in `skills/community-manager/SKILL.md`
+(holds independent of `CLAUDE.md`'s standing-authorization language, confirmed RUN1-RUN3 and every run since)
+says an unattended session never takes the click-to-publish step for Studio writes, full stop. Left as
+`pending_post` for a human-attended session to actually publish. No routing around either blocker attempted.
+
+Hard limit respected: 1 community-tab entry drafted today, none previously logged for 2026-07-19 before this
+run. Owner action needed (unchanged, escalating): (1) restart the camoufox-stealth MCP connector —
+unreachable 9 sessions running now; (2) interactive voidline cookie re-login — dead since 2026-07-02, 17+
+days outstanding; once live, a human-attended session should clear the full `pending_post` backlog in
+`community/community_tab_log.csv` (oldest since 2026-07-01), not just today's row.
