@@ -3425,3 +3425,30 @@ for 3 consecutive runs now (RUN62, RUN63, this one); (3) `comments_runner.py`/`m
 mismatch, deferred to owner-merged PR #326/#334; (4) `shorts/upload_shorts.py` needs a real rewrite
 against the current camoufox-stealth MCP tool surface — its cross-host import and stale SPECS list
 have been dead weight since at least w27.
+
+## 2026-07-19 — DAILY-PLAN review (voidline-manager, ~08:09 UTC)
+
+**Scope**: daily-plan cron review (separate routine from today's earlier daily-short production run, which
+opened `BLOCKER_2026-07-19-DAILY-SHORT`). No new production; verify/reconcile/calendar only.
+
+1. **Today's schedule (1 Short)**: `w29_discovery_nazca` scheduled for 2026-07-19T12:00:00Z. Ran
+   `cron_runner.py daily-plan` → logged `DAILY_PLAN` to `agent-log.json`. Step-3 Studio verify: the Short
+   has `yt_id: null` / `PENDING_UPLOAD` — it was never uploaded, so there is nothing in Studio to verify or
+   reconcile against; the state file is already accurate. Appended a dated review note to the nazca entry in
+   `shorts/shorts_state.json`.
+2. **Blocker recheck (read-only)**: `camoufox-stealth_status` → `Error | Not connected` again — **4th
+   consecutive run** (RUN62, RUN63, today's daily-short, this daily-plan). Confirms a connector-level outage,
+   not merely the dead voidline cookie. Compounding owner-side blockers unchanged: voidline cookie dead 17
+   days (since 07-02); ElevenLabs Creator quota exhausted (0 chars, resets 2026-07-30).
+3. **Outcome**: 12:00 UTC slot will be **MISSED** without owner action — the **5th consecutive discovery
+   Short** to miss its slot (flight19 07-04, ourang 07-05, hauser 07-06, beaumont 07-12, nazca 07-19).
+4. **Not a long-form publish day** (W29 long-forms were Tue 07-14 / Fri 07-17). Step-4 Reddit seed correctly
+   skipped — also consistent with the standing "no Reddit seeding" opt-out in CLAUDE.md.
+5. **Calendar / next-3-days drift (Step 5)**: W29 ends **today**. The next 3 days (Mon 07-20 – Wed 07-22)
+   fall in **W30, and `weekly_plans/2026-W30.md` does not exist yet** — no locked lineup for the upcoming
+   week. Idea Lock (normally Sun/Mon) has not yet produced W30. Flagging so the next Idea Lock run generates
+   it; if that routine is also stalled it's a second thing for the owner to check.
+
+**Owner action needed** (reconfirmed, all owner-side): (1) restart the camoufox-stealth MCP connector
+(unreachable 4 runs running); (2) interactive voidline cookie re-login (17 days outstanding); (3) ElevenLabs
+quota auto-resets 2026-07-30; (4) confirm Idea Lock will lock `weekly_plans/2026-W30.md` before Mon 07-20.
