@@ -1,0 +1,30 @@
+{
+  "source": "runs/w29-nazca/render/base.mp4",
+  "start_s": 0,
+  "duration_s": 51.5,
+  "out": "shorts/w29_discovery_nazca.mp4",
+  "source_is_portrait": true,
+  "header_text": "THE NAZCA LINES — PERU",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "THEY'RE ONLY WHOLE\\NFROM THE SKY.\\NBUILT 1,500 YEARS\\NBEFORE FLIGHT.",
+  "hook_fontsize": 100,
+  "outro_question": "WHAT WERE THEY\\NFOR?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0, "end": 3.5, "text": "SOUTHERN PERU\\NTHE NAZCA DESERT"},
+    {"start": 3.5, "end": 7, "text": "HUNDREDS OF DRAWINGS\\NCARVED INTO THE GROUND"},
+    {"start": 7, "end": 10.5, "text": "A HUMMINGBIRD.\\NA MONKEY. A SPIDER."},
+    {"start": 10.5, "end": 14, "text": "SOME OVER\\N1,000 FEET LONG"},
+    {"start": 14, "end": 17.5, "text": "STAND NEXT TO ONE\\NAND IT LOOKS LIKE NOTHING"},
+    {"start": 17.5, "end": 21, "text": "JUST SCRAPED\\NLINES IN THE DIRT"},
+    {"start": 21, "end": 24.5, "text": "FLY A FEW HUNDRED\\NFEET UP..."},
+    {"start": 24.5, "end": 28, "text": "...AND THEY SNAP\\NINTO PERFECT SHAPES"},
+    {"start": 28, "end": 32, "text": "THE NAZCA PEOPLE\\N500 BCE \\u2013 500 CE"},
+    {"start": 32, "end": 36, "text": "HAD NO AIRCRAFT.\\NNO WAY TO SEE THEIR OWN WORK"},
+    {"start": 36, "end": 40, "text": "NOT REDISCOVERED\\NUNTIL PILOTS FLEW OVER"},
+    {"start": 40, "end": 43, "text": "IN 1927"},
+    {"start": 43, "end": 46, "text": "1,400 YEARS\\NAFTER THE LAST LINE WAS CUT"}
+  ]
+}

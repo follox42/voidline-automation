@@ -1,0 +1,25 @@
+{
+  "src": "runs/w29-nazca/assets/ch0/img_00.jpg",
+  "out": "runs/w29-nazca/thumb/thumbnail.jpg",
+  "brightness": 0.95,
+  "saturation": 0.85,
+  "contrast": 1.12,
+  "text_x": 40,
+  "text_y": 24,
+  "headline": "ONLY WHOLE\nFROM THE SKY",
+  "headline_size": 92,
+  "headline_color": "#E0B854",
+  "headline_stroke": 8,
+  "date": "500 BCE",
+  "date_size": 68,
+  "date_stroke": 5,
+  "arrow": {
+    "tip": [720, 345],
+    "length": 210,
+    "angle": -150,
+    "shaft_w": 46,
+    "head_w": 100,
+    "head_len": 90,
+    "stroke_w": 6
+  }
+}

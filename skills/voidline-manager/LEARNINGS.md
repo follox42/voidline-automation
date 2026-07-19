@@ -3368,3 +3368,60 @@ Owner action needed: unchanged — interactive voidline cookie re-login (now 16+
 `comments_runner.py`/`mcp_stealth.py` API mismatch (owner-merged PR #326/#334), plus check whether the
 camoufox-stealth MCP connector needs a restart — it has now been unreachable for two consecutive runs
 (RUN62, RUN63) rather than a single transient blip.
+
+## BLOCKER_2026-07-19-DAILY-SHORT — Sunday discovery Short (Nazca Lines): produced end-to-end, upload blocked (camoufox-stealth MCP unreachable, 3rd consecutive run)
+
+**Ran**: daily-short routine for the 2026-07-19 (Sun) discovery slot in `weekly_plans/2026-W29.md`
+(topic: The Nazca Lines, Peru; hook "THEY'RE ONLY WHOLE FROM THE SKY. BUILT 1,500 YEARS BEFORE
+FLIGHT."). As of `BLOCKER_2026-07-18-COMMUNITY-TAB`, this topic had zero production — no script,
+no assets, no render. Closed that gap this session:
+
+1. Checked both standing infra blockers fresh before starting, per CLAUDE.md transient-failure
+   guidance (don't assume carryover):
+   - `elevenlabs-check_subscription` → `character_count: 121849` == `character_limit: 121849` →
+     still 0 chars remaining this billing period (resets 2026-07-30, unix 1785444075). Unchanged
+     from `BLOCKER_2026-07-11-ELEVENLABS-QUOTA`.
+   - `camoufox-stealth_status` → `Error | Not connected`, retried once → same error. Unchanged from
+     RUN62/RUN63 (2026-07-18) — this is now the 3rd consecutive run where the camoufox-stealth MCP
+     backend itself refuses any session, not just an auth-dead cookie. Increasingly looks like a
+     connector-level outage rather than a one-off blip; still worth an owner restart check.
+2. Produced the Short fully end-to-end despite both blockers (same "produce now, upload later"
+   pattern as w27/w28 discovery Shorts):
+   - `runs/w29-nazca/script.json` — 103-word VO script (SILENT, per the ElevenLabs-exhausted
+     precedent set by `w28_discovery_beaumont` — captions carry the story, script.json keeps the
+     VO text ready for a silent-to-voiced re-render once quota resets 2026-07-30).
+   - 3 real, license-clear Wikimedia Commons aerial photos (Diego Delso, CC BY-SA 4.0) — the
+     hummingbird, spider, and monkey geoglyphs specifically, verified by eye against the search
+     queries before use (not generic desert stock) — see `runs/w29-nazca/assets/ATTRIBUTION.md`.
+   - `skills/daily-short/build_discovery_base.py w29-nazca 51.5` — portrait Ken-Burns render,
+     3-image crossfade, silent AAC track, 51.5s (matches the cutter's `duration_s` exactly this
+     time, unlike the 46s/51.5s mismatch risk implicit in earlier runs' configs — rendered the base
+     at the same length as the final cut to avoid the source running out before the outro card).
+   - `shorts/w29_discovery_nazca.json` + `short_cutter_v2.py` — hook card, 13 pattern-interrupt
+     captions, outro card ("WHAT WERE THEY FOR? / COMMENT ↓"). Verified visually by extracting
+     frames at the hook/body/outro timestamps — text renders correctly even though this container
+     has no `/usr/share/fonts/truetype/impact-alt` (the Anton font the script requests); libass
+     silently falls back to a legible bold sans substitute, so this is a cosmetic-only container
+     difference, not a render failure. Output: `shorts/w29_discovery_nazca.mp4` (56.2MB, 51.5s).
+   - `runs/w29-nazca/thumb/thumb_config.json` + `make_fern_thumb.py` — Fern-style thumb, hummingbird
+     photo, gold headline "ONLY WHOLE FROM THE SKY" / "500 BCE", red arrow on the body-hub
+     crossing point. Output: `runs/w29-nazca/thumb/thumbnail.jpg` (531KB).
+3. Upload blocked by blocker #1 above — `shorts/upload_shorts.py` is also independently unusable
+   regardless (still imports a nonexistent cross-host `/host/home/follox/...mcp_stealth` module and
+   its hardcoded `SPECS` list is unrelated stale June content, same as every prior blocker note).
+
+No routing around either blocker attempted (ElevenLabs spend is not routine-authorized new spend
+per CLAUDE.md; camoufox connectivity is an owner-side infra issue). mp4/thumb/base render are local
+artifacts only, not committed to git (repo convention) — fully regenerable from the committed
+`script.json`/`w29_discovery_nazca.json`/`thumb_config.json`/Wikimedia manifest. Needs upload via
+Studio after the camoufox-stealth MCP connector is restarted AND the voidline cookie is refreshed
+(now 17 days outstanding since 2026-07-02), or a manual upload by Nolann, before
+2026-07-19T12:00:00Z to hit today's slot — **that slot will be MISSED without owner action**, same
+as every discovery Short this cycle (flight19, ourang, hauser, beaumont).
+
+**Owner action needed** (unchanged + reconfirmed): (1) interactive voidline cookie re-login, 17
+days outstanding; (2) check whether the camoufox-stealth MCP connector needs a restart — unreachable
+for 3 consecutive runs now (RUN62, RUN63, this one); (3) `comments_runner.py`/`mcp_stealth.py` API
+mismatch, deferred to owner-merged PR #326/#334; (4) `shorts/upload_shorts.py` needs a real rewrite
+against the current camoufox-stealth MCP tool surface — its cross-host import and stale SPECS list
+have been dead weight since at least w27.
