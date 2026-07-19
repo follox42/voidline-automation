@@ -1,0 +1,22 @@
+{
+  "ch0": [
+    {
+      "path": "runs/w29-nazca/assets/ch0/img_00.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/a5/L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_52.JPG",
+      "license": "CC BY-SA 4.0",
+      "title": "File:L\u00edneas de Nazca, Nazca, Per\u00fa, 2015-07-29, DD 52.JPG"
+    },
+    {
+      "path": "runs/w29-nazca/assets/ch0/img_01.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/42/L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_54.JPG",
+      "license": "CC BY-SA 4.0",
+      "title": "File:L\u00edneas de Nazca, Nazca, Per\u00fa, 2015-07-29, DD 54.JPG"
+    },
+    {
+      "path": "runs/w29-nazca/assets/ch0/img_02.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f7/L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_49.JPG",
+      "license": "CC BY-SA 4.0",
+      "title": "File:L\u00edneas de Nazca, Nazca, Per\u00fa, 2015-07-29, DD 49.JPG"
+    }
+  ]
+}
