@@ -445,6 +445,11 @@
       "t": "2026-07-19 14:12 UTC",
       "action": "IDEA_LOCK",
       "detail": "W30 Idea Lock. Locked weekly_plans/2026-W30.md -> NEXT_VIDEOS.md. LONG-1 Zodiac Killer investigation (monthly_intel content_gaps[0], HIGH priority) reinstated after sitting unproduced for 2 full cycles (W28/W29 both deferred it as \"already queued in backlog\" but runs/LONG-1 was never created -- restoring rather than letting it lapse a 3rd time). LONG-2 Flight 19 (1945), backlog promotion from w27_discovery_flight19 which has sat fully produced (script/voice/assets/render/thumb) but PENDING_UPLOAD for 3 weeks -- its existing HOOK short reused as-is for Fri slot. viewer_feedback/2026-W29.json and weekly_actions/2026-W29.md both BLOCKED (camoufox-stealth connector down 6th run) -- fell back to backlog per their own blocker_notes, same as W27-W29. Niche-radar skipped (0/5) -- content_gaps+backlog covered both long-form slots. 3 discovery Shorts (Beaumont Children 1966 Australia, Isdal Woman 1970 Norway, Nazca Lines ancient Peru) all already-produced PENDING_UPLOAD backlog Shorts, decade/region-diverse, no new production needed. Experiment arm-sets assigned per real pending_runs balance (LONG-1=variant-hook/control-title/control-voice, LONG-2=control-hook/variant-title/variant-voice). Production still fully blocked on owner actions (voidline cookie dead 17d, ElevenLabs quota resets 2026-07-30) -- this is a planning-only routine, does not touch production."
+    },
+    {
+      "t": "2026-07-19 17:07 UTC",
+      "action": "COMMENTS_RUN",
+      "detail": "RUN66, same-day follow-up to RUN65. community/replied_to.json + community_log.csv unchanged (still only the one queued pending_post item, UgxcyXas2_-6VF9_xlJ4AaABAg). Reconfirmed live: camoufox-stealth_status -> Error | Not connected (8th consecutive session unreachable); mcp_stealth.py still has no StealthClient class (comments_runner.py import stays broken, PR #326/#334). Nothing to fetch/classify/reply/heart/hide/pin. See LEARNINGS.md BLOCKER_2026-07-19-COMMENTS-RUN66. Owner action needed (unchanged): restart camoufox-stealth connector, voidline cookie re-login (17d+ dead)."
     }
   ]
 }
