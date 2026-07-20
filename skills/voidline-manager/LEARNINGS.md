@@ -3639,3 +3639,46 @@ identical to RUN66, so neither was re-committed to avoid a no-op commit. Owner a
 escalating): (1) restart the camoufox-stealth MCP connector — unreachable 10 sessions running now; (2)
 interactive voidline cookie re-login, 17+ days outstanding; (3) `comments_runner.py`/`mcp_stealth.py` API
 mismatch, owner-merged PR #326/#334.
+
+## BLOCKER_2026-07-20-DAILY-SHORT — Monday discovery Short (Beaumont Children carryover): regenerated end-to-end, upload still blocked (camoufox-stealth MCP unreachable, ~12th consecutive run)
+
+**Ran**: daily-short routine for the 2026-07-20 (Mon) slot in `weekly_plans/2026-W30.md`. Row's Type
+is `discovery`/Source `NEW` but the detail column clarifies this is a carryover, not a fresh topic:
+"The Beaumont Children ... already produced (`w28_discovery_beaumont`, PENDING_UPLOAD) with the
+corrected hook". Treated like the HOOK/ANSWER reuse case rather than a fresh script-smith pass —
+no new script, no new topic research.
+
+1. Checked `HALT` (absent) and `camoufox-stealth_status` fresh before starting → `Error | Not
+   connected`, same signature as every probe since RUN62 (2026-07-18) — now roughly the 12th
+   consecutive session the connector has refused any session.
+2. Local artifacts were absent again in this fresh container (`runs/w28-beaumont/assets/ch0/`,
+   `runs/w28-beaumont/render/`, `shorts/w28_discovery_beaumont.mp4` all missing — gitignored/
+   uncommitted per repo convention, prior container reclaimed). Regenerated deterministically from
+   committed sources:
+   - Re-fetched the 3 Wikimedia Commons images listed in `runs/w28-beaumont/assets/manifest.json`.
+   - `skills/daily-short/build_discovery_base.py w28-beaumont 51.5` — silent portrait Ken-Burns base,
+     matches the cutter's `duration_s` exactly.
+   - `short_cutter_v2.py shorts/w28_discovery_beaumont.json` — hook card, 13 pattern-interrupt
+     captions, outro card. Verified visually via extracted frames at 0.5s/20s/49s — all text renders
+     correctly.
+   - Thumbnail was NOT regenerated — `runs/w28-beaumont/thumb/thumbnail.jpg` is actually committed to
+     git (unlike most other runs' thumbs), confirmed via `git log`, so reused as-is.
+3. Upload blocked by both standing issues, reconfirmed live rather than assumed: (a)
+   `camoufox-stealth_status` → `Error | Not connected`; (b) `python3 shorts/upload_shorts.py ...` →
+   `ModuleNotFoundError: No module named 'mcp_stealth'` (script still imports a nonexistent cross-host
+   path, unchanged since w27).
+
+No routing around either blocker attempted (owner-side infra issue, not routine-authorized to bypass
+per CLAUDE.md). mp4/base render/ch0 images are local artifacts only, not committed to git (repo
+convention) — fully regenerable again next run from the same committed script.json/config/manifest.
+`shorts/shorts_state.json` updated: `publish_at` bumped to `2026-07-20T12:00:00Z` (today's slot, since
+07-12 was already missed), status remains `PENDING_UPLOAD`, notes appended with this run's detail.
+Needs upload via Studio after the camoufox-stealth MCP connector is restarted AND the voidline cookie
+is refreshed (18+ days outstanding since 2026-07-02), or a manual upload by Nolann, before
+2026-07-20T12:00:00Z — **that slot will be MISSED without owner action**, the 6th consecutive
+discovery Short to miss its slot (flight19, ourang, hauser, beaumont×2, nazca).
+
+**Owner action needed** (unchanged, escalating): (1) restart the camoufox-stealth MCP connector —
+unreachable ~12 consecutive sessions now; (2) interactive voidline cookie re-login, 18+ days
+outstanding; (3) `shorts/upload_shorts.py` needs a real rewrite against the current camoufox-stealth
+MCP tool surface — its cross-host import has been dead weight since at least w27.
