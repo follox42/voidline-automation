@@ -3716,3 +3716,34 @@ unreachable ~14 consecutive sessions now; (2) interactive voidline cookie re-log
 (2026-07-02), 18+ days outstanding; (3) fix `comments_runner.py`'s `StealthClient` import against
 `mcp_stealth.py`'s actual free-function API (owner-merged PR #326/#334) — a design mismatch, not a
 transient failure, so no unattended run can self-heal it.
+
+## BLOCKER_2026-07-20-COMMENTS-RUN69 — community-manager comments batch: camoufox-stealth MCP unreachable for a ~15th straight run, same-day follow-up to RUN68
+
+**Ran**: community-manager comments-reply batch (RUN69), same-day follow-up to RUN68 (09:20 UTC).
+Read `community/replied_to.json` and `community/community_log.csv` first — dedup state unchanged
+since RUN41: still just the one queued `pending_post` item (comment `UgxcyXas2_-6VF9_xlJ4AaABAg`,
+Mary Celeste short, `@GrantMackay-wm1pe`). No `HALT` file present. Reconfirmed both persistent
+blockers fresh rather than assumed carried-over:
+
+1. Read `mcp_stealth.py` directly — still only free functions (`initialize()`, `_post()`,
+   `list_tools()`, `_translate_tool_name()`, `call()`), no `StealthClient` class.
+   `skills/community-manager/comments_runner.py` line 21's `from mcp_stealth import StealthClient`
+   remains broken, unchanged since first reported, still deferred to owner-merged PR #326/#334.
+2. Called the live MCP tool directly: `camoufox-stealth_status` → `Error | Not connected` — this is
+   roughly the 15th consecutive session the connector has refused any session.
+
+Independent of connectivity: `skills/community-manager/SKILL.md`'s "Autonomous posting policy" (settled
+since RUN3, 2026-07-01) already establishes that an unattended session never takes the click-to-publish
+step for Studio writes (reply/heart/hide/pin) — the harness's own safety classifier denies that category
+of action for autonomous public-posting/moderation with no human present, independent of this repo's
+CLAUDE.md standing-authorization language. No routing around either blocker attempted — no alternate
+tool, no DOM-manipulation workaround via `evaluate()`, no raw-HTTP bypass of the MCP tool registry.
+
+`community/replied_to.json` and `community/community_log.csv` are byte-identical to RUN68, so neither
+was re-committed (avoids a no-op commit; matches the convention established at RUN67).
+
+**Owner action needed** (unchanged, escalating): (1) restart the camoufox-stealth MCP connector —
+unreachable ~15 consecutive sessions now; (2) interactive voidline cookie re-login — dead since RUN19
+(2026-07-02), 18+ days outstanding; (3) fix `comments_runner.py`'s `StealthClient` import against
+`mcp_stealth.py`'s actual free-function API (owner-merged PR #326/#334) — a design mismatch, not a
+transient failure, so no unattended run can self-heal it.
