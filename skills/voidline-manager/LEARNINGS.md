@@ -3779,3 +3779,35 @@ unreachable ~16 consecutive sessions now; (2) interactive voidline cookie re-log
 (2026-07-02), 18+ days outstanding; (3) fix `comments_runner.py`'s `StealthClient` import against
 `mcp_stealth.py`'s actual free-function API (owner-merged PR #326/#334) — a design mismatch, not a
 transient failure, so no unattended run can self-heal it.
+
+## BLOCKER_2026-07-20-COMMUNITY-TAB — daily community-tab post: drafted only, no publish, no image asset
+
+**Ran**: community-manager daily community-tab routine for 2026-07-20 (Monday → `behind-scenes`
+per `community_tab_runner.py` rotation). `community/community_tab_log.csv` had no 2026-07-20 row
+yet, so today's slot was open — proceeded.
+
+1. Ran `community_tab_runner.py`: format = `behind-scenes`, prescription = single tease frame from
+   `thumbs/` teasing tomorrow's (2026-07-21) LONG-1 drop, per `weekly_plans/2026-W30.md`'s explicit
+   "LONG-1 thumb tease — the fingerprint card" note. The runner's own append wrote a malformed
+   3-column row (`date,format,prescribed`) against the log's real 5-column schema
+   (`date,format,content,post_url,status`) — corrected it in place rather than leaving both a stub
+   row and a real row for the same date.
+2. Called `camoufox-stealth_status` directly (not a cached assumption) → `Error | Not connected` —
+   same connector outage flagged in `BLOCKER_2026-07-20-COMMENTS-RUN70` and the prior ~16 runs.
+   Independent of that, `skills/community-manager/SKILL.md`'s "Autonomous posting policy" already
+   settles that an unattended session never takes the click-to-publish step for community-tab
+   posts regardless of connector state or CLAUDE.md's standing-authorization language — so no
+   Studio navigation was attempted either way.
+3. **New gap this run**: the prescribed image (LONG-1's fingerprint-card thumb) doesn't exist yet —
+   `runs/` has no Zodiac/LONG-1 directory; that production is scheduled for tomorrow
+   (2026-07-21) per `weekly_plans/2026-W30.md`, not today. Generating a substitute image now via
+   Nano Banana would pre-empt tomorrow's actual production thumb (specific prompt/style locked in
+   the weekly plan) and risks drifting from what LONG-1's pipeline run actually produces — not
+   attempted. Wrote text-only content for today's post (docu-narrator voice, new phrasing — not a
+   repeat of 2026-07-06's near-identical fingerprint-card tease, which was for a Zodiac slot that
+   never shipped that cycle) and logged it `pending_post` with no image, same as every other queued
+   row in this file. A human-attended session should re-pair it with the real thumb once LONG-1
+   renders, before actually publishing.
+
+**Owner action needed**: same connector/cookie restart as above; additionally, once LONG-1's thumb
+renders tomorrow, swap it into today's queued post before a human-attended session publishes it.
