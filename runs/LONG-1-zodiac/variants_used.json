@@ -1,0 +1,41 @@
+{
+  "titles": {
+    "chosen": "iconic_question_year",
+    "reason": "plan-lock: weekly_plans/2026-W30.md assigns LONG-1 (Zodiac) the EXP-TITLE-001 CONTROL arm; LONG-2 (Flight 19) carries the variant.",
+    "experiment_id": "EXP-TITLE-001",
+    "arm": "control",
+    "at": "2026-07-20T00:00:00Z"
+  },
+  "voices": {
+    "chosen": "david_documentary",
+    "reason": "plan-lock: weekly_plans/2026-W30.md assigns LONG-1 the EXP-VOICE-001 CONTROL arm (david_documentary, ppLqTilh7rH7fbUVlXsf); LONG-2 carries the variant (daniel_authoritative).",
+    "experiment_id": "EXP-VOICE-001",
+    "arm": "control",
+    "at": "2026-07-20T00:00:00Z"
+  },
+  "thumb_prompts": {
+    "chosen": "cinematic_post_iconic",
+    "reason": "_default flag -> cinematic_post_iconic",
+    "experiment_id": null,
+    "at": "2026-07-20T00:00:00Z"
+  },
+  "hooks": {
+    "chosen": "contradiction_punch",
+    "reason": "plan-lock: weekly_plans/2026-W30.md assigns LONG-1 the EXP-HOOK-001 VARIANT arm (contradiction_punch: 'THEY HAD A SUSPECT. ONE FINGERPRINT LET HIM WALK.'); LONG-2 carries the control (question_first_8s). This is the arm still short a real sample per the plan's arm-set note.",
+    "experiment_id": "EXP-HOOK-001",
+    "arm": "variant",
+    "at": "2026-07-20T00:00:00Z"
+  },
+  "caption_styles": {
+    "chosen": "voidline_core",
+    "reason": "_default flag -> voidline_core",
+    "experiment_id": null,
+    "at": "2026-07-20T00:00:00Z"
+  },
+  "editing_styles": {
+    "chosen": "modern_2026",
+    "reason": "_default flag -> modern_2026",
+    "experiment_id": null,
+    "at": "2026-07-20T00:00:00Z"
+  }
+}

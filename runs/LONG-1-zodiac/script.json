@@ -1,0 +1,303 @@
+{
+  "idea_id": "w30-long1-zodiac-investigation",
+  "run_id": "LONG-1-zodiac",
+  "channel_slug": "voidline",
+  "format": "long-form",
+  "title": "The Zodiac Killer Investigation (1969-2020): What Did The Police Miss?",
+  "title_variants_for_ab": {
+    "chosen_arm": "EXP-TITLE-001 control=iconic_question_year",
+    "variant_would_be": "One Fingerprint Let Him Walk. 51 Years Later, Amateurs Cracked The Code. (Zodiac)"
+  },
+  "publish_at": "2026-07-21T17:00:00Z",
+  "publish_at_note": "Planned Tue slot per weekly_plans/2026-W30.md -- WILL SLIP: ElevenLabs Creator quota exhausted (121,849/121,849), resets ~2026-07-30; voidline cookie dead / camoufox-stealth Not connected (day 18). Update at resume.",
+  "duration_sec": 638.6,
+  "target_runtime": "10:38 (plan target 11-13 min)",
+  "output_mode": "long-form 16:9",
+  "aspect_ratio": "16:9",
+  "fps": 30,
+  "_creative_bible_ref": "skills/long-form-pipeline/SKILL.md Step 1",
+  "_voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "_voice_name": "David Documentary (david_documentary) -- EXP-VOICE-001 CONTROL arm, per weekly_plans/2026-W30.md",
+  "_voice_settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.85,
+    "style": 0.2,
+    "use_speaker_boost": true,
+    "model_id": "eleven_v3_if_available_else_eleven_multilingual_v2"
+  },
+  "_voice_fallback": "If Creator tier does not unlock ppLqTilh7rH7fbUVlXsf, CLAUDE.md fallback is Brian (nPczCjzI2devNBz1zQrb) -- but that breaks EXP-VOICE-001 CONTROL arm; prefer waiting for quota reset over a voice swap.",
+  "_visual_mix_target": "Wikimedia Commons stills (Zodiac letter/cipher facsimiles, 1969 newspaper front pages, Bay Area/Vallejo period photos, fingerprint + cryptanalysis stock) + AI period stills via Flow. Content-gap framing: press/police-procedural angle, NO murder-scene reenactment.",
+  "_script_status": "WRITTEN 2026-07-20 by long-form-pipeline routine (PRODUCTION run; salvage step under hard block -- voice+upload blocked)",
+  "_total_voice_chars": 8303,
+  "_total_target_words": 1385,
+  "_fact_note_vs_plan": "NEXT_VIDEOS.md LONG-1 iconic-detail says Allen was 'cleared and let go in 1971 over a single fingerprint comparison.' That overstates the record; corrected in-script (ch2/ch3): no single print ever formally exonerated Allen -- prints, handwriting and later partial DNA all failed to tie him, but none conclusively cleared him. Case is officially still OPEN; no suspect proven. The 2021 'Case Breakers' Gary Poste claim was NOT confirmed by the FBI and is deliberately omitted. Verified beats: Z408 mailed ~31 Jul 1969 in 3 parts, solved ~1 week later by Donald & Bettye Harden (Salinas), no name in plaintext. Paul Stine (SF cab driver) killed Oct 1969, Presidio Heights; prints from the cab became the key comparison set (provenance itself debated). Z340 mailed Nov 1969, solved 2020 via diagonal transposition; announced Dec 11 2020 by David Oranchak (US) / Sam Blake (AU) / Jarl Van Eycke (BE); FBI SF confirmed. Two of four ciphers (the 13- and 32-char) remain unsolved.",
+  "_experiment_tags": {
+    "EXP-HOOK-001": {
+      "arm": "variant",
+      "value": "contradiction_punch"
+    },
+    "EXP-TITLE-001": {
+      "arm": "control",
+      "value": "iconic_question_year"
+    },
+    "EXP-VOICE-001": {
+      "arm": "control",
+      "value": "david_documentary"
+    },
+    "yt_id": null,
+    "note": "apply real yt_id to experiments/*.json videos_tagged once published"
+  },
+  "description": "In 1969 the Zodiac killer turned a murder case into a public puzzle -- mailing ciphers to Bay Area newspapers and daring anyone to find his name inside them. This is the story of the investigation, not the murders: the prime suspect who kept failing the physical evidence, the 340-character cipher that stayed unbroken for 51 years, and the three amateur codebreakers -- not the police -- who finally cracked it in December 2020.\n\n[CHAPTER TIMESTAMPS auto-generated at render from real durations]\n\nSources & further reading in the pinned comment. Voidline covers unsolved history, calmly and carefully.\n\n#zodiackiller #truecrime #unsolved #cipher #coldcase",
+  "_description_timestamps_note": "weekly_actions requires per-chapter timestamps in the description. Cannot finalize until real mp3 durations exist (start_sec/end_sec are estimates). Regenerate the chapter list from timeline.json at render.",
+  "tags": [
+    "zodiac killer",
+    "zodiac cipher",
+    "z340",
+    "z340 solved",
+    "zodiac killer investigation",
+    "arthur leigh allen",
+    "unsolved case",
+    "cold case",
+    "true crime documentary",
+    "cryptography",
+    "codebreakers",
+    "zodiac letters",
+    "who was the zodiac",
+    "zodiac 340 cipher"
+  ],
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "scene_type": "cold-open-hook",
+      "title": "One Fingerprint",
+      "target_words": 130,
+      "wikimedia_queries": [
+        "Zodiac Killer letter",
+        "Zodiac cipher Z408",
+        "San Francisco Chronicle 1969"
+      ],
+      "visual_mix": [
+        "1970s evidence corkboard still",
+        "yellowed fingerprint card macro",
+        "blacked-out suspect silhouette"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "tense_cinematic_low_drone",
+      "kinetic_events": [
+        {
+          "t_offset": 2.0,
+          "text": "ONE FINGERPRINT",
+          "style": "iconic"
+        },
+        {
+          "t_offset": 6.5,
+          "text": "LET HIM WALK",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "They had a suspect. One fingerprint let him walk. For more than fifty years, the Zodiac was the most studied unsolved case in America -- not because of what the killer did, but because of what he left behind. Letters. Ciphers. A written promise that his name was buried inside the code, waiting for someone clever enough to dig it out. Northern California investigators built a file thousands of pages deep, and for two decades they had one man they kept circling back to. Then, every time, the physical evidence refused to line up, and he went home. This is not a story about the murders. It is a story about the investigation -- the print that did not match, the cipher no detective could break, and the answer that finally arrived in 2020 from three men who never carried a badge.",
+      "start_sec": 0.0,
+      "end_sec": 60.2,
+      "_est_dur_sec": 60.2,
+      "voiceover_status": "WRITTEN",
+      "_est_note": "ESTIMATE @13 cps; replace start_sec/end_sec with real mp3 durations (ffprobe) at voice step"
+    },
+    {
+      "chapter_id": 1,
+      "scene_type": "setup-context",
+      "title": "A Case Written In Public",
+      "target_words": 235,
+      "wikimedia_queries": [
+        "Zodiac Killer cryptogram",
+        "San Francisco Chronicle building",
+        "Vallejo California 1969"
+      ],
+      "visual_mix": [
+        "newspaper front pages 1969",
+        "Z408 cipher facsimile",
+        "Bay Area map"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "slow_investigative_pulse",
+      "kinetic_events": [
+        {
+          "t_offset": 4.0,
+          "text": "AUGUST 1969",
+          "style": "date"
+        },
+        {
+          "t_offset": 34.0,
+          "text": "SOLVED IN A WEEK",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "Most murder investigations happen behind closed doors. This one happened on the front page. At the end of July 1969, three Bay Area newspapers -- the Vallejo Times-Herald, the San Francisco Chronicle, and the San Francisco Examiner -- each received one third of a coded message, mailed by a man who claimed the killings and threatened more if his ciphers were not printed. So the editors printed them. Almost overnight, a criminal case turned into a public puzzle that anyone in America could try to solve over breakfast. And the first cipher -- a block of four hundred and eight symbols -- was not broken by the police, or by the FBI. It was broken within about a week by a married couple from Salinas: a high-school teacher named Donald Harden and his wife, Bettye, working through it at their kitchen table. They cracked it by guessing that a man this proud would begin with the word 'I,' and that he would use the word 'kill.' They were right. But when the message opened, it did not contain a name. It contained a boast. And that set the pattern for everything that followed. The killer decided when to write, what to send, and how much to reveal. Every detective who inherited the case inherited the same strange problem: the most important evidence was not a weapon or a witness. It was a pile of letters, and a code that had not yet given up its secret.",
+      "start_sec": 60.2,
+      "end_sec": 164.9,
+      "_est_dur_sec": 104.7,
+      "voiceover_status": "WRITTEN",
+      "_est_note": "ESTIMATE @13 cps; replace start_sec/end_sec with real mp3 durations (ffprobe) at voice step"
+    },
+    {
+      "chapter_id": 2,
+      "scene_type": "complication-first-twist",
+      "title": "The Yardstick Nobody Matched",
+      "target_words": 240,
+      "wikimedia_queries": [
+        "fingerprint identification chart",
+        "handwriting analysis forensic",
+        "Presidio Heights San Francisco"
+      ],
+      "visual_mix": [
+        "fingerprint comparison chart",
+        "handwriting exemplar",
+        "1969 taxicab period photo"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "cold_tension_bed",
+      "kinetic_events": [
+        {
+          "t_offset": 6.0,
+          "text": "NO CLEAR MATCH",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "Every investigation needs a measuring stick -- something you can hold a suspect against and say, plainly, yes or no. The Zodiac case had two of them. The first was handwriting. The killer had mailed thousands of words in his own hand, block letters and all, and document examiners studied every slant and loop for years. The second was physical. In October 1969, a San Francisco cab driver named Paul Stine was murdered in the Presidio Heights neighborhood, and investigators lifted fingerprints from the taxi -- prints that became, for the rest of the case, the set every suspect would be measured against. On paper, that sounds like an advantage. Two hard yardsticks. In practice, it became the wall the investigation kept walking into. Because there was a catch buried inside both. No one could ever be completely certain the prints from the cab belonged to the killer rather than a passenger or a bystander -- and the handwriting comparisons, for all their care, kept coming back as 'inconclusive.' So the case ended up in the worst possible middle ground. The evidence was solid enough to eliminate people who did not fit, and never solid enough to convict anyone who did. It is worth being precise here, because the popular retelling overstates it. No single fingerprint ever formally cleared a named suspect. What actually happened is quieter, and in a way more frustrating: the physical evidence could rule you out, but it could not rule anyone in.",
+      "start_sec": 164.9,
+      "end_sec": 276.9,
+      "_est_dur_sec": 112.0,
+      "voiceover_status": "WRITTEN",
+      "_est_note": "ESTIMATE @13 cps; replace start_sec/end_sec with real mp3 durations (ffprobe) at voice step"
+    },
+    {
+      "chapter_id": 3,
+      "scene_type": "investigation",
+      "title": "The Man They Liked For It",
+      "target_words": 250,
+      "wikimedia_queries": [
+        "Arthur Leigh Allen",
+        "search warrant document 1970s",
+        "Vallejo police department"
+      ],
+      "visual_mix": [
+        "redacted case file",
+        "search warrant document",
+        "1971 newspaper clipping"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "investigative_build",
+      "kinetic_events": [
+        {
+          "t_offset": 8.0,
+          "text": "PRIME SUSPECT",
+          "style": "iconic"
+        },
+        {
+          "t_offset": 48.0,
+          "text": "NEVER CHARGED",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "For most of the case's history, one name sat at the center of the file: Arthur Leigh Allen. He first drew serious attention in 1971, after an acquaintance came forward and told police that, months before the killings became public, Allen had talked about wanting to hunt people and to call himself Zodiac. On the surface, the circumstantial picture was genuinely unsettling. He had lived and worked near several of the crime scenes. He owned weapons of the types used. By some accounts he wore a wristwatch stamped with a crossed-circle logo -- the same symbol the Zodiac used to sign his letters. Investigators interviewed him, and they came back. In 1991 they served a search warrant on his Vallejo home. Over twenty years, detectives returned to Arthur Leigh Allen more than to any other person alive. And every single time, they hit the same wall. His fingerprints did not match the prints from the cab. Examiners could not tie his handwriting to the letters. And when, years later, forensic teams recovered partial genetic material from the sealed flaps and stamps of the Zodiac's envelopes, that did not connect him either -- though the sample was degraded, and honestly weak enough that it could not fully clear him or convict him. Allen died in 1992, never charged, and to this day the most famous suspect the case ever produced. Whether that evidence protected an innocent man, or simply failed to catch a guilty one, is a question the physical record has never been able to close.",
+      "start_sec": 276.9,
+      "end_sec": 391.5,
+      "_est_dur_sec": 114.6,
+      "voiceover_status": "WRITTEN",
+      "_est_note": "ESTIMATE @13 cps; replace start_sec/end_sec with real mp3 durations (ffprobe) at voice step"
+    },
+    {
+      "chapter_id": 4,
+      "scene_type": "deeper-mystery",
+      "title": "The Code That Would Not Break",
+      "target_words": 235,
+      "wikimedia_queries": [
+        "Zodiac cipher 340",
+        "cryptanalysis codebreaking",
+        "FBI laboratory Quantico"
+      ],
+      "visual_mix": [
+        "Z340 cipher facsimile",
+        "cryptanalysis notes",
+        "FBI laboratory"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "unresolved_mystery_swell",
+      "kinetic_events": [
+        {
+          "t_offset": 6.0,
+          "text": "51 YEARS",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "If the fingerprints were one dead end, the ciphers were the other. After his first code fell in a week, the Zodiac seemed to learn from it. In November 1969 he mailed the Chronicle a second cipher -- three hundred and forty characters this time, a dense grid of letters and symbols that would come to be known simply as the 340. And it refused to open. The FBI's own cryptanalysts worked it. Codebreakers at the National Security Agency were asked to look. Amateurs spent entire careers on it. For fifty-one years, the 340 sat in plain sight, reprinted in books, pinned to forums, taunting everyone who stared at it. Part of what made it so brutal was that the killer had not repeated himself. The first cipher was a straightforward letter-for-symbol substitution. The second scrambled the reading order itself -- the message was written along diagonal lines and shifted, so that even if you correctly guessed what a symbol meant, the letters came out as gibberish unless you also guessed the hidden path the text traveled through the grid. Two puzzles stacked on top of each other. Meanwhile the investigation aged around it. Detectives retired. Evidence was pulled from storage and re-tested with each new decade of forensic science, and each time the results came back thin. The case did not go cold because people stopped caring. It went cold because the two things that could break it -- the physical evidence, and the code -- both stayed locked.",
+      "start_sec": 391.5,
+      "end_sec": 503.1,
+      "_est_dur_sec": 111.6,
+      "voiceover_status": "WRITTEN",
+      "_est_note": "ESTIMATE @13 cps; replace start_sec/end_sec with real mp3 durations (ffprobe) at voice step"
+    },
+    {
+      "chapter_id": 5,
+      "scene_type": "contemporary-answer",
+      "title": "Not The Police",
+      "target_words": 235,
+      "wikimedia_queries": [
+        "cryptography software screen",
+        "codebreaking computer",
+        "Zodiac Z340 solution"
+      ],
+      "visual_mix": [
+        "laptop with cipher software",
+        "world map three flags",
+        "decoded plaintext reveal"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "resolve_reveal_sting",
+      "kinetic_events": [
+        {
+          "t_offset": 5.0,
+          "text": "DECEMBER 2020",
+          "style": "date"
+        },
+        {
+          "t_offset": 22.0,
+          "text": "AMATEURS. NOT POLICE.",
+          "style": "iconic"
+        }
+      ],
+      "voiceover": "The answer, when it finally came, did not come from a police department or a federal lab. In December 2020 -- fifty-one years after the cipher was mailed -- three men announced they had cracked it. David Oranchak, a software developer in the United States who had chipped away at the 340 for well over a decade. Sam Blake, an applied mathematician in Australia, who worked out just how many different reading paths the grid could hide -- a number in the hundreds of thousands. And Jarl Van Eycke, a Belgian programmer who had written his own codebreaking software in his spare time. Between them, across three continents, they fed the grid through that software until one specific path -- diagonals, sliced and shifted -- finally spilled out plain English. The FBI's San Francisco office confirmed the solution was real. And here is the twist that defines the entire case. After fifty-one years of waiting, the message still did not contain a name. It was one more taunt: the killer insisting he was not afraid, that he would not give himself up. Two of the four ciphers he sent -- including a short one he claimed held his name -- have never been solved at all. The DNA is partial. The prime suspect is thirty years dead. Officially, the Zodiac case is still open. What changed in 2020 was not the killer's identity. It was who finally beat him: not the badge, but the hobbyists who refused to let the puzzle go.",
+      "start_sec": 503.1,
+      "end_sec": 611.8,
+      "_est_dur_sec": 108.7,
+      "voiceover_status": "WRITTEN",
+      "_est_note": "ESTIMATE @13 cps; replace start_sec/end_sec with real mp3 durations (ffprobe) at voice step"
+    },
+    {
+      "chapter_id": 6,
+      "scene_type": "open-question",
+      "title": "Your Turn",
+      "target_words": 60,
+      "wikimedia_queries": [],
+      "visual_mix": [
+        "dim corkboard fade",
+        "channel end-card safe area"
+      ],
+      "ai_shots": 0,
+      "credit_cost": 0,
+      "music_cue": "outro_fade",
+      "kinetic_events": [],
+      "voiceover": "So here is the question I keep coming back to. The police had their suspect. The letters had, somewhere, the proof. And it still took outsiders half a century to crack one cipher -- and no one, to this day, has cracked the rest. Was this a case the system failed? Or one it was simply never built to solve? Tell me what you think below. I read them.",
+      "start_sec": 611.8,
+      "end_sec": 638.6,
+      "_est_dur_sec": 26.8,
+      "voiceover_status": "WRITTEN",
+      "_est_note": "ESTIMATE @13 cps; replace start_sec/end_sec with real mp3 durations (ffprobe) at voice step"
+    }
+  ]
+}

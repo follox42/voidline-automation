@@ -30,6 +30,14 @@
       "value": "daniel_authoritative",
       "produced": "2026-07-13 (script+assets+thumb-config only; voice/render/thumb/upload blocked)",
       "note": "append yt_id to videos_tagged once published; blocked on ElevenLabs quota reset 2026-07-30 + voidline cookie re-login (dead, reconfirmed 2026-07-13)"
+    },
+    {
+      "run_id": "LONG-1-zodiac",
+      "topic": "The Zodiac Killer (investigation)",
+      "arm": "control",
+      "value": "david_documentary",
+      "produced": "2026-07-20 (script+variants+thumb-config only; voice/assets/render/thumb/upload blocked)",
+      "note": "append yt_id to videos_tagged once published; blocked on ElevenLabs quota reset ~2026-07-30 + voidline cookie re-login (dead, reconfirmed 2026-07-20 via check_subscription + camoufox status Not connected)"
     }
   ]
 }

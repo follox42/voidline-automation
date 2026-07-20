@@ -1,0 +1,13 @@
+{
+  "run_id": "LONG-1-zodiac",
+  "status": "BLOCKED_AWAITING_FLOW_COOKIE",
+  "variant": "cinematic_post_iconic (variants_used.json thumb_prompts)",
+  "prompt": "Cinematic hyperreal photograph of a 1970s detective's evidence corkboard, a single yellowed fingerprint card pinned dead-center under a gooseneck lamp, red thread connecting it to a blacked-out photo silhouette, dim precinct office bokeh in the background, sepia color grade with cold teal shadow tones, heavy atmospheric perspective, slight film grain, ultra-wide 16:9 1280x720, photorealistic 4k documentary still, dramatic vignette built into the lighting, fingerprint card sits center-right at mid distance, clean negative space upper-left for text overlay, no text on image, no logos, Fern documentary aesthetic, LEMMiNO color palette, shot on Leica M 35mm, Kodak Portra warmth",
+  "overlay_spec": {
+    "text": "ONE FINGERPRINT LET HIM WALK",
+    "position": "upper-left negative space",
+    "style": "voidline_core caption (make_fern_thumb)",
+    "note": "KNOWN_BAD forbids archival-photo fallback thumbs; must be Flow-generated. Overlay applied post-gen."
+  },
+  "blocker": "Flow needs cookie_profile=voidline; camoufox-stealth Not connected + cookie dead since 2026-07-02 (day 18). Generate at resume once cookie live."
+}

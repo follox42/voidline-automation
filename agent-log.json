@@ -450,6 +450,11 @@
       "t": "2026-07-19 17:07 UTC",
       "action": "COMMENTS_RUN",
       "detail": "RUN66, same-day follow-up to RUN65. community/replied_to.json + community_log.csv unchanged (still only the one queued pending_post item, UgxcyXas2_-6VF9_xlJ4AaABAg). Reconfirmed live: camoufox-stealth_status -> Error | Not connected (8th consecutive session unreachable); mcp_stealth.py still has no StealthClient class (comments_runner.py import stays broken, PR #326/#334). Nothing to fetch/classify/reply/heart/hide/pin. See LEARNINGS.md BLOCKER_2026-07-19-COMMENTS-RUN66. Owner action needed (unchanged): restart camoufox-stealth connector, voidline cookie re-login (17d+ dead)."
+    },
+    {
+      "t": "2026-07-20 UTC",
+      "action": "LONG_FORM_PRODUCTION",
+      "detail": "LONG-1 (Zodiac Killer investigation) PRODUCTION for W30 Tue 2026-07-21 slot. Reconfirmed both hard blockers live: ElevenLabs Creator quota 121,849/121,849 used (check_subscription, resets ~2026-07-30), camoufox-stealth Not connected (auth_check + status, day 18). Salvaged the one unblocked step: wrote runs/LONG-1-zodiac/ (script.json 7 ch / 8,303 voice chars ~11min, variants_used.json arm-set hook=variant contradiction_punch / title=control iconic_question_year / voice=control david_documentary, thumb_config.json, PRODUCTION_STATE.md), tagged EXP-HOOK/TITLE/VOICE-001 pending_runs. Voice/assets/render/thumb/upload BLOCKED -> owner actions: cookie re-login + connector restart + quota reset. No publish attempted (unattended draft-only policy). See LEARNINGS BLOCKER_2026-07-20-LONG1-ZODIAC."
     }
   ]
 }
