@@ -460,6 +460,11 @@
       "t": "2026-07-20 08:10 UTC",
       "action": "DAILY_PLAN_REVIEW",
       "detail": "Mon 2026-07-20 (W30) daily-plan review. Step3 (today Shorts): only w28_discovery_beaumont slotted 12:00 UTC — yt_id null / PENDING_UPLOAD, never uploaded so nothing in Studio to verify; camoufox-stealth_status=Error|Not connected (13th+ consecutive), so no reconciliation possible or needed, state already accurate. Slot will MISS (6th consecutive discovery miss). Step4: NOT a long-form publish day (LONG-1 Zodiac=Tue 07-21, LONG-2 Flight19=Fri 07-24) -> Reddit seed step N/A (also owner opt-out per CLAUDE.md). Step5 (next 3d drift): CRITICAL — LONG-1 Zodiac due to PUBLISH TOMORROW Tue 07-21 has ZERO production (no runs/LONG-1-zodiac dir/script/assets; plan header confirms runs/LONG-1 never created) AND is unshippable: ElevenLabs quota exhausted (892 chars, resets 07-30) blocks voice, camoufox down + voidline cookie dead 18d blocks upload. Tue HOOK + Wed ANSWER Zodiac Shorts depend on it. Thu 07-23 Isdal Woman discovery Short not yet produced. Full pipeline frozen ~7 weeks (nothing published since Flannan v5). Owner actions (unchanged, escalating): (1) restart camoufox-stealth MCP connector, (2) interactive voidline cookie re-login (18d+), (3) rewrite shorts/upload_shorts.py off dead mcp_stealth import."
+    },
+    {
+      "t": "2026-07-20 09:20 UTC",
+      "action": "COMMENTS_RUN68",
+      "detail": "community-manager comments batch RUN68: reconfirmed camoufox-stealth_status=Error|Not connected (~14th consecutive run), comments_runner.py StealthClient import still broken (mcp_stealth.py exposes only free functions), no HALT file. Dedup state unchanged since RUN41 (1 pending_post item, Mary Celeste). No live Studio action attempted (connector unreachable; also draft-only publish policy settled since RUN3 in SKILL.md, independent of CLAUDE.md). replied_to.json/community_log.csv unchanged, not re-committed. See LEARNINGS.md BLOCKER_2026-07-20-COMMENTS-RUN68."
     }
   ]
 }
