@@ -3844,3 +3844,37 @@ unreachable ~17 consecutive sessions now; (2) interactive voidline cookie re-log
 (2026-07-02), 18+ days outstanding; (3) fix `comments_runner.py`'s `StealthClient` import against
 `mcp_stealth.py`'s actual free-function API (owner-merged PR #326/#334) — a design mismatch, not a
 transient failure, so no unattended run can self-heal it.
+
+## BLOCKER_2026-07-21-DAILY-SHORT — Tue W30 HOOK Short: LONG-1 (Zodiac) not yet rendered, same failure as 2026-07-07
+
+**Ran**: daily-short routine for 2026-07-21. Today's row per `weekly_plans/2026-W30.md`: type=HOOK,
+source=LONG-1 (Zodiac, "THEY HAD A SUSPECT. ONE FINGERPRINT LET HIM WALK."). No `HALT` file present.
+Ran `skills/daily-short/daily_short_runner.py` per its own SKILL.md instruction — failed immediately:
+
+```
+[daily-short] FAIL — source run dir not found: /home/user/voidline-automation/runs/LONG-1
+```
+
+`runs/` only has `LONG-1-hauser` (W29's Kaspar Hauser long-form, a differently-named dir despite the
+similar label) and `LONG-2` (this week's Flight 19) — no `runs/LONG-1` for this week's Zodiac pick.
+This is the **identical** root cause and failure signature as the 2026-07-07 W28 cycle's HOOK/LONG-1
+run (same Zodiac topic — see that entry above): the HOOK/ANSWER Short-cutting step depends on the
+long-form already being rendered to `runs/LONG-1/render/voidline.mp4`, and LONG-1's own production
+(a separate long-form-pipeline run, scheduled for today per the plan) hadn't happened yet when this
+routine ran. Zodiac was reinstated to this week's plan specifically because W28's identical attempt
+and W29's leave-it-in-the-backlog choice both left it unproduced — this is now a third cycle hitting
+the same LONG-1-not-rendered-yet ordering issue.
+
+Reconfirmed both standing connector blockers live rather than assumed: `camoufox-stealth_status` →
+`Error | Not connected`, `camoufox-stealth_auth_check` → `Error | Not connected` (connector-level
+outage, not just a dead cookie — can't even reach the auth-check stage). Moot for today's Short
+regardless, since there is no render to cut or upload either way.
+
+**Action**: No production attempted (nothing to cut from), no `shorts_state.json` change. No routing
+around attempted — producing the Short requires the long-form's actual rendered footage, not a
+substitute.
+
+**Owner action needed**: (1) run the long-form pipeline for LONG-1 (Zodiac) so
+`runs/LONG-1/render/voidline.mp4` exists — without it, today's HOOK Short and tomorrow's (2026-07-22)
+ANSWER Short both stay blocked; (2) restart the camoufox-stealth MCP connector — unreachable ~18th+
+consecutive session; (3) interactive voidline cookie re-login, dead since 2026-07-02 (~19 days).
