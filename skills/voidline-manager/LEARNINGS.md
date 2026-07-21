@@ -3878,3 +3878,33 @@ substitute.
 `runs/LONG-1/render/voidline.mp4` exists — without it, today's HOOK Short and tomorrow's (2026-07-22)
 ANSWER Short both stay blocked; (2) restart the camoufox-stealth MCP connector — unreachable ~18th+
 consecutive session; (3) interactive voidline cookie re-login, dead since 2026-07-02 (~19 days).
+
+## PLANNED: Reddit seed for The Zodiac Killer investigation (LONG-1, W30)
+
+**Daily-plan review 2026-07-21 (Tue, W30).** Today is a long-form publish day per
+`weekly_plans/2026-W30.md` (LONG-1 — Zodiac, Tue 2026-07-21). The daily-plan step calls for
+drafting an r/UnresolvedMysteries seed on long-form publish days; drafted to
+`seeds/2026-07-21-zodiac-investigation.md` (584 words, in the 500–700 band, procedural/investigation
+angle matching the plan's framing — 1971 Allen fingerprint clearance + the 2020 amateur Z340 solve).
+
+**Marked DRAFT-ONLY / DO NOT POST for two independent reasons:**
+1. The long-form itself was **never produced** — `runs/LONG-1` is absent (only `runs/LONG-1-hauser`
+   [W29] and `runs/LONG-2` [Flight19, no render dir] exist), so `runs/LONG-1/render/voidline.mp4`
+   does not exist and there is no live video to seed traffic toward. This is the 3rd consecutive
+   cycle Zodiac has gone unproduced (W28 07-07 HOOK/LONG-1 blocker, W29 left in backlog, W30 today).
+2. `CLAUDE.md` ❌ NOT-authorized list explicitly includes external seeding on Reddit ("user has opted
+   out: 'pas de reddit'"). The draft exists as a ready-to-use artifact for the owner's discretion, not
+   as a queued post. **No routine session should post it.**
+
+**Reconcile / verify status this run:** 0 Shorts publishing today (no `shorts_state.json` entry with
+`publish_at=2026-07-21`). The only PENDING_UPLOAD Shorts — `w28_discovery_beaumont` (07-20) and
+`w29_discovery_nazca` (07-19) — have `yt_id=null` (never uploaded), so there is nothing in Studio to
+reconcile against; state is accurate. Studio verification impossible regardless: `camoufox-stealth`
+status/auth_check both returned `Error | Not connected` (~18th consecutive session, per this morning's
+`BLOCKER_2026-07-21-DAILY-SHORT`) — not re-probed here to avoid a redundant connector hit within the
+same day; treated as live-down per that entry.
+
+**Owner action needed (unchanged, all owner-side):** (1) produce the LONG-1 Zodiac long-form so its
+render exists — unblocks today's missed slot plus the Wed 07-22 ANSWER Short; (2) restart the
+camoufox-stealth MCP connector; (3) interactive voidline cookie re-login (dead since 07-02, ~19 days);
+(4) ElevenLabs Creator quota self-resets 2026-07-30 (blocks voiced Shorts/long-forms until then).
