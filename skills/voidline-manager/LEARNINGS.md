@@ -3980,3 +3980,44 @@ camoufox-stealth MCP connector~~ — connector is reachable again as of this run
 this is the sole remaining access blocker; (3) fix `comments_runner.py`'s `StealthClient` import against
 `mcp_stealth.py`'s actual free-function API (owner-merged PR #326/#334) — a design mismatch, not a
 transient failure, so no unattended run can self-heal it.
+
+## BLOCKER_2026-07-21-COMMUNITY-TAB — Daily community-tab post (Tue = long-drop): skipped, LONG-1 content doesn't exist yet
+
+**Ran**: `python3 skills/community-manager/community_tab_runner.py` → today's base-rotation format =
+`long-drop`; `community_tab_log.csv` had no `2026-07-21` row going in, so the daily cap wasn't hit. The
+runner unconditionally appended its own placeholder row (`2026-07-21,long-drop,prescribed`) as a side
+effect of running it.
+
+Per the `long-drop` template (`SKILL.md`: "image of today's long-form thumb + title + 1-sentence promise" /
+"new one. [title]. [thumbnail]"), checked LONG-1 (Zodiac Killer investigation, `weekly_plans/2026-W30.md`
+Tuesday slot). `runs/LONG-1` does not exist on disk — only `runs/LONG-1-hauser` (W29) and `runs/LONG-2`
+(Flight19) are present; the only Zodiac artifact today is `seeds/2026-07-21-zodiac-investigation.md`, a
+Reddit copy draft explicitly marked `status: DRAFT-ONLY — DO NOT POST`, not a render or thumb. This is
+already tracked today by two independent routines in this same session: the 08:09 UTC `DAILY_PLAN` entry
+in `agent-log.json` ("TODAY IS A LONG-FORM PUBLISH DAY ... MISSED: runs/LONG-1 does not exist") and the
+12:00 UTC `DAILY_SHORT_RUN_BLOCKER` entry (HOOK Short run failed for the same reason). No render, no
+thumb, no realistic same-day publish to promise — the same fact pattern as `BLOCKER_2026-07-14-COMMUNITY`
+(Hauser) and `BLOCKER_2026-07-17-COMMUNITY` (Cooper): drafting "new one. The Zodiac Killer investigation.
+the full breakdown is up now." would be a false public claim about content that does not exist, a
+materially different failure mode than the settled draft-only/click-denial policy (which only covers
+content that is honest at draft time and just awaiting the publish click — the 2026-07-03 Flannan
+precedent).
+
+**Action**:
+- Removed the runner's auto-appended `2026-07-21,long-drop,prescribed` placeholder row from
+  `community/community_tab_log.csv` rather than leaving a fabricated row or converting it to a false
+  `pending_post` draft — leaving today absent so tomorrow's Wed `theory-poll` slot (also Zodiac-dependent,
+  same blocker) runs normally and no false draft sits in the queue waiting for a human to accidentally
+  publish it.
+- Did not navigate to Studio / attempt "Créer une publication" (would have been moot regardless — content
+  gap is the decisive blocker; auth is separately dead too per today's RUN72/RUN73 comments-batch entries
+  above).
+- Root cause is upstream of this skill and already tracked (`agent-log.json` 08:09 UTC `DAILY_PLAN` /
+  12:00 UTC `DAILY_SHORT_RUN_BLOCKER`, `weekly_plans/2026-W30.md`): LONG-1 Zodiac production (owner action,
+  needs voidline cookie re-login + a production session) has now gone unproduced for 3 consecutive cycles
+  (W28 07-07, W29 backlog, W30 today). Once a LONG-1 render + thumb exist, a future community-manager run
+  can produce the `long-drop` post retroactively (same pattern as the 07-03 Flannan precedent) even if it
+  lands late — a late true post beats an on-time false one.
+- Wed 07-22's `theory-poll` slot is also Zodiac-sourced (per `weekly_plans/2026-W30.md`) and will hit the
+  identical content gap tomorrow unless LONG-1 ships first — flagging here so tomorrow's run isn't
+  surprised by a second consecutive skip on the same topic.
