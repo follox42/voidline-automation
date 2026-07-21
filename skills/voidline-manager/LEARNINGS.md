@@ -3939,3 +3939,44 @@ unreachable ~19 consecutive sessions now; (2) interactive voidline cookie re-log
 (2026-07-02), ~19 days outstanding; (3) fix `comments_runner.py`'s `StealthClient` import against
 `mcp_stealth.py`'s actual free-function API (owner-merged PR #326/#334) — a design mismatch, not a
 transient failure, so no unattended run can self-heal it.
+
+## BLOCKER_2026-07-21-COMMENTS-RUN73 — connector back up, but voidline auth still dead; StealthClient import still broken
+
+**Ran**: community-manager comments-reply batch (RUN73), second comments run of 2026-07-21 (prior was
+RUN72, same day). Read `community/replied_to.json` and `community/community_log.csv` first — dedup
+state unchanged since RUN41: still just the one queued `pending_post` item (comment
+`UgxcyXas2_-6VF9_xlJ4AaABAg`, Mary Celeste short, `@GrantMackay-wm1pe`). No `HALT` file present.
+
+**Notable change from RUN72 and the prior ~19 runs**: `camoufox-stealth_status` no longer reports
+`Error | Not connected` — the connector itself is up (`running: true`, `stealth_enabled: true`,
+`engine: cloakbrowser`). It shows one pre-existing session (`cned`, `cookie_profile: null`, parked on
+`eformation.cned.fr` — an unrelated CNED e-learning session, not touched, presumably belonging to a
+different task/session sharing this connector). No `voidline` or `default` session existed yet, so
+`auth_check(session="default")` correctly returned `Session 'default' not found`.
+
+Opened a fresh session explicitly named `voidline` (not `default`, to avoid colliding with the unrelated
+`cned` session) via `stealth_navigate` to the Studio comments inbox with `cookie_profile=voidline`:
+1409 cookies restored, but landed on the Google account-chooser (`text_preview`: "Nolann —
+nolann42400@gmail.com — Déconnecté") — identical failure mode to every run since RUN19. Follow-up
+`auth_check(session="voidline")` → `auth_valid: false`, `status: "dead"`, `api_status: 0`,
+recommendation `"Auth INVALID. Do NOT post. Re-login required."` — unchanged. Closed the `voidline`
+session afterward (`stealth_close`); left the unrelated `cned` session alone.
+
+Also reconfirmed the second, independent blocker: `grep -n "^class\|^def " mcp_stealth.py` still shows
+only free functions (`_next_id`, `_post`, `initialize`, `list_tools`, `_translate_tool_name`, `call`) —
+no `StealthClient` class — so `comments_runner.py`'s `from mcp_stealth import StealthClient` (line 21)
+would still raise `ImportError`. Unchanged, still deferred to owner-merged PR #326/#334.
+
+No new comments fetchable (auth dead blocks Studio inbox access regardless of connector reachability).
+No reply/heart/hide/pin/post attempted — both the auth-dead state and `SKILL.md`'s settled draft-only
+posting policy independently rule it out. No routing around either blocker attempted.
+
+`community/replied_to.json` and `community/community_log.csv` are byte-identical to RUN72, so neither
+was re-committed (matches the no-op-commit convention established at RUN67).
+
+**Owner action needed** (unchanged except connector item, now resolved): (1) ~~restart the
+camoufox-stealth MCP connector~~ — connector is reachable again as of this run, no longer blocking;
+(2) interactive voidline cookie re-login — dead since RUN19 (2026-07-02), now ~19 days outstanding,
+this is the sole remaining access blocker; (3) fix `comments_runner.py`'s `StealthClient` import against
+`mcp_stealth.py`'s actual free-function API (owner-merged PR #326/#334) — a design mismatch, not a
+transient failure, so no unattended run can self-heal it.
