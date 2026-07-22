@@ -4160,3 +4160,46 @@ re-committed (matches the no-op-commit convention established at RUN67).
 `comments_runner.py`'s `StealthClient` import against `mcp_stealth.py`'s actual free-function API
 (owner-merged PR #326/#334) — a design mismatch, not a transient failure, so no unattended run can
 self-heal it.
+
+## BLOCKER_2026-07-22-COMMUNITY-RUN77 — Daily community-tab post (Wed = theory-poll): drafted, queued pending_post, no live Studio action
+
+**Ran**: `python3 skills/community-manager/community_tab_runner.py` → today's rotation slot = `theory-poll`
+(Wed). It printed the prescription and appended its own placeholder row (`2026-07-22,theory-poll,
+prescribed`) to `community/community_tab_log.csv`; no `2026-07-22` row existed before this run, so the
+daily cap wasn't hit.
+
+Per `weekly_plans/2026-W30.md`'s locked community-tab schedule ("Wed 18:00 UTC — theory poll on LONG-1
+('Did police already have him?')"), built the poll from `skills/voidline-master/NEXT_VIDEOS.md`'s LONG-1
+iconic detail (Arthur Leigh Allen cleared in 1971 on a single fingerprint comparison; the case sat cold
+until independent amateur codebreakers, not police, cracked the Z340 cipher in December 2020) and this
+week's `seeds/2026-07-21-zodiac-investigation.md` draft for supporting detail — `runs/LONG-1` (the actual
+Zodiac long-form) still doesn't exist on disk (confirmed via today's earlier `DAILY_SHORT_RUN_BLOCKER`,
+06:10 UTC: 3rd consecutive Zodiac-sourced slot miss), so there is no script.json to pull an exact ch6
+question from, unlike the 2026-07-15 Hauser poll (RUN50) which had `runs/LONG-1-hauser/script.json` to
+draw on. Theory-poll format doesn't require an image/thumb asset the way long-drop/detail-crop do (no
+prior theory-poll row in the CSV carries one), so the missing render is not a content-gap blocker for this
+specific format — same reasoning implicitly applied at 07-01/07-08/07-15.
+
+Per the settled "Autonomous posting policy (hard stop — draft-only)" in `skills/community-manager/
+SKILL.md` — reconfirmed unchanged by RUN75/RUN76 earlier today (`stealth_auth_check` → `auth_valid: false`,
+`status: "dead"`, "Auth INVALID. Do NOT post. Re-login required.", ~20 days since RUN19) — did not open a
+new camoufox-stealth session, did not navigate to Studio, and did not attempt "Créer une publication".
+Both the settled draft-only policy and the already-reconfirmed-dead auth independently rule out a live
+publish attempt this run.
+
+**Action**:
+- Replaced the runner's own `2026-07-22,theory-poll,prescribed` placeholder row in
+  `community/community_tab_log.csv` with the full drafted poll content, `status=pending_post`, no
+  `post_url`.
+- Did not fix `community_tab_runner.py`'s pre-existing `StealthClient` import bug (still low-priority,
+  non-blocking — the script's role here was only to print the prescription).
+- `community_tab_log.csv` now carries the Zodiac-topic poll for a second time (first at 2026-07-08, before
+  this week's plan reinstated LONG-1) — both rows remain unpublished (`pending_post`), so this isn't a
+  double-post, just a second draft sitting in the same backlog awaiting a human-attended publish pass.
+- Logged `COMMUNITY_TAB_DRAFT_RUN77` in `agent-log.json`.
+
+**Owner action needed** (unchanged): (1) interactive voidline cookie re-login, dead since RUN19
+(2026-07-02), now ~20 days outstanding — blocks every Studio-dependent routine; (2) run the LONG-1
+(Zodiac) long-form production pipeline — without a render, this week's remaining Zodiac-sourced slots
+(Thu community-tab, any future crop/drop referencing it) stay content-gapped the same way Tue/Wed's Shorts
+were.
