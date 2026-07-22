@@ -510,6 +510,11 @@
       "t": "2026-07-22 13:14 UTC",
       "action": "COMMENT_REPLY_RUN76",
       "detail": "Comment-reply batch RUN76, second comments run of 2026-07-22 (prior RUN75 same day). Both blockers reconfirmed live, unchanged: grep of mcp_stealth.py still shows only free functions, no StealthClient class, so comments_runner.py's import still fails; fresh voidline session (1443 cookies restored) navigated to Studio comments inbox, landed on Google account-chooser again, Nolann Deconnecte; stealth_auth_check confirmed auth_valid=false/status=dead/\"Auth INVALID. Do NOT post. Re-login required.\" -- unchanged since RUN19 (2026-07-02), now ~20 days. No inbox read possible, no new comments, no reply/heart/hide/pin/post attempted. replied_to.json and community_log.csv left byte-identical to RUN75 (no-op, not re-committed). Session closed cleanly. Owner action needed (unchanged): interactive re-login to the voidline cookie profile; fix comments_runner.py StealthClient import."
+    },
+    {
+      "t": "2026-07-22 18:00 UTC",
+      "action": "COMMUNITY_TAB_DRAFT_RUN77",
+      "detail": "Daily community-tab routine (Wed = theory-poll per rotation). community_tab_runner.py printed the prescription and appended its own placeholder row. Built the poll from NEXT_VIDEOS.md LONG-1 (Zodiac) iconic detail + seeds/2026-07-21-zodiac-investigation.md: fingerprint clearance of Arthur Leigh Allen in 1971, Z340 cipher cracked by amateur codebreakers in December 2020 -- matching weekly_plans/2026-W30.md Wed slot (\"did police already have him?\"). runs/LONG-1 still does not exist on disk (3rd consecutive Zodiac-sourced slot miss today, per 06:10 UTC DAILY_SHORT_RUN_BLOCKER), but theory-poll format does not require an image/thumb asset so this is not a content-gap blocker the way long-drop/detail-crop would be. Per SKILL.md draft-only posting policy (reconfirmed dead auth via RUN75/RUN76 earlier today: auth_valid=false, status=dead, ~20 days since RUN19) did not open camoufox-stealth, did not navigate to Studio, did not attempt Creer une publication. Replaced the runner placeholder row in community/community_tab_log.csv with the full drafted content, status=pending_post, no post_url. See LEARNINGS.md BLOCKER_2026-07-22-COMMUNITY-RUN77."
     }
   ]
 }
