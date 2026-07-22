@@ -4055,3 +4055,38 @@ re-committed (matches the no-op-commit convention established at RUN67).
 `comments_runner.py`'s `StealthClient` import against `mcp_stealth.py`'s actual free-function API
 (owner-merged PR #326/#334) — a design mismatch, not a transient failure, so no unattended run can
 self-heal it.
+
+## BLOCKER_2026-07-22-DAILY-SHORT — Wed W30 ANSWER Short: LONG-1 (Zodiac) still not rendered, exactly as flagged yesterday
+
+**Ran**: daily-short routine for 2026-07-22. Today's row per `weekly_plans/2026-W30.md`: type=ANSWER,
+source=LONG-1 (Zodiac, "WE FOUND THE CODE. NOT THE POLICE."). No `HALT` file present. Ran
+`skills/daily-short/daily_short_runner.py` per its own SKILL.md instruction — failed immediately, same
+signature as yesterday:
+
+```
+[daily-short] FAIL — source run dir not found: /home/user/voidline-automation/runs/LONG-1
+```
+
+`runs/LONG-1` still doesn't exist — this is the exact outcome the 2026-07-21 BLOCKER entry above
+predicted ("today's HOOK Short and tomorrow's (2026-07-22) ANSWER Short both stay blocked"). The
+long-form-pipeline run for LONG-1 (Zodiac) hasn't happened between yesterday and today, so this is a
+same-day non-event, not a new regression — third consecutive Zodiac-sourced Short slot to miss on this
+one root cause (Tue HOOK, Wed ANSWER, and per the plan header, Thu's community-tab theory-poll is also
+Zodiac-sourced and will hit the same gap).
+
+Reconfirmed both standing connector blockers live rather than assumed:
+`camoufox-stealth_status` → connector reachable (`running: true`, `cloakbrowser`, two pre-existing
+unrelated sessions `cned`/`default` untouched). Opened a fresh `voidline` session via `stealth_navigate`
+to Studio: 1444 cookies restored, landed on the Google account-chooser again ("Nolann —
+nolann42400@gmail.com — Déconnecté") — identical failure mode to every run since RUN19.
+`stealth_auth_check(session="voidline")` → `auth_valid: false`, `status: "dead"`, `api_status: 0`,
+`"Auth INVALID. Do NOT post. Re-login required."`. Closed the session afterward. Both checks are moot for
+today's Short regardless — no render exists to cut or upload either way.
+
+**Action**: No production attempted (nothing to cut from), no `shorts_state.json` change. No routing
+around attempted — producing the Short requires the long-form's actual rendered footage, not a
+substitute.
+
+**Owner action needed** (unchanged from 2026-07-21): (1) run the long-form pipeline for LONG-1 (Zodiac)
+so `runs/LONG-1/render/voidline.mp4` exists — without it, every remaining Zodiac-sourced slot this week
+stays blocked; (2) interactive voidline cookie re-login, dead since 2026-07-02 (~20 days).
