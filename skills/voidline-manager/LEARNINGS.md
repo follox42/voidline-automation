@@ -4125,3 +4125,38 @@ re-committed (matches the no-op-commit convention established at RUN67).
 `comments_runner.py`'s `StealthClient` import against `mcp_stealth.py`'s actual free-function API
 (owner-merged PR #326/#334) — a design mismatch, not a transient failure, so no unattended run can
 self-heal it.
+
+## BLOCKER_2026-07-22-COMMENTS-RUN76 — second comments batch of the day, both blockers reconfirmed unchanged
+
+**Ran**: community-manager comments-reply batch (RUN76), second comments run of 2026-07-22 (prior RUN75
+same day, ~14:00 UTC). Read `community/replied_to.json` and `community/community_log.csv` first — dedup
+state unchanged since RUN41: still just the one queued `pending_post` item (comment
+`UgxcyXas2_-6VF9_xlJ4AaABAg`, Mary Celeste short, `@GrantMackay-wm1pe`). No `HALT` file present.
+
+Reconfirmed both persistent blockers fresh via live tool calls, not assumed carried-over from RUN75:
+
+1. `grep -n "^class \|^def " mcp_stealth.py` → still only free functions (`_next_id`, `_post`,
+   `initialize`, `list_tools`, `_translate_tool_name`, `call`), no `StealthClient` class —
+   `comments_runner.py` line 21's `from mcp_stealth import StealthClient` would still raise `ImportError`.
+   Unchanged, still deferred to owner-merged PR #326/#334.
+2. `camoufox-stealth_status` → connector reachable (`running: true`, `cloakbrowser`), two pre-existing
+   unrelated sessions (`cned`, `default`) left untouched. Opened a fresh `voidline` session via
+   `stealth_navigate` to the Studio comments inbox with `cookie_profile=voidline`: 1443 cookies restored,
+   landed on the Google account-chooser again ("Nolann — nolann42400@gmail.com — Déconnecté") — identical
+   failure mode to every run since RUN19. `stealth_auth_check(session="voidline")` → `auth_valid: false`,
+   `status: "dead"`, `api_status: 0`, `"Auth INVALID. Do NOT post. Re-login required."`. Closed the
+   `voidline` session afterward.
+
+No new comments fetchable (auth dead blocks Studio inbox access regardless of connector reachability). No
+reply/heart/hide/pin/post attempted — both the auth-dead state and `SKILL.md`'s settled draft-only posting
+policy independently rule it out. No routing around either blocker attempted (no alternate tool, no
+DOM-manipulation workaround via `evaluate()`, no raw-HTTP bypass of the MCP tool registry).
+
+`community/replied_to.json` and `community/community_log.csv` are byte-identical to RUN75, so neither was
+re-committed (matches the no-op-commit convention established at RUN67).
+
+**Owner action needed** (unchanged): (1) interactive voidline cookie re-login — dead since RUN19
+(2026-07-02), now ~20 days outstanding, the sole access blocker (connector itself is up); (2) fix
+`comments_runner.py`'s `StealthClient` import against `mcp_stealth.py`'s actual free-function API
+(owner-merged PR #326/#334) — a design mismatch, not a transient failure, so no unattended run can
+self-heal it.

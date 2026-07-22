@@ -505,6 +505,11 @@
       "t": "2026-07-22 14:00 UTC",
       "action": "COMMENT_REPLY_RUN75",
       "detail": "Comment-reply batch RUN75, first comments run of 2026-07-22. comments_runner.py still fails on the unfixed StealthClient import (mcp_stealth.py has only free functions, no class; deferred to owner-merged PR #326/#334). camoufox-stealth connector reachable; fresh voidline session (1443 cookies restored) navigated to Studio comments inbox, landed on Google account-chooser again, Nolann Deconnecte; stealth_auth_check confirmed auth_valid=false/status=dead/\"Auth INVALID. Do NOT post. Re-login required.\" -- unchanged since RUN19 (2026-07-02), now ~20 days. No inbox read possible, no new comments, no reply/heart/hide/pin/post attempted (also independently ruled out by the settled draft-only posting policy in SKILL.md). replied_to.json and community_log.csv left byte-identical to RUN74 (no-op, not re-committed). Session closed cleanly. Owner action needed (unchanged): interactive re-login to the voidline cookie profile; fix comments_runner.py StealthClient import."
+    },
+    {
+      "t": "2026-07-22 13:14 UTC",
+      "action": "COMMENT_REPLY_RUN76",
+      "detail": "Comment-reply batch RUN76, second comments run of 2026-07-22 (prior RUN75 same day). Both blockers reconfirmed live, unchanged: grep of mcp_stealth.py still shows only free functions, no StealthClient class, so comments_runner.py's import still fails; fresh voidline session (1443 cookies restored) navigated to Studio comments inbox, landed on Google account-chooser again, Nolann Deconnecte; stealth_auth_check confirmed auth_valid=false/status=dead/\"Auth INVALID. Do NOT post. Re-login required.\" -- unchanged since RUN19 (2026-07-02), now ~20 days. No inbox read possible, no new comments, no reply/heart/hide/pin/post attempted. replied_to.json and community_log.csv left byte-identical to RUN75 (no-op, not re-committed). Session closed cleanly. Owner action needed (unchanged): interactive re-login to the voidline cookie profile; fix comments_runner.py StealthClient import."
     }
   ]
 }
