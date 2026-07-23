@@ -540,6 +540,11 @@
    "t": "2026-07-23 (RUN79)",
    "action": "COMMENTS_RUN79_BLOCKED",
    "detail": "COMMENTS batch RUN79 (first of new day, day 22 since RUN19): reproduced ImportError StealthClient not in mcp_stealth.py (comments_runner.py line 21, still deferred to PR #326/#334); opened fresh voidline_community probe session, cookie_profile=voidline, 1455 cookies restored, landed on Google account-chooser (Nolann Deconnecte), stealth_auth_check=dead/api_status=0/'Auth INVALID. Do NOT post.'; closed probe session. No new comments fetchable, no reply/heart/hide/pin attempted (auth dead + ImportError + SKILL.md draft-only policy independently rule it out, no workaround attempted). replied_to.json/community_log.csv byte-identical to RUN78, not re-committed. See LEARNINGS.md BLOCKER_2026-07-23-COMMENTS-RUN79."
+  },
+  {
+   "t": "2026-07-23 (RUN80)",
+   "action": "COMMENTS_RUN80_BLOCKED",
+   "detail": "COMMENTS batch RUN80 (second of the day, day 22 since RUN19): reproduced ImportError StealthClient not in mcp_stealth.py (comments_runner.py line 21, still deferred to PR #326/#334); opened fresh voidline_community probe session, cookie_profile=voidline, 1455 cookies restored, landed on Google account-chooser (Nolann Deconnecte), stealth_auth_check=dead/api_status=0/'Auth INVALID. Do NOT post.'; closed probe session (only unrelated pre-existing sessions cned/default/src1-5 otherwise, left untouched). No new comments fetchable, no reply/heart/hide/pin attempted (auth dead + ImportError + SKILL.md draft-only policy independently rule it out, no workaround attempted). replied_to.json/community_log.csv byte-identical to RUN79, not re-committed. See LEARNINGS.md BLOCKER_2026-07-23-COMMENTS-RUN80."
   }
  ]
 }
