@@ -4291,3 +4291,24 @@ self-heal it.
    Medan run, before the resume production session picks one up.
 
 See `agent-log.json` LONG2_PRODUCTION_BLOCKED_2026-07-23.
+
+## DAILY_PLAN_2026-07-23 — Thu W30 daily-plan review: nothing publishing today, all next-3-day slots blocked on the one owner-only auth blocker (day 21)
+
+**Ran**: voidline-manager DAILY PLAN (`cron_runner.py daily-plan` + steps 3–5).
+
+**Step 3 — Shorts scheduled today**: none. `shorts_state.json` has no Short with `publish_at=2026-07-23`, so cron_runner logged "0 Shorts publishing". The W30 plan (`weekly_plans/2026-W30.md`) calls for a NEW discovery Short today — the **Isdal Woman (Norway, 1970)**, hook "SHE FILED OFF HER OWN FINGERPRINTS. THEN SOMEONE BURNED HER." — but it was never produced (no `w30_discovery_isdal` entry, no run dir). Nothing to reconcile against Studio; it is unproducible/unpublishable this session anyway (auth dead). Same standstill class as every discovery Short since flight19.
+
+**Step 4 — long-form publish day?**: No. LONG-1 (Zodiac) was scheduled **Tue 2026-07-21** and was never produced/published (blocked); LONG-2 (Flight 19) is **Fri 2026-07-24**. Today (Thu) is not a long-form day → no Reddit seed drafted. (Independently, the channel owner has opted out of Reddit seeding per CLAUDE.md — "pas de reddit", so no seed regardless.)
+
+**Step 5 — next-3-day drift**:
+- **Fri 2026-07-24** — LONG-2 **Flight 19** long-form @ 17:00 UTC: production BLOCKED earlier today (`BLOCKER_2026-07-23-LONG2-PRODUCTION`) — dead voidline auth blocks Flow thumbnail (Step 6) and Studio upload (Step 7); plus unresolved Flight-19-vs-Ourang-Medan topic drift between `NEXT_VIDEOS.md`/plan and on-disk `runs/LONG-2/`. **Will MISS** without owner action. Also: Fri HOOK short `w27_discovery_flight19` = PENDING_UPLOAD (~3 weeks); Fri 18:00 community drop-card blocked.
+- **Sat 2026-07-25** — LONG-2 ANSWER short (not produced) + Sat 18:00 community tease blocked.
+- **Sun 2026-07-26** — Nazca discovery `w29_discovery_nazca` = PENDING_UPLOAD (its 07-19 slot was already missed, carried forward) + Sun 18:00 community reader-pick blocked.
+
+**Live check (this run, read-only)**: `camoufox-stealth_status` → connector reachable (`running: true`, `cloakbrowser`); only two unrelated pre-existing sessions (`cned`, `default`), both left untouched; **no live `voidline` session**. `auth_check(session=voidline)` → "Session 'voidline' not found" (no session open to check). Did **not** open a fresh probe session — the voidline cookie has been auth-dead 21 consecutive days (since RUN19, 2026-07-02), the fix is an interactive owner re-login only, and re-restoring ~1.4k cookies to reproduce the documented Google account-chooser/"dead" result is browser churn with zero new information.
+
+**Root cause (unchanged, now day 21)**: the single owner-only blocker — **interactive re-login to the `voidline` cookie profile** — is the SOLE cause of every missed/at-risk W30 slot (2 long-forms, 7 shorts, 7 community posts). ElevenLabs quota has recovered (~135k chars free, `creator/active`), so auth is no longer double-gated by quota. No reconciliation was needed (every PENDING_UPLOAD Short has `yt_id=null` → never reached Studio, nothing to reconcile). No routing around the dead auth attempted (owner-only fix, per settled draft-only/hard-stop policy).
+
+**Owner action needed** (unchanged, overdue): interactive re-login to the `voidline` cookie profile. Until then the channel stays at a full publishing standstill. (Already surfaced today by the 06:15 UTC LONG-2 production session — this review confirms the same state, no new blocker.)
+
+See `agent-log.json` DAILY_PLAN_REVIEW 2026-07-23 08:12 UTC.
