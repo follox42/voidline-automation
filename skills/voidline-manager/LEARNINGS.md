@@ -4242,3 +4242,69 @@ re-committed (matches the no-op-commit convention established at RUN67).
 `comments_runner.py`'s `StealthClient` import against `mcp_stealth.py`'s actual free-function API
 (owner-merged PR #326/#334) — a design mismatch, not a transient failure, so no unattended run can
 self-heal it.
+
+## BLOCKER_2026-07-23-DAILY-SHORT — Thu W30 discovery Short (Isdal Woman): produced fully, PENDING_UPLOAD
+
+**Ran**: `daily-short` routine for the Thursday W30 slot. `weekly_plans/2026-W30.md`'s locked row:
+discovery, "SHE FILED OFF HER OWN FINGERPRINTS. THEN SOMEONE BURNED HER." — The Isdal Woman, an
+unidentified woman found burned in Isdalen valley outside Bergen, Norway, November 29, 1970. No
+`HALT` file present. `skills/daily-short/daily_short_runner.py` confirmed (as designed) that a
+`discovery` type needs manual production — its own code exits early for this type and says so.
+
+**Produced end-to-end**:
+- `runs/w30-isdal/script.json` — 90-word/588-char VO, facts checked against the well-documented
+  case record (discovery date, cut clothing labels, filed fingerprints, station-locker luggage
+  with a coded notebook and foreign currency, multiple hotel aliases, the 1970 inquest's
+  probable-suicide ruling, later isotope/dental analysis) — avoided over-specific unverifiable
+  claims (e.g. an exact alias count) per the Beaumont-correction precedent in w28-beaumont's
+  editorial_note. No photo of the woman herself exists (never identified, no license-clear
+  likeness) — used real Wikimedia Commons photos of the actual discovery region instead (Isdalen
+  valley, Bergen railway station where the lockers were traced, Mount Ulriken), same no-photo-of-
+  the-actual-subject approach as `runs/w27-ourang`. See `runs/w30-isdal/assets/ATTRIBUTION.md`.
+- ElevenLabs voice: `check_subscription` reconfirmed quota live this session — 134,752/256,849
+  chars remaining (resets 2026-07-30) — a real change from the 0-remaining state that forced
+  w28-beaumont and w29-nazca silent. Generated real VO via `skills/long-form-pipeline/
+  generate_voice.py` (direct REST API, `ppLqTilh7rH7fbUVlXsf` David Documentary, `eleven_v3`).
+  First draft (699 chars) ran 62.2s — too long for a 52s Short — so trimmed the VO to 588
+  chars/51.9s and regenerated before proceeding.
+- `skills/daily-short/build_discovery_base.py w30-isdal 52.0` — silent 1080x1920 Ken-Burns base
+  over the 3 Wikimedia stills, then muxed the ElevenLabs VO track over it via a direct ffmpeg
+  call (`runs/w30-isdal/render/base_voiced.mp4`).
+- `shorts/short_cutter_v2.py` with `shorts/w30_discovery_isdal.json` (hook card, 12 captions
+  timed to the VO's actual per-sentence pacing, outro card) → `shorts/w30_discovery_isdal.mp4`
+  (52.0s). Verified visually by extracting frames at 0.5s/20s/50s — hook card, mid-body
+  caption+header, and outro card all render correctly.
+- `shorts/make_fern_thumb.py` with `runs/w30-isdal/thumb/thumb_config.json` → Fern-style thumb,
+  red arrow into the valley cleft in the Isdalen photo. Verified visually.
+
+**NOT uploaded** — reconfirmed both standing blockers fresh via live tool calls this session, not
+assumed carried over:
+1. Opened a fresh camoufox-stealth session (`voidline_daily`, `cookie_profile=voidline`) against
+   the Studio comments inbox: 1456 cookies restored, landed on the Google account-chooser again
+   ("Nolann — nolann42400@gmail.com — Déconnecté") — identical failure mode to every run since
+   RUN19. `stealth_auth_check` → `auth_valid: false`, `status: "dead"`, `"Auth INVALID. Do NOT
+   post. Re-login required."` — now day 21 of the unrefreshed voidline cookie. Closed the session
+   afterward.
+2. Ran `shorts/upload_shorts.py` directly: still `ModuleNotFoundError: No module named
+   'mcp_stealth'` at its cross-host import — unchanged.
+3. Checked for a way around both: `skills/youtube-virality-expert/execution/utils/
+   youtube_auth.py` only supports a read-only Data API v3 key (`YOUTUBE_API_KEY`, not set) or an
+   OAuth flow requiring `~/.claude/youtube_client_secrets.json` (not present in this environment)
+   — neither path can perform a video upload (`videos.insert` needs OAuth with upload scope), so
+   no alternative upload route exists this session.
+
+**Action**:
+- Added `w30_discovery_isdal` to `shorts/shorts_state.json` as `status: "PENDING_UPLOAD"`,
+  `yt_id: null`, full production notes and asset/voice provenance.
+- Logged `DAILY_SHORT_RUN_BLOCKER` in `agent-log.json`.
+- mp4/thumb/base renders are local artifacts only, not committed to git (repo convention: no
+  binary renders in git history) — fully regenerable from the committed `script.json` /
+  `manifest.json` / `w30_discovery_isdal.json` / `thumb_config.json`.
+
+**Owner action needed** (unchanged, now 21 days outstanding): interactive re-login to the
+voidline cookie profile, or manual upload of `shorts/w30_discovery_isdal.mp4` (title/desc/thumb
+in `shorts_state.json`) before 2026-07-23T12:00:00Z to hit today's slot — that slot will be
+MISSED without owner action, the 7th consecutive discovery Short to miss for the same reason
+(flight19, ourang, hauser, beaumont×2, nazca, isdal). ElevenLabs quota is no longer a blocker
+(134,752 chars remaining as of this run) — future discovery Shorts can go voiced again until the
+next reset-cycle drain.

@@ -1,0 +1,29 @@
+{
+  "source": "runs/w30-isdal/render/base_voiced.mp4",
+  "start_s": 0,
+  "duration_s": 52.0,
+  "out": "shorts/w30_discovery_isdal.mp4",
+  "source_is_portrait": true,
+  "header_text": "THE ISDAL WOMAN — 1970",
+  "hook_duration_s": 1.5,
+  "outro_duration_s": 4.0,
+  "hook_question": "SHE FILED OFF\\NHER OWN FINGERPRINTS.\\NTHEN SOMEONE\\NBURNED HER.",
+  "hook_fontsize": 100,
+  "outro_question": "WHO WAS\\NSHE REALLY?",
+  "outro_cta": "COMMENT ↓",
+  "mask_until_s": 0,
+  "captions": [
+    {"start": 0, "end": 1.85, "text": "NOVEMBER 29TH\\N1970"},
+    {"start": 1.85, "end": 6, "text": "A WOMAN'S BODY.\\NBURNED BEYOND RECOGNITION."},
+    {"start": 6, "end": 11.3, "text": "A REMOTE VALLEY\\NOUTSIDE BERGEN, NORWAY"},
+    {"start": 11.3, "end": 14.7, "text": "EVERY CLOTHING LABEL\\NCUT OUT"},
+    {"start": 14.7, "end": 18.0, "text": "HER FINGERPRINTS\\NFILED DOWN BY HAND"},
+    {"start": 18.0, "end": 22.2, "text": "LUGGAGE TRACED TO\\NTRAIN STATION LOCKERS"},
+    {"start": 22.2, "end": 26.9, "text": "WIGS. FOREIGN CURRENCY.\\NA NOTEBOOK IN CODE"},
+    {"start": 26.9, "end": 31, "text": "HOTELS UNDER A STRING\\NOF FALSE IDENTITIES"},
+    {"start": 31, "end": 34.9, "text": "NEVER THE\\NSAME NAME TWICE"},
+    {"start": 34.9, "end": 38, "text": "INVESTIGATORS\\NSUSPECTED ESPIONAGE"},
+    {"start": 38, "end": 41.1, "text": "THE INQUEST RULED\\NPROBABLE SUICIDE"},
+    {"start": 41.1, "end": 46.5, "text": "ISOTOPE ANALYSIS TRACED\\NA CHILDHOOD ACROSS\\NSEVERAL COUNTRIES"}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "ch0": [
+    {
+      "path": "runs/w30-isdal/assets/ch0/img_00.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/59/Isdalen.JPG",
+      "license": "Public domain",
+      "title": "File:Isdalen.JPG — Isdalen valley, Bergen, Norway (the actual discovery site)"
+    },
+    {
+      "path": "runs/w30-isdal/assets/ch0/img_01.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/2/22/Bergen_Railway_Station_facade.JPG",
+      "license": "CC BY 2.5",
+      "title": "File:Bergen Railway Station facade.JPG — the station where the coded-notebook luggage was traced to lockers"
+    },
+    {
+      "path": "runs/w30-isdal/assets/ch0/img_02.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Mount_Ulriken_-_Bergen%2C_Norway.jpg",
+      "license": "CC BY-SA 2.0",
+      "title": "File:Mount Ulriken - Bergen, Norway.jpg — Bergen's surrounding valley/mountain terrain"
+    }
+  ]
+}

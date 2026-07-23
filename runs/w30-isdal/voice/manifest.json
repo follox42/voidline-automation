@@ -1,0 +1,12 @@
+{
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "path": "runs/w30-isdal/voice/ch0.mp3",
+      "ok": true,
+      "chars": 588
+    }
+  ],
+  "total_chars": 588,
+  "est_cost_usd": 0.0647
+}

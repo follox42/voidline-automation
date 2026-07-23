@@ -1,0 +1,23 @@
+{
+  "run_id": "w30-isdal",
+  "channel_slug": "voidline",
+  "format": "short-discovery",
+  "topic": "The Isdal Woman, Isdalen valley near Bergen, Norway, 1970",
+  "hook_question": "SHE FILED OFF\\NHER OWN FINGERPRINTS.\\NTHEN SOMEONE\\NBURNED HER.",
+  "iconic_detail": "An unidentified woman found burned almost beyond recognition in Isdalen, a remote valley outside Bergen, Norway, on November 29, 1970. Every label had been cut from her clothes and her fingerprints appeared deliberately filed down. Luggage traced to train-station lockers held wigs, foreign currency, and a notebook written entirely in code; hotel registers showed she had traveled under a string of false identities. The 1970 inquest ruled probable suicide, but the espionage theory has never gone away, and more than fifty years later she has never been identified.",
+  "_voice_id": "ppLqTilh7rH7fbUVlXsf",
+  "_voice_name": "David Documentary, eleven_multilingual_v2",
+  "_voice_status": "ElevenLabs Creator quota reconfirmed live via check_subscription this session: 134,752 chars remaining (122,097/256,849 used, resets 2026-07-30) — voiced, not silent.",
+  "chapters": [
+    {
+      "chapter_id": 0,
+      "voiceover": "November 29th, 1970. Hikers find a woman's body, burned almost beyond recognition, in a remote valley outside Bergen, Norway.\n\nEvery clothing label has been cut out. Her fingerprints filed down by hand.\n\nPolice trace luggage to train station lockers. Wigs, foreign currency, a notebook written in code.\n\nShe'd checked into hotels under a string of false identities, never the same name twice.\n\nInvestigators suspected espionage. The inquest ruled probable suicide.\n\nIsotope analysis on her teeth later traced a childhood spent across several countries. Her real name has never been found.",
+      "wikimedia_queries": [
+        "Isdalen valley Bergen Norway",
+        "Bergen Norway railway station",
+        "Ulriken mountain Bergen Norway"
+      ]
+    }
+  ],
+  "editorial_note": "Thursday W30 discovery slot, topic locked in weekly_plans/2026-W30.md. No photo of the woman herself exists (never identified; no verified likeness is public domain / license-clear) — same no-real-photo-of-the-unidentified-subject approach as w27-ourang (no photo of the ship existed either). Uses real Wikimedia Commons imagery of the actual discovery region (Isdalen valley, Bergen) instead. VO ~105 words, in line with the daily-short skill's ~100-word target. Facts checked against the well-documented case record (discovery date, cut labels, filed fingerprints, station-locker luggage with coded notebook and foreign currency, multiple hotel aliases, 1970 suicide-ruling inquest, later isotope/dental analysis) — avoided over-specific claims not consistently sourced (e.g. an exact alias count) per the Beaumont-correction precedent in w28-beaumont's editorial_note."
+}
