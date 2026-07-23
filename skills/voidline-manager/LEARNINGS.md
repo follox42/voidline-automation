@@ -4242,3 +4242,52 @@ re-committed (matches the no-op-commit convention established at RUN67).
 `comments_runner.py`'s `StealthClient` import against `mcp_stealth.py`'s actual free-function API
 (owner-merged PR #326/#334) — a design mismatch, not a transient failure, so no unattended run can
 self-heal it.
+
+## BLOCKER_2026-07-23-LONG2-PRODUCTION — Fri LONG-2 production halts on dead voidline auth (owner-only re-login); quota is NOT the blocker anymore
+
+**Ran**: long-form-pipeline PRODUCTION for LONG-2, target publish **Fri 2026-07-24 17:00 UTC**.
+
+**Pre-flight**:
+- `NEXT_VIDEOS.md` LONG-2 (2026-W30) = **Flight 19 (1945)**, a backlog promotion of the fully-produced
+  Short `runs/w27-flight19/`. The long-form is meant to expand past the Short into the Board of Inquiry /
+  "cause unknown" beat — a new angle, not a re-cut.
+- **Topic drift found**: there is no Flight 19 *long-form* run dir. `runs/LONG-2/` on disk is a different
+  topic entirely — **SS Ourang Medan** (`PRODUCTION_STATE.md` titled "LONG-2 (SS Ourang Medan)", W28
+  carry-over). So the plan's LONG-2 and the on-disk `runs/LONG-2/` do not match. An unattended session
+  should not resolve which one is "LONG-2 this week" by spending paid quota on a guess — flagged for owner.
+- `weekly_actions/` latest = `2026-W29.md` (BLOCKED, nothing auto-appliable). Experiments EXP-HOOK/TITLE/
+  VOICE-001 + PASSIVE-TIME-001 still open, none closeable (nothing has published). KNOWN_GOOD/BAD read.
+
+**Live blocker check (not assumed)**:
+- `camoufox-stealth_auth_check(profile=voidline)` → `auth_valid: false`, `status: "dead"`, `api_status: 0`,
+  "Auth INVALID. Do NOT post. Re-login required." Dead since RUN19 (2026-07-02), now **~21 days**. This
+  hard-blocks pipeline **Step 6 (Flow thumbnail generation)** and **Step 7 (YouTube upload)** — both
+  platform-facing steps require the live `voidline` browser session.
+- `elevenlabs-check_subscription` → **quota is no longer the blocker**: 122,097 / 256,849 chars used
+  (~135k free), tier `creator`, `status: active`. The old `runs/LONG-2/PRODUCTION_STATE.md` "892 chars
+  left" note was from 2026-07-11; the limit has since risen to 256,849 and the period reset. Step 2 (voice)
+  is therefore technically unblocked.
+
+**Decision — PRODUCTION cannot complete; logged and exited clean**:
+- The deliverable is a published/scheduled long-form. Both the thumbnail (Flow) and the upload (Studio)
+  hard-depend on the dead `voidline` session, which is **owner-only** to restore (interactive re-login).
+  No local step produces the deliverable while those two are down.
+- **Did not generate voice this session**, despite quota being available: (a) the pipeline's own resume
+  protocol / `PRODUCTION_STATE.md` defer voice+timeline+render until *both* blockers clear — rendering
+  without the thumb and without real mp3 durations is throwaway and would lock the EXP-VOICE-001 `daniel`
+  arm to audio that then waits indefinitely on a dead-auth upload; (b) the Flight-19-vs-Ourang-Medan topic
+  drift above means the target script is ambiguous, and spending paid characters on a guess is not an
+  unattended call.
+- **Did not route around the dead auth.** No `reset_identity` / `cf_bypass` / `impersonate_fetch` / DOM
+  workaround via `evaluate()` / raw-HTTP bypass. Restoring a dead platform session by defeating its
+  auth/anti-abuse layer is not an unattended action — the fix is an interactive owner re-login. This holds
+  the settled draft-only hard-stop policy every run since RUN19 has kept.
+
+**Owner actions needed**:
+1. **Interactive re-login to the `voidline` cookie profile** — now the *sole* production blocker (quota has
+   recovered). Open since 2026-07-02 (~21 days); blocks Flow thumb + all Studio upload/automation.
+2. **Reconcile LONG-2 topic drift**: decide whether this week's LONG-2 is Flight 19 (per `NEXT_VIDEOS.md`,
+   needs a fresh long-form run created from `runs/w27-flight19/`) or the existing `runs/LONG-2/` Ourang
+   Medan run, before the resume production session picks one up.
+
+See `agent-log.json` LONG2_PRODUCTION_BLOCKED_2026-07-23.
