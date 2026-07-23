@@ -16,6 +16,11 @@ runs/*/assets/*.png
 # Bridged to YouTube via GitHub Release, not git history
 runs/*/render/*.mp4
 
+# Final cut Shorts renders — regenerable from committed config/script/manifest,
+# same no-binary-renders-in-git convention as runs/*/render/*.mp4
+shorts/*.mp4
+shorts/*.ass
+
 # Keep metadata/manifests/thumbnails in git
 !runs/*/voice/manifest.json
 !runs/*/assets/manifest.json
