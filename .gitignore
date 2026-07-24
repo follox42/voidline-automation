@@ -16,6 +16,10 @@ runs/*/assets/*.png
 # Bridged to YouTube via GitHub Release, not git history
 runs/*/render/*.mp4
 
+# Final Shorts cuts — regenerable from runs/*/ sources + shorts/*.json configs
+shorts/*.mp4
+shorts/*.ass
+
 # Keep metadata/manifests/thumbnails in git
 !runs/*/voice/manifest.json
 !runs/*/assets/manifest.json
