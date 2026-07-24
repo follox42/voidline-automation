@@ -4382,3 +4382,27 @@ No new comments fetchable (auth dead blocks Studio inbox access regardless of co
 **Owner action needed** (unchanged): (1) interactive voidline cookie re-login — dead since RUN19 (2026-07-02), now ~22 days outstanding, the sole access blocker (connector itself is up); (2) fix `comments_runner.py`'s `StealthClient` import against `mcp_stealth.py`'s actual free-function API (owner-merged PR #326/#334) — a design mismatch, not a transient failure, so no unattended run can self-heal it.
 
 See `agent-log.json` COMMENTS_RUN82_BLOCKED 2026-07-23.
+
+## BLOCKER_2026-07-24-DAILY-SHORT-FLIGHT19 — Fri W30 HOOK slot regenerated end-to-end, upload blocked (day 22, unchanged root cause)
+
+**Ran**: daily-short DAILY SHORT production, target `weekly_plans/2026-W30.md` Fri 2026-07-24 row (type=HOOK, source=LONG-2, hook "5 PLANES VANISHED. IN CLEAR WEATHER. TOGETHER.", note: "already produced (`w27_discovery_flight19`, PENDING_UPLOAD), reused as-is").
+
+**Runner mismatch found, not auto-executed as literally written**: `skills/daily-short/daily_short_runner.py`'s table regex reads the Shorts-table Source column as the literal string `LONG-2` and would cut from `runs/LONG-2/render/voidline.mp4` for a HOOK-type row. `runs/LONG-2/` is **SS Ourang Medan** (see `BLOCKER_2026-07-23-LONG2-PRODUCTION`'s topic-drift note), not Flight 19 — running the script unmodified today would have produced a Short captioned "FLIGHT 19 — 1945" over Ourang Medan footage/copy. Did not invoke the runner as-is. Followed the weekly plan's explicit instruction instead ("reused as-is", same already-produced-Short reuse pattern as `w28_discovery_beaumont` 07-20 and `w29_discovery_nazca`), using the existing `shorts/w27_discovery_flight19.json` config and `runs/w27-flight19/` assets.
+
+**Production (all local, no auth needed)**:
+- Re-fetched the 3 committed-manifest Wikimedia TBM/TBF Avenger images (binaries gitignored, only `manifest.json`/`ATTRIBUTION.md` tracked).
+- Generated real narration via ElevenLabs direct REST API (`ELEVENLABS_KEY`) — quota confirmed live beforehand: 132,290/256,849 chars free (creator tier, active). The MCP `text_to_speech` tool itself still fails with the same cross-host output-directory isolation seen in prior sessions ("Directory ... is not writeable"); fell back to the documented direct-API workaround.
+- Rebuilt the silent 51.5s Ken-Burns base via `build_discovery_base.py`, muxed the 50.52s narration over it (`apad` to fill the extra ~1s), re-cut with `short_cutter_v2.py`.
+- Fixed a stale inconsistency in `shorts/w27_discovery_flight19.json`: `duration_s` was `55` but the caption track and narration both run to 51.5s — corrected to `51.5` and pointed `source` at the new narrated render.
+- Verified the cut visually (extracted frames at 0.5s/20s/49s): hook card, captioned body over Avenger footage, outro comment-CTA card all render correctly.
+- Reused the already-committed `runs/w27-flight19/thumb/thumbnail.jpg` untouched (Flow/Studio down anyway, no reason to regenerate).
+
+**Live blocker check (not assumed)**:
+- `camoufox-stealth_status` → connector reachable (`running: true`). No pre-existing `voidline` session. Opened a fresh one (`stealth_navigate`, `cookie_profile=voidline`): 1473 cookies restored, landed on the Google account-chooser, "Nolann — nolann42400@gmail.com — Déconnecté" — identical failure mode to every check since RUN19 (2026-07-02). `stealth_auth_check` → `auth_valid: false`, `status: "dead"`, `api_status: 0`, "Auth INVALID. Do NOT post. Re-login required." Session closed after the check.
+- `shorts/upload_shorts.py` independently unusable regardless: still `import mcp_stealth as m` off `sys.path.insert(0, "/host/home/follox/.openclaw/...")`, a host path unreachable from this sandbox.
+
+**Decision**: no upload attempted. No routing around the dead auth (no `reset_identity`/`cf_bypass`/`evaluate()` DOM workaround/raw-HTTP bypass) — same settled draft-only hard-stop policy every run has kept since RUN19. `shorts/shorts_state.json`'s `w27_discovery_flight19` entry updated: `publish_at` bumped to today's actual slot (`2026-07-24T12:00:00Z`, the original 2026-07-04 slot having been missed long ago), status stays `PENDING_UPLOAD`, notes appended with this session's regeneration + blocker reconfirmation.
+
+**Owner actions needed** (unchanged): (1) interactive re-login to the `voidline` cookie profile — now day 22, sole access blocker; (2) reconcile the Flight-19-vs-Ourang-Medan `runs/LONG-2/` topic drift flagged in `BLOCKER_2026-07-23-LONG2-PRODUCTION` before any routine session re-runs `daily_short_runner.py` unattended on a HOOK/ANSWER row that resolves its source from the weekly-plan table (the parser needs a mapping fix, not just today's manual workaround).
+
+See `agent-log.json` DAILY_SHORT_FLIGHT19_2026-07-24.
