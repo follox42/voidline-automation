@@ -1,7 +1,7 @@
 {
-  "source": "runs/w27-flight19/render/base.mp4",
+  "source": "runs/w27-flight19/render/narrated.mp4",
   "start_s": 0,
-  "duration_s": 55,
+  "duration_s": 51.5,
   "out": "shorts/w27_discovery_flight19.mp4",
   "source_is_portrait": true,
   "header_text": "FLIGHT 19 — 1945",
