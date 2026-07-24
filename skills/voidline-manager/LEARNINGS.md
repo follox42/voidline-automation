@@ -4406,3 +4406,23 @@ See `agent-log.json` COMMENTS_RUN82_BLOCKED 2026-07-23.
 **Owner actions needed** (unchanged): (1) interactive re-login to the `voidline` cookie profile — now day 22, sole access blocker; (2) reconcile the Flight-19-vs-Ourang-Medan `runs/LONG-2/` topic drift flagged in `BLOCKER_2026-07-23-LONG2-PRODUCTION` before any routine session re-runs `daily_short_runner.py` unattended on a HOOK/ANSWER row that resolves its source from the weekly-plan table (the parser needs a mapping fix, not just today's manual workaround).
 
 See `agent-log.json` DAILY_SHORT_FLIGHT19_2026-07-24.
+
+## 2026-07-24 daily-plan review (~08:08 UTC) — Fri W30, dual publish day (Short + long-form), both blocked
+
+**Ran**: voidline-manager DAILY PLAN review. `python3 skills/voidline-manager/cron_runner.py daily-plan` → logged `DAILY_PLAN` to agent-log.json ("Today 2026-07-24 — 1 Shorts publishing | 📅 TODAY w27_discovery_flight19 (None) at 12:00 UTC — status: PENDING_UPLOAD").
+
+**Read**: `shorts/shorts_state.json`, `skills/voidline-manager/KNOWN_GOOD.md`, `skills/voidline-manager/KNOWN_BAD.md` (the root-level KNOWN_*.md paths named in the stored prompt don't exist; the real files live under `skills/voidline-manager/` — same as prior daily-plan runs).
+
+**Short scheduled TODAY (Fri 12:00 UTC)** — `w27_discovery_flight19` (HOOK slot per weekly_plans/2026-W30.md, "reused as-is"). Reconcile check: `yt_id` still `null` / status `PENDING_UPLOAD` → never uploaded, so it is NOT present in Studio and there is nothing to reconcile against; the state file is accurate. This same Short was regenerated end-to-end and its upload reconfirmed blocked earlier THIS morning by the 2026-07-24 daily-short run (fresh voidline session, 1473 cookies, `auth_valid=false/status=dead`), so I did not open a second redundant voidline session within the same UTC day. `camoufox-stealth_status` this run: connector up (`running:true`), 8 live sessions all unrelated other-project ones (cned/default/src1-5/el) — left untouched, no voidline session present.
+
+**Long-form publish day (LONG-2 Flight 19, Fri 2026-07-24 17:00 UTC per plan)** — the long-form does NOT exist and is NOT scheduled: `runs/LONG-2/` holds the SS Ourang Medan run (topic drift flagged in BLOCKER_2026-07-23-LONG2-PRODUCTION), which is itself `BLOCKED_AWAITING_QUOTA_AND_AUTH` (ElevenLabs quota exhausted until 2026-07-30, voidline cookie dead). No Flight 19 long-form script/render/upload was ever produced. So "check the long-form is still scheduled correctly" resolves to: nothing to check — it was never produced, the 17:00 UTC slot will be MISSED, same as LONG-1 Zodiac (Tue) this week.
+
+**Reddit seed (step 4)** — drafted `seeds/2026-07-24-flight19-investigation.md` (r/UnresolvedMysteries, 565-word body, DRAFT-ONLY), mirroring the 2026-07-21 Zodiac seed's pattern. Marked DO-NOT-POST for the same two reasons: (1) no live long-form to seed toward, and (2) CLAUDE.md's ❌ NOT-authorized list opts out of external Reddit seeding. Copy is held ready only if the owner ever reverses the opt-out AND the video ships. No Reddit post attempted.
+
+PLANNED: Reddit seed for Flight 19 (LONG-2) — drafted DRAFT-ONLY at seeds/2026-07-24-flight19-investigation.md, held (opt-out + long-form not produced).
+
+**Next 3 days' calendar (per weekly_plans/2026-W30.md)** — Sat 07-25 ANSWER (Flight 19, `w27_discovery_flight19` companion — no ANSWER Short produced yet), Sun 07-26 discovery (`w29_discovery_nazca`, PENDING_UPLOAD, carried forward). Every slot depends on the same two owner-only unblocks. No drift in the plan itself; drift is entirely downstream of the blockers.
+
+**Owner actions needed (unchanged, root cause is a single dead cookie — now day 22)**: (1) interactive re-login to the `voidline` cookie profile (dead since 2026-07-02) — unblocks all Studio uploads/scheduling, community tab, comment replies, and Flow thumbs; (2) ElevenLabs Creator quota resets 2026-07-30 (blocks the LONG-2 voice render). Until (1) clears, no Short or long-form can publish; today's Fri Short (12:00) and the LONG-2 long-form (17:00) will both be missed.
+
+See `agent-log.json` DAILY_PLAN 2026-07-24 08:08 UTC.
